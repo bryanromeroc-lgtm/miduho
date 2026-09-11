@@ -1,0 +1,197 @@
+- generic [active] [ref=f2e1]:
+  - generic [ref=f2e2]:
+    - link "Saltar al contenido" [ref=f2e3] [cursor=pointer]:
+      - /url: "#contenido"
+    - banner [ref=f2e4]:
+      - generic [ref=f2e5]:
+        - link "MIDUHO · Inicio" [ref=f2e6] [cursor=pointer]:
+          - /url: /
+          - img "Escudo del Colegio Mi Dulce Hogar" [ref=f2e8]
+          - generic [ref=f2e15]:
+            - strong [ref=f2e16]: MIDUHO Virtual
+            - generic [ref=f2e17]: Colegio Mi Dulce Hogar
+        - generic [ref=f2e22]:
+          - strong [ref=f2e23]: Grupo 1°-01
+          - generic [ref=f2e24]: Período 3
+      - navigation "Navegación principal" [ref=f2e25]:
+        - list [ref=f2e26]:
+          - listitem [ref=f2e27]:
+            - link "Hoy" [ref=f2e28] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=f2e33]:
+            - link "Mis clases" [ref=f2e34] [cursor=pointer]:
+              - /url: /clases
+          - listitem [ref=f2e41]:
+            - link "Biblioteca" [ref=f2e42] [cursor=pointer]:
+              - /url: /biblioteca
+          - listitem [ref=f2e46]:
+            - link "Laboratorios" [ref=f2e47] [cursor=pointer]:
+              - /url: /laboratorios
+          - listitem [ref=f2e51]:
+            - link "Agenda" [ref=f2e52] [cursor=pointer]:
+              - /url: /agenda
+    - main [ref=f2e56]:
+      - generic [ref=f2e57]:
+        - generic [ref=f2e58]:
+          - paragraph [ref=f2e59]: ¡Hola, grupo 1°-01!
+          - generic [ref=f2e60]: Martes 9 de septiembre · Período 3
+        - region [ref=f2e61]:
+          - generic [ref=f2e62]:
+            - generic [ref=f2e63]: Primera clase · 07:00
+            - heading "Un nuevo día. Mil cosas por descubrir." [level=1] [ref=f2e64]:
+              - text: Un nuevo día.Mil cosas por
+              - generic [ref=f2e65]: descubrir.
+            - paragraph [ref=f2e66]: Hoy nos encontramos en el círculo de lectura.
+            - generic [ref=f2e67]:
+              - generic [ref=f2e70]: El círculo de lectura
+              - generic [ref=f2e71]: 07:00
+            - link "Entrar a la clase" [ref=f2e75] [cursor=pointer]:
+              - /url: /clases/c1
+          - img "Un oso con gafas descubre un castillo que nace de un libro abierto" [ref=f2e81]
+        - region [ref=f2e82]:
+          - generic [ref=f2e83]:
+            - heading "Mundos para explorar" [level=2] [ref=f2e84]
+            - generic [ref=f2e85]: Literatura, tecnología y proyectos
+          - generic [ref=f2e86]:
+            - link "Silueta de un niño leyendo un libro al atardecer Biblioteca digital Literatura Historias, audiolibros y guías listas para tu clase. Explorar biblioteca" [ref=f2e87] [cursor=pointer]:
+              - /url: /biblioteca
+              - generic [ref=f2e88]:
+                - img "Silueta de un niño leyendo un libro al atardecer" [ref=f2e89]
+                - generic [ref=f2e90]: Biblioteca digital
+              - generic [ref=f2e92]:
+                - generic [ref=f2e97]:
+                  - strong [ref=f2e98]: Literatura
+                  - generic [ref=f2e99]: Historias, audiolibros y guías listas para tu clase.
+                - generic [ref=f2e100]: Explorar biblioteca
+            - link "Varios robots educativos construidos con piezas modulares Aprendizaje práctico Robótica Sensores, mecanismos y retos para aprender haciendo. Entrar a Robótica" [ref=f2e103] [cursor=pointer]:
+              - /url: /clases/c2
+              - generic [ref=f2e104]:
+                - img "Varios robots educativos construidos con piezas modulares" [ref=f2e105]
+                - generic [ref=f2e106]: Aprendizaje práctico
+              - generic [ref=f2e108]:
+                - generic [ref=f2e114]:
+                  - strong [ref=f2e115]: Robótica
+                  - generic [ref=f2e116]: Sensores, mecanismos y retos para aprender haciendo.
+                - generic [ref=f2e117]: Entrar a Robótica
+            - link "Estudiante creando una composición con papeles de colores Ideas en acción Emprendimiento Actividades para convertir ideas pequeñas en proyectos. Ver proyectos" [ref=f2e120] [cursor=pointer]:
+              - /url: /clases/c3
+              - generic [ref=f2e121]:
+                - img "Estudiante creando una composición con papeles de colores" [ref=f2e122]
+                - generic [ref=f2e123]: Ideas en acción
+              - generic [ref=f2e125]:
+                - generic [ref=f2e131]:
+                  - strong [ref=f2e132]: Emprendimiento
+                  - generic [ref=f2e133]: Actividades para convertir ideas pequeñas en proyectos.
+                - generic [ref=f2e134]: Ver proyectos
+        - region "Resumen de preparación del día" [ref=f2e137]:
+          - generic [ref=f2e142]:
+            - strong [ref=f2e143]: El día está preparado
+            - generic [ref=f2e144]: Todo lo esencial, a la vista
+          - generic [ref=f2e150]:
+            - strong [ref=f2e151]: 9 recursos
+            - generic [ref=f2e152]: en 3 clases
+          - generic [ref=f2e158]:
+            - strong [ref=f2e159]: Próxima entrega
+            - generic [ref=f2e160]: en 2 días
+          - link "Revisar agenda" [ref=f2e161] [cursor=pointer]:
+            - /url: /agenda
+        - region [ref=f2e164]:
+          - generic [ref=f2e165]:
+            - heading "El día de 1°-01" [level=2] [ref=f2e166]
+            - link "Ver agenda" [ref=f2e167] [cursor=pointer]:
+              - /url: /agenda
+          - paragraph [ref=f2e172]: 4 clases · 9 recursos en 3 clases
+          - generic [ref=f2e173]:
+            - generic [ref=f2e174]:
+              - generic [ref=f2e175]:
+                - generic [aria-hidden] [ref=f2e176]: Ahora
+                - article [ref=f2e177]:
+                  - generic [ref=f2e178]:
+                    - paragraph [ref=f2e179]: 07:00
+                    - paragraph [ref=f2e180]: Comprensión Lectora
+                    - heading "El círculo de lectura" [level=2] [ref=f2e181]
+                  - generic [ref=f2e182]:
+                    - generic [ref=f2e183]:
+                      - paragraph [ref=f2e184]: Libro
+                      - paragraph [ref=f2e185]: Caperucita Roja
+                      - paragraph [ref=f2e186]: 6-8 años
+                    - generic [ref=f2e187]:
+                      - paragraph [ref=f2e188]: Guía
+                      - paragraph [ref=f2e189]: Preguntas para el círculo
+                      - paragraph [ref=f2e190]: solo docente
+                    - generic [ref=f2e191]:
+                      - paragraph [ref=f2e192]: Audiolibro
+                      - paragraph [ref=f2e193]: Alicia en el País de las Maravillas
+                      - paragraph [ref=f2e194]: 9-11 años
+                    - generic [ref=f2e195]:
+                      - paragraph [ref=f2e196]: Libro
+                      - paragraph [ref=f2e197]: El Mago de Oz
+                      - paragraph [ref=f2e198]: 9-11 años
+                    - link "+ Añadir material" [ref=f2e199] [cursor=pointer]:
+                      - /url: /biblioteca
+                    - paragraph [ref=f2e200]: 12 de 25 entregas · vence en 2 días
+                  - link "Entrar a la clase" [ref=f2e202] [cursor=pointer]:
+                    - /url: /clases/c1
+              - generic [ref=f2e203]: 07:00 · ahora
+            - generic [ref=f2e204]:
+              - article [ref=f2e206]:
+                - generic [ref=f2e207]:
+                  - paragraph [ref=f2e208]: 09:00
+                  - paragraph [ref=f2e209]: Robótica
+                  - heading "Sensores que miden" [level=2] [ref=f2e210]
+                - generic [ref=f2e211]:
+                  - generic [ref=f2e212]:
+                    - paragraph [ref=f2e213]: Unidad 7
+                    - paragraph [ref=f2e214]: Ruta didáctica de 7 secciones
+                    - paragraph [ref=f2e215]: Kids 2
+                  - generic [ref=f2e216]:
+                    - paragraph [ref=f2e217]: Material imprimible
+                    - paragraph [ref=f2e218]: Tabla de medidas
+                  - link "+ Añadir material" [ref=f2e219] [cursor=pointer]:
+                    - /url: /biblioteca
+                  - paragraph [ref=f2e220]: 0 de 25 entregas · vence en 5 días
+                - link "Entrar a la clase" [ref=f2e222] [cursor=pointer]:
+                  - /url: /clases/c2
+              - generic [ref=f2e223]: 09:00
+            - generic [ref=f2e224]:
+              - article [ref=f2e226]:
+                - generic [ref=f2e227]:
+                  - paragraph [ref=f2e228]: 10:30
+                  - paragraph [ref=f2e229]: Emprendimiento
+                  - heading "Contar lo que tengo" [level=2] [ref=f2e230]
+                - generic [ref=f2e231]:
+                  - generic [ref=f2e232]:
+                    - paragraph [ref=f2e233]: Unidad 6
+                    - paragraph [ref=f2e234]: Ruta didáctica de 7 secciones
+                    - paragraph [ref=f2e235]: Kids 2
+                  - generic [ref=f2e236]:
+                    - paragraph [ref=f2e237]: Unidad 5
+                    - paragraph [ref=f2e238]: El trueque
+                    - paragraph [ref=f2e239]: dictada
+                  - generic [ref=f2e240]:
+                    - paragraph [ref=f2e241]: Material imprimible
+                    - paragraph [ref=f2e242]: Fichas de conteo
+                  - link "+ Añadir material" [ref=f2e243] [cursor=pointer]:
+                    - /url: /biblioteca
+                  - paragraph [ref=f2e244]: Sin entrega programada
+                - link "Entrar a la clase" [ref=f2e246] [cursor=pointer]:
+                  - /url: /clases/c3
+              - generic [ref=f2e247]: 10:30
+            - generic [ref=f2e248]:
+              - article [ref=f2e250]:
+                - generic [ref=f2e251]:
+                  - paragraph [ref=f2e252]: 11:30
+                  - paragraph [ref=f2e253]: Ética y Valores
+                  - heading "Sin material todavía" [level=2] [ref=f2e254]
+                - generic [ref=f2e255]:
+                  - paragraph [ref=f2e256]: Aún no hay material para esta clase. Puedes buscar recursos en la biblioteca.
+                  - link "+ Añadir material" [ref=f2e258] [cursor=pointer]:
+                    - /url: /biblioteca
+                - link "Buscar en biblioteca" [ref=f2e260] [cursor=pointer]:
+                  - /url: /biblioteca
+              - generic [ref=f2e261]: 11:30
+    - contentinfo [ref=f2e262]:
+      - generic [ref=f2e263]: Colegio Mi Dulce Hogar · Madrid, Cundinamarca
+      - group [ref=f2e264]:
+        - generic "Sobre esta maqueta" [ref=f2e265] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=f2e271] [cursor=pointer]

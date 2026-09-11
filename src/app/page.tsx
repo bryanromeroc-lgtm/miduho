@@ -1,69 +1,157 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, BookOpen, Bot, Clock3, Sprout } from "lucide-react";
+import { Marco } from "@/components/friso/marco";
+import { HOY, DOCENTE } from "@/lib/datos";
+import styles from "./inicio.module.css";
 
-export default function Home() {
+export default function Inicio() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <Marco>
+      <div className={styles.inicio}>
+        <div className="welcome-line">
+          <p>¡Hola, grupo {DOCENTE.grupo}!</p>
+          <span>Martes 9 de septiembre · Período 3</span>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+
+        <section className="learning-hero" aria-labelledby="aventura-titulo">
+          <div className="hero-scene-sky" aria-hidden="true">
+            <span className="hero-scene-ground" />
+            <span className="hero-scene-mountain hero-scene-mountain-a">
+              <Image src="/images/portal/26f0.svg" alt="" width={120} height={120} />
+            </span>
+            <span className="hero-scene-mountain hero-scene-mountain-b">
+              <Image src="/images/portal/26f0.svg" alt="" width={90} height={90} />
+            </span>
+            <Image className="hero-scene-sun" src="/images/portal/2600.svg" alt="" width={50} height={50} />
+            <Image className="hero-scene-cloud hero-scene-cloud-a" src="/images/portal/2601.svg" alt="" width={54} height={54} />
+            <Image className="hero-scene-cloud hero-scene-cloud-b" src="/images/portal/2601.svg" alt="" width={38} height={38} />
+            <Image className="hero-scene-rainbow" src="/images/portal/1f308.svg" alt="" width={72} height={72} />
+          </div>
+          <div className="learning-hero-scrim" aria-hidden="true" />
+          <div className="hero-scene-ground-layer" aria-hidden="true">
+            <svg className="hero-scene-path" viewBox="0 0 1200 420" preserveAspectRatio="none" focusable="false">
+              <path d="M -40 300 C 180 250, 260 340, 420 300 S 660 220, 820 260 1040 230 1260 180" />
+            </svg>
+            <Image className="hero-scene-school" src="/images/portal/1f3eb.svg" alt="" width={92} height={92} />
+            <Image className="hero-scene-tree hero-scene-tree-a" src="/images/portal/1f333.svg" alt="" width={56} height={56} />
+            <Image className="hero-scene-child hero-scene-child-a" src="/images/portal/1f9d2.svg" alt="" width={50} height={50} />
+            <Image className="hero-scene-child hero-scene-child-b" src="/images/portal/1f9d2.svg" alt="" width={42} height={42} />
+            <Image className="hero-scene-backpack" src="/images/portal/1f392.svg" alt="" width={36} height={36} />
+            <Image className="hero-scene-books" src="/images/portal/1f4da.svg" alt="" width={56} height={56} />
             <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
+              className="hero-scene-mascot"
+              src="/images/aventura-lectora-mundo.webp"
+              alt=""
+              width={1000}
+              height={667}
+              sizes="(max-width: 700px) 80vw, 40vw"
+              preload
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+          </div>
+          <div className="learning-hero-copy">
+            <span className={styles.heroFlag}>Primera clase · {HOY[0].hora}</span>
+            <h1 id="aventura-titulo">
+              Un nuevo día.<br />Mil cosas por <span>descubrir.</span>
+            </h1>
+            <p>Hoy nos encontramos en el círculo de lectura.</p>
+            <div className="hero-lesson">
+              <BookOpen size={17} aria-hidden="true" />
+              <span>{HOY[0].tema}</span>
+              <span className="hero-lesson-time">
+                <Clock3 size={15} aria-hidden="true" />{HOY[0].hora}
+              </span>
+            </div>
+            <Link href={`/clases/${HOY[0].id}`} className="adventure-button">
+              Entrar a la clase <ArrowRight size={18} aria-hidden="true" />
+            </Link>
+          </div>
+        </section>
+
+        <section className={styles.exploreSection} aria-labelledby="explorar-titulo">
+          <div className="section-heading">
+            <h2 id="explorar-titulo">Mundos para explorar</h2>
+            <span>Literatura, tecnología y proyectos</span>
+          </div>
+
+          <div className={styles.worldsGrid}>
+            <WorldCard
+              href="/biblioteca"
+              area="literatura"
+              index={0}
+              label="Biblioteca digital"
+              title="Literatura"
+              description="Historias, audiolibros y guías listas para tu clase."
+              action="Explorar biblioteca"
+              image="/images/dashboard/literatura.webp"
+              imageAlt="Silueta de un niño leyendo un libro al atardecer"
+              icon={<BookOpen size={25} aria-hidden="true" />}
+              badgeImage="/images/portal/1f4da.svg"
+            />
+            <WorldCard
+              href="/clases/c2"
+              area="robotica"
+              index={1}
+              label="Aprendizaje práctico"
+              title="Robótica"
+              description="Sensores, mecanismos y retos para aprender haciendo."
+              action="Entrar a Robótica"
+              image="/images/dashboard/robotica.webp"
+              imageAlt="Varios robots educativos construidos con piezas modulares"
+              icon={<Bot size={25} aria-hidden="true" />}
+              badgeImage="/images/portal/1f916.svg"
+            />
+            <WorldCard
+              href="/clases/c3"
+              area="emprendimiento"
+              index={2}
+              label="Ideas en acción"
+              title="Emprendimiento"
+              description="Actividades para convertir ideas pequeñas en proyectos."
+              action="Ver proyectos"
+              image="/images/dashboard/emprendimiento.webp"
+              imageAlt="Estudiante creando una composición con papeles de colores"
+              icon={<Sprout size={25} aria-hidden="true" />}
+              badgeImage="/images/portal/1f331.svg"
+            />
+          </div>
+        </section>
+      </div>
+    </Marco>
+  );
+}
+
+function WorldCard({ href, area, index, label, title, description, action, image, imageAlt, icon, badgeImage }: {
+  href: string;
+  area: "literatura" | "robotica" | "emprendimiento";
+  index: number;
+  label: string;
+  title: string;
+  description: string;
+  action: string;
+  image: string;
+  imageAlt: string;
+  icon: React.ReactNode;
+  badgeImage: string;
+}) {
+  return (
+    <Link
+      href={href}
+      className={`${styles.worldCard} ${styles[area]}`}
+      style={{ "--enter-delay": `${index * 0.09}s` } as React.CSSProperties}
+    >
+      <span className={styles.worldMedia}>
+        <Image src={image} alt={imageAlt} fill sizes="(max-width: 700px) 42vw, 33vw" />
+        <span className={styles.worldLabel}>{label}</span>
+        <Image className={styles.worldBadge} src={badgeImage} alt="" aria-hidden="true" width={64} height={64} />
+      </span>
+      <span className={styles.worldBody}>
+        <span className={styles.worldTitle}>
+          <span className={styles.worldIcon}>{icon}</span>
+          <span><strong>{title}</strong><small>{description}</small></span>
+        </span>
+        <span className={styles.worldAction}>{action} <ArrowRight size={16} aria-hidden="true" /></span>
+      </span>
+    </Link>
   );
 }
