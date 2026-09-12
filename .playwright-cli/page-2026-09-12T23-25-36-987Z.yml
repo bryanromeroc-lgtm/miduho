@@ -1,0 +1,85 @@
+- generic [ref=e2]:
+  - link "Saltar al contenido" [ref=e3] [cursor=pointer]:
+    - /url: "#contenido"
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "MIDUHO · Inicio" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "Escudo del Colegio Mi Dulce Hogar" [ref=e8]
+        - generic [ref=e15]:
+          - strong [ref=e16]: MIDUHO Virtual
+          - generic [ref=e17]: Colegio Mi Dulce Hogar
+      - generic [ref=e22]:
+        - strong [ref=e23]: Grupo 1°-01
+        - generic [ref=e24]: Período 3
+    - navigation "Navegación principal" [ref=e25]:
+      - list [ref=e26]:
+        - listitem [ref=e27]:
+          - link "Hoy" [ref=e28] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e33]:
+          - link "Mis clases" [ref=e34] [cursor=pointer]:
+            - /url: /clases
+        - listitem [ref=e41]:
+          - link "Biblioteca" [ref=e42] [cursor=pointer]:
+            - /url: /biblioteca
+        - listitem [ref=e46]:
+          - link "Laboratorios" [ref=e47] [cursor=pointer]:
+            - /url: /laboratorios
+        - listitem [ref=e51]:
+          - link "Agenda" [ref=e52] [cursor=pointer]:
+            - /url: /agenda
+  - main [ref=e56]:
+    - generic [ref=e57]:
+      - generic [ref=e58]:
+        - paragraph [ref=e59]: ¡Hola, grupo 1°-01!
+        - generic [ref=e60]: Martes 9 de septiembre · Período 3
+      - region [ref=e61]:
+        - generic [ref=e63]:
+          - generic [ref=e64]: Primera clase · 07:00
+          - heading "Un nuevo día. Mil cosas por descubrir." [level=1] [ref=e65]: Un nuevo día.Mil cosas por descubrir.
+          - paragraph [ref=e66]: Hoy nos encontramos en el círculo de lectura.
+          - generic [ref=e67]:
+            - generic [ref=e70]: El círculo de lectura
+            - generic [ref=e71]: 07:00
+          - link "Entrar a la clase" [ref=e75] [cursor=pointer]:
+            - /url: /clases/c1
+      - region [ref=e78]:
+        - generic [ref=e79]:
+          - heading "Mundos para explorar" [level=2] [ref=e80]
+          - generic [ref=e81]: Literatura, tecnología y proyectos
+        - generic [ref=e82]:
+          - link "Silueta de un niño leyendo un libro al atardecer Biblioteca digital Literatura Historias, audiolibros y guías listas para tu clase. Explorar biblioteca" [ref=e83] [cursor=pointer]:
+            - /url: /biblioteca
+            - generic [ref=e84]:
+              - img "Silueta de un niño leyendo un libro al atardecer" [ref=e85]
+              - generic [ref=e86]: Biblioteca digital
+            - generic [ref=e88]:
+              - generic [ref=e93]:
+                - strong [ref=e94]: Literatura
+                - generic [ref=e95]: Historias, audiolibros y guías listas para tu clase.
+              - generic [ref=e96]: Explorar biblioteca
+          - link "Varios robots educativos construidos con piezas modulares Aprendizaje práctico Robótica Sensores, mecanismos y retos para aprender haciendo. Entrar a Robótica" [ref=e99] [cursor=pointer]:
+            - /url: /clases/c2
+            - generic [ref=e100]:
+              - img "Varios robots educativos construidos con piezas modulares" [ref=e101]
+              - generic [ref=e102]: Aprendizaje práctico
+            - generic [ref=e104]:
+              - generic [ref=e110]:
+                - strong [ref=e111]: Robótica
+                - generic [ref=e112]: Sensores, mecanismos y retos para aprender haciendo.
+              - generic [ref=e113]: Entrar a Robótica
+          - link "Estudiante creando una composición con papeles de colores Ideas en acción Emprendimiento Actividades para convertir ideas pequeñas en proyectos. Ver proyectos" [ref=e116] [cursor=pointer]:
+            - /url: /clases/c3
+            - generic [ref=e117]:
+              - img "Estudiante creando una composición con papeles de colores" [ref=e118]
+              - generic [ref=e119]: Ideas en acción
+            - generic [ref=e121]:
+              - generic [ref=e127]:
+                - strong [ref=e128]: Emprendimiento
+                - generic [ref=e129]: Actividades para convertir ideas pequeñas en proyectos.
+              - generic [ref=e130]: Ver proyectos
+  - contentinfo [ref=e133]:
+    - generic [ref=e134]: Colegio Mi Dulce Hogar · Madrid, Cundinamarca
+    - group [ref=e135]:
+      - generic "Sobre esta maqueta" [ref=e136] [cursor=pointer]
