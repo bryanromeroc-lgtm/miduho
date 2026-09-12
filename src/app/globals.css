@@ -446,6 +446,274 @@ a { text-underline-offset: 4px; }
   .marca-ahora { top: 12px; right: 12px; }
 }
 
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*
+  LA MOTION NATIVA DEL FRISO — el trecho que se despliega.
+
+  Al abrir una clase o una unidad, su plancha crece desde su lugar en la
+  banda hasta el encabezado de la vista completa; al volver, regresa a su
+  trecho. Se construye con View Transitions, no con una imitación: el
+  navegador interpola la plancha real entre las dos páginas.
+*/
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-group(*) {
+  animation-duration: 0.42s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* La plancha es el elemento que persiste entre las dos vistas. */
+::view-transition-old(plancha),
+::view-transition-new(plancha) {
+  animation-duration: 0.42s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  /* la plancha se despliega: la altura cambia, el color no parpadea */
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* Refinamiento visual: un aula cálida, legible y acompañada por ilustración. */
+:root {
+  --background: #fffcf7;
+  --foreground: #20334b;
+  --color-tinta: #20334b;
+  --color-gris: #626776;
+  --color-hueso: #fffcf7;
+  --color-linea: #e9e4dc;
+  --font-heading: var(--font-archivo);
+  --school-orange: #bc461c;
+  --school-orange-pale: #fff0e2;
+}
+::selection { background: #ffe1b8; color: #20334b; }
+html { scrollbar-color: #c8bbaa #fffcf7; scrollbar-width: thin; }
+input, textarea { caret-color: var(--school-orange); }
+a { text-underline-offset: 4px; }
+.school-header { background: #fff; border-bottom: 1px solid var(--color-linea); }
+.school-header-inner { max-width: 1240px; margin: auto; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.school-brand { display: flex; align-items: center; gap: 11px; }
+.school-brand-mark { width: 44px; height: 44px; display: grid; place-items: center; background: #fff0e2; border-radius: 14px; }
+.school-brand strong { display: block; color: var(--school-orange); font-size: 21px; line-height: 1.2; font-weight: 850; letter-spacing: -.025em; }
+.school-brand strong span { color: var(--color-tinta); font-weight: 750; }
+.school-brand small { display: block; margin-top: 3px; color: var(--color-gris); font-size: 11px; }
+.school-group { display: flex; align-items: center; gap: 10px; color: var(--color-tinta); }
+.school-group strong { display: block; font-size: 13px; }
+.school-group small { display: block; font-size: 11px; color: var(--color-gris); }
+.school-nav { position: fixed; bottom: 0; left: 0; right: 0; z-index: 30; background: #fff; border-top: 1px solid var(--color-linea); padding: 8px 16px calc(8px + env(safe-area-inset-bottom)); }
+.school-nav ul { max-width: 620px; margin: auto; display: flex; justify-content: space-between; gap: 10px; }
+.school-nav li { flex: 1; }
+.school-nav-link { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 8px 12px; border-radius: 12px; color: #515c6d; min-height: 56px; font-size: 11px; font-weight: 750; transition: background .18s ease-out, color .18s ease-out; }
+.school-nav-link:hover { background: #f8f5ef; color: var(--school-orange); }
+.school-nav-link.is-active { background: var(--school-orange-pale); color: var(--school-orange); }
+.school-main { padding-top: 25px; padding-bottom: 12px; }
+.welcome-line { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.welcome-line p { font-size: 18px; font-weight: 800; }
+.welcome-line > span { font-size: 12px; color: var(--color-gris); }
+.learning-hero h1 { font-size: clamp(32px, 3.5vw, 46px); font-weight: 850; letter-spacing: -.035em; line-height: 1.12; text-wrap: balance; }
+.learning-hero h1 span { color: var(--school-orange); }
+.learning-hero-copy > p { font-size: 15px; margin-top: 16px; color: #765737; }
+.hero-lesson { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 12px; font-weight: 700; color: #765737; margin-top: 19px; }
+.hero-lesson-time { display: inline-flex; align-items: center; gap: 5px; margin-left: 10px; padding-left: 16px; border-left: 1px solid #d9c5a6; }
+.adventure-button { display: inline-flex; align-items: center; justify-content: center; gap: 26px; background: var(--school-orange); color: #fff; border-radius: 30px; padding: 14px 25px; font-size: 14px; font-weight: 800; margin-top: 24px; transition: background .18s ease-out; }
+.adventure-button:hover { background: #983615; }
+.explore-section { margin-top: 29px; }
+.section-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 15px; }
+.section-heading h2 { font-size: 21px; font-weight: 850; letter-spacing: -.025em; }
+.section-heading > span { color: var(--color-gris); font-size: 12px; }
+.section-heading > a { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 750; min-height: 36px; }
+.section-heading > a:hover { color: var(--school-orange); }
+.worlds-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+.world-link { display: flex; align-items: center; gap: 14px; padding: 22px 20px; border-radius: 16px; transition: background .18s ease-out; }
+.world-link > span:nth-child(2) { flex: 1; min-width: 0; }
+.world-link strong { display: block; font-size: 17px; font-weight: 850; }
+.world-link small { display: block; font-size: 12px; margin-top: 5px; line-height: 1.4; }
+.world-icon { display: grid; place-items: center; flex-shrink: 0; width: 48px; height: 54px; }
+.world-literature { background: #fff0d9; color: #7d4913; }
+.world-robotics { background: #e9f3f9; color: #245c78; }
+.world-enterprise { background: #edf3e6; color: #496132; }
+.world-literature:hover { background: #ffe6bd; }
+.world-robotics:hover { background: #dceef8; }
+.world-enterprise:hover { background: #e0edcf; }
+.ranura-libre { display: block; border-width: 1px; margin-top: 10px; min-height: 44px; }
+.trecho-entra { animation: none; }
+.school-footer { max-width: 1176px; margin: 30px auto 0; padding: 22px 0 112px; color: var(--color-gris); font-size: 11px; display: flex; gap: 20px; justify-content: space-between; border-top: 1px solid var(--color-linea); }
+.school-footer details { max-width: 440px; text-align: right; }
+.school-footer summary { cursor: pointer; min-height: 24px; }
+.school-footer p { line-height: 1.7; padding-top: 10px; }
+@media (max-width: 1000px) {
+  .world-link { gap: 8px; padding: 18px 13px; }
+  .world-link strong { font-size: 15px; }
+  .world-icon { width: 36px; }
+  .world-link > svg { display: none; }
+  .school-footer { margin-left: 32px; margin-right: 32px; }
+}
+@media (max-width: 600px) {
+  .school-header-inner { padding: 14px 16px; gap: 10px; }
+  .school-brand strong { font-size: 18px; }
+  .school-brand-mark { width: 38px; height: 38px; border-radius: 12px; }
+  .school-group > svg { display: none; }
+  .school-group strong { font-size: 11px; }
+  .school-group small { font-size: 10px; text-align: right; }
+  .school-main { padding-top: 20px; }
+  .welcome-line { align-items: flex-start; flex-direction: column; gap: 3px; margin-bottom: 16px; }
+  .welcome-line p { font-size: 17px; }
+  .welcome-line > span { font-size: 11px; }
+  .learning-hero-copy { padding: 27px 20px 0; }
+  .learning-hero h1 { font-size: 34px; }
+  .learning-hero-copy > p { font-size: 14px; }
+  .hero-lesson { font-size: 11px; gap: 6px; }
+  .hero-lesson-time { margin-left: 2px; padding-left: 8px; }
+  .adventure-button { width: 100%; margin-top: 20px; }
+  .section-heading h2 { font-size: 19px; }
+  .explore-section .section-heading > span { display: none; }
+  .worlds-grid { grid-template-columns: 1fr; gap: 10px; }
+  .world-link { padding: 14px 18px; gap: 16px; }
+  .world-link strong { font-size: 17px; }
+  .world-link small { margin-top: 2px; }
+  .world-link > svg { display: block; }
+  .world-icon { height: 42px; width: 42px; }
+  .school-nav { padding-left: 6px; padding-right: 6px; }
+  .school-nav ul { gap: 2px; }
+  .school-nav-link { padding: 8px 3px; font-size: 10px; }
+  .school-footer { margin: 24px 16px 0; flex-direction: column; gap: 8px; }
+  .school-footer details { text-align: left; }
+}
+
+
+/* Mayor jerarquía, con la misma paleta y superficies de lectura claras. */
+.school-nav-link.is-active { background: var(--school-orange); color: var(--color-papel); }
+.page-heading { padding: 8px 0 26px; margin-bottom: 28px; border-bottom: 1px solid var(--color-linea); }
+.page-heading h1 { margin-top: 0; font-size: clamp(38px, 4.5vw, 60px); font-weight: 850; letter-spacing: -.035em; line-height: 1.08; }
+.page-heading > p { max-width: 44ch; }
+.plancha > header { padding-top: 24px; padding-bottom: 22px; }
+.plancha > header h2, .plancha > header h3 { font-size: 25px; line-height: 1.16; text-wrap: balance; }
+.plancha > header > p:first-child { font-variant-numeric: tabular-nums; }
+.plancha-estante { gap: 10px; }
+.school-main > header.trecho-entra { padding: 34px 32px; }
+.school-main > header.trecho-entra h1 { font-size: clamp(36px, 4.5vw, 60px); line-height: 1.1; letter-spacing: -.025em; }
+.library-filters > div:first-child h2 { text-transform: none; letter-spacing: -.02em; font-size: 25px; }
+.library-filters .plancha-estante { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 24px; }
+.library-filters input { max-width: none; min-height: 48px; }
+.library-filters input::placeholder { color: var(--color-gris); opacity: 1; }
+.library-filters button { min-height: 44px; }
+.library-book { min-height: 205px; padding: 22px; }
+.library-book h3 { font-size: 22px; line-height: 1.2; letter-spacing: -.02em; }
+.agenda-day { min-width: 0; min-height: 106px; padding: 9px; }
+.agenda-day > span:first-child { font-size: 16px; }
+.agenda-day > span + span { font-size: 11px; padding: 7px; overflow-wrap: anywhere; }
+
+/* DELIGHT · el friso confirma qué está ocurriendo y conserva continuidad. */
+.friso-plancha-wrap { position: relative; }
+.marca-ahora {
+  position: absolute;
+  z-index: 2;
+  top: 14px;
+  right: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  background: var(--color-papel);
+  color: var(--color-lit-tinta);
+  padding: 6px 10px;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  box-shadow: 0 7px 18px rgb(70 38 15 / .18);
+}
+.marca-ahora::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-lit);
+}
+.friso-trecho[data-active] .regla-hora { position: relative; }
+.friso-trecho[data-active] .regla-hora::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 0;
+  width: 11px;
+  height: 11px;
+  border: 3px solid var(--color-hueso);
+  border-radius: 50%;
+  background: var(--color-lit);
+  animation: recorrer-regla .62s cubic-bezier(.16, 1, .3, 1) both;
+}
+@keyframes recorrer-regla {
+  from { transform: translateX(34px); opacity: .35; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.world-link .world-icon,
+.world-link > svg,
+.adventure-button > svg {
+  transition: transform .22s cubic-bezier(.16, 1, .3, 1);
+}
+.world-link:hover .world-icon { transform: translateY(-3px); }
+.world-link:hover > svg,
+.adventure-button:hover > svg { transform: translateX(4px); }
+.ranura-libre,
+.filter-chip,
+.agenda-event {
+  transition: color .16s ease-out, background-color .16s ease-out, border-color .16s ease-out, box-shadow .16s ease-out, transform .16s cubic-bezier(.16, 1, .3, 1);
+}
+.ranura-libre:hover { transform: translateY(-1px); }
+.ranura-libre:hover { box-shadow: 0 7px 18px rgb(32 51 75 / .08); }
+.filter-chip[aria-pressed="true"] { box-shadow: 0 7px 18px rgb(32 51 75 / .14); }
+.filter-chip[aria-pressed="true"] svg { animation: confirmar-filtro .2s cubic-bezier(.16, 1, .3, 1) both; }
+@keyframes confirmar-filtro {
+  from { transform: scale(.65); opacity: .25; }
+  to { transform: scale(1); opacity: 1; }
+}
+.agenda-event { box-shadow: 0 5px 12px rgb(32 51 75 / .1); }
+.agenda-day[data-today] { box-shadow: 0 9px 22px rgb(32 51 75 / .2); }
+.school-nav-link.is-active svg { filter: drop-shadow(0 3px 5px rgb(74 28 9 / .2)); }
+@media (prefers-reduced-motion: reduce) {
+  .friso-trecho[data-active] .regla-hora::before,
+  .filter-chip[aria-pressed="true"] svg { animation: none; }
+  .world-link:hover .world-icon,
+  .world-link:hover > svg,
+  .adventure-button:hover > svg,
+  .ranura-libre:hover { transform: none; }
+}
+@media (max-width: 700px) {
+  .library-filters .plancha-estante { grid-template-columns: 1fr; padding: 18px; gap: 20px; }
+  .page-heading { padding-top: 0; padding-bottom: 20px; gap: 18px; }
+  .school-main > header.trecho-entra { padding: 26px 22px; }
+  .agenda-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .agenda-weekday, .agenda-blank { display: none; }
+  .agenda-day { min-height: 88px; }
+  .agenda-day::before { content: attr(data-weekday); display: block; font-size: 11px; font-weight: 700; }
+  .agenda-day[data-today]::before { color: var(--color-papel); }
+  .agenda-day > span + span { font-size: 12px; }
+  .marca-ahora { top: 12px; right: 12px; }
+}
+
 /* PORTAL ILUSTRADO — una franja de paisaje escolar enmarca la herramienta
    docente sin convertir su contenido en una imagen ni copiar la referencia. */
 .school-header {
@@ -538,27 +806,13 @@ a { text-underline-offset: 4px; }
   padding-bottom: 56px;
   padding-right: 24px;
 }
-/* Capa de cielo — atmósfera lejana, puede desvanecerse bajo el degradado. */
+/* Capa de cielo — sol y nubes lejanas, ancladas al cielo (no al terreno). */
 .hero-scene-sky { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
-.hero-scene-ground { position: absolute; z-index: 0; inset: auto 0 0; height: 36%; }
-.hero-scene-ground::before,
-.hero-scene-ground::after {
-  content: "";
-  position: absolute;
-  left: -10%;
-  width: 120%;
-  border-radius: 50% 50% 0 0;
-}
-.hero-scene-ground::before { bottom: -10%; height: 64%; background: #b7e58f; transform: rotate(-1deg); }
-.hero-scene-ground::after { bottom: -16%; height: 58%; background: #96d86f; opacity: .9; transform: rotate(.8deg); }
-.hero-scene-mountain { position: absolute; z-index: 1; filter: opacity(.55) saturate(.55); }
-.hero-scene-mountain-a { top: 8%; right: 6%; }
-.hero-scene-mountain-b { top: 18%; right: 21%; }
 .hero-scene-sun { position: absolute; z-index: 1; top: 9%; right: 4%; filter: drop-shadow(0 6px 14px rgb(219 143 15 / .35)); animation: portal-float 4.5s ease-in-out infinite; }
-.hero-scene-cloud { position: absolute; z-index: 1; opacity: .9; animation: portal-float 4.5s ease-in-out infinite; }
-.hero-scene-cloud-a { top: 14%; left: 34%; animation-delay: -3.2s; }
-.hero-scene-cloud-b { top: 25%; left: 55%; animation-delay: -1.4s; }
-.hero-scene-rainbow { position: absolute; z-index: 1; top: 8%; left: 44%; animation: portal-float 4.5s ease-in-out infinite; animation-delay: -2.1s; }
+.hero-scene-cloud { position: absolute; z-index: 1; opacity: .85; animation: portal-float 5.5s ease-in-out infinite; }
+.hero-scene-cloud-a { top: 12%; left: 31%; animation-delay: -3.2s; }
+.hero-scene-cloud-b { top: 26%; left: 52%; opacity: .7; animation-delay: -1.4s; }
+.hero-scene-cloud-c { top: 7%; right: 22%; animation-delay: -2.1s; }
 @keyframes portal-float { 50% { transform: translateY(-7px) rotate(2deg); } }
 
 /* El degradado de lectura vive SOLO entre el cielo y el terreno: el
@@ -571,19 +825,42 @@ a { text-underline-offset: 4px; }
   background: linear-gradient(100deg, rgb(255 252 247 / .95) 0%, rgb(255 252 247 / .8) 26%, rgb(255 252 247 / .3) 46%, rgb(255 252 247 / 0) 60%);
 }
 
-/* Capa de terreno — colegio, camino, familia y mascota; siempre nítida. */
+/* Capa de terreno. Un único lienzo de 1440×600 (estirado al hero) dibuja
+   montañas, colinas y camino; cada prop se coloca en ese mismo sistema con
+   --vx/--vy (punto de apoyo) y --vw (ancho), así el camino nace en la
+   puerta del colegio y entra al libro en cualquier ancho de pantalla. */
 .hero-scene-ground-layer { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
-.hero-scene-path { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.hero-scene-path path { fill: none; stroke: #f0d6a0; stroke-width: 30; stroke-linecap: round; opacity: .9; }
-.hero-scene-school { position: absolute; left: 9%; bottom: 3%; filter: drop-shadow(0 10px 14px rgb(32 51 75 / .18)); }
-.hero-scene-tree { position: absolute; filter: drop-shadow(0 6px 10px rgb(32 81 57 / .2)); }
-.hero-scene-tree-a { left: 1%; bottom: 4%; }
-.hero-scene-child { position: absolute; filter: drop-shadow(0 5px 7px rgb(32 51 75 / .2)); }
-.hero-scene-child-a { left: 33%; bottom: 27%; }
-.hero-scene-child-b { left: 39%; bottom: 23%; }
-.hero-scene-backpack { position: absolute; left: 30%; bottom: 24%; filter: drop-shadow(0 4px 6px rgb(32 51 75 / .2)); }
-.hero-scene-books { position: absolute; right: 10%; top: 18%; filter: drop-shadow(0 8px 12px rgb(56 40 19 / .18)); animation: portal-float 4.5s ease-in-out infinite; animation-delay: -.6s; }
-.hero-scene-mascot { position: absolute; right: 3%; bottom: 4%; width: min(38%, 420px); height: auto; filter: drop-shadow(0 16px 20px rgb(41 74 46 / .18)); }
+.hero-scene-land { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero-scene-path path { fill: none; stroke: #d6b26c; stroke-width: 28; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.hero-scene-path path + path { stroke: #f5e2b0; stroke-width: 20; }
+.hero-scene-path-mobile { display: none; }
+.hero-scene-prop {
+  position: absolute;
+  left: calc(var(--vx) / 1440 * 100%);
+  bottom: calc((600 - var(--vy)) / 600 * 100%);
+  width: calc(var(--vw) / 1440 * 100%);
+  height: auto;
+}
+.hero-scene-school { --vx: 28; --vy: 582; --vw: 104; filter: drop-shadow(0 10px 14px rgb(32 51 75 / .18)); }
+.hero-scene-tree { filter: drop-shadow(0 6px 10px rgb(32 81 57 / .2)); }
+.hero-scene-tree-a { --vx: -6; --vy: 596; --vw: 62; }
+.hero-scene-tree-b { --vx: 124; --vy: 566; --vw: 50; }
+.hero-scene-tree-c { --vx: 862; --vy: 496; --vw: 44; }
+.hero-scene-tree-d { --vx: 806; --vy: 492; --vw: 54; }
+.hero-scene-tree-e { --vx: 1392; --vy: 560; --vw: 58; }
+.hero-scene-tree-f { --vx: 560; --vy: 520; --vw: 40; }
+.hero-scene-sprout-a { --vx: 330; --vy: 500; --vw: 22; }
+.hero-scene-sprout-b { --vx: 700; --vy: 500; --vw: 20; }
+/* La mascota se dimensiona en % (no en px) para que la esquina del libro
+   caiga siempre sobre el final del camino. */
+.hero-scene-mascot { position: absolute; right: 3%; bottom: 4%; width: 31%; height: auto; filter: drop-shadow(0 16px 20px rgb(41 74 46 / .18)); }
+/* Entre 700 y 1360px el contenedor arranca a 32px y las tarjetas cubren la
+   esquina inferior izquierda: el colegio se encoge y sube al borde de la banda. */
+@media (max-width: 1360px) and (min-width: 701px) {
+  .hero-scene-school { --vx: 8; --vy: 552; --vw: 84; }
+  .hero-scene-tree-a { --vx: -20; --vy: 570; --vw: 50; }
+  .hero-scene-tree-b { --vx: 86; --vy: 540; --vw: 40; }
+}
 
 @media (max-width: 700px) {
   .portal-sky { display: none; }
@@ -597,28 +874,33 @@ a { text-underline-offset: 4px; }
   .school-nav-link { min-height: 56px; flex-direction: column; gap: 4px; border: 0; border-radius: 12px; background: transparent !important; color: #596474; box-shadow: none; }
   .school-nav-link:hover { transform: none; background: var(--school-orange-pale) !important; color: var(--school-orange); }
   .school-nav-link.is-active { background: var(--school-orange) !important; color: #fff; }
-  .learning-hero { min-height: 440px; }
-  .learning-hero-copy { max-width: none; padding: 32px 20px 24px; }
+  /* En móvil el paisaje ocupa una banda propia bajo el texto: el hero crece
+     y el texto se ancla arriba para que la mascota nunca quede tras el botón. */
+  .learning-hero { min-height: 540px; align-items: flex-start; }
+  .learning-hero-copy { max-width: none; padding: 32px 20px 20px; }
   .learning-hero-scrim {
-    background: linear-gradient(180deg, rgb(255 252 247 / .97) 0%, rgb(255 252 247 / .94) 44%, rgb(255 252 247 / .58) 66%, rgb(255 252 247 / .18) 100%);
+    background: linear-gradient(180deg, rgb(255 252 247 / .97) 0%, rgb(255 252 247 / .94) 40%, rgb(255 252 247 / .62) 62%, rgb(255 252 247 / .16) 78%, rgb(255 252 247 / 0) 100%);
   }
-  .hero-scene-mountain,
   .hero-scene-cloud,
-  .hero-scene-rainbow,
-  .hero-scene-child-b,
-  .hero-scene-backpack { display: none; }
-  .hero-scene-sun { top: 6%; right: 6%; width: 38px; height: 38px; }
-  .hero-scene-school { left: 12%; bottom: 4%; width: 56px; height: 56px; }
-  .hero-scene-tree-a { bottom: 3%; width: 38px; height: 38px; }
-  .hero-scene-child-a { left: 30%; bottom: 6%; width: 30px; height: 30px; }
-  .hero-scene-books { right: 6%; top: 9%; width: 40px; height: 40px; }
-  .hero-scene-mascot { width: 58%; right: 2%; bottom: 1%; }
+  .hero-scene-mountains,
+  .hero-scene-tree-b,
+  .hero-scene-tree-c,
+  .hero-scene-tree-d,
+  .hero-scene-tree-f,
+  .hero-scene-sprout { display: none; }
+  .hero-scene-path:not(.hero-scene-path-mobile) { display: none; }
+  .hero-scene-path-mobile { display: block; }
+  .hero-scene-path-mobile path { stroke-width: 18; }
+  .hero-scene-sun { top: auto; bottom: 31%; right: 6%; width: 30px; height: 30px; }
+  .hero-scene-school { --vx: 70; --vy: 588; --vw: 200; }
+  .hero-scene-tree-a { --vx: -34; --vy: 598; --vw: 120; }
+  .hero-scene-tree-e { --vx: 1380; --vy: 570; --vw: 160; }
+  .hero-scene-path-mobile path + path { stroke-width: 12; }
+  .hero-scene-mascot { width: 48%; right: 2%; bottom: 1%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-scene-sun,
-  .hero-scene-cloud,
-  .hero-scene-rainbow,
-  .hero-scene-books { animation: none; }
+  .hero-scene-cloud { animation: none; }
   .school-nav-link:hover { transform: none; }
 }

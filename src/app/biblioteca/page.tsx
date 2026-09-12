@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Check } from "lucide-react";
+import Link from "next/link";
+import { BookOpen, Check } from "lucide-react";
 import { Marco, Migas, Cabecera } from "@/components/friso/marco";
 import {
   TITULOS,
@@ -11,6 +12,7 @@ import {
   type RangoEdad,
   type Idioma,
 } from "@/lib/datos";
+import { libroDeTitulo } from "@/lib/libros";
 import { cn } from "@/lib/utils";
 
 /*
@@ -183,6 +185,9 @@ export default function Biblioteca() {
             const hermano = t.hermanoDe
               ? TITULOS.find((o) => o.id === t.hermanoDe)
               : undefined;
+            /* solo las obras con páginas digitalizadas ofrecen «Leer»:
+               la ficha no promete lo que la biblioteca no tiene */
+            const leible = libroDeTitulo(t.id);
             return (
             <li key={t.id}>
               <article
@@ -233,6 +238,17 @@ export default function Biblioteca() {
                       {t.idioma}
                     </span>
                   </p>
+
+                  {leible && (
+                    <Link
+                      href={`/biblioteca/leer/${leible.slug}`}
+                      className="mt-2.5 inline-flex w-full items-center justify-center gap-2 rounded-full px-4 py-2.5 text-[13.5px] font-bold text-white hover:opacity-90"
+                      style={{ background: LIT.plancha }}
+                    >
+                      <BookOpen size={16} strokeWidth={2.3} aria-hidden="true" />
+                      Leer el libro
+                    </Link>
+                  )}
                 </div>
               </article>
             </li>

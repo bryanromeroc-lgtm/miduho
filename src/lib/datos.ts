@@ -78,6 +78,10 @@ export interface Titulo {
 }
 
 export const TITULOS: Titulo[] = [
+  /* Obras con páginas digitalizadas: se abren en el lector. El vínculo
+     obra→páginas se declara en lib/libros.ts, no aquí. */
+  { id: "lit-101", titulo: "¡Préstame tus ojos!", autor: "Gerardo Meneses Claros", tipo: "Libro", edad: "6-8", idioma: "Español" },
+  { id: "lit-102", titulo: "Una sonrisa de mariposa", autor: "Mathangi Subramanian", tipo: "Libro", edad: "6-8", idioma: "Español" },
   { id: "lit-001", titulo: "Caperucita Roja", autor: "Charles Perrault", tipo: "Libro", edad: "6-8", idioma: "Español" },
   { id: "lit-002", titulo: "Caperucita Roja — Guía docente", autor: "MIDUHO", tipo: "Guía", edad: "6-8", idioma: "Español", hermanoDe: "lit-001", soloDocente: true },
   { id: "lit-003", titulo: "Hansel y Gretel", autor: "Hermanos Grimm", tipo: "Libro", edad: "6-8", idioma: "Español" },

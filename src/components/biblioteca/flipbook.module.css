@@ -1,0 +1,742 @@
+/*
+  EL LECTOR — una escena, no un bloque dentro de una página.
+
+  Decisión de composición: el pliego manda. Todo lo demás (título, marcador,
+  índice, controles) se retira a los bordes y nunca compite con la página
+  impresa. La escena es un contenedor propio con su propio alto, sus propios
+  bordes y su propia luz; la página de Next solo la coloca.
+
+  El fondo es tinta azul profunda, no negro: el lector pertenece a MIDUHO
+  incluso cuando se lleva la pantalla entera. La madera del lector de
+  referencia se sustituye por el tono del sistema — el color de la marca
+  hace el mismo trabajo de aislar la página sin imitar una mesa.
+*/
+
+.lector {
+  --alto-escena: clamp(420px, 68vh, 760px);
+  --borde-lector: rgb(255 255 255 / 0.11);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 50% -10%, #2f4b6b 0%, #22374f 46%, #1a2a3d 100%);
+  box-shadow: 0 18px 44px rgb(32 51 75 / 0.22);
+  color: #fff;
+}
+
+/* ── Barra superior: una sola fila con todo lo que gobierna la lectura ── */
+
+.cabecera {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 11px clamp(12px, 2.2vw, 18px);
+  border-bottom: 1px solid var(--borde-lector);
+  background: rgb(14 24 36 / 0.34);
+}
+
+.obra {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 180px;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.obraTitulo {
+  font-size: 14.5px;
+  font-weight: 800;
+  letter-spacing: -0.012em;
+  line-height: 1.25;
+  /* el título del libro puede ser largo; una sola línea con elipsis
+     mantiene la barra estable al pasar páginas */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.obraAutor {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: rgb(207 224 240 / 0.82);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Saltar a página. El campo es el marcador: se lee y se escribe en el
+   mismo sitio, como en un lector impreso se abre por el número. */
+.salto {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgb(207 224 240 / 0.86);
+}
+
+.saltoCampo {
+  width: 7.5ch;
+  height: 34px;
+  padding: 0 8px;
+  border-radius: 9px;
+  border: 1px solid rgb(255 255 255 / 0.18);
+  background: rgb(10 18 28 / 0.5);
+  color: #fff;
+  font: inherit;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  transition: border-color 0.16s ease-out, background-color 0.16s ease-out;
+}
+
+.saltoCampo:hover {
+  border-color: rgb(255 255 255 / 0.34);
+}
+
+.saltoCampo:focus-visible {
+  outline: 3px solid #ffc78a;
+  outline-offset: 2px;
+  border-color: transparent;
+  background: rgb(10 18 28 / 0.74);
+}
+
+.saltoTotal {
+  font-variant-numeric: tabular-nums;
+  color: rgb(207 224 240 / 0.7);
+}
+
+.herramientas {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-inline-start: auto;
+}
+
+.herramienta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.1);
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.16s ease-out;
+}
+
+.herramienta:hover {
+  background: rgb(255 255 255 / 0.2);
+}
+
+.herramienta[aria-pressed="true"] {
+  background: #ffc78a;
+  color: #20334b;
+}
+
+.herramienta:focus-visible {
+  outline: 3px solid #ffc78a;
+  outline-offset: 2px;
+}
+
+/* La etiqueta de la herramienta desaparece antes que el icono: en pantallas
+   estrechas la barra conserva el control, no el texto. */
+@media (max-width: 900px) {
+  .herramientaTexto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .herramienta {
+    padding: 0 10px;
+  }
+}
+
+/* ── La escena: el pliego y sus flechas ── */
+
+.cuerpo {
+  position: relative;
+  display: flex;
+  min-height: 0;
+  flex: 1;
+}
+
+.escena {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: 1;
+  min-width: 0;
+  height: var(--alto-escena);
+  padding: clamp(14px, 2.4vw, 30px) clamp(52px, 6vw, 84px);
+  container-type: inline-size;
+}
+
+/* StPageFlip escribe sus propias medidas aquí dentro; solo damos centro
+   y el desplazamiento de la hoja suelta. */
+.libro {
+  margin-inline: auto;
+  touch-action: pan-y;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.libro :global(.stf__parent) {
+  margin-inline: auto;
+}
+
+.pagina {
+  background: #fff;
+  overflow: hidden;
+  /* sombra con desplazamiento real: el pliego se apoya sobre la escena */
+  box-shadow: 0 10px 30px rgb(6 14 24 / 0.5);
+}
+
+.pagina img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* La cara interna del lomo se oscurece un punto: da la curvatura del papel
+   sin recurrir a sombras que StPageFlip ya dibuja al voltear. */
+.derecha {
+  background-image: linear-gradient(
+    to right,
+    rgb(0 0 0 / 0.13) 0%,
+    rgb(0 0 0 / 0) 5%
+  );
+}
+
+.izquierda {
+  background-image: linear-gradient(
+    to left,
+    rgb(0 0 0 / 0.13) 0%,
+    rgb(0 0 0 / 0) 5%
+  );
+}
+
+/* Flechas flotantes: viven junto al libro, no debajo. Área táctil de 56px
+   aunque el disco se vea de 46 — el objetivo es un dedo de seis años. */
+.paso {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.14);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.18s ease-out, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.18s ease-out;
+}
+
+.pasoAnterior {
+  inset-inline-start: clamp(4px, 1vw, 14px);
+}
+
+.pasoSiguiente {
+  inset-inline-end: clamp(4px, 1vw, 14px);
+}
+
+.paso:hover:not(:disabled) {
+  background: rgb(255 255 255 / 0.28);
+}
+
+.pasoAnterior:hover:not(:disabled) {
+  transform: translateY(-50%) translateX(-3px);
+}
+
+.pasoSiguiente:hover:not(:disabled) {
+  transform: translateY(-50%) translateX(3px);
+}
+
+.paso:focus-visible {
+  outline: 3px solid #ffc78a;
+  outline-offset: 3px;
+}
+
+.paso:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+}
+
+.cargando {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgb(207 224 240 / 0.8);
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+/* ── Índice visual: panel lateral, no una rejilla que empuja la página ── */
+
+.indice {
+  width: clamp(180px, 20vw, 236px);
+  flex-shrink: 0;
+  height: var(--alto-escena);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 12px;
+  border-inline-start: 1px solid var(--borde-lector);
+  background: rgb(14 24 36 / 0.32);
+  scrollbar-color: rgb(255 255 255 / 0.26) transparent;
+  scrollbar-width: thin;
+}
+
+.indiceRejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: 8px;
+}
+
+.miniatura {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 0 1.5px rgb(255 255 255 / 0.16);
+  cursor: pointer;
+  aspect-ratio: var(--razon, 1);
+  transition: box-shadow 0.16s ease-out, transform 0.16s ease-out;
+}
+
+.miniatura:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1.5px rgb(255 255 255 / 0.5);
+}
+
+.miniatura:focus-visible {
+  outline: 3px solid #ffc78a;
+  outline-offset: 2px;
+}
+
+.miniatura img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.miniatura[aria-current="true"] {
+  box-shadow: 0 0 0 3px #ffc78a;
+}
+
+.miniaturaNumero {
+  position: absolute;
+  inset-inline-end: 3px;
+  inset-block-end: 3px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: rgb(16 26 38 / 0.84);
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Pie: progreso y marcador ── */
+
+.pie {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px clamp(12px, 2.2vw, 18px);
+  border-top: 1px solid var(--borde-lector);
+  background: rgb(14 24 36 / 0.34);
+}
+
+.progreso {
+  position: relative;
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.14);
+  overflow: hidden;
+}
+
+/* El relleno ocupa siempre el ancho completo y se escala: animar `width`
+   obliga al navegador a rehacer la disposición en cada cuadro. El degradado
+   se compensa con el mismo factor invertido para que el color no se estire
+   al avanzar la lectura. */
+.progresoRelleno {
+  height: 100%;
+  width: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffb765, #ffd9a8);
+  transform-origin: left center;
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.marcador {
+  font-size: 12.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: rgb(207 224 240 / 0.86);
+  white-space: nowrap;
+}
+
+/* ── Pantalla completa ── */
+
+.pleno {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.pleno .escena,
+.pleno .indice {
+  height: auto;
+}
+
+.pleno .cuerpo {
+  min-height: 0;
+}
+
+/* ── Móvil: el índice se apila bajo la escena y las flechas se encogen ── */
+
+@media (max-width: 700px) {
+  .lector {
+    --alto-escena: clamp(340px, 56vh, 520px);
+    border-radius: 16px;
+  }
+
+  .cuerpo {
+    flex-direction: column;
+  }
+
+  .escena {
+    padding-inline: 8px;
+    /* en columna, `flex: 1` (base 0) dejaba sin efecto la altura y la
+       escena se encogía a lo que midiera la hoja: aquí manda --alto-escena */
+    flex: none;
+  }
+
+  .paso {
+    width: 46px;
+    height: 46px;
+    background: rgb(14 24 36 / 0.55);
+  }
+
+  .indice {
+    width: 100%;
+    height: auto;
+    max-height: 150px;
+    border-inline-start: none;
+    border-top: 1px solid var(--borde-lector);
+  }
+
+  /* miniaturas más pequeñas: el índice acompaña la lectura, no la sustituye */
+  .indiceRejilla {
+    grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+    gap: 6px;
+  }
+
+  .obraAutor {
+    display: none;
+  }
+
+  /* La barra se mantiene en una sola fila: título elástico, salto y
+     herramientas fijos. Envolver dejaba un hueco muerto junto al título. */
+  .cabecera {
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+
+  .obra {
+    flex: 1 1 0;
+  }
+
+  .salto {
+    flex-shrink: 0;
+    gap: 5px;
+  }
+
+  /* en móvil el campo se explica solo por el «/ 38» que lo sigue */
+  .salto > label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .herramientas {
+    flex-shrink: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .libro,
+  .paso,
+  .miniatura,
+  .progresoRelleno {
+    transition: none;
+  }
+}
+
+/* ── Páginas compuestas: ilustración + texto real ──────────────────────────
+   Toda medida sale de `--pagina` (ancho de la hoja en px, lo fija el
+   componente): `--u` es el 1 % de la hoja. Así la letra, los márgenes y los
+   huecos crecen con el libro —en pantalla completa se lee grande, en un
+   móvil se lee como un libro pequeño— sin que el texto se salga de la hoja.
+   El suelo de 10 px evita que en hojas muy estrechas la letra baje de lo
+   legible; el cálculo de las páginas más densas cabe con ese mínimo. */
+.compuesta {
+  --u: calc(var(--pagina, 500px) / 100);
+
+  position: relative;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  padding: calc(var(--u) * 5.5);
+  gap: calc(var(--u) * 4);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: max(calc(var(--u) * 2.55), 10px);
+  line-height: 1.42;
+  color: var(--color-tinta);
+  text-align: left;
+  overflow: hidden;
+}
+
+/* la regla genérica `.pagina img` estira al 100 %; aquí la ilustración se
+   ajusta a su celda sin deformarse */
+.compuesta .ilustracion {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.texto {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  min-width: 0;
+  min-height: 0;
+  align-self: center;
+}
+
+.texto h2 {
+  margin: 0;
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: 1.32em;
+  font-weight: 800;
+  line-height: 1.18;
+  text-wrap: balance;
+  color: var(--color-lit-tinta);
+}
+
+.texto p,
+.texto li {
+  margin: 0;
+  text-wrap: pretty;
+  hyphens: auto;
+}
+
+/* ilustración vertical al lado del texto */
+.lado {
+  grid-template-columns: 44fr 56fr;
+  align-items: center;
+}
+
+/* ilustración apaisada encima; el texto toma lo que necesita y la imagen
+   cede el resto */
+.arriba {
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+/* ilustración de página completa; el texto ocupa el hueco blanco superior
+   que la propia ilustración deja a un lado */
+.fondo {
+  display: block;
+  padding: 0;
+}
+
+.fondo .ilustracion {
+  position: absolute;
+  inset: 0;
+}
+
+.fondo .texto {
+  position: absolute;
+  top: calc(var(--u) * 6);
+  width: 60%;
+  gap: 0.6em;
+}
+
+.fondo[data-alineado="izquierda"] .texto {
+  left: calc(var(--u) * 6);
+}
+
+.fondo[data-alineado="derecha"] .texto {
+  right: calc(var(--u) * 6);
+  width: 54%;
+}
+
+/* A hoja suelta la página es más alta que la ilustración: esta baja al pie
+   y el texto se queda con todo el ancho de arriba, sin pisarla. */
+[data-hoja="suelta"] .fondo .ilustracion {
+  object-position: center bottom;
+}
+
+[data-hoja="suelta"] .fondo .texto {
+  left: calc(var(--u) * 6);
+  right: calc(var(--u) * 6);
+  width: auto;
+}
+
+/* viñetas apiladas + pasos numerados distribuidos a su altura */
+.pasos {
+  grid-template-columns: 38fr 62fr;
+}
+
+/* la ilustración se arrima al texto: cada viñeta queda junto a su paso */
+.pasos .ilustracion {
+  object-position: right center;
+}
+
+.pasos .texto {
+  align-self: stretch;
+}
+
+.pasos ol {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 0.75em;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.pasos li {
+  display: grid;
+  grid-template-columns: 1.7em 1fr;
+  gap: 0.6em;
+  align-items: start;
+  counter-increment: paso;
+}
+
+.pasos li::before {
+  content: counter(paso);
+  display: grid;
+  place-items: center;
+  width: 1.7em;
+  height: 1.7em;
+  border-radius: 999px;
+  background: var(--color-lit-tinta);
+  color: #fff;
+  font-size: 0.9em;
+  font-weight: 800;
+}
+
+/* portada: banda de ilustración y título grande */
+.portada {
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: calc(var(--u) * 3);
+}
+
+.portada .texto {
+  gap: 0.35em;
+}
+
+.portada h2 {
+  font-size: 2.4em;
+  line-height: 1.05;
+}
+
+.portada p {
+  font-size: 0.9em;
+  color: var(--color-gris);
+}
+
+/* créditos: logotipo pequeño y texto un punto menor; nadie lo lee de
+   corrido, pero tiene que poder leerse */
+.creditos {
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: calc(var(--u) * 2.5);
+}
+
+.creditos .ilustracion {
+  height: calc(var(--u) * 11);
+  width: auto;
+  justify-self: start;
+}
+
+.creditos .texto {
+  align-self: start;
+  font-size: 0.86em;
+  gap: 0.6em;
+}
+
+/* contraportada: banda de mariposas y la reseña */
+.contraportada {
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.contraportada h2 {
+  font-size: 1.7em;
+}
+
+.contraportada p:last-child {
+  font-weight: 700;
+  color: var(--color-lit-tinta);
+}
+
+/* Hoja suelta (móvil): la hoja es vertical y estrecha, así que la letra
+   sube y las disposiciones laterales se apilan —ilustración arriba, texto
+   debajo— en vez de repartirse una columna de 150 px. */
+[data-hoja="suelta"] .compuesta {
+  font-size: max(calc(var(--u) * 3.6), 13px);
+  line-height: 1.45;
+}
+
+[data-hoja="suelta"] .lado {
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+[data-hoja="suelta"] .lado .texto {
+  align-self: start;
+}
+
+[data-hoja="suelta"] .pasos {
+  grid-template-columns: 40fr 60fr;
+}
+
+[data-hoja="suelta"] .portada h2 {
+  font-size: 2em;
+}
+
+/* sin texto no hay hueco que reservar: la ilustración se centra */
+[data-hoja="suelta"] .fondo:not(:has(.texto)) .ilustracion {
+  object-position: center;
+}
