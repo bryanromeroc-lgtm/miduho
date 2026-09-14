@@ -14,3 +14,8 @@ añadidos para el hero panorámico del inicio.
 Los pictogramas conservan sus archivos SVG originales. La composición,
 jerarquía, color de superficies y comportamiento responsive pertenecen a
 MIDUHO; no se reutiliza la identidad del portal tomado como referencia.
+
+Añadidos el 2026-09-13 (Twemoji 15.1.0, misma licencia) para el valle de
+los cuentos de la Biblioteca: `1f4d6` (libro abierto), `1f4d5`, `1f4d7`,
+`1f4d8`, `1f4d9` (libros de colores), `1f4da` (pila), `2b50` y `1f31f`
+(estrellas).

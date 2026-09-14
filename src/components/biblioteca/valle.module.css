@@ -1,0 +1,101 @@
+/* EL VALLE DE LOS CUENTOS — capas de la escena. El contenedor lo posiciona
+   el hero (position:absolute; inset:0). Solo transform y opacity se animan;
+   el momento focal dura ≤ .7s y los bucles son lentos y pocos. */
+.valle { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+
+.cielo { position: absolute; inset: 0; }
+.cielo img { position: absolute; display: block; }
+.sol { top: 10%; right: 5%; width: 54px; height: 54px; filter: drop-shadow(0 6px 14px rgb(219 143 15 / .35)); animation: valleFlota 4.5s ease-in-out infinite; }
+.nube { opacity: .85; animation: valleFlota 5.5s ease-in-out infinite; }
+.nubeA { top: 13%; left: 33%; width: 56px; animation-delay: -3.2s; }
+.nubeB { top: 27%; left: 55%; width: 40px; opacity: .7; animation-delay: -1.4s; }
+.nubeC { top: 8%; right: 24%; width: 48px; animation-delay: -2.1s; }
+.estrella { animation: valleTitila 3.2s ease-in-out infinite; }
+.estrellaA { top: 30%; right: 17%; width: 22px; animation-delay: -.6s; }
+.estrellaB { top: 18%; right: 11%; width: 26px; animation-delay: -1.9s; }
+.estrellaC { top: 38%; right: 27%; width: 16px; animation-delay: -1.1s; }
+
+.tierra { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.colina { transform-origin: 50% 100%; animation: valleColina .7s cubic-bezier(.16, 1, .3, 1) both; }
+.colinaLejos { animation-delay: .05s; }
+.colinaMedia { animation-delay: .12s; }
+.colinaCerca { animation-delay: .19s; }
+.montanas { animation: valleAparece .6s ease-out both; }
+.camino path { fill: none; stroke: #d6b26c; stroke-width: 28; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.camino path + path { stroke: #f5e2b0; stroke-width: 20; }
+.camino { animation: valleAparece .5s ease-out .3s both; }
+
+/* Props en el sistema 1440×600: --vx/--vy punto de apoyo, --vw ancho */
+.prop {
+  position: absolute;
+  left: calc(var(--vx) / 1440 * 100%);
+  bottom: calc((600 - var(--vy)) / 600 * 100%);
+  width: calc(var(--vw) / 1440 * 100%);
+  height: auto;
+  filter: drop-shadow(0 6px 10px rgb(32 81 57 / .2));
+  animation: valleBrota .55s cubic-bezier(.16, 1, .3, 1) both;
+  animation-delay: var(--brota, .3s);
+  transform-origin: 50% 100%;
+}
+.arbolA { --vx: 20; --vy: 590; --vw: 60; --brota: .34s; }
+.arbolB { --vx: 560; --vy: 528; --vw: 40; --brota: .4s; }
+.arbolC { --vx: 700; --vy: 506; --vw: 44; --brota: .46s; }
+.pila { --vx: 300; --vy: 556; --vw: 48; --brota: .5s; }
+.abierto { --vx: 792; --vy: 540; --vw: 46; --brota: .55s; }
+.brote { --vx: 440; --vy: 520; --vw: 20; --brota: .6s; }
+
+
+/* La aldea conserva su proporción y se posa a la derecha. */
+.aldea {
+  position: absolute;
+  right: 1%;
+  bottom: 12%;
+  width: 44%;
+  max-width: 700px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 16px 22px rgb(41 74 46 / .2));
+}
+.arbol, .casa, .poste { transform-origin: 50% 100%; transform-box: fill-box; animation: valleBrota .6s cubic-bezier(.16, 1, .3, 1) both; }
+.arbol { animation-delay: .28s; }
+.casaA { animation-delay: .38s; }
+.casaB { animation-delay: .46s; }
+.poste { animation-delay: .54s; }
+.farolGlow { transform-origin: center; transform-box: fill-box; animation: valleFarol 3.6s ease-in-out .9s infinite; }
+.farolLuz { animation: valleEnciende .5s ease-out .7s both; }
+.farolSuelo { animation: valleFarol 3.6s ease-in-out .9s infinite; transform-origin: center; transform-box: fill-box; }
+.pagina { animation: vallePagina 11s ease-in-out infinite; opacity: 0; }
+.paginaA { animation-delay: .8s; --px: 350px; --py: 118px; }
+.paginaB { animation-delay: 4.4s; --px: 362px; --py: 126px; }
+.paginaC { animation-delay: 8s; --px: 190px; --py: 150px; }
+
+@keyframes valleFlota { 50% { transform: translateY(-7px) rotate(2deg); } }
+@keyframes valleTitila { 0%, 100% { opacity: .55; transform: scale(.85) rotate(-6deg); } 50% { opacity: 1; transform: scale(1.1) rotate(8deg); } }
+@keyframes valleColina { from { transform: translateY(6%) scaleY(.94); } to { transform: none; } }
+@keyframes valleAparece { from { opacity: 0; } to { opacity: 1; } }
+@keyframes valleBrota { from { opacity: 0; transform: translateY(14px) scale(.6); } to { opacity: 1; transform: none; } }
+@keyframes valleFarol { 0%, 100% { opacity: .75; transform: scale(.94); } 50% { opacity: 1; transform: scale(1.08); } }
+@keyframes valleEnciende { from { fill: #d9c7a5; } to { fill: #ffd671; } }
+@keyframes vallePagina {
+  0% { opacity: 0; transform: translate(var(--px), var(--py)) rotate(-8deg); }
+  10% { opacity: 1; }
+  60% { opacity: .95; transform: translate(calc(var(--px) + 90px), calc(var(--py) - 120px)) rotate(16deg); }
+  100% { opacity: 0; transform: translate(calc(var(--px) + 170px), calc(var(--py) - 230px)) rotate(-18deg); }
+}
+
+@media (max-width: 1000px) {
+  .aldea { width: 54%; right: -2%; }
+  .estrellaC, .nubeB { display: none; }
+}
+@media (max-width: 700px) {
+  .aldea { width: 66%; right: -4%; bottom: 11%; }
+  .arbolB, .arbolC, .abierto, .brote, .estrellaA { display: none; }
+  .pila { --vx: 60; --vy: 590; --vw: 120; }
+  .arbolA { --vx: -10; --vy: 596; --vw: 150; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sol, .nube, .estrella, .colina, .montanas, .camino, .prop, .arbol, .casa, .poste, .farolGlow, .farolSuelo, .farolLuz { animation: none; opacity: 1; transform: none; }
+  .pagina { animation: none; opacity: .9; transform: translate(var(--px), var(--py)) rotate(-8deg); }
+  .farolLuz { fill: #ffd671; }
+}

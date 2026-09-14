@@ -1,0 +1,69 @@
+/* PORTADA — cara del libro. Siempre 3:4, esquinas de ficha, sin texturas. */
+.portada {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  aspect-ratio: var(--alto, 3 / 4);
+  overflow: hidden;
+  border-radius: 4px 9px 9px 4px;
+  background: var(--tela, #aa461e);
+  color: var(--tela-tinta, #fff);
+  container-type: inline-size;
+}
+.portada img { object-fit: cover; }
+.portada strong,
+.portada em {
+  position: relative;
+  z-index: 1;
+  display: block;
+  text-wrap: balance;
+}
+.portada strong { font-weight: 850; letter-spacing: -.02em; line-height: 1.12; font-size: clamp(13px, 10.5cqw, 21px); }
+.portada em { margin-top: .5em; font-style: italic; font-weight: 600; opacity: .92; font-size: clamp(9px, 6.4cqw, 12px); }
+
+/* Portada real: la imagen cubre todo. */
+.real { background: #fff8ea; }
+
+/* Compuesta: ilustración arriba, rótulo tipográfico abajo (como el lector). */
+.compuesta { background: #fff8ea; color: var(--color-lit-tinta); }
+.ilustracion { position: relative; display: block; flex: 0 0 58%; overflow: hidden; background: #dbe8d0; }
+.rotulo { display: flex; flex: 1; flex-direction: column; justify-content: center; padding: 6% 9%; }
+.rotulo strong { font-size: clamp(12px, 9.4cqw, 19px); }
+.rotulo em { color: var(--color-lit-medio); }
+
+/* Tela de color: lomo, marco interior y ornamento; tres composiciones. */
+.tela { justify-content: center; padding: 14% 12% 14% 17%; }
+.lomo { position: absolute; inset: 0 auto 0 0; width: 9%; background: rgb(0 0 0 / .22); }
+.lomo::after { content: ""; position: absolute; inset: 0 0 0 auto; width: 2px; background: rgb(255 255 255 / .28); }
+.marco { position: absolute; inset: 6% 6% 6% 14%; border: 1.5px solid color-mix(in srgb, var(--tela-tinta, #fff) 40%, transparent); border-radius: 3px 6px 6px 3px; pointer-events: none; }
+.ornamento { position: relative; z-index: 1; display: block; margin-bottom: 8%; color: color-mix(in srgb, var(--tela-tinta, #fff) 78%, transparent); }
+.ornamento svg { width: 60%; height: auto; }
+/* alto: título arriba, franja de color a media altura, ornamento al pie */
+.alto { justify-content: flex-start; padding-top: 16%; }
+.alto .ornamento { order: 3; margin: auto 0 0; }
+.alto em { order: 2; }
+.franja { position: absolute; left: 9%; right: 0; top: 58%; height: 12%; background: color-mix(in srgb, var(--tela-tinta, #fff) 18%, transparent); }
+/* bajo: inicial grande arriba, título al pie */
+.bajo { justify-content: flex-end; padding-bottom: 12%; }
+.bajo .ornamento { display: none; }
+.inicial { position: absolute; top: 8%; left: 17%; right: 12%; z-index: 0; font-size: clamp(44px, 46cqw, 96px); font-weight: 850; line-height: 1; letter-spacing: -.04em; color: color-mix(in srgb, var(--tela-tinta, #fff) 22%, transparent); }
+.bajo strong { font-size: clamp(12px, 9.6cqw, 19px); }
+
+/* Cuaderno docente: papel crema, anillas y banda de tipo. */
+.guia { justify-content: center; padding: 16% 10% 14% 18%; background: #fff3df; color: var(--color-lit-tinta); }
+.anillas { position: absolute; top: 8%; bottom: 8%; left: 7%; width: 4px; border-radius: 2px; background: repeating-linear-gradient(to bottom, var(--color-lit-tinta) 0 6px, transparent 6px 14px); opacity: .55; }
+.banda { position: absolute; top: 0; left: 0; right: 0; height: 11%; background: var(--color-lit); }
+.guia em { color: var(--color-lit-medio); }
+
+/* Audiolibro: tela honda y auriculares. */
+.audio { justify-content: flex-end; padding: 12% 12% 14% 17%; background: var(--color-lit-hondo); }
+.auricular { position: relative; z-index: 1; display: grid; width: 38%; aspect-ratio: 1; place-items: center; margin-bottom: auto; margin-top: 6%; border-radius: 50%; background: rgb(255 255 255 / .14); color: #fff; }
+.auricular svg { width: 60%; height: auto; }
+
+/* Catálogo: carpeta con pestaña. */
+.catalogo { justify-content: flex-end; padding: 22% 12% 14% 12%; background: #f4dcae; color: var(--color-lit-tinta); border-radius: 6px 9px 9px 6px; }
+.pestana { position: absolute; top: 0; left: 0; width: 46%; height: 12%; border-radius: 0 0 8px 0; background: #e8c78a; }
+.indice { position: relative; z-index: 1; display: grid; width: 30%; aspect-ratio: 1; place-items: center; margin-bottom: auto; border-radius: 10px; background: rgb(121 55 15 / .1); color: var(--color-lit-tinta); }
+.indice svg { width: 62%; height: auto; }
+.catalogo em { color: var(--color-lit-medio); }

@@ -1,0 +1,432 @@
+/* BIBLIOTECA · «El valle de los cuentos»
+   Misma gramática que el inicio (paisaje a sangre, planchas de color,
+   pastillas, Nunito 850) ambientada para Literatura: los libros son objetos
+   de pie sobre estantes, con lomo, canto de páginas y cubierta. */
+.biblioteca { min-width: 0; }
+
+/* ---------- HERO: el valle ---------- */
+.valle {
+  position: relative;
+  isolation: isolate;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  min-height: clamp(440px, 41vw, 580px);
+  padding-left: max(32px, calc((100vw - 1240px) / 2 + 32px));
+  background: linear-gradient(180deg, #b6def9 0%, #d6e9f8 20%, #ffe3c6 44%, #ffd2ad 60%, #e9f2cf 63%, #cdeeb0 78%, #96d86f 100%);
+  animation: escenaEntra .6s cubic-bezier(.16, 1, .3, 1) both;
+}
+@keyframes escenaEntra {
+  from { opacity: 0; transform: translateY(12px) scale(.99); }
+  to { opacity: 1; transform: none; }
+}
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(100deg, rgb(255 249 242 / .96) 0%, rgb(255 249 242 / .84) 26%, rgb(255 246 236 / .34) 46%, rgb(255 246 236 / 0) 60%);
+}
+.copy {
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+  padding: 44px 24px 120px 0;
+  animation: copiaEntra .6s cubic-bezier(.16, 1, .3, 1) .12s both;
+}
+@keyframes copiaEntra {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.copy h1 {
+  font-size: clamp(42px, 5vw, 66px);
+  font-weight: 850;
+  line-height: 1.02;
+  letter-spacing: -.035em;
+  color: var(--color-tinta);
+}
+.cifra {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--color-lit-tinta);
+  font-variant-numeric: tabular-nums;
+}
+.lema { max-width: 46ch; margin-top: 14px; font-size: 15px; line-height: 1.55; color: #5c4a3a; }
+.buscador {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(100%, 520px);
+  min-height: 56px;
+  margin-top: 22px;
+  padding: 0 8px 0 20px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--color-lit-tinta);
+  box-shadow: 0 10px 24px rgb(44 93 116 / .14), inset 0 0 0 1.5px var(--color-linea);
+  transition: box-shadow .18s ease-out, transform .18s cubic-bezier(.16, 1, .3, 1);
+}
+.buscador:focus-within { box-shadow: 0 14px 30px rgb(44 93 116 / .18), inset 0 0 0 2px var(--color-lit); transform: translateY(-1px); }
+.buscador input {
+  flex: 1;
+  min-width: 0;
+  min-height: 56px;
+  border: 0;
+  background: transparent;
+  font-size: 15px;
+  color: var(--color-tinta);
+  outline: none;
+}
+.buscador input::placeholder { color: var(--color-gris); opacity: 1; }
+.buscador input::-webkit-search-cancel-button { display: none; }
+.borrar {
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--color-hueso);
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--color-gris);
+  box-shadow: inset 0 0 0 1.5px var(--color-linea);
+}
+.borrar:hover { color: var(--color-tinta); background: #fff; }
+
+/* ---------- MESA DE LECTURA ---------- */
+.mesa {
+  position: relative;
+  z-index: 2;
+  margin-top: -64px;
+  padding: 20px 22px 22px;
+  border-radius: 20px;
+  background: var(--color-lit);
+  color: #fff;
+  box-shadow: 0 18px 38px rgb(32 51 75 / .14);
+  animation: mesaEntra .55s cubic-bezier(.16, 1, .3, 1) .2s both;
+}
+@keyframes mesaEntra {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+.mesaCabecera { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin-bottom: 14px; }
+.mesaCabecera h2 { font-size: 22px; font-weight: 850; letter-spacing: -.02em; line-height: 1.15; }
+.mesaCabecera span { font-size: 12px; font-weight: 700; color: #ffe1c9; }
+.mesaLista { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.mesaLibro {
+  display: grid;
+  grid-template-columns: 148px minmax(0, 1fr);
+  gap: 20px;
+  height: 100%;
+  padding: 18px 20px 18px 18px;
+  border-radius: 15px;
+  background: var(--color-papel);
+  color: var(--color-tinta);
+}
+.mesaCuerpo { align-self: start; perspective-origin: 30% 50%; }
+.mesaTexto { display: flex; flex-direction: column; min-width: 0; }
+.mesaTexto h3 { font-size: 20px; font-weight: 850; letter-spacing: -.02em; line-height: 1.15; text-wrap: balance; }
+.mesaTexto .autor { margin-top: 4px; }
+.resumen { margin-top: 8px; font-size: 13px; line-height: 1.5; color: var(--color-gris); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.mesaTexto .datos { margin-top: 10px; }
+.leer {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  min-height: 46px;
+  margin-top: auto;
+  padding: 0 18px 0 16px;
+  padding-top: 0;
+  border-radius: 999px;
+  background: var(--school-orange);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 800;
+  transition: background .18s ease-out;
+}
+.mesaTexto .leer { margin-top: 14px; }
+.leer:hover { background: var(--color-lit-hondo); }
+.leer > svg:last-child { transition: transform .18s cubic-bezier(.16, 1, .3, 1); }
+.leer:hover > svg:last-child { transform: translateX(4px); }
+
+/* ---------- EL LIBRO COMO OBJETO ---------- */
+.cuerpo {
+  position: relative;
+  display: block;
+  perspective: 900px;
+  perspective-origin: 20% 50%;
+}
+.paginas {
+  position: absolute;
+  z-index: 0;
+  inset: 4px -5px 4px 10px;
+  border-radius: 0 7px 7px 0;
+  background: #fff8ea repeating-linear-gradient(to right, #eadfc8 0 1px, transparent 1px 3px);
+  box-shadow: 0 10px 18px -8px rgb(32 51 75 / .35);
+}
+.cubierta {
+  position: relative;
+  z-index: 1;
+  display: block;
+  transform-origin: 0 50%;
+  box-shadow: 0 14px 26px -10px rgb(32 51 75 / .45), 1px 0 0 rgb(0 0 0 / .08);
+  border-radius: 4px 9px 9px 4px;
+  transition: transform .38s cubic-bezier(.16, 1, .3, 1), box-shadow .38s ease-out;
+  will-change: transform;
+}
+article:hover .cubierta,
+article:focus-within .cubierta { transform: rotateY(-26deg) translateY(-4px); box-shadow: 18px 22px 34px -12px rgb(32 51 75 / .45), 1px 0 0 rgb(0 0 0 / .08); }
+.mesaLibro:hover .cubierta,
+.mesaLibro:focus-within .cubierta { transform: rotateY(-22deg) translateY(-3px); }
+
+/* ---------- CINTA DE FILTROS ---------- */
+.cinta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+  margin-top: 18px;
+  padding: 12px 16px;
+  border-radius: 15px;
+  background: var(--color-papel);
+  box-shadow: inset 0 0 0 1.5px var(--color-linea);
+}
+.grupo { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; min-width: 0; border: 0; margin: 0; padding: 0; }
+.grupo legend { float: left; margin-right: 4px; padding: 0; font-size: 11px; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; color: var(--color-gris); }
+.grupo > div { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: var(--color-hueso);
+  color: var(--color-gris);
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: inset 0 0 0 1.5px var(--color-linea);
+}
+.chip:hover { color: var(--color-tinta); background: #fff; }
+.chipActiva, .chipActiva:hover { background: var(--color-tinta); color: #fff; box-shadow: 0 7px 18px rgb(32 51 75 / .14); }
+.quitar {
+  margin-left: auto;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: var(--color-lit-pale);
+  color: var(--color-lit-tinta);
+  font-size: 12.5px;
+  font-weight: 800;
+  transition: background .16s ease-out;
+}
+.quitar:hover { background: #ffe6bd; }
+
+/* ---------- LOS ESTANTES ---------- */
+.estantes { margin-top: 30px; }
+.estantesCabecera { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; margin-bottom: 26px; }
+.estantesCabecera h2 { font-size: 22px; font-weight: 850; letter-spacing: -.025em; color: var(--color-tinta); }
+.estantesCabecera span { font-size: 12.5px; color: var(--color-gris); font-variant-numeric: tabular-nums; }
+.estante {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(164px, 1fr));
+  column-gap: 20px;
+  row-gap: 40px;
+  margin: 0 -10px;
+  padding: 0 10px;
+}
+.libro {
+  min-width: 0;
+  animation: libroEntra .5s cubic-bezier(.16, 1, .3, 1) both;
+  animation-delay: min(calc(var(--i, 0) * 40ms), 440ms);
+}
+@keyframes libroEntra {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.libro article { position: relative; display: flex; flex-direction: column; height: 100%; }
+.libro .cuerpo { display: flex; align-items: flex-end; aspect-ratio: 3 / 4.5; padding: 0 6px 0 2px; }
+.ejemplar { position: relative; display: block; width: var(--ancho, 100%); }
+.libro .paginas { right: calc(0px - var(--grosor, 5px)); }
+/* el raíl del estante: cada libro lleva su tramo, y los tramos se unen
+   por encima del hueco de la rejilla para leerse como una tabla continua */
+.libro .cuerpo::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: -10px;
+  right: -10px;
+  bottom: -11px;
+  height: 11px;
+  border-radius: 2px;
+  background: linear-gradient(#e2bb7b, #c2905a 35%, #a9713e);
+  box-shadow: 0 8px 14px -4px rgb(94 58 25 / .3);
+}
+.libro .cuerpo::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 6px;
+  right: 6px;
+  bottom: -4px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgb(60 35 15 / .28);
+  filter: blur(4px);
+}
+.tipo {
+  position: absolute;
+  z-index: 2;
+  top: -9px;
+  left: 16px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--color-lit-tinta);
+  font-size: 10.5px;
+  font-weight: 850;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  box-shadow: 0 5px 12px rgb(20 25 32 / .18);
+}
+.docente {
+  position: absolute;
+  z-index: 2;
+  right: 8px;
+  bottom: 10px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: var(--color-rob-tinta);
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 850;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.ficha { display: flex; flex: 1; flex-direction: column; margin-top: 22px; padding: 0 2px; }
+.ficha h3 { font-size: 15px; font-weight: 850; letter-spacing: -.015em; line-height: 1.22; color: var(--color-tinta); text-wrap: balance; }
+.autor { margin-top: 3px; font-size: 12.5px; font-style: italic; font-weight: 600; line-height: 1.35; color: var(--color-lit-medio); }
+.datos { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+.datos span {
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: var(--color-papel);
+  font-size: 11px;
+  font-weight: 750;
+  color: var(--color-gris);
+  box-shadow: inset 0 0 0 1px var(--color-linea);
+  font-variant-numeric: tabular-nums;
+}
+.hermano { margin-top: 8px; font-size: 11.5px; line-height: 1.4; color: var(--color-gris); }
+.leerChico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 40px;
+  margin-top: 10px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--color-lit);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  transition: background .18s ease-out;
+}
+.leerChico:hover { background: var(--color-lit-hondo); }
+
+/* ---------- VACÍO, PAGINACIÓN, NOTA ---------- */
+.vacio {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 28px;
+  padding: 22px 28px;
+  border-radius: 20px;
+  background: var(--color-lit-pale);
+  color: var(--color-lit-tinta);
+}
+.vacio img { width: 210px; height: auto; flex: 0 0 auto; }
+.vacio > div { flex: 1 1 280px; }
+.vacio p { max-width: 50ch; font-size: 14px; line-height: 1.6; color: var(--color-lit-medio); }
+.vacioTitulo { font-size: 22px; font-weight: 850; letter-spacing: -.02em; color: var(--color-lit-tinta) !important; margin-bottom: 6px; }
+.quitarGrande {
+  display: inline-flex;
+  align-items: center;
+  min-height: 46px;
+  margin-top: 16px;
+  padding: 0 22px;
+  border-radius: 999px;
+  background: var(--color-tinta);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+}
+.quitarGrande:hover { background: #2e4664; }
+.paginacion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 34px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-linea);
+}
+.paginacion button {
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--color-papel);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--color-tinta);
+  box-shadow: inset 0 0 0 1.5px var(--color-linea);
+  transition: background .16s ease-out, transform .16s cubic-bezier(.16, 1, .3, 1);
+}
+.paginacion button:enabled:hover { background: #fff; transform: translateY(-1px); }
+.paginacion button:disabled { cursor: not-allowed; color: #7a7580; background: var(--color-hueso); }
+.paginacion span { font-size: 13px; color: var(--color-gris); font-variant-numeric: tabular-nums; }
+.nota { max-width: 80ch; margin-top: 26px; font-size: 12.5px; line-height: 1.6; color: var(--color-gris); }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1000px) {
+  .mesaLista { grid-template-columns: 1fr; }
+  .mesaLibro { grid-template-columns: 132px minmax(0, 1fr); gap: 16px; }
+  .estante { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); column-gap: 16px; }
+}
+@media (max-width: 700px) {
+  .valle { min-height: 0; padding-left: 20px; padding-right: 20px; align-items: flex-start; }
+  .scrim { background: linear-gradient(180deg, rgb(255 252 247 / .96) 0%, rgb(255 252 247 / .9) 42%, rgb(255 252 247 / .2) 70%, rgb(255 252 247 / 0) 100%); }
+  .copy { max-width: none; padding: 30px 0 250px; }
+  .copy h1 { font-size: clamp(38px, 11vw, 48px); }
+  .lema { font-size: 14px; }
+  .buscador { width: 100%; }
+  .mesa { margin-top: -44px; padding: 16px; }
+  .mesaCabecera h2 { font-size: 20px; }
+  .mesaLibro { grid-template-columns: 38% minmax(0, 1fr); gap: 14px; padding: 14px; }
+  .mesaTexto h3 { font-size: 17px; }
+  .resumen { -webkit-line-clamp: 4; }
+  .leer { width: 100%; justify-content: space-between; }
+  .cinta { gap: 10px; padding: 12px 14px; }
+  .grupo { width: 100%; }
+  .quitar { margin-left: 0; }
+  .estante { grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); column-gap: 14px; row-gap: 32px; }
+  .estantesCabecera h2 { font-size: 20px; }
+  .vacio { padding: 18px; }
+  .vacio img { width: 160px; }
+  .paginacion { flex-wrap: wrap; }
+  .paginacion span { order: -1; width: 100%; text-align: center; }
+  .paginacion button { flex: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .valle, .copy, .mesa, .libro { animation: none; opacity: 1; transform: none; }
+  .cubierta, .buscador, .leer > svg:last-child, .paginacion button { transition: none; }
+  article:hover .cubierta, article:focus-within .cubierta,
+  .mesaLibro:hover .cubierta, .mesaLibro:focus-within .cubierta { transform: none; box-shadow: 0 0 0 3px var(--color-lit-pale), 0 14px 26px -10px rgb(32 51 75 / .45); }
+  .buscador:focus-within, .paginacion button:enabled:hover { transform: none; }
+}

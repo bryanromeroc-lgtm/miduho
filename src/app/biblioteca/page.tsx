@@ -1,23 +1,29 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { BookOpen, Check } from "lucide-react";
-import { Marco, Migas, Cabecera } from "@/components/friso/marco";
+import { ArrowRight, BookOpen, Check, Search } from "lucide-react";
+import { Marco, Migas } from "@/components/friso/marco";
+import { ValleDeCuentos } from "@/components/biblioteca/valle";
+import { Portada, formato } from "@/components/biblioteca/portada";
 import {
   TITULOS,
   TOTAL_TITULOS,
-  AREAS,
+  type Titulo,
   type TipoRecurso,
   type RangoEdad,
   type Idioma,
 } from "@/lib/datos";
-import { libroDeTitulo } from "@/lib/libros";
+import { LIBROS, libroDeTitulo } from "@/lib/libros";
 import { cn } from "@/lib/utils";
+import styles from "./biblioteca.module.css";
 
 /*
   LITERATURA — biblioteca: se explora, no se recorre. Sin progresión.
-  Filtrar es que los trechos entren y salgan de la banda.
+  La biblioteca es un lugar —el valle de los cuentos— y los títulos son
+  objetos de pie sobre estantes, no tarjetas. Filtrar es que los libros
+  salgan y vuelvan a entrar al estante.
   Paginado: nunca cientos de fichas de una vez (defecto de la referencia,
   que cargaba 2.235 recursos en una sola página).
 */
@@ -26,8 +32,6 @@ const TIPOS: TipoRecurso[] = ["Libro", "Guía", "Catálogo", "Audiolibro"];
 const EDADES: RangoEdad[] = ["0-5", "6-8", "9-11", "12-13", "+14"];
 const IDIOMAS: Idioma[] = ["Español", "Inglés", "Francés"];
 const POR_PAGINA = 12;
-
-const LIT = AREAS.literatura;
 
 export default function Biblioteca() {
   const [tipo, setTipo] = useState<TipoRecurso | null>(null);
@@ -56,7 +60,9 @@ export default function Biblioteca() {
     paginaActual * POR_PAGINA + POR_PAGINA
   );
 
-  const hayFiltro = tipo || edad || idioma || busqueda.trim();
+  const hayFiltro = Boolean(tipo || edad || idioma || busqueda.trim());
+  /* la clave cambia con cada consulta: los libros vuelven a entrar al estante */
+  const claveEstante = `${tipo}|${edad}|${idioma}|${busqueda.trim()}|${paginaActual}`;
 
   function limpiar() {
     setTipo(null);
@@ -66,57 +72,119 @@ export default function Biblioteca() {
     setPagina(0);
   }
 
+  /* Los dos libros con páginas: la mesa de lectura los muestra de frente. */
+  const leibles = LIBROS.map((l) => ({
+    libro: l,
+    titulo: TITULOS.find((t) => t.id === l.tituloId)!,
+  }));
+
   return (
     <Marco>
-      <Migas pasos={[{ etiqueta: "Hoy", href: "/" }, { etiqueta: "Biblioteca" }]} />
+      <div className={styles.biblioteca}>
+        <Migas pasos={[{ etiqueta: "Hoy", href: "/" }, { etiqueta: "Biblioteca" }]} />
 
-      <Cabecera
-        kicker={`${TOTAL_TITULOS} títulos · español, inglés y francés`}
-        titulo="Biblioteca"
-        nota="Se explora y se filtra — no tiene secuencia, porque una biblioteca no la tiene. La obra y su guía docente son recursos hermanos: el vínculo es explícito, no una coincidencia de título."
-      />
-
-      {/* La plancha de filtros: Literatura posee esta pantalla. */}
-      <section
-        className="plancha library-filters mb-5"
-        style={{ background: LIT.plancha, color: "#fff" }}
-      >
-        <div className="flex flex-wrap items-center justify-between gap-3 px-[22px] pb-3.5 pt-5">
-          <h2 className="font-heading text-[19px] font-bold uppercase tracking-[0.05em]">
-            Filtrar el catálogo
-          </h2>
-          {hayFiltro && (
-            <button
-              type="button"
-              onClick={limpiar}
-              className="rounded-full bg-white/20 px-4 py-1.5 text-[12.5px] font-bold text-white hover:bg-white/30"
+        {/* EL VALLE DE LOS CUENTOS — el hero es el lugar; buscar es la acción. */}
+        <section className={styles.valle} aria-labelledby="biblioteca-titulo">
+          <ValleDeCuentos />
+          <div className={styles.scrim} aria-hidden="true" />
+          <div className={styles.copy}>
+            <h1 id="biblioteca-titulo">
+              Biblioteca
+            </h1>
+            <p className={styles.cifra}>
+              {TOTAL_TITULOS} títulos · español, inglés y francés
+            </p>
+            <p className={styles.lema}>
+              Un valle de cuentos para explorar sin orden: busca por título o
+              autor, o recorre los estantes por tipo, edad e idioma.
+            </p>
+            <form
+              role="search"
+              className={styles.buscador}
+              onSubmit={(e) => e.preventDefault()}
             >
-              Quitar filtros
-            </button>
-          )}
-        </div>
-
-        <div className="plancha-estante gap-4">
-          <div>
-            <label
-              htmlFor="busqueda"
-              className="mb-1.5 block text-[11px] font-bold uppercase tracking-[0.1em] text-gris"
-            >
-              Buscar por título o autor
-            </label>
-            <input
-              id="busqueda"
-              type="search"
-              value={busqueda}
-              onChange={(e) => {
-                setBusqueda(e.target.value);
-                setPagina(0);
-              }}
-              placeholder="Caperucita, Grimm, Sherlock…"
-              className="w-full max-w-[440px] rounded-full bg-hueso px-5 py-3 text-[14px] text-tinta shadow-[inset_0_0_0_1.5px_var(--color-linea)] placeholder:text-gris/70 focus:shadow-[inset_0_0_0_2px_var(--color-lit)]"
-            />
+              <label htmlFor="busqueda" className="sr-only">
+                Buscar por título o autor
+              </label>
+              <Search size={20} strokeWidth={2.3} aria-hidden="true" />
+              <input
+                id="busqueda"
+                type="search"
+                value={busqueda}
+                onChange={(e) => {
+                  setBusqueda(e.target.value);
+                  setPagina(0);
+                }}
+                placeholder="Caperucita, Grimm, Sherlock…"
+                autoComplete="off"
+              />
+              {busqueda && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setBusqueda("");
+                    setPagina(0);
+                  }}
+                  className={styles.borrar}
+                >
+                  Borrar
+                </button>
+              )}
+            </form>
           </div>
+        </section>
 
+        {/* MESA DE LECTURA — los libros que se pueden abrir hoy, con portada real. */}
+        <section className={styles.mesa} aria-labelledby="mesa-titulo">
+          <div className={styles.mesaCabecera}>
+            <h2 id="mesa-titulo">Listos para leer</h2>
+            <span>{leibles.length} obras con páginas digitalizadas</span>
+          </div>
+          <ul className={styles.mesaLista}>
+            {leibles.map(({ libro, titulo }, i) => (
+              <li key={libro.slug} style={{ "--i": i } as React.CSSProperties}>
+                <article className={styles.mesaLibro}>
+                  <Link
+                    href={`/biblioteca/leer/${libro.slug}`}
+                    className={`${styles.cuerpo} ${styles.mesaCuerpo}`}
+                    aria-label={`Leer ${libro.titulo}`}
+                    tabIndex={-1}
+                  >
+                    <span className={styles.ejemplar}>
+                      <span className={styles.paginas} aria-hidden="true" />
+                      <span className={styles.cubierta}>
+                        <Portada titulo={titulo} libro={libro} prioridad />
+                      </span>
+                    </span>
+                  </Link>
+                  <div className={styles.mesaTexto}>
+                    <h3>{libro.titulo}</h3>
+                    <p className={styles.autor}>
+                      {libro.autor} · {libro.editorial}
+                    </p>
+                    <p className={styles.resumen}>{libro.resumen}</p>
+                    <p className={styles.datos}>
+                      <span>{titulo.edad} años</span>
+                      <span>{titulo.idioma}</span>
+                      <span>{libro.paginas} páginas</span>
+                    </p>
+                    <Link
+                      href={`/biblioteca/leer/${libro.slug}`}
+                      className={styles.leer}
+                    >
+                      <BookOpen size={17} strokeWidth={2.3} aria-hidden="true" />
+                      Leer el libro
+                      <ArrowRight size={16} aria-hidden="true" />
+                    </Link>
+                  </div>
+                </article>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* CINTA DE FILTROS — una línea, sin plancha: el catálogo manda. */}
+        <section className={styles.cinta} aria-label="Filtrar el catálogo">
           <GrupoFiltro
             titulo="Tipo"
             opciones={TIPOS}
@@ -127,13 +195,14 @@ export default function Biblioteca() {
             }}
           />
           <GrupoFiltro
-            titulo="Rango de edad"
+            titulo="Edad"
             opciones={EDADES}
             valor={edad}
             onCambio={(v) => {
               setEdad(v);
               setPagina(0);
             }}
+            sufijo=" años"
           />
           <GrupoFiltro
             titulo="Idioma"
@@ -144,154 +213,154 @@ export default function Biblioteca() {
               setPagina(0);
             }}
           />
-        </div>
-      </section>
+          {hayFiltro && (
+            <button type="button" onClick={limpiar} className={styles.quitar}>
+              Quitar filtros
+            </button>
+          )}
+        </section>
 
-      <div className="mb-3.5 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-        <h2
-          className="font-heading text-[17px] font-bold uppercase tracking-[0.08em] text-tinta"
-          aria-live="polite"
-        >
-          {resultados.length === 0
-            ? "Ningún título coincide"
-            : `${resultados.length} ${resultados.length === 1 ? "título" : "títulos"}`}
-        </h2>
-        <span className="text-[13px] text-gris">
-          Página {paginaActual + 1} de {paginas}
-        </span>
-      </div>
+        {/* LOS ESTANTES */}
+        <section className={styles.estantes} aria-labelledby="estantes-titulo">
+          <div className={styles.estantesCabecera}>
+            <h2 id="estantes-titulo" aria-live="polite">
+              {resultados.length === 0
+                ? "Ningún título coincide"
+                : hayFiltro
+                  ? `${resultados.length} ${resultados.length === 1 ? "título" : "títulos"} en el estante`
+                  : "Todos los estantes"}
+            </h2>
+            <span>
+              {resultados.length > 0 && (
+                <>
+                  {paginaActual * POR_PAGINA + 1}–
+                  {Math.min((paginaActual + 1) * POR_PAGINA, resultados.length)} de{" "}
+                  {resultados.length} · página {paginaActual + 1} de {paginas}
+                </>
+              )}
+            </span>
+          </div>
 
-      {resultados.length === 0 ? (
-        /* ESTADO VACÍO QUE ORIENTA — no una pantalla en blanco */
-        <div className="rounded-[15px] bg-papel px-6 py-12 text-center">
-          <p className="font-heading text-[22px] font-bold text-tinta">
-            La banda quedó vacía
-          </p>
-          <p className="mx-auto mt-2 max-w-[50ch] text-[14px] leading-[1.6] text-gris">
-            Ningún título del catálogo cumple todos los filtros a la vez. Quite uno de
-            ellos — el rango de edad suele ser el más restrictivo.
-          </p>
-          <button
-            type="button"
-            onClick={limpiar}
-            className="mt-5 rounded-full bg-tinta px-6 py-3 text-[14px] font-bold text-white hover:opacity-90"
-          >
-            Quitar filtros
-          </button>
-        </div>
-      ) : (
-        <ul className="grid grid-cols-[repeat(auto-fill,minmax(228px,1fr))] gap-2.5">
-          {visibles.map((t) => {
-            const hermano = t.hermanoDe
-              ? TITULOS.find((o) => o.id === t.hermanoDe)
-              : undefined;
-            /* solo las obras con páginas digitalizadas ofrecen «Leer»:
-               la ficha no promete lo que la biblioteca no tiene */
-            const leible = libroDeTitulo(t.id);
-            return (
-            <li key={t.id}>
-              <article
-                className="library-book trecho-entra flex h-full flex-col rounded-[11px] p-4"
-                style={{ background: LIT.pale, color: LIT.tinta }}
+          {resultados.length === 0 ? (
+            /* ESTADO VACÍO QUE ORIENTA — el estante quedó libre, no en blanco */
+            <div className={styles.vacio}>
+              <Image
+                src="/images/aventura-lectora-mundo.webp"
+                alt=""
+                width={1000}
+                height={667}
+                sizes="220px"
+              />
+              <div>
+                <p className={styles.vacioTitulo}>Este estante quedó vacío</p>
+                <p>
+                  Ningún título del catálogo cumple todos los filtros a la vez.
+                  Quite uno de ellos — el rango de edad suele ser el más
+                  restrictivo.
+                </p>
+                <button type="button" onClick={limpiar} className={styles.quitarGrande}>
+                  Quitar filtros
+                </button>
+              </div>
+            </div>
+          ) : (
+            <ul key={claveEstante} className={styles.estante}>
+              {visibles.map((t, i) => (
+                <LibroEnEstante key={t.id} titulo={t} indice={i} />
+              ))}
+            </ul>
+          )}
+
+          {paginas > 1 && (
+            <nav aria-label="Paginación del catálogo" className={styles.paginacion}>
+              <button
+                type="button"
+                onClick={() => setPagina((p) => Math.max(0, p - 1))}
+                disabled={paginaActual === 0}
               >
-                <p
-                  className="text-[10.5px] font-bold uppercase tracking-[0.1em]"
-                  style={{ color: LIT.medio }}
-                >
-                  {t.tipo}
-                </p>
-                <h3 className="mt-1.5 text-[15px] font-bold leading-[1.25] [text-wrap:balance]">
-                  {t.titulo}
-                </h3>
-                <p
-                  className="mt-1 text-[12.5px] italic leading-snug"
-                  style={{ color: LIT.medio }}
-                >
-                  {t.autor}
-                </p>
+                Estante anterior
+              </button>
+              <span>
+                Página {paginaActual + 1} de {paginas}
+              </span>
+              <button
+                type="button"
+                onClick={() => setPagina((p) => Math.min(paginas - 1, p + 1))}
+                disabled={paginaActual >= paginas - 1}
+              >
+                Estante siguiente
+              </button>
+            </nav>
+          )}
+        </section>
 
-                {/* El pie se ancla abajo para que las fichas de una fila
-                    alineen sus metadatos aunque tengan avisos distintos. */}
-                <div className="mt-auto pt-3">
-                  {(t.hermanoDe || t.soloDocente) && (
-                    <p className="mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] leading-snug">
-                      {hermano && (
-                        <span style={{ color: LIT.medio }}>
-                          Va con «{hermano.titulo}»
-                        </span>
-                      )}
-                      {t.soloDocente && (
-                        <span
-                          className="font-bold uppercase tracking-[0.06em]"
-                          style={{ color: AREAS.robotica.tinta }}
-                        >
-                          Solo docente
-                        </span>
-                      )}
-                    </p>
-                  )}
-                  <p className="flex flex-wrap items-center gap-1.5 text-[11px] font-semibold">
-                    <span className="rounded-full bg-white/70 px-2.5 py-1 tabular-nums">
-                      {t.edad} años
-                    </span>
-                    <span className="rounded-full bg-white/70 px-2.5 py-1">
-                      {t.idioma}
-                    </span>
-                  </p>
-
-                  {leible && (
-                    <Link
-                      href={`/biblioteca/leer/${leible.slug}`}
-                      className="mt-2.5 inline-flex w-full items-center justify-center gap-2 rounded-full px-4 py-2.5 text-[13.5px] font-bold text-white hover:opacity-90"
-                      style={{ background: LIT.plancha }}
-                    >
-                      <BookOpen size={16} strokeWidth={2.3} aria-hidden="true" />
-                      Leer el libro
-                    </Link>
-                  )}
-                </div>
-              </article>
-            </li>
-            );
-          })}
-        </ul>
-      )}
-
-      {paginas > 1 && (
-        <nav
-          aria-label="Paginación del catálogo"
-          className="mt-5 flex items-center justify-between gap-3 border-t border-linea pt-4"
-        >
-          <button
-            type="button"
-            onClick={() => setPagina((p) => Math.max(0, p - 1))}
-            disabled={paginaActual === 0}
-            className="rounded-full bg-papel px-5 py-2.5 text-[13px] font-bold text-tinta shadow-[inset_0_0_0_1.5px_var(--color-linea)] enabled:hover:bg-white disabled:cursor-not-allowed disabled:text-gris/50"
-          >
-            Anterior
-          </button>
-          <span className="text-[13px] tabular-nums text-gris">
-            {paginaActual * POR_PAGINA + 1}–
-            {Math.min((paginaActual + 1) * POR_PAGINA, resultados.length)} de{" "}
-            {resultados.length}
-          </span>
-          <button
-            type="button"
-            onClick={() => setPagina((p) => Math.min(paginas - 1, p + 1))}
-            disabled={paginaActual >= paginas - 1}
-            className="rounded-full bg-papel px-5 py-2.5 text-[13px] font-bold text-tinta shadow-[inset_0_0_0_1.5px_var(--color-linea)] enabled:hover:bg-white disabled:cursor-not-allowed disabled:text-gris/50"
-          >
-            Siguiente
-          </button>
-        </nav>
-      )}
-
-      <p className="mt-5 max-w-[80ch] text-[12.5px] leading-[1.6] text-gris">
-        La maqueta muestra {TITULOS.length} fichas de ejemplo del corpus de{" "}
-        {TOTAL_TITULOS}. En producción el listado se pagina en servidor: nunca se
-        cargan cientos de fichas de una vez.
-      </p>
+        <p className={styles.nota}>
+          La obra y su guía docente son recursos hermanos: el vínculo es
+          explícito, no una coincidencia de título. La maqueta muestra{" "}
+          {TITULOS.length} fichas de ejemplo del corpus de {TOTAL_TITULOS}; en
+          producción el listado se pagina en servidor y nunca se cargan cientos
+          de fichas de una vez.
+        </p>
+      </div>
     </Marco>
+  );
+}
+
+function LibroEnEstante({ titulo: t, indice }: { titulo: Titulo; indice: number }) {
+  const hermano = t.hermanoDe ? TITULOS.find((o) => o.id === t.hermanoDe) : undefined;
+  /* solo las obras con páginas digitalizadas ofrecen «Leer»:
+     el estante no promete lo que la biblioteca no tiene */
+  const leible = libroDeTitulo(t.id);
+  const cuerpo = (
+    <>
+      <span className={styles.ejemplar}>
+        <span className={styles.paginas} aria-hidden="true" />
+        <span className={styles.cubierta}>
+          <Portada titulo={t} libro={leible} />
+        </span>
+        {t.tipo !== "Libro" && <span className={styles.tipo}>{t.tipo}</span>}
+        {t.soloDocente && <span className={styles.docente}>Solo docente</span>}
+      </span>
+    </>
+  );
+
+  return (
+    <li className={styles.libro} style={{ "--i": indice } as React.CSSProperties}>
+      <article>
+        {leible ? (
+          <Link
+            href={`/biblioteca/leer/${leible.slug}`}
+            className={styles.cuerpo}
+            style={formato(t)}
+            aria-label={`Leer ${t.titulo}`}
+            tabIndex={-1}
+          >
+            {cuerpo}
+          </Link>
+        ) : (
+          <div className={styles.cuerpo} style={formato(t)}>{cuerpo}</div>
+        )}
+        <div className={styles.ficha}>
+          <h3>{t.titulo}</h3>
+          <p className={styles.autor}>{t.autor}</p>
+          <p className={styles.datos}>
+            <span>{t.edad} años</span>
+            <span>{t.idioma}</span>
+          </p>
+          {hermano && (
+            <p className={styles.hermano}>
+              Va con «{hermano.titulo}»
+            </p>
+          )}
+          {leible && (
+            <Link href={`/biblioteca/leer/${leible.slug}`} className={styles.leerChico}>
+              <BookOpen size={15} strokeWidth={2.3} aria-hidden="true" />
+              Leer el libro
+            </Link>
+          )}
+        </div>
+      </article>
+    </li>
   );
 }
 
@@ -300,18 +369,18 @@ function GrupoFiltro<T extends string>({
   opciones,
   valor,
   onCambio,
+  sufijo = "",
 }: {
   titulo: string;
   opciones: readonly T[];
   valor: T | null;
   onCambio: (v: T | null) => void;
+  sufijo?: string;
 }) {
   return (
-    <fieldset>
-      <legend className="mb-2 text-[11px] font-bold uppercase tracking-[0.1em] text-gris">
-        {titulo}
-      </legend>
-      <div className="flex flex-wrap gap-1.5">
+    <fieldset className={styles.grupo}>
+      <legend>{titulo}</legend>
+      <div>
         {opciones.map((o) => {
           const activa = valor === o;
           return (
@@ -320,15 +389,11 @@ function GrupoFiltro<T extends string>({
               type="button"
               aria-pressed={activa}
               onClick={() => onCambio(activa ? null : o)}
-              className={cn(
-                "filter-chip inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[13px] font-semibold transition-colors",
-                activa
-                  ? "bg-tinta text-white"
-                  : "bg-hueso text-gris shadow-[inset_0_0_0_1.5px_var(--color-linea)] hover:text-tinta"
-              )}
+              className={cn("filter-chip", styles.chip, activa && styles.chipActiva)}
             >
               {activa && <Check size={14} strokeWidth={2.5} aria-hidden="true" />}
               {o}
+              {sufijo}
             </button>
           );
         })}
