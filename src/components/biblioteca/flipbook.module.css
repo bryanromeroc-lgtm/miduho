@@ -247,7 +247,14 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  /* cover y no contain: la hoja se calcula desde la razón del libro, pero al
+     redondearla a píxeles enteros queda casi siempre una fracción de píxel de
+     desajuste. Con contain la imagen no llegaba al borde y por esa rendija
+     asomaba el fondo blanco de la página: en el pliego, las rendijas de las
+     dos hojas se juntaban en el lomo y dibujaban una raya clara que partía la
+     ilustración por la mitad. Las páginas se recortan a la medida exacta del
+     libro, así que cover no recorta nada visible — solo tapa la fracción. */
+  object-fit: cover;
   user-select: none;
   -webkit-user-drag: none;
 }
