@@ -27,6 +27,36 @@
   color: #fff;
 }
 
+/* La ruta de lectura ya es la vista inmersiva: el portal se retira y la
+   escena usa cada píxel útil. La entrada directa conserva una apertura
+   breve; al venir del catálogo, View Transitions convierte la portada real
+   en esta misma superficie. */
+.dedicado {
+  --alto-escena: calc(100dvh - 110px);
+
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  width: 100%;
+  height: 100dvh;
+  border-radius: 0;
+  box-shadow: none;
+  animation: abrirEscena 0.58s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes abrirEscena {
+  from {
+    opacity: 0.72;
+    clip-path: inset(8% 12% 8% 12% round 18px);
+    filter: brightness(0.82);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 round 0);
+    filter: brightness(1);
+  }
+}
+
 /* ── Barra superior: una sola fila con todo lo que gobierna la lectura ── */
 
 .cabecera {
@@ -37,6 +67,11 @@
   padding: 11px clamp(12px, 2.2vw, 18px);
   border-bottom: 1px solid var(--borde-lector);
   background: rgb(14 24 36 / 0.34);
+}
+
+.volver {
+  flex: 0 0 auto;
+  text-decoration: none;
 }
 
 .obra {
@@ -406,6 +441,23 @@
   box-shadow: none;
 }
 
+.dedicado .escena,
+.dedicado .indice,
+.pleno .escena,
+.pleno .indice {
+  height: auto;
+}
+
+.dedicado .cuerpo,
+.pleno .cuerpo {
+  min-height: 0;
+}
+
+.dedicado .escena {
+  padding-block: clamp(10px, 2vh, 22px);
+  padding-inline: clamp(54px, 5vw, 88px);
+}
+
 .pleno .escena,
 .pleno .indice {
   height: auto;
@@ -421,6 +473,15 @@
   .lector {
     --alto-escena: clamp(340px, 56vh, 520px);
     border-radius: 16px;
+  }
+
+  .dedicado {
+    --alto-escena: calc(100dvh - 104px);
+    border-radius: 0;
+  }
+
+  .dedicado .escena {
+    padding: 8px;
   }
 
   .cuerpo {
@@ -458,6 +519,10 @@
     display: none;
   }
 
+  .dedicado .cabecera {
+    padding-inline: 8px;
+  }
+
   /* La barra se mantiene en una sola fila: título elástico, salto y
      herramientas fijos. Envolver dejaba un hueco muerto junto al título. */
   .cabecera {
@@ -490,6 +555,16 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .dedicado {
+    animation-name: confirmarEscena;
+    animation-duration: 0.16s;
+  }
+
+  @keyframes confirmarEscena {
+    from { opacity: 0.8; }
+    to { opacity: 1; }
+  }
+
   .libro,
   .paso,
   .miniatura,

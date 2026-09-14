@@ -1,0 +1,28 @@
+- generic [active]:
+  - button "Open Next.js Dev Tools" [ref=e408] [cursor=pointer]
+  - alert [ref=e412]
+  - main "Lectura de ¡Préstame tus ojos!":
+    - generic [ref=e413]:
+      - generic [ref=e414]:
+        - link "Biblioteca" [ref=e415] [cursor=pointer]:
+          - /url: /biblioteca
+        - generic [ref=e419]:
+          - generic [ref=e420]: ¡Préstame tus ojos!
+          - generic [ref=e421]: Gerardo Meneses Claros · Trend
+        - generic [ref=e422]:
+          - generic [ref=e423]: Páginas
+          - textbox "Ir a una página. Página 1 de 38" [ref=e424]: "1"
+          - generic [ref=e425]: / 38
+        - generic [ref=e426]:
+          - button "Índice" [ref=e427] [cursor=pointer]
+          - button "Activar sonido de página" [ref=e434] [cursor=pointer]:
+            - generic [ref=e439]: Sonido
+          - button "Pantalla completa" [ref=e440] [cursor=pointer]
+      - generic [ref=e448]:
+        - button "Página anterior" [disabled] [ref=e449]
+        - application "¡Préstame tus ojos! — Página 1 de 38" [ref=e452]:
+          - img "¡Préstame tus ojos!, página 1" [ref=e457]
+        - button "Página siguiente" [ref=e458] [cursor=pointer]
+      - generic [ref=e461]:
+        - progressbar "Avance de lectura" [ref=e462]
+        - generic [ref=e464]: Página 1 de 38

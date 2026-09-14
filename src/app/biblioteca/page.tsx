@@ -149,13 +149,14 @@ export default function Biblioteca() {
                     className={`${styles.cuerpo} ${styles.mesaCuerpo}`}
                     aria-label={`Leer ${libro.titulo}`}
                     tabIndex={-1}
+                    transitionTypes={["abrir-libro"]}
                   >
-                    <span className={styles.ejemplar}>
-                      <span className={styles.paginas} aria-hidden="true" />
-                      <span className={styles.cubierta}>
-                        <Portada titulo={titulo} libro={libro} prioridad />
+                      <span className={styles.ejemplar}>
+                        <span className={styles.paginas} aria-hidden="true" />
+                        <span className={styles.cubierta}>
+                          <Portada titulo={titulo} libro={libro} prioridad />
+                        </span>
                       </span>
-                    </span>
                   </Link>
                   <div className={styles.mesaTexto}>
                     <h3>{libro.titulo}</h3>
@@ -171,6 +172,7 @@ export default function Biblioteca() {
                     <Link
                       href={`/biblioteca/leer/${libro.slug}`}
                       className={styles.leer}
+                      transitionTypes={["abrir-libro"]}
                     >
                       <BookOpen size={17} strokeWidth={2.3} aria-hidden="true" />
                       Leer el libro

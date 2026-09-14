@@ -207,6 +207,40 @@
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Abrir un título conserva el objeto elegido: la cubierta viaja desde el
+   estante y se expande hasta convertirse en la mesa de lectura. */
+::view-transition-group(.book-opening) {
+  z-index: 80;
+  animation-duration: 0.68s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+::view-transition-image-pair(.book-opening) {
+  isolation: isolate;
+  perspective: 1200px;
+}
+
+::view-transition-old(.book-opening) {
+  transform-origin: left center;
+  animation: cubierta-sale 0.68s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+::view-transition-new(.book-opening) {
+  transform-origin: center center;
+  animation: lector-entra 0.68s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cubierta-sale {
+  0% { opacity: 1; transform: rotateY(0deg); filter: brightness(1); }
+  62% { opacity: 0.9; transform: rotateY(-32deg); filter: brightness(0.86); }
+  100% { opacity: 0; transform: rotateY(-44deg); filter: brightness(0.74); }
+}
+
+@keyframes lector-entra {
+  0%, 34% { opacity: 0; filter: brightness(0.72) blur(2px); }
+  100% { opacity: 1; filter: brightness(1) blur(0); }
+}
+
 /* La plancha es el elemento que persiste entre las dos vistas. */
 ::view-transition-old(plancha),
 ::view-transition-new(plancha) {

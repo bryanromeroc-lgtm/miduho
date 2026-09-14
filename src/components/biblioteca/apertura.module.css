@@ -1,0 +1,23 @@
+.stage { position: fixed; inset: 0; z-index: 1000; overflow: hidden; perspective: 1600px; }
+.veil { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 45%, #42617d, #22374f 65%, #1a2a3d); animation: dusk 380ms ease-out both; }
+.book { position: absolute; transform-origin: top left; transform-style: preserve-3d; }
+.back, .leaf, .front { position: absolute; inset: 0; transform-origin: left center; border-radius: 3px 10px 10px 3px; }
+.back { background: #bc7040; transform: translateZ(-8px); box-shadow: 12px 24px 48px rgb(6 14 24 / .4); }
+.leaf { background: linear-gradient(90deg, #d6c4a2, #fff8e9 8%, #fffdf5 85%, #eadcc4); box-shadow: 2px 5px 12px rgb(43 30 10 / .16); transform: translateZ(calc(var(--leaf) * 1px)); animation: turn 850ms cubic-bezier(.3,.05,.16,1) both; animation-delay: calc(480ms + (4 - var(--leaf)) * 65ms); }
+.leaf::after { content: ""; position: absolute; inset: 12% 13%; border-block: 1px solid #dbc9a7; opacity: .5; }
+.front { background: #fff8e9; transform: translateZ(8px); transform-style: preserve-3d; animation: cover 820ms cubic-bezier(.3,.05,.16,1) 380ms both; box-shadow: 8px 14px 28px rgb(6 14 24 / .3); }
+.front > * { width: 100% !important; height: 100% !important; aspect-ratio: auto !important; backface-visibility: hidden; overflow: hidden; border-radius: inherit; }
+.front::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #ead4b0, #fff4dd 12%, #f1dfbf); transform: rotateY(180deg) translateZ(1px); backface-visibility: hidden; border-radius: inherit; }
+.star { position: absolute; top: 48%; left: 50%; width: 14px; height: 14px; background: #ffda83; clip-path: polygon(50% 0, 62% 37%, 100% 50%, 62% 63%, 50% 100%, 38% 63%, 0 50%, 38% 37%); animation: spark 750ms cubic-bezier(.16,1,.3,1) var(--delay) both; }
+.star:nth-child(3n) { width: 8px; height: 8px; background: #fff2c6; }
+.stage[data-leaving="true"] { opacity: 0; transition: opacity 350ms ease-out; pointer-events: none; }
+.stage[data-leaving="true"] .book { filter: brightness(1.12); transition: filter 300ms; }
+@keyframes dusk { from { opacity: 0; } to { opacity: 1; } }
+@keyframes cover { from { transform: translateZ(8px) rotateY(0); } to { transform: translateZ(8px) rotateY(-172deg); } }
+@keyframes turn { from { transform: translateZ(calc(var(--leaf) * 1px)) rotateY(0); } to { transform: translateZ(calc(var(--leaf) * 1px)) rotateY(calc(-158deg + var(--leaf) * 7deg)); } }
+@keyframes spark { 0% { opacity: 0; transform: translate(0, 20px) scale(.3); } 25% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--x), var(--y)) rotate(90deg) scale(.6); } }
+@media (prefers-reduced-motion: reduce) {
+  .book, .star { display: none; }
+  .veil { animation-duration: 100ms; }
+  .stage[data-leaving="true"] { transition-duration: 140ms; }
+}

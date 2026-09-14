@@ -70,7 +70,7 @@ export function Portada({
 }) {
   if (libro && !libro.contenido) {
     return (
-      <div className={`${styles.portada} ${styles.real}`}>
+      <div data-book-cover className={`${styles.portada} ${styles.real}`}>
         <Image
           src={`/libros/${libro.slug}/p01.webp`}
           alt={`Portada de ${libro.titulo}`}
@@ -85,7 +85,7 @@ export function Portada({
   if (libro?.contenido) {
     const cubierta = libro.contenido[0];
     return (
-      <div className={`${styles.portada} ${styles.compuesta}`}>
+      <div data-book-cover className={`${styles.portada} ${styles.compuesta}`}>
         <span className={styles.ilustracion}>
           {cubierta.ilustracion && (
             <Image

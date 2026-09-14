@@ -3,12 +3,16 @@
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 import type { PageFlip } from "page-flip";
 import {
+  ArrowLeft,
   ChevronLeft,
   ChevronRight,
   LayoutGrid,
   Maximize2,
   Minimize2,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import type { Disposicion, PaginaCompuesta, PaginaLibro } from "@/lib/libros";
 import estilos from "./flipbook.module.css";
@@ -97,7 +101,10 @@ function Compuesta({
   );
 }
 
-const ANCHO_DOBLE = 720; /* por debajo de esto se lee a una página */
+/* En tableta una sola hoja grande se lee mejor que dos miniaturas juntas.
+   El pliego aparece cuando el ancho útil puede sostener dos páginas de
+   lectura reales, no apenas cuando caben geométricamente. */
+const ANCHO_DOBLE = 1040;
 
 /* Medidas del pliego. La misma cuenta la usan el render —que fija el ancho
    del bloque— y el efecto que construye la instancia: StPageFlip pone su
@@ -133,12 +140,17 @@ export function Flipbook({
   titulo,
   autor,
   razon = 1,
+  dedicado = false,
+  volverHref,
 }: {
   paginas: PaginaLibro[];
   titulo: string;
   autor?: string;
   razon?: number;
+  dedicado?: boolean;
+  volverHref?: string;
 }) {
+  const lectorRef = useRef<HTMLDivElement>(null);
   const escenaRef = useRef<HTMLDivElement>(null);
   const libroRef = useRef<HTMLDivElement>(null);
   /* StPageFlip adopta los nodos de las páginas y su destroy() los borra del
@@ -155,6 +167,8 @@ export function Flipbook({
   const [doble, setDoble] = useState(false);
   const [listo, setListo] = useState(false);
   const [pleno, setPleno] = useState(false);
+  const [sonido, setSonido] = useState(false);
+  const sonidoActivoRef = useRef(false);
   const [verIndice, setVerIndice] = useState(false);
   const [medida, setMedida] = useState<{ w: number; h: number } | null>(null);
   /* estado interno de StPageFlip: "read" es libro quieto, el resto son
@@ -169,6 +183,37 @@ export function Flipbook({
      vaciado el estado: sin esta ref el salto se ejecutaba dos veces y
      StPageFlip, con dos flipToPage encadenados, caía una hoja más allá. */
   const borradorRef = useRef<string | null>(null);
+  const audioRef = useRef<AudioContext | null>(null);
+
+  const sonidoPagina = useCallback(() => {
+    if (!sonidoActivoRef.current) return;
+    if (!window.AudioContext) return;
+    const ctx = audioRef.current ?? new window.AudioContext();
+    audioRef.current = ctx;
+    if (ctx.state === "suspended") void ctx.resume();
+
+    const duracion = 0.22;
+    const cantidad = Math.floor(ctx.sampleRate * duracion);
+    const buffer = ctx.createBuffer(1, cantidad, ctx.sampleRate);
+    const datos = buffer.getChannelData(0);
+    for (let i = 0; i < cantidad; i += 1) {
+      const t = i / cantidad;
+      datos[i] = (Math.random() * 2 - 1) * Math.sin(Math.PI * t) * (1 - t) * 0.42;
+    }
+    const fuente = ctx.createBufferSource();
+    const filtro = ctx.createBiquadFilter();
+    const ganancia = ctx.createGain();
+    filtro.type = "bandpass";
+    filtro.frequency.setValueAtTime(1250, ctx.currentTime);
+    filtro.frequency.exponentialRampToValueAtTime(520, ctx.currentTime + duracion);
+    filtro.Q.value = 0.7;
+    ganancia.gain.setValueAtTime(0.0001, ctx.currentTime);
+    ganancia.gain.exponentialRampToValueAtTime(0.12, ctx.currentTime + 0.025);
+    ganancia.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duracion);
+    fuente.buffer = buffer;
+    fuente.connect(filtro).connect(ganancia).connect(ctx.destination);
+    fuente.start();
+  }, []);
 
   const total = paginas.length;
   /* libro compuesto: sus hojas pueden cambiar de proporción (ver dimensiones) */
@@ -263,6 +308,7 @@ export function Flipbook({
         /* al pasar página el campo vuelve a reflejar el libro */
         borradorRef.current = null;
         setBorradorSalto(null);
+        sonidoPagina();
       });
       instancia.on("changeOrientation", (e) => {
         setDoble(e.data === "landscape");
@@ -286,7 +332,7 @@ export function Flipbook({
       contenedor.replaceChildren();
       if (flipRef.current === instancia) flipRef.current = null;
     };
-  }, [medida, razon, flexible]);
+  }, [medida, razon, flexible, sonidoPagina]);
 
   const siguiente = useCallback(() => flipRef.current?.flipNext(), []);
   const anterior = useCallback(() => flipRef.current?.flipPrev(), []);
@@ -327,6 +373,24 @@ export function Flipbook({
       document.body.style.overflow = previo;
     };
   }, [pleno]);
+
+  useEffect(() => {
+    const alCambiar = () => setPleno(document.fullscreenElement === lectorRef.current);
+    document.addEventListener("fullscreenchange", alCambiar);
+    return () => document.removeEventListener("fullscreenchange", alCambiar);
+  }, []);
+
+  const alternarPantalla = useCallback(async () => {
+    if (document.fullscreenElement) await document.exitFullscreen();
+    else await lectorRef.current?.requestFullscreen();
+  }, []);
+
+  const alternarSonido = useCallback(() => {
+    setSonido((actual) => {
+      sonidoActivoRef.current = !actual;
+      return !actual;
+    });
+  }, []);
 
   const enPortada = indice === 0;
   const enFinal = indice >= total - 1;
@@ -370,10 +434,19 @@ export function Flipbook({
 
   return (
     <div
-      className={cn(estilos.lector, pleno && estilos.pleno)}
+      ref={lectorRef}
+      data-reader-ready={listo ? "true" : "false"}
+      tabIndex={-1}
+      className={cn(estilos.lector, dedicado && estilos.dedicado, pleno && estilos.pleno)}
       style={{ "--razon": razon } as CSSProperties}
     >
       <div className={estilos.cabecera}>
+        {volverHref && (
+          <Link href={volverHref} className={cn(estilos.herramienta, estilos.volver)}>
+            <ArrowLeft size={18} aria-hidden="true" />
+            <span className={estilos.herramientaTexto}>Biblioteca</span>
+          </Link>
+        )}
         <div className={estilos.obra}>
           <span className={estilos.obraTitulo}>{titulo}</span>
           {autor && <span className={estilos.obraAutor}>{autor}</span>}
@@ -422,8 +495,18 @@ export function Flipbook({
           <button
             type="button"
             className={estilos.herramienta}
+            aria-pressed={sonido}
+            aria-label={sonido ? "Desactivar sonido de página" : "Activar sonido de página"}
+            onClick={alternarSonido}
+          >
+            {sonido ? <Volume2 size={17} aria-hidden="true" /> : <VolumeX size={17} aria-hidden="true" />}
+            <span className={estilos.herramientaTexto}>{sonido ? "Sonido activo" : "Sonido"}</span>
+          </button>
+          <button
+            type="button"
+            className={estilos.herramienta}
             aria-pressed={pleno}
-            onClick={() => setPleno((v) => !v)}
+            onClick={alternarPantalla}
           >
             {pleno ? (
               <Minimize2 size={16} aria-hidden="true" />

@@ -34,6 +34,7 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import { Ascenso } from "@/components/laboratorios/ascenso";
+import { AperturaLibro } from "@/components/biblioteca/apertura";
 import "./globals.css";
 
 const archivo = Nunito({
@@ -59,6 +60,7 @@ export default function RootLayout({
             cualquier vista y llega al universo, y vuelve. Montarlo aquí
             evita que cada enlace tenga que saber del tránsito. */}
         <Ascenso />
+        <AperturaLibro />
       </body>
     </html>
   );

@@ -1,0 +1,274 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Saltar al contenido" [ref=e3] [cursor=pointer]:
+      - /url: "#contenido"
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "MIDUHO · Inicio" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img "Escudo del Colegio Mi Dulce Hogar" [ref=e8]
+          - generic [ref=e15]:
+            - strong [ref=e16]: MIDUHO Virtual
+            - generic [ref=e17]: Colegio Mi Dulce Hogar
+        - generic [ref=e22]:
+          - strong [ref=e23]: Grupo 1°-01
+          - generic [ref=e24]: Período 3
+      - navigation "Navegación principal" [ref=e25]:
+        - list [ref=e26]:
+          - listitem [ref=e27]:
+            - link "Hoy" [ref=e28] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e33]:
+            - link "Mis clases" [ref=e34] [cursor=pointer]:
+              - /url: /clases
+          - listitem [ref=e41]:
+            - link "Biblioteca" [ref=e42] [cursor=pointer]:
+              - /url: /biblioteca
+          - listitem [ref=e46]:
+            - link "Laboratorios" [ref=e47] [cursor=pointer]:
+              - /url: /laboratorios
+          - listitem [ref=e51]:
+            - link "Agenda" [ref=e52] [cursor=pointer]:
+              - /url: /agenda
+    - main [ref=e56]:
+      - generic [ref=e57]:
+        - navigation "Ruta de navegación" [ref=e58]:
+          - list [ref=e59]:
+            - listitem [ref=e60]:
+              - link "Hoy" [ref=e61] [cursor=pointer]:
+                - /url: /
+              - generic [aria-hidden] [ref=e62]: ›
+            - listitem [ref=e63]:
+              - generic [ref=e64]: Biblioteca
+        - region [ref=e65]:
+          - generic [ref=e66]:
+            - heading "Biblioteca" [level=1] [ref=e67]
+            - paragraph [ref=e68]: 317 títulos · español, inglés y francés
+            - paragraph [ref=e69]: "Un valle de cuentos para explorar sin orden: busca por título o autor, o recorre los estantes por tipo, edad e idioma."
+            - search [ref=e70]:
+              - generic [ref=e71]: Buscar por título o autor
+              - searchbox "Buscar por título o autor" [ref=e75]
+        - region [ref=e76]:
+          - generic [ref=e77]:
+            - heading "Listos para leer" [level=2] [ref=e78]
+            - generic [ref=e79]: 2 obras con páginas digitalizadas
+          - list [ref=e80]:
+            - listitem [ref=e81]:
+              - article [ref=e82]:
+                - link "Leer ¡Préstame tus ojos!" [ref=e83] [cursor=pointer]:
+                  - /url: /biblioteca/leer/prestame-tus-ojos
+                  - img "Portada de ¡Préstame tus ojos!" [ref=e88]
+                - generic [ref=e89]:
+                  - heading "¡Préstame tus ojos!" [level=3] [ref=e90]
+                  - paragraph [ref=e91]: Gerardo Meneses Claros · Trend
+                  - paragraph [ref=e92]: Felipe es un niño alegre, curioso y buen estudiante. Vive con sus padres en un pueblo colombiano pero un día ocurre una tragedia que le cambia la vida a todos.
+                  - paragraph [ref=e93]:
+                    - generic [ref=e94]: 6-8 años
+                    - generic [ref=e95]: Español
+                    - generic [ref=e96]: 38 páginas
+                  - link "Leer el libro" [ref=e97] [cursor=pointer]:
+                    - /url: /biblioteca/leer/prestame-tus-ojos
+            - listitem [ref=e102]:
+              - article [ref=e103]:
+                - link "Leer Una sonrisa de mariposa" [ref=e104] [cursor=pointer]:
+                  - /url: /biblioteca/leer/una-sonrisa-de-mariposa
+                  - generic [ref=e110]:
+                    - strong [ref=e111]: Una sonrisa de mariposa
+                    - emphasis [ref=e112]: Mathangi Subramanian
+                - generic [ref=e113]:
+                  - heading "Una sonrisa de mariposa" [level=3] [ref=e114]
+                  - paragraph [ref=e115]: Mathangi Subramanian · il. Lavanya Naidu · Pratham Books · StoryWeaver
+                  - paragraph [ref=e116]: Kavya acaba de llegar del campo a la ruidosa Bangalore y aún no habla con nadie en su nueva escuela. Una salida al parque lleno de mariposas le da la ocasión de contar lo que sabe y de hacer su primera amiga.
+                  - paragraph [ref=e117]:
+                    - generic [ref=e118]: 6-8 años
+                    - generic [ref=e119]: Español
+                    - generic [ref=e120]: 20 páginas
+                  - link "Leer el libro" [ref=e121] [cursor=pointer]:
+                    - /url: /biblioteca/leer/una-sonrisa-de-mariposa
+        - region "Filtrar el catálogo" [ref=e126]:
+          - group "Tipo" [ref=e127]:
+            - generic [ref=e129]:
+              - button "Libro" [ref=e130]
+              - button "Guía" [ref=e131]
+              - button "Catálogo" [ref=e132]
+              - button "Audiolibro" [ref=e133]
+          - group "Edad" [ref=e134]:
+            - generic [ref=e136]:
+              - button "0-5 años" [ref=e137]
+              - button "6-8 años" [ref=e138]
+              - button "9-11 años" [ref=e139]
+              - button "12-13 años" [ref=e140]
+              - button "+14 años" [ref=e141]
+          - group "Idioma" [ref=e142]:
+            - generic [ref=e144]:
+              - button "Español" [ref=e145]
+              - button "Inglés" [ref=e146]
+              - button "Francés" [ref=e147]
+        - region [ref=e148]:
+          - generic [ref=e149]:
+            - heading "Todos los estantes" [level=2] [ref=e150]
+            - generic [ref=e151]: 1–12 de 26 · página 1 de 3
+          - list [ref=e152]:
+            - listitem [ref=e153]:
+              - article [ref=e154]:
+                - link "Leer ¡Préstame tus ojos!" [ref=e155] [cursor=pointer]:
+                  - /url: /biblioteca/leer/prestame-tus-ojos
+                  - img "Portada de ¡Préstame tus ojos!" [ref=e160]
+                - generic [ref=e161]:
+                  - heading "¡Préstame tus ojos!" [level=3] [ref=e162]
+                  - paragraph [ref=e163]: Gerardo Meneses Claros
+                  - paragraph [ref=e164]:
+                    - generic [ref=e165]: 6-8 años
+                    - generic [ref=e166]: Español
+                  - link "Leer el libro" [ref=e167] [cursor=pointer]:
+                    - /url: /biblioteca/leer/prestame-tus-ojos
+            - listitem [ref=e170]:
+              - article [ref=e171]:
+                - link "Leer Una sonrisa de mariposa" [ref=e172] [cursor=pointer]:
+                  - /url: /biblioteca/leer/una-sonrisa-de-mariposa
+                  - generic [ref=e178]:
+                    - strong [ref=e179]: Una sonrisa de mariposa
+                    - emphasis [ref=e180]: Mathangi Subramanian
+                - generic [ref=e181]:
+                  - heading "Una sonrisa de mariposa" [level=3] [ref=e182]
+                  - paragraph [ref=e183]: Mathangi Subramanian
+                  - paragraph [ref=e184]:
+                    - generic [ref=e185]: 6-8 años
+                    - generic [ref=e186]: Español
+                  - link "Leer el libro" [ref=e187] [cursor=pointer]:
+                    - /url: /biblioteca/leer/una-sonrisa-de-mariposa
+            - listitem [ref=e190]:
+              - article [ref=e191]:
+                - generic [ref=e196]:
+                  - strong [ref=e201]: Caperucita Roja
+                  - emphasis [ref=e202]: Charles Perrault
+                - generic [ref=e203]:
+                  - heading "Caperucita Roja" [level=3] [ref=e204]
+                  - paragraph [ref=e205]: Charles Perrault
+                  - paragraph [ref=e206]:
+                    - generic [ref=e207]: 6-8 años
+                    - generic [ref=e208]: Español
+            - listitem [ref=e209]:
+              - article [ref=e210]:
+                - generic [ref=e212]:
+                  - generic [ref=e215]:
+                    - strong [ref=e218]: Caperucita Roja
+                    - emphasis [ref=e219]: MIDUHO
+                  - generic [ref=e220]: Guía
+                  - generic [ref=e221]: Solo docente
+                - generic [ref=e222]:
+                  - heading "Caperucita Roja — Guía docente" [level=3] [ref=e223]
+                  - paragraph [ref=e224]: MIDUHO
+                  - paragraph [ref=e225]:
+                    - generic [ref=e226]: 6-8 años
+                    - generic [ref=e227]: Español
+                  - paragraph [ref=e228]: Va con «Caperucita Roja»
+            - listitem [ref=e229]:
+              - article [ref=e230]:
+                - generic [ref=e235]:
+                  - generic [aria-hidden] [ref=e237]: H
+                  - strong [ref=e238]: Hansel y Gretel
+                  - emphasis [ref=e239]: Hermanos Grimm
+                - generic [ref=e240]:
+                  - heading "Hansel y Gretel" [level=3] [ref=e241]
+                  - paragraph [ref=e242]: Hermanos Grimm
+                  - paragraph [ref=e243]:
+                    - generic [ref=e244]: 6-8 años
+                    - generic [ref=e245]: Español
+            - listitem [ref=e246]:
+              - article [ref=e247]:
+                - generic [ref=e249]:
+                  - generic [ref=e252]:
+                    - strong [ref=e255]: Hansel y Gretel
+                    - emphasis [ref=e256]: MIDUHO
+                  - generic [ref=e257]: Guía
+                  - generic [ref=e258]: Solo docente
+                - generic [ref=e259]:
+                  - heading "Hansel y Gretel — Guía docente" [level=3] [ref=e260]
+                  - paragraph [ref=e261]: MIDUHO
+                  - paragraph [ref=e262]:
+                    - generic [ref=e263]: 6-8 años
+                    - generic [ref=e264]: Español
+                  - paragraph [ref=e265]: Va con «Hansel y Gretel»
+            - listitem [ref=e266]:
+              - article [ref=e267]:
+                - generic [ref=e272]:
+                  - strong [ref=e278]: Alicia en el País de las Maravillas
+                  - emphasis [ref=e279]: Lewis Carroll
+                - generic [ref=e280]:
+                  - heading "Alicia en el País de las Maravillas" [level=3] [ref=e281]
+                  - paragraph [ref=e282]: Lewis Carroll
+                  - paragraph [ref=e283]:
+                    - generic [ref=e284]: 9-11 años
+                    - generic [ref=e285]: Español
+            - listitem [ref=e286]:
+              - article [ref=e287]:
+                - generic [ref=e289]:
+                  - generic [ref=e292]:
+                    - strong [ref=e297]: Alicia en el País de las Maravillas
+                    - emphasis [ref=e298]: Lewis Carroll
+                  - generic [ref=e299]: Audiolibro
+                - generic [ref=e300]:
+                  - heading "Alicia en el País de las Maravillas" [level=3] [ref=e301]
+                  - paragraph [ref=e302]: Lewis Carroll
+                  - paragraph [ref=e303]:
+                    - generic [ref=e304]: 9-11 años
+                    - generic [ref=e305]: Español
+                  - paragraph [ref=e306]: Va con «Alicia en el País de las Maravillas»
+            - listitem [ref=e307]:
+              - article [ref=e308]:
+                - generic [ref=e313]:
+                  - strong [ref=e318]: El Mago de Oz
+                  - emphasis [ref=e319]: L. Frank Baum
+                - generic [ref=e320]:
+                  - heading "El Mago de Oz" [level=3] [ref=e321]
+                  - paragraph [ref=e322]: L. Frank Baum
+                  - paragraph [ref=e323]:
+                    - generic [ref=e324]: 9-11 años
+                    - generic [ref=e325]: Español
+            - listitem [ref=e326]:
+              - article [ref=e327]:
+                - generic [ref=e332]:
+                  - strong [ref=e338]: El Patito Feo
+                  - emphasis [ref=e339]: Hans Christian Andersen
+                - generic [ref=e340]:
+                  - heading "El Patito Feo" [level=3] [ref=e341]
+                  - paragraph [ref=e342]: Hans Christian Andersen
+                  - paragraph [ref=e343]:
+                    - generic [ref=e344]: 0-5 años
+                    - generic [ref=e345]: Español
+            - listitem [ref=e346]:
+              - article [ref=e347]:
+                - generic [ref=e349]:
+                  - generic [ref=e352]:
+                    - strong [ref=e357]: El Patito Feo
+                    - emphasis [ref=e358]: Hans Christian Andersen
+                  - generic [ref=e359]: Audiolibro
+                - generic [ref=e360]:
+                  - heading "El Patito Feo" [level=3] [ref=e361]
+                  - paragraph [ref=e362]: Hans Christian Andersen
+                  - paragraph [ref=e363]:
+                    - generic [ref=e364]: 0-5 años
+                    - generic [ref=e365]: Español
+                  - paragraph [ref=e366]: Va con «El Patito Feo»
+            - listitem [ref=e367]:
+              - article [ref=e368]:
+                - generic [ref=e373]:
+                  - strong [ref=e378]: La Sirenita
+                  - emphasis [ref=e379]: Hans Christian Andersen
+                - generic [ref=e380]:
+                  - heading "La Sirenita" [level=3] [ref=e381]
+                  - paragraph [ref=e382]: Hans Christian Andersen
+                  - paragraph [ref=e383]:
+                    - generic [ref=e384]: 6-8 años
+                    - generic [ref=e385]: Español
+          - navigation "Paginación del catálogo" [ref=e386]:
+            - button "Estante anterior" [disabled] [ref=e387]
+            - generic [ref=e388]: Página 1 de 3
+            - button "Estante siguiente" [ref=e389]
+        - paragraph [ref=e390]: "La obra y su guía docente son recursos hermanos: el vínculo es explícito, no una coincidencia de título. La maqueta muestra 26 fichas de ejemplo del corpus de 317; en producción el listado se pagina en servidor y nunca se cargan cientos de fichas de una vez."
+    - contentinfo [ref=e391]:
+      - generic [ref=e392]: Colegio Mi Dulce Hogar · Madrid, Cundinamarca
+      - group [ref=e393]:
+        - generic "Sobre esta maqueta" [ref=e394] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=e400] [cursor=pointer]
