@@ -48,6 +48,16 @@ export interface Libro {
   paginas: number;
   /* relación de aspecto de la página impresa (ancho/alto) */
   razon: number;
+  /* Pares de hojas que en el original eran un solo pliego ilustrado. Vienen
+     del conversor (flipbook-forge), que parte en dos las páginas dobles del
+     PDF, y dicen dónde el dibujo cruza de una hoja a la siguiente.
+
+     El lector no los consulta: le basta con que cada par caiga en la misma
+     pantalla, y de eso se encarga la numeración. Se declaran porque son la
+     estructura real del libro —quien vuelva a convertirlo sabrá si la
+     alineación sigue siendo la buena— y porque un par cuyos números no sean
+     consecutivos y en el mismo pliego del lector delata un desfase. */
+  pliegos?: [number, number][];
   edad: string;
   resumen: string;
   /* presente solo en los libros compuestos; su longitud es `paginas` */
@@ -90,6 +100,32 @@ export const LIBROS: Libro[] = [
       "Kavya acaba de llegar del campo a la ruidosa Bangalore y aún no habla con nadie en su nueva escuela. Una salida al parque lleno de mariposas le da la ocasión de contar lo que sabe y de hacer su primera amiga.",
     contenido: PAGINAS_SONRISA,
   },
+  {
+    /* Convertido con flipbook-forge desde el PDF del Ministerio: 27 páginas
+       —23 de ellas pliegos a doble plana— dieron 49 hojas de libro. Los datos
+       de abajo salen tal cual de su libro.json.
+
+       Se omitió la página 2 del PDF, una guarda editorial: con ella el primer
+       pliego caía en número impar y, como el lector empareja 2-3, 4-5, 6-7…,
+       todas las ilustraciones a doble plana se habrían partido entre dos
+       pantallas. Sin ella los 23 pliegos cruzan enteros. */
+    slug: "palabra-ultima",
+    tituloId: "lit-103",
+    titulo: "Palabra última",
+    autor: "Nicolás Buenaventura · il. Valentina Toro",
+    editorial: "Ministerio de Culturas · Biblioteca Nacional",
+    paginas: 49,
+    razon: 0.7026,
+    pliegos: [
+      [2, 3], [4, 5], [6, 7], [8, 9], [10, 11], [12, 13], [14, 15],
+      [16, 17], [18, 19], [20, 21], [22, 23], [24, 25], [26, 27],
+      [28, 29], [30, 31], [32, 33], [34, 35], [36, 37], [38, 39],
+      [40, 41], [42, 43], [44, 45], [46, 47],
+    ],
+    edad: "9-11",
+    resumen:
+      "Un viaje por las selvas colombianas y por la memoria que guardan: seres míticos, orígenes lejanos y los secretos que esconden las arrugas del tiempo.",
+  },
 ];
 
 export function buscarLibro(slug: string): Libro | undefined {
@@ -104,10 +140,11 @@ export function libroDeTitulo(tituloId: string): Libro | undefined {
 export function paginasDe(libro: Libro): PaginaLibro[] {
   return Array.from({ length: libro.paginas }, (_, i) => {
     const n = String(i + 1).padStart(2, "0");
+    const numero = i + 1;
     const miniatura = `/libros/${libro.slug}/t${n}.webp`;
     const compuesta = libro.contenido?.[i];
     return compuesta
-      ? { numero: i + 1, miniatura, compuesta }
-      : { numero: i + 1, miniatura, src: `/libros/${libro.slug}/p${n}.webp` };
+      ? { numero, miniatura, compuesta }
+      : { numero, miniatura, src: `/libros/${libro.slug}/p${n}.webp` };
   });
 }

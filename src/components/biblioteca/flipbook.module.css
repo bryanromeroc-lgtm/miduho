@@ -228,14 +228,20 @@
 
 .libro :global(.stf__parent) {
   margin-inline: auto;
+  /* La sombra que apoya el libro sobre la escena va en el conjunto, no en
+     cada hoja. Puesta en la hoja se dibujaba también por su canto interior:
+     en el pliego las dos sombras se encontraban en el lomo y levantaban ahí
+     una banda clara que partía la ilustración justo por la mitad.
+     drop-shadow y no box-shadow porque sigue la silueta real de la hoja
+     mientras se voltea, en vez de una caja rectangular. */
+  filter: drop-shadow(0 10px 30px rgb(6 14 24 / 0.5));
 }
 
 .pagina {
   background: #fff;
   overflow: hidden;
-  /* sombra con desplazamiento real: el pliego se apoya sobre la escena */
-  box-shadow: 0 10px 30px rgb(6 14 24 / 0.5);
 }
+
 
 .pagina img {
   display: block;
@@ -263,6 +269,12 @@
     rgb(0 0 0 / 0) 5%
   );
 }
+
+/* También en las hojas que vienen de un mismo pliego. Se probó apagarles el
+   lomo para que la ilustración cruzara sin marca, pero sin esa sombra el
+   corte queda peor: las dos mitades se juntan en una línea clara que separa
+   más que la curvatura. El sombreado, en cambio, se lee como el doblez del
+   papel y el ojo lo salta. */
 
 /* Flechas flotantes: viven junto al libro, no debajo. Área táctil de 56px
    aunque el disco se vea de 46 — el objetivo es un dedo de seis años. */
