@@ -1,0 +1,380 @@
+{
+  "slug": "un-deseo-y-los-senores-anzuelo",
+  "titulo": "Un deseo y los señores anzuelo",
+  "autor": "María Clara Ramírez, Santiago Restrepo, Juan Fernando Jaramillo, Jessica Sepúlveda y Susana Velásquez",
+  "editorial": "Museo Casa de la Memoria de Medellín · Maguaré",
+  "edad": "",
+  "resumen": "Mar busca mejorar la vida de su familia acudiendo a los Marengos, misteriosos pulpos del barrio La Internet. Descubrirá que no todos los deseos traen felicidad y que la ayuda puede esconder riesgos​.",
+  "creditos": "Museo Casa de la Memoria de Medellín. Escritura: María Clara Ramírez, Santiago Restrepo, Juan Fernando Jaramillo, Jessica Sepúlveda y Susana Velásquez.",
+  "paginas": 40,
+  "razon": 1.0002,
+  "pliegos": [
+    [
+      2,
+      3
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      8,
+      9
+    ],
+    [
+      10,
+      11
+    ],
+    [
+      12,
+      13
+    ],
+    [
+      14,
+      15
+    ],
+    [
+      16,
+      17
+    ],
+    [
+      18,
+      19
+    ],
+    [
+      20,
+      21
+    ],
+    [
+      22,
+      23
+    ],
+    [
+      24,
+      25
+    ],
+    [
+      26,
+      27
+    ],
+    [
+      28,
+      29
+    ],
+    [
+      30,
+      31
+    ],
+    [
+      32,
+      33
+    ],
+    [
+      34,
+      35
+    ],
+    [
+      36,
+      37
+    ],
+    [
+      38,
+      39
+    ]
+  ],
+  "origen": {
+    "archivo": "un-deseo-y-los-senores-anzuelo.pdf",
+    "url": "https://maguare.gov.co/un-deseo-y-los-senores-anzuelo/",
+    "pdf": "https://maguare.gov.co/wp-content/uploads/2025/08/Un-deseo-y-los-senores-anzuelo-maguare.pdf",
+    "variante": null,
+    "paginasPdf": 21,
+    "dpi": 300,
+    "calidad": 82
+  },
+  "hojas": [
+    {
+      "numero": 1,
+      "paginaPdf": 1,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 2,
+      "paginaPdf": 2,
+      "mitad": "izquierda",
+      "pliego": 1,
+      "plana": false
+    },
+    {
+      "numero": 3,
+      "paginaPdf": 2,
+      "mitad": "derecha",
+      "pliego": 1,
+      "plana": false
+    },
+    {
+      "numero": 4,
+      "paginaPdf": 3,
+      "mitad": "izquierda",
+      "pliego": 2,
+      "plana": false
+    },
+    {
+      "numero": 5,
+      "paginaPdf": 3,
+      "mitad": "derecha",
+      "pliego": 2,
+      "plana": false
+    },
+    {
+      "numero": 6,
+      "paginaPdf": 4,
+      "mitad": "izquierda",
+      "pliego": 3,
+      "plana": false
+    },
+    {
+      "numero": 7,
+      "paginaPdf": 4,
+      "mitad": "derecha",
+      "pliego": 3,
+      "plana": false
+    },
+    {
+      "numero": 8,
+      "paginaPdf": 5,
+      "mitad": "izquierda",
+      "pliego": 4,
+      "plana": false
+    },
+    {
+      "numero": 9,
+      "paginaPdf": 5,
+      "mitad": "derecha",
+      "pliego": 4,
+      "plana": false
+    },
+    {
+      "numero": 10,
+      "paginaPdf": 6,
+      "mitad": "izquierda",
+      "pliego": 5,
+      "plana": false
+    },
+    {
+      "numero": 11,
+      "paginaPdf": 6,
+      "mitad": "derecha",
+      "pliego": 5,
+      "plana": false
+    },
+    {
+      "numero": 12,
+      "paginaPdf": 7,
+      "mitad": "izquierda",
+      "pliego": 6,
+      "plana": false
+    },
+    {
+      "numero": 13,
+      "paginaPdf": 7,
+      "mitad": "derecha",
+      "pliego": 6,
+      "plana": false
+    },
+    {
+      "numero": 14,
+      "paginaPdf": 8,
+      "mitad": "izquierda",
+      "pliego": 7,
+      "plana": false
+    },
+    {
+      "numero": 15,
+      "paginaPdf": 8,
+      "mitad": "derecha",
+      "pliego": 7,
+      "plana": false
+    },
+    {
+      "numero": 16,
+      "paginaPdf": 9,
+      "mitad": "izquierda",
+      "pliego": 8,
+      "plana": false
+    },
+    {
+      "numero": 17,
+      "paginaPdf": 9,
+      "mitad": "derecha",
+      "pliego": 8,
+      "plana": false
+    },
+    {
+      "numero": 18,
+      "paginaPdf": 10,
+      "mitad": "izquierda",
+      "pliego": 9,
+      "plana": false
+    },
+    {
+      "numero": 19,
+      "paginaPdf": 10,
+      "mitad": "derecha",
+      "pliego": 9,
+      "plana": false
+    },
+    {
+      "numero": 20,
+      "paginaPdf": 11,
+      "mitad": "izquierda",
+      "pliego": 10,
+      "plana": false
+    },
+    {
+      "numero": 21,
+      "paginaPdf": 11,
+      "mitad": "derecha",
+      "pliego": 10,
+      "plana": false
+    },
+    {
+      "numero": 22,
+      "paginaPdf": 12,
+      "mitad": "izquierda",
+      "pliego": 11,
+      "plana": false
+    },
+    {
+      "numero": 23,
+      "paginaPdf": 12,
+      "mitad": "derecha",
+      "pliego": 11,
+      "plana": false
+    },
+    {
+      "numero": 24,
+      "paginaPdf": 13,
+      "mitad": "izquierda",
+      "pliego": 12,
+      "plana": false
+    },
+    {
+      "numero": 25,
+      "paginaPdf": 13,
+      "mitad": "derecha",
+      "pliego": 12,
+      "plana": false
+    },
+    {
+      "numero": 26,
+      "paginaPdf": 14,
+      "mitad": "izquierda",
+      "pliego": 13,
+      "plana": false
+    },
+    {
+      "numero": 27,
+      "paginaPdf": 14,
+      "mitad": "derecha",
+      "pliego": 13,
+      "plana": false
+    },
+    {
+      "numero": 28,
+      "paginaPdf": 15,
+      "mitad": "izquierda",
+      "pliego": 14,
+      "plana": false
+    },
+    {
+      "numero": 29,
+      "paginaPdf": 15,
+      "mitad": "derecha",
+      "pliego": 14,
+      "plana": false
+    },
+    {
+      "numero": 30,
+      "paginaPdf": 16,
+      "mitad": "izquierda",
+      "pliego": 15,
+      "plana": false
+    },
+    {
+      "numero": 31,
+      "paginaPdf": 16,
+      "mitad": "derecha",
+      "pliego": 15,
+      "plana": false
+    },
+    {
+      "numero": 32,
+      "paginaPdf": 17,
+      "mitad": "izquierda",
+      "pliego": 16,
+      "plana": false
+    },
+    {
+      "numero": 33,
+      "paginaPdf": 17,
+      "mitad": "derecha",
+      "pliego": 16,
+      "plana": false
+    },
+    {
+      "numero": 34,
+      "paginaPdf": 18,
+      "mitad": "izquierda",
+      "pliego": 17,
+      "plana": false
+    },
+    {
+      "numero": 35,
+      "paginaPdf": 18,
+      "mitad": "derecha",
+      "pliego": 17,
+      "plana": false
+    },
+    {
+      "numero": 36,
+      "paginaPdf": 19,
+      "mitad": "izquierda",
+      "pliego": 18,
+      "plana": false
+    },
+    {
+      "numero": 37,
+      "paginaPdf": 19,
+      "mitad": "derecha",
+      "pliego": 18,
+      "plana": false
+    },
+    {
+      "numero": 38,
+      "paginaPdf": 20,
+      "mitad": "izquierda",
+      "pliego": 19,
+      "plana": false
+    },
+    {
+      "numero": 39,
+      "paginaPdf": 20,
+      "mitad": "derecha",
+      "pliego": 19,
+      "plana": false
+    },
+    {
+      "numero": 40,
+      "paginaPdf": 21,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    }
+  ]
+}
