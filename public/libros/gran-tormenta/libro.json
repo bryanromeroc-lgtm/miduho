@@ -1,0 +1,219 @@
+{
+  "slug": "gran-tormenta",
+  "titulo": "La gran tormenta",
+  "autor": "",
+  "editorial": "Ministerio de Cultura - Maguaré - Amalia Low, Amalia Satizábal · Maguaré",
+  "edad": "",
+  "resumen": "En este libro conocerás las grandes dificultades que pasaron nuestros amigos antes de llegar a La Ceiba. Tras los desastres que trajo una avalancha, descubrirás cómo los animales lograron salir de la deriva para refugiarse en el majestuoso árbol que ahora es su hogar. Prepara un pañuelo pues es posible que lo necesites para secar tus lágrimas…",
+  "creditos": "Ministerio de Cultura - Maguaré - Amalia Low, Amalia Satizábal",
+  "paginas": 28,
+  "razon": 0.7738,
+  "pliegos": [],
+  "origen": {
+    "archivo": "gran-tormenta.pdf",
+    "url": "https://maguare.gov.co/gran-tormenta/",
+    "pdf": "https://maguare.gov.co/wp-content/uploads/2019/12/Tormenta-Color-suelto.pdf",
+    "variante": "suelta",
+    "paginasPdf": 28,
+    "dpi": 300,
+    "calidad": 82
+  },
+  "hojas": [
+    {
+      "numero": 1,
+      "paginaPdf": 1,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 2,
+      "paginaPdf": 2,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 3,
+      "paginaPdf": 3,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 4,
+      "paginaPdf": 4,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 5,
+      "paginaPdf": 5,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 6,
+      "paginaPdf": 6,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 7,
+      "paginaPdf": 7,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 8,
+      "paginaPdf": 8,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 9,
+      "paginaPdf": 9,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 10,
+      "paginaPdf": 10,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 11,
+      "paginaPdf": 11,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 12,
+      "paginaPdf": 12,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 13,
+      "paginaPdf": 13,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 14,
+      "paginaPdf": 14,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 15,
+      "paginaPdf": 15,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 16,
+      "paginaPdf": 16,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 17,
+      "paginaPdf": 17,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 18,
+      "paginaPdf": 18,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 19,
+      "paginaPdf": 19,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 20,
+      "paginaPdf": 20,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 21,
+      "paginaPdf": 21,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 22,
+      "paginaPdf": 22,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 23,
+      "paginaPdf": 23,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 24,
+      "paginaPdf": 24,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 25,
+      "paginaPdf": 25,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 26,
+      "paginaPdf": 26,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 27,
+      "paginaPdf": 27,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    },
+    {
+      "numero": 28,
+      "paginaPdf": 28,
+      "mitad": null,
+      "pliego": null,
+      "plana": false
+    }
+  ]
+}

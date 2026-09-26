@@ -748,6 +748,110 @@ export const LIBROS: Libro[] = [
     edad: "6-8",
     resumen: "¿Alguna vez has sentido que pierdes tu ritmo? Cuando esto pasa, se vuelve difícil caminar, correr y encima de todo, cantar. Descubre cómo Arma - DJ resuelve sus dilemas a través del afecto de su más querida amiga, Chip. Si alguna vez tienes un problema parecido, esta puede ser una buena idea para resolverlo. ¡Uno nunca sabe!",
   },
+  {
+    /* Un cuento de Amalia Low - Ilustraciones: Amalia Satizábal
+       —
+       Maguaré · https://maguare.gov.co/obra-rani/
+       Convertido con flipbook-forge desde obra-rani.pdf:
+       28 páginas de PDF → 28 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "obra-rani",
+    tituloId: "lit-133",
+    titulo: "La obra de Rani",
+    autor: "Amalia Low",
+    editorial: "Maguaré · Ministerio de Culturas",
+    paginas: 28,
+    razon: 0.7738,
+    edad: "6-8",
+    resumen: "Rani, la gran actriz de La Ceiba, ha preparado una emocionante obra de teatro para todos los habitantes. Escribe los textos, prepara disfraces, monta el escenario e invita al público. Tú también estás invitado, así que no te pierdas este espectáculo con su inesperado desenlace...",
+  },
+  {
+    /* Un cuento de María del Sol Peralta e Irene Vasco - Ilustraciones: Amalia Satizábal
+       —
+       Maguaré · https://maguare.gov.co/resfrio/
+       Convertido con flipbook-forge desde resfrio.pdf:
+       14 páginas de PDF → 28 hojas, 13 pliegos.
+
+       El PDF es entero de dobles planas, portada incluida: se convirtió con
+       --doble-plana. La mitad derecha de la primera página es la tapa y
+       abre el libro; la izquierda es la contraportada y lo cierra. */
+    slug: "resfrio",
+    tituloId: "lit-134",
+    titulo: "El resfrío",
+    autor: "María del Sol Peralta, Irene Vasco",
+    editorial: "Maguaré · Ministerio de Culturas",
+    paginas: 28,
+    razon: 0.7745,
+    pliegos: [
+      [2, 3], [4, 5], [6, 7], [8, 9], [10, 11], [12, 13], [14, 15],
+      [16, 17], [18, 19], [20, 21], [22, 23], [24, 25], [26, 27],
+    ],
+    edad: "6-8",
+    resumen: "Cuando Maya se enferma es un gran problema para todos porque las noticias se ponen al verés, ¡perdón al revés! Los vecinos protestan enfurecidos, mientras Maya va perdiendo su voz con cada mensaje. Rani resuelve organizar a toda la comunidad. ¿Podrá Rani cumplir su misión de poner a todos en paz? ¡Hagan sus apuestas!",
+  },
+  {
+    /* Un cuento de Amalia Low - Ilustraciones: Amalia Satizábal
+       —
+       Maguaré · https://maguare.gov.co/gran-tormenta/
+       Convertido con flipbook-forge desde gran-tormenta.pdf:
+       28 páginas de PDF → 28 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "gran-tormenta",
+    tituloId: "lit-135",
+    titulo: "La gran tormenta",
+    autor: "Amalia Low",
+    editorial: "Maguaré · Ministerio de Culturas",
+    paginas: 28,
+    razon: 0.7738,
+    edad: "6-8",
+    resumen: "En este libro conocerás las grandes dificultades que pasaron nuestros amigos antes de llegar a La Ceiba. Tras los desastres que trajo una avalancha, descubrirás cómo los animales lograron salir de la deriva para refugiarse en el majestuoso árbol que ahora es su hogar. Prepara un pañuelo pues es posible que lo necesites para secar tus lágrimas…",
+  },
+  {
+    /* Escrito e ilustrado por Amalia Satizábal
+       —
+       Maguaré · https://maguare.gov.co/ver-estrellas/
+       Convertido con flipbook-forge desde ver-estrellas.pdf:
+       28 páginas de PDF → 28 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "ver-estrellas",
+    tituloId: "lit-136",
+    titulo: "Para ver las estrellas",
+    autor: "Amalia Satizábal",
+    editorial: "Maguaré · Ministerio de Culturas",
+    paginas: 28,
+    razon: 0.7738,
+    edad: "6-8",
+    resumen: "Bertilda ha tenido un sueño para construir una gran red... ¿una red? y ¿para qué una red? Descubran en este cuento lo que cada uno de los amigos de La Ceiba aportó para cumplir el sueño… ¿tú qué llevarías?",
+  },
+  {
+    /* Un cuento de María del Sol Peralta e Irene Vasco - Ilustraciones: Amalia Satizábal
+       —
+       Maguaré · https://maguare.gov.co/libro-todos/
+       Convertido con flipbook-forge desde libro-todos.pdf:
+       28 páginas de PDF → 28 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "libro-todos",
+    tituloId: "lit-137",
+    titulo: "El libro de todos",
+    autor: "María del Sol Peralta, Irene Vasco",
+    editorial: "Maguaré · Ministerio de Culturas",
+    paginas: 28,
+    razon: 0.7738,
+    edad: "6-8",
+    resumen: "Gildardo es un gran pregonero: saca coplas de su carriel, mientras vende objetos mágicos y sueños y deseos. Pero, un buen día, al volver a la Ceiba después de un largo viaje, encuentra un extraño silencio. Nadie juega y pocos se comunican entre sí. Todos están gruñones, con el ceño fruncido. ¿Habrá pasado mucho tiempo por fuera? ¿Cómo volver a unir a la comunidad con canciones, juegos y tradiciones?",
+  },
 ];
 
 export function buscarLibro(slug: string): Libro | undefined {
