@@ -644,6 +644,110 @@ export const LIBROS: Libro[] = [
     edad: "6-8",
     resumen: "Este pájaro, que se transforma en mil colores, aconseja a las niñas y los niños que están tristes, cambia su plumaje y recorre diferentes paisajes rurales. Te invitamos a ver esta historia.",
   },
+  {
+    /* Alejandro López Lozano. Idea Original e ilustraciones: Alejandro López Lozano - Diseño: John Vela - Diagramación: Alejandra Forero
+       —
+       Maguaré · https://maguare.gov.co/el-maestro-bricula/
+       Convertido con flipbook-forge desde el-maestro-bricula.pdf:
+       20 páginas de PDF → 20 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "el-maestro-bricula",
+    tituloId: "lit-128",
+    titulo: "El maestro Brícula",
+    autor: "Alejandro López Lozano",
+    editorial: "Maguaré · Ministerio de Culturas",
+    paginas: 20,
+    razon: 0.7727,
+    edad: "6-8",
+    resumen: "El maestro Brícula es un monstruo que persigue y caza huellas. Al encontrarse con unas huellas desconocidas decide investigar para saber a quién pertenecen. Descubrelo tu también leyendo esta historia.",
+  },
+  {
+    /* Ana Sofía León Boyacá, Eileen Isabel León Boyacá, Samara Camila León Boyacá. Idea Original e ilustraciones: Ana Sofía León Boyacá, Eileen Isabel León Boyacá, Samara Camila León Boyacá - Diseño: John Vela - Diagramación: Alejandra Forero
+       —
+       Maguaré · https://maguare.gov.co/el-ogro/
+       Convertido con flipbook-forge desde el-ogro.pdf:
+       16 páginas de PDF → 16 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "el-ogro",
+    tituloId: "lit-129",
+    titulo: "El ogro",
+    autor: "Ana Sofía León Boyacá, Eileen Isabel León Boyacá, Samara Camila León Boyacá",
+    editorial: "Maguaré · Ministerio de Culturas",
+    paginas: 16,
+    razon: 0.7727,
+    edad: "6-8",
+    resumen: "Un gatito en apuros encuentra a unos humanos que, al parecer, no son amigables; con el tiempo los conoce mejor y se convierte en parte de esta familia que lo acoge con amor. Lee para saber toda la historia.",
+  },
+  {
+    /* Leonardo Gutiérrez. Ganador de la convocatoria para creación de libros digitales de relato corto para niños, niñas y adolescentes.
+       —
+       Maguaré · https://maguare.gov.co/camino-de-retacitos-para-echar-a-volar/
+       Convertido con flipbook-forge desde camino-de-retacitos-para-echar-a-volar.pdf:
+       18 páginas de PDF → 18 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "camino-de-retacitos-para-echar-a-volar",
+    tituloId: "lit-130",
+    titulo: "Camino de retacitos para echar a volar",
+    autor: "Leonardo Gutiérrez",
+    editorial: "Maguaré · Ministerio de Culturas",
+    paginas: 18,
+    razon: 0.9999,
+    edad: "6-8",
+    resumen: "Acompañemos a Maikol, Juanita y Salvador a recorrer un camino lleno de retacitos, un poco frío, un poco triste, y muy silencioso, que con ayuda de Maite, este camino se transformará y todos juntos echarán a volar.",
+  },
+  {
+    /* Juan Franco. Ganador de la convocatoria para creación de libros digitales de relato corto para niños, niñas y adolescentes.
+       —
+       Maguaré · https://maguare.gov.co/mi-mundo/
+       Convertido con flipbook-forge desde mi-mundo.pdf:
+       21 páginas de PDF → 21 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "mi-mundo",
+    tituloId: "lit-131",
+    titulo: "Mi mundo",
+    autor: "Juan Franco",
+    editorial: "Maguaré · Ministerio de Culturas",
+    paginas: 21,
+    razon: 0.8889,
+    edad: "0-5",
+    resumen: "Mundo es mi punto, puntito, diminuto. Con él vivo aventuras donde encuentro muchas luces, sombras, texturas, sonidos y grandes emociones. Te invito a recorrer junto con Mundo, un espacio donde podamos descubrir asombrosas formas y figuras grandes y pequeñas llenas de hermosos colores.",
+  },
+  {
+    /* Un cuento de María del Sol Peralta e Irene Vasco - Ilustraciones: Amalia Satizábal
+       —
+       Maguaré · https://maguare.gov.co/ritmo-corazon/
+       Convertido con flipbook-forge desde ritmo-corazon.pdf:
+       14 páginas de PDF → 28 hojas, 13 pliegos.
+
+       El PDF es entero de dobles planas, portada incluida: se convirtió con
+       --doble-plana. La mitad derecha de la primera página es la tapa y
+       abre el libro; la izquierda es la contraportada y lo cierra. */
+    slug: "ritmo-corazon",
+    tituloId: "lit-132",
+    titulo: "Al ritmo del corazón",
+    autor: "María del Sol Peralta, Irene Vasco",
+    editorial: "Maguaré · Ministerio de Culturas",
+    paginas: 28,
+    razon: 0.7745,
+    pliegos: [
+      [2, 3], [4, 5], [6, 7], [8, 9], [10, 11], [12, 13], [14, 15],
+      [16, 17], [18, 19], [20, 21], [22, 23], [24, 25], [26, 27],
+    ],
+    edad: "6-8",
+    resumen: "¿Alguna vez has sentido que pierdes tu ritmo? Cuando esto pasa, se vuelve difícil caminar, correr y encima de todo, cantar. Descubre cómo Arma - DJ resuelve sus dilemas a través del afecto de su más querida amiga, Chip. Si alguna vez tienes un problema parecido, esta puede ser una buena idea para resolverlo. ¡Uno nunca sabe!",
+  },
 ];
 
 export function buscarLibro(slug: string): Libro | undefined {
