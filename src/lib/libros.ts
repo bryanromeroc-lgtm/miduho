@@ -852,6 +852,868 @@ export const LIBROS: Libro[] = [
     edad: "6-8",
     resumen: "Gildardo es un gran pregonero: saca coplas de su carriel, mientras vende objetos mágicos y sueños y deseos. Pero, un buen día, al volver a la Ceiba después de un largo viaje, encuentra un extraño silencio. Nadie juega y pocos se comunican entre sí. Todos están gruñones, con el ceño fruncido. ¿Habrá pasado mucho tiempo por fuera? ¿Cómo volver a unir a la comunidad con canciones, juegos y tradiciones?",
   },
+  {
+    /* Maguaré - Estrategia Digital de Cultura y Primera Infancia, Ministerio de Cultura
+       —
+       Maguaré · https://maguare.gov.co/descubre-imagina-crea-molas/
+       Convertido con flipbook-forge desde descubre-imagina-crea-molas.pdf:
+       9 páginas de PDF → 9 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "descubre-imagina-crea-molas",
+    tituloId: "lit-138",
+    titulo: "Descubre, imagina y crea con Molas",
+    autor: "Maguaré",
+    editorial: "Maguaré · Ministerio de Culturas",
+    paginas: 9,
+    razon: 0.7727,
+    edad: "6-8",
+    resumen: "Saimiri, Gildardo y Maya le hacen un homenaje a la cultura tule, cuna o gunadule que habita en los departamentos de Antioquia y Chocó con este librillo coloreable de molas. ¡Llena de luz y color a tus personajes favoritos!",
+  },
+  {
+    /* Redacción: Claudia Patricia Bautista Arias - Idea original: Lina Salas Ramírez, Sergio Rozo Roa - Ilustraciones de niñas y niños lectores
+       —
+       Maguaré · https://maguare.gov.co/cuento-12-derecho-al-juego-y-al-arte/
+       Convertido con flipbook-forge desde cuento-12-derecho-al-juego-y-al-arte.pdf:
+       8 páginas de PDF → 8 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "cuento-12-derecho-al-juego-y-al-arte",
+    tituloId: "lit-139",
+    titulo: "Cuento 12: Derecho al juego y al arte",
+    autor: "Claudia Patricia Bautista Arias",
+    editorial: "Ministerio de Cultura · Universidad Nacional",
+    paginas: 8,
+    razon: 0.7273,
+    edad: "6-8",
+    resumen: "Manolo es el único niño de una colonia de galápagos ancianos que solo comen y duermen. Para no aburrirse inventa juegos e imita a las tortugas mayores, hasta que un día sus ocurrencias despiertan a todos y les enseñan lo mucho que vale jugar.",
+  },
+  {
+    /* Redacción: Claudia Patricia Bautista Arias - Idea original: Lina Salas Ramírez, Sergio Rozo Roa - Ilustraciones de niñas y niños lectores
+       —
+       Maguaré · https://maguare.gov.co/cuento-11-derecho-a-la-educacion/
+       Convertido con flipbook-forge desde cuento-11-derecho-a-la-educacion.pdf:
+       10 páginas de PDF → 10 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "cuento-11-derecho-a-la-educacion",
+    tituloId: "lit-140",
+    titulo: "Cuento 11: Derecho a la educación",
+    autor: "Claudia Patricia Bautista Arias",
+    editorial: "Ministerio de Cultura · Universidad Nacional",
+    paginas: 10,
+    razon: 0.7273,
+    edad: "6-8",
+    resumen: "Ágata es una araña curiosa que se aburre tejiendo siempre la misma tela y experimenta con hilos y formas nuevas, aunque las arañas mayores la miren con recelo. Sus experimentos terminan cambiando la manera de aprender de todo el pastizal.",
+  },
+  {
+    /* Redacción: Claudia Patricia Bautista Arias - Idea original: Lina Salas Ramírez, Sergio Rozo Roa - Ilustraciones de niñas y niños lectores
+       —
+       Maguaré · https://maguare.gov.co/cuento-10-derecho-a-la-atencion-especial-en-discapacidad/
+       Convertido con flipbook-forge desde cuento-10-derecho-a-la-atencion-especial-en-discapacidad.pdf:
+       10 páginas de PDF → 10 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "cuento-10-derecho-a-la-atencion-especial-en-discapacidad",
+    tituloId: "lit-141",
+    titulo: "Cuento 10: Derecho a la atención especial en discapacidad",
+    autor: "Claudia Patricia Bautista Arias",
+    editorial: "Ministerio de Cultura · Universidad Nacional",
+    paginas: 10,
+    razon: 0.7273,
+    edad: "6-8",
+    resumen: "Enrique es un elefantito distinto: camina a su ritmo, se distrae con facilidad y le cuesta hablar. En la larga marcha hacia los depósitos de agua, toda la manada aprende a esperarlo, entenderlo y cuidarlo.",
+  },
+  {
+    /* Redacción: Claudia Patricia Bautista Arias - Idea original: Lina Salas Ramírez, Sergio Rozo Roa - Ilustraciones de niñas y niños lectores
+       —
+       Maguaré · https://maguare.gov.co/cuento-9-derecho-a-la-salud/
+       Convertido con flipbook-forge desde cuento-9-derecho-a-la-salud.pdf:
+       8 páginas de PDF → 8 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "cuento-9-derecho-a-la-salud",
+    tituloId: "lit-142",
+    titulo: "Cuento 9: Derecho a la salud",
+    autor: "Claudia Patricia Bautista Arias",
+    editorial: "Ministerio de Cultura · Universidad Nacional",
+    paginas: 8,
+    razon: 0.7273,
+    edad: "6-8",
+    resumen: "Anastasia, la más pequeña de unas muñecas rusas de madera, siente un dolor que nadie sabe explicar. Sus hermanas harán todo lo posible para que su dueño, distraído con su teléfono, se dé cuenta y la lleve a curar.",
+  },
+  {
+    /* Redacción: Claudia Patricia Bautista Arias - Idea original: Lina Salas Ramírez, Sergio Rozo Roa - Ilustraciones de niñas y niños lectores
+       —
+       Maguaré · https://maguare.gov.co/cuento-8-derecho-a-que-se-respete-su-cultura/
+       Convertido con flipbook-forge desde cuento-8-derecho-a-que-se-respete-su-cultura.pdf:
+       10 páginas de PDF → 10 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "cuento-8-derecho-a-que-se-respete-su-cultura",
+    tituloId: "lit-143",
+    titulo: "Cuento 8: Derecho a que se respete su cultura",
+    autor: "Claudia Patricia Bautista Arias",
+    editorial: "Ministerio de Cultura · Universidad Nacional",
+    paginas: 10,
+    razon: 0.7273,
+    edad: "6-8",
+    resumen: "Leonardo, un pulpo de aguas cálidas, llega a un colegio de la Antártida con su acento, sus colores y su baile. Sus compañeros se burlan de él hasta que un experimento en clase los pone en su lugar y descubren lo que cada cultura puede enseñar.",
+  },
+  {
+    /* Redacción: Claudia Patricia Bautista Arias - Idea original: Lina Salas Ramírez, Sergio Rozo Roa - Ilustraciones de niñas y niños lectores
+       —
+       Maguaré · https://maguare.gov.co/cuento-7-derecho-a-acceder-a-la-informacion/
+       Convertido con flipbook-forge desde cuento-7-derecho-a-acceder-a-la-informacion.pdf:
+       10 páginas de PDF → 10 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "cuento-7-derecho-a-acceder-a-la-informacion",
+    tituloId: "lit-144",
+    titulo: "Cuento 7: Derecho a acceder a la información",
+    autor: "Claudia Patricia Bautista Arias",
+    editorial: "Ministerio de Cultura · Universidad Nacional",
+    paginas: 10,
+    razon: 0.7273,
+    edad: "6-8",
+    resumen: "Silvia es una chimpancé pequeña y muy hábil que no deja de hacer preguntas sobre el mundo y sobre los humanos. Buscar respuestas la llevará a descubrir que no todo lo que cuentan los líderes de la tropa es cierto.",
+  },
+  {
+    /* Redacción: Claudia Patricia Bautista Arias - Idea original: Lina Salas Ramírez, Sergio Rozo Roa - Ilustraciones de niñas y niños lectores
+       —
+       Maguaré · https://maguare.gov.co/cuento-6-derecho-a-expresarse/
+       Convertido con flipbook-forge desde cuento-6-derecho-a-expresarse.pdf:
+       8 páginas de PDF → 8 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "cuento-6-derecho-a-expresarse",
+    tituloId: "lit-145",
+    titulo: "Cuento 6: Derecho a expresarse",
+    autor: "Claudia Patricia Bautista Arias",
+    editorial: "Ministerio de Cultura · Universidad Nacional",
+    paginas: 8,
+    razon: 0.7273,
+    edad: "6-8",
+    resumen: "En una jaula llena de pájaros de todas partes reina el caos. Martín, un diminuto zunzuncito, y los más pequeños encuentran la forma de hacerse oír, y su plan termina llevando a todos a la libertad.",
+  },
+  {
+    /* Redacción: Claudia Patricia Bautista Arias - Idea original: Lina Salas Ramírez, Sergio Rozo Roa - Ilustraciones de niñas y niños lectores
+       —
+       Maguaré · https://maguare.gov.co/cuento-5-derecho-a-la-libertad/
+       Convertido con flipbook-forge desde cuento-5-derecho-a-la-libertad.pdf:
+       10 páginas de PDF → 10 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "cuento-5-derecho-a-la-libertad",
+    tituloId: "lit-146",
+    titulo: "Cuento 5: Derecho a la libertad",
+    autor: "Claudia Patricia Bautista Arias",
+    editorial: "Ministerio de Cultura · Universidad Nacional",
+    paginas: 10,
+    razon: 0.7273,
+    edad: "6-8",
+    resumen: "Carlota, una canguro que acaba de salir de la bolsa de su madre, quiere explorar el mundo por su cuenta. Su mamá aprende a dejarla dar sus primeros saltos y a tomar sus propias decisiones.",
+  },
+  {
+    /* Redacción: Claudia Patricia Bautista Arias - Idea original: Lina Salas Ramírez, Sergio Rozo Roa - Ilustraciones de niñas y niños lectores
+       —
+       Maguaré · https://maguare.gov.co/cuento-4-derecho-a-vivir-con-su-familia/
+       Convertido con flipbook-forge desde cuento-4-derecho-a-vivir-con-su-familia.pdf:
+       10 páginas de PDF → 10 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "cuento-4-derecho-a-vivir-con-su-familia",
+    tituloId: "lit-147",
+    titulo: "Cuento 4: Derecho a vivir con su familia",
+    autor: "Claudia Patricia Bautista Arias",
+    editorial: "Ministerio de Cultura · Universidad Nacional",
+    paginas: 10,
+    razon: 0.7273,
+    edad: "6-8",
+    resumen: "Mateo es un cachorro que crece feliz con su mamá, su abuela y sus hermanos, hasta que la familia está a punto de separarse. Una historia sobre la importancia de crecer junto a los tuyos.",
+  },
+  {
+    /* Redacción: Claudia Patricia Bautista Arias - Idea original: Lina Salas Ramírez, Sergio Rozo Roa - Ilustraciones de niñas y niños lectores
+       —
+       Maguaré · https://maguare.gov.co/cuento-3-derecho-a-un-nombre-y-a-una-nacionalidad/
+       Convertido con flipbook-forge desde cuento-3-derecho-a-un-nombre-y-a-una-nacionalidad.pdf:
+       10 páginas de PDF → 10 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "cuento-3-derecho-a-un-nombre-y-a-una-nacionalidad",
+    tituloId: "lit-148",
+    titulo: "Cuento 3: Derecho a un nombre y a una nacionalidad",
+    autor: "Claudia Patricia Bautista Arias",
+    editorial: "Ministerio de Cultura · Universidad Nacional",
+    paginas: 10,
+    razon: 0.7273,
+    edad: "6-8",
+    resumen: "En una caja de juguetes cada uno guarda la historia del lugar donde nació. Solo Volqueta, un camión de madera, no recuerda de dónde viene, y sus compañeros la ayudan a recuperar su nombre y su origen.",
+  },
+  {
+    /* Redacción: Claudia Patricia Bautista Arias - Idea original: Lina Salas Ramírez, Sergio Rozo Roa - Ilustraciones de niñas y niños lectores
+       —
+       Maguaré · https://maguare.gov.co/cuento-2-derecho-a-la-vida-la-supervivencia-y-el-desarrollo/
+       Convertido con flipbook-forge desde cuento-2-derecho-a-la-vida-la-supervivencia-y-el-desarrollo.pdf:
+       10 páginas de PDF → 10 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "cuento-2-derecho-a-la-vida-la-supervivencia-y-el-desarrollo",
+    tituloId: "lit-149",
+    titulo: "Cuento 2: Derecho a la vida, la supervivencia y el desarrollo",
+    autor: "Claudia Patricia Bautista Arias",
+    editorial: "Ministerio de Cultura · Universidad Nacional",
+    paginas: 10,
+    razon: 0.7273,
+    edad: "6-8",
+    resumen: "A Carlos, un renacuajo, le están saliendo patas. Con su familia y toda la charca descubre qué es la metamorfosis y lo que significa crecer, hasta encontrar lo que de verdad quiere ser: cantante.",
+  },
+  {
+    /* Redacción: Claudia Patricia Bautista Arias - Idea original: Lina Salas Ramírez, Sergio Rozo Roa - Ilustraciones de niñas y niños lectores
+       —
+       Maguaré · https://maguare.gov.co/cuento-1-derecho-a-ser-cuidados-defendidos-y-protegidos/
+       Convertido con flipbook-forge desde cuento-1-derecho-a-ser-cuidados-defendidos-y-protegidos.pdf:
+       10 páginas de PDF → 10 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "cuento-1-derecho-a-ser-cuidados-defendidos-y-protegidos",
+    tituloId: "lit-150",
+    titulo: "Cuento 1: Derecho a ser cuidados, defendidos y protegidos",
+    autor: "Claudia Patricia Bautista Arias",
+    editorial: "Ministerio de Cultura · Universidad Nacional",
+    paginas: 10,
+    razon: 0.7273,
+    edad: "6-8",
+    resumen: "Hortensia crece en un jardín lleno de flores, rodeada de plantas mayores que la cuidan. Cuando aparece un peligro, el jardín entero aprende a organizarse para proteger a los más pequeños.",
+  },
+  {
+    /* Maritza Sanchez, Carlos Millán, Lizardo Carvajal, Oscar García - Ilustraciones: Amalia Satizábal
+       —
+       Maguaré · https://maguare.gov.co/el-frenetico-baile-de-chip/
+       Convertido con flipbook-forge desde el-frenetico-baile-de-chip.pdf:
+       28 páginas de PDF → 28 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "el-frenetico-baile-de-chip",
+    tituloId: "lit-151",
+    titulo: "El frenético baile de Chip",
+    autor: "Maritza Sanchez, Carlos Millán, Lizardo Carvajal, Oscar García",
+    editorial: "Maguaré · Ministerio de Culturas",
+    paginas: 28,
+    razon: 0.7738,
+    edad: "6-8",
+    resumen: "Chip la perezosa se levantó muy dispuesta para dar su clase de aeróbicos y para hacer deporte se mantiene muy bien hidratada. Pero Chip ha tomado más agua de la cuenta… ¡Un baño, por favor!",
+  },
+  {
+    /* Maritza Sanchez, Carlos Millán, Lizardo Carvajal, Oscar García - Ilustraciones: Amalia Satizábal
+       —
+       Maguaré · https://maguare.gov.co/el-cumpleanos-de-rosalinda/
+       Convertido con flipbook-forge desde el-cumpleanos-de-rosalinda.pdf:
+       28 páginas de PDF → 28 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "el-cumpleanos-de-rosalinda",
+    tituloId: "lit-152",
+    titulo: "El cumpleaños de Rosalinda",
+    autor: "Maritza Sanchez, Carlos Millán, Lizardo Carvajal, Oscar García",
+    editorial: "Maguaré · Ministerio de Culturas",
+    paginas: 28,
+    razon: 0.7738,
+    edad: "6-8",
+    resumen: "Rosalinda la camaleona cambia de color según como se sienta y hoy está azul porque parece que todos olvidaron su cumpleaños. En todo el día no ha recibido ni un abrazo ni un",
+  },
+  {
+    /* Maritza Sanchez, Carlos Millán, Lizardo Carvajal, Oscar García - Ilustraciones: Amalia Satizábal
+       —
+       Maguaré · https://maguare.gov.co/la-memoria-del-abuelo/
+       Convertido con flipbook-forge desde la-memoria-del-abuelo.pdf:
+       28 páginas de PDF → 28 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "la-memoria-del-abuelo",
+    tituloId: "lit-153",
+    titulo: "La memoria del abuelo",
+    autor: "Maritza Sanchez, Carlos Millán, Lizardo Carvajal, Oscar García",
+    editorial: "Maguaré · Ministerio de Culturas",
+    paginas: 28,
+    razon: 0.7738,
+    edad: "6-8",
+    resumen: "El abuelo Emiliano lo olvida todo, todo, todo… bueno no se le olvidan las cosas que avergüenzan a Rani y a Gildardo. ¡Abuelo Emiliano ejercita tu memoria con un sudoku!",
+  },
+  {
+    /* Maritza Sanchez, Carlos Millán, Lizardo Carvajal, Oscar García - Ilustraciones: Amalia Satizábal
+       —
+       Maguaré · https://maguare.gov.co/una-sopa-para-la-fiesta/
+       Convertido con flipbook-forge desde una-sopa-para-la-fiesta.pdf:
+       28 páginas de PDF → 28 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "una-sopa-para-la-fiesta",
+    tituloId: "lit-154",
+    titulo: "Una sopa para la fiesta",
+    autor: "Maritza Sanchez, Carlos Millán, Lizardo Carvajal, Oscar García",
+    editorial: "Maguaré · Ministerio de Culturas",
+    paginas: 28,
+    razon: 0.7738,
+    edad: "6-8",
+    resumen: "¡Las trillizas Adriana, Juliana y Eliana son terribles!. No se quedan quietas nunca y sus travesuras desesperan a más de uno en la Ceiba. Sin embargo parecen tener un don especial para transformar cualquier situación por crítica que parezca. ¿Qué hicieron ahora estas Terrillizas?",
+  },
+  {
+    /* Maritza Sanchez, Carlos Millán, Lizardo Carvajal, Oscar García - Ilustraciones: Amalia Satizábal
+       —
+       Maguaré · https://maguare.gov.co/el-libro-perdido-de-gigi/
+       Convertido con flipbook-forge desde el-libro-perdido-de-gigi.pdf:
+       28 páginas de PDF → 28 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "el-libro-perdido-de-gigi",
+    tituloId: "lit-155",
+    titulo: "El libro perdido de Gigi",
+    autor: "Maritza Sanchez, Carlos Millán, Lizardo Carvajal, Oscar García",
+    editorial: "Maguaré · Ministerio de Culturas",
+    paginas: 28,
+    razon: 0.7738,
+    edad: "6-8",
+    resumen: "Saimiri es un gran lector y quiere terminar de leer una historia, pero no aparece el segundo libro que cuenta el final. Con la ayuda de Gigi la tortuga emprenden la aventura de encontrar el libro perdido.",
+  },
+  {
+    /* Maritza Sanchez, Carlos Millán, Lizardo Carvajal, Oscar García - Ilustraciones: Amalia Satizábal
+       —
+       Maguaré · https://maguare.gov.co/el-viaje-de-la-familia-cuy/
+       Convertido con flipbook-forge desde el-viaje-de-la-familia-cuy.pdf:
+       28 páginas de PDF → 28 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "el-viaje-de-la-familia-cuy",
+    tituloId: "lit-156",
+    titulo: "El viaje de la familia Cuy",
+    autor: "Maritza Sanchez, Carlos Millán, Lizardo Carvajal, Oscar García",
+    editorial: "Maguaré · Ministerio de Culturas",
+    paginas: 28,
+    razon: 0.7738,
+    edad: "6-8",
+    resumen: "¿Cómo hacen Linio y Tulita los dos papás cuyes para salir de paseo con sus hijos?. No debe ser nada fácil… porque son ¡27 cuyecitos!",
+  },
+  {
+    /* Edición y adaptación de textos: Jesús Mario Girón Higuita - Recopilación: Claudia Rueda Gómez - Ilustración: Daniel A. Fajardo Bautista, Victoria Peters Rada
+       —
+       Maguaré · https://maguare.gov.co/los-arrullos-de-jaamo/
+       Convertido con flipbook-forge desde los-arrullos-de-jaamo.pdf:
+       36 páginas de PDF → 72 hojas, 35 pliegos.
+
+       El PDF es entero de dobles planas, portada envolvente incluida: se
+       convirtió con --doble-plana. La mitad derecha de la primera página es
+       la tapa y abre el libro; la izquierda es la contraportada y lo cierra. */
+    slug: "los-arrullos-de-jaamo",
+    tituloId: "lit-157",
+    titulo: "Los arrullos de Jáamo",
+    autor: "Tradición oral (ed. Jesús Mario Girón Higuita)",
+    editorial: "ICBF · Fundalectura",
+    paginas: 72,
+    razon: 0.9701,
+    pliegos: [
+      [2, 3], [4, 5], [6, 7], [8, 9], [10, 11], [12, 13], [14, 15],
+      [16, 17], [18, 19], [20, 21], [22, 23], [24, 25], [26, 27], [28, 29],
+      [30, 31], [32, 33], [34, 35], [36, 37], [38, 39], [40, 41], [42, 43],
+      [44, 45], [46, 47], [48, 49], [50, 51], [52, 53], [54, 55], [56, 57],
+      [58, 59], [60, 61], [62, 63], [64, 65], [66, 67], [68, 69], [70, 71],
+    ],
+    edad: "0-5",
+    resumen: "Este libro reúne los arrullos, relatos y juegos que acogen a los bebés y los niños en las familias de las comunidades nasa, inga, sikuani, cãacwa y totoró, cinco de los ciento dos pueblos indígenas colombianos. También comparte los recuerdos y la ternura de algunas abuelas indígenas que regalan a sus nietos y a los niños del país sus palabras, sus músicas y los juegos que alegraron su niñez.",
+  },
+  {
+    /* Edición y adaptación de relatos: Alberto Aljure - Recopilación: María Fernanda Mantilla - Ilustración: Daniel A. Fajardo Bautista, Victoria Peters Rada
+       —
+       Maguaré · https://maguare.gov.co/patas-de-armadillo-dientes-de-raton/
+       Convertido con flipbook-forge desde patas-de-armadillo-dientes-de-raton.pdf:
+       36 páginas de PDF → 72 hojas, 35 pliegos.
+
+       El PDF es entero de dobles planas, portada envolvente incluida: se
+       convirtió con --doble-plana. La mitad derecha de la primera página es
+       la tapa y abre el libro; la izquierda es la contraportada y lo cierra. */
+    slug: "patas-de-armadillo-dientes-de-raton",
+    tituloId: "lit-158",
+    titulo: "Patas de armadillo, dientes de ratón",
+    autor: "Tradición oral (ed. Alberto Aljure)",
+    editorial: "ICBF · Fundalectura",
+    paginas: 72,
+    razon: 0.9701,
+    pliegos: [
+      [2, 3], [4, 5], [6, 7], [8, 9], [10, 11], [12, 13], [14, 15],
+      [16, 17], [18, 19], [20, 21], [22, 23], [24, 25], [26, 27], [28, 29],
+      [30, 31], [32, 33], [34, 35], [36, 37], [38, 39], [40, 41], [42, 43],
+      [44, 45], [46, 47], [48, 49], [50, 51], [52, 53], [54, 55], [56, 57],
+      [58, 59], [60, 61], [62, 63], [64, 65], [66, 67], [68, 69], [70, 71],
+    ],
+    edad: "0-5",
+    resumen: "Las canciones, juegos y relatos que los campesinos colombianos comparten con los niños en este volumen son un reconocimiento de las tradiciones y los modos de comprender y vivir la vida en diferentes contextos rurales del país. Resaltan el profundo vínculo que hay entre las palabras, las músicas, las creencias, la tierra y nuestras raíces hispana, indígena y afro.",
+  },
+  {
+    /* Edición y selección: Iván Hernández - Ilustraciones: Silvana Giraldo
+       —
+       Maguaré · https://maguare.gov.co/canciones-rondas-nanas-retahilas-y-adivinanzas/
+       Convertido con flipbook-forge desde canciones-rondas-nanas-retahilas-y-adivinanzas.pdf:
+       35 páginas de PDF → 35 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "canciones-rondas-nanas-retahilas-y-adivinanzas",
+    tituloId: "lit-159",
+    titulo: "Canciones, rondas, nanas, retahílas y adivinanzas",
+    autor: "Tradición oral (sel. Iván Hernández)",
+    editorial: "Ministerio de Cultura · Leer es mi cuento",
+    paginas: 35,
+    razon: 0.7717,
+    edad: "0-5",
+    resumen: "Una selección de canciones, rondas, nanas, retahílas y adivinanzas de la tradición oral para jugar con las palabras, cantarlas, trabar la lengua y destrabarla otra vez.",
+  },
+  {
+    /* Rudyard Kipling
+       —
+       Maguaré · https://maguare.gov.co/por-que-el-elefante-tiene-la-trompa-asi/
+       Convertido con flipbook-forge desde por-que-el-elefante-tiene-la-trompa-asi.pdf:
+       35 páginas de PDF → 35 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "por-que-el-elefante-tiene-la-trompa-asi",
+    tituloId: "lit-160",
+    titulo: "Por qué el elefante tiene la trompa así",
+    autor: "Rudyard Kipling",
+    editorial: "Ministerio de Cultura · Leer es mi cuento",
+    paginas: 35,
+    razon: 0.7717,
+    edad: "6-8",
+    resumen: "Hubo un tiempo en que el elefante tenía la nariz corta, y un elefantito muy curioso no paraba de hacer preguntas. Uno de los célebres cuentos de «Así fue» de Rudyard Kipling, que vivió muchos años en la India y escribió sobre sus gentes y sus animales.",
+  },
+  {
+    /* Jeanne Marie Leprince de Beaumont
+       —
+       Maguaré · https://maguare.gov.co/la-bella-y-la-bestia/
+       Convertido con flipbook-forge desde la-bella-y-la-bestia.pdf:
+       34 páginas de PDF → 34 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "la-bella-y-la-bestia",
+    tituloId: "lit-161",
+    titulo: "La bella y la bestia",
+    autor: "Jeanne Marie Leprince de Beaumont",
+    editorial: "Ministerio de Cultura · Leer es mi cuento",
+    paginas: 34,
+    razon: 0.7717,
+    edad: "6-8",
+    resumen: "Esta bella historia recuerda la tolerancia y la aceptación y habla sobre cómo la belleza de una persona no esta en su físico sino en su forma de ser, porque lo más importante es la belleza del corazón.",
+  },
+  {
+    /* Félix María Samaniego - Ilustraciones: Daniela Gallego
+       —
+       Maguaré · https://maguare.gov.co/fabulas/
+       Convertido con flipbook-forge desde fabulas.pdf:
+       34 páginas de PDF → 34 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "fabulas",
+    tituloId: "lit-162",
+    titulo: "Fábulas",
+    autor: "Félix María Samaniego",
+    editorial: "Ministerio de Cultura · Leer es mi cuento",
+    paginas: 34,
+    razon: 0.7717,
+    edad: "6-8",
+    resumen: "Encuentra 30 fábulas de Félix María Samaniego como La cigarra y la hormiga, El león y el ratón, El ciervo en la fuente y muchas otras. Se trata de pequeños cuentos en los que hablan y actúan los animales, y que llevan a conclusiones morales.",
+  },
+  {
+    /* José Martí
+       —
+       Maguaré · https://maguare.gov.co/menique/
+       Convertido con flipbook-forge desde menique.pdf:
+       36 páginas de PDF → 36 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "menique",
+    tituloId: "lit-163",
+    titulo: "Meñique",
+    autor: "José Martí",
+    editorial: "Ministerio de Cultura · Leer es mi cuento",
+    paginas: 36,
+    razon: 0.7591,
+    edad: "6-8",
+    resumen: "Esta bella historia narra cómo los hermanos Pedro, Pablo y Juancito (al que conocían como Meñique porque era tan pequeño que se podía esconder en la bota de su padre) decidieron ir a probar suerte en un reino muy particular y las pruebas que Meñique deberá superar para ganarse el corazón de la princesa.",
+  },
+  {
+    /* Hans Christian Andersen
+       —
+       Maguaré · https://maguare.gov.co/el-patito-feo/
+       Convertido con flipbook-forge desde el-patito-feo.pdf:
+       36 páginas de PDF → 36 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "el-patito-feo",
+    tituloId: "lit-164",
+    titulo: "El patito feo",
+    autor: "Hans Christian Andersen",
+    editorial: "Ministerio de Cultura · Leer es mi cuento",
+    paginas: 36,
+    razon: 0.7591,
+    edad: "6-8",
+    resumen: "Este cuento clásico de Hans Christian Andersen, ha sido leído desde hace muchos años con emoción por lectores de todas las edades y recuerda la necesidad de aceptar a quienes piensan diferente y pertenecen a otra raza, cultura o religión.",
+  },
+  {
+    /* Horacio Benavides
+       —
+       Maguaré · https://maguare.gov.co/abrete-grano-pequeno/
+       Convertido con flipbook-forge desde abrete-grano-pequeno.pdf:
+       33 páginas de PDF → 33 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "abrete-grano-pequeno",
+    tituloId: "lit-165",
+    titulo: "Ábrete, grano pequeño",
+    autor: "Horacio Benavides",
+    editorial: "Ministerio de Cultura · Leer es mi cuento",
+    paginas: 33,
+    razon: 0.7717,
+    edad: "6-8",
+    resumen: "Este libro es una recopilación de las mejores adivinanzas escritas por el poeta caucano Horacio Benavides, presentes en su primer libro y en Tapiz al revés ¿Dime quién es? (2014). Muchas de sus adivinanzas están relacionadas con mitologías o con historias antiguas.",
+  },
+  {
+    /* María Eastman, Rafael Jaramillo Arango, Gabriela Mercedes Arciniegas, Santiago Pérez, Rocío Vélez de Piedrahíta
+       —
+       Maguaré · https://maguare.gov.co/de-animales-y-de-ninos/
+       Convertido con flipbook-forge desde de-animales-y-de-ninos.pdf:
+       36 páginas de PDF → 36 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "de-animales-y-de-ninos",
+    tituloId: "lit-166",
+    titulo: "De animales y de niños",
+    autor: "María Eastman, Rafael Jaramillo, Gabriela Mercedes Arciniegas, Santiago Pérez, Rocío Vélez",
+    editorial: "Ministerio de Cultura · Leer es mi cuento",
+    paginas: 36,
+    razon: 0.757,
+    edad: "6-8",
+    resumen: "Acá puedes encontrar Los caballos que no querían amo de María Eastman, Memorias de un niño embustero de Rafael Jaramillo Arango, Minisurumbullo y el dulce de icaco de Gabriela Mercedes Arciniegas, De cómo la familia Chimp vino a la ciudad de Santiago Pérez y La Cucarachita Martínez de Rocío Vélez de Piedrahita.",
+  },
+  {
+    /* Charles Perrault, Hermanos Grimm
+       —
+       Maguaré · https://maguare.gov.co/barbas-pelos-y-cenizas/
+       Convertido con flipbook-forge desde barbas-pelos-y-cenizas.pdf:
+       36 páginas de PDF → 36 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "barbas-pelos-y-cenizas",
+    tituloId: "lit-167",
+    titulo: "Barbas, pelos y cenizas",
+    autor: "Charles Perrault, Hermanos Grimm",
+    editorial: "Ministerio de Cultura · Leer es mi cuento",
+    paginas: 36,
+    razon: 0.7591,
+    edad: "6-8",
+    resumen: "Historias de fantasía para disfrutar con los niños: «Barba Azul» de Charles Perrault, y «Los tres pelos de oro del diablo» y «La Cenicienta» de los Hermanos Grimm.",
+  },
+  {
+    /* Textos de varios autores de dominio público - Ilustraciones: José Rosero, Rafael Yockteng
+       —
+       Maguaré · https://maguare.gov.co/canta-palabras/
+       Convertido con flipbook-forge desde canta-palabras.pdf:
+       36 páginas de PDF → 36 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "canta-palabras",
+    tituloId: "lit-168",
+    titulo: "Canta palabras",
+    autor: "Varios autores",
+    editorial: "Ministerio de Cultura · Leer es mi cuento",
+    paginas: 36,
+    razon: 0.7591,
+    edad: "6-8",
+    resumen: "Canta y juega con tus niños las canciones, rondas, poemas, trabalenguas, dichos, retahílas y repeticiones. Encontrarás relatos como En las mañanicas y Los ratones de Lope de Vega, El burro flautista de Tomás de Iriarte, ¿Qué es poesía? y Por una mirada un mundo de Gustavo Adolfo Bécquer, Canción del boga ausente de Candelario Obeso, Cultivo una rosa blanca de José Martí, Margarita de Rubén Darío e Historia de una tórtola de Epifanio Mejía.",
+  },
+  {
+    /* Autora: Susana Aristizábal - Ilustraciones: Nel Correa
+       —
+       Maguaré · https://maguare.gov.co/un-castillo-de-libros/
+       Convertido con flipbook-forge desde un-castillo-de-libros.pdf:
+       28 páginas de PDF → 28 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "un-castillo-de-libros",
+    tituloId: "lit-169",
+    titulo: "Un castillo de libros",
+    autor: "Susana Aristizábal",
+    editorial: "Tragaluz Editores · Ministerio de Cultura",
+    paginas: 28,
+    razon: 0.9995,
+    edad: "0-5",
+    resumen: "Este relato infantil es publicación de la Fundación Taller de Letras Jordi Sierra Fabra para De Cero a Siempre e invita a despertar los sentidos a través de hermosas ilustraciones llenas de color en un lugar donde los secretos nunca acaban.",
+  },
+  {
+    /* Edición y adaptación: María Cristina Rincón - Recopilación y traducción al rromanés: Ana Dalila Gómez Baos - Ilustración: Victoria Peters Rada
+       —
+       Maguaré · https://maguare.gov.co/tiki-tiki-tai-libro/
+       Convertido con flipbook-forge desde tiki-tiki-tai-libro.pdf:
+       36 páginas de PDF → 72 hojas, 35 pliegos.
+
+       El PDF es entero de dobles planas, portada envolvente incluida: se
+       convirtió con --doble-plana. La mitad derecha de la primera página es
+       la tapa y abre el libro; la izquierda es la contraportada y lo cierra. */
+    slug: "tiki-tiki-tai-libro",
+    tituloId: "lit-170",
+    titulo: "Tiki, tiki, tai",
+    autor: "Tradición oral rrom (ed. María Cristina Rincón)",
+    editorial: "ICBF · Fundalectura",
+    paginas: 72,
+    razon: 0.9701,
+    pliegos: [
+      [2, 3], [4, 5], [6, 7], [8, 9], [10, 11], [12, 13], [14, 15],
+      [16, 17], [18, 19], [20, 21], [22, 23], [24, 25], [26, 27], [28, 29],
+      [30, 31], [32, 33], [34, 35], [36, 37], [38, 39], [40, 41], [42, 43],
+      [44, 45], [46, 47], [48, 49], [50, 51], [52, 53], [54, 55], [56, 57],
+      [58, 59], [60, 61], [62, 63], [64, 65], [66, 67], [68, 69], [70, 71],
+    ],
+    edad: "0-5",
+    resumen: "En esta edición bilingüe se recopilan algunos arrullos, secretos y relatos con que papás, mamás y abuelos gitanos reciben a sus bebés y les acompañan durante la infancia. Puedes encontrarlos en español y rromanés, el idioma de los gitanos, una lengua que recuerda cada camino por el que este pueblo ha trasegado en su ir y venir por el mundo, amantes ante todo de la libertad y la vida.",
+  },
+  {
+    /* Hans Christian Andersen, Alexander Pushkin, Joseph Jacobs, Oscar Wilde, Hermanos Grimm - Ilustración: Rafael Yockteng y Daniel Gómez.
+       —
+       Maguaré · https://maguare.gov.co/puro-cuento/
+       Convertido con flipbook-forge desde puro-cuento.pdf:
+       36 páginas de PDF → 36 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "puro-cuento",
+    tituloId: "lit-171",
+    titulo: "Puro cuento",
+    autor: "Hans Christian Andersen, Alexander Pushkin, Joseph Jacobs, Oscar Wilde, Hermanos Grimm",
+    editorial: "Ministerio de Cultura · Leer es mi cuento",
+    paginas: 36,
+    razon: 0.7661,
+    edad: "6-8",
+    resumen: "Este título te invita a disfrutar con tus niños de historias que los hombres se contaban durante los fríos inviernos. Encuentra La princesa y la alverja de Hans Christian Andersen, El cuento de Alí el Persa de Las mil y una noches, El gallo de oro de Alexander Pushkin, Los tres cerditos de Joseph Jacobs, El gigante egoísta de Oscar Wilde y Los músicos de Bremen de los Hermanos Grimm.",
+  },
+  {
+    /* Hermanos Grimm, Charles Perrault, Agustín Jaramillo Londoño, Infante Don Juan Manuel, Félix María Samaniego, Rafael Pombo, Rubén Darío, Víctor Eduardo Caro, Federico García Lorca
+       —
+       Maguaré · https://maguare.gov.co/de-viva-voz/
+       Convertido con flipbook-forge desde de-viva-voz.pdf:
+       36 páginas de PDF → 36 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "de-viva-voz",
+    tituloId: "lit-172",
+    titulo: "De viva voz",
+    autor: "Varios autores",
+    editorial: "Ministerio de Cultura · Leer es mi cuento",
+    paginas: 36,
+    razon: 0.7687,
+    edad: "6-8",
+    resumen: "Los cuentos, poemas y fábulas que presentamos en este libro tienen como propósito hacer que los lectores, niños y grandes, adquieran el gusto por las palabras. En ellos están expresados algunos de los valores que han permitido a la humanidad sobrevivir.",
+  },
+  {
+    /* Rafael Pombo
+       —
+       Maguaré · https://maguare.gov.co/con-pombo-y-platillos/
+       Convertido con flipbook-forge desde con-pombo-y-platillos.pdf:
+       36 páginas de PDF → 36 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "con-pombo-y-platillos",
+    tituloId: "lit-173",
+    titulo: "Con Pombo y platillos",
+    autor: "Rafael Pombo",
+    editorial: "Ministerio de Cultura · Leer es mi cuento",
+    paginas: 36,
+    razon: 0.7591,
+    edad: "6-8",
+    resumen: "Recuerda los cuentos de infancia y lee con tus niños: Mirringa Mirronga, El renacuajo paseador, Juan Chunguero, Pastorcita, Juan Matachín, Tía Pasitrote, Las siete vidas del gato, La pobre viejecita, Juaco el ballenero, El pardillo, La marrana peripuesta, Simón el Bobito y El niño y la mariposa.",
+  },
+  {
+    /* Alejandro Dumas
+       —
+       Maguaré · https://maguare.gov.co/el-rey-de-los-topos-y-su-hija/
+       Convertido con flipbook-forge desde el-rey-de-los-topos-y-su-hija.pdf:
+       34 páginas de PDF → 34 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "el-rey-de-los-topos-y-su-hija",
+    tituloId: "lit-174",
+    titulo: "El rey de los topos y su hija",
+    autor: "Alejandro Dumas",
+    editorial: "Ministerio de Cultura · Leer es mi cuento",
+    paginas: 34,
+    razon: 0.7717,
+    edad: "6-8",
+    resumen: "Una historia escrita por Alejandro Dumas que refleja el amor de una madre por su hijo al mismo tiempo que muestra que no hay límites cuando dos personas se enamoran.",
+  },
+  {
+    /* Hermanos Grimm
+       —
+       Maguaré · https://maguare.gov.co/bosque-adentro/
+       Convertido con flipbook-forge desde bosque-adentro.pdf:
+       36 páginas de PDF → 36 hojas.
+
+       El PDF viene en páginas sueltas, ya partidas por el editor: no hay
+       pliegos que recomponer. Se revisó que con la portada sola cada
+       doble plana cae en la misma pantalla del lector. */
+    slug: "bosque-adentro",
+    tituloId: "lit-175",
+    titulo: "Bosque adentro",
+    autor: "Hermanos Grimm",
+    editorial: "Ministerio de Cultura · Leer es mi cuento",
+    paginas: 36,
+    razon: 0.7591,
+    edad: "6-8",
+    resumen: "En este libro te encontrará con los clásicos de Los Hermanos Grimm para niños: Caperucita Roja, Blanca Nieves, Hansel y Gretel, La bella durmiente para leer una y otra vez con tus niños.",
+  },
+  {
+    /* Edición y adaptación: María Cristina Rincón - Recopilación e investigación: Pilar Posada, Moraima Simarra Hernández y otros
+       —
+       Maguaré · https://maguare.gov.co/una-morena-en-la-ronda/
+       Convertido con flipbook-forge desde una-morena-en-la-ronda.pdf:
+       36 páginas de PDF → 72 hojas, 35 pliegos.
+
+       El PDF es entero de dobles planas, portada envolvente incluida: se
+       convirtió con --doble-plana. La mitad derecha de la primera página es
+       la tapa y abre el libro; la izquierda es la contraportada y lo cierra. */
+    slug: "una-morena-en-la-ronda",
+    tituloId: "lit-176",
+    titulo: "Una morena en la ronda",
+    autor: "Tradición oral afrocolombiana (ed. María Cristina Rincón)",
+    editorial: "ICBF · Fundalectura",
+    paginas: 72,
+    razon: 0.9701,
+    pliegos: [
+      [2, 3], [4, 5], [6, 7], [8, 9], [10, 11], [12, 13], [14, 15],
+      [16, 17], [18, 19], [20, 21], [22, 23], [24, 25], [26, 27], [28, 29],
+      [30, 31], [32, 33], [34, 35], [36, 37], [38, 39], [40, 41], [42, 43],
+      [44, 45], [46, 47], [48, 49], [50, 51], [52, 53], [54, 55], [56, 57],
+      [58, 59], [60, 61], [62, 63], [64, 65], [66, 67], [68, 69], [70, 71],
+    ],
+    edad: "0-5",
+    resumen: "En esta edición multilingüe se recopilan algunos arrullos, juegos y relatos con los que papás, mamás y abuelos afrocolombianos reciben a sus bebés y les acompañan durante la infancia. Los ritmos de la lengua palenquera y del creole raizal se mezclan con los del español.",
+  },
+  {
+    /* Edición y adaptación: María Cristina Rincón - Investigación y recopilación: Socorro Vásquez
+       —
+       Maguaré · https://maguare.gov.co/putunkaa-serruma-duermete-pajarito/
+       Convertido con flipbook-forge desde putunkaa-serruma-duermete-pajarito.pdf:
+       36 páginas de PDF → 72 hojas, 35 pliegos.
+
+       El PDF es entero de dobles planas, portada envolvente incluida: se
+       convirtió con --doble-plana. La mitad derecha de la primera página es
+       la tapa y abre el libro; la izquierda es la contraportada y lo cierra. */
+    slug: "putunkaa-serruma-duermete-pajarito",
+    tituloId: "lit-177",
+    titulo: "Putunkaa serruma: duérmete, pajarito blanco",
+    autor: "Tradición oral indígena (ed. María Cristina Rincón)",
+    editorial: "ICBF · OIM · Fundalectura",
+    paginas: 72,
+    razon: 0.9701,
+    pliegos: [
+      [2, 3], [4, 5], [6, 7], [8, 9], [10, 11], [12, 13], [14, 15],
+      [16, 17], [18, 19], [20, 21], [22, 23], [24, 25], [26, 27], [28, 29],
+      [30, 31], [32, 33], [34, 35], [36, 37], [38, 39], [40, 41], [42, 43],
+      [44, 45], [46, 47], [48, 49], [50, 51], [52, 53], [54, 55], [56, 57],
+      [58, 59], [60, 61], [62, 63], [64, 65], [66, 67], [68, 69], [70, 71],
+    ],
+    edad: "0-5",
+    resumen: "En esta edición bilingüe, el ICBF y Fundalectura recopilan algunos arrullos y cuentos con los que papás, mamás y abuelos de cinco etnias colombianas reciben a sus bebés y les acompañan durante la infancia. Encuentras relatos en español, piapoco, arhuaco, kamëntsá, uitoto y wayúu, lenguas que guardan la memoria.",
+  },
+  {
+    /* Edición: Dipacho, María Fernanda Mantilla, Victoria Peters R., Marcela Tristancho - Ilustración: Daniel A. Fajardo Bautista, Victoria Peters Rada
+       —
+       Maguaré · https://maguare.gov.co/tortuguita-veni-baila-libro/
+       Convertido con flipbook-forge desde tortuguita-veni-baila-libro.pdf:
+       35 páginas de PDF → 69 hojas, 33 pliegos.
+
+       El PDF es entero de dobles planas, portada envolvente incluida: se
+       convirtió con --doble-plana. La mitad derecha de la primera página es
+       la tapa y abre el libro; la izquierda es la contraportada y lo cierra. */
+    slug: "tortuguita-veni-baila-libro",
+    tituloId: "lit-178",
+    titulo: "Tortuguita, vení bailá",
+    autor: "Tradición oral indígena",
+    editorial: "ICBF · Fundalectura",
+    paginas: 69,
+    razon: 0.9701,
+    pliegos: [
+      [2, 3], [4, 5], [6, 7], [8, 9], [10, 11], [12, 13], [14, 15],
+      [16, 17], [18, 19], [20, 21], [22, 23], [24, 25], [26, 27], [28, 29],
+      [30, 31], [32, 33], [34, 35], [36, 37], [38, 39], [40, 41], [42, 43],
+      [44, 45], [46, 47], [48, 49], [50, 51], [52, 53], [54, 55], [56, 57],
+      [58, 59], [60, 61], [62, 63], [64, 65], [66, 67],
+    ],
+    edad: "0-5",
+    resumen: "Este libro te invita a disfrutar la voz y la música de los pueblos nativos de Colombia. En ¡Tortuguita, vení bailá!, se recogen las palabras y las melodías con las que en Colombia se le da la bienvenida a los hijos en cinco pueblos indígenas (piapoco, uitoto, wayúu, kamëntŝa, arhuaco), entre los Rrom, los afrodescendientes y los campesinos. ¡Encuentra también el audio en este portal!",
+  },
 ];
 
 export function buscarLibro(slug: string): Libro | undefined {
