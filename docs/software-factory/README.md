@@ -11,6 +11,7 @@
 | [Auditoría de producto](../auditoria-producto-2026-09-26.md) | Observado / propuesto | Evaluación de diseño, arquitectura y preparación del producto. |
 | [Plan MVP](../plan-mvp/README.md) | En evolución | Definición, fases, riesgos, operación y piloto. |
 | [Configuración portable Hermes](../../.hermes/factory.json) | Activa | Roles, modelos y ejecutores, sin secretos. |
+| [Inc. 1 · Autenticación](inc-1-autenticacion.md) | Implementado (t_85913f5b), pendiente revisión | Login, recuperación de contraseña y evidencia de verificación. |
 
 ## Ciclo de evidencia por tarjeta
 

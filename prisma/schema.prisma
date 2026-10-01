@@ -1,0 +1,70 @@
+// MIDUHO — esquema Prisma (Incremento 1).
+// Esta tarjeta (t_85913f5b, autenticación) solo introduce las entidades de
+// acceso. El resto del Anexo A de docs/arquitectura-backend.md (estructura
+// académica, matrícula, asignaciones) lo agrega t_d5cb94b9 sobre esta base.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite" // desarrollo; producción: "postgresql" 🔶 pendiente de hospedaje
+}
+
+// ---------- Acceso ----------
+enum EstadoUsuario {
+  ACTIVO
+  INACTIVO
+}
+
+model Usuario {
+  id             String        @id @default(cuid())
+  nombres        String
+  apellidos      String
+  correo         String        @unique
+  hashContrasena String
+  fotoUrl        String?
+  estado         EstadoUsuario @default(ACTIVO)
+  ultimoAcceso   DateTime?
+  creadoEn       DateTime      @default(now())
+  actualizadoEn  DateTime      @updatedAt
+
+  roles              UsuarioRol[]
+  restablecimientos  RestablecimientoContrasena[]
+
+  @@map("usuarios")
+}
+
+model Rol {
+  id          String       @id @default(cuid())
+  codigo      String       @unique // ADMIN | COORDINACION | DOCENTE | ESTUDIANTE | ACUDIENTE
+  nombre      String
+  descripcion String?
+  usuarios    UsuarioRol[]
+
+  @@map("roles")
+}
+
+model UsuarioRol {
+  usuarioId String
+  rolId     String
+  usuario   Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  rol       Rol     @relation(fields: [rolId], references: [id], onDelete: Cascade)
+
+  @@id([usuarioId, rolId])
+  @@map("usuarios_roles")
+}
+
+model RestablecimientoContrasena {
+  id        String    @id @default(cuid())
+  usuarioId String
+  tokenHash String    @unique
+  expiraEn  DateTime
+  usadoEn   DateTime?
+  creadoEn  DateTime  @default(now())
+  usuario   Usuario   @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  @@index([usuarioId])
+  @@map("restablecimientos_contrasena")
+}
