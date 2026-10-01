@@ -9,3 +9,9 @@ export function evaluarAcceso(roles: string[] | null, permitidos: CodigoRol[]): 
   if (roles === null) return 401;
   return roles.some((r) => (permitidos as string[]).includes(r)) ? null : 403;
 }
+
+/** Un docente sin rol administrativo solo puede consultar sus propias asignaciones. */
+export function docenteIdSegunAlcance(roles: string[], usuarioId: string, docenteIdSolicitado?: string) {
+  const tieneAlcanceAdministrativo = roles.some((rol) => rol === "ADMIN" || rol === "COORDINACION");
+  return tieneAlcanceAdministrativo ? docenteIdSolicitado : usuarioId;
+}

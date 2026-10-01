@@ -4,7 +4,7 @@ import path from "node:path";
 import { PrismaLibSql } from "@prisma/adapter-libsql";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@/generated/prisma/client";
-import { evaluarAcceso, ROLES_ACADEMICO } from "@/server/http-acceso";
+import { docenteIdSegunAlcance, evaluarAcceso, ROLES_ACADEMICO } from "@/server/http-acceso";
 import { ErrorDominio } from "@/server/errores";
 import * as E from "./esquemas";
 import { dentroDe, ponderacionCompleta, ponderacionExcede, seSolapan, sumaPonderaciones } from "./reglas";
@@ -52,6 +52,17 @@ describe("acceso académico", () => {
     expect(evaluarAcceso(["DOCENTE"], ROLES_ACADEMICO)).toBe(403);
     expect(evaluarAcceso(["COORDINACION"], ROLES_ACADEMICO)).toBeNull();
     expect(evaluarAcceso(["DOCENTE", "ADMIN"], ROLES_ACADEMICO)).toBeNull();
+  });
+
+  it("limita las asignaciones al docente de la sesión e ignora un docenteId ajeno", () => {
+    expect(docenteIdSegunAlcance(["DOCENTE"], "docente-sesion", "docente-ajeno")).toBe("docente-sesion");
+    expect(docenteIdSegunAlcance(["DOCENTE"], "docente-sesion")).toBe("docente-sesion");
+  });
+
+  it("conserva el filtro y el listado completo para roles administrativos", () => {
+    expect(docenteIdSegunAlcance(["ADMIN"], "admin", "docente-solicitado")).toBe("docente-solicitado");
+    expect(docenteIdSegunAlcance(["COORDINACION"], "coordinacion")).toBeUndefined();
+    expect(docenteIdSegunAlcance(["DOCENTE", "ADMIN"], "admin-docente")).toBeUndefined();
   });
 });
 
