@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "project": "miduho",
+  "description": "Configuración portable de la software factory MIDUHO. No contiene secretos ni historiales.",
+  "profiles": {
+    "miduho": {
+      "description": "Orquestación, priorización, dependencias, aceptación y síntesis de los incrementos MIDUHO.",
+      "model": {"provider": "openai-codex", "default": "gpt-5.6-terra"},
+      "executor": "Hermes Kanban orchestrator"
+    },
+    "architect": {
+      "description": "Requisitos, análisis y diseño de arquitectura. Produce specs, modelo de entidades y descompone épicas; no escribe código de producción.",
+      "model": {"provider": "openai-codex", "default": "gpt-5.6-sol"},
+      "executor": "Claude Code plan mode"
+    },
+    "backend": {
+      "description": "Implementación backend y lógica de negocio. Usa Claude Code para cambios de producción y pruebas focalizadas.",
+      "model": {"provider": "anthropic", "default": "claude-opus-5-5"},
+      "executor": "Claude Code"
+    },
+    "frontend": {
+      "description": "Implementación Next.js, React y Tailwind. Usa Claude Code; cumple WCAG 2.1 AA.",
+      "model": {"provider": "anthropic", "default": "claude-opus-5-5"},
+      "executor": "Claude Code"
+    },
+    "qa": {
+      "description": "QA, pruebas de aceptación y accesibilidad. OpenCode ejecuta validaciones y reporta evidencia.",
+      "model": {"provider": "opencode-go", "default": "deepseek-v4-pro"},
+      "executor": "OpenCode"
+    },
+    "contenido": {
+      "description": "Contenido, datos demo ficticios y flipbooks. Nunca usa datos personales reales de menores.",
+      "model": {"provider": "opencode-go", "default": "deepseek-v4-pro"},
+      "executor": "Hermes + Antigravity"
+    },
+    "reviewer": {
+      "description": "Gate de done: seguridad, autorización, WCAG, pruebas y desviación de arquitectura.",
+      "model": {"provider": "opencode-go", "default": "deepseek-v4-pro"},
+      "executor": "OpenCode review; Claude Code para hallazgos críticos"
+    }
+  },
+  "shared_provider_checklist": [
+    "Autenticar OpenAI Codex una vez en el almacén global de Hermes.",
+    "Iniciar sesión de Claude Code en el HOME real del usuario; no versionar credenciales.",
+    "Configurar OPENCODE_GO_API_KEY solo fuera del repositorio.",
+    "Autenticar Antigravity con la cuenta del usuario; no versionar su directorio de sesión."
+  ]
+}
