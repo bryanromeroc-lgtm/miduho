@@ -12,7 +12,7 @@ El piloto prueba la adopción real antes de escalar: ~23 días, con una regla qu
 | ID | Tarea | Terminado cuando | Prio. | Días | Depende de | Estado |
 | --- | --- | --- | --- | --- | --- | --- |
 | PIL-01 | Plan del piloto: grupos, 6 semanas de duración, responsables del colegio, criterios de éxito (DSC-13) y canal de soporte | Plan aprobado por rectoría | P0 | 1 | DSC-13 | Pendiente |
-| PIL-02 | Cargar los datos reales en producción (estructura académica, usuarios y matrícula por CSV) con verificación del colegio; nunca datos reales fuera de producción | Coordinación valida listas y asignaciones | P0 | 1 | IMP-ACA-06, LEG-04 | Pendiente |
+| PIL-02 | Cargar los datos reales en producción (estructura académica, usuarios y asignaciones docentes) con verificación del colegio; nunca datos reales fuera de producción | Coordinación valida usuarios y asignaciones | P0 | 1 | IMP-ACA-04, IMP-ACA-05, LEG-04 | Pendiente |
 | PIL-03 | Recoger las autorizaciones de los acudientes antes de activar las cuentas de estudiantes | ≥ 95 % de autorizaciones registradas | P0 | 1 | LEG-04 | Pendiente |
 | PIL-04 | Cargar el contenido del grado piloto antes del inicio: al menos un recurso por clase y por semana del primer mes | Ninguna clase del primer mes está vacía | P0 | 3 | IMP-CLA-05, DSC-11 | Pendiente |
 | PIL-05 | Capacitación docente: 2 sesiones de 90 min y videos de ≤ 3 min por tarea | 100 % de docentes del piloto capacitados | P0 | 2 | PIL-02 | Pendiente |

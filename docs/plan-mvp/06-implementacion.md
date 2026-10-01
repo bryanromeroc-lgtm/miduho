@@ -7,11 +7,11 @@
 
 ---
 
-La implementación suma ~117,5 días en 11 módulos. Los 46 días P0 (fundación, acceso, la clase y biblioteca) sostienen el piloto; los 64,5 días P1 completan lo que el colegio necesita para operar con 400 usuarios.
+La implementación activa suma ~113 días en 11 módulos. Los 43 días P0 (fundación, acceso, la clase y biblioteca) sostienen el piloto; los 64,5 días P1 completan lo que el colegio necesita para operar con 400 usuarios. Las tareas retiradas de alcance no se cuentan.
 
 ## Fundación académica
 
-El colegio queda representado en el sistema (HU-04 a HU-07) en ~14 días. Es el criterio de salida del Incremento 1: un docente entra y ve su carga académica real.
+El colegio queda representado en el sistema en ~9,5 días. Es el criterio de salida del Incremento 1: un docente entra y ve su carga académica real.
 
 | ID | Tarea | Terminado cuando | Prio. | Días | Depende de | Estado |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -20,9 +20,9 @@ El colegio queda representado en el sistema (HU-04 a HU-07) en ~14 días. Es el 
 | IMP-ACA-03 | Grados, grupos (RN-07), áreas con tipo (RN-13) y asignaturas por grado con intensidad (RN-09) (HU-05) | La estructura del grado piloto se crea desde la interfaz | P0 | 2 | IMP-ACA-01 | Pendiente |
 | IMP-ACA-04 | Asignación docente única por asignatura, grupo y año (RN-10 a RN-12), con vista de carga por docente (HU-06) | Un docente ve exactamente sus grupos y nada más | P0 | 1,5 | IMP-ACA-03 | Pendiente |
 | IMP-ACA-05 | Gestión de usuarios: crear, editar, desactivar sin borrar (RN-49), varios roles por persona y restablecer acceso | Un usuario desactivado pierde el acceso y su historial se conserva | P0 | 2 | ARQ-06 | Pendiente |
-| IMP-ACA-06 | Importación CSV de estudiantes, acudientes y matrícula: plantilla, vista previa, errores por fila y reimportación sin duplicados, en la cola de trabajos (HU-07) | Un CSV de 400 filas con 5 errores se importa y reporta esas 5 filas | P0 | 3 | IMP-ACA-03, ARQ-09 | Pendiente |
+| IMP-ACA-06 | **Retirada de alcance:** matrícula de estudiantes, incluido modelo, flujo e importación CSV | Decisión de producto registrada; no se implementa | — | 0 | — | Retirada |
 | IMP-ACA-07 | Vínculo acudiente–estudiante verificado por la institución (RN-48) | Un acudiente sin vínculo verificado no ve nada del estudiante | P1 | 1 | IMP-ACA-05 | Pendiente |
-| IMP-ACA-08 | Exportación de matrícula compatible con SIMAT 🔶, según el formato de DSC-09 | El archivo cumple el formato que usa el colegio | P2 | 1,5 | DSC-09 | Pendiente |
+| IMP-ACA-08 | **Retirada de alcance:** exportación de matrícula compatible con SIMAT | Decisión de producto registrada; no se implementa | — | 0 | — | Retirada |
 
 ## Acceso y sesiones
 

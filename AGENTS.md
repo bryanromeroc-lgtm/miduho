@@ -26,7 +26,7 @@ Plataforma educativa **dedicada** al Colegio Mi Dulce Hogar (Madrid, Cundinamarc
 - `src/app/` — rutas: inicio, biblioteca (lector flipbook), clases, laboratorios, agenda, emprendimiento.
 - `src/lib/` — datos demo ficticios: `datos.ts` (áreas, títulos, clases del día), `laboratorios.ts` (mundos/estaciones), `libros.ts`.
 - `public/libros/<libro>/` — páginas digitalizadas (webp) + `libro.json`.
-- **Backend en cero**: hoy todo es frontend con datos hardcodeados. El siguiente paso es el Incremento 1 (Fundación: auth, entidades, roles, matrícula CSV).
+- El Incremento 1 construye la fundación: autenticación, entidades académicas, roles y asignación docente. **La matrícula de estudiantes (entidad, flujo e importación CSV) está fuera del alcance por decisión de producto.**
 - Git **local, sin remote**. Hay cambios sin commitear (carpetas de libros nuevas + `datos.ts`/`libros.ts` modificados).
 
 ## Verificación antes de dar por hecho un cambio

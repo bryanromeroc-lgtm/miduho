@@ -26,8 +26,9 @@ El lenguaje interno evita marcas comerciales de la plataforma de referencia y us
 | Año lectivo | `AnioLectivo` | Solo uno activo (RN-01) |
 | Período | `Periodo` | Entidad con fechas, nunca texto libre (RN-04) |
 | Asignatura | `Asignatura` | Las 14 reales de 1° (RF-ACAD-4) |
-| Matrícula | `Matricula` | Estudiante × grupo × año (RN-08) |
 | Asignación docente | `AsignacionDocente` | **Gobierna todo el acceso docente** |
+
+> **Decisión de alcance:** MIDUHO no gestiona matrícula de estudiantes. No existe entidad `Matricula`, flujo de matrícula, importación CSV ni exportación SIMAT. La eventual asociación de estudiantes a grupos queda por definir fuera de este alcance; no debe suponerse una solución sustituta.
 
 **Nota de i18n:** el idioma es un atributo del nombre, no un registro aparte (RN-14). No existen "Matemáticas" y "Math" como registros distintos.
 
@@ -62,7 +63,6 @@ Grado       1─N Grupo
 Grado       N─N Asignatura      (AsignaturaGrado)
 Area        1─N Asignatura
 
-Estudiante  N─1 Grupo            (Matricula, un grupo por año — RN-08)
 Docente     N─N Asignatura×Grupo (AsignacionDocente)  ⭐ gobierna permisos
 
 Currículo (eje secuenciado / laboratorios):
@@ -89,7 +89,7 @@ Nivel   1─N Bloque 1─N Unidad 1─1 Sesion 1─N SesionSeccion (las 7)
 | `estado` | enum `ACTIVO`/`INACTIVO` | desactivar, no borrar (RN-49) |
 | `ultimoAcceso`, `creadoEn`, `actualizadoEn` | fecha | |
 
-Relaciones: `roles` (N:M vía `UsuarioRol`), `acudidos`/`acudientes` (autorelación vía `AcudienteEstudiante`), `matriculas`, `asignacionesDocente`, `gruposDirigidos`, `auditorias`.
+Relaciones: `roles` (N:M vía `UsuarioRol`), `acudidos`/`acudientes` (autorelación vía `AcudienteEstudiante`), `asignacionesDocente`, `gruposDirigidos`, `auditorias`.
 
 > 🔶 Datos de menores: en el MVP **no** se modelan fecha de nacimiento, documento ni datos sensibles de estudiantes (RNF-DAT-1, minimización). Si el colegio los requiere, se agregan en una tabla `PerfilEstudiante` tras revisión jurídica.
 
@@ -155,17 +155,6 @@ Relaciones: `roles` (N:M vía `UsuarioRol`), `acudidos`/`acudientes` (autorelaci
 | `intensidadHoraria` | entero opcional | 🔶 |
 
 **AsignaturaGrado** — N:M. Una asignatura se dicta en varios grados; en cada grado tiene su propia intensidad (RN-09).
-
-**Matricula**
-
-| Atributo | Tipo | Notas |
-|---|---|---|
-| `estudianteId` | FK → Usuario | |
-| `grupoId`, `anioLectivoId` | FK | |
-| `estado` | enum `ACTIVA`/`RETIRADA` | |
-| `fecha` | fecha | |
-
-Restricción: `unique(estudianteId, anioLectivoId)` — un estudiante en **un solo grupo** por año (RN-08).
 
 **AsignacionDocente** ⭐ — gobierna el acceso docente.
 
@@ -241,8 +230,7 @@ Enumerado `SeccionTipo`: `OBJETIVO`, `EVIDENCIAS_APRENDIZAJE`, `TEMAS_PROFUNDIZA
 | `Usuario`, `Rol`, `UsuarioRol` | Inc. 1 | `t_85913f5b` (auth) + `t_871b9bac` (roles) |
 | `RestablecimientoContrasena` | Inc. 1 | `t_85913f5b` (recuperar contraseña) |
 | `AnioLectivo`, `Periodo`, `Grado`, `Grupo`, `Asignatura`, `AsignaturaGrado`, `Area` | Inc. 1 | `t_d5cb94b9` (entidades base) |
-| `AsignacionDocente` | Inc. 1 | `t_871b9bac` (asignación de docentes) |
-| `Matricula`, `AcudienteEstudiante` | Inc. 1 | `t_871b9bac` (matrícula CSV) |
+| `AsignacionDocente`, `AcudienteEstudiante` | Inc. 1 | tarjeta de roles y asignación docente |
 | `Nivel`, `Bloque`, `Unidad`, `Sesion`, `SesionSeccion` | Modelo desde Inc. 1; navegación en Inc. 7 | — |
 | `Auditoria` | Inc. 1 (transversal) | todos |
 
@@ -259,7 +247,6 @@ El modelo del vault las define; **no** se implementan ahora, pero la arquitectur
 | `AnioLectivo` | RN-01, RN-52 |
 | `Periodo` | RN-02, RN-03, RN-04, RN-06 |
 | `Grupo` | RN-07 |
-| `Matricula` | RN-08 |
 | `Asignatura` / `AsignaturaGrado` | RN-09 |
 | `AsignacionDocente` | RN-10, RN-11, RN-12, RN-44, RN-45 |
 | `Area` | RN-13, RN-14 |

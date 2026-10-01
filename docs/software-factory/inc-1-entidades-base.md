@@ -8,7 +8,7 @@
 
 | Incluido | Fuera (otra tarjeta) |
 |---|---|
-| `AnioLectivo`, `Periodo`, `Grado`, `Grupo`, `Asignatura` + `Area` y `AsignaturaGrado` (las requiere `Asignatura`) | `Matricula`, `AsignacionDocente`, `AcudienteEstudiante` (roles/matrícula) |
+| `AnioLectivo`, `Periodo`, `Grado`, `Grupo`, `Asignatura` + `Area` y `AsignaturaGrado` (las requiere `Asignatura`) | `AsignacionDocente`, `AcudienteEstudiante` (roles/asignación); matrícula de estudiantes fue retirada del alcance |
 | Migración Prisma `20261001061853_academico_base` | `Nivel`/`Bloque`/`Unidad`/`Sesion` (currículo) |
 | Capa de datos `src/server/modules/academico/` | UI (sin pantallas en esta tarjeta) |
 | API REST mínima GET/POST/PATCH de las cinco entidades | Auditoría (`Auditoria` aún no existe en el esquema) 🔶 |

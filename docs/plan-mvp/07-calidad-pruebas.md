@@ -11,10 +11,10 @@ Las pruebas demuestran con números que la plataforma aguanta a 400 usuarios y p
 
 | ID | Tarea | Terminado cuando | Prio. | Días | Depende de | Estado |
 | --- | --- | --- | --- | --- | --- | --- |
-| QA-01 | Estrategia de pruebas en una página: unitarias para permisos, notas, matrícula e importación; integración de acciones contra PostgreSQL real; e2e de los flujos críticos | Documento en `docs/` aplicado en CI | P0 | 0,5 | ARQ-13 | Pendiente |
+| QA-01 | Estrategia de pruebas en una página: unitarias para permisos, notas y asignación docente; integración de acciones contra PostgreSQL real; e2e de los flujos críticos | Documento en `docs/` aplicado en CI | P0 | 0,5 | ARQ-13 | Pendiente |
 | QA-02 | Pruebas unitarias de las reglas de negocio (RN-01 a RN-12, RN-22 a RN-24) y del cálculo de notas | Cobertura ≥ 90 % en `src/server/auth` y en evaluación | P0 | 3 | ARQ-07 | Pendiente |
 | QA-03 | Pruebas de autorización horizontal y vertical: docente de otro grupo, acudiente sin verificar, estudiante abriendo una guía docente, IDs ajenos en la URL | Matriz rol × recurso automatizada; todas las pruebas de acceso denegado pasan | P0 | 2 | ARQ-07 | Pendiente |
-| QA-04 | E2E con Playwright y axe de los flujos críticos: acceso por rol, material en ≤ 3 clics, abrir un libro, importar CSV, liberar una unidad, entregar, calificar y emitir un boletín | Suite en verde en CI a 390 y 1440 px | P0 | 3 | ARQ-13 | Pendiente |
+| QA-04 | E2E con Playwright y axe de los flujos críticos: acceso por rol, material en ≤ 3 clics, abrir un libro, liberar una unidad, entregar, calificar y emitir un boletín | Suite en verde en CI a 390 y 1440 px | P0 | 3 | ARQ-13 | Pendiente |
 | QA-05 | Generador de un colegio sintético de 400 usuarios con identificadores neutros (Estudiante 001…), sin nombres ni datos personales de menores | Un comando crea el colegio sintético en pruebas | P0 | 1 | ARQ-03 | Pendiente |
 | QA-06 | Prueba de carga con k6: 150 sesiones concurrentes, 20 peticiones/s durante 30 min, pico de 300 acudientes en una hora y 25 aperturas simultáneas del mismo libro | Se cumplen las metas de carga del MVP; informe archivado | P0 | 2 | QA-05, ARQ-14 | Pendiente |
 | QA-07 | Prueba de red escolar con limitación a 10–20 Mbps compartidos y 4G lento, en los equipos reales del colegio (DSC-05) | LCP ≤ 2 s y libro abierto en menos de 5 s | P0 | 1 | DSC-05, IMP-BIB-08 | Pendiente |

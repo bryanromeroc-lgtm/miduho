@@ -2,7 +2,8 @@
 // Esta tarjeta (t_85913f5b, autenticación) introdujo las entidades de acceso.
 // t_b089e01a agrega la estructura académica base (AnioLectivo, Periodo,
 // Grado, Grupo, Asignatura + Area y AsignaturaGrado que estas requieren).
-// Matrícula y AsignacionDocente quedan para la tarjeta de roles/matrícula.
+// AsignacionDocente queda para la tarjeta de roles y asignación docente.
+// No se modela matrícula de estudiantes por decisión de alcance del producto.
 
 generator client {
   provider = "prisma-client"

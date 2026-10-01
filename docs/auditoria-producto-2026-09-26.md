@@ -6,6 +6,8 @@
 **Método:** lectura de código, `npm run lint` y `npm run build`, servidor de producción local (`next start`), medición con Playwright (8 rutas, 1440 px y 390 px), escaneo automático con axe-core (WCAG 2.1 A/AA + buenas prácticas) y revisión visual de capturas.
 **Convención:** **[O]** observado · **[I]** inferido · **[P]** propuesto · 🔶 por confirmar.
 
+> **Decisión posterior de alcance:** las propuestas de esta auditoría relacionadas con matrícula de estudiantes, importación CSV y exportación SIMAT quedaron descartadas. Se conservan abajo como registro histórico de la auditoría, no como alcance vigente.
+
 ---
 
 ## 0. Veredicto en una página

@@ -12,7 +12,7 @@
 1. **Un solo sistema, no dos.** Contenido + planeación + clase + evaluación en una aplicación. No existe "compartir en mi aula".
 2. **Sin multi-tenancy.** Un solo colegio, sin `institucion_id` (RNF-MAN-1).
 3. **Monolito modular**, no microservicios. La escala de un colegio no los justifica.
-4. **Base de datos relacional** (matrículas, notas, asignaciones exigen integridad).
+4. **Base de datos relacional** (notas, roles y asignaciones exigen integridad).
 5. **Autenticación propia** (email + contraseña). SAML/SSO externo añade un punto de fallo sin aportar.
 6. **Autorización en el servidor, en cada petición** (RNF-SEG-3). Ocultar un botón no es control de acceso.
 
@@ -58,7 +58,7 @@ app/
 │  │  └─ api/              # Route Handlers (REST interno)
 │  │     ├─ auth/[...nextauth]/
 │  │     ├─ anios-lectivos/… · periodos/… · grados/… · grupos/… · asignaturas/…
-│  │     ├─ usuarios/… · roles/… · matriculas/… · asignaciones-docente/…
+│  │     ├─ usuarios/… · roles/… · asignaciones-docente/…
 │  │     └─ niveles/… · bloques/… · unidades/… · sesiones/…
 │  ├─ server/              # ⭐ capa de servidor (solo importable desde el servidor)
 │  │  ├─ db.ts             # instancia Prisma (singleton)
@@ -70,7 +70,6 @@ app/
 │  │  └─ modules/          # un módulo por dominio
 │  │     ├─ academico/     # anioLectivo, periodo, grado, grupo, asignatura
 │  │     ├─ usuarios/      # usuario, rol, acudienteEstudiante
-│  │     ├─ matricula/     # matricula + importación CSV
 │  │     └─ curriculo/     # area, nivel, bloque, unidad, sesion
 │  ├─ lib/                 # utilidades compartidas (client + server)
 │  ├─ types/               # tipos compartidos
@@ -146,7 +145,7 @@ Apoyos de Next.js 16:
 
 Convenciones:
 
-- Rutas en plural, kebab-case: `/api/grupos/[id]/matriculas`, etc.
+- Rutas en plural y kebab-case: `/api/asignaciones-docente`, etc.
 - **Validación de entrada con Zod** en cada handler: `schema.parse(...)`; error 400 con mensajes legibles (RNF-USA-5), nunca trazas técnicas.
 - **Paginación en servidor** para todo listado (RNF-PER-2): `?page=1&pageSize=20`, respuesta `{ data, page, pageSize, total }`. Nunca cargar listas completas.
 - **IDs no adivinables** en toda respuesta y ruta (RNF-SEG-4).
@@ -165,19 +164,19 @@ GET/POST/PATCH /api/grupos
 GET/POST/PATCH /api/asignaturas
 GET/POST /api/usuarios            # (admin) crear/editar/desactivar
 GET/POST /api/roles
-POST /api/matriculas/importar     # CSV con reporte de errores por fila (HU-07)
-GET/POST/PATCH /api/matriculas
 GET/POST/PATCH /api/asignaciones-docente
 GET/POST/PATCH /api/areas /api/niveles /api/bloques /api/unidades /api/sesiones
 ```
 
-Cada entidad expone su CRUD con la autorización correspondiente: académico → `ADMIN`/`COORDINACION`; matrícula/asignaciones → `ADMIN`; consulta de datos propios → `ESTUDIANTE`/`ACUDIENTE`.
+Cada entidad expone su CRUD con la autorización correspondiente: académico → `ADMIN`/`COORDINACION`; asignaciones docentes → `ADMIN`; consulta de datos propios → `ESTUDIANTE`/`ACUDIENTE`.
+
+MIDUHO no expone endpoints ni módulo de matrícula. La entidad, el flujo, la importación CSV y la exportación SIMAT están fuera del alcance por decisión de producto.
 
 ---
 
 ## 8. Auditoría
 
-`src/server/auditoria.ts` expone `auditar(autorId, { entidad, registroId, accion, valorAnterior, valorNuevo })`. Se llama desde la capa de datos en: cambios de rol, cambios de nota, accesos administrativos, modificaciones de matrícula y asignaciones (RF-ADMIN-4, RN-50). Es transversal desde el Inc. 1.
+`src/server/auditoria.ts` expone `auditar(autorId, { entidad, registroId, accion, valorAnterior, valorNuevo })`. Se llama desde la capa de datos en: cambios de rol, cambios de nota, accesos administrativos y modificaciones de asignaciones (RF-ADMIN-4, RN-50). Es transversal desde el Inc. 1.
 
 ---
 
@@ -226,7 +225,7 @@ npm run build   # debe compilar sin errores
 npm run lint    # eslint debe pasar
 ```
 
-Pruebas unitarias (Vitest) sobre la lógica crítica desde el Inc. 1: `permisos.ts` (reglas de AsignacionDocente/acudiente/estudiante), unicidad de matrícula por año (RN-08), unicidad de asignación docente (RN-10), suma de ponderaciones (RN-06), importación CSV con reporte de errores.
+Pruebas unitarias (Vitest) sobre la lógica crítica desde el Inc. 1: `permisos.ts` (reglas de AsignacionDocente/acudiente/estudiante), unicidad de asignación docente (RN-10) y suma de ponderaciones (RN-06).
 
 ---
 
@@ -242,9 +241,9 @@ Hospedaje (nube vs servidor del colegio), SIEE del colegio (bloquea Inc. 5), alc
 |---|---|---|
 | `t_d5cb94b9` (entidades base) | `academico`: `AnioLectivo`, `Periodo`, `Grado`, `Grupo`, `Asignatura`, `AsignaturaGrado`, `Area` | ADMIN/COORDINACION |
 | `t_85913f5b` (auth) | `usuarios` (login) + `RestablecimientoContrasena` | Auth.js v5 credentials + JWT |
-| `t_871b9bac` (roles + matrícula) | `Rol`, `UsuarioRol`, `AsignacionDocente`, `Matricula`, `AcudienteEstudiante`, importación CSV | AsignacionDocente como llave de acceso |
+| Tarjeta de roles y asignación | `Rol`, `UsuarioRol`, `AsignacionDocente`, `AcudienteEstudiante` | AsignacionDocente como llave de acceso |
 
-Orden sugerido: primero `t_d5cb94b9` (el modelo base), luego `t_85913f5b` (auth) y `t_871b9bac` (roles/asignaciones/matrícula), que dependen del modelo y de la sesión.
+Orden sugerido: primero la tarjeta de modelo base, luego autenticación y roles/asignaciones, que dependen del modelo y de la sesión.
 
 ---
 
@@ -276,7 +275,6 @@ model Usuario {
   actualizadoEn  DateTime      @updatedAt
 
   roles               UsuarioRol[]
-  matriculas          Matricula[]           @relation("EstudianteMatricula")
   acudidos            AcudienteEstudiante[] @relation("Acudiente")
   acudientes          AcudienteEstudiante[] @relation("Estudiante")
   asignacionesDocente AsignacionDocente[]
@@ -336,7 +334,6 @@ model AnioLectivo {
   estado       EstadoAnioLectivo @default(ACTIVO)
   periodos     Periodo[]
   grupos       Grupo[]
-  matriculas   Matricula[]
   asignaciones AsignacionDocente[]
   @@map("anios_lectivos")
 }
@@ -375,7 +372,6 @@ model Grupo {
   grado         Grado       @relation(fields: [gradoId], references: [id])
   anioLectivo   AnioLectivo @relation(fields: [anioLectivoId], references: [id])
   director      Usuario?    @relation("Director", fields: [directorId], references: [id])
-  matriculas    Matricula[]
   asignaciones  AsignacionDocente[]
   @@unique([gradoId, anioLectivoId, identificador])
   @@map("grupos")
@@ -400,22 +396,6 @@ model AsignaturaGrado {
   grado        Grado      @relation(fields: [gradoId], references: [id], onDelete: Cascade)
   @@id([asignaturaId, gradoId])
   @@map("asignaturas_grados")
-}
-
-enum EstadoMatricula { ACTIVA RETIRADA }
-
-model Matricula {
-  id            String         @id @default(cuid())
-  estudianteId  String
-  grupoId       String
-  anioLectivoId String
-  estado        EstadoMatricula @default(ACTIVA)
-  fecha         DateTime        @default(now())
-  estudiante    Usuario         @relation("EstudianteMatricula", fields: [estudianteId], references: [id])
-  grupo         Grupo           @relation(fields: [grupoId], references: [id])
-  anioLectivo   AnioLectivo     @relation(fields: [anioLectivoId], references: [id])
-  @@unique([estudianteId, anioLectivoId]) // RN-08
-  @@map("matriculas")
 }
 
 model AsignacionDocente {
