@@ -1,7 +1,8 @@
 // MIDUHO — esquema Prisma (Incremento 1).
-// Esta tarjeta (t_85913f5b, autenticación) solo introduce las entidades de
-// acceso. El resto del Anexo A de docs/arquitectura-backend.md (estructura
-// académica, matrícula, asignaciones) lo agrega t_d5cb94b9 sobre esta base.
+// Esta tarjeta (t_85913f5b, autenticación) introdujo las entidades de acceso.
+// t_b089e01a agrega la estructura académica base (AnioLectivo, Periodo,
+// Grado, Grupo, Asignatura + Area y AsignaturaGrado que estas requieren).
+// Matrícula y AsignacionDocente quedan para la tarjeta de roles/matrícula.
 
 generator client {
   provider = "prisma-client"
@@ -30,8 +31,9 @@ model Usuario {
   creadoEn       DateTime      @default(now())
   actualizadoEn  DateTime      @updatedAt
 
-  roles              UsuarioRol[]
-  restablecimientos  RestablecimientoContrasena[]
+  roles             UsuarioRol[]
+  restablecimientos RestablecimientoContrasena[]
+  gruposDirigidos   Grupo[]                      @relation("Director")
 
   @@map("usuarios")
 }
@@ -67,4 +69,125 @@ model RestablecimientoContrasena {
 
   @@index([usuarioId])
   @@map("restablecimientos_contrasena")
+}
+
+// ---------- Estructura académica (t_b089e01a) ----------
+// Reglas que SQL no expresa y se validan en src/server/modules/academico:
+// RN-01 un solo año ACTIVO · RN-02 períodos sin solape y dentro del año ·
+// RN-06 ponderaciones = 100 % · RN-52 año CERRADO es solo lectura.
+
+enum EstadoAnioLectivo {
+  ACTIVO
+  CERRADO
+}
+
+model AnioLectivo {
+  id            String            @id @default(cuid())
+  anio          Int               @unique
+  fechaInicio   DateTime
+  fechaFin      DateTime
+  estado        EstadoAnioLectivo @default(ACTIVO)
+  creadoEn      DateTime          @default(now())
+  actualizadoEn DateTime          @updatedAt
+  periodos      Periodo[]
+  grupos        Grupo[]
+
+  @@map("anios_lectivos")
+}
+
+model Periodo {
+  id            String      @id @default(cuid())
+  anioLectivoId String
+  nombre        String
+  orden         Int
+  fechaInicio   DateTime
+  fechaFin      DateTime
+  ponderacion   Decimal // porcentaje; suma anual = 100 (RN-06)
+  creadoEn      DateTime    @default(now())
+  actualizadoEn DateTime    @updatedAt
+  anioLectivo   AnioLectivo @relation(fields: [anioLectivoId], references: [id])
+
+  @@unique([anioLectivoId, orden])
+  @@map("periodos")
+}
+
+enum NivelEducativo {
+  PREESCOLAR
+  PRIMARIA
+  BACHILLERATO
+}
+
+model Grado {
+  id            String            @id @default(cuid())
+  nombre        String            @unique
+  nivel         NivelEducativo
+  orden         Int               @unique
+  creadoEn      DateTime          @default(now())
+  actualizadoEn DateTime          @updatedAt
+  grupos        Grupo[]
+  asignaturas   AsignaturaGrado[]
+
+  @@map("grados")
+}
+
+model Grupo {
+  id            String      @id @default(cuid())
+  gradoId       String
+  anioLectivoId String
+  identificador String // "01", "02"
+  directorId    String?
+  creadoEn      DateTime    @default(now())
+  actualizadoEn DateTime    @updatedAt
+  grado         Grado       @relation(fields: [gradoId], references: [id])
+  anioLectivo   AnioLectivo @relation(fields: [anioLectivoId], references: [id])
+  director      Usuario?    @relation("Director", fields: [directorId], references: [id], onDelete: SetNull)
+
+  @@unique([gradoId, anioLectivoId, identificador]) // RN-07
+  @@index([anioLectivoId])
+  @@map("grupos")
+}
+
+enum TipoArea {
+  AREA
+  DIMENSION
+  ENFOQUE
+}
+
+model Area {
+  id            String       @id @default(cuid())
+  nombre        String
+  tipo          TipoArea     @default(AREA) // RN-13
+  idioma        String       @default("es") // RN-14
+  orden         Int?
+  creadoEn      DateTime     @default(now())
+  actualizadoEn DateTime     @updatedAt
+  asignaturas   Asignatura[]
+
+  @@unique([nombre, idioma])
+  @@map("areas")
+}
+
+model Asignatura {
+  id                String            @id @default(cuid())
+  nombre            String
+  areaId            String
+  intensidadHoraria Int? // 🔶
+  creadoEn          DateTime          @default(now())
+  actualizadoEn     DateTime          @updatedAt
+  area              Area              @relation(fields: [areaId], references: [id])
+  grados            AsignaturaGrado[]
+
+  @@unique([areaId, nombre])
+  @@map("asignaturas")
+}
+
+model AsignaturaGrado {
+  asignaturaId String
+  gradoId      String
+  intensidad   Int? // horas semanales en ese grado (RN-09) 🔶
+  asignatura   Asignatura @relation(fields: [asignaturaId], references: [id], onDelete: Cascade)
+  grado        Grado      @relation(fields: [gradoId], references: [id], onDelete: Cascade)
+
+  @@id([asignaturaId, gradoId])
+  @@map("asignaturas_grados")
 }
