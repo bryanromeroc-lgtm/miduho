@@ -306,7 +306,43 @@ export function crearServicioAcademico(db: PrismaClient) {
     },
   };
 
-  return { aniosLectivos, periodos, grados, grupos, asignaturas };
+  const asignacionesDocente = {
+    async listar(f: Entrada<typeof E.filtroAsignacionesDocente>) {
+      const where = { ...(f.docenteId ? { docenteId: f.docenteId } : {}), ...(f.grupoId ? { grupoId: f.grupoId } : {}), ...(f.anioLectivoId ? { anioLectivoId: f.anioLectivoId } : {}) };
+      const [data, total] = await Promise.all([
+        db.asignacionDocente.findMany({ where, include: { docente: { select: { id: true, nombres: true, apellidos: true } }, asignatura: true, grupo: { include: { grado: true } }, anioLectivo: true }, orderBy: { creadoEn: "desc" }, ...saltar(f) }),
+        db.asignacionDocente.count({ where }),
+      ]);
+      return { data, total };
+    },
+    async crear(d: Entrada<typeof E.crearAsignacionDocente>, creadoPorId?: string) {
+      return db.$transaction(async (tx) => {
+        const docente = await tx.usuario.findUnique({ where: { id: d.docenteId }, include: { roles: { include: { rol: true } } } });
+        if (!docente || docente.estado !== "ACTIVO" || !docente.roles.some((r) => r.rol.codigo === "DOCENTE")) throw new ErrorDominio("DOCENTE_INVALIDO", "El usuario debe estar activo y tener rol docente.");
+        const [asignatura, grupo, anio] = await Promise.all([tx.asignatura.findUnique({ where: { id: d.asignaturaId } }), tx.grupo.findUnique({ where: { id: d.grupoId } }), tx.anioLectivo.findUnique({ where: { id: d.anioLectivoId } })]);
+        if (!asignatura) throw noEncontrado("La asignatura");
+        if (!grupo) throw noEncontrado("El grupo");
+        if (!anio) throw noEncontrado("El año lectivo");
+        if (grupo.anioLectivoId !== d.anioLectivoId) throw conflicto("GRUPO_ANIO_INVALIDO", "El grupo no pertenece al año lectivo.");
+        if (anio.estado === "CERRADO") throw conflicto("ANIO_CERRADO", "El año lectivo está cerrado y es de solo lectura.");
+        return tx.asignacionDocente.create({ data: { ...d, creadoPorId }, include: { docente: { select: { id: true, nombres: true, apellidos: true } }, asignatura: true, grupo: true, anioLectivo: true } });
+      });
+    },
+    async desactivar(id: string) { return db.asignacionDocente.update({ where: { id }, data: { estado: "INACTIVA" } }); },
+  };
+
+  const acudientesEstudiantes = {
+    async listar(f: Entrada<typeof E.filtroAsignacionesDocente>) { return db.acudienteEstudiante.findMany({ skip: (f.page - 1) * f.pageSize, take: f.pageSize, orderBy: { creadoEn: "desc" } }); },
+    async crear(d: Entrada<typeof E.crearAcudienteEstudiante>) {
+      if (d.acudienteId === d.estudianteId) throw conflicto("VINCULO_INVALIDO", "Un usuario no puede vincularse consigo mismo.");
+      const [acudiente, estudiante] = await Promise.all([db.usuario.findUnique({ where: { id: d.acudienteId }, include: { roles: { include: { rol: true } } } }), db.usuario.findUnique({ where: { id: d.estudianteId }, include: { roles: { include: { rol: true } } } })]);
+      if (!acudiente?.roles.some((r) => r.rol.codigo === "ACUDIENTE") || !estudiante?.roles.some((r) => r.rol.codigo === "ESTUDIANTE")) throw conflicto("ROLES_VINCULO_INVALIDOS", "El vínculo requiere roles acudiente y estudiante.");
+      return db.acudienteEstudiante.create({ data: d });
+    },
+    async actualizar(id: string, d: Entrada<typeof E.actualizarAcudienteEstudiante>) { return db.acudienteEstudiante.update({ where: { id }, data: d }); },
+  };
+
+  return { aniosLectivos, periodos, grados, grupos, asignaturas, asignacionesDocente, acudientesEstudiantes };
 }
 
 export type ServicioAcademico = ReturnType<typeof crearServicioAcademico>;

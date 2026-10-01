@@ -110,3 +110,15 @@ export const actualizarAsignatura = z
   })
   .strict();
 export const filtroAsignaturas = paginacion.extend({ areaId: id.optional(), gradoId: id.optional() });
+
+// ---------- Roles y vínculos ----------
+export const crearAsignacionDocente = z.object({
+  docenteId: id, asignaturaId: id, grupoId: id, anioLectivoId: id,
+});
+export const filtroAsignacionesDocente = paginacion.extend({
+  docenteId: id.optional(), grupoId: id.optional(), anioLectivoId: id.optional(),
+});
+export const crearAcudienteEstudiante = z.object({
+  acudienteId: id, estudianteId: id, parentesco: texto("el parentesco", 60),
+});
+export const actualizarAcudienteEstudiante = z.object({ verificado: z.boolean() }).strict();

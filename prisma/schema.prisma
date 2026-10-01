@@ -2,7 +2,7 @@
 // Esta tarjeta (t_85913f5b, autenticación) introdujo las entidades de acceso.
 // t_b089e01a agrega la estructura académica base (AnioLectivo, Periodo,
 // Grado, Grupo, Asignatura + Area y AsignaturaGrado que estas requieren).
-// AsignacionDocente queda para la tarjeta de roles y asignación docente.
+// AsignacionDocente y AcudienteEstudiante gobiernan permisos y vínculos verificables.
 // No se modela matrícula de estudiantes por decisión de alcance del producto.
 
 generator client {
@@ -35,6 +35,10 @@ model Usuario {
   roles             UsuarioRol[]
   restablecimientos RestablecimientoContrasena[]
   gruposDirigidos   Grupo[]                      @relation("Director")
+  asignaciones      AsignacionDocente[]          @relation("DocenteAsignaciones")
+  asignacionesCreadas AsignacionDocente[]        @relation("AsignacionCreador")
+  acudienteDe       AcudienteEstudiante[]        @relation("Acudiente")
+  estudianteDe      AcudienteEstudiante[]        @relation("Estudiante")
 
   @@map("usuarios")
 }
@@ -92,6 +96,7 @@ model AnioLectivo {
   actualizadoEn DateTime          @updatedAt
   periodos      Periodo[]
   grupos        Grupo[]
+  asignacionesDocente AsignacionDocente[]
 
   @@map("anios_lectivos")
 }
@@ -142,6 +147,7 @@ model Grupo {
   grado         Grado       @relation(fields: [gradoId], references: [id])
   anioLectivo   AnioLectivo @relation(fields: [anioLectivoId], references: [id])
   director      Usuario?    @relation("Director", fields: [directorId], references: [id], onDelete: SetNull)
+  asignacionesDocente AsignacionDocente[]
 
   @@unique([gradoId, anioLectivoId, identificador]) // RN-07
   @@index([anioLectivoId])
@@ -177,6 +183,7 @@ model Asignatura {
   actualizadoEn     DateTime          @updatedAt
   area              Area              @relation(fields: [areaId], references: [id])
   grados            AsignaturaGrado[]
+  asignacionesDocente AsignacionDocente[]
 
   @@unique([areaId, nombre])
   @@map("asignaturas")
@@ -191,4 +198,43 @@ model AsignaturaGrado {
 
   @@id([asignaturaId, gradoId])
   @@map("asignaturas_grados")
+}
+
+enum EstadoAsignacionDocente {
+  ACTIVA
+  INACTIVA
+}
+
+model AsignacionDocente {
+  id            String                  @id @default(cuid())
+  docenteId     String
+  asignaturaId  String
+  grupoId       String
+  anioLectivoId String
+  estado        EstadoAsignacionDocente @default(ACTIVA)
+  creadoPorId   String?
+  creadoEn      DateTime                @default(now())
+  actualizadoEn DateTime                @updatedAt
+  docente       Usuario                 @relation("DocenteAsignaciones", fields: [docenteId], references: [id])
+  asignatura    Asignatura              @relation(fields: [asignaturaId], references: [id])
+  grupo         Grupo                   @relation(fields: [grupoId], references: [id])
+  anioLectivo   AnioLectivo             @relation(fields: [anioLectivoId], references: [id])
+  creadoPor     Usuario?                @relation("AsignacionCreador", fields: [creadoPorId], references: [id], onDelete: SetNull)
+  @@unique([docenteId, asignaturaId, grupoId, anioLectivoId])
+  @@index([docenteId, anioLectivoId])
+  @@map("asignaciones_docente")
+}
+
+model AcudienteEstudiante {
+  id           String   @id @default(cuid())
+  acudienteId  String
+  estudianteId String
+  parentesco   String
+  verificado   Boolean  @default(false)
+  creadoEn     DateTime @default(now())
+  actualizadoEn DateTime @updatedAt
+  acudiente    Usuario  @relation("Acudiente", fields: [acudienteId], references: [id], onDelete: Cascade)
+  estudiante   Usuario  @relation("Estudiante", fields: [estudianteId], references: [id], onDelete: Cascade)
+  @@unique([acudienteId, estudianteId])
+  @@map("acudientes_estudiantes")
 }

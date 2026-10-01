@@ -12,7 +12,7 @@
 | [Plan MVP](../plan-mvp/README.md) | En evolución | Definición, fases, riesgos, operación y piloto. |
 | [Configuración portable Hermes](../../.hermes/factory.json) | Activa | Roles, modelos y ejecutores, sin secretos. |
 | [Inc. 1 · Autenticación](inc-1-autenticacion.md) | Implementado (t_85913f5b), pendiente revisión | Login, recuperación de contraseña y evidencia de verificación. |
-| [Inc. 1 · Entidades base](inc-1-entidades-base.md) | Implementado (t_b089e01a), pendiente revisión | Año lectivo, períodos, grados, grupos y asignaturas: esquema, API y evidencia. |
+| [Inc. 1 · Roles y asignación docente](inc-1-roles-asignacion.md) | Implementado (t_51ab8447), pendiente revisión | Roles, autorización central, asignación docente y vínculo verificable acudiente-estudiante. |
 
 ## Ciclo de evidencia por tarjeta
 
