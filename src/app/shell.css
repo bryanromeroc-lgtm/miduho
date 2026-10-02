@@ -486,3 +486,10 @@
 .admin-estructura .admin-nota { margin-top: 0; }
 .admin-estructura .admin-formulario { padding: 16px; border-radius: 16px; background: #faf8f4; }
 .admin-estructura .admin-tabla-marco { margin-top: 2px; }
+.admin-estructura .admin-filtros { margin-bottom: 0; grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr)) auto; }
+.admin-estructura .section-heading [role="status"] { font-size: 14px; font-weight: 700; color: var(--color-gris); }
+.admin-estructura .admin-aviso { margin-bottom: 0; }
+.admin-estructura .admin-paginacion { margin-top: 0; }
+.admin-ayuda { font-size: 12px; line-height: 1.4; color: var(--color-gris); }
+@media (max-width: 900px) { .admin-estructura .admin-filtros { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .admin-estructura .admin-filtros { grid-template-columns: minmax(0, 1fr); } }

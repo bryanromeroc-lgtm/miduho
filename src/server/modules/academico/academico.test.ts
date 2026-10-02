@@ -45,6 +45,17 @@ describe("esquemas Zod", () => {
     const r = E.crearAsignatura.safeParse({ nombre: "X", areaId: "a", grados: [{ gradoId: "g" }, { gradoId: "g" }] });
     expect(r.success).toBe(false);
   });
+  it("filtros de listados: vacío = sin filtro; entradas inválidas se rechazan", () => {
+    expect(E.filtroGrupos.parse({ q: " ", anioLectivoId: "", gradoId: "", page: "2" })).toEqual({ page: 2, pageSize: 20 });
+    expect(E.filtroAsignaturas.parse({ q: " robo ", areaId: "a1" })).toMatchObject({ q: "robo", areaId: "a1" });
+    expect(E.filtroPeriodos.safeParse({ page: "abc" }).success).toBe(false);
+    expect(E.filtroPeriodos.safeParse({ page: "0" }).success).toBe(false);
+    expect(E.paginacion.safeParse({ q: "x".repeat(121) }).success).toBe(false);
+    expect(E.filtroAnios.parse({ q: "2026" }).q).toBe(2026);
+    expect(E.filtroAnios.parse({ q: "" }).q).toBeUndefined();
+    expect(E.filtroAnios.safeParse({ q: "dos mil" }).success).toBe(false);
+    expect(E.filtroAnios.safeParse({ q: "1999" }).success).toBe(false);
+  });
 });
 
 describe("acceso académico", () => {
@@ -198,5 +209,49 @@ describe("servicio académico (SQLite temporal)", () => {
     expect(await codigoDe(S.grupos.crear({ gradoId, anioLectivoId: anioId, identificador: "02" }))).toBe("ANIO_CERRADO");
     // Cerrado el anterior, ya se puede activar uno nuevo (RN-01).
     expect(await codigoDe(S.aniosLectivos.crear({ anio: 2027, fechaInicio: d("2027-01-18"), fechaFin: d("2027-12-03"), estado: "ACTIVO" }))).toBe("OK");
+  });
+
+  it("búsqueda y filtros de los listados con total coherente (§11)", async () => {
+    const pagina = { page: 1, pageSize: 20 };
+    // Años: búsqueda exacta por número y paginación con total completo.
+    const anio = await S.aniosLectivos.listar({ ...pagina, q: 2040 });
+    expect(anio.total).toBe(1);
+    expect(anio.data[0].anio).toBe(2040);
+    const paginaUno = await S.aniosLectivos.listar({ page: 1, pageSize: 2 });
+    const paginaDos = await S.aniosLectivos.listar({ page: 2, pageSize: 2 });
+    expect(paginaUno.total).toBe(3);
+    expect(paginaUno.data.map((a) => a.anio)).toEqual([2040, 2027]);
+    expect(paginaDos.data.map((a) => a.anio)).toEqual([2026]);
+
+    // Períodos: texto + año combinados; incluyen el año para mostrar una etiqueta legible.
+    const anio2040 = anio.data[0].id;
+    const periodos = await S.periodos.listar({ ...pagina, q: "p2", anioLectivoId: anio2040 });
+    expect(periodos.total).toBe(1);
+    expect(periodos.data[0]).toMatchObject({ nombre: "P2", anioLectivo: { anio: 2040 } });
+    expect((await S.periodos.listar({ ...pagina, q: "P2", anioLectivoId: anioId })).total).toBe(0);
+
+    // Áreas y grados por nombre.
+    expect((await S.areas.listar({ ...pagina, q: "prueba" })).total).toBe(1);
+    expect((await S.areas.listar({ ...pagina, q: "inexistente" })).total).toBe(0);
+    expect((await S.grados.listar({ ...pagina, q: "1°" })).total).toBe(1);
+    expect((await S.grados.listar({ ...pagina, q: "9°" })).total).toBe(0);
+
+    // Grupos: "1°-01" o "1° 01" coinciden con grado + identificador; los filtros se combinan.
+    expect((await S.grupos.listar({ ...pagina, q: "1°-01" })).total).toBe(1);
+    expect((await S.grupos.listar({ ...pagina, q: "1° 02" })).total).toBe(0);
+    expect((await S.grupos.listar({ ...pagina, q: "01", anioLectivoId: anio2040 })).total).toBe(0);
+    expect((await S.grupos.listar({ ...pagina, gradoId, anioLectivoId: anioId })).total).toBe(1);
+
+    // Asignaturas: por nombre propio o del área, combinable con área y grado.
+    const area = (await S.areas.listar({ ...pagina, q: "prueba" })).data[0];
+    expect((await S.asignaturas.listar({ ...pagina, q: "robó" })).total).toBe(1);
+    expect((await S.asignaturas.listar({ ...pagina, q: "prueba", areaId: area.id })).total).toBe(1);
+    expect((await S.asignaturas.listar({ ...pagina, q: "robó", gradoId })).total).toBe(0);
+
+    // Catálogos legibles para los selects: años, grados, áreas y docentes activos.
+    const catalogo = await S.opciones();
+    expect(catalogo.anios.map((a) => a.anio)).toEqual([2040, 2027, 2026]);
+    expect(catalogo.grados.map((g) => g.nombre)).toEqual(["1°"]);
+    expect(catalogo.docentes).toHaveLength(1);
   });
 });

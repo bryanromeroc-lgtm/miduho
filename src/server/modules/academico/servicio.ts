@@ -15,9 +15,18 @@ import { dentroDe, ponderacionExcede, rangoValido, seSolapan, sumaPonderaciones,
 
 type Entrada<T extends z.ZodType> = z.output<T>;
 type Pagina = { page: number; pageSize: number };
+type Busqueda = Pagina & { q?: string };
 type Tx = Prisma.TransactionClient;
 
 const saltar = ({ page, pageSize }: Pagina) => ({ skip: (page - 1) * pageSize, take: pageSize });
+
+/**
+ * Divide la búsqueda en palabras (máx. 5); cada palabra debe coincidir con
+ * alguno de los campos. En SQLite `contains` usa LIKE: ignora mayúsculas solo en ASCII.
+ */
+export function palabrasBusqueda(q?: string, separadores: RegExp = /\s+/) {
+  return (q ?? "").split(separadores).map((p) => p.trim()).filter(Boolean).slice(0, 5);
+}
 
 function exigirRango(r: { fechaInicio: Date; fechaFin: Date }) {
   if (!rangoValido(r)) throw new ErrorDominio("RANGO_INVALIDO", "La fecha de fin debe ser posterior a la de inicio.");
@@ -39,10 +48,11 @@ export function crearServicioAcademico(db: PrismaClient) {
 
   // ---------------- AnioLectivo ----------------
   const aniosLectivos = {
-    async listar(p: Pagina) {
+    async listar(f: Entrada<typeof E.filtroAnios>) {
+      const where: Prisma.AnioLectivoWhereInput = f.q !== undefined ? { anio: f.q } : {};
       const [data, total] = await Promise.all([
-        db.anioLectivo.findMany({ orderBy: { anio: "desc" }, ...saltar(p) }),
-        db.anioLectivo.count(),
+        db.anioLectivo.findMany({ where, orderBy: { anio: "desc" }, ...saltar(f) }),
+        db.anioLectivo.count({ where }),
       ]);
       return { data, total };
     },
@@ -148,9 +158,17 @@ export function crearServicioAcademico(db: PrismaClient) {
 
   const periodos = {
     async listar(f: Entrada<typeof E.filtroPeriodos>) {
-      const where = f.anioLectivoId ? { anioLectivoId: f.anioLectivoId } : {};
+      const where: Prisma.PeriodoWhereInput = {
+        ...(f.anioLectivoId ? { anioLectivoId: f.anioLectivoId } : {}),
+        ...(f.q ? { AND: palabrasBusqueda(f.q).map((p) => ({ nombre: { contains: p } })) } : {}),
+      };
       const [data, total] = await Promise.all([
-        db.periodo.findMany({ where, orderBy: [{ anioLectivoId: "asc" }, { orden: "asc" }], ...saltar(f) }),
+        db.periodo.findMany({
+          where,
+          include: { anioLectivo: { select: { id: true, anio: true, estado: true } } },
+          orderBy: [{ anioLectivo: { anio: "desc" } }, { orden: "asc" }],
+          ...saltar(f),
+        }),
         db.periodo.count({ where }),
       ]);
       return { data: data.map(periodoDto), total };
@@ -198,10 +216,11 @@ export function crearServicioAcademico(db: PrismaClient) {
 
   // ---------------- Grado ----------------
   const grados = {
-    async listar(p: Pagina) {
+    async listar(f: Busqueda) {
+      const where: Prisma.GradoWhereInput = f.q ? { AND: palabrasBusqueda(f.q).map((p) => ({ nombre: { contains: p } })) } : {};
       const [data, total] = await Promise.all([
-        db.grado.findMany({ orderBy: { orden: "asc" }, ...saltar(p) }),
-        db.grado.count(),
+        db.grado.findMany({ where, orderBy: { orden: "asc" }, ...saltar(f) }),
+        db.grado.count({ where }),
       ]);
       return { data, total };
     },
@@ -227,10 +246,11 @@ export function crearServicioAcademico(db: PrismaClient) {
 
   // ---------------- Área ----------------
   const areas = {
-    async listar(p: Pagina) {
+    async listar(f: Busqueda) {
+      const where: Prisma.AreaWhereInput = f.q ? { AND: palabrasBusqueda(f.q).map((p) => ({ nombre: { contains: p } })) } : {};
       const [data, total] = await Promise.all([
-        db.area.findMany({ orderBy: [{ orden: "asc" }, { nombre: "asc" }], ...saltar(p) }),
-        db.area.count(),
+        db.area.findMany({ where, orderBy: [{ orden: "asc" }, { nombre: "asc" }], ...saltar(f) }),
+        db.area.count({ where }),
       ]);
       return { data, total };
     },
@@ -269,9 +289,17 @@ export function crearServicioAcademico(db: PrismaClient) {
 
   const grupos = {
     async listar(f: Entrada<typeof E.filtroGrupos>) {
-      const where = {
+      // "1° 01" o "1°-01": cada palabra coincide con el grado o el identificador.
+      const where: Prisma.GrupoWhereInput = {
         ...(f.anioLectivoId ? { anioLectivoId: f.anioLectivoId } : {}),
         ...(f.gradoId ? { gradoId: f.gradoId } : {}),
+        ...(f.q
+          ? {
+              AND: palabrasBusqueda(f.q, /[\s-]+/).map((p) => ({
+                OR: [{ identificador: { contains: p } }, { grado: { nombre: { contains: p } } }],
+              })),
+            }
+          : {}),
       };
       const [data, total] = await Promise.all([
         db.grupo.findMany({
@@ -336,9 +364,12 @@ export function crearServicioAcademico(db: PrismaClient) {
 
   const asignaturas = {
     async listar(f: Entrada<typeof E.filtroAsignaturas>) {
-      const where = {
+      const where: Prisma.AsignaturaWhereInput = {
         ...(f.areaId ? { areaId: f.areaId } : {}),
         ...(f.gradoId ? { grados: { some: { gradoId: f.gradoId } } } : {}),
+        ...(f.q
+          ? { AND: palabrasBusqueda(f.q).map((p) => ({ OR: [{ nombre: { contains: p } }, { area: { nombre: { contains: p } } }] })) }
+          : {}),
       };
       const [data, total] = await Promise.all([
         db.asignatura.findMany({ where, include: incluirAsignatura, orderBy: { nombre: "asc" }, ...saltar(f) }),
@@ -424,7 +455,23 @@ export function crearServicioAcademico(db: PrismaClient) {
     async desactivar(id: string) { return db.asignacionDocente.update({ where: { id }, data: { estado: "INACTIVA" } }); },
   };
 
-  return { aniosLectivos, periodos, grados, areas, grupos, asignaturas, asignacionesDocente };
+  /** Catálogos completos (id + etiqueta legible) para selects de filtros y formularios. */
+  async function opciones() {
+    const [anios, grados, areas, docentes] = await Promise.all([
+      db.anioLectivo.findMany({ select: { id: true, anio: true, estado: true }, orderBy: { anio: "desc" } }),
+      db.grado.findMany({ select: { id: true, nombre: true }, orderBy: { orden: "asc" } }),
+      db.area.findMany({ select: { id: true, nombre: true }, orderBy: [{ orden: "asc" }, { nombre: "asc" }] }),
+      // Mismo criterio que validarDirector: solo docentes activos pueden dirigir grupo.
+      db.usuario.findMany({
+        where: { estado: "ACTIVO", roles: { some: { rol: { codigo: "DOCENTE" } } } },
+        select: { id: true, nombres: true, apellidos: true },
+        orderBy: [{ apellidos: "asc" }, { nombres: "asc" }],
+      }),
+    ]);
+    return { anios, grados, areas, docentes };
+  }
+
+  return { aniosLectivos, periodos, grados, areas, grupos, asignaturas, asignacionesDocente, opciones };
 }
 
 export type ServicioAcademico = ReturnType<typeof crearServicioAcademico>;

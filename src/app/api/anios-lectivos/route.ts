@@ -5,7 +5,7 @@ import { leerConsulta, leerCuerpo, manejar, paginada, requerirRol, ROLES_ACADEMI
 export function GET(req: NextRequest) {
   return manejar(async () => {
     await requerirRol(ROLES_ACADEMICO);
-    const p = leerConsulta(req, E.paginacion);
+    const p = leerConsulta(req, E.filtroAnios);
     const { data, total } = await S.aniosLectivos.listar(p);
     return paginada(data, total, p);
   });

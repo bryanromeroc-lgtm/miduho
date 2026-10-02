@@ -5,16 +5,33 @@ export const fecha = z
   .iso.date({ error: "Usa una fecha válida con formato AAAA-MM-DD." })
   .transform((s) => new Date(`${s}T00:00:00.000Z`));
 
-const id = z.string({ error: "Falta el identificador." }).trim().min(1, "Falta el identificador.").max(64);
+const id = z.string({ error: "Falta el identificador." }).trim().min(1, "Falta el identificador.").max(64, "El identificador no es válido.");
 const texto = (campo: string, max = 120) =>
   z.string({ error: `Escribe ${campo}.` }).trim().min(1, `Escribe ${campo}.`).max(max, `${campo} es demasiado largo.`);
 const enteroPositivo = (campo: string) =>
   z.number({ error: `${campo} debe ser un número.` }).int(`${campo} debe ser un número entero.`).min(1, `${campo} debe ser mayor que cero.`);
 
+/** Los filtros llegan por query string: "" equivale a "sin filtro". */
+const vacioIndefinido = (v: unknown) => (typeof v === "string" && v.trim() === "" ? undefined : v);
+const idFiltro = z.preprocess(vacioIndefinido, id.optional());
+
 export const paginacion = z.object({
-  page: z.coerce.number().int().min(1).default(1),
+  page: z.coerce.number({ error: "La página debe ser un número." }).int("La página debe ser un número entero.").min(1, "La página debe ser 1 o mayor.").default(1),
   pageSize: z.coerce.number().int().min(1).max(100).default(20),
-  q: z.string().trim().max(120, "La búsqueda es demasiado larga.").optional(),
+  q: z.preprocess(vacioIndefinido, z.string().trim().max(120, "La búsqueda es demasiado larga.").optional()),
+});
+
+/** Años lectivos: la búsqueda es por el número del año (ej. 2026). */
+export const filtroAnios = paginacion.extend({
+  q: z.preprocess(
+    vacioIndefinido,
+    z.coerce
+      .number({ error: "Busca el año con cuatro cifras (ej. 2026)." })
+      .int("Busca el año con cuatro cifras (ej. 2026).")
+      .min(2000, "Busca un año entre 2000 y 2100.")
+      .max(2100, "Busca un año entre 2000 y 2100.")
+      .optional(),
+  ),
 });
 
 // ---------- AnioLectivo ----------
@@ -55,7 +72,7 @@ export const actualizarPeriodo = z
     ponderacion: ponderacion.optional(),
   })
   .strict();
-export const filtroPeriodos = paginacion.extend({ anioLectivoId: id.optional() });
+export const filtroPeriodos = paginacion.extend({ anioLectivoId: idFiltro });
 
 // ---------- Grado ----------
 export const nivelEducativo = z.enum(["PREESCOLAR", "PRIMARIA", "BACHILLERATO"], {
@@ -96,7 +113,7 @@ export const actualizarGrupo = z
     directorId: id.nullable().optional(),
   })
   .strict();
-export const filtroGrupos = paginacion.extend({ anioLectivoId: id.optional(), gradoId: id.optional() });
+export const filtroGrupos = paginacion.extend({ anioLectivoId: idFiltro, gradoId: idFiltro });
 
 // ---------- Asignatura ----------
 const asignaturaGrado = z.object({
@@ -122,7 +139,7 @@ export const actualizarAsignatura = z
     grados: listaGrados.optional(),
   })
   .strict();
-export const filtroAsignaturas = paginacion.extend({ areaId: id.optional(), gradoId: id.optional() });
+export const filtroAsignaturas = paginacion.extend({ areaId: idFiltro, gradoId: idFiltro });
 
 // ---------- Asignación docente ----------
 export const crearAsignacionDocente = z.object({
