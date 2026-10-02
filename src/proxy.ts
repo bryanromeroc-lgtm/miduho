@@ -7,6 +7,7 @@ import { puedeAccederRuta, type FamiliaRuta } from "@/server/auth/sesion";
  * contra la BD; las APIs vuelven a autorizar mediante `requerirRol`.
  */
 const RUTAS_PUBLICAS = ["/login", "/recuperar"];
+const RUTA_CAMBIO = "/cuenta/contrasena";
 
 function familia(pathname: string): FamiliaRuta {
   if (pathname.startsWith("/biblioteca")) return "BIBLIOTECA";
@@ -27,6 +28,11 @@ export const proxy = auth((request) => {
     const url = new URL("/login", request.url);
     url.searchParams.set("desde", `${pathname}${request.nextUrl.search}`);
     return NextResponse.redirect(url);
+  }
+
+  // Contraseña temporal (DOCENTE): solo se permite cambiarla (requerimiento §4.2).
+  if (usuario.debeCambiarContrasena && pathname !== RUTA_CAMBIO) {
+    return NextResponse.redirect(new URL(RUTA_CAMBIO, request.url));
   }
 
   if (!puedeAccederRuta(usuario.roles, familia(pathname))) {

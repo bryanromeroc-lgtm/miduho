@@ -2,13 +2,17 @@
 
 import { AuthError } from "next-auth";
 import { redirect } from "next/navigation";
-import { signIn, signOut } from "@/auth";
+import { headers } from "next/headers";
+import { auth, signIn, signOut } from "@/auth";
 import {
+  esquemaCambioContrasena,
   esquemaLogin,
   esquemaRestablecer,
   esquemaSolicitudRecuperacion,
 } from "@/server/auth/esquemas";
-import { restablecerContrasena, solicitarRestablecimiento } from "@/server/auth/recuperacion";
+import { restablecerContrasena, servicioCuentas, solicitarRestablecimiento } from "@/server/auth/recuperacion";
+import { recuperacionPermitida } from "@/server/auth/limite";
+import { ErrorDominio } from "@/server/errores";
 
 export type EstadoFormulario = {
   error?: string;
@@ -64,7 +68,12 @@ export async function pedirRecuperacion(_: EstadoFormulario, formData: FormData)
   const datos = esquemaSolicitudRecuperacion.safeParse({ correo: formData.get("correo") });
   if (!datos.success) return { errores: primerosErrores(datos.error.issues) };
   try {
-    await solicitarRestablecimiento(datos.data.correo);
+    const h = await headers();
+    const ip = h.get("x-forwarded-for")?.split(",")[0]?.trim() || h.get("x-real-ip");
+    // Excedido el límite se descarta en silencio: la respuesta es idéntica (sin enumeración).
+    if (recuperacionPermitida(datos.data.correo, ip ?? null)) {
+      await solicitarRestablecimiento(datos.data.correo);
+    }
   } catch (e) {
     // Mismo mensaje para todos los casos (no revelar existencia de la cuenta).
     console.error("[recuperacion] fallo al solicitar", e instanceof Error ? e.message : e);
@@ -85,4 +94,29 @@ export async function guardarNuevaContrasena(_: EstadoFormulario, formData: Form
     return { error: "El enlace no es válido o ya venció. Solicita uno nuevo." };
   }
   redirect("/login?restablecida=1");
+}
+
+/**
+ * Cambio de contraseña propio (obligatorio para DOCENTE con contraseña temporal).
+ * El trigger de BD revoca todas las sesiones; se vuelve a ingresar con la nueva.
+ */
+export async function cambiarContrasenaPropia(_: EstadoFormulario, formData: FormData): Promise<EstadoFormulario> {
+  const sesion = await auth();
+  if (!sesion?.user?.id) redirect("/login?desde=/cuenta/contrasena");
+  const datos = esquemaCambioContrasena.safeParse({
+    actual: formData.get("actual"),
+    contrasena: formData.get("contrasena"),
+    confirmacion: formData.get("confirmacion"),
+  });
+  if (!datos.success) return { errores: primerosErrores(datos.error.issues) };
+  try {
+    await servicioCuentas.cambiarContrasena(sesion.user.id, datos.data.actual, datos.data.contrasena);
+  } catch (e) {
+    if (e instanceof ErrorDominio) {
+      return e.code === "CONTRASENA_ACTUAL_INVALIDA" ? { errores: { actual: e.message } } : { error: e.message };
+    }
+    throw e;
+  }
+  await signOut({ redirectTo: "/login?restablecida=1" });
+  return {};
 }

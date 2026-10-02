@@ -68,6 +68,7 @@ model RestablecimientoContrasena {
   id        String    @id @default(cuid())
   usuarioId String
   tokenHash String    @unique
+  tipo      String    @default("RECUPERACION") // RECUPERACION | INVITACION (trigger SQL)
   expiraEn  DateTime
   usadoEn   DateTime?
   creadoEn  DateTime  @default(now())

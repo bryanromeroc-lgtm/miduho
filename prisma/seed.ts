@@ -126,6 +126,11 @@ async function main() {
     console.info("Roles y estructura creados. Define SEED_ADMIN_PASSWORD para crear el ADMIN ficticio.");
     return;
   }
+  // Seed seguro del primer ADMIN: la clave sale del entorno, cumple la política
+  // (§4.4) y nunca sobrescribe una cuenta existente (upsert con update vacío).
+  if (claveAdmin.length < 10 || !/[A-Za-zÁÉÍÓÚÑáéíóúñ]/.test(claveAdmin) || !/[0-9]/.test(claveAdmin)) {
+    throw new Error("SEED_ADMIN_PASSWORD debe tener al menos 10 caracteres, una letra y un número.");
+  }
   const admin = await sembrarUsuario({
     correo: (process.env.SEED_ADMIN_EMAIL ?? "admin@miduho.test").toLowerCase(),
     nombres: "Cuenta",

@@ -23,6 +23,9 @@ export async function requerirRol(permitidos: CodigoRol[]) {
   const fallo = evaluarAcceso(roles, permitidos);
   if (fallo === 401) throw new ErrorDominio("NO_AUTENTICADO", "Inicia sesión para continuar.", 401);
   if (fallo === 403) throw new ErrorDominio("SIN_PERMISO", "No tienes permiso para esta acción.", 403);
+  if (sesion!.user.debeCambiarContrasena) {
+    throw new ErrorDominio("CAMBIO_CONTRASENA_REQUERIDO", "Cambia tu contraseña temporal para continuar.", 403);
+  }
   return sesion!.user;
 }
 

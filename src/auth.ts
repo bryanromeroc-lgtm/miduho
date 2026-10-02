@@ -8,12 +8,18 @@ import { normalizarRoles, resolverContexto, type ContextoSesion } from "@/server
 
 declare module "next-auth" {
   interface Session {
-    user: { id: string; roles: string[]; contexto: ContextoSesion | null } & DefaultSession["user"];
+    user: {
+      id: string;
+      roles: string[];
+      contexto: ContextoSesion | null;
+      debeCambiarContrasena: boolean;
+    } & DefaultSession["user"];
   }
   interface User {
     roles?: string[];
     versionSesion?: number;
     ultimoContexto?: string | null;
+    debeCambiarContrasena?: boolean;
   }
 }
 
@@ -58,6 +64,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           roles: usuario.roles.map((r) => r.rol.codigo),
           versionSesion: usuario.versionSesion,
           ultimoContexto: usuario.ultimoContexto,
+          debeCambiarContrasena: usuario.debeCambiarContrasena,
         };
       },
     }),
@@ -69,6 +76,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         token.roles = user.roles ?? [];
         token.versionSesion = user.versionSesion;
         token.ultimoContexto = user.ultimoContexto ?? null;
+        token.debeCambiarContrasena = user.debeCambiarContrasena ?? false;
         return token;
       }
 
@@ -79,6 +87,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           estado: true,
           versionSesion: true,
           ultimoContexto: true,
+          debeCambiarContrasena: true,
           roles: { select: { rol: { select: { codigo: true } } } },
         },
       });
@@ -90,11 +99,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
       token.roles = normalizarRoles(actual.roles.map((r) => r.rol.codigo));
       token.ultimoContexto = actual.ultimoContexto;
+      token.debeCambiarContrasena = actual.debeCambiarContrasena;
       return token;
     },
     session({ session, token }) {
       session.user.id = typeof token.userId === "string" ? token.userId : "";
       session.user.roles = Array.isArray(token.roles) ? (token.roles as string[]) : [];
+      session.user.debeCambiarContrasena = token.debeCambiarContrasena === true;
       session.user.contexto = resolverContexto(
         session.user.roles,
         typeof token.ultimoContexto === "string" ? token.ultimoContexto : null,

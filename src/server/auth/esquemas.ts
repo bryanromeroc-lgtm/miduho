@@ -32,3 +32,27 @@ export const esquemaRestablecer = z
     message: "Las contraseñas no coinciden.",
     path: ["confirmacion"],
   });
+
+export const esquemaCambioContrasena = z
+  .object({
+    actual: z.string({ error: "Escribe tu contraseña actual." }).min(1, "Escribe tu contraseña actual.").max(200),
+    contrasena: contrasenaNueva,
+    confirmacion: z.string({ error: "Confirma la contraseña." }),
+  })
+  .refine((d) => d.contrasena === d.confirmacion, {
+    message: "Las contraseñas no coinciden.",
+    path: ["confirmacion"],
+  });
+
+const texto = (campo: string) =>
+  z.string({ error: `Escribe ${campo}.` }).trim().min(1, `Escribe ${campo}.`).max(120, `${campo} es demasiado largo.`);
+
+/** Datos mínimos para crear una cuenta (requerimiento §5). */
+export const esquemaNuevaCuenta = z.object({ nombres: texto("los nombres"), apellidos: texto("los apellidos"), correo });
+
+export const esquemaRestablecerEstudiantes = z.object({
+  estudianteIds: z
+    .array(z.string().min(1).max(64), { error: "Selecciona al menos un estudiante." })
+    .min(1, "Selecciona al menos un estudiante.")
+    .max(500, "Selecciona como máximo 500 estudiantes."),
+});

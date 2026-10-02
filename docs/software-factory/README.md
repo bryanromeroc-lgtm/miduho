@@ -14,6 +14,7 @@
 | [Inc. 1R · Requerimiento aprobado](inc-1r-requerimiento-aprobado.md) | Aprobado para implementación | Fuente de verdad del Incremento 1 corregido: roles, auth, administración, CSV, asociaciones, horarios y gates. |
 | [Inc. 1R · Modelo de acceso, estudiantes y horarios](inc-1r-modelo-acceso-estudiantes-horarios.md) | Implementado (`t_828e2d73`) | Prisma, migración compatible, restricciones, seed y pruebas del modelo base. |
 | [Inc. 1R · Autorización y revocación de sesiones](inc-1r-autorizacion-sesiones.md) | Implementado (`t_d3d97223`), pendiente integración | Revalidación contra BD, revocación inmediata, matriz de rutas y contexto ADMIN/DOCENTE. |
+| [Inc. 1R · Ciclos de contraseña por rol](inc-1r-ciclos-contrasena.md) | Implementado (`t_7e60342c`), pendiente integración | Seed ADMIN, invitación 24 h, temporal DOCENTE, credenciales y restablecimiento CSV de ESTUDIANTE, recuperación con límite. |
 | [Inc. 1 · Autenticación](inc-1-autenticacion.md) | Implementación previa; debe adaptarse a Inc. 1R | Login, recuperación de contraseña y evidencia de verificación. |
 | [Inc. 1 · Roles y asignación docente](inc-1-roles-asignacion.md) | Implementado (t_51ab8447), pendiente revisión | Roles, autorización central, asignación docente y vínculo verificable acudiente-estudiante. |
 | [Inc. 1 · QA integrado de la fundación](inc-1-fundacion-qa.md) | QA completado (t_978772c3) | Validación integrada sobre main: auth, entidades, autorización, roles y criterio negativo de matrícula. |
