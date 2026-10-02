@@ -10,6 +10,7 @@ import { ErrorDominio } from "@/server/errores";
 import * as E from "./esquemas";
 import { dentroDe, ponderacionCompleta, ponderacionExcede, seSolapan, sumaPonderaciones } from "./reglas";
 import { crearServicioAcademico, type ServicioAcademico } from "./servicio";
+import { accionesAnio, campoIntensidad, CUERPO_CIERRE, cuerpoFormulario, type TipoApi } from "@/app/admin/estructura/edicion";
 
 const d = (s: string) => new Date(`${s}T00:00:00.000Z`);
 
@@ -253,5 +254,55 @@ describe("servicio académico (SQLite temporal)", () => {
     expect(catalogo.anios.map((a) => a.anio)).toEqual([2040, 2027, 2026]);
     expect(catalogo.grados.map((g) => g.nombre)).toEqual(["1°"]);
     expect(catalogo.docentes).toHaveLength(1);
+  });
+
+  it("contrato del panel: los cuerpos de edición y el cierre se aplican en el servicio (INC1R-07H)", async () => {
+    // Mismo camino que la UI: FormData → cuerpoFormulario → esquema de la API → servicio.
+    type Campos = Record<string, string | string[]>;
+    const cuerpo = (tipo: TipoApi, modo: "crear" | "editar", campos: Campos, original?: Record<string, unknown>) => {
+      const f = new FormData();
+      for (const [k, v] of Object.entries(campos)) for (const x of [v].flat()) f.append(k, x);
+      return cuerpoFormulario(tipo, f, modo, original);
+    };
+
+    // Área y grado: todos sus campos.
+    const area = await S.areas.crear(E.crearArea.parse(cuerpo("areas", "crear", { nombre: "Área contrato (ficticia)", tipo: "AREA", idioma: "es", orden: "" })));
+    const areaEditada = await S.areas.actualizar(area.id, E.actualizarArea.parse(cuerpo("areas", "editar", { nombre: "Área contrato editada", tipo: "ENFOQUE", idioma: "en", orden: "4" })));
+    expect(areaEditada).toMatchObject({ nombre: "Área contrato editada", tipo: "ENFOQUE", idioma: "en", orden: 4 });
+    expect((await S.areas.actualizar(area.id, E.actualizarArea.parse(cuerpo("areas", "editar", { nombre: "Área contrato editada", tipo: "ENFOQUE", idioma: "en", orden: "" })))).orden).toBeNull();
+    const grado = await S.grados.crear(E.crearGrado.parse(cuerpo("grados", "crear", { nombre: "2°", nivel: "PRIMARIA", orden: "2" })));
+    expect(await S.grados.actualizar(grado.id, E.actualizarGrado.parse(cuerpo("grados", "editar", { nombre: "Transición", nivel: "PREESCOLAR", orden: "0" })))).toMatchObject({
+      nombre: "Transición", nivel: "PREESCOLAR", orden: 0,
+    });
+
+    // Año 2027 (ACTIVO): fechas, períodos y grupo; luego cierre con PATCH { estado: "CERRADO" }.
+    const anio = (await S.aniosLectivos.listar({ page: 1, pageSize: 20, q: 2027 })).data[0];
+    expect(accionesAnio(anio.estado).cerrar).toBe(true);
+    const fechasAnio = await S.aniosLectivos.actualizar(anio.id, E.actualizarAnioLectivo.parse(cuerpo("anios-lectivos", "editar", { fechaInicio: "2027-01-25", fechaFin: "2027-11-26" })));
+    expect(fechasAnio.fechaFin.toISOString().slice(0, 10)).toBe("2027-11-26");
+    const p1 = await S.periodos.crear(E.crearPeriodo.parse(cuerpo("periodos", "crear", { anioLectivoId: anio.id, nombre: "Período 1", orden: "1", ponderacion: "50", fechaInicio: "2027-01-25", fechaFin: "2027-06-11" })));
+    await S.periodos.crear(E.crearPeriodo.parse(cuerpo("periodos", "crear", { anioLectivoId: anio.id, nombre: "Período 2", orden: "2", ponderacion: "40", fechaInicio: "2027-06-28", fechaFin: "2027-11-26" })));
+    const grupo = await S.grupos.crear(E.crearGrupo.parse(cuerpo("grupos", "crear", { anioLectivoId: anio.id, gradoId: grado.id, identificador: "01", directorId: "" })));
+    expect((await S.grupos.actualizar(grupo.id, E.actualizarGrupo.parse(cuerpo("grupos", "editar", { identificador: "B", directorId: "" }, { directorId: null })))).identificador).toBe("B");
+
+    // 50 + 40 = 90 %: el cierre devuelve el error de dominio; al editar el período a 60 % ya se puede cerrar.
+    expect(await codigoDe(S.aniosLectivos.actualizar(anio.id, E.actualizarAnioLectivo.parse(CUERPO_CIERRE)))).toBe("PONDERACION_INCOMPLETA");
+    const datosP1 = { nombre: "Primer período", orden: "1", ponderacion: "60", fechaInicio: "2027-01-25", fechaFin: "2027-06-18" };
+    expect(await S.periodos.actualizar(p1.id, E.actualizarPeriodo.parse(cuerpo("periodos", "editar", datosP1)))).toMatchObject({ nombre: "Primer período", ponderacion: 60 });
+    const cerrado = await S.aniosLectivos.actualizar(anio.id, E.actualizarAnioLectivo.parse(CUERPO_CIERRE));
+    expect(cerrado.estado).toBe("CERRADO");
+    expect(accionesAnio(cerrado.estado)).toEqual({ editar: false, cerrar: false, eliminar: false });
+    expect(await codigoDe(S.aniosLectivos.actualizar(anio.id, E.actualizarAnioLectivo.parse(cuerpo("anios-lectivos", "editar", { fechaInicio: "2027-01-26", fechaFin: "2027-11-26" }))))).toBe("ANIO_CERRADO");
+    expect(await codigoDe(S.periodos.actualizar(p1.id, E.actualizarPeriodo.parse(cuerpo("periodos", "editar", { ...datosP1, nombre: "Otro" }))))).toBe("ANIO_CERRADO");
+    expect(await codigoDe(S.grupos.actualizar(grupo.id, E.actualizarGrupo.parse(cuerpo("grupos", "editar", { identificador: "C", directorId: "" }, { directorId: null }))))).toBe("ANIO_CERRADO");
+
+    // Asignatura: nombre, área, intensidad general y conjunto de grados con intensidad por grado.
+    const asignatura = await S.asignaturas.crear(E.crearAsignatura.parse(cuerpo("asignaturas", "crear", { nombre: "Asignatura contrato", areaId: area.id, intensidadHoraria: "", gradoId: [grado.id] })));
+    const editada = await S.asignaturas.actualizar(
+      asignatura.id,
+      E.actualizarAsignatura.parse(cuerpo("asignaturas", "editar", { nombre: "Asignatura editada", areaId: area.id, intensidadHoraria: "3", gradoId: [grado.id, gradoId], [campoIntensidad(gradoId)]: "2" })),
+    );
+    expect(editada).toMatchObject({ nombre: "Asignatura editada", intensidadHoraria: 3 });
+    expect(editada.grados.map((g) => [g.gradoId, g.intensidad]).sort()).toEqual([[grado.id, null], [gradoId, 2]].sort());
   });
 });

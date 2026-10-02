@@ -46,6 +46,8 @@ export default async function PaginaEstructura({ searchParams }: { searchParams:
 
   const opciones = {
     anios: catalogo.anios.map((a) => ({ id: a.id, etiqueta: a.estado === "CERRADO" ? `${a.anio} (cerrado)` : String(a.anio) })),
+    // Altas de períodos y grupos: un año cerrado es de solo lectura (RN-52), no se ofrece.
+    aniosEditables: catalogo.anios.filter((a) => a.estado !== "CERRADO").map((a) => ({ id: a.id, etiqueta: String(a.anio) })),
     grados: catalogo.grados.map((g) => ({ id: g.id, etiqueta: g.nombre })),
     areas: catalogo.areas.map((a) => ({ id: a.id, etiqueta: a.nombre })),
     docentes: catalogo.docentes.map((d) => ({ id: d.id, etiqueta: `${d.nombres} ${d.apellidos}` })),
