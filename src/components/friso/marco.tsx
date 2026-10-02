@@ -22,7 +22,7 @@ import {
 import { Escudo } from "@/components/friso/escudo";
 import { useShell } from "@/components/shell/contexto";
 import { MenuCuenta, SelectorContexto } from "@/components/shell/menu-cuenta";
-import { contextoVisible, rutaActiva, rutasPorContexto, type IdRuta } from "@/lib/navegacion";
+import { contextoVisible, rutaActiva, rutasPorContexto, textoGrupo, type IdRuta } from "@/lib/navegacion";
 import { cn } from "@/lib/utils";
 
 /*
@@ -140,16 +140,8 @@ function ChipGrupo({
       </div>
     );
   }
-  let titulo: string;
-  if (contexto === "ESTUDIANTE") titulo = grupo ? `Grupo ${grupo}` : "Sin grupo asignado";
-  else if (contexto === "DOCENTE") {
-    titulo =
-      gruposDocente.length === 0
-        ? "Sin grupos asignados"
-        : gruposDocente.length === 1
-          ? `Grupo ${gruposDocente[0]}`
-          : `Grupos ${gruposDocente.join(", ")}`;
-  } else return null;
+  const titulo = textoGrupo(contexto, grupo, gruposDocente);
+  if (!titulo) return null;
   return (
     <div className="school-group">
       <GraduationCap size={20} aria-hidden="true" />

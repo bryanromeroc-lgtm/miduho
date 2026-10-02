@@ -109,3 +109,38 @@ export function nombreRol(rol: string) {
 export function etiquetaGrupo(grado: string, identificador: string) {
   return `${grado}-${identificador}`;
 }
+
+/**
+ * Grupo real que se muestra en el shell y en la maqueta (Inc. 1R §2.3, §10):
+ * ESTUDIANTE, su asociación activa; DOCENTE, sus grupos con asignación activa.
+ * ADMIN o sin contexto → null: nunca se rellena con el grupo demostrativo.
+ */
+export function textoGrupo(
+  contexto: ContextoShell | null,
+  grupo: string | null,
+  gruposDocente: string[],
+): string | null {
+  if (contexto === "ESTUDIANTE") return grupo ? `Grupo ${grupo}` : "Sin grupo asignado";
+  if (contexto === "DOCENTE") {
+    if (gruposDocente.length === 0) return "Sin grupos asignados";
+    if (gruposDocente.length === 1) return `Grupo ${gruposDocente[0]}`;
+    return `Grupos ${gruposDocente.join(", ")}`;
+  }
+  return null;
+}
+
+/**
+ * Grupo con el que se rotula la maqueta demostrativa (Hoy, Mis clases, clase):
+ * el real de la sesión cuando es inequívoco. ESTUDIANTE → su grupo; DOCENTE con
+ * un solo grupo → ese. En cualquier otro caso null: la página omite el grupo
+ * en lugar de mostrar el demostrativo de `lib/datos.ts`.
+ */
+export function grupoMaqueta(
+  contexto: ContextoShell | null,
+  grupo: string | null,
+  gruposDocente: string[],
+): string | null {
+  if (contexto === "ESTUDIANTE") return grupo;
+  if (contexto === "DOCENTE" && gruposDocente.length === 1) return gruposDocente[0];
+  return null;
+}

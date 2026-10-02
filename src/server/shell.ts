@@ -3,7 +3,7 @@ import { cache } from "react";
 import { auth } from "@/auth";
 import { db } from "@/server/db";
 import type { DatosShell } from "@/components/shell/contexto";
-import { etiquetaGrupo } from "@/lib/navegacion";
+import { contextoVisible, etiquetaGrupo, grupoMaqueta } from "@/lib/navegacion";
 
 /**
  * Identidad, grupo y período reales para el shell. Solo lectura y acotado a la
@@ -60,3 +60,13 @@ export const obtenerDatosShell = cache(async (): Promise<DatosShell | null> => {
     periodo,
   };
 });
+
+/**
+ * Grupo real para rotular la maqueta en `pathname` (INC1R-11). Usa el mismo
+ * contexto visible que el shell, así la página nunca contradice la barra.
+ */
+export async function obtenerGrupoMaqueta(pathname: string): Promise<string | null> {
+  const datos = await obtenerDatosShell();
+  if (!datos) return null;
+  return grupoMaqueta(contextoVisible(datos.contexto, datos.roles, pathname), datos.grupo, datos.gruposDocente);
+}

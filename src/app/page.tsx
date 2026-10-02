@@ -3,14 +3,13 @@ import Link from "next/link";
 import { ArrowRight, BookOpen, Bot, Clock3, Sprout } from "lucide-react";
 import { Marco } from "@/components/friso/marco";
 import { HOY } from "@/lib/datos";
-import { obtenerDatosShell } from "@/server/shell";
+import { obtenerDatosShell, obtenerGrupoMaqueta } from "@/server/shell";
 import styles from "./inicio.module.css";
 
 export default async function Inicio() {
   // Saludo con identidad y grupo reales; el resto de la portada sigue siendo demostrativo.
-  const datos = await obtenerDatosShell();
+  const [datos, grupo] = await Promise.all([obtenerDatosShell(), obtenerGrupoMaqueta("/")]);
   const nombre = datos?.nombre.split(/\s+/)[0];
-  const grupo = datos?.grupo ?? (datos?.gruposDocente.length === 1 ? datos.gruposDocente[0] : null);
   return (
     <Marco>
       <div className={styles.inicio}>

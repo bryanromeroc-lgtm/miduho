@@ -4,6 +4,7 @@ import { Ficha, RanuraLibre } from "@/components/friso/plancha";
 import { Boton, Panel } from "@/components/friso/piezas";
 import { HOY, AREAS, DOCENTE } from "@/lib/datos";
 import { cn } from "@/lib/utils";
+import { obtenerGrupoMaqueta } from "@/server/shell";
 
 /*
   LA PANTALLA DE LA CLASE — la más importante del sistema y el destino de la
@@ -29,6 +30,9 @@ export default async function PantallaClase({
   const clase = HOY.find((c) => c.id === id);
   if (!clase) notFound();
 
+  // Grupo real de la sesión (INC1R-11): nunca el demostrativo de lib/datos.ts.
+  const grupo = await obtenerGrupoMaqueta(`/clases/${clase.id}`);
+  const rotulo = grupo ? `${clase.asignatura} · ${grupo}` : clase.asignatura;
   const a = clase.area ? AREAS[clase.area] : null;
   const libres = Math.max(0, clase.ranuras - clase.contenidos.length);
 
@@ -38,7 +42,7 @@ export default async function PantallaClase({
         pasos={[
           { etiqueta: "Hoy", href: "/" },
           { etiqueta: "Mis clases", href: "/clases" },
-          { etiqueta: `${clase.asignatura} · ${clase.grupo}` },
+          { etiqueta: rotulo },
         ]}
       />
 
@@ -57,7 +61,7 @@ export default async function PantallaClase({
               className="text-[11px] font-extrabold uppercase tracking-[0.14em]"
               style={{ color: a ? "#fff" : "var(--color-rob-tinta)" }}
             >
-              {clase.asignatura} · {clase.grupo}
+              {rotulo}
             </p>
             <h1 className="mt-2 font-heading text-[clamp(34px,5vw,54px)] font-bold leading-[0.96]">
               {clase.tema ?? "Sin material todavía"}
@@ -142,7 +146,7 @@ export default async function PantallaClase({
           <Panel titulo="Grupo">
             <p className="font-heading text-[38px] font-bold leading-none text-tinta">25</p>
             <p className="text-[12px] text-gris">
-              estudiantes ficticios en {clase.grupo}
+              estudiantes ficticios en {grupo ?? "el grupo"}
             </p>
             <p className="mt-3 text-[12px] leading-[1.5] text-gris">
               La maqueta no muestra nombres ni datos de menores. La planilla real

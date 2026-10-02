@@ -3,6 +3,7 @@ import { Friso, TrechoConRegla } from "@/components/friso/friso";
 import { Plancha, Ficha, RanuraLibre } from "@/components/friso/plancha";
 import { Boton } from "@/components/friso/piezas";
 import { HOY, DOCENTE } from "@/lib/datos";
+import { obtenerGrupoMaqueta } from "@/server/shell";
 
 /*
   MIS CLASES — el mismo friso del día, sin la marca de «ahora».
@@ -10,7 +11,9 @@ import { HOY, DOCENTE } from "@/lib/datos";
   material y cuál no.
 */
 
-export default function MisClases() {
+export default async function MisClases() {
+  // Grupo real de la sesión (INC1R-11); las clases y el período siguen siendo demostrativos.
+  const grupo = await obtenerGrupoMaqueta("/clases");
   const vacias = HOY.filter((c) => c.contenidos.length === 0).length;
 
   return (
@@ -18,7 +21,7 @@ export default function MisClases() {
       <Migas pasos={[{ etiqueta: "Hoy", href: "/" }, { etiqueta: "Mis clases" }]} />
 
       <Cabecera
-        kicker={`${DOCENTE.grupo} · ${DOCENTE.periodo}`}
+        kicker={grupo ? `${grupo} · ${DOCENTE.periodo}` : DOCENTE.periodo}
         titulo="Mis clases"
         nota={`${DOCENTE.clasesACargo} clases a cargo. La maqueta desarrolla ${HOY.length}; ${vacias} está sin material y se ve así en la banda. El plan de estudios completo queda abierto.`}
       />
