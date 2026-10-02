@@ -7,7 +7,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
 import { auth } from "@/auth";
 import { ErrorDominio } from "@/server/errores";
-import { evaluarAcceso, type CodigoRol } from "@/server/http-acceso";
+import { evaluarAcceso, origenCoincideConHost, type CodigoRol } from "@/server/http-acceso";
 import { traducirErrorPrisma } from "@/server/modules/academico/servicio";
 
 export { ROLES_ACADEMICO } from "@/server/http-acceso";
@@ -32,7 +32,7 @@ export async function requerirRol(permitidos: CodigoRol[]) {
 /** CSRF para mutaciones en Route Handlers: el Origin debe ser el propio sitio. */
 export function verificarOrigen(req: NextRequest) {
   const origen = req.headers.get("origin");
-  if (origen && origen !== req.nextUrl.origin) {
+  if (!origenCoincideConHost(origen, req.nextUrl.protocol, req.headers.get("host"), req.nextUrl.origin)) {
     throw new ErrorDominio("ORIGEN_INVALIDO", "Solicitud rechazada por origen no permitido.", 403);
   }
 }

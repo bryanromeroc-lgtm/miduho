@@ -15,3 +15,13 @@ export function docenteIdSegunAlcance(roles: string[], usuarioId: string, docent
   const tieneAlcanceAdministrativo = roles.includes("ADMIN");
   return tieneAlcanceAdministrativo ? docenteIdSolicitado : usuarioId;
 }
+
+/**
+ * Un servidor ligado a `0.0.0.0` conserva esa dirección en `nextUrl`, aunque
+ * el navegador haya llegado por localhost o por la IP de la LAN. Para CSRF se
+ * compara el Origin con el Host efectivo de la solicitud, no con el binding.
+ */
+export function origenCoincideConHost(origen: string | null, protocolo: string, host: string | null, respaldo: string) {
+  if (!origen) return true;
+  return origen === (host ? `${protocolo}//${host}` : respaldo);
+}
