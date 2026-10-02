@@ -1,7 +1,7 @@
 /**
  * Seed de desarrollo — SOLO datos ficticios (AGENTS.md regla 1).
- * Crea los 5 roles y una cuenta administradora de prueba, sin datos de menores.
- * La contraseña sale de SEED_ADMIN_PASSWORD (no se versiona ninguna).
+ * Crea los 3 roles de Inc. 1R y datos integrados de prueba, sin identidades reales.
+ * Las contraseñas salen del entorno; no se versiona ni imprime ninguna.
  */
 import "dotenv/config";
 import { PrismaLibSql } from "@prisma/adapter-libsql";
@@ -14,19 +14,11 @@ const db = new PrismaClient({
 
 const ROLES = [
   { codigo: "ADMIN", nombre: "Administración" },
-  { codigo: "COORDINACION", nombre: "Coordinación" },
   { codigo: "DOCENTE", nombre: "Docente" },
   { codigo: "ESTUDIANTE", nombre: "Estudiante" },
-  { codigo: "ACUDIENTE", nombre: "Acudiente" },
 ];
 
-/**
- * Estructura académica DEMO (t_b089e01a). Todo es ficticio y provisional 🔶:
- * fechas de año y períodos inventadas para desarrollo, ponderación 25 % cada
- * uno, y solo las tres asignaturas que hoy tiene la maqueta (la lista real de
- * 14 asignaturas de 1.° está pendiente de confirmar con el colegio, D-05).
- * No incluye personas: el grupo piloto queda sin director.
- */
+/** Estructura académica DEMO. Todo es ficticio y provisional 🔶. */
 const ANIO_DEMO = 2026;
 const PERIODOS_DEMO = [
   { orden: 1, nombre: "Período 1 (demo)", fechaInicio: "2026-01-26", fechaFin: "2026-04-03" },
@@ -63,11 +55,12 @@ async function sembrarAcademico() {
     );
   }
   const primero = grados[0];
-  await db.grupo.upsert({
+  const grupo = await db.grupo.upsert({
     where: { gradoId_anioLectivoId_identificador: { gradoId: primero.id, anioLectivoId: anio.id, identificador: "01" } },
     update: {},
     create: { gradoId: primero.id, anioLectivoId: anio.id, identificador: "01" },
   });
+  let asignaturaDemo: Awaited<ReturnType<typeof db.asignatura.upsert>> | undefined;
   for (const a of AREAS_DEMO) {
     const area = await db.area.upsert({
       where: { nombre_idioma: { nombre: a.nombre, idioma: "es" } },
@@ -75,55 +68,139 @@ async function sembrarAcademico() {
       create: { nombre: a.nombre, orden: a.orden },
     });
     for (const nombre of a.asignaturas) {
-      const asig = await db.asignatura.upsert({
+      const asignatura = await db.asignatura.upsert({
         where: { areaId_nombre: { areaId: area.id, nombre } },
         update: {},
         create: { nombre, areaId: area.id },
       });
+      asignaturaDemo ??= asignatura;
       await db.asignaturaGrado.upsert({
-        where: { asignaturaId_gradoId: { asignaturaId: asig.id, gradoId: primero.id } },
+        where: { asignaturaId_gradoId: { asignaturaId: asignatura.id, gradoId: primero.id } },
         update: {},
-        create: { asignaturaId: asig.id, gradoId: primero.id },
+        create: { asignaturaId: asignatura.id, gradoId: primero.id },
       });
     }
   }
+  if (!asignaturaDemo) throw new Error("El seed académico requiere al menos una asignatura demo.");
   console.info(`Estructura académica demo ${ANIO_DEMO} lista (ficticia).`);
+  return { anio, grupo, asignatura: asignaturaDemo };
+}
+
+async function sembrarUsuario(datos: {
+  correo: string;
+  nombres: string;
+  apellidos: string;
+  clave: string;
+  rol: "ADMIN" | "DOCENTE" | "ESTUDIANTE";
+  debeCambiarContrasena?: boolean;
+}) {
+  const usuario = await db.usuario.upsert({
+    where: { correo: datos.correo },
+    update: {},
+    create: {
+      nombres: datos.nombres,
+      apellidos: datos.apellidos,
+      correo: datos.correo,
+      hashContrasena: await bcrypt.hash(datos.clave, 12),
+      estado: "ACTIVO",
+      debeCambiarContrasena: datos.debeCambiarContrasena ?? false,
+    },
+  });
+  const rol = await db.rol.findUniqueOrThrow({ where: { codigo: datos.rol } });
+  await db.usuarioRol.upsert({
+    where: { usuarioId_rolId: { usuarioId: usuario.id, rolId: rol.id } },
+    update: {},
+    create: { usuarioId: usuario.id, rolId: rol.id },
+  });
+  return usuario;
 }
 
 async function main() {
-  for (const r of ROLES) {
-    await db.rol.upsert({ where: { codigo: r.codigo }, update: { nombre: r.nombre }, create: r });
+  for (const rol of ROLES) {
+    await db.rol.upsert({ where: { codigo: rol.codigo }, update: { nombre: rol.nombre }, create: rol });
   }
-  await sembrarAcademico();
+  const academico = await sembrarAcademico();
 
-  const clave = process.env.SEED_ADMIN_PASSWORD;
-  if (!clave) {
-    console.info("Roles creados. Define SEED_ADMIN_PASSWORD para crear la cuenta admin ficticia.");
+  const claveAdmin = process.env.SEED_ADMIN_PASSWORD;
+  if (!claveAdmin) {
+    console.info("Roles y estructura creados. Define SEED_ADMIN_PASSWORD para crear el ADMIN ficticio.");
     return;
   }
-  const correo = (process.env.SEED_ADMIN_EMAIL ?? "admin@miduho.test").toLowerCase();
-  const admin = await db.usuario.upsert({
-    where: { correo },
+  const admin = await sembrarUsuario({
+    correo: (process.env.SEED_ADMIN_EMAIL ?? "admin@miduho.test").toLowerCase(),
+    nombres: "Cuenta",
+    apellidos: "Administradora (ficticia)",
+    clave: claveAdmin,
+    rol: "ADMIN",
+  });
+
+  const claveDocente = process.env.SEED_DOCENTE_PASSWORD;
+  const claveEstudiante = process.env.SEED_ESTUDIANTE_PASSWORD;
+  if (!claveDocente || !claveEstudiante) {
+    console.info("ADMIN ficticio listo. Define SEED_DOCENTE_PASSWORD y SEED_ESTUDIANTE_PASSWORD para completar el escenario demo.");
+    return;
+  }
+  const docente = await sembrarUsuario({
+    correo: "docente@miduho.test",
+    nombres: "Cuenta",
+    apellidos: "Docente (ficticia)",
+    clave: claveDocente,
+    rol: "DOCENTE",
+    debeCambiarContrasena: true,
+  });
+  const estudiante = await sembrarUsuario({
+    correo: "estudiante@miduho.test",
+    nombres: "Cuenta",
+    apellidos: "Estudiantil (ficticia)",
+    clave: claveEstudiante,
+    rol: "ESTUDIANTE",
+  });
+  await db.asociacionEstudianteGrupo.upsert({
+    where: { id: "asociacion-estudiante-demo" },
     update: {},
     create: {
-      nombres: "Cuenta",
-      apellidos: "Administradora (ficticia)",
-      correo,
-      hashContrasena: await bcrypt.hash(clave, 12),
+      id: "asociacion-estudiante-demo",
+      estudianteId: estudiante.id,
+      grupoId: academico.grupo.id,
+      anioLectivoId: academico.anio.id,
     },
   });
-  const rolAdmin = await db.rol.findUniqueOrThrow({ where: { codigo: "ADMIN" } });
-  await db.usuarioRol.upsert({
-    where: { usuarioId_rolId: { usuarioId: admin.id, rolId: rolAdmin.id } },
+  const asignacion = await db.asignacionDocente.upsert({
+    where: {
+      docenteId_asignaturaId_grupoId_anioLectivoId: {
+        docenteId: docente.id,
+        asignaturaId: academico.asignatura.id,
+        grupoId: academico.grupo.id,
+        anioLectivoId: academico.anio.id,
+      },
+    },
     update: {},
-    create: { usuarioId: admin.id, rolId: rolAdmin.id },
+    create: {
+      docenteId: docente.id,
+      asignaturaId: academico.asignatura.id,
+      grupoId: academico.grupo.id,
+      anioLectivoId: academico.anio.id,
+      creadoPorId: admin.id,
+    },
   });
-  console.info(`Roles y cuenta ficticia ${correo} listos.`);
+  await db.bloqueHorario.upsert({
+    where: {
+      asignacionId_dia_horaInicio_horaFin: {
+        asignacionId: asignacion.id,
+        dia: "LUNES",
+        horaInicio: "08:00",
+        horaFin: "09:00",
+      },
+    },
+    update: {},
+    create: { asignacionId: asignacion.id, dia: "LUNES", horaInicio: "08:00", horaFin: "09:00" },
+  });
+  console.info("Escenario demo ficticio de Inc. 1R listo.");
 }
 
 main()
-  .catch((e) => {
-    console.error(e);
+  .catch((error) => {
+    console.error(error);
     process.exit(1);
   })
   .finally(() => db.$disconnect());

@@ -5,7 +5,7 @@
  *
  * Recibe el cliente Prisma por parámetro para poder probarla contra una base
  * temporal; las rutas usan `servicioAcademico` (singleton de src/server/db).
- * La autorización (ADMIN/COORDINACION) se verifica antes, en el handler.
+ * La autorización ADMIN se verifica antes, en el handler.
  */
 import type { z } from "zod";
 import { Prisma, type PrismaClient } from "@/generated/prisma/client";
@@ -331,18 +331,7 @@ export function crearServicioAcademico(db: PrismaClient) {
     async desactivar(id: string) { return db.asignacionDocente.update({ where: { id }, data: { estado: "INACTIVA" } }); },
   };
 
-  const acudientesEstudiantes = {
-    async listar(f: Entrada<typeof E.filtroAsignacionesDocente>) { return db.acudienteEstudiante.findMany({ skip: (f.page - 1) * f.pageSize, take: f.pageSize, orderBy: { creadoEn: "desc" } }); },
-    async crear(d: Entrada<typeof E.crearAcudienteEstudiante>) {
-      if (d.acudienteId === d.estudianteId) throw conflicto("VINCULO_INVALIDO", "Un usuario no puede vincularse consigo mismo.");
-      const [acudiente, estudiante] = await Promise.all([db.usuario.findUnique({ where: { id: d.acudienteId }, include: { roles: { include: { rol: true } } } }), db.usuario.findUnique({ where: { id: d.estudianteId }, include: { roles: { include: { rol: true } } } })]);
-      if (!acudiente?.roles.some((r) => r.rol.codigo === "ACUDIENTE") || !estudiante?.roles.some((r) => r.rol.codigo === "ESTUDIANTE")) throw conflicto("ROLES_VINCULO_INVALIDOS", "El vínculo requiere roles acudiente y estudiante.");
-      return db.acudienteEstudiante.create({ data: d });
-    },
-    async actualizar(id: string, d: Entrada<typeof E.actualizarAcudienteEstudiante>) { return db.acudienteEstudiante.update({ where: { id }, data: d }); },
-  };
-
-  return { aniosLectivos, periodos, grados, grupos, asignaturas, asignacionesDocente, acudientesEstudiantes };
+  return { aniosLectivos, periodos, grados, grupos, asignaturas, asignacionesDocente };
 }
 
 export type ServicioAcademico = ReturnType<typeof crearServicioAcademico>;

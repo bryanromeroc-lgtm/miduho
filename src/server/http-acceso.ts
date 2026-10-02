@@ -1,8 +1,8 @@
 /** Reglas de acceso por rol, puras (sin sesión ni Next) para poder probarlas. */
-export type CodigoRol = "ADMIN" | "COORDINACION" | "DOCENTE" | "ESTUDIANTE" | "ACUDIENTE";
+export type CodigoRol = "ADMIN" | "DOCENTE" | "ESTUDIANTE";
 
-/** Académico: lectura y escritura para ADMIN/COORDINACION (arquitectura §6–7, §14). */
-export const ROLES_ACADEMICO: CodigoRol[] = ["ADMIN", "COORDINACION"];
+/** La administración de la estructura académica corresponde exclusivamente a ADMIN. */
+export const ROLES_ACADEMICO: CodigoRol[] = ["ADMIN"];
 
 /** `null` = permitido; 401 sin sesión; 403 sin ninguno de los roles. */
 export function evaluarAcceso(roles: string[] | null, permitidos: CodigoRol[]): 401 | 403 | null {
@@ -12,6 +12,6 @@ export function evaluarAcceso(roles: string[] | null, permitidos: CodigoRol[]): 
 
 /** Un docente sin rol administrativo solo puede consultar sus propias asignaciones. */
 export function docenteIdSegunAlcance(roles: string[], usuarioId: string, docenteIdSolicitado?: string) {
-  const tieneAlcanceAdministrativo = roles.some((rol) => rol === "ADMIN" || rol === "COORDINACION");
+  const tieneAlcanceAdministrativo = roles.includes("ADMIN");
   return tieneAlcanceAdministrativo ? docenteIdSolicitado : usuarioId;
 }

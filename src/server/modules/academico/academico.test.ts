@@ -2,6 +2,7 @@ import { mkdtempSync, readdirSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { PrismaLibSql } from "@prisma/adapter-libsql";
+import { createClient } from "@libsql/client";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@/generated/prisma/client";
 import { docenteIdSegunAlcance, evaluarAcceso, ROLES_ACADEMICO } from "@/server/http-acceso";
@@ -47,10 +48,9 @@ describe("esquemas Zod", () => {
 });
 
 describe("acceso académico", () => {
-  it("401 sin sesión, 403 sin rol, permitido a ADMIN/COORDINACION", () => {
+  it("401 sin sesión, 403 sin rol, permitido a ADMIN", () => {
     expect(evaluarAcceso(null, ROLES_ACADEMICO)).toBe(401);
     expect(evaluarAcceso(["DOCENTE"], ROLES_ACADEMICO)).toBe(403);
-    expect(evaluarAcceso(["COORDINACION"], ROLES_ACADEMICO)).toBeNull();
     expect(evaluarAcceso(["DOCENTE", "ADMIN"], ROLES_ACADEMICO)).toBeNull();
   });
 
@@ -61,7 +61,6 @@ describe("acceso académico", () => {
 
   it("conserva el filtro y el listado completo para roles administrativos", () => {
     expect(docenteIdSegunAlcance(["ADMIN"], "admin", "docente-solicitado")).toBe("docente-solicitado");
-    expect(docenteIdSegunAlcance(["COORDINACION"], "coordinacion")).toBeUndefined();
     expect(docenteIdSegunAlcance(["DOCENTE", "ADMIN"], "admin-docente")).toBeUndefined();
   });
 });
@@ -83,15 +82,15 @@ async function codigoDe(p: Promise<unknown>) {
 
 beforeAll(async () => {
   dir = mkdtempSync(path.join(tmpdir(), "miduho-academico-"));
-  db = new PrismaClient({ adapter: new PrismaLibSql({ url: `file:${path.join(dir, "test.db")}` }) });
+  const url = `file:${path.join(dir, "test.db")}`;
   const raiz = path.resolve(__dirname, "../../../../prisma/migrations");
+  const migrador = createClient({ url });
   for (const m of readdirSync(raiz).filter((n) => /^\d+_/.test(n)).sort()) {
-    await db.$executeRawUnsafe("PRAGMA foreign_keys = ON");
     const sql = readFileSync(path.join(raiz, m, "migration.sql"), "utf8");
-    for (const sentencia of sql.split(/;\s*\n/).map((s) => s.trim()).filter(Boolean)) {
-      await db.$executeRawUnsafe(sentencia);
-    }
+    await migrador.executeMultiple(sql);
   }
+  migrador.close();
+  db = new PrismaClient({ adapter: new PrismaLibSql({ url }) });
   S = crearServicioAcademico(db);
 });
 
@@ -149,7 +148,7 @@ describe("servicio académico (SQLite temporal)", () => {
     await expect(S.grupos.crear({ gradoId, anioLectivoId: anioId, identificador: "01" })).rejects.toMatchObject({ code: "P2002" });
 
     const noDocente = await db.usuario.create({
-      data: { nombres: "Cuenta", apellidos: "Ficticia sin rol", correo: "sin-rol@miduho.test", hashContrasena: "x" },
+      data: { nombres: "Cuenta", apellidos: "Ficticia sin rol", correo: "sin-rol@miduho.test", hashContrasena: "x", estado: "ACTIVO" },
     });
     expect(await codigoDe(S.grupos.actualizar(grupo.id, { directorId: noDocente.id }))).toBe("DIRECTOR_INVALIDO");
     const rol = await db.rol.create({ data: { codigo: "DOCENTE", nombre: "Docente" } });

@@ -1,9 +1,6 @@
-// MIDUHO — esquema Prisma (Incremento 1).
-// Esta tarjeta (t_85913f5b, autenticación) introdujo las entidades de acceso.
-// t_b089e01a agrega la estructura académica base (AnioLectivo, Periodo,
-// Grado, Grupo, Asignatura + Area y AsignaturaGrado que estas requieren).
-// AsignacionDocente y AcudienteEstudiante gobiernan permisos y vínculos verificables.
-// No se modela matrícula de estudiantes por decisión de alcance del producto.
+// MIDUHO — esquema Prisma (Incremento 1R).
+// La asociación estudiante–grupo conserva vigencia e historial, pero no representa
+// una matrícula formal. Las restricciones parciales y entre tablas están en SQL.
 
 generator client {
   provider = "prisma-client"
@@ -16,6 +13,7 @@ datasource db {
 
 // ---------- Acceso ----------
 enum EstadoUsuario {
+  PENDIENTE_ACTIVACION
   ACTIVO
   INACTIVO
 }
@@ -25,9 +23,12 @@ model Usuario {
   nombres        String
   apellidos      String
   correo         String        @unique
-  hashContrasena String
+  hashContrasena String?
   fotoUrl        String?
-  estado         EstadoUsuario @default(ACTIVO)
+  estado         EstadoUsuario @default(PENDIENTE_ACTIVACION)
+  debeCambiarContrasena Boolean @default(false)
+  versionSesion  Int           @default(1)
+  sesionesRevocadasEn DateTime?
   ultimoAcceso   DateTime?
   creadoEn       DateTime      @default(now())
   actualizadoEn  DateTime      @updatedAt
@@ -37,15 +38,14 @@ model Usuario {
   gruposDirigidos   Grupo[]                      @relation("Director")
   asignaciones      AsignacionDocente[]          @relation("DocenteAsignaciones")
   asignacionesCreadas AsignacionDocente[]        @relation("AsignacionCreador")
-  acudienteDe       AcudienteEstudiante[]        @relation("Acudiente")
-  estudianteDe      AcudienteEstudiante[]        @relation("Estudiante")
+  asociacionesGrupo AsociacionEstudianteGrupo[]  @relation("EstudianteAsociaciones")
 
   @@map("usuarios")
 }
 
 model Rol {
   id          String       @id @default(cuid())
-  codigo      String       @unique // ADMIN | COORDINACION | DOCENTE | ESTUDIANTE | ACUDIENTE
+  codigo      String       @unique // ADMIN | DOCENTE | ESTUDIANTE
   nombre      String
   descripcion String?
   usuarios    UsuarioRol[]
@@ -97,6 +97,7 @@ model AnioLectivo {
   periodos      Periodo[]
   grupos        Grupo[]
   asignacionesDocente AsignacionDocente[]
+  asociacionesEstudiantes AsociacionEstudianteGrupo[]
 
   @@map("anios_lectivos")
 }
@@ -148,6 +149,7 @@ model Grupo {
   anioLectivo   AnioLectivo @relation(fields: [anioLectivoId], references: [id])
   director      Usuario?    @relation("Director", fields: [directorId], references: [id], onDelete: SetNull)
   asignacionesDocente AsignacionDocente[]
+  asociacionesEstudiantes AsociacionEstudianteGrupo[]
 
   @@unique([gradoId, anioLectivoId, identificador]) // RN-07
   @@index([anioLectivoId])
@@ -220,21 +222,51 @@ model AsignacionDocente {
   grupo         Grupo                   @relation(fields: [grupoId], references: [id])
   anioLectivo   AnioLectivo             @relation(fields: [anioLectivoId], references: [id])
   creadoPor     Usuario?                @relation("AsignacionCreador", fields: [creadoPorId], references: [id], onDelete: SetNull)
+  bloques       BloqueHorario[]
   @@unique([docenteId, asignaturaId, grupoId, anioLectivoId])
   @@index([docenteId, anioLectivoId])
   @@map("asignaciones_docente")
 }
 
-model AcudienteEstudiante {
-  id           String   @id @default(cuid())
-  acudienteId  String
-  estudianteId String
-  parentesco   String
-  verificado   Boolean  @default(false)
-  creadoEn     DateTime @default(now())
-  actualizadoEn DateTime @updatedAt
-  acudiente    Usuario  @relation("Acudiente", fields: [acudienteId], references: [id], onDelete: Cascade)
-  estudiante   Usuario  @relation("Estudiante", fields: [estudianteId], references: [id], onDelete: Cascade)
-  @@unique([acudienteId, estudianteId])
-  @@map("acudientes_estudiantes")
+model AsociacionEstudianteGrupo {
+  id            String      @id @default(cuid())
+  estudianteId  String
+  grupoId       String
+  anioLectivoId String
+  inicioEn      DateTime    @default(now())
+  finEn         DateTime?
+  creadoEn      DateTime    @default(now())
+  actualizadoEn DateTime    @updatedAt
+  estudiante    Usuario     @relation("EstudianteAsociaciones", fields: [estudianteId], references: [id])
+  grupo         Grupo       @relation(fields: [grupoId], references: [id])
+  anioLectivo   AnioLectivo @relation(fields: [anioLectivoId], references: [id])
+
+  @@index([estudianteId, anioLectivoId])
+  @@index([grupoId, finEn])
+  @@map("asociaciones_estudiantes_grupos")
+}
+
+enum DiaSemana {
+  LUNES
+  MARTES
+  MIERCOLES
+  JUEVES
+  VIERNES
+  SABADO
+  DOMINGO
+}
+
+model BloqueHorario {
+  id            String             @id @default(cuid())
+  asignacionId  String
+  dia           DiaSemana
+  horaInicio    String
+  horaFin       String
+  creadoEn      DateTime           @default(now())
+  actualizadoEn DateTime           @updatedAt
+  asignacion    AsignacionDocente  @relation(fields: [asignacionId], references: [id], onDelete: Cascade)
+
+  @@unique([asignacionId, dia, horaInicio, horaFin])
+  @@index([dia, horaInicio, horaFin])
+  @@map("bloques_horario")
 }
