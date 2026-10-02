@@ -3,9 +3,26 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { BookOpen, CalendarDays, FlaskConical, Home, School, GraduationCap } from "lucide-react";
+import {
+  BookOpen,
+  Building2,
+  CalendarClock,
+  CalendarDays,
+  CircleUserRound,
+  FlaskConical,
+  GraduationCap,
+  Home,
+  LayoutDashboard,
+  School,
+  ShieldCheck,
+  Users,
+  UsersRound,
+  type LucideIcon,
+} from "lucide-react";
 import { Escudo } from "@/components/friso/escudo";
-import { DOCENTE } from "@/lib/datos";
+import { useShell } from "@/components/shell/contexto";
+import { MenuCuenta, SelectorContexto } from "@/components/shell/menu-cuenta";
+import { contextoVisible, rutaActiva, rutasPorContexto, type IdRuta } from "@/lib/navegacion";
 import { cn } from "@/lib/utils";
 
 /*
@@ -15,21 +32,34 @@ import { cn } from "@/lib/utils";
 
   La barra es tinta sólida, no un color de área: ningún área es dueña del
   encabezado, y así el color de plancha conserva todo su significado.
+
+  Shell autenticado (Inc. 1R §10): identidad, grupo y navegación salen de la
+  sesión real (ProveedorShell en la raíz). Las rutas visibles dependen del
+  contexto; la autorización real la hacen proxy.ts y el servidor.
 */
-const RUTAS = [
-  { href: "/", etiqueta: "Hoy", icono: Home },
-  { href: "/clases", etiqueta: "Mis clases", icono: School },
-  { href: "/biblioteca", etiqueta: "Biblioteca", icono: BookOpen },
-  { href: "/laboratorios", etiqueta: "Laboratorios", icono: FlaskConical },
-  { href: "/agenda", etiqueta: "Agenda", icono: CalendarDays },
-];
+const ICONOS: Record<IdRuta, LucideIcon> = {
+  hoy: Home,
+  clases: School,
+  biblioteca: BookOpen,
+  laboratorios: FlaskConical,
+  agenda: CalendarDays,
+  "mi-curso": UsersRound,
+  dashboard: LayoutDashboard,
+  usuarios: Users,
+  estructura: Building2,
+  asignaciones: CalendarClock,
+  cuenta: CircleUserRound,
+};
 
 export function Marco({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-
+  const datos = useShell();
+  const contexto = datos ? contextoVisible(datos.contexto, datos.roles, pathname) : null;
+  const rutas = rutasPorContexto(contexto);
+  const mixta = !!datos && datos.roles.includes("ADMIN") && datos.roles.includes("DOCENTE");
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" data-contexto={contexto ?? undefined}>
       <a
         href="#contenido"
         className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:font-semibold"
@@ -47,17 +77,27 @@ export function Marco({ children }: { children: React.ReactNode }) {
           <Image className="portal-school" src="/images/portal/1f3eb.svg" alt="" width={64} height={64} />
         </div>
         <div className="school-header-inner">
-          <Link href="/" className="school-brand" aria-label="MIDUHO · Inicio">
+          <Link href={rutas[0]?.href ?? "/cuenta"} className="school-brand" aria-label="MIDUHO · Inicio">
             <span className="school-brand-mark"><Escudo size={30} /></span>
             <span><strong>MIDUHO <span>Virtual</span></strong><small>Colegio Mi Dulce Hogar</small></span>
           </Link>
-          <div className="school-group"><GraduationCap size={20} aria-hidden="true" /><span><strong>Grupo {DOCENTE.grupo}</strong><small>{DOCENTE.periodo}</small></span></div>
+          {datos ? (
+            <div className="shell-herramientas">
+              <ChipGrupo contexto={contexto} grupo={datos.grupo} gruposDocente={datos.gruposDocente} periodo={datos.periodo} />
+              {mixta ? (
+                <div className="shell-contexto-cabecera">
+                  <SelectorContexto actual={contexto === "ADMIN" ? "ADMIN" : "DOCENTE"} guardado={datos.contexto} />
+                </div>
+              ) : null}
+              <MenuCuenta datos={datos} />
+            </div>
+          ) : null}
         </div>
-        <nav id="menu-principal" aria-label="Navegación principal" className="school-nav">
+        <nav id="menu-principal" aria-label="Navegación principal" className="school-nav" data-items={rutas.length}>
           <ul>
-            {RUTAS.map((r) => {
-              const activa = r.href === "/" ? pathname === "/" : pathname.startsWith(r.href);
-              const Icono = r.icono;
+            {rutas.map((r) => {
+              const activa = rutaActiva(r.href, pathname);
+              const Icono = ICONOS[r.id];
               return <li key={r.href}><Link href={r.href} aria-current={activa ? "page" : undefined} className={cn("school-nav-link", activa && "is-active")}><Icono size={20} strokeWidth={2.15} aria-hidden="true" /><span>{r.etiqueta}</span></Link></li>;
             })}
           </ul>
@@ -72,6 +112,47 @@ export function Marco({ children }: { children: React.ReactNode }) {
         <span>Colegio Mi Dulce Hogar · Madrid, Cundinamarca</span>
         <details><summary>Sobre esta maqueta</summary><p>Propuesta visual a validar. Todos los datos son ficticios. No hay datos reales de estudiantes, docentes ni acudientes. Los títulos de literatura son obras de dominio público. Esta propuesta no constituye la identidad oficial del colegio.</p></details>
       </footer>
+    </div>
+  );
+}
+
+/*
+  Chip de contexto: ESTUDIANTE ve su grupo real; DOCENTE, los grupos con
+  asignación activa; ADMIN, solo su contexto — nunca un grupo ficticio.
+*/
+function ChipGrupo({
+  contexto,
+  grupo,
+  gruposDocente,
+  periodo,
+}: {
+  contexto: ReturnType<typeof contextoVisible>;
+  grupo: string | null;
+  gruposDocente: string[];
+  periodo: string | null;
+}) {
+  if (contexto === "ADMIN") {
+    return (
+      <div className="school-group">
+        <ShieldCheck size={20} aria-hidden="true" />
+        <span><strong>Administración</strong><small>{periodo ?? "Colegio Mi Dulce Hogar"}</small></span>
+      </div>
+    );
+  }
+  let titulo: string;
+  if (contexto === "ESTUDIANTE") titulo = grupo ? `Grupo ${grupo}` : "Sin grupo asignado";
+  else if (contexto === "DOCENTE") {
+    titulo =
+      gruposDocente.length === 0
+        ? "Sin grupos asignados"
+        : gruposDocente.length === 1
+          ? `Grupo ${gruposDocente[0]}`
+          : `Grupos ${gruposDocente.join(", ")}`;
+  } else return null;
+  return (
+    <div className="school-group">
+      <GraduationCap size={20} aria-hidden="true" />
+      <span><strong>{titulo}</strong>{periodo ? <small>{periodo}</small> : null}</span>
     </div>
   );
 }

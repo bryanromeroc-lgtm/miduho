@@ -7,7 +7,7 @@ import { Aviso, BotonEnviar, Campo } from "../../(auth)/componentes";
 export function FormularioCambioContrasena() {
   const [estado, accion, pendiente] = useActionState<EstadoFormulario, FormData>(cambiarContrasenaPropia, {});
   return (
-    <form action={accion} noValidate className="flex flex-col gap-4">
+    <form action={accion} noValidate className="acceso-formulario">
       {estado.error ? <Aviso tipo="error">{estado.error}</Aviso> : null}
       <Campo
         id="actual"

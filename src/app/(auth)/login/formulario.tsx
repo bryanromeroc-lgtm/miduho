@@ -8,7 +8,7 @@ import { Aviso, BotonEnviar, Campo } from "../componentes";
 export function FormularioLogin({ desde, restablecida }: { desde?: string; restablecida: boolean }) {
   const [estado, accion, pendiente] = useActionState<EstadoFormulario, FormData>(iniciarSesion, {});
   return (
-    <form action={accion} noValidate className="flex flex-col gap-4">
+    <form action={accion} noValidate className="acceso-formulario">
       {restablecida && !estado.error ? (
         <Aviso tipo="ok">Tu contraseña se actualizó. Ya puedes ingresar.</Aviso>
       ) : null}
@@ -24,7 +24,7 @@ export function FormularioLogin({ desde, restablecida }: { desde?: string; resta
         error={estado.errores?.contrasena}
       />
       <BotonEnviar pendiente={pendiente}>Ingresar</BotonEnviar>
-      <Link href="/recuperar" className="text-sm font-medium text-[#00658B] underline underline-offset-4">
+      <Link href="/recuperar" className="acceso-enlace">
         ¿Olvidaste tu contraseña?
       </Link>
     </form>

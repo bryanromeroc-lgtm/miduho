@@ -35,6 +35,11 @@ export const proxy = auth((request) => {
     return NextResponse.redirect(new URL(RUTA_CAMBIO, request.url));
   }
 
+  // "/" es el inicio de cada contexto: ADMIN (puro o con contexto ADMIN) entra al Dashboard.
+  if (pathname === "/" && usuario.contexto === "ADMIN") {
+    return NextResponse.redirect(new URL("/admin", request.url));
+  }
+
   if (!puedeAccederRuta(usuario.roles, familia(pathname))) {
     return NextResponse.redirect(new URL("/cuenta?sinPermiso=1", request.url));
   }

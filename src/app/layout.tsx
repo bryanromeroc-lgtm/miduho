@@ -35,7 +35,10 @@ import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import { Ascenso } from "@/components/laboratorios/ascenso";
 import { AperturaLibro } from "@/components/biblioteca/apertura";
+import { ProveedorShell } from "@/components/shell/contexto";
+import { obtenerDatosShell } from "@/server/shell";
 import "./globals.css";
+import "./shell.css";
 
 const archivo = Nunito({
   variable: "--font-archivo",
@@ -49,13 +52,15 @@ export const metadata: Metadata = {
     "Plataforma educativa del Colegio Mi Dulce Hogar. El contenido ya está en la clase.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  // Identidad real del shell (Inc. 1R §10). null en rutas públicas.
+  const datosShell = await obtenerDatosShell();
   return (
     <html lang="es-CO">
       <body className={archivo.variable}>
-        {children}
+        <ProveedorShell valor={datosShell}>{children}</ProveedorShell>
         {/* El ascenso vive en la raíz porque el viaje cruza rutas: sale de
             cualquier vista y llega al universo, y vuelve. Montarlo aquí
             evita que cada enlace tenga que saber del tránsito. */}

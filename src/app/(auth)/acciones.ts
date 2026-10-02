@@ -12,7 +12,10 @@ import {
 } from "@/server/auth/esquemas";
 import { restablecerContrasena, servicioCuentas, solicitarRestablecimiento } from "@/server/auth/recuperacion";
 import { recuperacionPermitida } from "@/server/auth/limite";
+import { resolverContexto } from "@/server/auth/sesion";
+import { db } from "@/server/db";
 import { ErrorDominio } from "@/server/errores";
+import { inicioDeContexto } from "@/lib/navegacion";
 
 export type EstadoFormulario = {
   error?: string;
@@ -29,9 +32,31 @@ function primerosErrores(issues: { path: PropertyKey[]; message: string }[]) {
   return errores;
 }
 
-/** Solo rutas internas: evita redirecciones abiertas con ?desde=https://… */
+/**
+ * Solo rutas internas: evita redirecciones abiertas con ?desde=https://…
+ * Sin `desde` válido devuelve null y se usa el inicio del contexto de la cuenta.
+ */
 function destinoSeguro(desde: FormDataEntryValue | null) {
-  return typeof desde === "string" && desde.startsWith("/") && !desde.startsWith("//") ? desde : "/cuenta";
+  return typeof desde === "string" && desde.startsWith("/") && !desde.startsWith("//") ? desde : null;
+}
+
+/**
+ * Destino tras autenticar, resuelto en servidor (no vía proxy: una redirección
+ * de server action que el proxy vuelve a redirigir deja la URL desfasada).
+ */
+async function destinoTrasIngreso(correo: string, desde: string | null) {
+  const usuario = await db.usuario.findUnique({
+    where: { correo },
+    select: { debeCambiarContrasena: true, ultimoContexto: true, roles: { select: { rol: { select: { codigo: true } } } } },
+  });
+  if (!usuario) return "/login";
+  if (usuario.debeCambiarContrasena) return "/cuenta/contrasena";
+  if (desde && desde !== "/") return desde;
+  const contexto = resolverContexto(
+    usuario.roles.map((r) => r.rol.codigo),
+    usuario.ultimoContexto,
+  );
+  return inicioDeContexto(contexto);
 }
 
 export async function iniciarSesion(_: EstadoFormulario, formData: FormData): Promise<EstadoFormulario> {
@@ -45,10 +70,9 @@ export async function iniciarSesion(_: EstadoFormulario, formData: FormData): Pr
     await signIn("credentials", {
       correo: datos.data.correo,
       contrasena: datos.data.contrasena,
-      redirectTo: destinoSeguro(formData.get("desde")),
+      redirect: false,
     });
   } catch (e) {
-    // signIn redirige lanzando; solo se capturan errores de Auth.js.
     if (e instanceof AuthError) {
       return {
         error:
@@ -57,7 +81,7 @@ export async function iniciarSesion(_: EstadoFormulario, formData: FormData): Pr
     }
     throw e;
   }
-  return {};
+  redirect(await destinoTrasIngreso(datos.data.correo, destinoSeguro(formData.get("desde"))));
 }
 
 export async function cerrarSesion() {

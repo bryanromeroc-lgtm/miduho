@@ -8,11 +8,11 @@ export function FormularioNuevaContrasena({ token }: { token: string }) {
   const [estado, accion, pendiente] = useActionState<EstadoFormulario, FormData>(guardarNuevaContrasena, {});
   const errorToken = estado.error ?? estado.errores?.token;
   return (
-    <form action={accion} noValidate className="flex flex-col gap-4">
+    <form action={accion} noValidate className="acceso-formulario">
       {errorToken ? (
         <Aviso tipo="error">
           {errorToken}{" "}
-          <a href="/recuperar" className="font-semibold underline underline-offset-4">
+          <a href="/recuperar" className="acceso-enlace-aviso">
             Pedir otro enlace
           </a>
         </Aviso>

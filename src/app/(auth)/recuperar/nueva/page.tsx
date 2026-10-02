@@ -17,13 +17,13 @@ export default async function PaginaNuevaContrasena({
 }) {
   const { token } = await searchParams;
   return (
-    <Tarjeta titulo="Crear nueva contraseña">
+    <Tarjeta titulo="Crear nueva contraseña" bajada="Elige una contraseña que no uses en otro sitio.">
       {token ? (
         <FormularioNuevaContrasena token={token} />
       ) : (
-        <div className="flex flex-col gap-4">
+        <div className="acceso-formulario">
           <Aviso tipo="error">El enlace no es válido o está incompleto.</Aviso>
-          <Link href="/recuperar" className="text-sm font-medium text-[#00658B] underline underline-offset-4">
+          <Link href="/recuperar" className="acceso-enlace">
             Pedir otro enlace
           </Link>
         </div>
