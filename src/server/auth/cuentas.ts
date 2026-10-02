@@ -197,24 +197,36 @@ export function crearServicioCuentas(db: PrismaClient, opciones: Opciones) {
       await enviarInvitacion(usuario);
     },
 
-    /** DOCENTE: ACTIVO con contraseña temporal; se devuelve una sola vez. */
-    async crearDocente(datos: { nombres: string; apellidos: string; correo: string }) {
+    /**
+     * DOCENTE: ACTIVO con contraseña temporal; se devuelve una sola vez.
+     * `tambienAdmin` crea la combinación DOCENTE + ADMIN en la misma escritura (INC1R-05).
+     */
+    async crearDocente(datos: { nombres: string; apellidos: string; correo: string }, extra: { tambienAdmin?: boolean } = {}) {
       await exigirCorreoLibre(datos.correo);
       const contrasena = generarContrasenaTemporal();
+      const roles = [{ rolId: await rolId("DOCENTE") }];
+      if (extra.tambienAdmin) roles.push({ rolId: await rolId("ADMIN") });
       const usuario = await db.usuario.create({
         data: {
           ...datos,
           estado: "ACTIVO",
           hashContrasena: await hashearContrasena(contrasena, costo),
           debeCambiarContrasena: true,
-          roles: { create: { rolId: await rolId("DOCENTE") } },
+          roles: { create: roles },
         },
       });
       return { id: usuario.id, correo: usuario.correo, contrasenaTemporal: contrasena };
     },
 
-    /** ESTUDIANTE: ACTIVO con contraseña legible generada; se devuelve una sola vez. */
-    async crearEstudiante(datos: { nombres: string; apellidos: string; correo: string }) {
+    /**
+     * ESTUDIANTE: ACTIVO con contraseña legible generada; se devuelve una sola vez.
+     * `asociacion` lo vincula a un grupo en la misma escritura (INC1R-05); el
+     * llamador valida antes que el grupo exista y que su año no esté cerrado.
+     */
+    async crearEstudiante(
+      datos: { nombres: string; apellidos: string; correo: string },
+      asociacion?: { grupoId: string; anioLectivoId: string },
+    ) {
       await exigirCorreoLibre(datos.correo);
       const contrasena = generarContrasenaEstudiante();
       const usuario = await db.usuario.create({
@@ -223,6 +235,7 @@ export function crearServicioCuentas(db: PrismaClient, opciones: Opciones) {
           estado: "ACTIVO",
           hashContrasena: await hashearContrasena(contrasena, costo),
           roles: { create: { rolId: await rolId("ESTUDIANTE") } },
+          ...(asociacion ? { asociacionesGrupo: { create: asociacion } } : {}),
         },
       });
       return { id: usuario.id, correo: usuario.correo, contrasena };
