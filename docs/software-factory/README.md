@@ -11,7 +11,8 @@
 | [Auditoría de producto](../auditoria-producto-2026-09-26.md) | Observado / propuesto | Evaluación de diseño, arquitectura y preparación del producto. |
 | [Plan MVP](../plan-mvp/README.md) | En evolución | Definición, fases, riesgos, operación y piloto. |
 | [Configuración portable Hermes](../../.hermes/factory.json) | Activa | Roles, modelos y ejecutores, sin secretos. |
-| [Inc. 1 · Autenticación](inc-1-autenticacion.md) | Implementado (t_85913f5b), pendiente revisión | Login, recuperación de contraseña y evidencia de verificación. |
+| [Inc. 1R · Requerimiento aprobado](inc-1r-requerimiento-aprobado.md) | Aprobado para implementación | Fuente de verdad del Incremento 1 corregido: roles, auth, administración, CSV, asociaciones, horarios y gates. |
+| [Inc. 1 · Autenticación](inc-1-autenticacion.md) | Implementación previa; debe adaptarse a Inc. 1R | Login, recuperación de contraseña y evidencia de verificación. |
 | [Inc. 1 · Roles y asignación docente](inc-1-roles-asignacion.md) | Implementado (t_51ab8447), pendiente revisión | Roles, autorización central, asignación docente y vínculo verificable acudiente-estudiante. |
 | [Inc. 1 · QA integrado de la fundación](inc-1-fundacion-qa.md) | QA completado (t_978772c3) | Validación integrada sobre main: auth, entidades, autorización, roles y criterio negativo de matrícula. |
 
