@@ -29,6 +29,7 @@ model Usuario {
   debeCambiarContrasena Boolean @default(false)
   versionSesion  Int           @default(1)
   sesionesRevocadasEn DateTime?
+  ultimoContexto String?
   ultimoAcceso   DateTime?
   creadoEn       DateTime      @default(now())
   actualizadoEn  DateTime      @updatedAt

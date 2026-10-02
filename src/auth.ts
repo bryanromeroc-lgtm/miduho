@@ -4,13 +4,16 @@ import { db } from "@/server/db";
 import { HASH_SENUELO, verificarContrasena } from "@/server/auth/contrasena";
 import { controlIntentos } from "@/server/auth/intentos";
 import { esquemaLogin } from "@/server/auth/esquemas";
+import { normalizarRoles, resolverContexto, type ContextoSesion } from "@/server/auth/sesion";
 
 declare module "next-auth" {
   interface Session {
-    user: { id: string; roles: string[] } & DefaultSession["user"];
+    user: { id: string; roles: string[]; contexto: ContextoSesion | null } & DefaultSession["user"];
   }
   interface User {
     roles?: string[];
+    versionSesion?: number;
+    ultimoContexto?: string | null;
   }
 }
 
@@ -53,21 +56,49 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           name: `${usuario.nombres} ${usuario.apellidos}`,
           email: usuario.correo,
           roles: usuario.roles.map((r) => r.rol.codigo),
+          versionSesion: usuario.versionSesion,
+          ultimoContexto: usuario.ultimoContexto,
         };
       },
     }),
   ],
   callbacks: {
-    jwt({ token, user }) {
+    async jwt({ token, user }) {
       if (user) {
         token.userId = user.id;
         token.roles = user.roles ?? [];
+        token.versionSesion = user.versionSesion;
+        token.ultimoContexto = user.ultimoContexto ?? null;
+        return token;
       }
+
+      if (typeof token.userId !== "string" || typeof token.versionSesion !== "number") return token;
+      const actual = await db.usuario.findUnique({
+        where: { id: token.userId },
+        select: {
+          estado: true,
+          versionSesion: true,
+          ultimoContexto: true,
+          roles: { select: { rol: { select: { codigo: true } } } },
+        },
+      });
+      if (!actual || actual.estado !== "ACTIVO" || actual.versionSesion !== token.versionSesion) {
+        token.userId = "";
+        token.roles = [];
+        token.ultimoContexto = null;
+        return token;
+      }
+      token.roles = normalizarRoles(actual.roles.map((r) => r.rol.codigo));
+      token.ultimoContexto = actual.ultimoContexto;
       return token;
     },
     session({ session, token }) {
       session.user.id = typeof token.userId === "string" ? token.userId : "";
       session.user.roles = Array.isArray(token.roles) ? (token.roles as string[]) : [];
+      session.user.contexto = resolverContexto(
+        session.user.roles,
+        typeof token.ultimoContexto === "string" ? token.ultimoContexto : null,
+      );
       return session;
     },
   },

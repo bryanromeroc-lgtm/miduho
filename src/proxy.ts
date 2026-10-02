@@ -1,25 +1,40 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { NextResponse } from "next/server";
+import { auth } from "@/auth";
+import { puedeAccederRuta, type FamiliaRuta } from "@/server/auth/sesion";
 
 /**
- * Check OPTIMISTA (solo presencia de cookie de sesión) para redirigir a /login.
- * No es autorización: la verificación real se hace en el servidor con `auth()`
- * (docs/arquitectura-backend.md §6).
- *
- * 🔶 Por ahora solo se protege /cuenta; la maqueta (inicio, biblioteca,
- * clases…) sigue abierta hasta que producto decida qué exige sesión.
+ * Defensa de navegación. `auth()` revalida estado, roles y versión de sesión
+ * contra la BD; las APIs vuelven a autorizar mediante `requerirRol`.
  */
-const COOKIES_SESION = ["authjs.session-token", "__Secure-authjs.session-token"];
+const RUTAS_PUBLICAS = ["/login", "/recuperar"];
 
-export function proxy(request: NextRequest) {
-  const tieneSesion = COOKIES_SESION.some((n) => request.cookies.has(n));
-  if (!tieneSesion) {
-    const url = new URL("/login", request.url);
-    url.searchParams.set("desde", request.nextUrl.pathname);
-    return NextResponse.redirect(url);
-  }
-  return NextResponse.next();
+function familia(pathname: string): FamiliaRuta {
+  if (pathname.startsWith("/biblioteca")) return "BIBLIOTECA";
+  if (pathname.startsWith("/cuenta")) return "CUENTA";
+  if (pathname.startsWith("/mi-curso")) return "MI_CURSO";
+  if (/^\/(admin|usuarios|estructura|asignaciones)(\/|$)/.test(pathname)) return "ADMIN";
+  return "GENERAL";
 }
 
+export const proxy = auth((request) => {
+  const pathname = request.nextUrl.pathname;
+  if (RUTAS_PUBLICAS.some((ruta) => pathname === ruta || pathname.startsWith(`${ruta}/`))) {
+    return NextResponse.next();
+  }
+
+  const usuario = request.auth?.user;
+  if (!usuario?.id) {
+    const url = new URL("/login", request.url);
+    url.searchParams.set("desde", `${pathname}${request.nextUrl.search}`);
+    return NextResponse.redirect(url);
+  }
+
+  if (!puedeAccederRuta(usuario.roles, familia(pathname))) {
+    return NextResponse.redirect(new URL("/cuenta?sinPermiso=1", request.url));
+  }
+  return NextResponse.next();
+});
+
 export const config = {
-  matcher: ["/cuenta/:path*"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)"],
 };

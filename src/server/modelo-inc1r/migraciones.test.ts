@@ -7,6 +7,7 @@ import { afterEach, describe, expect, it } from "vitest";
 const migracionesDir = path.resolve(__dirname, "../../../prisma/migrations");
 const migraciones = readdirSync(migracionesDir).filter((nombre) => /^\d+_/.test(nombre)).sort();
 const migracionInc1R = "20261002000000_inc1r_modelo_acceso_estudiantes_horarios";
+const migracionSesion = "20261002010000_inc1r_revocacion_contexto";
 const temporales: string[] = [];
 
 function baseTemporal() {
@@ -58,13 +59,13 @@ describe("migración Inc. 1R", () => {
 
   it("migra el esquema previo, conserva cuentas y normaliza roles incompatibles", async () => {
     const db = baseTemporal();
-    await aplicar(db, migraciones.filter((nombre) => nombre !== migracionInc1R));
+    await aplicar(db, migraciones.filter((nombre) => nombre !== migracionInc1R && nombre !== migracionSesion));
     await db.execute("INSERT INTO roles (id, codigo, nombre) VALUES ('admin', 'ADMIN', 'Administración'), ('est', 'ESTUDIANTE', 'Estudiante'), ('acu', 'ACUDIENTE', 'Acudiente'), ('coord', 'COORDINACION', 'Coordinación')");
     await db.execute("INSERT INTO usuarios (id, nombres, apellidos, correo, hashContrasena, actualizadoEn) VALUES ('mixta', 'Cuenta', 'Mixta ficticia', 'mixta@miduho.test', 'hash', CURRENT_TIMESTAMP), ('acud', 'Cuenta', 'Acudiente ficticia', 'acud@miduho.test', 'hash', CURRENT_TIMESTAMP)");
     await db.execute("INSERT INTO usuarios_roles (usuarioId, rolId) VALUES ('mixta', 'admin'), ('mixta', 'est'), ('acud', 'acu')");
     await db.execute("INSERT INTO acudientes_estudiantes (id, acudienteId, estudianteId, parentesco, actualizadoEn) VALUES ('vinculo', 'acud', 'mixta', 'Demo', CURRENT_TIMESTAMP)");
 
-    await aplicar(db, [migracionInc1R]);
+    await aplicar(db, [migracionInc1R, migracionSesion]);
 
     const cuentas = await db.execute("SELECT id, hashContrasena, estado FROM usuarios ORDER BY id");
     expect(cuentas.rows).toHaveLength(2);
@@ -107,6 +108,29 @@ describe("migración Inc. 1R", () => {
     await db.execute("INSERT INTO bloques_horario (id, asignacionId, dia, horaInicio, horaFin, actualizadoEn) VALUES ('b1', 'asignacion', 'LUNES', '08:00', '09:00', CURRENT_TIMESTAMP)");
     expect(await falla(db.execute("INSERT INTO bloques_horario (id, asignacionId, dia, horaInicio, horaFin, actualizadoEn) VALUES ('b2', 'asignacion', 'LUNES', '09:00', '08:00', CURRENT_TIMESTAMP)"))).toBe(true);
     expect(await falla(db.execute("INSERT INTO bloques_horario (id, asignacionId, dia, horaInicio, horaFin, actualizadoEn) VALUES ('b3', 'asignacion', 'FUNDAY', '08:00', '09:00', CURRENT_TIMESTAMP)"))).toBe(true);
+    db.close();
+  });
+
+  it("revoca sesiones al cambiar estado, contraseña o roles y valida el contexto", async () => {
+    const db = baseTemporal();
+    await aplicar(db, migraciones);
+    await db.executeMultiple(`
+      INSERT INTO roles (id, codigo, nombre) VALUES ('admin', 'ADMIN', 'Administración'), ('doc', 'DOCENTE', 'Docente');
+      INSERT INTO usuarios (id, nombres, apellidos, correo, hashContrasena, estado, actualizadoEn)
+        VALUES ('u', 'Cuenta', 'Ficticia', 'sesion@miduho.test', 'hash-1', 'ACTIVO', CURRENT_TIMESTAMP);
+    `);
+
+    await db.execute("INSERT INTO usuarios_roles (usuarioId, rolId) VALUES ('u', 'admin')");
+    expect((await db.execute("SELECT versionSesion FROM usuarios WHERE id = 'u'")).rows[0].versionSesion).toBe(2);
+    await db.execute("UPDATE usuarios SET hashContrasena = 'hash-2' WHERE id = 'u'");
+    await db.execute("DELETE FROM usuarios_roles WHERE usuarioId = 'u' AND rolId = 'admin'");
+    await db.execute("UPDATE usuarios SET estado = 'INACTIVO' WHERE id = 'u'");
+    const revocada = (await db.execute("SELECT versionSesion, sesionesRevocadasEn FROM usuarios WHERE id = 'u'")).rows[0];
+    expect(revocada.versionSesion).toBe(5);
+    expect(revocada.sesionesRevocadasEn).not.toBeNull();
+
+    await db.execute("UPDATE usuarios SET ultimoContexto = 'ADMIN' WHERE id = 'u'");
+    expect(await falla(db.execute("UPDATE usuarios SET ultimoContexto = 'ESTUDIANTE' WHERE id = 'u'"))).toBe(true);
     db.close();
   });
 });

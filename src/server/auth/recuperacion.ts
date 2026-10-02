@@ -70,6 +70,7 @@ export async function restablecerContrasena(token: string, nueva: string): Promi
       data: { usadoEn: ahora },
     });
     if (r.count !== 1) return false;
+    // El trigger de BD incrementa versionSesion y revoca todos los JWT existentes.
     await tx.usuario.update({ where: { id: registro.usuarioId }, data: { hashContrasena: hash } });
     await tx.restablecimientoContrasena.deleteMany({
       where: { usuarioId: registro.usuarioId, usadoEn: null },

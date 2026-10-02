@@ -12,7 +12,7 @@ export default async function PaginaLogin({
   searchParams: Promise<{ desde?: string; restablecida?: string }>;
 }) {
   const sesion = await auth();
-  if (sesion?.user) redirect("/cuenta");
+  if (sesion?.user?.id) redirect("/cuenta");
   const { desde, restablecida } = await searchParams;
   return (
     <Tarjeta titulo="Ingresar a MIDUHO">

@@ -9,7 +9,7 @@ export const metadata: Metadata = { title: "Mi cuenta · MIDUHO" };
 /** Página mínima protegida: verifica la sesión en el servidor (no confía en proxy.ts). */
 export default async function PaginaCuenta() {
   const sesion = await auth();
-  if (!sesion?.user) redirect("/login?desde=/cuenta");
+  if (!sesion?.user?.id) redirect("/login?desde=/cuenta");
   return (
     <Tarjeta titulo="Mi cuenta">
       <dl className="mb-5 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm text-neutral-900">
