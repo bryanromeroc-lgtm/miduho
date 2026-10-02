@@ -48,6 +48,7 @@ const ICONOS: Record<IdRuta, LucideIcon> = {
   usuarios: Users,
   estructura: Building2,
   asignaciones: CalendarClock,
+  estudiantes: UsersRound,
   cuenta: CircleUserRound,
 };
 

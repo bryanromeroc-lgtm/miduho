@@ -27,7 +27,7 @@ describe("navegación por contexto", () => {
   });
 
   it("ADMIN ve solo administración y Cuenta", () => {
-    expect(etiquetas("ADMIN")).toEqual(["Dashboard", "Usuarios", "Estructura", "Asignaciones", "Cuenta"]);
+    expect(etiquetas("ADMIN")).toEqual(["Dashboard", "Usuarios", "Estudiantes", "Estructura", "Asignaciones", "Cuenta"]);
     const hrefs = rutasPorContexto("ADMIN").map((r) => r.href);
     expect(hrefs).not.toContain("/");
     expect(hrefs).not.toContain("/mi-curso");

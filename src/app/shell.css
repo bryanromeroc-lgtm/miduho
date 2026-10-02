@@ -512,3 +512,7 @@
   .asignacion-bloque { grid-template-columns: 1fr 1fr; }
   .asignacion-bloque label:first-child { grid-column: 1 / -1; }
 }
+
+/* ── Estudiantes y grupos (INC1R-09) ─────────────────────────────── */
+.asociacion-historial { margin: 0; padding-left: 1.1rem; display: grid; gap: 2px; }
+.admin-acciones-fila select { min-width: 8rem; }

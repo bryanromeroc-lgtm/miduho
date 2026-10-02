@@ -348,6 +348,57 @@ export function crearServicioUsuarios(db: PrismaClient, cuentas: ServicioCuentas
     },
 
     /**
+     * Asociaciones estudiante–grupo de un año (INC1R-09, §6 y §11): una fila
+     * por ESTUDIANTE con su grupo activo en ese año (si tiene) y el historial
+     * de ese año. Sin año explícito usa el año activo; sin años, lista vacía.
+     */
+    async listarAsociaciones(f: Entrada<typeof E.filtroAsociaciones>) {
+      const anio = f.anioLectivoId
+        ? await db.anioLectivo.findUnique({ where: { id: f.anioLectivoId }, select: { id: true, anio: true, estado: true } })
+        : await db.anioLectivo.findFirst({ where: { estado: "ACTIVO" }, select: { id: true, anio: true, estado: true } });
+      if (!anio) {
+        if (f.anioLectivoId) throw noEncontrado("El año lectivo");
+        return { data: [], total: 0, anio: null };
+      }
+      const y: Prisma.UsuarioWhereInput[] = [{ roles: { some: { rol: { codigo: "ESTUDIANTE" } } } }];
+      for (const p of (f.q ?? "").split(/\s+/).filter(Boolean).slice(0, 5)) {
+        y.push({ OR: [{ nombres: { contains: p } }, { apellidos: { contains: p } }, { correo: { contains: p } }] });
+      }
+      if (f.estado) y.push({ estado: f.estado });
+      const activa = { anioLectivoId: anio.id, finEn: null };
+      if (f.grupoId) y.push({ asociacionesGrupo: { some: { ...activa, grupoId: f.grupoId } } });
+      if (f.situacion === "CON_GRUPO") y.push({ asociacionesGrupo: { some: activa } });
+      if (f.situacion === "SIN_GRUPO") y.push({ asociacionesGrupo: { none: activa } });
+      const where: Prisma.UsuarioWhereInput = { AND: y };
+      const [filas, total] = await Promise.all([
+        db.usuario.findMany({
+          where,
+          orderBy: [{ apellidos: "asc" }, { nombres: "asc" }, { correo: "asc" }],
+          skip: (f.page - 1) * f.pageSize,
+          take: f.pageSize,
+          select: {
+            id: true, nombres: true, apellidos: true, correo: true, estado: true,
+            asociacionesGrupo: {
+              where: { anioLectivoId: anio.id },
+              orderBy: [{ inicioEn: "desc" }],
+              select: { id: true, inicioEn: true, finEn: true, grupo: { select: seleccionGrupo } },
+            },
+          },
+        }),
+        db.usuario.count({ where }),
+      ]);
+      const data = filas.map((u) => {
+        const historial = u.asociacionesGrupo.map((a) => ({ id: a.id, inicioEn: a.inicioEn, finEn: a.finEn, grupo: grupoDto(a.grupo) }));
+        return {
+          id: u.id, nombres: u.nombres, apellidos: u.apellidos, correo: u.correo, estado: u.estado,
+          grupoActual: historial.find((h) => h.finEn === null)?.grupo ?? null,
+          historial,
+        };
+      });
+      return { data, total, anio: { ...anio, cerrado: anio.estado === "CERRADO" } };
+    },
+
+    /**
      * Asocia un ESTUDIANTE con un grupo. Si ya tiene grupo activo en ese año, es
      * un traslado: exige confirmación, cierra la asociación anterior y crea la
      * nueva en la misma transacción (§6).

@@ -9,7 +9,7 @@ import { combinacionDe, esCambioDeCombinacionPermitido, rolesDeCombinacion } fro
 import { hashearContrasena, verificarContrasena } from "@/server/auth/contrasena";
 import { crearServicioCuentas } from "@/server/auth/cuentas";
 import { ErrorDominio } from "@/server/errores";
-import { actualizarIdentidad, crearUsuario, filtroUsuarios } from "./esquemas";
+import { actualizarIdentidad, crearUsuario, filtroAsociaciones, filtroUsuarios } from "./esquemas";
 import { crearServicioUsuarios, type ServicioUsuarios } from "./servicio";
 
 describe("combinaciones de roles (lógica pura)", () => {
@@ -298,5 +298,40 @@ describe("grupo del estudiante", () => {
   it("solo ofrece grupos de años no cerrados", async () => {
     const opciones = await U.gruposDisponibles();
     expect(opciones.map((g) => g.id).sort()).toEqual([ids.g1, ids.g2].sort());
+  });
+
+  it("lista asociaciones del año activo con historial, filtros y paginación (INC1R-09)", async () => {
+    const todos = await U.listarAsociaciones(filtroAsociaciones.parse({}));
+    expect(todos.anio).toMatchObject({ id: ids.anio, cerrado: false });
+    expect(todos.data.every((e) => e.correo.startsWith("est"))).toBe(true);
+    const trasladado = todos.data.find((e) => e.id === ids.est2);
+    expect(trasladado?.grupoActual?.id).toBe(ids.g1);
+    expect(trasladado?.historial).toHaveLength(2);
+    expect(trasladado?.historial.filter((h) => h.finEn === null)).toHaveLength(1);
+
+    const g1 = await U.listarAsociaciones(filtroAsociaciones.parse({ grupoId: ids.g1 }));
+    expect(g1.data.every((e) => e.grupoActual?.id === ids.g1)).toBe(true);
+    const g2 = await U.listarAsociaciones(filtroAsociaciones.parse({ grupoId: ids.g2 }));
+    expect(g2.data.map((e) => e.id)).not.toContain(ids.est2);
+
+    const sinGrupo = await U.crear({ nombres: "Sin", apellidos: "Grupo", correo: "est-sin@miduho.test", combinacion: "ESTUDIANTE" });
+    const s = await U.listarAsociaciones(filtroAsociaciones.parse({ situacion: "SIN_GRUPO" }));
+    expect(s.data.map((e) => e.id)).toEqual([sinGrupo.id]);
+    const c = await U.listarAsociaciones(filtroAsociaciones.parse({ situacion: "CON_GRUPO" }));
+    expect(c.data.map((e) => e.id)).not.toContain(sinGrupo.id);
+    expect((await U.listarAsociaciones(filtroAsociaciones.parse({ q: "est-sin" }))).total).toBe(1);
+    const p = await U.listarAsociaciones(filtroAsociaciones.parse({ pageSize: "1", page: "2" }));
+    expect(p.data).toHaveLength(1);
+    expect(p.total).toBe(todos.total + 1);
+
+    const cerrado = await U.listarAsociaciones(filtroAsociaciones.parse({ anioLectivoId: (await db.grupo.findUniqueOrThrow({ where: { id: ids.gCerrado } })).anioLectivoId }));
+    expect(cerrado.anio?.cerrado).toBe(true);
+    expect(await codigoDe(U.listarAsociaciones(filtroAsociaciones.parse({ anioLectivoId: "no-existe" })))).toBe("NO_ENCONTRADO");
+    expect(filtroAsociaciones.safeParse({ situacion: "OTRA" }).success).toBe(false);
+  });
+
+  it("la base garantiza una sola asociación activa por estudiante y año", async () => {
+    const e = await U.crear({ nombres: "Doble", apellidos: "Activa", correo: "est-doble@miduho.test", combinacion: "ESTUDIANTE", grupoId: ids.g1 });
+    await expect(db.asociacionEstudianteGrupo.create({ data: { estudianteId: e.id, grupoId: ids.g2, anioLectivoId: ids.anio } })).rejects.toThrow();
   });
 });

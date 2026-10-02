@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Building2, CalendarClock, Users } from "lucide-react";
+import { Building2, CalendarClock, Users, UsersRound } from "lucide-react";
 import { Cabecera, Marco } from "@/components/friso/marco";
 import { db } from "@/server/db";
 import { exigirRolPagina } from "@/server/pagina";
@@ -40,6 +40,10 @@ export default async function PaginaDashboard() {
           <Link href="/admin/usuarios" className="panel-acceso">
             <strong><Users size={20} aria-hidden="true" /> Usuarios</strong>
             <span>Crear, editar, activar o desactivar cuentas y asignar roles.</span>
+          </Link>
+          <Link href="/admin/estudiantes" className="panel-acceso">
+            <strong><UsersRound size={20} aria-hidden="true" /> Estudiantes y grupos</strong>
+            <span>Asignar o trasladar estudiantes conservando el historial.</span>
           </Link>
           <Link href="/admin/estructura" className="panel-acceso">
             <strong><Building2 size={20} aria-hidden="true" /> Estructura</strong>

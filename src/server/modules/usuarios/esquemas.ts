@@ -55,6 +55,22 @@ export const cambiarRoles = z.object({
   combinacion: z.enum(COMBINACIONES, { error: "Elige un rol o combinación válida." }),
 });
 
+/**
+ * Listado de asociaciones estudiante–grupo (INC1R-09, §6 y §11). Sin
+ * `anioLectivoId` se usa el año activo. `situacion` separa estudiantes con o
+ * sin grupo activo en ese año.
+ */
+export const filtroAsociaciones = z.object({
+  q: z.preprocess(vacioIndefinido, z.string().trim().max(120, "La búsqueda es demasiado larga.").optional()),
+  anioLectivoId: z.preprocess(vacioIndefinido, id.optional()),
+  grupoId: z.preprocess(vacioIndefinido, id.optional()),
+  situacion: z.preprocess(vacioIndefinido, z.enum(["CON_GRUPO", "SIN_GRUPO"], { error: "Situación no válida." }).optional()),
+  estado: z.preprocess(vacioIndefinido, z.enum(ESTADOS, { error: "Estado no válido." }).optional()),
+  page: z.coerce.number().int().min(1).default(1),
+  pageSize: z.coerce.number().int().min(1).max(100).default(20),
+});
+export type FiltroAsociaciones = z.output<typeof filtroAsociaciones>;
+
 /** `confirmarTraslado` es obligatorio cuando el estudiante ya tiene grupo activo en ese año. */
 export const asignarGrupo = z.object({
   grupoId: id,

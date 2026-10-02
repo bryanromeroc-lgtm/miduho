@@ -19,6 +19,7 @@ export type IdRuta =
   | "usuarios"
   | "estructura"
   | "asignaciones"
+  | "estudiantes"
   | "cuenta";
 
 export interface RutaNav {
@@ -38,13 +39,14 @@ const R: Record<IdRuta, RutaNav> = {
   usuarios: { id: "usuarios", href: "/admin/usuarios", etiqueta: "Usuarios" },
   estructura: { id: "estructura", href: "/admin/estructura", etiqueta: "Estructura" },
   asignaciones: { id: "asignaciones", href: "/admin/asignaciones", etiqueta: "Asignaciones" },
+  estudiantes: { id: "estudiantes", href: "/admin/estudiantes", etiqueta: "Estudiantes" },
   cuenta: { id: "cuenta", href: "/cuenta", etiqueta: "Cuenta" },
 };
 
 const POR_CONTEXTO: Record<ContextoShell, IdRuta[]> = {
   ESTUDIANTE: ["hoy", "clases", "biblioteca", "laboratorios", "agenda", "cuenta"],
   DOCENTE: ["hoy", "clases", "biblioteca", "laboratorios", "agenda", "mi-curso", "cuenta"],
-  ADMIN: ["dashboard", "usuarios", "estructura", "asignaciones", "cuenta"],
+  ADMIN: ["dashboard", "usuarios", "estudiantes", "estructura", "asignaciones", "cuenta"],
 };
 
 export function rutasPorContexto(contexto: ContextoShell | null): RutaNav[] {
