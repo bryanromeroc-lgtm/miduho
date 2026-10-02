@@ -305,4 +305,40 @@ describe("servicio académico (SQLite temporal)", () => {
     expect(editada).toMatchObject({ nombre: "Asignatura editada", intensidadHoraria: 3 });
     expect(editada.grados.map((g) => [g.gradoId, g.intensidad]).sort()).toEqual([[grado.id, null], [gradoId, 2]].sort());
   });
+
+  it("asignaciones: valida grado/año, evita cruces y conserva historial al reasignar/reactivar", async () => {
+    const anio = await S.aniosLectivos.crear({ anio: 2050, fechaInicio: d("2050-01-20"), fechaFin: d("2050-11-30"), estado: "ACTIVO" });
+    const grado = await S.grados.crear({ nombre: "3° prueba", nivel: "PRIMARIA", orden: 30 });
+    const otroGrado = await S.grados.crear({ nombre: "4° prueba", nivel: "PRIMARIA", orden: 40 });
+    const grupoA = await S.grupos.crear({ gradoId: grado.id, anioLectivoId: anio.id, identificador: "A" });
+    const grupoB = await S.grupos.crear({ gradoId: grado.id, anioLectivoId: anio.id, identificador: "B" });
+    const grupoOtro = await S.grupos.crear({ gradoId: otroGrado.id, anioLectivoId: anio.id, identificador: "A" });
+    const area = await S.areas.crear({ nombre: "Área horario (ficticia)", tipo: "AREA", idioma: "es" });
+    const asignatura = await S.asignaturas.crear({ nombre: "Horario prueba", areaId: area.id, grados: [{ gradoId: grado.id }] });
+    const noHabilitada = await S.asignaturas.crear({ nombre: "No habilitada", areaId: area.id, grados: [] });
+    const rol = await db.rol.findUniqueOrThrow({ where: { codigo: "DOCENTE" } });
+    const docente = await db.usuario.create({ data: { nombres: "Docente", apellidos: "Ficticio A", correo: "horario-a@miduho.test", hashContrasena: "x", estado: "ACTIVO", roles: { create: { rolId: rol.id } } } });
+    const docenteB = await db.usuario.create({ data: { nombres: "Docente", apellidos: "Ficticio B", correo: "horario-b@miduho.test", hashContrasena: "x", estado: "ACTIVO", roles: { create: { rolId: rol.id } } } });
+    const bloques = [{ dia: "LUNES" as const, horaInicio: "08:00", horaFin: "09:00" }];
+
+    expect(await codigoDe(S.asignacionesDocente.crear({ docenteId: docente.id, asignaturaId: noHabilitada.id, grupoId: grupoOtro.id, anioLectivoId: anio.id, bloques }))).toBe("ASIGNATURA_GRADO_INVALIDA");
+    const primera = await S.asignacionesDocente.crear({ docenteId: docente.id, asignaturaId: asignatura.id, grupoId: grupoA.id, anioLectivoId: anio.id, bloques });
+    expect(primera.bloques).toHaveLength(1);
+    expect(await codigoDe(S.asignacionesDocente.crear({ docenteId: docente.id, asignaturaId: asignatura.id, grupoId: grupoB.id, anioLectivoId: anio.id, bloques: [{ dia: "LUNES", horaInicio: "08:30", horaFin: "09:30" }] }))).toBe("CRUCE_DOCENTE");
+    expect(await codigoDe(S.asignacionesDocente.crear({ docenteId: docenteB.id, asignaturaId: asignatura.id, grupoId: grupoA.id, anioLectivoId: anio.id, bloques: [{ dia: "LUNES", horaInicio: "08:30", horaFin: "09:30" }] }))).toBe("CRUCE_GRUPO");
+
+    const nueva = await S.asignacionesDocente.reasignar(primera.id, { docenteId: docenteB.id, bloques, confirmar: true });
+    expect(nueva.id).not.toBe(primera.id);
+    expect((await db.asignacionDocente.findUniqueOrThrow({ where: { id: primera.id } })).estado).toBe("INACTIVA");
+    await S.asignacionesDocente.desactivar(nueva.id);
+    await expect(S.asignacionesDocente.reactivar(nueva.id)).resolves.toMatchObject({ estado: "ACTIVA" });
+    expect(await codigoDe(S.asignacionesDocente.reasignar(nueva.id, { docenteId: docente.id, bloques, confirmar: false }))).toBe("CONFIRMACION_REQUERIDA");
+    const regreso = await S.asignacionesDocente.reasignar(nueva.id, { docenteId: docente.id, bloques, confirmar: true });
+    expect(regreso.docente.id).toBe(docente.id);
+    expect(await db.asignacionDocente.count({ where: { docenteId: docente.id, asignaturaId: asignatura.id, grupoId: grupoA.id, anioLectivoId: anio.id } })).toBe(2);
+
+    await S.periodos.crear({ anioLectivoId: anio.id, nombre: "Único", orden: 1, fechaInicio: d("2050-01-20"), fechaFin: d("2050-11-30"), ponderacion: 100 });
+    await S.aniosLectivos.actualizar(anio.id, { estado: "CERRADO" });
+    expect(await codigoDe(S.asignacionesDocente.desactivar(regreso.id))).toBe("ANIO_CERRADO");
+  });
 });

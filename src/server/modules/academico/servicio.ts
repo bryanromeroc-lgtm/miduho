@@ -432,28 +432,79 @@ export function crearServicioAcademico(db: PrismaClient) {
 
   const asignacionesDocente = {
     async listar(f: Entrada<typeof E.filtroAsignacionesDocente>) {
-      const where = { ...(f.docenteId ? { docenteId: f.docenteId } : {}), ...(f.grupoId ? { grupoId: f.grupoId } : {}), ...(f.anioLectivoId ? { anioLectivoId: f.anioLectivoId } : {}) };
+      const palabras = palabrasBusqueda(f.q);
+      const where: Prisma.AsignacionDocenteWhereInput = {
+        ...(f.docenteId ? { docenteId: f.docenteId } : {}), ...(f.grupoId ? { grupoId: f.grupoId } : {}),
+        ...(f.anioLectivoId ? { anioLectivoId: f.anioLectivoId } : {}), ...(f.estado ? { estado: f.estado } : {}),
+        ...(palabras.length ? { AND: palabras.map((p) => ({ OR: [
+          { docente: { nombres: { contains: p } } }, { docente: { apellidos: { contains: p } } },
+          { asignatura: { nombre: { contains: p } } }, { grupo: { identificador: { contains: p } } },
+          { grupo: { grado: { nombre: { contains: p } } } },
+        ] })) } : {}),
+      };
+      const include = { docente: { select: { id: true, nombres: true, apellidos: true } }, asignatura: true, grupo: { include: { grado: true } }, anioLectivo: true, bloques: { orderBy: [{ dia: "asc" as const }, { horaInicio: "asc" as const }] } };
       const [data, total] = await Promise.all([
-        db.asignacionDocente.findMany({ where, include: { docente: { select: { id: true, nombres: true, apellidos: true } }, asignatura: true, grupo: { include: { grado: true } }, anioLectivo: true }, orderBy: { creadoEn: "desc" }, ...saltar(f) }),
+        db.asignacionDocente.findMany({ where, include, orderBy: { creadoEn: "desc" }, ...saltar(f) }),
         db.asignacionDocente.count({ where }),
       ]);
       return { data, total };
     },
     async crear(d: Entrada<typeof E.crearAsignacionDocente>, creadoPorId?: string) {
+      return db.$transaction((tx) => crearAsignacion(tx, d, creadoPorId));
+    },
+    async desactivar(id: string) {
       return db.$transaction(async (tx) => {
-        const docente = await tx.usuario.findUnique({ where: { id: d.docenteId }, include: { roles: { include: { rol: true } } } });
-        if (!docente || docente.estado !== "ACTIVO" || !docente.roles.some((r) => r.rol.codigo === "DOCENTE")) throw new ErrorDominio("DOCENTE_INVALIDO", "El usuario debe estar activo y tener rol docente.");
-        const [asignatura, grupo, anio] = await Promise.all([tx.asignatura.findUnique({ where: { id: d.asignaturaId } }), tx.grupo.findUnique({ where: { id: d.grupoId } }), tx.anioLectivo.findUnique({ where: { id: d.anioLectivoId } })]);
-        if (!asignatura) throw noEncontrado("La asignatura");
-        if (!grupo) throw noEncontrado("El grupo");
-        if (!anio) throw noEncontrado("El año lectivo");
-        if (grupo.anioLectivoId !== d.anioLectivoId) throw conflicto("GRUPO_ANIO_INVALIDO", "El grupo no pertenece al año lectivo.");
-        if (anio.estado === "CERRADO") throw conflicto("ANIO_CERRADO", "El año lectivo está cerrado y es de solo lectura.");
-        return tx.asignacionDocente.create({ data: { ...d, creadoPorId }, include: { docente: { select: { id: true, nombres: true, apellidos: true } }, asignatura: true, grupo: true, anioLectivo: true } });
+        const actual = await tx.asignacionDocente.findUnique({ where: { id } });
+        if (!actual) throw noEncontrado("La asignación");
+        await anioEditable(tx, actual.anioLectivoId);
+        if (actual.estado === "INACTIVA") return actual;
+        return tx.asignacionDocente.update({ where: { id }, data: { estado: "INACTIVA" } });
       });
     },
-    async desactivar(id: string) { return db.asignacionDocente.update({ where: { id }, data: { estado: "INACTIVA" } }); },
+    async reactivar(id: string) {
+      return db.$transaction(async (tx) => {
+        const actual = await tx.asignacionDocente.findUnique({ where: { id }, include: { bloques: true } });
+        if (!actual) throw noEncontrado("La asignación");
+        await validarAsignacion(tx, actual, actual.bloques, id);
+        return tx.asignacionDocente.update({ where: { id }, data: { estado: "ACTIVA" }, include: { bloques: true } });
+      });
+    },
+    async reasignar(id: string, d: { docenteId: string; bloques: Entrada<typeof E.bloqueHorario>[]; confirmar: boolean }, creadoPorId?: string) {
+      if (!d.confirmar) throw conflicto("CONFIRMACION_REQUERIDA", "Confirma la reasignación de la carga docente.");
+      return db.$transaction(async (tx) => {
+        const anterior = await tx.asignacionDocente.findUnique({ where: { id } });
+        if (!anterior) throw noEncontrado("La asignación");
+        await anioEditable(tx, anterior.anioLectivoId);
+        const nueva = await crearAsignacion(tx, { ...anterior, docenteId: d.docenteId, bloques: d.bloques }, creadoPorId, id);
+        await tx.asignacionDocente.update({ where: { id }, data: { estado: "INACTIVA" } });
+        return nueva;
+      });
+    },
   };
+
+  async function validarAsignacion(tx: Tx, d: { docenteId: string; asignaturaId: string; grupoId: string; anioLectivoId: string }, bloques: { dia: string; horaInicio: string; horaFin: string }[], ignorarId?: string) {
+    const [docente, asignatura, grupo, anio] = await Promise.all([
+      tx.usuario.findUnique({ where: { id: d.docenteId }, include: { roles: { include: { rol: true } } } }),
+      tx.asignatura.findUnique({ where: { id: d.asignaturaId }, include: { grados: true } }),
+      tx.grupo.findUnique({ where: { id: d.grupoId } }), tx.anioLectivo.findUnique({ where: { id: d.anioLectivoId } }),
+    ]);
+    if (!docente || docente.estado !== "ACTIVO" || !docente.roles.some((r) => r.rol.codigo === "DOCENTE")) throw new ErrorDominio("DOCENTE_INVALIDO", "El usuario debe estar activo y tener rol docente.");
+    if (!asignatura) throw noEncontrado("La asignatura"); if (!grupo) throw noEncontrado("El grupo"); if (!anio) throw noEncontrado("El año lectivo");
+    if (grupo.anioLectivoId !== d.anioLectivoId) throw conflicto("GRUPO_ANIO_INVALIDO", "El grupo no pertenece al año lectivo.");
+    if (anio.estado === "CERRADO") throw conflicto("ANIO_CERRADO", "El año lectivo está cerrado y es de solo lectura.");
+    if (!asignatura.grados.some((g) => g.gradoId === grupo.gradoId)) throw conflicto("ASIGNATURA_GRADO_INVALIDA", "La asignatura no está habilitada para el grado del grupo.");
+    for (const b of bloques) {
+      const comunes = { estado: "ACTIVA" as const, anioLectivoId: d.anioLectivoId, ...(ignorarId ? { id: { not: ignorarId } } : {}), bloques: { some: { dia: b.dia as never, horaInicio: { lt: b.horaFin }, horaFin: { gt: b.horaInicio } } } };
+      if (await tx.asignacionDocente.count({ where: { ...comunes, docenteId: d.docenteId } })) throw conflicto("CRUCE_DOCENTE", `El docente ya tiene una asignación que cruza el bloque ${b.dia} ${b.horaInicio}–${b.horaFin}.`);
+      if (await tx.asignacionDocente.count({ where: { ...comunes, grupoId: d.grupoId } })) throw conflicto("CRUCE_GRUPO", `El grupo ya tiene una asignación que cruza el bloque ${b.dia} ${b.horaInicio}–${b.horaFin}.`);
+    }
+  }
+
+  async function crearAsignacion(tx: Tx, d: Entrada<typeof E.crearAsignacionDocente>, creadoPorId?: string, ignorarId?: string) {
+    await validarAsignacion(tx, d, d.bloques, ignorarId);
+    const { bloques, ...datos } = d;
+    return tx.asignacionDocente.create({ data: { docenteId: datos.docenteId, asignaturaId: datos.asignaturaId, grupoId: datos.grupoId, anioLectivoId: datos.anioLectivoId, creadoPorId, bloques: { create: bloques } }, include: { docente: { select: { id: true, nombres: true, apellidos: true } }, asignatura: true, grupo: { include: { grado: true } }, anioLectivo: true, bloques: true } });
+  }
 
   /** Catálogos completos (id + etiqueta legible) para selects de filtros y formularios. */
   async function opciones() {

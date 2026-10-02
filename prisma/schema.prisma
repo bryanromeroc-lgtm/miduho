@@ -225,7 +225,7 @@ model AsignacionDocente {
   anioLectivo   AnioLectivo             @relation(fields: [anioLectivoId], references: [id])
   creadoPor     Usuario?                @relation("AsignacionCreador", fields: [creadoPorId], references: [id], onDelete: SetNull)
   bloques       BloqueHorario[]
-  @@unique([docenteId, asignaturaId, grupoId, anioLectivoId])
+  @@index([docenteId, asignaturaId, grupoId, anioLectivoId])
   @@index([docenteId, anioLectivoId])
   @@map("asignaciones_docente")
 }

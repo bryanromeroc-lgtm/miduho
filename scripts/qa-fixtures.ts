@@ -48,16 +48,16 @@ async function main() {
     create: { id: "asociacion-estudiante-qa", estudianteId: est.id, grupoId: grupo.id, anioLectivoId: anio.id },
   });
 
-  await db.asignacionDocente.upsert({
-    where: { docenteId_asignaturaId_grupoId_anioLectivoId: { docenteId: d1.id, asignaturaId: asig.id, grupoId: grupo.id, anioLectivoId: anio.id } },
-    update: {},
-    create: { docenteId: d1.id, asignaturaId: asig.id, grupoId: grupo.id, anioLectivoId: anio.id },
-  });
-  await db.asignacionDocente.upsert({
-    where: { docenteId_asignaturaId_grupoId_anioLectivoId: { docenteId: d2.id, asignaturaId: asig.id, grupoId: grupo.id, anioLectivoId: anio.id } },
-    update: {},
-    create: { docenteId: d2.id, asignaturaId: asig.id, grupoId: grupo.id, anioLectivoId: anio.id },
-  });
+  for (const docente of [d1, d2]) {
+    const existente = await db.asignacionDocente.findFirst({
+      where: { docenteId: docente.id, asignaturaId: asig.id, grupoId: grupo.id, anioLectivoId: anio.id },
+    });
+    if (!existente) {
+      await db.asignacionDocente.create({
+        data: { docenteId: docente.id, asignaturaId: asig.id, grupoId: grupo.id, anioLectivoId: anio.id },
+      });
+    }
+  }
 
   console.log("fixtures listos. docente1/2 =", d1.correo, "/", d2.correo);
 }

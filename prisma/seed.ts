@@ -170,17 +170,16 @@ async function main() {
       anioLectivoId: academico.anio.id,
     },
   });
-  const asignacion = await db.asignacionDocente.upsert({
+  const asignacion = await db.asignacionDocente.findFirst({
     where: {
-      docenteId_asignaturaId_grupoId_anioLectivoId: {
-        docenteId: docente.id,
-        asignaturaId: academico.asignatura.id,
-        grupoId: academico.grupo.id,
-        anioLectivoId: academico.anio.id,
-      },
+      docenteId: docente.id,
+      asignaturaId: academico.asignatura.id,
+      grupoId: academico.grupo.id,
+      anioLectivoId: academico.anio.id,
     },
-    update: {},
-    create: {
+    orderBy: { creadoEn: "desc" },
+  }) ?? await db.asignacionDocente.create({
+    data: {
       docenteId: docente.id,
       asignaturaId: academico.asignatura.id,
       grupoId: academico.grupo.id,

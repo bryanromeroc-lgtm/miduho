@@ -142,9 +142,30 @@ export const actualizarAsignatura = z
 export const filtroAsignaturas = paginacion.extend({ areaId: idFiltro, gradoId: idFiltro });
 
 // ---------- Asignación docente ----------
-export const crearAsignacionDocente = z.object({
-  docenteId: id, asignaturaId: id, grupoId: id, anioLectivoId: id,
+const hora = z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, "Usa una hora válida en formato HH:mm.");
+export const bloqueHorario = z.object({
+  dia: z.enum(["LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES", "SABADO", "DOMINGO"]),
+  horaInicio: hora,
+  horaFin: hora,
+}).refine((b) => b.horaInicio < b.horaFin, { message: "La hora final debe ser posterior a la inicial." });
+const bloquesHorario = z.array(bloqueHorario).min(1, "Agrega al menos un bloque horario.").max(30).superRefine((bloques, ctx) => {
+  for (let i = 0; i < bloques.length; i += 1) for (let j = i + 1; j < bloques.length; j += 1) {
+    const a = bloques[i]; const b = bloques[j];
+    if (a.dia === b.dia && a.horaInicio < b.horaFin && b.horaInicio < a.horaFin) {
+      ctx.addIssue({ code: "custom", message: "Los bloques de la asignación no pueden cruzarse." });
+      return;
+    }
+  }
 });
+export const crearAsignacionDocente = z.object({
+  docenteId: id, asignaturaId: id, grupoId: id, anioLectivoId: id, bloques: bloquesHorario,
+});
+export const reasignarAsignacionDocente = z.object({ docenteId: id, bloques: bloquesHorario, confirmar: z.literal(true) });
+export const accionAsignacionDocente = z.discriminatedUnion("accion", [
+  z.object({ accion: z.literal("REACTIVAR") }),
+  reasignarAsignacionDocente.extend({ accion: z.literal("REASIGNAR") }),
+]);
 export const filtroAsignacionesDocente = paginacion.extend({
-  docenteId: id.optional(), grupoId: id.optional(), anioLectivoId: id.optional(),
+  docenteId: idFiltro, grupoId: idFiltro, anioLectivoId: idFiltro,
+  estado: z.preprocess(vacioIndefinido, z.enum(["ACTIVA", "INACTIVA"]).optional()),
 });
