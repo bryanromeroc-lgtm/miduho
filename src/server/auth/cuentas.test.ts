@@ -154,7 +154,15 @@ beforeAll(async () => {
   for (const [e, g] of [[e1, g1], [e2, g1], [e3, g2]] as const) {
     await db.asociacionEstudianteGrupo.create({ data: { estudianteId: e.id, grupoId: g.id, anioLectivoId: anio.id } });
   }
-  ids = { admin: admin.id, docA: docA.id, docB: docB.id, e1: e1.id, e2: e2.id, e3: e3.id };
+  // Fila cruzada que la BD no impide: asignación ACTIVA de un año CERRADO hacia G2 (año activo).
+  const docC = await usuario("doc-c@miduho.test", ["DOCENTE"]);
+  const cerrado = await db.anioLectivo.create({
+    data: { anio: 2025, fechaInicio: new Date("2025-01-20"), fechaFin: new Date("2025-12-05"), estado: "CERRADO" },
+  });
+  await db.asignacionDocente.create({
+    data: { docenteId: docC.id, asignaturaId: asig.id, grupoId: g2.id, anioLectivoId: cerrado.id },
+  });
+  ids = { admin: admin.id, docA: docA.id, docB: docB.id, docC: docC.id, e1: e1.id, e2: e2.id, e3: e3.id };
 });
 
 afterAll(async () => {
@@ -294,6 +302,10 @@ describe("ESTUDIANTE", () => {
     expect(await codigoDe(S.restablecerEstudiantes(actorA, []))).toBe("SELECCION_VACIA");
     const e1Despues = await db.usuario.findUniqueOrThrow({ where: { id: ids.e1 } });
     expect(e1Despues.hashContrasena).toBe(e1Antes.hashContrasena);
+  });
+
+  it("una asignación ACTIVA de un año cerrado (fila cruzada) no da alcance", async () => {
+    expect(await codigoDe(S.restablecerEstudiantes({ id: ids.docC, roles: ["DOCENTE"] }, [ids.e3]))).toBe("SIN_PERMISO");
   });
 
   it("DOCENTE pierde el alcance al cerrar la asociación del estudiante", async () => {

@@ -54,13 +54,19 @@ export function ordenarBloques<T extends Bloque>(bloques: T[]): T[] {
 const noEncontrado = () => new ErrorDominio("NO_ENCONTRADO", "El grupo no existe o no está a tu cargo.", 404);
 
 export function crearServicioMiCurso(db: PrismaClient) {
-  /** Asignaciones ACTIVAS del docente en el año ACTIVO (opcionalmente de un grupo). */
+  /**
+   * Asignaciones ACTIVAS del docente en el año ACTIVO (opcionalmente de un grupo).
+   * Se exige que tanto la asignación como el grupo pertenezcan al año ACTIVO: al
+   * haber un único año ACTIVO, eso garantiza que ambos años coinciden (§8) aunque
+   * exista una fila cruzada que no haya pasado por el servicio administrativo.
+   */
   function asignaciones(docenteId: string, grupoId?: string) {
     return db.asignacionDocente.findMany({
       where: {
         docenteId,
         estado: "ACTIVA",
         anioLectivo: { estado: "ACTIVO" },
+        grupo: { anioLectivo: { estado: "ACTIVO" } },
         ...(grupoId ? { grupoId } : {}),
       },
       select: {

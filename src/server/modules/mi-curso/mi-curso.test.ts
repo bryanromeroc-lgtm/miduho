@@ -102,7 +102,16 @@ beforeAll(async () => {
   await asociar(ids.e3, ids.g2);
   await asociar(ids.e4, ids.g1, new Date("2026-03-01"));
   await asociar(ids.e4, ids.g2);
-});
+
+  // Fila cruzada (no la crea el servicio administrativo, pero la BD no la impide):
+  // asignación ACTIVA con año ACTIVO que apunta a un grupo de un año CERRADO.
+  ids.docCruzado = await usuario("doc-cruzado@miduho.test", "DOCENTE");
+  await asignar(ids.docCruzado, asig1.id, ids.gCerrado, anio.id, "ACTIVA", [{ dia: "JUEVES", horaInicio: "10:00", horaFin: "11:00" }]);
+  ids.eHistorico = await usuario("e-historico@miduho.test", "ESTUDIANTE");
+  await db.asociacionEstudianteGrupo.create({
+    data: { estudianteId: ids.eHistorico, grupoId: ids.gCerrado, anioLectivoId: cerrado.id, inicioEn: new Date("2025-02-03"), finEn: null },
+  });
+}, 90_000); // migrar SQLite desde vacío tarda ~13 s aislado; con la suite en paralelo puede pasar de 30 s
 
 afterAll(async () => {
   await db?.$disconnect();
@@ -147,6 +156,11 @@ describe("detalle de un grupo", () => {
     expect(await codigoDe(S.obtenerGrupo(ids.docA, "no-existe"))).toBe(esperado);
     expect(await codigoDe(S.obtenerGrupo(ids.docA, ""))).toBe(esperado);
     expect(await codigoDe(S.obtenerGrupo(ids.docA, "x".repeat(65)))).toBe(esperado);
+  });
+
+  it("asignación de año activo cruzada hacia un grupo de año cerrado: ni listado ni roster", async () => {
+    expect(await S.listarGrupos(ids.docCruzado)).toEqual([]);
+    expect(await codigoDe(S.obtenerGrupo(ids.docCruzado, ids.gCerrado))).toBe("404:NO_ENCONTRADO");
   });
 
   it("un estudiante (o cualquier id que no sea docente) no obtiene grupos", async () => {

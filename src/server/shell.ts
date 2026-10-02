@@ -37,7 +37,7 @@ export const obtenerDatosShell = cache(async (): Promise<DatosShell | null> => {
 
   if (anio && roles.includes("DOCENTE")) {
     const asignaciones = await db.asignacionDocente.findMany({
-      where: { docenteId: id, anioLectivoId: anio.id, estado: "ACTIVA" },
+      where: { docenteId: id, anioLectivoId: anio.id, estado: "ACTIVA", grupo: { anioLectivoId: anio.id } },
       select: { grupo: { select: { identificador: true, grado: { select: { nombre: true, orden: true } } } } },
     });
     const unicos = new Map<string, number>();

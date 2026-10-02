@@ -107,7 +107,11 @@ export function crearServicioCuentas(db: PrismaClient, opciones: Opciones) {
                 grupo: {
                   OR: [
                     { directorId: actor.id },
-                    { asignacionesDocente: { some: { docenteId: actor.id, estado: "ACTIVA" as const } } },
+                    {
+                      asignacionesDocente: {
+                        some: { docenteId: actor.id, estado: "ACTIVA" as const, anioLectivo: { estado: "ACTIVO" as const } },
+                      },
+                    },
                   ],
                 },
               },
