@@ -1,10 +1,10 @@
 # INC1R-13 · E2E del Incremento 1R en escritorio y móvil (QA)
 
-**Estado:** verificado — 287/287 comprobaciones pasan sobre `main` (55cc620)
+**Estado:** verificado — 304/304 comprobaciones pasan (corrección de portabilidad y redacción de credenciales)
 **Fecha:** 2026-10-02
 **Perfil:** qa
-**Tarjeta:** `t_4fb71c5e`
-**Rama:** `qa/t_4fb71c5e-e2e`
+**Tarjeta:** `t_4fb71c5e` (implementación) · `t_3765ec8e` (corrección)
+**Rama:** `wt/t_3765ec8e`
 
 ## Objetivo
 
@@ -45,15 +45,36 @@ cd e2e && source smoke.env && BASE=http://localhost:3113 node smoke.mjs   # suit
 
 ## Resultado
 
-- `node smoke.mjs` (Chromium real, playwright-core 1.62.1): **287/287 PASS**.
+- `node smoke.mjs` (Chromium real, playwright-core 1.62.1, declarado como
+  `devDependency` bloqueada): **304/304 PASS**.
 - `npm test`: 168/168 · `npm run lint`: 0 problemas · `npm run build`: OK (sin cambios de fuente; suite y docs fuera de `src/`).
+
+## Portabilidad y redacción de credenciales (corrección `t_3765ec8e`)
+
+- `playwright-core@1.62.1` está declarado y bloqueado como `devDependency` en
+  `package.json`; `npm install` lo deja en `node_modules`. Se eliminó el fallback
+  a un proyecto externo (`~/Documentos/taskflow_personal`): la suite se resuelve
+  únicamente desde el repo (`PLAYWRIGHT_CORE_DIR` opcional) y nunca asume rutas
+  de otra máquina. Chromium se resuelve desde `CHROMIUM_PATH`,
+  `PLAYWRIGHT_BROWSERS_PATH` o los cachés habituales (`~/.cache/ms-playwright`,
+  `~/.pw-browsers`); `npx playwright-core install chromium` lo deja donde la
+  suite lo detecta.
+- `DATABASE_URL` queda aislada y comprobable: `e2e/preparar.sh` la fija a
+  `file:<repo>/e2e/smoke.db`, regenera `e2e/smoke.env` en cada corrida, ignora
+  cualquier valor previo del entorno y aborta con guarda si el valor no es el
+  esperado; `migrate deploy` y `seed` solo apuntan a esa base temporal.
+- Ninguna contraseña se imprime ni persiste: `smoke-resultado.txt` redacta toda
+  clave (los detalles muestran `[REDACTADO]` o un resumen sin valores), y los CSV
+  de credenciales descargados (`credenciales-e2e.csv`, `descarga-mi-curso.csv`)
+  se eliminan de disco al terminar, también si la suite falla (handler de
+  limpieza en `exit`).
 
 ## Mecanismo de traza en fallo
 
 Cada contexto inicia el trazado de Playwright (`screenshots` + `snapshots`). En el
 primer fallo se guarda `e2e/capturas/fallo.png` y `e2e/trazas/fallo-traza.zip`;
 el proceso termina con código distinto de cero. Durante la calibración el
-mecanismo se disparó y dejó evidencia; la ejecución final quedó limpia (287/287).
+mecanismo se disparó y dejó evidencia; la ejecución final quedó limpia (304/304).
 
 ## Datos ficticios
 

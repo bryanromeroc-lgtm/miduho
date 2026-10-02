@@ -5,7 +5,7 @@
 //
 // Uso: source smoke.env && BASE=http://localhost:3113 node smoke.mjs
 import { createRequire } from "node:module";
-import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { homedir, userInfo } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -24,31 +24,33 @@ function homesCandidatos() {
 }
 
 // ── Resolución portable de playwright-core ──
-// No se asume ninguna ruta absoluta de otra máquina. Se busca en orden:
-//   1) PLAYWRIGHT_CORE_DIR (carpeta de un proyecto que exponga playwright-core)
-//   2) node_modules/playwright-core del propio repo (npm i -D playwright-core)
-//   3) Proyecto hermano taskflow_personal en Documentos del home real (conveniencia local).
+// playwright-core es una devDependency declarada y bloqueada en package.json;
+// `npm install` la deja en node_modules del propio repo. Se resuelve desde ahí,
+// o desde PLAYWRIGHT_CORE_DIR si se quiere apuntar a otra instalación. No se
+// asume ninguna ruta de otro proyecto ni de otra máquina.
 function resolverPlaywrightCore() {
   const candidatas = [];
   if (process.env.PLAYWRIGHT_CORE_DIR) candidatas.push(join(process.env.PLAYWRIGHT_CORE_DIR, "package.json"));
   candidatas.push(join(REPO, "node_modules", "playwright-core", "package.json"));
-  for (const h of homesCandidatos()) candidatas.push(join(h, "Documentos", "taskflow_personal", "package.json"));
   for (const c of candidatas) if (existsSync(c)) return c;
   throw new Error(
-    "playwright-core no encontrado. Define PLAYWRIGHT_CORE_DIR apuntando a un proyecto que lo exponga " +
-      "(p. ej. `export PLAYWRIGHT_CORE_DIR=/ruta/a/proyecto`) o instálalo con `npm i -D playwright-core` en este repo.",
+    "playwright-core no encontrado. Ejecuta `npm install` en el repo (está declarado como " +
+      "devDependency) o define PLAYWRIGHT_CORE_DIR apuntando a una instalación de playwright-core.",
   );
 }
 const require = createRequire(resolverPlaywrightCore());
 const { chromium } = require("playwright-core");
 
 // ── Resolución portable de Chromium ──
-// CHROMIUM_PATH tiene prioridad; si no, se busca en los cachés habituales de
-// playwright (ms-playwright y pw-browsers) de los homes candidatos, eligiendo
-// la versión más reciente.
+// CHROMIUM_PATH tiene prioridad; si no, se busca en PLAYWRIGHT_BROWSERS_PATH y en
+// los cachés habituales de playwright (ms-playwright y pw-browsers) de los homes
+// candidatos, eligiendo la versión más reciente. `npx playwright-core install
+// chromium` deja el binario en ~/.cache/ms-playwright y queda cubierto por la
+// autodetección, sin rutas locales externas.
 function resolverChromium() {
   if (process.env.CHROMIUM_PATH) return process.env.CHROMIUM_PATH;
   const bases = [];
+  if (process.env.PLAYWRIGHT_BROWSERS_PATH) bases.push(process.env.PLAYWRIGHT_BROWSERS_PATH);
   for (const h of homesCandidatos()) {
     bases.push(join(h, ".cache", "ms-playwright"));
     bases.push(join(h, "pw-browsers"));
@@ -68,8 +70,8 @@ function resolverChromium() {
   if (hallados.length) return hallados[0];
   throw new Error(
     "Binario de Chromium no encontrado. Define CHROMIUM_PATH con la ruta del ejecutable " +
-      "(p. ej. `export CHROMIUM_PATH=.../chrome-linux64/chrome`) o instala un Chromium compatible " +
-      "(p. ej. `npx playwright install chromium`).",
+      "(p. ej. `export CHROMIUM_PATH=.../chrome-linux64/chrome`) o instálalo con " +
+      "`npx playwright-core install chromium` (deja el binario en ~/.cache/ms-playwright).",
   );
 }
 
@@ -80,6 +82,31 @@ mkdirSync(OUT, { recursive: true });
 mkdirSync(TRAZAS, { recursive: true });
 const IDS = JSON.parse(readFileSync(join(DIR, "ids.json"), "utf8"));
 const browser = await chromium.launch({ executablePath: resolverChromium() });
+
+// ── Redacción de credenciales y limpieza segura de temporales ──
+// Ninguna contraseña se imprime ni se persiste en la evidencia: las claves que
+// aparezcan en los detalles de resultado se sustituyen por [REDACTADO], y los CSV
+// de credenciales descargados se eliminan de disco al terminar, también si la
+// suite falla (el handler de `exit` borra cualquier temporal marcado).
+const secretos = new Set();
+function registrarSecreto(v) {
+  if (typeof v === "string" && v) secretos.add(v);
+}
+function redactar(s) {
+  let out = String(s);
+  for (const sec of secretos) out = out.split(sec).join("[REDACTADO]");
+  return out;
+}
+const temporales = new Set();
+function marcarTemporal(p) {
+  temporales.add(p);
+}
+function limpiarTemporales() {
+  for (const p of temporales) {
+    try { rmSync(p, { force: true }); } catch {}
+  }
+}
+process.on("exit", limpiarTemporales);
 
 // ── Resultados y captura de evidencia en fallo (aserciones Y excepciones) ──
 const resultados = [];
@@ -95,17 +122,18 @@ async function guardarEvidencia() {
   } catch {}
 }
 function ok(nombre, cond, detalle = "") {
-  resultados.push({ nombre, ok: !!cond, detalle });
-  console.log(`${cond ? "PASS" : "FAIL"} ${nombre}${detalle ? " — " + detalle : ""}`);
+  const d = redactar(detalle);
+  resultados.push({ nombre, ok: !!cond, detalle: d });
+  console.log(`${cond ? "PASS" : "FAIL"} ${nombre}${d ? " — " + d : ""}`);
   if (!cond) pendientes.push(guardarEvidencia());
 }
 // Cualquier excepción o rechazo no controlado también deja traza antes de salir.
 process.on("uncaughtException", (err) => {
-  console.error("EXCEPCIÓN NO CONTROLADA:", err);
+  console.error("EXCEPCIÓN NO CONTROLADA:", redactar(err));
   guardarEvidencia().finally(() => process.exit(2));
 });
 process.on("unhandledRejection", (err) => {
-  console.error("PROMESA RECHAZADA:", err);
+  console.error("PROMESA RECHAZADA:", redactar(err));
   guardarEvidencia().finally(() => process.exit(2));
 });
 async function usar(ctx, page) {
@@ -118,6 +146,9 @@ async function usar(ctx, page) {
 const A = process.env.SEED_ADMIN_PASSWORD;
 const D = process.env.SEED_DOCENTE_PASSWORD;
 const ES = process.env.SEED_ESTUDIANTE_PASSWORD;
+registrarSecreto(A);
+registrarSecreto(D);
+registrarSecreto(ES);
 const ruta = (page) => new URL(page.url()).pathname;
 const scrollX = (page) => page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
 const mains = (page) => page.evaluate(() => document.querySelectorAll("main").length);
@@ -276,6 +307,7 @@ let CLAVE_DOCENTE_NUEVA = null;
   await page.goto(`${BASE}/clases`);
   ok("DOCENTE temporal no entra a /clases", ruta(page) === "/cuenta/contrasena", page.url());
   CLAVE_DOCENTE_NUEVA = `Propia${Date.now() % 100000}Zz9`;
+  registrarSecreto(CLAVE_DOCENTE_NUEVA);
   await page.fill("#actual", D);
   await page.fill("#contrasena", CLAVE_DOCENTE_NUEVA);
   await page.fill("#confirmacion", CLAVE_DOCENTE_NUEVA);
@@ -371,7 +403,8 @@ let ID_EST_SMOKE = null;
   await pa.click(".admin-formulario button[type=submit]");
   await pa.waitForSelector(".admin-credencial");
   const claveDoc = (await pa.textContent(".admin-clave"))?.trim();
-  ok("alta DOCENTE muestra temporal una vez", /^[a-z]+-[a-z]+-[a-z]+-\d{4}$/.test(claveDoc ?? ""), claveDoc ?? "sin clave");
+  registrarSecreto(claveDoc);
+  ok("alta DOCENTE muestra temporal una vez", /^[a-z]+-[a-z]+-[a-z]+-\d{4}$/.test(claveDoc ?? ""), claveDoc ? "credencial con formato válido (redactada)" : "sin clave");
   const [descargaDoc] = await Promise.all([pa.waitForEvent("download"), pa.click("text=Descargar CSV")]);
   ok("credencial DOCENTE CSV descargable", descargaDoc.suggestedFilename().endsWith(".csv"), descargaDoc.suggestedFilename());
   await pa.click("text=Ya la entregué, ocultar");
@@ -554,11 +587,16 @@ let ID_EST_SMOKE = null;
   const [credenciales] = await Promise.all([pa.waitForEvent("download"), pa.click("dialog[open] >> text=Importar y descargar contraseñas")]);
   const rutaCSV = `${DIR}credenciales-e2e.csv`;
   await credenciales.saveAs(rutaCSV);
+  marcarTemporal(rutaCSV);
   const lineas = readFileSync(rutaCSV, "utf8").replace(/^\uFEFF/, "").trim().split(/\r?\n/);
+  for (const l of lineas.slice(1)) {
+    const [, k] = l.split(",");
+    registrarSecreto(k);
+  }
   ok("CSV credenciales: encabezado y 2 filas nuevas", lineas[0] === "correo,contrasena" && lineas.length === 3, `líneas=${lineas.length}`);
-  ok("CSV credenciales: solo correo y contraseña (sin datos reales)", lineas.every((l) => l === "correo,contrasena" || /^[^,\n]+,[^,\n]+$/.test(l)), lineas.join("|"));
+  ok("CSV credenciales: solo correo y contraseña (sin datos reales)", lineas.every((l) => l === "correo,contrasena" || /^[^,\n]+,[^,\n]+$/.test(l)), `líneas=${lineas.length} (claves redactadas)`);
   ok("CSV válido: éxito visible", (await pa.textContent("[role=status].admin-aviso"))?.includes("no se puede volver a descargar"));
-  writeFileSync(rutaCSV, ""); // no conservar credenciales en disco
+  rmSync(rutaCSV, { force: true }); // no conservar credenciales en disco
   await pa.screenshot({ path: `${OUT}escritorio-importar-csv.png` });
   await ctx.close();
 }
@@ -758,6 +796,7 @@ let ID_EST_SMOKE = null;
       const [descarga] = await Promise.all([page.waitForEvent("download"), page.click("text=Descargar CSV de credenciales")]);
       const rutaDesc = `${DIR}descarga-mi-curso.csv`;
       await descarga.saveAs(rutaDesc);
+      marcarTemporal(rutaDesc);
       const csv = readFileSync(rutaDesc, "utf8").replace(/^\uFEFF/, "").trim().split(/\r?\n/);
       ok("CSV con encabezado y 2 filas", csv[0] === "correo,contrasena" && csv.length === 3, `líneas=${csv.length}`);
       ok("panel desaparece tras descargar", (await page.locator(".admin-credencial").count()) === 0);
@@ -765,12 +804,13 @@ let ID_EST_SMOKE = null;
 
       // Credenciales nuevas funcionan; las anteriores no
       const [c2, k2] = csv.find((l) => l.startsWith("estudiante2@")).split(",");
+      registrarSecreto(k2);
       const otra = await browser.newContext();
       const po = await otra.newPage();
       ok("contraseña anterior ya no entra", (await intentarLogin(po, "estudiante2@miduho.test", ES)) === "/login");
       ok("nueva contraseña entra", (await intentarLogin(po, c2, k2)) !== "/login");
       await otra.close();
-      writeFileSync(rutaDesc, "");
+      rmSync(rutaDesc, { force: true });
     } else {
       await page.goto(`${BASE}/mi-curso/${IDS.g1}`);
       await page.waitForLoadState("networkidle");

@@ -8,11 +8,13 @@ datos reales y captura traza Playwright + captura en el primer fallo.
 ## Prerrequisitos
 
 - Build del proyecto: `npm run build` (genera `.next` y `src/generated/prisma`).
-- `playwright-core` y un binario de Chromium. Se resuelven de forma portable, sin
-  rutas absolutas de otra máquina: `playwright-core` desde `node_modules` del
-  propio repo (o `PLAYWRIGHT_CORE_DIR`), y Chromium desde los cachés habituales
-  (`~/.cache/ms-playwright`, `~/.pw-browsers`) o `CHROMIUM_PATH`. Si no están
-  disponibles, la suite aborta con un mensaje que indica cómo instalarlos.
+- `playwright-core` (declarado y bloqueado como `devDependency` en `package.json`;
+  `npm install` lo instala). Chromium se resuelve de forma portable: primero
+  `CHROMIUM_PATH`, luego `PLAYWRIGHT_BROWSERS_PATH` y los cachés habituales de
+  playwright (`~/.cache/ms-playwright`, `~/.pw-browsers`). Para instalar un
+  Chromium compatible ejecuta `npx playwright-core install chromium` (lo deja en
+  `~/.cache/ms-playwright`, donde la suite lo detecta automáticamente). No se
+  dependen de rutas de otros proyectos ni de otra máquina.
 - `openssl` para generar secretos temporales del smoke.
 
 ## Cómo ejecutar
@@ -43,6 +45,7 @@ como ante una excepción o rechazo no controlado.
 | Variable | Default | Uso |
 |---|---|---|
 | `PLAYWRIGHT_CORE_DIR` | _(autodetección)_ | carpeta que expone `playwright-core`, si no está en `node_modules` del repo |
+| `PLAYWRIGHT_BROWSERS_PATH` | _(autodetección)_ | carpeta de caché de navegadores de playwright (p. ej. un `ms-playwright` custom) |
 | `CHROMIUM_PATH` | _(autodetección)_ | binario de Chromium, si no está en los cachés habituales |
 | `BASE` | `http://localhost:3113` | URL del servidor `next start` |
 
@@ -65,4 +68,6 @@ viewport móvil.
 
 > La credencial de un docente recién creado y el restablecimiento múltiple se
 > validan comprobando que la contraseña anterior deja de funcionar y la nueva
-> entra, sin conservar las contraseñas en disco.
+> entra, sin conservar las contraseñas en disco: los CSV de credenciales
+> descargados se eliminan al terminar (también si la suite falla) y toda clave
+> que aparezca en el resultado se redacta como `[REDACTADO]`.
