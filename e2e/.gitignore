@@ -1,0 +1,9 @@
+# Artefactos de ejecución del smoke E2E (no versionar).
+smoke.env
+smoke.db
+ids.json
+server.log
+smoke-resultado.txt
+capturas/
+trazas/
+*.csv
