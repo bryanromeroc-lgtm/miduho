@@ -516,3 +516,37 @@
 /* ── Estudiantes y grupos (INC1R-09) ─────────────────────────────── */
 .asociacion-historial { margin: 0; padding-left: 1.1rem; display: grid; gap: 2px; }
 .admin-acciones-fila select { min-width: 8rem; }
+
+/* ── Mi curso del DOCENTE (INC1R-10) ─────────────────────────────── */
+.micurso-grupos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 18px; list-style: none; margin: 0; padding: 0; }
+.micurso-grupo { display: flex; flex-direction: column; gap: 14px; height: 100%; padding: 20px 22px; border-radius: 22px; background: #fff; border: 1px solid var(--color-linea); box-shadow: 0 10px 26px rgb(32 51 75 / .06); }
+.micurso-grupo-cabecera h2 { font-size: 21px; font-weight: 850; letter-spacing: -.02em; color: var(--color-tinta); }
+.micurso-grupo-cabecera p { display: flex; align-items: center; gap: 4px; margin-top: 4px; font-size: 14px; color: var(--color-gris); }
+.micurso-asignaturas { display: flex; flex-direction: column; gap: 12px; list-style: none; margin: 0; padding: 0; }
+.micurso-asignatura { font-size: 15px; font-weight: 850; color: var(--color-tinta); }
+.micurso-asignatura span { font-weight: 700; color: var(--color-gris); }
+.micurso-bloques { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 6px 0 0; padding: 0; }
+.micurso-bloques li { padding: 4px 10px; border-radius: 999px; background: var(--school-orange-pale); font-size: 13px; color: var(--color-tinta); white-space: nowrap; }
+.micurso-ir { margin-top: auto; align-self: flex-start; }
+.micurso-ir:focus-visible { outline: 3px solid var(--school-orange); outline-offset: 2px; }
+.micurso-estudiantes-cabecera { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.micurso-estudiantes-cabecera h2 { margin-bottom: 4px; }
+.micurso-tabla .micurso-marca { width: 48px; }
+.micurso-marca input { width: 20px; height: 20px; accent-color: var(--school-orange); cursor: pointer; }
+.micurso-marca input:disabled { cursor: not-allowed; }
+.micurso-marca input:focus-visible { outline: 3px solid var(--school-orange); outline-offset: 2px; }
+.micurso-todos { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; }
+.micurso-todos-texto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.cuenta-panel .admin-credencial { margin-bottom: 14px; max-width: none; }
+.admin-credencial h3 { font-size: 17px; font-weight: 850; color: #234f0e; }
+@media (max-width: 640px) {
+  /* En tarjetas apiladas, la casilla queda junto al nombre. */
+  .micurso-tabla tbody tr { display: grid; grid-template-columns: 36px minmax(0, 1fr); column-gap: 8px; }
+  .micurso-tabla tbody tr > * { grid-column: 2; }
+  .micurso-tabla tbody .micurso-marca { grid-column: 1; grid-row: 1 / span 3; width: auto; padding-top: 4px; }
+  .micurso-tabla thead { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
+  .micurso-tabla thead tr { display: flex; align-items: center; padding: 10px 14px; }
+  .micurso-tabla thead th:not(.micurso-marca) { display: none; }
+  .micurso-tabla thead .micurso-marca { width: auto; padding: 0; background: transparent; }
+  .micurso-todos-texto { position: static; width: auto; height: auto; overflow: visible; clip: auto; font-size: 14px; font-weight: 800; color: var(--color-tinta); white-space: normal; }
+}

@@ -20,6 +20,7 @@
 | [Inc. 1R · Importación CSV de usuarios](inc-1r-importacion-csv.md) | Implementado (`t_9cc15d95`), pendiente integración | Plantillas, vista previa por fila, todo o nada, duplicados omitidos, nunca ADMIN, credenciales descargables una sola vez. |
 | [Inc. 1R · Asignaciones docentes y horarios](inc-1r-asignaciones-docentes.md) | Implementado (`t_89e7d927`), pendiente integración | Panel ADMIN, bloques múltiples, cruces, reactivación, reasignación confirmada e historial. |
 | [Inc. 1R · Asociación estudiante–grupo](inc-1r-asociacion-estudiante-grupo.md) | Implementado (`t_620c8df1`), pendiente integración | Panel ADMIN `/admin/estudiantes`, asignación y traslado confirmado con historial, filtros y paginación. |
+| [Inc. 1R · Mi curso del DOCENTE](inc-1r-mi-curso.md) | Implementado (`t_d0705068`), pendiente integración | Grupos con asignación activa, asignaturas, horario, estudiantes, restablecimiento múltiple con descarga única y 404 anti-enumeración. |
 | [Inc. 1 · Autenticación](inc-1-autenticacion.md) | Implementación previa; debe adaptarse a Inc. 1R | Login, recuperación de contraseña y evidencia de verificación. |
 | [Inc. 1 · Roles y asignación docente](inc-1-roles-asignacion.md) | Implementado (t_51ab8447), pendiente revisión | Roles, autorización central, asignación docente y vínculo verificable acudiente-estudiante. |
 | [Inc. 1 · QA integrado de la fundación](inc-1-fundacion-qa.md) | QA completado (t_978772c3) | Validación integrada sobre main: auth, entidades, autorización, roles y criterio negativo de matrícula. |
