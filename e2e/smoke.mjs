@@ -5,44 +5,109 @@
 //
 // Uso: source smoke.env && BASE=http://localhost:3113 node smoke.mjs
 import { createRequire } from "node:module";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-const require = createRequire(
-  process.env.PLAYWRIGHT_CORE_DIR
-    ? `${process.env.PLAYWRIGHT_CORE_DIR}/package.json`
-    : "/home/server/Documentos/taskflow_personal/package.json",
-);
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { homedir, userInfo } from "node:os";
+import { dirname, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const DIR = dirname(fileURLToPath(import.meta.url)) + "/"; // carpeta e2e/
+const REPO = resolve(DIR, "..");
+
+// Homes candidatos: el real del usuario (getpwuid) y el del entorno, que puede
+// apuntar a un sandbox (p. ej. el home de un perfil Hermes). Se deduplican.
+function homesCandidatos() {
+  const hs = new Set();
+  for (const h of [process.env.HOME, process.env.USERPROFILE]) if (h) hs.add(h);
+  try { hs.add(userInfo().homedir); } catch {}
+  try { hs.add(homedir()); } catch {}
+  return [...hs].filter(Boolean);
+}
+
+// ── Resolución portable de playwright-core ──
+// No se asume ninguna ruta absoluta de otra máquina. Se busca en orden:
+//   1) PLAYWRIGHT_CORE_DIR (carpeta de un proyecto que exponga playwright-core)
+//   2) node_modules/playwright-core del propio repo (npm i -D playwright-core)
+//   3) Proyecto hermano taskflow_personal en Documentos del home real (conveniencia local).
+function resolverPlaywrightCore() {
+  const candidatas = [];
+  if (process.env.PLAYWRIGHT_CORE_DIR) candidatas.push(join(process.env.PLAYWRIGHT_CORE_DIR, "package.json"));
+  candidatas.push(join(REPO, "node_modules", "playwright-core", "package.json"));
+  for (const h of homesCandidatos()) candidatas.push(join(h, "Documentos", "taskflow_personal", "package.json"));
+  for (const c of candidatas) if (existsSync(c)) return c;
+  throw new Error(
+    "playwright-core no encontrado. Define PLAYWRIGHT_CORE_DIR apuntando a un proyecto que lo exponga " +
+      "(p. ej. `export PLAYWRIGHT_CORE_DIR=/ruta/a/proyecto`) o instálalo con `npm i -D playwright-core` en este repo.",
+  );
+}
+const require = createRequire(resolverPlaywrightCore());
 const { chromium } = require("playwright-core");
 
+// ── Resolución portable de Chromium ──
+// CHROMIUM_PATH tiene prioridad; si no, se busca en los cachés habituales de
+// playwright (ms-playwright y pw-browsers) de los homes candidatos, eligiendo
+// la versión más reciente.
+function resolverChromium() {
+  if (process.env.CHROMIUM_PATH) return process.env.CHROMIUM_PATH;
+  const bases = [];
+  for (const h of homesCandidatos()) {
+    bases.push(join(h, ".cache", "ms-playwright"));
+    bases.push(join(h, "pw-browsers"));
+  }
+  bases.push(join(REPO, ".pw-browsers"));
+  const hallados = [];
+  for (const base of bases) {
+    let entradas = [];
+    try { entradas = readdirSync(base); } catch { continue; }
+    for (const d of entradas) {
+      if (!d.startsWith("chromium-") || d.includes("headless")) continue;
+      const exe = join(base, d, "chrome-linux64", "chrome");
+      if (existsSync(exe)) hallados.push(exe);
+    }
+  }
+  hallados.sort().reverse(); // versión mayor primero
+  if (hallados.length) return hallados[0];
+  throw new Error(
+    "Binario de Chromium no encontrado. Define CHROMIUM_PATH con la ruta del ejecutable " +
+      "(p. ej. `export CHROMIUM_PATH=.../chrome-linux64/chrome`) o instala un Chromium compatible " +
+      "(p. ej. `npx playwright install chromium`).",
+  );
+}
+
 const BASE = process.env.BASE ?? "http://localhost:3113";
-const DIR = new URL("./", import.meta.url).pathname;
 const OUT = `${DIR}capturas/`;
 const TRAZAS = `${DIR}trazas/`;
 mkdirSync(OUT, { recursive: true });
 mkdirSync(TRAZAS, { recursive: true });
-const IDS = JSON.parse(readFileSync(`${DIR}ids.json`, "utf8"));
-const EXE = process.env.CHROMIUM_PATH ?? "/home/server/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome";
-const browser = await chromium.launch({ executablePath: EXE });
+const IDS = JSON.parse(readFileSync(join(DIR, "ids.json"), "utf8"));
+const browser = await chromium.launch({ executablePath: resolverChromium() });
 
-// ── Resultados y captura de evidencia en fallo ──
+// ── Resultados y captura de evidencia en fallo (aserciones Y excepciones) ──
 const resultados = [];
 let activo = null; // { ctx, page }
 let falloCapturado = false;
 const pendientes = [];
+async function guardarEvidencia() {
+  if (falloCapturado) return;
+  falloCapturado = true;
+  try {
+    if (activo?.page) await activo.page.screenshot({ path: `${OUT}fallo.png`, fullPage: true }).catch(() => {});
+    if (activo?.ctx) await activo.ctx.tracing.stop({ path: `${TRAZAS}fallo-traza.zip` }).catch(() => {});
+  } catch {}
+}
 function ok(nombre, cond, detalle = "") {
   resultados.push({ nombre, ok: !!cond, detalle });
   console.log(`${cond ? "PASS" : "FAIL"} ${nombre}${detalle ? " — " + detalle : ""}`);
-  if (!cond && !falloCapturado) {
-    falloCapturado = true;
-    pendientes.push(
-      (async () => {
-        try {
-          if (activo?.page) await activo.page.screenshot({ path: `${OUT}fallo.png`, fullPage: true }).catch(() => {});
-          if (activo?.ctx) await activo.ctx.tracing.stop({ path: `${TRAZAS}fallo-traza.zip` }).catch(() => {});
-        } catch {}
-      })(),
-    );
-  }
+  if (!cond) pendientes.push(guardarEvidencia());
 }
+// Cualquier excepción o rechazo no controlado también deja traza antes de salir.
+process.on("uncaughtException", (err) => {
+  console.error("EXCEPCIÓN NO CONTROLADA:", err);
+  guardarEvidencia().finally(() => process.exit(2));
+});
+process.on("unhandledRejection", (err) => {
+  console.error("PROMESA RECHAZADA:", err);
+  guardarEvidencia().finally(() => process.exit(2));
+});
 async function usar(ctx, page) {
   if (activo?.ctx && activo.ctx !== ctx) await activo.ctx.tracing.stop().catch(() => {});
   activo = { ctx, page };
@@ -98,6 +163,13 @@ const MAQUETA = ["/", "/clases", "/biblioteca", "/laboratorios", "/agenda"];
 const RUTAS_ADMIN = ["/admin", "/admin/usuarios", "/admin/usuarios/nuevo", "/admin/usuarios/importar", "/admin/estudiantes", "/admin/estructura", "/admin/asignaciones"];
 // Patrones que delatarían datos reales de menores o personal del colegio.
 const MARCADORES_REALES = ["cédula", "cédula de ciudadanía", "tarjeta de identidad", "documento de identidad", "número de documento", "cc ", "ti ", "ti. ", "cc. "];
+// Números con forma de documento de identidad colombiano (cédula/NIT):
+// 8–10 dígitos seguidos, o dígitos separados por puntos (p. ej. 1.073.173.673).
+const DOCUMENTO_REAL = /\b\d{8,10}\b|(\d{1,3}\.\d{3}){2,}/;
+const tieneDatoReal = (texto) => {
+  const s = String(texto ?? "").toLowerCase();
+  return MARCADORES_REALES.some((m) => s.includes(m)) || DOCUMENTO_REAL.test(s);
+};
 
 // ────────────────────────────────────────────────────────────────────────────
 // 1 · Sin sesión: rutas protegidas y pantallas públicas
@@ -118,7 +190,7 @@ const MARCADORES_REALES = ["cédula", "cédula de ciudadanía", "tarjeta de iden
     ok(`pública ${r} sin scroll horizontal`, !(await scrollX(page)));
   }
   const cuerpoLogin = await texto(page);
-  ok("login sin datos reales", !MARCADORES_REALES.some((m) => cuerpoLogin.toLowerCase().includes(m)));
+  ok("login sin datos reales", !tieneDatoReal(cuerpoLogin));
   await ctx.close();
 }
 
@@ -258,9 +330,12 @@ let CLAVE_DOCENTE_NUEVA = null;
   const page = await ctx.newPage();
   await usar(ctx, page);
   await login(page, "mixta@miduho.test", A);
-  // El contexto se recuerda por cuenta: en la misma sesión de servidor quedó DOCENTE.
+  // El contexto se recuerda por cuenta (usuario.ultimoContexto): tras cambiar
+  // a DOCENTE en escritorio, un reingreso limpio en móvil debe seguir en DOCENTE.
   const nav = await navEtiquetas(page);
-  ok("MIXTA móvil recuerda contexto", nav.includes("Mi curso") || nav[0] === "Dashboard", nav.join("|"));
+  ok("MIXTA móvil recuerda contexto DOCENTE", nav.includes("Mi curso") && !nav.includes("Dashboard"), nav.join("|"));
+  const opcionDocente = page.locator(".shell-contexto-opcion", { hasText: "Docente" });
+  ok("MIXTA móvil selector DOCENTE presionado", (await opcionDocente.getAttribute("aria-pressed")) === "true");
   ok("MIXTA móvil sin scroll horizontal", !(await scrollX(page)));
   await ctx.close();
 }
@@ -280,7 +355,7 @@ let ID_EST_SMOKE = null;
   ok("listado una <main>", (await mains(pa)) === 1);
   ok("listado muestra cuentas sembradas", (await pa.locator(".admin-tabla tbody tr").count()) >= 3);
   const listadoTexto = (await texto(pa)).toLowerCase();
-  ok("listado sin datos reales", !MARCADORES_REALES.some((m) => listadoTexto.includes(m)));
+  ok("listado sin datos reales", !tieneDatoReal(listadoTexto));
 
   // Búsqueda vacía
   await pa.fill("#f-q", "nadie-coincide-zzz");
@@ -397,7 +472,7 @@ let ID_EST_SMOKE = null;
   ok("estructura una <main>", (await mains(pa)) === 1);
   ok("estructura sin scroll horizontal", !(await scrollX(pa)));
   const estTexto = (await texto(pa)).toLowerCase();
-  ok("estructura sin datos reales", !MARCADORES_REALES.some((m) => estTexto.includes(m)));
+  ok("estructura sin datos reales", !tieneDatoReal(estTexto));
 
   // Crear área nueva
   await pa.fill("form[aria-label='Crear área'] input[name=nombre]", "Ciencias naturales E2E");
@@ -535,6 +610,43 @@ let ID_EST_SMOKE = null;
   ok("asignaciones una <main>", (await mains(pa)) === 1);
   ok("asignaciones sin scroll horizontal", !(await scrollX(pa)));
   await pa.screenshot({ path: `${OUT}escritorio-asignaciones.png` });
+  await ctx.close();
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// 8b · Cobertura UI móvil de Estructura y Asignaciones (ADMIN, 390×844)
+// ────────────────────────────────────────────────────────────────────────────
+{
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const pa = await ctx.newPage();
+  await usar(ctx, pa);
+  await login(pa, "admin@miduho.test", A);
+
+  await pa.goto(`${BASE}/admin/estructura`);
+  ok("móvil estructura carga", (await pa.textContent("h1"))?.includes("Estructura académica"));
+  ok("móvil estructura una <main>", (await mains(pa)) === 1);
+  ok("móvil estructura sin scroll horizontal", !(await scrollX(pa)));
+  ok("móvil estructura formularios de alta visibles", (await pa.locator("form[aria-label='Crear área']").count()) === 1 && (await pa.locator("form[aria-label='Crear grado']").count()) === 1);
+  // Alta y baja de un área con nombre único desde el móvil: el formulario funciona.
+  await pa.fill("form[aria-label='Crear área'] input[name=nombre]", "Arte móvil E2E");
+  await pa.click("form[aria-label='Crear área'] button");
+  await esperarTexto(pa, "Arte móvil E2E");
+  ok("móvil estructura crea área", true);
+  await pa.goto(`${BASE}/admin/estructura`);
+  const filaArte = pa.locator("tr", { hasText: "Arte móvil E2E" }).first();
+  await filaArte.locator("text=Eliminar").click();
+  await pa.waitForSelector("dialog[open]");
+  await pa.click("dialog[open] >> text=Eliminar definitivamente");
+  await esperarTextoAusente(pa, "Arte móvil E2E");
+  ok("móvil estructura elimina área sin relaciones", true);
+
+  await pa.goto(`${BASE}/admin/asignaciones`);
+  ok("móvil asignaciones carga", (await pa.textContent("h1"))?.includes("Asignaciones docentes"));
+  ok("móvil asignaciones una <main>", (await mains(pa)) === 1);
+  ok("móvil asignaciones sin scroll horizontal", !(await scrollX(pa)));
+  ok("móvil asignaciones listado con filas", (await pa.locator(".admin-tabla tbody tr").count()) >= 1);
+  ok("móvil asignaciones formulario de alta visible", (await pa.locator("h2#crear-asignacion").count()) === 1);
+  await pa.screenshot({ path: `${OUT}movil-estructura-asignaciones.png` });
   await ctx.close();
 }
 
@@ -692,8 +804,24 @@ let ID_EST_SMOKE = null;
   // La interfaz marca el año como cerrado / solo lectura
   await pa.goto(`${BASE}/admin/estructura`);
   ok("estructura muestra año cerrado", (await texto(pa, "main")).includes("cerrado"));
+  ok("estructura año cerrado en solo lectura", (await texto(pa, "main")).includes("Solo lectura (año cerrado)"));
   await pa.screenshot({ path: `${OUT}escritorio-anio-cerrado.png` });
   await ctx.close();
+
+  // Cobertura UI móvil del cierre: en 390×844 el año cerrado se muestra y es de solo lectura.
+  {
+    const ctxm = await browser.newContext({ viewport: { width: 390, height: 844 } });
+    const pm = await ctxm.newPage();
+    await usar(ctxm, pm);
+    await login(pm, "admin@miduho.test", A);
+    await pm.goto(`${BASE}/admin/estructura`);
+    ok("móvil estructura muestra año cerrado", (await texto(pm, "main")).includes("cerrado"));
+    ok("móvil estructura año cerrado en solo lectura", (await texto(pm, "main")).includes("Solo lectura (año cerrado)"));
+    ok("móvil estructura una <main>", (await mains(pm)) === 1);
+    ok("móvil estructura sin scroll horizontal", !(await scrollX(pm)));
+    await pm.screenshot({ path: `${OUT}movil-anio-cerrado.png` });
+    await ctxm.close();
+  }
 }
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -706,8 +834,7 @@ let ID_EST_SMOKE = null;
   await login(page, "estudiante@miduho.test", ES);
   for (const r of ["/", "/clases", "/biblioteca", "/laboratorios", "/agenda", "/cuenta"]) {
     await page.goto(`${BASE}${r}`);
-    const t = (await texto(page)).toLowerCase();
-    ok(`sin datos reales en ${r}`, !MARCADORES_REALES.some((m) => t.includes(m)));
+    ok(`sin datos reales en ${r}`, !tieneDatoReal(await texto(page)));
   }
   await ctx.close();
 }
