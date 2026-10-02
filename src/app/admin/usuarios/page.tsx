@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, Search, UserPlus } from "lucide-react";
+import { ChevronLeft, ChevronRight, Search, Upload, UserPlus } from "lucide-react";
 import { Cabecera, Marco } from "@/components/friso/marco";
 import { COMBINACIONES, ETIQUETA_COMBINACION, ETIQUETA_ESTADO, ESTADOS, type Combinacion } from "@/lib/usuarios";
 import { esquemasUsuarios as E, servicioUsuarios } from "@/server/modules/usuarios";
@@ -60,6 +60,9 @@ export default async function PaginaUsuarios({ searchParams }: { searchParams: P
       <div className="admin-barra">
         <Link href="/admin/usuarios/nuevo" className="boton-pastilla" data-variante="primario">
           <UserPlus size={18} aria-hidden="true" /> Nueva cuenta
+        </Link>
+        <Link href="/admin/usuarios/importar" className="boton-pastilla" data-variante="secundario">
+          <Upload size={18} aria-hidden="true" /> Importar CSV
         </Link>
       </div>
 

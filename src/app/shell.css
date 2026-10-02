@@ -474,3 +474,8 @@
   .admin-tabla td:last-child { margin-top: 8px; }
   .admin-paginacion { flex-wrap: wrap; }
 }
+
+/* ── Importación CSV de usuarios (INC1R-06) ─────────────────────────── */
+.admin-estado[data-estado="ERROR"] { background: #fdecea; color: #7a1a14; }
+.admin-errores-fila { margin: 6px 0 0; padding-left: 18px; list-style: disc; font-size: 13px; line-height: 1.45; color: #7a1a14; }
+.admin-campo input[type="file"] { padding: 8px; }
