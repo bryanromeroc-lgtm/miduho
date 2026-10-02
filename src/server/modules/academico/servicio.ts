@@ -68,6 +68,9 @@ export function crearServicioAcademico(db: PrismaClient) {
         if (await tx.anioLectivo.findUnique({ where: { anio: d.anio } })) {
           throw conflicto("ANIO_DUPLICADO", `Ya existe el año lectivo ${d.anio}.`);
         }
+        if (d.estado === "CERRADO") {
+          throw conflicto("CIERRE_REQUIERE_PERIODOS", "Crea el año activo y ciérralo solo cuando tenga períodos que sumen 100 %.");
+        }
         if (d.estado === "ACTIVO" && (await tx.anioLectivo.count({ where: { estado: "ACTIVO" } })) > 0) {
           throw conflicto("ANIO_ACTIVO_EXISTE", "Ya hay un año lectivo activo; ciérralo antes de activar otro.");
         }
@@ -88,7 +91,31 @@ export function crearServicioAcademico(db: PrismaClient) {
         if (actual.periodos.some((p) => !dentroDe(p, rango))) {
           throw conflicto("PERIODO_FUERA_DE_ANIO", "Hay períodos que quedarían fuera de las nuevas fechas del año.");
         }
+        if (d.estado === "CERRADO") {
+          const ponderaciones = actual.periodos.map((p) => p.ponderacion.toNumber());
+          if (actual.periodos.length === 0) {
+            throw conflicto("CIERRE_REQUIERE_PERIODOS", "No puedes cerrar un año sin períodos configurados.");
+          }
+          if (!ponderacionCompleta(ponderaciones)) {
+            throw conflicto("PONDERACION_INCOMPLETA", "Las ponderaciones de los períodos deben sumar exactamente 100 % para cerrar el año.");
+          }
+        }
         return tx.anioLectivo.update({ where: { id }, data: { ...rango, estado: d.estado } });
+      });
+    },
+    async eliminar(id: string) {
+      return db.$transaction(async (tx) => {
+        await anioEditable(tx, id);
+        const [periodos, grupos, asignaciones, asociaciones] = await Promise.all([
+          tx.periodo.count({ where: { anioLectivoId: id } }),
+          tx.grupo.count({ where: { anioLectivoId: id } }),
+          tx.asignacionDocente.count({ where: { anioLectivoId: id } }),
+          tx.asociacionEstudianteGrupo.count({ where: { anioLectivoId: id } }),
+        ]);
+        if (periodos || grupos || asignaciones || asociaciones) {
+          throw conflicto("REGISTRO_UTILIZADO", "No puedes eliminar un año que tiene períodos, grupos, asignaciones o historial.");
+        }
+        await tx.anioLectivo.delete({ where: { id } });
       });
     },
   };
@@ -159,6 +186,14 @@ export function crearServicioAcademico(db: PrismaClient) {
         return periodoDto(await tx.periodo.update({ where: { id }, data: { ...cambios, nombre: d.nombre } }));
       });
     },
+    async eliminar(id: string) {
+      return db.$transaction(async (tx) => {
+        const periodo = await tx.periodo.findUnique({ where: { id } });
+        if (!periodo) throw noEncontrado("El período");
+        await anioEditable(tx, periodo.anioLectivoId);
+        await tx.periodo.delete({ where: { id } });
+      });
+    },
   };
 
   // ---------------- Grado ----------------
@@ -179,6 +214,41 @@ export function crearServicioAcademico(db: PrismaClient) {
     async actualizar(id: string, d: Entrada<typeof E.actualizarGrado>) {
       await grados.obtener(id);
       return db.grado.update({ where: { id }, data: d });
+    },
+    async eliminar(id: string) {
+      const [grupos, asignaturas] = await Promise.all([
+        db.grupo.count({ where: { gradoId: id } }),
+        db.asignaturaGrado.count({ where: { gradoId: id } }),
+      ]);
+      if (grupos || asignaturas) throw conflicto("REGISTRO_UTILIZADO", "No puedes eliminar un grado que tiene grupos o asignaturas relacionadas.");
+      await db.grado.delete({ where: { id } });
+    },
+  };
+
+  // ---------------- Área ----------------
+  const areas = {
+    async listar(p: Pagina) {
+      const [data, total] = await Promise.all([
+        db.area.findMany({ orderBy: [{ orden: "asc" }, { nombre: "asc" }], ...saltar(p) }),
+        db.area.count(),
+      ]);
+      return { data, total };
+    },
+    async obtener(id: string) {
+      const area = await db.area.findUnique({ where: { id } });
+      if (!area) throw noEncontrado("El área");
+      return area;
+    },
+    crear: (d: Entrada<typeof E.crearArea>) => db.area.create({ data: { ...d, orden: d.orden ?? null } }),
+    async actualizar(id: string, d: Entrada<typeof E.actualizarArea>) {
+      await areas.obtener(id);
+      return db.area.update({ where: { id }, data: d });
+    },
+    async eliminar(id: string) {
+      if (await db.asignatura.count({ where: { areaId: id } })) {
+        throw conflicto("REGISTRO_UTILIZADO", "No puedes eliminar un área que tiene asignaturas relacionadas.");
+      }
+      await db.area.delete({ where: { id } });
     },
   };
 
@@ -234,6 +304,19 @@ export function crearServicioAcademico(db: PrismaClient) {
         await anioEditable(tx, actual.anioLectivoId);
         await validarDirector(tx, d.directorId);
         return tx.grupo.update({ where: { id }, data: d, include: incluirGrupo });
+      });
+    },
+    async eliminar(id: string) {
+      return db.$transaction(async (tx) => {
+        const grupo = await tx.grupo.findUnique({ where: { id } });
+        if (!grupo) throw noEncontrado("El grupo");
+        await anioEditable(tx, grupo.anioLectivoId);
+        const [asignaciones, asociaciones] = await Promise.all([
+          tx.asignacionDocente.count({ where: { grupoId: id } }),
+          tx.asociacionEstudianteGrupo.count({ where: { grupoId: id } }),
+        ]);
+        if (asignaciones || asociaciones) throw conflicto("REGISTRO_UTILIZADO", "No puedes eliminar un grupo que tiene asignaciones o historial de estudiantes.");
+        await tx.grupo.delete({ where: { id } });
       });
     },
   };
@@ -304,6 +387,16 @@ export function crearServicioAcademico(db: PrismaClient) {
         });
       });
     },
+    async eliminar(id: string) {
+      const [asignaciones, gradosHabilitados] = await Promise.all([
+        db.asignacionDocente.count({ where: { asignaturaId: id } }),
+        db.asignaturaGrado.count({ where: { asignaturaId: id } }),
+      ]);
+      if (asignaciones || gradosHabilitados) {
+        throw conflicto("REGISTRO_UTILIZADO", "No puedes eliminar una asignatura que tiene grados habilitados o asignaciones relacionadas.");
+      }
+      await db.asignatura.delete({ where: { id } });
+    },
   };
 
   const asignacionesDocente = {
@@ -331,7 +424,7 @@ export function crearServicioAcademico(db: PrismaClient) {
     async desactivar(id: string) { return db.asignacionDocente.update({ where: { id }, data: { estado: "INACTIVA" } }); },
   };
 
-  return { aniosLectivos, periodos, grados, grupos, asignaturas, asignacionesDocente };
+  return { aniosLectivos, periodos, grados, areas, grupos, asignaturas, asignacionesDocente };
 }
 
 export type ServicioAcademico = ReturnType<typeof crearServicioAcademico>;

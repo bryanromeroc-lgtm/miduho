@@ -173,8 +173,24 @@ describe("servicio académico (SQLite temporal)", () => {
     expect(filtrada.total).toBe(0);
   });
 
-  it("año cerrado es de solo lectura (RN-52)", async () => {
+  it("no permite cerrar un año sin períodos ni con ponderación parcial", async () => {
     await S.aniosLectivos.actualizar(anioId, { estado: "CERRADO" });
+    const vacio = await S.aniosLectivos.crear({ anio: 2040, fechaInicio: d("2040-01-01"), fechaFin: d("2040-12-31"), estado: "ACTIVO" });
+    expect(await codigoDe(S.aniosLectivos.actualizar(vacio.id, { estado: "CERRADO" }))).toBe("CIERRE_REQUIERE_PERIODOS");
+    await S.periodos.crear({ anioLectivoId: vacio.id, nombre: "P1", orden: 1, fechaInicio: d("2040-01-01"), fechaFin: d("2040-06-01"), ponderacion: 50 });
+    expect(await codigoDe(S.aniosLectivos.actualizar(vacio.id, { estado: "CERRADO" }))).toBe("PONDERACION_INCOMPLETA");
+    await S.periodos.crear({ anioLectivoId: vacio.id, nombre: "P2", orden: 2, fechaInicio: d("2040-07-01"), fechaFin: d("2040-12-01"), ponderacion: 50 });
+    await S.aniosLectivos.actualizar(vacio.id, { estado: "CERRADO" });
+  });
+
+  it("bloquea el borrado si el registro ya tiene relaciones o historial", async () => {
+    expect(await codigoDe(S.aniosLectivos.eliminar(anioId))).toBe("ANIO_CERRADO");
+    expect(await codigoDe(S.grados.eliminar(gradoId))).toBe("REGISTRO_UTILIZADO");
+    const areaLibre = await S.areas.crear({ nombre: "Área libre (ficticia)", tipo: "AREA", idioma: "es" });
+    await expect(S.areas.eliminar(areaLibre.id)).resolves.toBeUndefined();
+  });
+
+  it("año cerrado es de solo lectura (RN-52)", async () => {
     expect(await codigoDe(S.aniosLectivos.actualizar(anioId, { estado: "ACTIVO" }))).toBe("ANIO_CERRADO");
     expect(
       await codigoDe(S.periodos.crear({ anioLectivoId: anioId, nombre: "P3", orden: 3, ponderacion: 1, fechaInicio: d("2026-12-01"), fechaFin: d("2026-12-02") })),

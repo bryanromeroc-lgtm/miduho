@@ -14,6 +14,7 @@ const enteroPositivo = (campo: string) =>
 export const paginacion = z.object({
   page: z.coerce.number().int().min(1).default(1),
   pageSize: z.coerce.number().int().min(1).max(100).default(20),
+  q: z.string().trim().max(120, "La búsqueda es demasiado larga.").optional(),
 });
 
 // ---------- AnioLectivo ----------
@@ -66,6 +67,18 @@ export const crearGrado = z.object({
   orden: z.number({ error: "El orden debe ser un número." }).int().min(0, "El orden no puede ser negativo."),
 });
 export const actualizarGrado = crearGrado.partial().strict();
+
+// ---------- Área ----------
+export const tipoArea = z.enum(["AREA", "DIMENSION", "ENFOQUE"], {
+  error: "El tipo debe ser ÁREA, DIMENSIÓN o ENFOQUE.",
+});
+export const crearArea = z.object({
+  nombre: texto("el nombre del área", 120),
+  tipo: tipoArea.default("AREA"),
+  idioma: z.string().trim().min(2, "Escribe el idioma.").max(12, "El idioma es demasiado largo.").default("es"),
+  orden: z.number().int().min(0, "El orden no puede ser negativo.").nullable().optional(),
+});
+export const actualizarArea = crearArea.partial().strict();
 
 // ---------- Grupo ----------
 export const crearGrupo = z.object({

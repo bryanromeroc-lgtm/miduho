@@ -19,3 +19,13 @@ export function PATCH(req: NextRequest, ctx: RouteContext<"/api/anios-lectivos/[
     return Response.json(await S.aniosLectivos.actualizar(id, datos));
   });
 }
+
+export function DELETE(req: NextRequest, ctx: RouteContext<"/api/anios-lectivos/[id]">) {
+  return manejar(async () => {
+    verificarOrigen(req);
+    await requerirRol(ROLES_ACADEMICO);
+    const { id } = await ctx.params;
+    await S.aniosLectivos.eliminar(id);
+    return new Response(null, { status: 204 });
+  });
+}

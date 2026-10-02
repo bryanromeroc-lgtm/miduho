@@ -479,3 +479,10 @@
 .admin-estado[data-estado="ERROR"] { background: #fdecea; color: #7a1a14; }
 .admin-errores-fila { margin: 6px 0 0; padding-left: 18px; list-style: disc; font-size: 13px; line-height: 1.45; color: #7a1a14; }
 .admin-campo input[type="file"] { padding: 8px; }
+
+/* ── Estructura académica (INC1R-07) ─────────────────────────────────── */
+.admin-estructura { display: flex; flex-direction: column; gap: 14px; padding: 20px; border-radius: 22px; background: #fff; border: 1px solid var(--color-linea); }
+.admin-estructura .section-heading { margin-bottom: -8px; }
+.admin-estructura .admin-nota { margin-top: 0; }
+.admin-estructura .admin-formulario { padding: 16px; border-radius: 16px; background: #faf8f4; }
+.admin-estructura .admin-tabla-marco { margin-top: 2px; }

@@ -19,3 +19,13 @@ export function PATCH(req: NextRequest, ctx: RouteContext<"/api/grupos/[id]">) {
     return Response.json(await S.grupos.actualizar(id, datos));
   });
 }
+
+export function DELETE(req: NextRequest, ctx: RouteContext<"/api/grupos/[id]">) {
+  return manejar(async () => {
+    verificarOrigen(req);
+    await requerirRol(ROLES_ACADEMICO);
+    const { id } = await ctx.params;
+    await S.grupos.eliminar(id);
+    return new Response(null, { status: 204 });
+  });
+}
