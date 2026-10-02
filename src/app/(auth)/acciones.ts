@@ -16,6 +16,7 @@ import { resolverContexto } from "@/server/auth/sesion";
 import { db } from "@/server/db";
 import { ErrorDominio } from "@/server/errores";
 import { inicioDeContexto } from "@/lib/navegacion";
+import { destinoInterno } from "@/lib/destino";
 
 export type EstadoFormulario = {
   error?: string;
@@ -30,14 +31,6 @@ function primerosErrores(issues: { path: PropertyKey[]; message: string }[]) {
     errores[k] ??= i.message;
   }
   return errores;
-}
-
-/**
- * Solo rutas internas: evita redirecciones abiertas con ?desde=https://…
- * Sin `desde` válido devuelve null y se usa el inicio del contexto de la cuenta.
- */
-function destinoSeguro(desde: FormDataEntryValue | null) {
-  return typeof desde === "string" && desde.startsWith("/") && !desde.startsWith("//") ? desde : null;
 }
 
 /**
@@ -81,7 +74,8 @@ export async function iniciarSesion(_: EstadoFormulario, formData: FormData): Pr
     }
     throw e;
   }
-  redirect(await destinoTrasIngreso(datos.data.correo, destinoSeguro(formData.get("desde"))));
+  // Solo rutas internas (destinoInterno): sin `desde` válido se usa el inicio del contexto.
+  redirect(await destinoTrasIngreso(datos.data.correo, destinoInterno(formData.get("desde"))));
 }
 
 export async function cerrarSesion() {
