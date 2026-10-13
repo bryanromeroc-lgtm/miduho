@@ -6,6 +6,7 @@
 
 | Artefacto | Estado | Propósito |
 |---|---|---|
+| [Inc. 2 · Contenido de Laboratorios y Emprendimiento](inc-2-contenido-laboratorios-emprendimiento.md) | Implementado y verificado | Cinco rutas propias de Robótica y cinco ejercicios de Emprendimiento, sin progreso ficticio ni contenido protegido. |
 | [Modelo de entidades](../modelo-de-entidades.md) | Confirmado para Inc. 1 | Entidades, relaciones y reglas del dominio educativo. |
 | [Arquitectura backend](../arquitectura-backend.md) | Propuesta técnica para Inc. 1 | Decisiones de backend, auth, Prisma y contratos. |
 | [Auditoría de producto](../auditoria-producto-2026-09-26.md) | Observado / propuesto | Evaluación de diseño, arquitectura y preparación del producto. |

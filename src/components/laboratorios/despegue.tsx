@@ -80,7 +80,7 @@ export function Despegue() {
           aria-valuenow={Math.round(avance)}
           aria-label="Progreso de la carga"
         >
-          <i style={{ width: `${avance}%` }} />
+          <i style={{ transform: `scaleX(${avance / 100})` }} />
         </div>
 
         <p className="cos-despegue-pie">Laboratorios MIDUHO</p>

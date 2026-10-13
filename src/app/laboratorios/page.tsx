@@ -7,13 +7,9 @@ import {
   ArrowLeft,
   ArrowRight,
   Check,
-  Lock,
   Play,
   Rocket,
-  Star,
-  Trophy,
   X,
-  Zap,
 } from "lucide-react";
 import { Marco } from "@/components/friso/marco";
 import { AvatarBoti, AvatarMia } from "@/components/laboratorios/ilustraciones";
@@ -70,29 +66,8 @@ const ACENTO: Record<MundoId, { claro: string; hondo: string; brillo: string; ct
   emprendimiento: { claro: "#7ddc8f", hondo: "#27804a", brillo: "#b6f0be", cta: "#27804a", ctaHover: "#1c6338" },
 };
 
-function Estrellitas({ ganadas, total }: { ganadas: number; total: number }) {
-  return (
-    <span className="cos-estacion-estrellas">
-      {Array.from({ length: total }, (_, i) => (
-        <Star
-          key={i}
-          size={13}
-          strokeWidth={2.2}
-          className={i < ganadas ? "fill-[#ffcb52] text-[#ffcb52]" : "fill-transparent text-white/35"}
-          aria-hidden="true"
-        />
-      ))}
-      <span className="sr-only">
-        {ganadas} de {total} estrellas
-      </span>
-    </span>
-  );
-}
-
-function SelloEstado({ estado }: { estado: Estacion["estado"] }) {
-  if (estado === "completada") return <Check size={17} strokeWidth={3.2} aria-hidden="true" />;
-  if (estado === "actual") return <Play size={15} strokeWidth={3} className="fill-current" aria-hidden="true" />;
-  return <Lock size={15} strokeWidth={2.8} aria-hidden="true" />;
+function SelloDisponible() {
+  return <Play size={15} strokeWidth={3} className="fill-current" aria-hidden="true" />;
 }
 
 function Universo() {
@@ -144,18 +119,7 @@ function Universo() {
   }, [enfocado]);
 
   const estaciones = mundo?.estaciones ?? [];
-  const estrellasGanadas = estaciones.reduce((a, e) => a + e.estrellas, 0);
-  const estrellasTotales = estaciones.reduce((a, e) => a + e.maxEstrellas, 0);
-  const xp = estaciones.filter((e) => e.estado !== "bloqueada").reduce((a, e) => a + e.xp, 0);
-  const completadas = estaciones.filter((e) => e.estado === "completada").length;
-  const actual = estaciones.find((e) => e.estado === "actual");
-
-  /* El tramo recorrido de la ruta llega hasta la estación en curso. */
-  const indiceActual = estaciones.findIndex((e) => e.estado === "actual");
-  const corte =
-    estaciones.length > 1
-      ? (indiceActual >= 0 ? indiceActual : completadas) / (estaciones.length - 1)
-      : 0;
+  const totalSesiones = estaciones.reduce((total, estacion) => total + estacion.sesiones, 0);
 
   const estiloCamara =
     enfocado ? GEOMETRIA[enfocado].camara : "translate3d(0, 0, 0) scale(1)";
@@ -201,7 +165,6 @@ function Universo() {
               const col = ACENTO[id];
               const Planeta = id === "robotica" ? PlanetaRobotica : PlanetaEmprendimiento;
               const suyas = datos.estaciones;
-              const suCompletadas = suyas.filter((e) => e.estado === "completada").length;
 
               return (
                 <button
@@ -222,7 +185,7 @@ function Universo() {
                     transform: "translate(-50%, -50%)",
                     color: col.claro,
                   }}
-                  aria-label={`Entrar al ${datos.nombre}: ${datos.lema}. ${suCompletadas} de ${suyas.length} misiones completadas.`}
+                  aria-label={`Entrar al ${datos.nombre}: ${datos.lema}. ${suyas.length} rutas disponibles.`}
                 >
                   <span className="cos-planeta-cuerpo h-full w-full">
                     <span
@@ -239,7 +202,7 @@ function Universo() {
                     <span>{datos.lema}</span>
                     <em>
                       <Rocket size={13} strokeWidth={2.6} aria-hidden="true" />
-                      {suCompletadas} de {suyas.length} misiones
+                      {suyas.length} rutas disponibles
                     </em>
                   </span>
                 </button>
@@ -266,12 +229,12 @@ function Universo() {
                   preserveAspectRatio="none"
                   aria-hidden="true"
                 >
-                  <line className="pendiente" x1="12.5" y1="2" x2="87.5" y2="2" />
+                  <line className="pendiente" x1="10" y1="2" x2="90" y2="2" />
                   <line
                     className="recorrido"
-                    x1="12.5"
+                    x1="10"
                     y1="2"
-                    x2={12.5 + 75 * corte}
+                    x2="90"
                     y2="2"
                     style={{ "--largo": 100 } as React.CSSProperties}
                   />
@@ -285,20 +248,19 @@ function Universo() {
                         key={est.id}
                         type="button"
                         className="cos-estacion"
-                        data-estado={est.estado}
+                        data-estado="disponible"
                         style={{ "--i": i } as React.CSSProperties}
                         onClick={() => setAbierta(est)}
-                        aria-label={`Misión ${est.nivel}: ${est.titulo}. ${est.estadoEtiqueta}. ${est.estrellas} de ${est.maxEstrellas} estrellas. Ver detalles.`}
+                        aria-label={`Misión ${est.nivel}: ${est.titulo}. Ruta disponible. Ver detalles.`}
                       >
                         <span className="cos-estacion-disco">
                           <Ilustracion />
                           <span className="cos-estacion-sello">
-                            <SelloEstado estado={est.estado} />
+                            <SelloDisponible />
                           </span>
                         </span>
                         <span className="cos-estacion-nivel">Misión {est.nivel}</span>
                         <span className="cos-estacion-nombre">{est.titulo}</span>
-                        <Estrellitas ganadas={est.estrellas} total={est.maxEstrellas} />
                       </button>
                     );
                   })}
@@ -321,18 +283,13 @@ function Universo() {
 
           <div className="cos-hud cos-hud-progreso" data-oculto={enfocado ? "no" : "si"}>
             <span className="cos-hud-dato">
-              <Trophy size={15} strokeWidth={2.5} className="text-[#ffcb52]" aria-hidden="true" />
-              Nivel 2 · Explorador
+              <Rocket size={15} strokeWidth={2.5} style={{ color: acento.claro }} aria-hidden="true" />
+              {estaciones.length} rutas disponibles
             </span>
             <span className="cos-hud-sep" aria-hidden="true" />
             <span className="cos-hud-dato">
-              <Star size={15} strokeWidth={2.5} className="fill-[#ffcb52] text-[#ffcb52]" aria-hidden="true" />
-              {estrellasGanadas} de {estrellasTotales} estrellas
-            </span>
-            <span className="cos-hud-sep" aria-hidden="true" />
-            <span className="cos-hud-dato">
-              <Zap size={15} strokeWidth={2.5} style={{ color: acento.claro }} aria-hidden="true" />
-              {xp} XP
+              <Check size={15} strokeWidth={2.5} className="text-[#ffcb52]" aria-hidden="true" />
+              {totalSesiones} sesiones planeadas
             </span>
           </div>
 
@@ -351,15 +308,8 @@ function Universo() {
                   {mundo.copiloto} · {mundo.copilotoRol}
                 </strong>
                 <p>
-                  {actual ? (
-                    <>
-                      Ya superaste {completadas}{" "}
-                      {completadas === 1 ? "misión" : "misiones"}. Ahora estamos en{" "}
-                      <b>{actual.titulo}</b>. ¡Toca su estación para empezar!
-                    </>
-                  ) : (
-                    <>¡Recorre las estaciones de este mundo y elige por dónde seguir!</>
-                  )}
+                  Hay {estaciones.length} rutas disponibles. Elige una estación para ver
+                  su objetivo, actividades, evidencias y evaluación.
                 </p>
               </div>
             </div>
@@ -387,11 +337,8 @@ function Universo() {
                     <span className="text-[11px] font-[850] uppercase tracking-[.1em] text-gris">
                       Misión {abierta.nivel} · {mundo?.area}
                     </span>
-                    <span className="flex items-center gap-2">
-                      <Estrellitas ganadas={abierta.estrellas} total={abierta.maxEstrellas} />
-                      <span className="whitespace-nowrap rounded-full bg-[#fff4d9] px-2.5 py-1 text-[11px] font-[850] text-[#7a5410]">
-                        +{abierta.xp} XP
-                      </span>
+                    <span className="whitespace-nowrap rounded-full bg-[#e9f3f9] px-2.5 py-1 text-[11px] font-[850] text-[#20495f]">
+                      Ruta disponible
                     </span>
                   </div>
 
@@ -413,22 +360,11 @@ function Universo() {
                       {abierta.duracion} · Insignia: {abierta.insignia}
                     </p>
 
-                    {abierta.tieneRuta ? (
-                      <Link href={abierta.rutaHref} className="cos-cta">
-                        <Play size={16} strokeWidth={2.6} className="fill-current" aria-hidden="true" />
-                        {abierta.ctaTexto}
-                        <ArrowRight size={16} strokeWidth={2.6} aria-hidden="true" />
-                      </Link>
-                    ) : (
-                      <span className="cos-cta" data-inerte="si">
-                        {abierta.estado === "bloqueada" ? (
-                          <Lock size={15} strokeWidth={2.6} aria-hidden="true" />
-                        ) : (
-                          <Check size={15} strokeWidth={2.8} aria-hidden="true" />
-                        )}
-                        {abierta.estado === "bloqueada" ? abierta.estadoEtiqueta : abierta.ctaTexto}
-                      </span>
-                    )}
+                    <Link href={abierta.rutaHref} className="cos-cta">
+                      <Play size={16} strokeWidth={2.6} className="fill-current" aria-hidden="true" />
+                      {abierta.ctaTexto}
+                      <ArrowRight size={16} strokeWidth={2.6} aria-hidden="true" />
+                    </Link>
                   </div>
                 </div>
               </div>

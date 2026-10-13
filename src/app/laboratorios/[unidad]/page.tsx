@@ -1,18 +1,51 @@
+import type { CSSProperties, ReactNode } from "react";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Marco, Migas } from "@/components/friso/marco";
-import { Boton, Panel } from "@/components/friso/piezas";
+import {
+  ArrowLeft,
+  CalendarDays,
+  Check,
+  Clock3,
+  Compass,
+  Flag,
+  Orbit,
+  Sparkles,
+} from "lucide-react";
+import { Marco } from "@/components/friso/marco";
+import { PlanetaEmprendimiento, PlanetaRobotica } from "@/components/laboratorios/planetas";
 import { RUTAS, PROGRAMAS, AREAS } from "@/lib/datos";
+import { MUNDOS, type MundoId } from "@/lib/laboratorios";
+import styles from "./actividad.module.css";
 
 /*
-  LA RUTA DIDÁCTICA — el trecho desplegado a página completa, con sus 7
-  secciones. Esta superficie es Read: la comprensión manda sobre la
-  expresión, y la medida de lectura se mantiene entre 65 y 75 caracteres.
+  BITÁCORA DE MISIÓN
 
-  Todo el texto es TEXTO REAL: seleccionable, buscable, traducible y
-  legible por lector de pantalla. Es el defecto central de la referencia
-  —una ruta completa con 32 caracteres de texto en el DOM— y el que no se
-  hereda bajo ninguna circunstancia.
+  La ruta conserva la superficie Read de las siete secciones, pero ya no
+  abandona el universo de Laboratorios. La cabina, el cielo, el mundo de
+  origen y la ilustración de la estación acompañan toda la experiencia.
+  El contenido sigue siendo texto real, seleccionable y con medida de lectura
+  controlada; la ambientación nunca sustituye información pedagógica.
 */
+
+const TEMA: Record<
+  MundoId,
+  { acento: string; brillo: string; hondo: string; cielo: string; cieloSecundario: string }
+> = {
+  robotica: {
+    acento: "#5cc8ff",
+    brillo: "#a7e6ff",
+    hondo: "#1d6f96",
+    cielo: "#12204a",
+    cieloSecundario: "#44206c",
+  },
+  emprendimiento: {
+    acento: "#7ddc8f",
+    brillo: "#b6f0be",
+    hondo: "#27804a",
+    cielo: "#0c3d43",
+    cieloSecundario: "#665019",
+  },
+};
 
 export function generateStaticParams() {
   return Object.keys(RUTAS).map((unidad) => ({ unidad }));
@@ -27,45 +60,55 @@ export default async function PantallaRuta({
   const ruta = RUTAS[id];
   if (!ruta) notFound();
 
-  const a = AREAS[ruta.area];
-  const programa = PROGRAMAS[0];
-  const bloque = programa.bloques.find((b) => b.unidades.some((u) => u.id === id));
-  const unidad = bloque?.unidades.find((u) => u.id === id);
+  const area = AREAS[ruta.area];
+  const mundoId: MundoId = ruta.area === "emprendimiento" ? "emprendimiento" : "robotica";
+  const mundo = MUNDOS[mundoId];
+  const tema = TEMA[mundoId];
+  const estacion = mundo.estaciones.find((item) => item.unidadId === id);
+  const Ilustracion = estacion?.Ilustracion;
+  const Planeta = mundoId === "robotica" ? PlanetaRobotica : PlanetaEmprendimiento;
+  const retorno = `/laboratorios?mundo=${mundoId}`;
 
-  const secciones = [
-    { n: 1, titulo: "Objetivo", cuerpo: <Parrafo>{ruta.objetivo}</Parrafo> },
+  const programa = PROGRAMAS[0];
+  const bloque = programa.bloques.find((item) =>
+    item.unidades.some((unidad) => unidad.id === id),
+  );
+  const unidad = bloque?.unidades.find((item) => item.id === id);
+
+  const secciones: { id: string; n: number; titulo: string; cuerpo: ReactNode }[] = [
+    { id: "objetivo", n: 1, titulo: "Objetivo", cuerpo: <Parrafo>{ruta.objetivo}</Parrafo> },
     {
+      id: "evidencias",
       n: 2,
       titulo: "Evidencias de aprendizaje",
-      cuerpo: <Lista items={ruta.evidencias} color={a.plancha} />,
+      cuerpo: <Lista items={ruta.evidencias} />,
     },
     {
+      id: "profundizacion",
       n: 3,
       titulo: "Temas de profundización",
-      cuerpo: <Lista items={ruta.profundizacion} color="var(--color-linea)" />,
+      cuerpo: <Lista items={ruta.profundizacion} variante="neutra" />,
     },
-    { n: 4, titulo: "Inicio", cuerpo: <Parrafo>{ruta.inicio}</Parrafo> },
-    { n: 5, titulo: "Desarrollo", cuerpo: <Parrafo>{ruta.desarrollo}</Parrafo> },
-    { n: 6, titulo: "Evaluación", cuerpo: <Parrafo>{ruta.evaluacion}</Parrafo> },
+    { id: "inicio", n: 4, titulo: "Inicio", cuerpo: <Parrafo>{ruta.inicio}</Parrafo> },
+    { id: "desarrollo", n: 5, titulo: "Desarrollo", cuerpo: <Parrafo>{ruta.desarrollo}</Parrafo> },
+    { id: "evaluacion", n: 6, titulo: "Evaluación", cuerpo: <Parrafo>{ruta.evaluacion}</Parrafo> },
     {
+      id: "calificar",
       n: 7,
       titulo: "¿Qué puedo calificar?",
       cuerpo: (
         <>
-          <ul className="flex flex-col gap-2">
-            {ruta.queCalificar.map((q) => (
-              <li
-                key={q}
-                className="rounded-[9px] px-4 py-3 text-[15px] leading-[1.5]"
-                style={{ background: a.pale, color: a.tinta }}
-              >
-                {q}
+          <ul className={styles.criterios}>
+            {ruta.queCalificar.map((criterio) => (
+              <li key={criterio}>
+                <Check size={16} strokeWidth={2.8} aria-hidden="true" />
+                {criterio}
               </li>
             ))}
           </ul>
-          <p className="mt-4 max-w-[70ch] rounded-[9px] bg-apagado px-4 py-3 text-[13px] leading-[1.55] text-gris">
+          <p className={styles.notaSiee}>
             La escala de valoración queda pendiente: el módulo de evaluación está
-            bloqueado hasta que el colegio entregue su SIEE. Esta maqueta no propone
+            bloqueado hasta que el colegio entregue su SIEE. Esta propuesta no define
             una escala institucional.
           </p>
         </>
@@ -73,117 +116,177 @@ export default async function PantallaRuta({
     },
   ];
 
+  const variables = {
+    "--actividad-acento": tema.acento,
+    "--actividad-brillo": tema.brillo,
+    "--actividad-hondo": tema.hondo,
+    "--actividad-cielo": tema.cielo,
+    "--actividad-cielo-2": tema.cieloSecundario,
+    "--actividad-palido": area.pale,
+    "--actividad-tinta": area.tinta,
+  } as CSSProperties;
+
   return (
-    <Marco>
-      <Migas
-        pasos={[
-          { etiqueta: "Hoy", href: "/" },
-          { etiqueta: "Laboratorios", href: "/laboratorios" },
-          { etiqueta: programa.nombre, href: "/laboratorios" },
-          { etiqueta: ruta.titulo },
-        ]}
-      />
+    <div className={`cosmos ${styles.actividad}`} data-mundo={mundoId} style={variables}>
+      <Marco>
+        <div className={styles.contenido}>
+          <nav aria-label="Ruta de navegación" className={styles.migas}>
+            <Link href={retorno}>Laboratorios</Link>
+            <span aria-hidden="true">/</span>
+            <Link href={retorno}>{mundo.nombre}</Link>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">{ruta.titulo}</span>
+          </nav>
 
-      {/* El trecho desplegado. */}
-      <header
-        className="trecho-entra rounded-[20px] px-8 py-7"
-        style={{ background: a.plancha, color: "#fff" }}
-      >
-        <p className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-white">
-          {a.nombre} · Unidad {unidad?.orden} · {programa.nombre}
-        </p>
-        <h1 className="mt-2 font-heading text-[clamp(34px,5vw,54px)] font-bold leading-[0.96]">
-          {ruta.titulo}
-        </h1>
-        {unidad && (
-          <p className="mt-3 text-[14px] text-white">
-            {unidad.sesiones} sesiones · {bloque?.nombre}
-          </p>
-        )}
-      </header>
+          <Link href={retorno} className={styles.regreso}>
+            <ArrowLeft size={18} strokeWidth={2.6} aria-hidden="true" />
+            Volver a las estaciones de {mundo.area}
+          </Link>
 
-      <div className="mt-5 grid gap-5 lg:grid-cols-[1fr_320px]">
-        {/* Las 7 secciones — plantilla fija heredada del análisis. */}
-        <article className="rounded-[15px] bg-papel px-7 py-6">
-          {secciones.map((s, i) => (
-            <section key={s.n} className={i > 0 ? "mt-8" : undefined}>
-              <h2 className="flex items-baseline gap-3 font-heading text-[17px] font-bold uppercase tracking-[0.08em] text-tinta">
-                <span
-                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-bold"
-                  style={{ background: a.pale, color: a.tinta }}
-                  aria-hidden
-                >
-                  {s.n}
+          <header className={styles.hero}>
+            <div className={styles.heroTexto}>
+              <h1>{ruta.titulo}</h1>
+              {estacion ? <p className={styles.subtitulo}>{estacion.subtitulo}</p> : null}
+
+              <ul className={styles.metadatos} aria-label="Datos de la ruta">
+                <li>
+                  <Compass size={16} aria-hidden="true" />
+                  {area.nombre} · Unidad {unidad?.orden}
+                </li>
+                <li>
+                  <Clock3 size={16} aria-hidden="true" />
+                  {unidad?.sesiones ?? estacion?.sesiones} sesiones
+                </li>
+                <li>
+                  <Flag size={16} aria-hidden="true" />
+                  Ruta disponible
+                </li>
+              </ul>
+            </div>
+
+            {Ilustracion ? (
+              <div className={styles.heroArte} aria-hidden="true">
+                <Ilustracion className={styles.ilustracion} />
+              </div>
+            ) : null}
+          </header>
+
+          <div className={styles.disposicion}>
+            <article className={styles.bitacora}>
+              <header className={styles.bitacoraCabecera}>
+                <div>
+                  <h2>Bitácora de la misión</h2>
+                  <p>Sigue las siete etapas para preparar y acompañar la actividad.</p>
+                </div>
+                <Orbit size={30} strokeWidth={1.8} aria-hidden="true" />
+              </header>
+
+              <nav aria-label="Secciones de la ruta" className={styles.indice}>
+                <ol>
+                  {secciones.map((seccion) => (
+                    <li key={seccion.id}>
+                      <a href={`#${seccion.id}`}>
+                        <span aria-hidden="true">{seccion.n}</span>
+                        {seccion.titulo}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+
+              <div className={styles.secciones}>
+                {secciones.map((seccion) => (
+                  <section id={seccion.id} key={seccion.id}>
+                    <h2>
+                      <span aria-hidden="true">{seccion.n}</span>
+                      {seccion.titulo}
+                    </h2>
+                    <div className={styles.seccionCuerpo}>{seccion.cuerpo}</div>
+                  </section>
+                ))}
+              </div>
+            </article>
+
+            <aside className={styles.panelMision} aria-label="Información de la misión">
+              <div className={styles.mundoActual}>
+                <span className={styles.planeta} aria-hidden="true">
+                  <Planeta className={styles.planetaSvg} />
                 </span>
-                {s.titulo}
-              </h2>
-              <div className="mt-3">{s.cuerpo}</div>
-            </section>
-          ))}
-        </article>
+                <div>
+                  <h2>{mundo.nombre}</h2>
+                  <p>{mundo.lema}</p>
+                </div>
+              </div>
 
-        <div className="flex flex-col gap-4">
-          <Panel titulo="Liberación">
-            <p className="text-[14px] leading-[1.55] text-tinta">
-              {unidad?.liberacion ?? "Sin programar"}. Hasta entonces los estudiantes
-              no la ven.
-            </p>
-            <Boton
-              href="/agenda"
-              tono="claro"
-              className="mt-4 w-full justify-center !py-2.5 !text-[13px]"
-            >
-              Cambiar programación
-            </Boton>
-          </Panel>
+              <section>
+                <h2>Ubicación de la misión</h2>
+                <dl className={styles.datosMision}>
+                  <div>
+                    <dt>Programa</dt>
+                    <dd>{programa.nombre}</dd>
+                  </div>
+                  <div>
+                    <dt>Bloque</dt>
+                    <dd>{bloque?.nombre}</dd>
+                  </div>
+                  <div>
+                    <dt>Disponibilidad</dt>
+                    <dd>{unidad?.liberacion ?? "Sin programar"}</dd>
+                  </div>
+                </dl>
+                <Link href="/agenda" className={styles.accionSecundaria}>
+                  <CalendarDays size={17} aria-hidden="true" />
+                  Ir a Agenda
+                </Link>
+              </section>
 
-          <Panel titulo="Estándares MEN">
-            <ul className="flex flex-col gap-3">
-              {ruta.estandares.map((e) => (
-                <li key={e} className="text-[13.5px] leading-[1.5] text-gris">
-                  {e}
-                </li>
-              ))}
-            </ul>
-          </Panel>
+              <section>
+                <h2>Alineación curricular propuesta</h2>
+                <ul className={styles.alineacion}>
+                  {ruta.estandares.map((estandar) => (
+                    <li key={estandar}>{estandar}</li>
+                  ))}
+                </ul>
+              </section>
 
-          <Panel titulo="Derechos básicos de aprendizaje">
-            <ul className="flex flex-col gap-3">
-              {ruta.dba.map((d) => (
-                <li key={d} className="text-[13.5px] leading-[1.5] text-gris">
-                  {d}
-                </li>
-              ))}
-            </ul>
-          </Panel>
+              <section>
+                <h2>DBA por confirmar</h2>
+                <ul className={styles.alineacion}>
+                  {ruta.dba.map((dba) => (
+                    <li key={dba}>{dba}</li>
+                  ))}
+                </ul>
+              </section>
 
-          <Boton href="/laboratorios" tono="area" area={ruta.area} className="w-full justify-center">
-            Volver al bloque
-          </Boton>
+              <Link href={retorno} className={styles.accionPrincipal}>
+                <Sparkles size={17} aria-hidden="true" />
+                Explorar otra misión
+              </Link>
+            </aside>
+          </div>
         </div>
-      </div>
-    </Marco>
+      </Marco>
+    </div>
   );
 }
 
-/* Medida de lectura 65–75ch: requisito de la superficie Read. */
-function Parrafo({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="max-w-[70ch] text-[15.5px] leading-[1.65] text-tinta">{children}</p>
-  );
+function Parrafo({ children }: { children: ReactNode }) {
+  return <p className={styles.parrafo}>{children}</p>;
 }
 
-function Lista({ items, color }: { items: string[]; color: string }) {
+function Lista({
+  items,
+  variante = "acento",
+}: {
+  items: string[];
+  variante?: "acento" | "neutra";
+}) {
   return (
-    <ul className="flex max-w-[70ch] flex-col gap-2.5">
-      {items.map((t) => (
-        <li key={t} className="flex gap-3 text-[15.5px] leading-[1.6] text-tinta">
-          <span
-            aria-hidden
-            className="mt-[9px] h-2 w-2 shrink-0 rounded-full"
-            style={{ background: color }}
-          />
-          {t}
+    <ul className={styles.lista} data-variante={variante}>
+      {items.map((item) => (
+        <li key={item}>
+          <span aria-hidden="true" />
+          {item}
         </li>
       ))}
     </ul>

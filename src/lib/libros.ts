@@ -37,6 +37,7 @@ export interface PaginaCompuesta {
 }
 
 import { PAGINAS_SONRISA } from "@/lib/paginas/una-sonrisa-de-mariposa";
+import { PAGINAS_TULA } from "@/lib/paginas/tula-y-el-mural-del-bosque";
 
 export interface Libro {
   slug: string;
@@ -1713,6 +1714,47 @@ export const LIBROS: Libro[] = [
     ],
     edad: "0-5",
     resumen: "Este libro te invita a disfrutar la voz y la música de los pueblos nativos de Colombia. En ¡Tortuguita, vení bailá!, se recogen las palabras y las melodías con las que en Colombia se le da la bienvenida a los hijos en cinco pueblos indígenas (piapoco, uitoto, wayúu, kamëntŝa, arhuaco), entre los Rrom, los afrodescendientes y los campesinos. ¡Encuentra también el audio en este portal!",
+  },
+  {
+    /* Edición propia del Colegio Mi Dulce Hogar.
+       —
+       Convertido con flipbook-forge desde
+       biblioteca/create/La_liebre_y_la_tortuga_Mi_Dulce_Hogar.pdf:
+       12 páginas de A4 vertical → 12 hojas sueltas, sin pliegos que
+       recomponer. Los datos de abajo salen tal cual de su libro.json.
+
+       Se rasteriza y no se compone —al contrario que «Una sonrisa de
+       mariposa»— porque el PDF ya está maquetado para leerse así: la
+       portada, las tarjetas de «Conversemos» y el recuadro para dibujar
+       son el diseño del libro, no un envoltorio alrededor del texto.
+       Recomponerlo lo descaracterizaba. El texto de esta edición existe
+       además como PDF accesible en biblioteca/create/. */
+    slug: "la-liebre-y-la-tortuga",
+    tituloId: "lit-179",
+    titulo: "La liebre y la tortuga",
+    autor: "Fábula tradicional atribuida a Esopo · adaptación Colegio Mi Dulce Hogar",
+    editorial: "Colegio Mi Dulce Hogar",
+    paginas: 12,
+    razon: 0.7067,
+    edad: "0-5",
+    resumen:
+      "Una liebre muy veloz se burla del paso lento de una tortuga y la reta a una carrera. Una siesta de más enseña que la constancia y el respeto llegan lejos.",
+  },
+  {
+    /* De Bryan Romero, desde biblioteca/create/Tula y el mural del
+       bosque.pdf (12 pliegos apaisados con el texto horneado en la imagen).
+       Compuesto: ilustración recortada + texto transcrito. */
+    slug: "tula-y-el-mural-del-bosque",
+    tituloId: "lit-180",
+    titulo: "Tula y el mural del bosque",
+    autor: "Bryan Romero",
+    editorial: "MIDUHO",
+    paginas: PAGINAS_TULA.length,
+    razon: 1.25,
+    edad: "6-8",
+    resumen:
+      "Tula ama sus pinturas, pero cuando un viento travieso se lleva el papel de un mural, descubre que los colores brillan más cuando se comparten.",
+    contenido: PAGINAS_TULA,
   },
 ];
 

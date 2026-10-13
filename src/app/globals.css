@@ -1405,7 +1405,7 @@ html:has(.cosmos), body:has(.cosmos) { overflow: hidden; overscroll-behavior: no
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: clamp(12px, 2.2vw, 30px);
   align-items: start;
 }
@@ -1459,6 +1459,10 @@ html:has(.cosmos), body:has(.cosmos) { overflow: hidden; overscroll-behavior: no
   box-shadow: 0 0 0 5px rgb(255 255 255 / .16), 0 16px 40px rgb(3 8 26 / .65), 0 0 42px var(--cos-acento, #5cc8ff);
   animation: cos-latir 2.6s ease-in-out infinite;
 }
+.cos-estacion[data-estado="disponible"] .cos-estacion-disco {
+  border-color: #fff;
+  box-shadow: 0 0 0 4px rgb(255 255 255 / .12), 0 16px 40px rgb(3 8 26 / .65), 0 0 30px var(--cos-acento, #5cc8ff);
+}
 @keyframes cos-latir {
   0%, 100% { box-shadow: 0 0 0 5px rgb(255 255 255 / .14), 0 16px 40px rgb(3 8 26 / .65), 0 0 34px var(--cos-acento, #5cc8ff); }
   50%      { box-shadow: 0 0 0 9px rgb(255 255 255 / .08), 0 16px 40px rgb(3 8 26 / .65), 0 0 58px var(--cos-acento, #5cc8ff); }
@@ -1499,6 +1503,7 @@ html:has(.cosmos), body:has(.cosmos) { overflow: hidden; overscroll-behavior: no
 }
 .cos-estacion[data-estado="completada"] .cos-estacion-sello { background: var(--cos-emp); }
 .cos-estacion[data-estado="actual"] .cos-estacion-sello { background: var(--cos-oro); }
+.cos-estacion[data-estado="disponible"] .cos-estacion-sello { background: var(--cos-oro); }
 .cos-estacion[data-estado="bloqueada"] .cos-estacion-sello { background: #8697b8; }
 
 .cos-estacion-nivel {
@@ -2081,10 +2086,12 @@ html:has(.cosmos), body:has(.cosmos) { overflow: hidden; overscroll-behavior: no
   position: absolute;
   inset: 0 auto 0 0;
   display: block;
+  width: 100%;
   border-radius: 999px;
   background: linear-gradient(90deg, #5cc8ff, #a7e6ff 55%, var(--cos-oro));
   box-shadow: 0 0 18px rgb(92 200 255 / .7);
-  transition: width .35s cubic-bezier(.16, 1, .3, 1);
+  transform-origin: left center;
+  transition: transform .35s cubic-bezier(.16, 1, .3, 1);
 }
 /* Brillo que recorre la barra: dice «sigue trabajando» incluso cuando
    el porcentaje se detiene esperando al servidor. */

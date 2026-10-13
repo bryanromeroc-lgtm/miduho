@@ -61,7 +61,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  width: min(100%, 520px);
+  width: 100%;
   min-height: 56px;
   margin-top: 22px;
   padding: 0 8px 0 20px;
@@ -96,21 +96,98 @@
 }
 .borrar:hover { color: var(--color-tinta); background: #fff; }
 
+/* ---------- SUGERENCIAS ---------- */
+/* el campo ancla la lista: la caja flota sobre el valle sin empujar nada */
+.campo {
+  position: relative;
+  z-index: 5;
+  width: min(100%, 520px);
+}
+.sugerencias {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  max-height: 330px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 6px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 16px 36px rgb(32 51 75 / .2), inset 0 0 0 1.5px var(--color-linea);
+  animation: sugerenciasEntran .14s ease-out both;
+}
+@keyframes sugerenciasEntran {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: none; }
+}
+.sugerencia {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2px 10px;
+  padding: 9px 13px;
+  border-radius: 13px;
+  cursor: pointer;
+  color: var(--color-tinta);
+}
+.sugerencia svg { grid-area: 1 / 2 / 3 / 3; color: var(--color-gris); opacity: 0; }
+/* min-width:0 es lo que deja que el recorte con «…» actúe: sin él, un autor
+   largo estira la celda y saca una barra de desplazamiento horizontal */
+.sugerenciaTitulo, .sugerenciaAutor {
+  grid-column: 1;
+  min-width: 0;
+  max-width: 100%;
+  justify-self: start;
+  text-align: left;
+}
+/* el resaltado lo lleva la opción activa, que el teclado y el ratón comparten:
+   así una sola regla sirve a quien recorre con flechas y a quien pasa el ratón */
+.sugerenciaActiva { background: var(--color-hueso); }
+.sugerenciaActiva svg { opacity: 1; color: var(--color-lit); }
+.sugerenciaTitulo {
+  font-size: 14.5px;
+  font-weight: 700;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.sugerenciaAutor {
+  grid-column: 1;
+  font-size: 12.5px;
+  color: var(--color-gris);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sugerencias { animation: none; }
+}
+
+/* el aviso de «no hay coincidencia exacta»: una línea bajo el titular */
+.corregido {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-gris);
+}
+
 /* ---------- MESA DE LECTURA ---------- */
+/* La mesa cierra la página, después de los estantes: el margen negativo que
+   la encajaba bajo el valle ya no aplica, y en su lugar se separa del
+   catálogo con aire propio. */
 .mesa {
   position: relative;
   z-index: 2;
-  margin-top: -64px;
+  margin-top: 46px;
   padding: 20px 22px 22px;
   border-radius: 20px;
   background: var(--color-lit);
   color: #fff;
   box-shadow: 0 18px 38px rgb(32 51 75 / .14);
-  animation: mesaEntra .55s cubic-bezier(.16, 1, .3, 1) .2s both;
-}
-@keyframes mesaEntra {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: none; }
 }
 .mesaCabecera { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin-bottom: 14px; }
 .mesaCabecera h2 { font-size: 22px; font-weight: 850; letter-spacing: -.02em; line-height: 1.15; }
@@ -184,16 +261,21 @@ article:focus-within .cubierta { transform: rotateY(-26deg) translateY(-4px); bo
 .mesaLibro:focus-within .cubierta { transform: rotateY(-22deg) translateY(-3px); }
 
 /* ---------- CINTA DE FILTROS ---------- */
+/* La cinta recoge el solape que antes hacía la mesa: sube sobre el borde del
+   valle para que buscar y filtrar queden juntos, y el fondo pasa a opaco
+   porque ahora se monta sobre la ilustración. */
 .cinta {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 12px 18px;
-  margin-top: 18px;
-  padding: 12px 16px;
-  border-radius: 15px;
-  background: var(--color-papel);
-  box-shadow: inset 0 0 0 1.5px var(--color-linea);
+  margin-top: -52px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 14px 30px rgb(32 51 75 / .12), inset 0 0 0 1.5px var(--color-linea);
 }
 .grupo { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; min-width: 0; border: 0; margin: 0; padding: 0; }
 .grupo legend { float: left; margin-right: 4px; padding: 0; font-size: 11px; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; color: var(--color-gris); }
@@ -404,8 +486,9 @@ article:focus-within .cubierta { transform: rotateY(-26deg) translateY(-4px); bo
   .copy { max-width: none; padding: 30px 0 250px; }
   .copy h1 { font-size: clamp(38px, 11vw, 48px); }
   .lema { font-size: 14px; }
-  .buscador { width: 100%; }
-  .mesa { margin-top: -44px; padding: 16px; }
+  .campo { width: 100%; }
+  .mesa { margin-top: 32px; padding: 16px; }
+  .cinta { margin-top: -36px; padding: 12px 14px; }
   .mesaCabecera h2 { font-size: 20px; }
   .mesaLibro { grid-template-columns: 38% minmax(0, 1fr); gap: 14px; padding: 14px; }
   .mesaTexto h3 { font-size: 17px; }

@@ -1,5 +1,5 @@
 /*
-  DATOS DE DEMOSTRACIÓN — TODOS FICTICIOS.
+  DATOS DE MAQUETA Y CONTENIDO CURRICULAR PROPUESTO.
 
   No hay datos reales de estudiantes, docentes ni acudientes, y no deben
   inventarse datos personales de menores. Los nombres de estudiantes son
@@ -11,7 +11,8 @@
   Las unidades de Robótica y Emprendimiento reutilizan únicamente el ESQUEMA
   ESTRUCTURAL observado en la referencia (bloque → unidad → ruta didáctica de
   7 secciones). Ningún texto, imagen ni contenido de la referencia se copia:
-  todo el contenido aquí es redacción propia para la maqueta.
+  todo el contenido aquí es redacción propia pendiente de validación curricular
+  por parte del colegio.
 */
 
 export type Area = "literatura" | "robotica" | "emprendimiento";
@@ -161,6 +162,8 @@ export const TITULOS: Titulo[] = [
   { id: "lit-176", titulo: "Una morena en la ronda", autor: "Tradición oral afrocolombiana (ed. María Cristina Rincón)", tipo: "Libro", edad: "0-5", idioma: "Español" },
   { id: "lit-177", titulo: "Putunkaa serruma: duérmete, pajarito blanco", autor: "Tradición oral indígena (ed. María Cristina Rincón)", tipo: "Libro", edad: "0-5", idioma: "Español" },
   { id: "lit-178", titulo: "Tortuguita, vení bailá", autor: "Tradición oral indígena", tipo: "Libro", edad: "0-5", idioma: "Español" },
+  { id: "lit-179", titulo: "La liebre y la tortuga", autor: "Fábula tradicional (adaptación Mi Dulce Hogar)", tipo: "Libro", edad: "0-5", idioma: "Español" },
+  { id: "lit-180", titulo: "Tula y el mural del bosque", autor: "Bryan Romero", tipo: "Libro", edad: "6-8", idioma: "Español" },
   { id: "lit-001", titulo: "Caperucita Roja", autor: "Charles Perrault", tipo: "Libro", edad: "6-8", idioma: "Español" },
   { id: "lit-002", titulo: "Caperucita Roja — Guía docente", autor: "MIDUHO", tipo: "Guía", edad: "6-8", idioma: "Español", hermanoDe: "lit-001", soloDocente: true },
   { id: "lit-003", titulo: "Hansel y Gretel", autor: "Hermanos Grimm", tipo: "Libro", edad: "6-8", idioma: "Español" },
@@ -217,55 +220,37 @@ export interface Programa {
 }
 
 /*
-  Kids 2 INTERCALA las dos áreas en los mismos bloques: el área es atributo
-  de la unidad, no del programa. Robótica aporta la dimensión técnica a
-  proyectos de emprendimiento. 12 de Emprendimiento + 4 de Robótica = 16.
+  Programa propio de MIDUHO para primaria. La referencia externa aportó solo
+  temas generales y el esquema bloque → unidad → ruta de 7 secciones. Los
+  nombres, instrucciones, actividades y criterios son redacción original.
 */
 export const PROGRAMAS: Programa[] = [
   {
-    id: "kids2",
-    nombre: "Laboratorio Kids 2",
+    id: "energia-proyectos-1",
+    nombre: "Energía, creatividad y proyectos · 1.º",
     descripcion:
-      "Programa interdisciplinario: las unidades de Robótica aportan la dimensión técnica a los proyectos de Emprendimiento, dentro de los mismos bloques.",
+      "Diez rutas didácticas de MIDUHO: cinco de Robótica y cinco ejercicios de Emprendimiento para observar, experimentar, crear y comunicar.",
     bloques: [
       {
-        id: "kids2-b1",
-        nombre: "Bloque 1 · Lo que necesita la gente",
+        id: "energia-proyectos-1-b1",
+        nombre: "Bloque 1 · Energía y movimiento",
         unidades: [
-          { id: "u1", orden: 1, titulo: "¿Qué es una necesidad?", area: "emprendimiento", sesiones: 2, estado: "dictada" },
-          { id: "u2", orden: 2, titulo: "Observar mi salón", area: "emprendimiento", sesiones: 2, estado: "dictada" },
-          { id: "u3", orden: 3, titulo: "Máquinas que ayudan", area: "robotica", sesiones: 3, estado: "dictada" },
-          { id: "u4", orden: 4, titulo: "Mi primera idea", area: "emprendimiento", sesiones: 2, estado: "dictada" },
+          { id: "rob-energia-movimiento", orden: 1, titulo: "Energía para movernos", area: "robotica", sesiones: 2, estado: "activa", liberacion: "Disponible para docentes y estudiantes" },
+          { id: "rob-transformaciones", orden: 2, titulo: "Cuando la energía cambia", area: "robotica", sesiones: 2, estado: "activa", liberacion: "Disponible para docentes y estudiantes" },
+          { id: "rob-circuitos-seguros", orden: 3, titulo: "Circuitos seguros", area: "robotica", sesiones: 3, estado: "activa", liberacion: "Disponible para docentes y estudiantes" },
+          { id: "rob-camino-corriente", orden: 4, titulo: "El camino de la corriente", area: "robotica", sesiones: 2, estado: "activa", liberacion: "Disponible para docentes y estudiantes" },
+          { id: "rob-molino-movimiento", orden: 5, titulo: "Molino en movimiento", area: "robotica", sesiones: 3, estado: "activa", liberacion: "Disponible para docentes y estudiantes" },
         ],
       },
       {
-        id: "kids2-b2",
-        nombre: "Bloque 2 · Intercambiar y medir",
+        id: "energia-proyectos-1-b2",
+        nombre: "Bloque 2 · Ideas que se convierten en proyectos",
         unidades: [
-          { id: "u5", orden: 5, titulo: "El trueque", area: "emprendimiento", sesiones: 2, estado: "dictada" },
-          { id: "u6", orden: 6, titulo: "Contar lo que tengo", area: "emprendimiento", sesiones: 2, estado: "activa", liberacion: "Disponible desde el 3 de septiembre" },
-          { id: "u7", orden: 7, titulo: "Sensores que miden", area: "robotica", sesiones: 3, estado: "programada", liberacion: "Se libera el 15 de septiembre, 07:00" },
-          { id: "u8", orden: 8, titulo: "El precio justo", area: "emprendimiento", sesiones: 2, estado: "sin-programar" },
-        ],
-      },
-      {
-        id: "kids2-b3",
-        nombre: "Bloque 3 · Construir el producto",
-        unidades: [
-          { id: "u9", orden: 9, titulo: "De la idea al prototipo", area: "emprendimiento", sesiones: 3, estado: "sin-programar" },
-          { id: "u10", orden: 10, titulo: "Un mecanismo que se mueve", area: "robotica", sesiones: 3, estado: "sin-programar" },
-          { id: "u11", orden: 11, titulo: "Probar con mis compañeros", area: "emprendimiento", sesiones: 2, estado: "sin-programar" },
-          { id: "u12", orden: 12, titulo: "Mejorar lo que no funcionó", area: "emprendimiento", sesiones: 2, estado: "sin-programar" },
-        ],
-      },
-      {
-        id: "kids2-b4",
-        nombre: "Bloque 4 · Mostrar el trabajo",
-        unidades: [
-          { id: "u13", orden: 13, titulo: "Contar mi proyecto", area: "emprendimiento", sesiones: 2, estado: "sin-programar" },
-          { id: "u14", orden: 14, titulo: "El robot que presenta", area: "robotica", sesiones: 3, estado: "sin-programar" },
-          { id: "u15", orden: 15, titulo: "La feria del salón", area: "emprendimiento", sesiones: 2, estado: "sin-programar" },
-          { id: "u16", orden: 16, titulo: "¿Qué aprendí?", area: "emprendimiento", sesiones: 1, estado: "sin-programar" },
+          { id: "emp-problema-oportunidad", orden: 6, titulo: "De un problema a una oportunidad", area: "emprendimiento", sesiones: 2, estado: "activa", liberacion: "Disponible para docentes y estudiantes" },
+          { id: "emp-preguntar-crear", orden: 7, titulo: "Preguntar antes de crear", area: "emprendimiento", sesiones: 3, estado: "activa", liberacion: "Disponible para docentes y estudiantes" },
+          { id: "emp-paso-a-paso", orden: 8, titulo: "Diseñar el paso a paso", area: "emprendimiento", sesiones: 2, estado: "activa", liberacion: "Disponible para docentes y estudiantes" },
+          { id: "emp-nombre-proyecto", orden: 9, titulo: "Un nombre que se recuerde", area: "emprendimiento", sesiones: 2, estado: "activa", liberacion: "Disponible para docentes y estudiantes" },
+          { id: "emp-preparar-feria", orden: 10, titulo: "Preparar nuestra feria", area: "emprendimiento", sesiones: 3, estado: "activa", liberacion: "Disponible para docentes y estudiantes" },
         ],
       },
     ],
@@ -289,42 +274,164 @@ export interface RutaDidactica {
   dba: string[];
 }
 
+const ALINEACION_ROBOTICA = [
+  "🔶 Propuesta de alineación: observar fenómenos del entorno, formular preguntas y comunicar resultados de experiencias sencillas.",
+  "🔶 Propuesta de alineación: reconocer usos responsables de artefactos, materiales y fuentes de energía en contextos cotidianos.",
+];
+
+const ALINEACION_EMPRENDIMIENTO = [
+  "🔶 Propuesta institucional: reconocer necesidades del entorno y participar en soluciones colaborativas acordes con la edad.",
+  "🔶 Propuesta institucional: comunicar ideas, escuchar otras perspectivas y tomar decisiones con información sencilla.",
+];
+
+const DBA_POR_CONFIRMAR = [
+  "🔶 Por confirmar con el plan de área del colegio: no se asigna un código DBA hasta realizar la revisión curricular institucional.",
+];
+
 export const RUTAS: Record<string, RutaDidactica> = {
-  u7: {
-    unidadId: "u7",
-    titulo: "Sensores que miden",
+  "rob-energia-movimiento": {
+    unidadId: "rob-energia-movimiento",
+    titulo: "Energía para movernos",
     area: "robotica",
-    objetivo:
-      "Reconocer que una máquina necesita medir algo del mundo antes de poder responder, y usar un sensor sencillo para registrar una medida que le sirva a un proyecto del salón.",
+    objetivo: "Reconocer que los movimientos cotidianos necesitan energía e identificar fuentes como el cuerpo, el viento, el sol, una pila o la corriente eléctrica, sin confundir la fuente con el objeto que se mueve.",
     evidencias: [
-      "Nombra al menos dos cosas que un sensor puede medir y da un ejemplo de cada una en su casa o en el colegio.",
-      "Registra en una tabla tres medidas tomadas con el mismo sensor y explica en voz alta si son iguales o distintas.",
-      "Explica con sus palabras por qué su proyecto de emprendimiento necesita esa medida.",
+      "Clasifica al menos cuatro situaciones según la fuente de energía que produce el movimiento.",
+      "Explica con un dibujo de dónde sale la energía y qué objeto cambia o se mueve.",
+      "Hace funcionar un prototipo liviano mediante empuje, aire o una banda elástica.",
     ],
-    profundizacion: [
-      "Sensores en objetos que los niños ya usan: la puerta del supermercado, la luz del baño, el termómetro.",
-      "La diferencia entre estimar y medir.",
-      "Por qué repetimos una medida varias veces.",
-    ],
-    inicio:
-      "Pida a los estudiantes que adivinen, sin tocar, cuál de dos recipientes de agua está más tibio. Anote las respuestas del curso en el tablero. Luego mida con el sensor de temperatura frente a ellos y compare el resultado con lo que adivinaron. La conversación que se busca es por qué adivinar no alcanza cuando alguien depende de esa medida.",
-    desarrollo:
-      "Organice el curso en cinco grupos y entregue un sensor por grupo. Cada grupo toma tres medidas del mismo objeto y las escribe en su tabla. Recorra los grupos preguntando qué cambió entre una medida y otra. Cierre pidiendo a dos grupos que expliquen al curso una medida que les haya sorprendido. Si el sensor no está disponible, la actividad funciona igual con un termómetro de pared y agua a distintas temperaturas.",
-    evaluacion:
-      "Cada estudiante completa su tabla de tres medidas y responde oralmente, en su grupo, para qué le serviría esa medida al proyecto que está construyendo. Observe si distingue entre lo que adivinó al inicio y lo que midió después.",
-    queCalificar: [
-      "Tabla de tres medidas, completa y legible.",
-      "Explicación oral de la utilidad de la medida para su proyecto.",
-      "Participación en la comparación inicial entre estimar y medir.",
-    ],
-    estandares: [
-      "Me ubico en el universo y en la Tierra e identifico características de la materia.",
-      "Reconozco en el entorno fenómenos físicos que me afectan y desarrollo habilidades para aproximarme a ellos.",
-    ],
-    dba: [
-      "DBA 3 · Comprende que los objetos y las sustancias tienen propiedades que pueden medirse.",
-      "DBA 4 · Explica cómo los instrumentos amplían lo que los sentidos pueden percibir.",
-    ],
+    profundizacion: ["Fuente de energía y efecto observable.", "Energías renovables y no renovables en lenguaje introductorio.", "Uso responsable de la energía en el colegio y el hogar."],
+    inicio: "Muestre un carrito quieto, un molinillo de papel y una linterna apagada. Pregunte qué necesita cada objeto para producir un cambio. Recoja las hipótesis sin calificarlas todavía y organícelas en un tablero con dos columnas: fuente y efecto.",
+    desarrollo: "Prepare estaciones con un carrito impulsado por la mano, un molinillo movido con aire y una banda elástica que desplaza una figura de cartón. En equipos, los estudiantes hacen funcionar cada modelo, dibujan la fuente y el efecto, y comparan qué se conserva y qué cambia. Cierre con ejemplos del aula y una acción concreta para evitar desperdiciar energía.",
+    evaluacion: "Entregue tres escenas nuevas para que cada estudiante una la fuente de energía con su efecto y justifique una elección oralmente. Valore la relación explicada, no la velocidad de respuesta.",
+    queCalificar: ["Clasificación de fuentes y efectos.", "Dibujo con una relación comprensible entre origen y movimiento.", "Explicación oral y cuidado de los materiales."],
+    estandares: ALINEACION_ROBOTICA,
+    dba: DBA_POR_CONFIRMAR,
+  },
+  "rob-transformaciones": {
+    unidadId: "rob-transformaciones",
+    titulo: "Cuando la energía cambia",
+    area: "robotica",
+    objetivo: "Describir una transformación sencilla de energía siguiendo una cadena de tres momentos: fuente, mecanismo o artefacto y efecto observable.",
+    evidencias: ["Ordena tarjetas para representar una transformación de energía.", "Distingue entre luz, sonido, calor y movimiento como efectos observables.", "Explica una cadena usando las palabras primero, después y al final."],
+    profundizacion: ["Transformación de energía en artefactos cotidianos.", "Cadenas de causa y efecto.", "Diferencia entre la fuente y el efecto que observamos."],
+    inicio: "Encienda una linterna de baja tensión y pregunte qué había antes de la luz. Dibuje una cadena vacía de tres cuadros y complete con el grupo: pila, circuito, luz. Repita oralmente la secuencia con conectores temporales.",
+    desarrollo: "Cada equipo recibe tarjetas con fuentes, artefactos y efectos. Primero construye cadenas posibles; luego prueba una linterna, un juguete manual o un instrumento de percusión y corrige su cadena según lo observado. Finalmente crea un cartel de una transformación y marca con flechas el recorrido.",
+    evaluacion: "Cada estudiante recibe una situación cotidiana diferente y completa una cadena de tres cuadros. Después explica al grupo cuál fue el cambio observable y qué evidencia le permitió reconocerlo.",
+    queCalificar: ["Secuencia lógica de los tres momentos.", "Uso de vocabulario: fuente, transformación y efecto.", "Justificación basada en una observación."],
+    estandares: ALINEACION_ROBOTICA,
+    dba: DBA_POR_CONFIRMAR,
+  },
+  "rob-circuitos-seguros": {
+    unidadId: "rob-circuitos-seguros",
+    titulo: "Circuitos seguros",
+    area: "robotica",
+    objetivo: "Construir y representar un circuito cerrado de baja tensión que encienda una luz, aplicando acuerdos de seguridad y reconociendo la función de cada componente.",
+    evidencias: ["Identifica pila, cables, interruptor y luz en un circuito escolar.", "Arma un recorrido cerrado con acompañamiento docente.", "Explica por qué solo se usan componentes de baja tensión y nunca tomacorrientes."],
+    profundizacion: ["Circuito abierto y circuito cerrado.", "Componentes y función dentro del recorrido.", "Normas de cuidado durante una experiencia eléctrica."],
+    inicio: "Presente los componentes desconectados y establezca el acuerdo central: en esta actividad nunca se manipulan enchufes ni tomacorrientes. Muestre un circuito abierto y pida al grupo predecir qué falta para que la luz encienda.",
+    desarrollo: "En grupos pequeños y con supervisión, los estudiantes conectan una pila de baja tensión, cables y una luz LED preparada para uso escolar. Prueban abrir y cerrar el recorrido con un interruptor simple, dibujan las conexiones y explican la función de cada pieza. Si no hay componentes, use tarjetas y lana para simular el recorrido sin electricidad.",
+    evaluacion: "El equipo recibe un circuito seguro con una conexión incompleta, identifica el punto abierto y propone cómo corregirlo. Cada integrante menciona una norma de seguridad y la razón para cumplirla.",
+    queCalificar: ["Representación del circuito cerrado.", "Identificación de componentes y funciones.", "Aplicación y explicación de acuerdos de seguridad."],
+    estandares: ALINEACION_ROBOTICA,
+    dba: DBA_POR_CONFIRMAR,
+  },
+  "rob-camino-corriente": {
+    unidadId: "rob-camino-corriente",
+    titulo: "El camino de la corriente",
+    area: "robotica",
+    objetivo: "Comparar materiales cotidianos mediante un circuito comprobador de baja tensión y registrar cuáles permiten o interrumpen el recorrido eléctrico.",
+    evidencias: ["Formula una predicción antes de probar cada material.", "Registra resultados en una tabla de conductor o aislante.", "Compara la predicción con la evidencia y cambia su respuesta cuando es necesario."],
+    profundizacion: ["Conductores y aislantes.", "Predicción, prueba y resultado.", "Repetición de pruebas para confirmar un hallazgo."],
+    inicio: "Muestre una cuchara metálica, un palito de madera y una tapa plástica. Pida predecir cuál podría completar un circuito comprobador. Registre votos y aclare que una predicción puede cambiar cuando aparece evidencia.",
+    desarrollo: "La docente controla el circuito comprobador de baja tensión. Por turnos, los equipos prueban objetos seguros y secos, observan si la luz enciende y registran el resultado. Repiten una prueba dudosa y agrupan los materiales. No se prueban líquidos, tomacorrientes, dispositivos ni objetos conectados a la red.",
+    evaluacion: "Cada estudiante interpreta una tabla de cinco pruebas, identifica un patrón y escribe o dicta una conclusión que incluya un resultado que contradijo su predicción inicial.",
+    queCalificar: ["Tabla completa de predicción y resultado.", "Clasificación sustentada en las pruebas.", "Conclusión que diferencia lo pensado de lo observado."],
+    estandares: ALINEACION_ROBOTICA,
+    dba: DBA_POR_CONFIRMAR,
+  },
+  "rob-molino-movimiento": {
+    unidadId: "rob-molino-movimiento",
+    titulo: "Molino en movimiento",
+    area: "robotica",
+    objetivo: "Diseñar un molino sencillo de papel o cartulina, comparar el efecto de una variable en su movimiento y mejorar el prototipo a partir de resultados registrados.",
+    evidencias: ["Construye un prototipo con aspas que puedan girar.", "Mantiene una condición igual mientras cambia una característica del diseño.", "Registra el resultado de dos pruebas y propone una mejora relacionada con la evidencia."],
+    profundizacion: ["Movimiento producido por una corriente de aire.", "Prueba justa: cambiar una variable a la vez.", "Ciclo de diseño: construir, probar, revisar y mejorar."],
+    inicio: "Muestre dos molinos con aspas diferentes y genere la misma corriente de aire para ambos. Pregunte cuál gira mejor y qué tendría que mantenerse igual para compararlos de manera justa.",
+    desarrollo: "Cada equipo construye un molino con papel, un eje seguro preparado por la docente y una base reutilizable. Realiza una primera prueba frente a un ventilador en posición fija o con aire manual constante, cuenta giros durante diez segundos y registra. Después modifica solo el tamaño o la forma de las aspas, repite y compara.",
+    evaluacion: "El equipo presenta las dos versiones, muestra su registro y completa la frase: cambiamos…, mantuvimos…, observamos… y por eso recomendamos…. La docente pregunta cómo harían una tercera prueba más confiable.",
+    queCalificar: ["Prototipo funcional y manipulación cuidadosa.", "Registro comparable de dos pruebas.", "Mejora justificada con evidencia."],
+    estandares: ALINEACION_ROBOTICA,
+    dba: DBA_POR_CONFIRMAR,
+  },
+  "emp-problema-oportunidad": {
+    unidadId: "emp-problema-oportunidad",
+    titulo: "De un problema a una oportunidad",
+    area: "emprendimiento",
+    objetivo: "Observar una situación cercana, describir a quién afecta y convertirla en una oportunidad de mejora concreta, respetuosa y posible para el grupo.",
+    evidencias: ["Registra una observación sin señalar ni culpar a una persona.", "Diferencia un deseo personal de una necesidad compartida.", "Formula una oportunidad con la estructura: ¿cómo podríamos…?"],
+    profundizacion: ["Observación respetuosa del entorno.", "Necesidad, deseo y oportunidad.", "Preguntas que abren varias soluciones posibles."],
+    inicio: "Presente una escena ficticia: después de una actividad quedan materiales mezclados y se pierde tiempo al buscarlos. Pregunte qué se observa, quién necesita ayuda y qué podría mejorar, evitando pasar de inmediato a una solución.",
+    desarrollo: "Los equipos recorren zonas autorizadas del aula sin recoger nombres ni datos personales. Registran mediante dibujos tres situaciones, eligen una por frecuencia e impacto y completan: observamos…, esto dificulta… y ¿cómo podríamos…? Luego intercambian fichas para verificar que la pregunta no culpe a nadie ni incluya una solución escondida.",
+    evaluacion: "Cada equipo presenta su oportunidad en un minuto. El grupo usa tres criterios visibles: se entiende, ayuda a alguien y puede trabajarse desde el aula. La propuesta se ajusta con la retroalimentación recibida.",
+    queCalificar: ["Registro de una observación verificable.", "Diferenciación entre necesidad y deseo.", "Pregunta de oportunidad clara y respetuosa."],
+    estandares: ALINEACION_EMPRENDIMIENTO,
+    dba: DBA_POR_CONFIRMAR,
+  },
+  "emp-preguntar-crear": {
+    unidadId: "emp-preguntar-crear",
+    titulo: "Preguntar antes de crear",
+    area: "emprendimiento",
+    objetivo: "Diseñar una encuesta breve y anónima, organizar sus respuestas y utilizar el resultado para tomar una decisión inicial sobre una idea de proyecto.",
+    evidencias: ["Redacta preguntas neutrales con opciones comprensibles.", "Registra respuestas sin nombres ni datos personales.", "Representa cantidades con marcas o pictogramas y decide según el resultado."],
+    profundizacion: ["Preguntas abiertas y preguntas con opciones.", "Encuestas anónimas y cuidado de la información.", "Conteo, comparación y decisión basada en respuestas."],
+    inicio: "Pregunte cuál de tres materiales sería más útil para organizar lápices. Haga una votación rápida y luego muestre cómo una pregunta que sugiere una respuesta puede alterar el resultado. Construyan juntos una versión neutral.",
+    desarrollo: "Cada equipo redacta hasta tres preguntas sobre su oportunidad y las prueba con otro equipo. Después aplica la encuesta sin pedir nombres, teléfonos ni información familiar. Organiza las respuestas con palitos de conteo o pictogramas, identifica la opción más frecuente y escribe qué decisión puede tomar y cuál todavía no.",
+    evaluacion: "El equipo entrega la encuesta, el registro y una conclusión de dos frases. Debe demostrar que la decisión se relaciona con los datos y reconocer si la cantidad de respuestas es insuficiente para afirmar algo sobre todo el colegio.",
+    queCalificar: ["Claridad y neutralidad de las preguntas.", "Registro anónimo y organizado.", "Decisión coherente con los resultados."],
+    estandares: ALINEACION_EMPRENDIMIENTO,
+    dba: DBA_POR_CONFIRMAR,
+  },
+  "emp-paso-a-paso": {
+    unidadId: "emp-paso-a-paso",
+    titulo: "Diseñar el paso a paso",
+    area: "emprendimiento",
+    objetivo: "Crear, probar y mejorar una secuencia de instrucciones para que otra persona pueda elaborar o usar una solución sin recibir explicaciones adicionales.",
+    evidencias: ["Ordena materiales y acciones antes de comenzar.", "Escribe o representa cada paso con un verbo y una acción.", "Modifica una instrucción después de observar la prueba de otro equipo."],
+    profundizacion: ["Secuencias e instrucciones.", "Verbos de acción y apoyos visuales.", "Prueba con usuarios y mejora de un proceso."],
+    inicio: "Entregue cuatro tarjetas desordenadas para armar una figura de papel sencilla. Pida seguirlas literalmente y converse sobre qué ocurre cuando falta un paso, una cantidad o una palabra precisa.",
+    desarrollo: "El equipo elige una tarea segura de cinco pasos, lista materiales y crea instrucciones con dibujos y verbos. Otro equipo realiza la tarea sin preguntas mientras los autores observan en silencio. Después ambos señalan el punto confuso, corrigen la secuencia y hacen una segunda prueba corta.",
+    evaluacion: "Compare la versión inicial y la corregida. Cada integrante explica qué cambió y qué comportamiento observado motivó la mejora. La secuencia final debe poder leerse de arriba abajo y tener materiales, orden y cierre.",
+    queCalificar: ["Secuencia completa y ordenada.", "Claridad de verbos, cantidades o apoyos visuales.", "Mejora vinculada a una observación de la prueba."],
+    estandares: ALINEACION_EMPRENDIMIENTO,
+    dba: DBA_POR_CONFIRMAR,
+  },
+  "emp-nombre-proyecto": {
+    unidadId: "emp-nombre-proyecto",
+    titulo: "Un nombre que se recuerde",
+    area: "emprendimiento",
+    objetivo: "Crear y seleccionar un nombre original para el proyecto mediante criterios de claridad, relación con la solución, respeto y facilidad de pronunciación.",
+    evidencias: ["Propone varias opciones relacionadas con el proyecto.", "Aplica una matriz sencilla de criterios sin votar por amistad.", "Explica por qué el nombre elegido representa la solución."],
+    profundizacion: ["Nombre de proyecto e identidad.", "Criterios para comparar opciones.", "Respeto por nombres e identidades existentes."],
+    inicio: "Muestre tres nombres ficticios para una caja organizadora y pregunte qué permite imaginar cada uno. Construya con el grupo los criterios: se entiende, se recuerda, se pronuncia con facilidad, se relaciona con la idea y es respetuoso.",
+    desarrollo: "Cada integrante propone dos nombres. El equipo elimina los que incluyan nombres de compañeros, marcas conocidas o expresiones ofensivas. Luego puntúa las opciones con una matriz de sí o todavía no, selecciona dos finalistas, las prueba oralmente con otro equipo y toma una decisión argumentada.",
+    evaluacion: "El equipo presenta el nombre, la matriz y una frase descriptiva. Debe explicar qué criterio fue decisivo y qué cambio hizo después de escuchar cómo otras personas comprendían la propuesta.",
+    queCalificar: ["Variedad y pertinencia de las opciones.", "Uso consistente de los criterios.", "Argumento claro y trato respetuoso de las propuestas."],
+    estandares: ALINEACION_EMPRENDIMIENTO,
+    dba: DBA_POR_CONFIRMAR,
+  },
+  "emp-preparar-feria": {
+    unidadId: "emp-preparar-feria",
+    titulo: "Preparar nuestra feria",
+    area: "emprendimiento",
+    objetivo: "Planear una muestra escolar del proyecto distribuyendo responsabilidades, preparando un mensaje breve y registrando materiales e intercambios de manera sencilla.",
+    evidencias: ["Organiza tareas, responsables y tiempos en una lista visible.", "Presenta problema, solución y aprendizaje en menos de dos minutos.", "Lleva un registro simple de materiales disponibles, usados y restantes."],
+    profundizacion: ["Plan de trabajo y responsabilidades rotativas.", "Presentación breve de una idea.", "Registro básico de recursos e intercambios sin dinero real."],
+    inicio: "Simule una feria que empieza en diez minutos y presente una caja con cartel, prototipo y materiales mezclados. Pregunte qué tendría que organizarse primero para recibir a una persona y explicar el proyecto con claridad.",
+    desarrollo: "Los equipos crean un plan con montaje, bienvenida, demostración, registro y cierre. Preparan un cartel con texto grande, ensayan una presentación de dos minutos y usan fichas didácticas —nunca dinero real— para practicar el registro de intercambios. Rotan los roles para que todos conozcan el proceso y realizan un ensayo con otro equipo.",
+    evaluacion: "En una muestra interna, la docente observa el cumplimiento del plan, la claridad del mensaje y el registro de recursos. El equipo realiza un cierre: qué funcionó, qué faltó y qué modificaría antes de una feria con familias.",
+    queCalificar: ["Plan visible con tareas y responsables.", "Presentación que conecta necesidad, solución y aprendizaje.", "Registro correcto de materiales o fichas y reflexión final."],
+    estandares: ALINEACION_EMPRENDIMIENTO,
+    dba: DBA_POR_CONFIRMAR,
   },
 };
 
@@ -373,29 +480,29 @@ export const HOY: Clase[] = [
   {
     id: "c2",
     asignatura: "Robótica",
-    tema: "Sensores que miden",
+    tema: "Circuitos seguros",
     grupo: "1°-01",
     hora: "09:00",
     area: "robotica",
     ranuras: 4,
     contenidos: [
-      { id: "t5", titulo: "Ruta didáctica de 7 secciones", pie: "Unidad 7 · Kids 2", area: "robotica" },
-      { id: "t6", titulo: "Tabla de medidas", pie: "Material imprimible", area: "robotica" },
+      { id: "t5", titulo: "Circuitos seguros", pie: "Ruta didáctica · Unidad 3", area: "robotica" },
+      { id: "t6", titulo: "Registro de conexiones", pie: "Material imprimible", area: "robotica" },
     ],
-    proximaEntrega: { titulo: "Tabla de tres medidas", vence: "en 5 días", entregadas: 0, total: 25 },
+    proximaEntrega: { titulo: "Dibujo del circuito seguro", vence: "en 5 días", entregadas: 0, total: 25 },
   },
   {
     id: "c3",
     asignatura: "Emprendimiento",
-    tema: "Contar lo que tengo",
+    tema: "Preguntar antes de crear",
     grupo: "1°-01",
     hora: "10:30",
     area: "emprendimiento",
     ranuras: 4,
     contenidos: [
-      { id: "t7", titulo: "Ruta didáctica de 7 secciones", pie: "Unidad 6 · Kids 2", area: "emprendimiento" },
-      { id: "t8", titulo: "El trueque", pie: "Unidad 5 · dictada", area: "emprendimiento" },
-      { id: "t9", titulo: "Fichas de conteo", pie: "Material imprimible", area: "emprendimiento" },
+      { id: "t7", titulo: "Preguntar antes de crear", pie: "Ruta didáctica · Unidad 7", area: "emprendimiento" },
+      { id: "t8", titulo: "Encuesta breve y anónima", pie: "Actividad de aula", area: "emprendimiento" },
+      { id: "t9", titulo: "Registro de respuestas", pie: "Material imprimible", area: "emprendimiento" },
     ],
   },
   /*
