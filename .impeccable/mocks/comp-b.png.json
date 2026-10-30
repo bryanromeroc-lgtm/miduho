@@ -1,0 +1,9 @@
+{
+  "comp": "comp-b.png",
+  "approved": true,
+  "surface": "inicio / hoy",
+  "viewport": "1440x1400",
+  "medium": "HTML real renderizado en Chromium (no hay generacion de imagen en esta sesion: OPENAI_API_KEY ausente y sin herramienta nativa)",
+  "prompt": "FRISO DE AULA, composicion B: el dia entero como banda horizontal continua de trechos, uno por clase, leida de izquierda a derecha sobre una regla de horas. Cada trecho es una plancha del color de su area con un estante blanco adentro. La banda envuelve a la siguiente linea cuando se acaba el ancho: nunca scroll horizontal.",
+  "note": "El comp aprobado cortaba el cuarto trecho a 1440px. La correccion —el friso envuelve, nunca hay scroll horizontal— es requisito de PRODUCT.md, se acordo con el usuario al presentar la composicion, y esta registrada en DESIGN.md. El comp se actualiza a la version corregida para que la medicion no puntue esa correccion como defecto."
+}

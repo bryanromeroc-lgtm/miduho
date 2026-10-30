@@ -1,13 +1,3 @@
-<!-- BEGIN:nextjs-agent-rules -->
-
-# This is NOT the Next.js you know
-
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
-
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
-
-<!-- END:nextjs-agent-rules -->
-
 # MIDUHO — reglas de proyecto
 
 Plataforma educativa **dedicada** al Colegio Mi Dulce Hogar (Madrid, Cundinamarca, Colombia), educación primaria. Un solo colegio, no SaaS. La tesis del producto: **"el contenido ya está en la clase"** — la docente encuentra su material sin buscarlo.
@@ -20,24 +10,51 @@ Plataforma educativa **dedicada** al Colegio Mi Dulce Hogar (Madrid, Cundinamarc
 4. **Distinguir observado / inferido / propuesto / por confirmar.** Nunca presentes algo con más certeza de la que tiene. Marca lo no confirmado con 🔶.
 5. **Español de Colombia.** Sin lenguaje de marca comercial: "Circuito"→Unidad, "Curious/Kids/Labs"→terminología curricular. Terminología: Área · Nivel · Bloque · Unidad · Sesión · Ruta didáctica · Grupo · Período · Asignatura · Acudiente · Estándares · DBA · SIEE.
 
-## Stack y estructura
+## Next.js 16: no es el Next.js que conoces
 
-- **Next.js 16** (App Router), **React 19**, **Tailwind CSS v4**, **shadcn** (base-nova), `@base-ui/react`, `page-flip` (lector flipbook).
-- `src/app/` — rutas: inicio, biblioteca (lector flipbook), clases, laboratorios, agenda, emprendimiento.
-- `src/lib/` — datos demo ficticios: `datos.ts` (áreas, títulos, clases del día), `laboratorios.ts` (mundos/estaciones), `libros.ts`.
-- `public/libros/<libro>/` — páginas digitalizadas (webp) + `libro.json`.
-- El Incremento 1 construye la fundación: autenticación, entidades académicas, roles y asignación docente. **La matrícula de estudiantes (entidad, flujo e importación CSV) está fuera del alcance por decisión de producto.**
-- Git **local, sin remote**. Hay cambios sin commitear (carpetas de libros nuevas + `datos.ts`/`libros.ts` modificados).
+Esta versión tiene cambios incompatibles en APIs, convenciones y estructura de archivos. Antes de escribir código lee la guía correspondiente en `apps/web/node_modules/next/dist/docs/` y respeta los avisos de deprecación. (`agentRules: false` en `apps/web/next.config.ts` evita que `next dev` regenere este aviso dentro de la app.)
+
+## Estructura del repositorio
+
+```
+miduho/
+├─ apps/web/            # aplicación Next.js full-stack (frontend + backend)
+├─ tools/flipbook-forge/# CLI: PDF de libro → páginas webp para el lector (no se despliega)
+├─ content/             # contenido pesado, FUERA de git
+│  ├─ biblioteca/       #   PDFs fuente (+ LICENCIA.md, versionada)
+│  └─ libros/           #   páginas generadas; apps/web/public/libros es un enlace a esta carpeta
+├─ docs/                # arquitectura, modelo de entidades, plan MVP, software factory, investigación
+├─ openspec/            # cambios y specs (flujo spec-driven, /opsx:*)
+├─ PRODUCT.md DESIGN.md # producto y sistema de diseño
+├─ .claude/ .agents/ .hermes/ .impeccable/   # configuración de agentes de IA
+└─ AGENTS.md            # este archivo (CLAUDE.md lo incluye)
+```
+
+### Dentro de `apps/web/`
+
+- **Stack:** Next.js 16 (App Router), React 19, Tailwind CSS v4, shadcn (base-nova), `@base-ui/react`, `page-flip`, Prisma 7 + SQLite (dev), Auth.js v5, Zod, Vitest.
+- `src/app/` — solo rutas (páginas, layouts, Route Handlers en `api/`). Deben ser delgadas.
+- `src/features/<dominio>/` — componentes y datos de UI de cada dominio (biblioteca, laboratorios, …).
+- `src/components/` — UI compartida: `ui/` (shadcn) y `shell/`.
+- `src/server/` — backend (`import "server-only"`): `db.ts`, `auth/`, `modules/<dominio>/`. **Nunca** se importa desde un Componente Cliente.
+- `src/lib/` — utilidades puras, importables desde cliente y servidor.
+- `prisma/` — esquema, migraciones y seed (datos ficticios).
+- `e2e/`, `scripts/` — smoke E2E y scripts de QA/demo.
+
+Detalle de capas y decisiones: `docs/arquitectura-backend.md`.
 
 ## Verificación antes de dar por hecho un cambio
+
+Desde la raíz (delegan en `apps/web`):
 
 ```bash
 npm run build    # debe compilar sin errores
 npm run lint     # eslint debe pasar
+npm test         # Vitest debe pasar
 ```
 
-No hay suite de tests aún. Si agregas lógica nueva, acompaña con pruebas mínimas (Vitest o similar) cuando aplique.
+Si agregas lógica nueva, acompáñala con pruebas (Vitest), junto al archivo que prueban (`*.test.ts`).
 
 ## Backlog (fuente de verdad)
 
-Vault Obsidian en `/home/bryan/Documentos/OBSIDIAN/MIDUHO/MIDUHO/` (26 docs). Backlog priorizado en `06-Backlog/Backlog-MVP.md`: 7 incrementos, 30 historias de usuario. La maqueta actual cubre la capa de presentación; el desarrollo sigue el orden de los incrementos.
+Vault Obsidian en `/home/bryan/Documentos/OBSIDIAN/MIDUHO/MIDUHO/` (26 docs). Backlog priorizado en `06-Backlog/Backlog-MVP.md`: 7 incrementos, 30 historias de usuario. El desarrollo sigue el orden de los incrementos. El Incremento 1 construye la fundación: autenticación, entidades académicas, roles y asignación docente. **La matrícula de estudiantes (entidad, flujo e importación CSV) está fuera del alcance por decisión de producto.**

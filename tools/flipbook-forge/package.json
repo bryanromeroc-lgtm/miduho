@@ -1,0 +1,14 @@
+{
+  "name": "flipbook-forge",
+  "version": "1.0.0",
+  "description": "Convierte PDFs de libros ilustrados en hojas listas para el lector de la biblioteca",
+  "main": "index.js",
+  "scripts": {
+    "forjar": "node src/cli.js"
+  },
+  "keywords": [],
+  "type": "module",
+  "dependencies": {
+    "sharp": "^0.35.4"
+  }
+}

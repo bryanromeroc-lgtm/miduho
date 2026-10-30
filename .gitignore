@@ -1,48 +1,34 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Dependencias
+node_modules/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
+# Sistema / editores
 .DS_Store
-*.pem
+*.log
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# env files (can opt-in for committing if needed)
-.env*
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
-
-# prisma (t_85913f5b)
-/src/generated/
-*.db
-*.db-journal
-*.db.respaldo*
+# Variables de entorno (solo se versionan las plantillas)
+.env
+.env.*
 !.env.example
+
+# Contenido pesado: PDFs fuente y páginas generadas de los libros.
+# Viven fuera de git; en producción se sirven desde almacenamiento de objetos / CDN.
+/content/biblioteca/**/*.pdf
+/content/libros/
+
+# Salidas de herramientas de navegador y capturas temporales
+/output/
+.playwright-cli/
+.playwright-mcp/
+
+# Estado local de herramientas de IA (personal por máquina)
+.claude/settings.local.json
+.impeccable/config.local.json
+.impeccable/**/hook.cache.json
+.impeccable/build/
+.impeccable/review/diff/
+# Skill instalada como enlace simbólico al home del usuario
+.agents/skills/impeccable
+
+# Python
+__pycache__/
+*.pyc
