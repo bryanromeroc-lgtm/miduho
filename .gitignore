@@ -44,4 +44,5 @@ next-env.d.ts
 /src/generated/
 *.db
 *.db-journal
+*.db.respaldo*
 !.env.example
