@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Check, CornerDownLeft, Search } from "lucide-react";
 import { Marco, Migas } from "@/components/friso/marco";
-import { ValleDeCuentos } from "@/components/biblioteca/valle";
-import { Portada, formato } from "@/components/biblioteca/portada";
+import { ValleDeCuentos } from "@/features/biblioteca/components/valle";
+import { Portada, formato } from "@/features/biblioteca/components/portada";
 import {
   TITULOS,
   TOTAL_TITULOS,
@@ -14,9 +14,9 @@ import {
   type TipoRecurso,
   type RangoEdad,
   type Idioma,
-} from "@/lib/datos";
-import { LIBROS, libroDeTitulo } from "@/lib/libros";
-import { buscar, indexar, sugerir } from "@/lib/buscar";
+} from "@/data/demo";
+import { LIBROS, libroDeTitulo } from "@/features/biblioteca/libros";
+import { buscar, indexar, sugerir } from "@/features/biblioteca/buscar";
 import { cn } from "@/lib/utils";
 import styles from "./biblioteca.module.css";
 

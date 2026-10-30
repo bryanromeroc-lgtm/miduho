@@ -36,8 +36,8 @@ export interface PaginaCompuesta {
   inicio?: number;
 }
 
-import { PAGINAS_SONRISA } from "@/lib/paginas/una-sonrisa-de-mariposa";
-import { PAGINAS_TULA } from "@/lib/paginas/tula-y-el-mural-del-bosque";
+import { PAGINAS_SONRISA } from "@/features/biblioteca/paginas/una-sonrisa-de-mariposa";
+import { PAGINAS_TULA } from "@/features/biblioteca/paginas/tula-y-el-mural-del-bosque";
 
 export interface Libro {
   slug: string;

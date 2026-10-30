@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import type { Disposicion, PaginaCompuesta, PaginaLibro } from "@/lib/libros";
+import type { Disposicion, PaginaCompuesta, PaginaLibro } from "@/features/biblioteca/libros";
 import estilos from "./flipbook.module.css";
 
 /*

@@ -4,13 +4,13 @@ import {
   IlustracionCientificaSensores,
   IlustracionPrototipoCohete,
   IlustracionFeriaInventos,
-} from "@/components/laboratorios/ilustraciones";
+} from "@/features/laboratorios/components/ilustraciones";
 import {
   IlustracionDetectivesNecesidades,
   IlustracionMercaditoTrueque,
   IlustracionMecanismoRobo,
   IlustracionRobotPresentador,
-} from "@/components/laboratorios/ilustraciones-adicionales";
+} from "@/features/laboratorios/components/ilustraciones-adicionales";
 
 export type MundoId = "robotica" | "emprendimiento";
 

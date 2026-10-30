@@ -55,7 +55,7 @@ let reloj = new Date("2026-03-01T12:00:00.000Z");
 beforeAll(async () => {
   dir = mkdtempSync(path.join(tmpdir(), "miduho-qa-dominio-"));
   const url = `file:${path.join(dir, "test.db")}`;
-  const raiz = path.resolve(__dirname, "../../../prisma/migrations");
+  const raiz = path.resolve(__dirname, "../../prisma/migrations");
   const migrador = createClient({ url });
   for (const m of readdirSync(raiz).filter((n) => /^\d+_/.test(n)).sort()) {
     await migrador.executeMultiple(readFileSync(path.join(raiz, m, "migration.sql"), "utf8"));

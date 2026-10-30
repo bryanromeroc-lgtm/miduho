@@ -1,6 +1,6 @@
 import { Marco, Migas, Cabecera } from "@/components/friso/marco";
 import { RotuloArea } from "@/components/friso/piezas";
-import { PROGRAMAS, AREAS } from "@/lib/datos";
+import { PROGRAMAS, AREAS } from "@/data/demo";
 import { cn } from "@/lib/utils";
 
 /*

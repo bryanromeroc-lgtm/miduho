@@ -1,4 +1,4 @@
-import type { PaginaCompuesta } from "@/lib/libros";
+import type { PaginaCompuesta } from "@/features/biblioteca/libros";
 
 /*
   TULA Y EL MURAL DEL BOSQUE — páginas compuestas.

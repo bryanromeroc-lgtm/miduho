@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Bot, Clock3, Sprout } from "lucide-react";
 import { Marco } from "@/components/friso/marco";
-import { HOY } from "@/lib/datos";
+import { HOY } from "@/data/demo";
 import { obtenerDatosShell, obtenerGrupoMaqueta } from "@/server/shell";
 import styles from "./inicio.module.css";
 

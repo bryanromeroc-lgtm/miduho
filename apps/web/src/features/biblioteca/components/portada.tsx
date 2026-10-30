@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Headphones, ListTree } from "lucide-react";
-import type { Titulo } from "@/lib/datos";
-import type { Libro } from "@/lib/libros";
+import type { Titulo } from "@/data/demo";
+import type { Libro } from "@/features/biblioteca/libros";
 import styles from "./portada.module.css";
 
 /*

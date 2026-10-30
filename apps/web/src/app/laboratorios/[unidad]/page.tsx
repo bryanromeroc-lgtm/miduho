@@ -12,9 +12,9 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Marco } from "@/components/friso/marco";
-import { PlanetaEmprendimiento, PlanetaRobotica } from "@/components/laboratorios/planetas";
-import { RUTAS, PROGRAMAS, AREAS } from "@/lib/datos";
-import { MUNDOS, type MundoId } from "@/lib/laboratorios";
+import { PlanetaEmprendimiento, PlanetaRobotica } from "@/features/laboratorios/components/planetas";
+import { RUTAS, PROGRAMAS, AREAS } from "@/data/demo";
+import { MUNDOS, type MundoId } from "@/features/laboratorios/laboratorios";
 import styles from "./actividad.module.css";
 
 /*

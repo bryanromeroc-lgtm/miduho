@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { buscar, indexar, normalizar, sugerir } from "./buscar";
-import { TITULOS } from "./datos";
+import { TITULOS } from "@/data/demo";
 
 /* El catálogo real: los casos de abajo son títulos que existen en datos.ts,
    no ejemplos inventados. Si un título cambia de nombre, el test lo dice. */

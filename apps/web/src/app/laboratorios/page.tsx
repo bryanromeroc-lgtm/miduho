@@ -12,13 +12,13 @@ import {
   X,
 } from "lucide-react";
 import { Marco } from "@/components/friso/marco";
-import { AvatarBoti, AvatarMia } from "@/components/laboratorios/ilustraciones";
+import { AvatarBoti, AvatarMia } from "@/features/laboratorios/components/ilustraciones";
 import {
   PlanetaRobotica,
   PlanetaEmprendimiento,
-} from "@/components/laboratorios/planetas";
-import { Despegue } from "@/components/laboratorios/despegue";
-import { MUNDOS, type Estacion, type MundoId } from "@/lib/laboratorios";
+} from "@/features/laboratorios/components/planetas";
+import { Despegue } from "@/features/laboratorios/components/despegue";
+import { MUNDOS, type Estacion, type MundoId } from "@/features/laboratorios/laboratorios";
 
 /*
   LABORATORIOS · «El Cielo de los Dos Mundos»

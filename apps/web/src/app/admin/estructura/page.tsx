@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { ChevronLeft, ChevronRight, Search } from "lucide-react";
 import { Cabecera, Marco } from "@/components/friso/marco";
 import { FormularioEstructura, type Listado, type Opcion } from "./formulario";
-import { enlace, hayFiltros, leerConsulta, nombreParametro, parametros, rango, RELACIONES, type Clave, type Filtros } from "./consulta";
+import { enlace, hayFiltros, leerConsulta, nombreParametro, parametros, rango, RELACIONES, type Clave, type Filtros } from "@/features/estructura-academica/consulta";
 import { exigirRolPagina } from "@/server/pagina";
 import { servicioAcademico } from "@/server/modules/academico";
 

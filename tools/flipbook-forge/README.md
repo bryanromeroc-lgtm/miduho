@@ -118,7 +118,7 @@ es la contraportada y lo cierra. El resto de pliegos cae en 2-3, 4-5…
 cp -r salida/mi-libro ../../content/libros/
 ```
 
-Y se declara el libro en `apps/web/src/lib/libros.ts` con lo que trae el
+Y se declara el libro en `apps/web/src/features/biblioteca/libros.ts` con lo que trae el
 `libro.json` — en particular `razon`, `paginas` y `pliegos`:
 
 ```ts

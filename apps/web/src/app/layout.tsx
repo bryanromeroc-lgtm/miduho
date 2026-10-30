@@ -33,12 +33,12 @@
 */
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
-import { Ascenso } from "@/components/laboratorios/ascenso";
-import { AperturaLibro } from "@/components/biblioteca/apertura";
+import { Ascenso } from "@/features/laboratorios/components/ascenso";
+import { AperturaLibro } from "@/features/biblioteca/components/apertura";
 import { ProveedorShell } from "@/components/shell/contexto";
 import { obtenerDatosShell } from "@/server/shell";
-import "./globals.css";
-import "./shell.css";
+import "@/styles/globals.css";
+import "@/styles/shell.css";
 
 const archivo = Nunito({
   variable: "--font-archivo",

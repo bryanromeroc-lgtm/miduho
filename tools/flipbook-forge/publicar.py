@@ -21,7 +21,7 @@ DOBLEN = ["", "       El PDF es entero de dobles planas, portada envolvente incl
           "       la tapa y abre el libro; la izquierda es la contraportada y lo cierra."]
 
 errores, titulos, entradas = [], [], []
-ids = sorted(int(x) for x in re.findall(r'id: "lit-(\d+)"', open(f"{RAIZ}/apps/web/src/lib/datos.ts").read()))
+ids = sorted(int(x) for x in re.findall(r'id: "lit-(\d+)"', open(f"{RAIZ}/apps/web/src/data/demo.ts").read()))
 siguiente = ids[-1] + 1
 for slug in orden:
     f = f"{SALIDA}/{slug}/libro.json"
@@ -75,10 +75,10 @@ for slug in orden:
     if os.path.exists(dst): sys.exit(f"ya existe {dst}")
 for slug in orden:
     shutil.copytree(f"{SALIDA}/{slug}", f"{RAIZ}/content/libros/{slug}")
-p = f"{RAIZ}/apps/web/src/lib/datos.ts"; s = open(p).read()
+p = f"{RAIZ}/apps/web/src/data/demo.ts"; s = open(p).read()
 ancla = next(l for l in s.split("\n") if f'id: "lit-{ids[-1]}"' in l)
 s = s.replace(ancla + "\n", ancla + "\n" + "\n".join(titulos) + "\n", 1); open(p, "w").write(s)
-p = f"{RAIZ}/apps/web/src/lib/libros.ts"; s = open(p).read()
+p = f"{RAIZ}/apps/web/src/features/biblioteca/libros.ts"; s = open(p).read()
 ult = re.findall(r'tituloId: "lit-(\d+)"', s); ult_slug = re.findall(r'slug: "([^"]+)",\n    tituloId: "lit-' + str(ids[-1]) + '"', s)[0]
 i = s.index(f'slug: "{ult_slug}"'); fin = s.index("  },\n", i) + len("  },\n")
 s = s[:fin] + "\n".join(entradas) + "\n" + s[fin:]; open(p, "w").write(s)

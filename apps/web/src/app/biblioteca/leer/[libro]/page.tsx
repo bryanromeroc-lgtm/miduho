@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Flipbook } from "@/components/biblioteca/flipbook";
-import { LIBROS, buscarLibro, paginasDe } from "@/lib/libros";
+import { Flipbook } from "@/features/biblioteca/components/flipbook";
+import { LIBROS, buscarLibro, paginasDe } from "@/features/biblioteca/libros";
 
 /*
   LEER — la biblioteca se explora en el catálogo; aquí se lee.

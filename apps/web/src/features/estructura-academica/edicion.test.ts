@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import * as E from "@/server/modules/academico/esquemas";
 import { accionesAnio, anioCerrado, campoIntensidad, CUERPO_CIERRE, cuerpoFormulario, errorCuerpo } from "./edicion";
-import { FormularioEstructura, type Clave, type Listado } from "./formulario";
+import { FormularioEstructura, type Clave, type Listado } from "@/app/admin/estructura/formulario";
 
 const fd = (campos: Array<[string, string]>) => {
   const f = new FormData();

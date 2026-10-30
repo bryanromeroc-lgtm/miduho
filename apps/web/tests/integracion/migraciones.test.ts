@@ -24,7 +24,7 @@ import path from "node:path";
 import { createClient, type Client } from "@libsql/client";
 import { afterEach, describe, expect, it } from "vitest";
 
-const migracionesDir = path.resolve(__dirname, "../../../prisma/migrations");
+const migracionesDir = path.resolve(__dirname, "../../prisma/migrations");
 const migraciones = readdirSync(migracionesDir).filter((n) => /^\d+_/.test(n)).sort();
 
 // El esquema previo al Incremento 1R son las tres primeras migraciones

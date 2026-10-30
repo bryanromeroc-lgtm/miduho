@@ -10,7 +10,7 @@ import { ErrorDominio } from "@/server/errores";
 import * as E from "./esquemas";
 import { dentroDe, ponderacionCompleta, ponderacionExcede, seSolapan, sumaPonderaciones } from "./reglas";
 import { crearServicioAcademico, type ServicioAcademico } from "./servicio";
-import { accionesAnio, campoIntensidad, CUERPO_CIERRE, cuerpoFormulario, type TipoApi } from "@/app/admin/estructura/edicion";
+import { accionesAnio, campoIntensidad, CUERPO_CIERRE, cuerpoFormulario, type TipoApi } from "@/features/estructura-academica/edicion";
 
 const d = (s: string) => new Date(`${s}T00:00:00.000Z`);
 

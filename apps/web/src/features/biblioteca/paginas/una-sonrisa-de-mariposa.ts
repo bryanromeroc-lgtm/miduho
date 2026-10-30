@@ -1,4 +1,4 @@
-import type { PaginaCompuesta } from "@/lib/libros";
+import type { PaginaCompuesta } from "@/features/biblioteca/libros";
 
 /*
   UNA SONRISA DE MARIPOSA — páginas compuestas.

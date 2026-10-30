@@ -4,7 +4,7 @@ import path from "node:path";
 import { createClient, type Client } from "@libsql/client";
 import { afterEach, describe, expect, it } from "vitest";
 
-const migracionesDir = path.resolve(__dirname, "../../../prisma/migrations");
+const migracionesDir = path.resolve(__dirname, "../../prisma/migrations");
 const migraciones = readdirSync(migracionesDir).filter((nombre) => /^\d+_/.test(nombre)).sort();
 const migracionInc1R = "20261002000000_inc1r_modelo_acceso_estudiantes_horarios";
 const migracionSesion = "20261002010000_inc1r_revocacion_contexto";

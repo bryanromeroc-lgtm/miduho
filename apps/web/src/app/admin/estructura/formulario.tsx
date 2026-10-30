@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { Confirmar, llamarApi } from "@/app/admin/usuarios/comunes";
-import { accionesAnio, anioCerrado, campoIntensidad, CUERPO_CIERRE, cuerpoFormulario, errorCuerpo, type Modo, type TipoApi } from "./edicion";
+import { accionesAnio, anioCerrado, campoIntensidad, CUERPO_CIERRE, cuerpoFormulario, errorCuerpo, type Modo, type TipoApi } from "@/features/estructura-academica/edicion";
 
 export type Clave = "anios" | "periodos" | "areas" | "grados" | "grupos" | "asignaturas";
 export type Opcion = { id: string; etiqueta: string };

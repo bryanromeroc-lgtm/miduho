@@ -39,43 +39,51 @@
 
 ## 3. Estructura de carpetas
 
+> Actualizada el 2026-10-30 tras reorganizar el repositorio como monorepo. Next.js es *full-stack*: frontend y backend viven en la misma app y se separan por capas, no por proyectos.
+
 ```
-app/
-├─ prisma/
-│  ├─ schema.prisma        # modelo de datos (ver Anexo A)
-│  ├─ migrations/
-│  └─ seed.ts              # datos FICTICIOS, nunca datos de menores
-├─ src/
-│  ├─ app/                 # rutas y Route Handlers
-│  │  ├─ (auth)/login/
-│  │  ├─ (auth)/recuperar/
-│  │  ├─ (admin)/          # paneles Admin/Coordinación
-│  │  ├─ (docente)/        # panel Docente
-│  │  ├─ (estudiante)/
-│  │  ├─ (acudiente)/
-│  │  ├─ unauthorized.tsx  # 401 (experimental en Next 16)
-│  │  ├─ forbidden.tsx     # 403
-│  │  └─ api/              # Route Handlers (REST interno)
-│  │     ├─ auth/[...nextauth]/
-│  │     ├─ anios-lectivos/… · periodos/… · grados/… · grupos/… · asignaturas/…
-│  │     ├─ usuarios/… · roles/… · asignaciones-docente/…
-│  │     └─ niveles/… · bloques/… · unidades/… · sesiones/…
-│  ├─ server/              # ⭐ capa de servidor (solo importable desde el servidor)
-│  │  ├─ db.ts             # instancia Prisma (singleton)
-│  │  ├─ auth/
-│  │  │  ├─ config.ts      # Auth.js (credentials + JWT)
-│  │  │  ├─ session.ts     # getSession() / requireSession()
-│  │  │  └─ permisos.ts    # reglas de autorización (AsignacionDocente)
-│  │  ├─ auditoria.ts      # helper escribir Auditoria
-│  │  └─ modules/          # un módulo por dominio
-│  │     ├─ academico/     # anioLectivo, periodo, grado, grupo, asignatura
-│  │     ├─ usuarios/      # usuario, rol, acudienteEstudiante
-│  │     └─ curriculo/     # area, nivel, bloque, unidad, sesion
-│  ├─ lib/                 # utilidades compartidas (client + server)
-│  ├─ types/               # tipos compartidos
-│  └─ middleware… (no)     # ver §6: se usa proxy.ts, no middleware.ts
-└─ proxy.ts                # checks optimistas (redirección), NO autorización real
+miduho/                    # raíz del repo git
+├─ apps/web/               # la aplicación Next.js
+│  ├─ prisma/              # schema.prisma, migrations/, seed.ts (datos FICTICIOS)
+│  ├─ public/              # estáticos ligeros; public/libros → enlace a /content/libros
+│  ├─ e2e/  scripts/       # smoke E2E de navegador y scripts de QA/demo
+│  ├─ tests/integracion/   # pruebas transversales (dominio, seguridad, migraciones)
+│  └─ src/
+│     ├─ app/              # SOLO rutas: page, layout, loading, Route Handlers
+│     │  ├─ (auth)/        #   login, recuperar
+│     │  ├─ admin/         #   paneles Admin/Coordinación (formularios propios de cada ruta, colocados)
+│     │  ├─ api/           #   REST interno (anios-lectivos, periodos, grupos, usuarios, …)
+│     │  └─ biblioteca/ clases/ laboratorios/ agenda/ mi-curso/ cuenta/ …
+│     ├─ features/         # FRONTEND por dominio: componentes + datos + lógica de UI
+│     │  ├─ biblioteca/    #   components/ (flipbook, portada, valle, apertura), libros.ts, paginas/, buscar.ts
+│     │  ├─ laboratorios/  #   components/ (ascenso, despegue, planetas, ilustraciones), laboratorios.ts
+│     │  └─ estructura-academica/  # contrato formulario↔API y estado de filtros en la URL
+│     ├─ components/       # UI compartida: ui/ (shadcn), shell/, friso/
+│     ├─ data/demo.ts      # datos de maqueta ficticios (áreas, títulos, programas, clases del día)
+│     ├─ server/           # ⭐ BACKEND (import "server-only")
+│     │  ├─ db.ts          #   instancia Prisma (singleton)
+│     │  ├─ auth/          #   sesión, contraseñas, intentos, recuperación
+│     │  ├─ modules/       #   un módulo por dominio: academico/, usuarios/, importacion/, mi-curso/
+│     │  └─ http.ts  pagina.ts  shell.ts  errores.ts  correo.ts
+│     ├─ lib/              # utilidades puras (cliente + servidor): navegacion, destino, usuarios, utils
+│     ├─ styles/           # globals.css (Tailwind v4 + tokens), shell.css
+│     ├─ types/            # declaraciones de tipos
+│     ├─ auth.ts           # configuración Auth.js (convención de la librería)
+│     └─ proxy.ts          # checks optimistas (redirección), NO autorización real
+├─ tools/flipbook-forge/   # CLI fuera de la app: PDF → páginas webp (no se despliega)
+├─ content/                # contenido pesado fuera de git: biblioteca/ (PDFs), libros/ (páginas)
+├─ docs/  openspec/        # documentación y specs
+└─ AGENTS.md  .claude/ .agents/ .hermes/ .impeccable/   # configuración de agentes de IA
 ```
+
+Dónde va cada cosa:
+
+- **Una página o endpoint nuevo** → `src/app/…`. Debe ser delgado: lee la sesión, llama a un servicio de `src/server/modules` y renderiza componentes.
+- **Reglas de negocio, consultas a la BD, permisos** → `src/server/modules/<dominio>/` (`servicio.ts`, `esquemas.ts`, `reglas.ts`, `index.ts`).
+- **Componentes de un dominio** → `src/features/<dominio>/components/`. Si solo los usa una ruta, pueden quedarse colocados junto a ella.
+- **Componentes reutilizables sin dominio** → `src/components/`.
+- **Funciones puras compartidas** → `src/lib/`.
+- **Pruebas** → `*.test.ts` junto al archivo que prueban; las transversales van en `tests/integracion/`.
 
 Regla de límite: `src/server/**` **nunca** se importa desde un Componente Cliente. Solo Server Components, Route Handlers y Server Actions. `src/lib/**` puede importarse desde ambos lados.
 

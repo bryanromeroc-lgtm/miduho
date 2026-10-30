@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { Marco, Migas } from "@/components/friso/marco";
 import { Ficha, RanuraLibre } from "@/components/friso/plancha";
 import { Boton, Panel } from "@/components/friso/piezas";
-import { HOY, AREAS, DOCENTE } from "@/lib/datos";
+import { HOY, AREAS, DOCENTE } from "@/data/demo";
 import { cn } from "@/lib/utils";
 import { obtenerGrupoMaqueta } from "@/server/shell";
 

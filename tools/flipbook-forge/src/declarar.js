@@ -114,9 +114,9 @@ async function principal() {
   const sinEdad = libros.filter((l) => !l.edad).length;
 
   console.log(`\n/* ─── ${libros.length} libros ─── */`);
-  console.log(`\n/* 1. En apps/web/src/lib/datos.ts, dentro de TITULOS: */\n`);
+  console.log(`\n/* 1. En apps/web/src/data/demo.ts, dentro de TITULOS: */\n`);
   console.log(titulos.join("\n"));
-  console.log(`\n\n/* 2. En apps/web/src/lib/libros.ts, dentro de LIBROS: */\n`);
+  console.log(`\n\n/* 2. En apps/web/src/features/biblioteca/libros.ts, dentro de LIBROS: */\n`);
   console.log(entradas.join("\n"));
   console.log(`\n\n/* 3. Copiar las hojas:`);
   console.log(`     cp -r ${path.relative(process.cwd(), salida)}/* ../../content/libros/`);

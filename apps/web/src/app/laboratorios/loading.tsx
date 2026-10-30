@@ -1,4 +1,4 @@
-import { Despegue } from "@/components/laboratorios/despegue";
+import { Despegue } from "@/features/laboratorios/components/despegue";
 
 /*
   Se muestra en cuanto alguien toca «Laboratorios», antes de que el

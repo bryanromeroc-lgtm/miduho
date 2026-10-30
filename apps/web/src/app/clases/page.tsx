@@ -2,7 +2,7 @@ import { Marco, Migas, Cabecera } from "@/components/friso/marco";
 import { Friso, TrechoConRegla } from "@/components/friso/friso";
 import { Plancha, Ficha, RanuraLibre } from "@/components/friso/plancha";
 import { Boton } from "@/components/friso/piezas";
-import { HOY, DOCENTE } from "@/lib/datos";
+import { HOY, DOCENTE } from "@/data/demo";
 import { obtenerGrupoMaqueta } from "@/server/shell";
 
 /*

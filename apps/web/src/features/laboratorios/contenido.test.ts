@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { PROGRAMAS, RUTAS } from "./datos";
+import { PROGRAMAS, RUTAS } from "@/data/demo";
 import { MISIONES_EMPRENDIMIENTO, MISIONES_ROBOTICA } from "./laboratorios";
 
 const camposDeRuta = [

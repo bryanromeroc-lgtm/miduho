@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AREAS, type Area } from "@/lib/datos";
+import { AREAS, type Area } from "@/data/demo";
 import { cn } from "@/lib/utils";
 
 /*
