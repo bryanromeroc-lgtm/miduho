@@ -12,11 +12,12 @@ import {
 const etiquetas = (c: Parameters<typeof rutasPorContexto>[0]) => rutasPorContexto(c).map((r) => r.etiqueta);
 
 describe("navegación por contexto", () => {
-  it("ESTUDIANTE ve la maqueta y Cuenta, sin Mi curso ni administración", () => {
-    expect(etiquetas("ESTUDIANTE")).toEqual(["Hoy", "Mis clases", "Biblioteca", "Laboratorios", "Agenda", "Cuenta"]);
+  it("ESTUDIANTE ve «Mis materias» como inicio, sin Mis clases, Mi curso ni administración", () => {
+    expect(etiquetas("ESTUDIANTE")).toEqual(["Mis materias", "Biblioteca", "Laboratorios", "Agenda", "Cuenta"]);
+    expect(rutasPorContexto("ESTUDIANTE")[0].href).toBe("/");
   });
 
-  it("DOCENTE ve lo mismo que ESTUDIANTE más Mi curso", () => {
+  it("DOCENTE conserva «Hoy», Mis clases y Mi curso", () => {
     expect(etiquetas("DOCENTE")).toEqual([
       "Hoy",
       "Mis clases",

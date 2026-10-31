@@ -32,6 +32,9 @@ node_modules/
 .impeccable/**/hook.cache.json
 .impeccable/build/
 .impeccable/review/diff/
+.impeccable/review/referentes/
+.impeccable/review/baseline/
+.impeccable/review/regresion-labs/
 # Skill instalada como enlace simbólico al home del usuario
 .agents/skills/impeccable
 

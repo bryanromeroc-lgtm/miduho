@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./valle.module.css";
 
 /*
@@ -10,20 +9,21 @@ import styles from "./valle.module.css";
   farol) se posa sobre el borde inferior derecho. Todo es ambientación:
   aria-hidden, sin texto pedagógico dentro de la imagen.
 
-  Los pictogramas son Twemoji locales (CC BY 4.0, ver public/images/portal).
+  Sol, nubes, estrellas y árboles son SVG de autoría propia en estilo
+  sticker (contorno de tinta), como las escenas de «Mis materias».
 */
 export function ValleDeCuentos() {
   return (
     <div className={styles.valle} aria-hidden="true">
-      {/* Cielo: sol de tarde y nubes lejanas */}
+      {/* Cielo: sol de tarde, nubes y estrellas */}
       <div className={styles.cielo}>
-        <Image className={styles.sol} src="/images/portal/2600.svg" alt="" width={54} height={54} />
-        <Image className={`${styles.nube} ${styles.nubeA}`} src="/images/portal/2601.svg" alt="" width={56} height={56} />
-        <Image className={`${styles.nube} ${styles.nubeB}`} src="/images/portal/2601.svg" alt="" width={40} height={40} />
-        <Image className={`${styles.nube} ${styles.nubeC}`} src="/images/portal/2601.svg" alt="" width={48} height={48} />
-        <Image className={`${styles.estrella} ${styles.estrellaA}`} src="/images/portal/2b50.svg" alt="" width={22} height={22} />
-        <Image className={`${styles.estrella} ${styles.estrellaB}`} src="/images/portal/1f31f.svg" alt="" width={26} height={26} />
-        <Image className={`${styles.estrella} ${styles.estrellaC}`} src="/images/portal/2b50.svg" alt="" width={16} height={16} />
+        <Sol className={styles.sol} />
+        <Nube className={`${styles.nube} ${styles.nubeA}`} />
+        <Nube className={`${styles.nube} ${styles.nubeB}`} />
+        <Nube className={`${styles.nube} ${styles.nubeC}`} />
+        <Estrella className={`${styles.estrella} ${styles.estrellaA}`} />
+        <Estrella className={`${styles.estrella} ${styles.estrellaB}`} />
+        <Estrella className={`${styles.estrella} ${styles.estrellaC}`} />
       </div>
 
       {/* Terreno: un solo sistema de coordenadas para montañas, colinas y camino */}
@@ -43,13 +43,10 @@ export function ValleDeCuentos() {
         </g>
       </svg>
 
-      {/* Props sueltos sobre las colinas */}
-      <Image className={`${styles.prop} ${styles.arbolA}`} src="/images/portal/1f333.svg" alt="" width={56} height={56} />
-      <Image className={`${styles.prop} ${styles.arbolB}`} src="/images/portal/1f332.svg" alt="" width={56} height={56} />
-      <Image className={`${styles.prop} ${styles.arbolC}`} src="/images/portal/1f333.svg" alt="" width={56} height={56} />
-      <Image className={`${styles.prop} ${styles.pila}`} src="/images/portal/1f4da.svg" alt="" width={48} height={48} />
-      <Image className={`${styles.prop} ${styles.abierto}`} src="/images/portal/1f4d6.svg" alt="" width={48} height={48} />
-      <Image className={`${styles.prop} ${styles.brote}`} src="/images/portal/1f331.svg" alt="" width={24} height={24} />
+      {/* Árboles sueltos sobre las colinas */}
+      <Arbol className={`${styles.prop} ${styles.arbolA}`} />
+      <Pino className={`${styles.prop} ${styles.arbolB}`} />
+      <Arbol className={`${styles.prop} ${styles.arbolC}`} />
 
       {/* La aldea de libros: proporción fija, se posa en la esquina derecha */}
       <svg className={styles.aldea} viewBox="0 0 560 340" focusable="false">
@@ -152,5 +149,58 @@ export function ValleDeCuentos() {
         </g>
       </svg>
     </div>
+  );
+}
+
+/* ── Piezas de la escena: SVG propio, contorno de tinta ── */
+const TINTA = "#1b2440";
+
+function Sol({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 60 60" focusable="false">
+      <g stroke={TINTA} strokeWidth="3" strokeLinecap="round">
+        {[0, 45, 90, 135, 180, 225, 270, 315].map((g) => (
+          <path key={g} d="M30 4 V 11" transform={`rotate(${g} 30 30)`} />
+        ))}
+      </g>
+      <circle cx="30" cy="30" r="14" fill="#ffc21a" stroke={TINTA} strokeWidth="3" />
+      <path d="M23 26 a 8 8 0 0 1 8 -6" stroke="#fff4d1" strokeWidth="3" fill="none" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function Nube({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 64 36" focusable="false">
+      <path d="M14 32 h38 a10 10 0 0 0 0 -20 a14 14 0 0 0 -26 -4 a11 11 0 0 0 -12 24 z" fill="#ffffff" stroke={TINTA} strokeWidth="3" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function Estrella({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" focusable="false">
+      <path d="M12 2.8l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 16.8l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="#ffc21a" stroke={TINTA} strokeWidth="2.2" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function Arbol({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 56 64" focusable="false">
+      <rect x="24" y="36" width="8" height="24" rx="3" fill="#8a5a36" stroke={TINTA} strokeWidth="3" />
+      <circle cx="28" cy="26" r="20" fill="#3fc06a" stroke={TINTA} strokeWidth="3" />
+      <path d="M17 20 a 12 12 0 0 1 10 -8" stroke="#b0e4bd" strokeWidth="4" fill="none" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function Pino({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 56 64" focusable="false">
+      <rect x="24" y="46" width="8" height="15" rx="3" fill="#8a5a36" stroke={TINTA} strokeWidth="3" />
+      <path d="M28 4 L48 48 H8 Z" fill="#01a451" stroke={TINTA} strokeWidth="3" strokeLinejoin="round" />
+      <path d="M28 12 L20 30" stroke="#a6eaa0" strokeWidth="4" strokeLinecap="round" />
+    </svg>
   );
 }

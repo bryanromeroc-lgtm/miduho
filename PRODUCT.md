@@ -8,12 +8,13 @@ web
 
 ## Users
 
-**Usuario primario — la docente de primaria.** Una docente titular del Colegio Mi Dulce Hogar (Madrid, Cundinamarca, Colombia) que dicta el plan de estudios completo de su grupo. En la plataforma de referencia tiene **14 cursos del grado 1-01** a su cargo: no es una especialista de asignatura, es una generalista que cambia de área varias veces al día. Su trabajo con la plataforma ocurre en tres momentos: **preparando** la clase (fuera del aula, con tiempo escaso), **dictándola** (frente a 25 niños, sin margen para buscar nada) y **calificando** al cierre de período.
+**Audiencia que manda en la interfaz — el estudiante de primaria (6–10 años).** Decisión del operador del 2026-10-31 (cambio `rediseno-identidad-juvenil`). Es un lector emergente que entra por una tableta compartida del colegio o por un computador. Su trabajo: ver lo que es suyo (sus materias) y entrar a la que toca con un toque. Su inicio es «Mis materias», un tablero con un cromo por cada asignatura asignada a su grupo; no ve el friso del día de la docente. El lenguaje visual anterior (oso 3D, castillo, emojis) se leía como «para bebés»: la interfaz debe sentirse juvenil, no infantil.
+
+**Usuario primario del trabajo pedagógico — la docente de primaria.** Una docente titular del Colegio Mi Dulce Hogar (Madrid, Cundinamarca, Colombia) que dicta el plan de estudios completo de su grupo. En la plataforma de referencia tiene **14 cursos del grado 1-01** a su cargo: no es una especialista de asignatura, es una generalista que cambia de área varias veces al día. Su trabajo con la plataforma ocurre en tres momentos: **preparando** la clase (fuera del aula, con tiempo escaso), **dictándola** (frente a 25 niños, sin margen para buscar nada) y **calificando** al cierre de período.
 
 Su trabajo real, el que la referencia no resolvió: llegar al material de la clase de hoy sin tener que saber de antemano en qué catálogo está guardado.
 
-**Usuarios secundarios (confirmados como parte del producto, fuera del alcance de la primera maqueta):**
-- **Estudiante de primaria (6–10 años).** Requiere una interfaz propia, no la del docente con menos permisos — decisión de producto ya registrada en la bóveda, aún sin resolver.
+**Usuarios secundarios (confirmados como parte del producto):**
 - **Acudiente.** Consulta desempeño de su acudido. Su entrada en el MVP está **por decidir** (P2): duplica superficie de permisos y eleva el riesgo de privacidad de datos de menores.
 - **Coordinador académico** y **Administrador**. El coordinador no tiene equivalente observado en la referencia; está **por decidir** si es un rol propio o un permiso adicional sobre Docente (P2).
 
@@ -104,7 +105,11 @@ Esta plantilla define exactamente qué campos necesita una unidad didáctica en 
 
 - **Nombre:** MIDUHO (Colegio Mi Dulce Hogar).
 - **Idioma de la interfaz:** español de Colombia.
-- **Identidad visual:** el colegio aún no ha entregado logo, paleta ni manual de marca. No debe inventarse ni presentarse como oficial.
+- **Escudo del colegio:** entregado (`apps/web/public/images/escudo-colegio.jpg`). Es la marca institucional: identifica al colegio en el encabezado y en el ingreso. No se redibuja ni se altera.
+- **Identidad visual derivada del escudo:** los colores de la interfaz se toman del escudo (azul cielo, verde pino, lima, naranja puerta, durazno, celeste, con amarillo de acento). El colegio no ha entregado manual de marca: la paleta derivada es propia del proyecto y no debe presentarse como oficial.
+- **Avatares del estudiante, provisionales:** cuatro personajes originales, creados en el proyecto a partir del escudo y del paisaje (Casita, Pino, Gota de río, Sol). No son mascota institucional ni están aprobados por el colegio 🔶. El estudiante elige uno y la elección se guarda en su cuenta.
+- **Laboratorios es un mundo aparte:** Robótica y Emprendimiento (`/laboratorios`, `/emprendimiento`) conservan su universo espacial y quedan fuera del rediseño. Si algún día adoptan la identidad general está por decidir 🔶.
+- **Sin economía de juego:** las estrellas presentan el desempeño propio del estudiante (mejor de 3 intentos por actividad); no hay rankings, comparación entre estudiantes, monedas ni tienda.
 - **Anti-referencia explícita:** la plataforma Trendi es referencia **funcional** únicamente. Su identidad visual, su tono y su solución de contenido-como-imagen son evidencia de qué **no** hacer.
 - **Tono:** institucional y cálido, dirigido a docentes de primaria y familias, no a un comprador corporativo. Se evita el lenguaje de marca comercial ("Circuito", "Curious", "Kids", "Labs") en favor del vocabulario curricular colombiano.
 
@@ -117,7 +122,8 @@ Esta plantilla define exactamente qué campos necesita una unidad didáctica en 
 - **13 riesgos** documentados con mitigación.
 
 **Ausencias que el diseño no debe fabricar:**
-- No hay logo, paleta ni manual de marca del colegio.
+- Hay escudo, pero no hay logo alterno, paleta oficial ni manual de marca del colegio.
+- No hay generación de imágenes en el proyecto: las ilustraciones (escenas de materias, avatares) son SVG de autoría propia, sin nada copiado de los referentes.
 - No hay SIEE ni escala de evaluación institucional.
 - No hay datos reales de estudiantes, docentes ni acudientes — y **no deben inventarse datos personales de menores**. Todo dato en la maqueta es ficticio y debe leerse como tal.
 - No hay contenido pedagógico propio producido: los títulos de literatura de dominio público son referencias legítimas; el material de Robótica y Emprendimiento de la referencia lleva derechos reservados y **solo puede reutilizarse su esquema estructural**, nunca su contenido.

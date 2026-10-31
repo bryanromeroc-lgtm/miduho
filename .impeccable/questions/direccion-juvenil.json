@@ -1,0 +1,130 @@
+{
+  "title": "Elige el mundo visual de MIDUHO",
+  "question": "El sorteo asignó «Chiva de rótulo». Quédate con ella, toma una alternativa o vuelve a sortear. Se conserva el layout actual; Laboratorios no se toca.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Chiva de rótulo",
+      "kicker": "THE ROLL",
+      "lineage": "Chivas pintadas de Cundinamarca y el rótulo popular de los pintores de letreros",
+      "thesis": "El día escolar como una chiva pintada: cada clase es una banca con su franja de color y su nombre rotulado.",
+      "palette": ["#ffc21a", "#e2342b", "#0067a8", "#00adef", "#01a451", "#35363a", "#ffffff"],
+      "materials": ["franjas planas de esmalte", "rótulo pintado a mano solo en títulos", "marcos de ventana en arco"],
+      "viewport": "Hoy: banda amarilla con el escudo y MIDUHO rotulado; debajo, el friso del día como bancas de chiva, una por clase, con franja del área y estado (hecha / ahora / sin material).",
+      "risk": "Puede leerse folclórica o de recuerdo turístico si las franjas se apagan o el rótulo invade el cuerpo de texto.",
+      "raised": [
+        { "from": "challenger-exposure", "raise": "Rampa de tono fija: cada color del escudo en cinco pasos con contraste AA verificado por paso, sin colores sueltos." },
+        { "from": "challenger-manual", "raise": "Vocabulario de estado cerrado: hecha, ahora, programada y sin material tienen cada una su marca, nunca solo color." },
+        { "from": "challenger-timetable", "raise": "Jerarquía por peso y caja, no por tamaño: el cuerpo de lectura del estudiante tiene un solo tamaño generoso." },
+        { "from": "challenger-console", "raise": "Las bancas persisten al navegar y en móvil colapsan por prioridad: la clase de ahora siempre primero." }
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "Álbum de láminas",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "Álbumes de láminas que los niños colombianos llenan en cada Mundial",
+      "thesis": "Cada clase es una página del álbum: los recursos son láminas numeradas y la casilla vacía muestra, sin palabras, el material que falta.",
+      "palette": ["#ffffff", "#0067a8", "#00adef", "#ffd400", "#01a451", "#ec8856", "#35363a"],
+      "materials": ["papel brillante", "lámina troquelada con número", "casilla punteada vacía", "brillo foil solo en lo destacado"],
+      "viewport": "Hoy: la clase de ahora como página abierta con sus láminas pegadas y casillas vacías; contador «4 de 6» por clase; el friso como fila de páginas.",
+      "risk": "Es la dirección más familiar en apps infantiles gamificadas; no debe copiar la imagen comercial de ningún álbum real."
+    },
+    {
+      "id": "challenger-zoo",
+      "label": "Mapa de parque",
+      "verdict": "competitive",
+      "lineage": "Mapas-guía plegables de zoológicos y parques",
+      "thesis": "Cada área es una isla de color plano en un mapa; las costas separan, sin bordes ni cajas.",
+      "palette": ["#a6ce39", "#00adef", "#ec8856", "#ffd23f", "#f5f1e4", "#2c2e2a"],
+      "materials": ["color plano sin textura", "siluetas orgánicas en SVG", "cápsulas de control"],
+      "viewport": "Hoy: una isla grande del área de la clase actual crece hasta salirse del marco; el resto del día flota como islas menores.",
+      "case": "Fusiona bien con el escudo (prado, cielo, puerta) y los niños se identifican con un mapa de parque; pierde en claridad porque las islas chocan con el layout que se conserva.",
+      "risk": "Las formas orgánicas pueden volver a sonar infantiles si se acompañan de personajes.",
+      "hero": "https://impeccable.style/worlds/cards/aww2-zoo-gardens-guide-map-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/aww2-zoo-gardens-guide-map.webp"
+    },
+    {
+      "id": "challenger-manual",
+      "label": "Manual con pestañas",
+      "verdict": "declined",
+      "lineage": "Manuales de software en caja con separadores de color",
+      "thesis": "Cada sección es un separador de color con hojas transparentes encima.",
+      "palette": ["#e8742c", "#f2c230", "#3f9b45", "#1f6e8c", "#ffffff"],
+      "materials": ["acetato lechoso", "cartulina de color", "pestaña escalonada"],
+      "viewport": "Riel de pestañas por área en el borde; la activa se vuelve el tablero.",
+      "case": "Claro para la docente, pero un niño de 8 años no reconoce un manual.",
+      "risk": "Adulto y nostálgico para el estudiante.",
+      "kept": "Vocabulario de estado cerrado, una marca por estado.",
+      "hero": "https://impeccable.style/worlds/cards/rw-manual-acetate-tab-board-hero.webp"
+    },
+    {
+      "id": "challenger-exposure",
+      "label": "Ficha de cuarto oscuro",
+      "verdict": "declined",
+      "lineage": "Registros de exposición fotográfica",
+      "thesis": "Hojas translúcidas sobre una rampa de once tonos.",
+      "palette": ["#f2f0ea", "#8a8780", "#2b2a28", "#c2187a"],
+      "materials": ["papel calco", "trama de densidad"],
+      "viewport": "Hojas superpuestas que se deslizan al navegar.",
+      "case": "Sin relación con el mundo del estudiante ni del aula.",
+      "risk": "Técnica y fría.",
+      "kept": "La rampa de tono fija como únicos tokens de color.",
+      "hero": "https://impeccable.style/worlds/cards/operate-b-exposure-record-zone-sheets-hero.webp"
+    },
+    {
+      "id": "challenger-timetable",
+      "label": "Horario de bolsillo",
+      "verdict": "declined",
+      "lineage": "Itinerarios de aerolínea de los años setenta",
+      "thesis": "Todo a un solo tamaño de letra; el rango lo dan peso y caja.",
+      "palette": ["#e4b23a", "#2b2b2b", "#f4efe0", "#d23a22", "#2f6b3e"],
+      "materials": ["vidrio tintado", "mesa de luz"],
+      "viewport": "Una fila continua de diapositivas inclinadas.",
+      "case": "Sugerente para un horario, ajeno a un niño.",
+      "risk": "Inclinaciones dificultan la lectura temprana.",
+      "kept": "Jerarquía por peso y caja con un cuerpo de un solo tamaño.",
+      "hero": "https://impeccable.style/worlds/cards/rw-timetable-slide-rack-hero.webp"
+    },
+    {
+      "id": "challenger-console",
+      "label": "Consola oscura",
+      "verdict": "declined",
+      "lineage": "Consolas de desarrollo en modo oscuro",
+      "thesis": "Paneles grafito separados por líneas de un píxel.",
+      "palette": ["#1b1d21", "#2a2d33", "#7aa2f7", "#9ece6a"],
+      "materials": ["grafito", "costuras finas"],
+      "viewport": "Paneles persistentes que cambian de contenido.",
+      "case": "Contradice el aula clara y proyectable.",
+      "risk": "Corporativa y adulta.",
+      "kept": "Paneles persistentes que colapsan por prioridad.",
+      "hero": "https://impeccable.style/worlds/cards/digital-design-canon-dark-first-developer-console-hero.webp"
+    },
+    {
+      "id": "challenger-catalog",
+      "label": "Catálogo de discos",
+      "verdict": "declined",
+      "lineage": "Identidad de catálogo de un sello discográfico",
+      "thesis": "Todo es una entrada numerada sobre negro mate.",
+      "palette": ["#111111", "#ffffff", "#e63b2e", "#2aa6df"],
+      "materials": ["negro mate", "trazo blanco fino"],
+      "viewport": "Índice numerado como único mapa.",
+      "case": "Oculta los nombres; ilegible para lectores emergentes.",
+      "risk": "Críptica por diseño.",
+      "kept": "Cada recurso lleva su código visible (U7, L-12) para encontrarlo rápido.",
+      "hero": "https://impeccable.style/worlds/cards/brand-identity-canon-saville-catalog-sleeve-hero.webp"
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code", "toggle": false },
+  "canon": true,
+  "canonCard": {
+    "label": "El estándar de las apps educativas infantiles",
+    "thesis": "Fondo blanco, sans geométrica muy pesada, verde y azul brillantes, botones gruesos con labio inferior e ilustración plana.",
+    "palette": ["#ffffff", "#01a451", "#00adef", "#ffc21a", "#35363a"],
+    "materials": ["tarjetas con borde de 2px y labio", "ilustración vectorial plana", "barras de progreso redondeadas"],
+    "viewport": "Hoy como lo haría una app educativa líder, con el layout actual y la mejor ejecución posible.",
+    "risk": "Indistinguible de la competencia por diseño."
+  },
+  "steer": true
+}

@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 import { Marco, Migas } from "@/components/friso/marco";
 import { Ficha, RanuraLibre } from "@/components/friso/plancha";
 import { Boton, Panel } from "@/components/friso/piezas";
-import { HOY, AREAS, DOCENTE } from "@/data/demo";
+import { HOY, DOCENTE } from "@/data/demo";
+import { AREAS } from "@/components/friso/areas";
 import { cn } from "@/lib/utils";
 import { obtenerGrupoMaqueta } from "@/server/shell";
 
@@ -48,18 +49,18 @@ export default async function PantallaClase({
 
       {/* La plancha desplegada: el trecho a página completa. */}
       <header
-        className="trecho-entra rounded-[20px] px-8 py-7"
+        className="trecho-entra rounded-[22px] border-[3px] border-tinta px-8 py-7 shadow-[0_6px_0_var(--color-tinta)]"
         style={{
           background: a ? a.plancha : "var(--color-apagado)",
-          color: a ? "#fff" : "var(--color-tinta)",
+          color: a ? "var(--papel)" : "var(--color-tinta)",
           viewTransitionName: `plancha-${clase.id}`,
         }}
       >
         <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
           <div>
             <p
-              className="text-[11px] font-extrabold uppercase tracking-[0.14em]"
-              style={{ color: a ? "#fff" : "var(--color-rob-tinta)" }}
+              className="text-[13px] font-extrabold uppercase tracking-[0.14em]"
+              style={{ color: a ? "var(--papel)" : "var(--color-rob-tinta)" }}
             >
               {rotulo}
             </p>
@@ -80,10 +81,8 @@ export default async function PantallaClase({
             key={p}
             aria-current={i === 0 ? "page" : undefined}
             className={cn(
-              "rounded-full px-5 py-2.5 text-[13px] font-bold",
-              i === 0
-                ? "bg-tinta text-white"
-                : "bg-papel text-gris shadow-[inset_0_0_0_1.5px_var(--color-linea)]"
+              "rounded-full border-[3px] border-tinta px-5 py-2 font-heading text-[15px] font-extrabold text-tinta",
+              i === 0 ? "bg-acento" : "bg-papel"
             )}
           >
             {p}
@@ -92,7 +91,7 @@ export default async function PantallaClase({
       </nav>
 
       <div className="mt-5 grid gap-4 lg:grid-cols-[1fr_320px]">
-        <section className="rounded-[15px] bg-papel p-5">
+        <section className="sticker-panel p-5">
           <div className="mb-4 flex items-baseline justify-between gap-4">
             <h2 className="font-heading text-[15px] font-bold uppercase tracking-[0.1em] text-tinta">
               Contenidos de este período
@@ -119,7 +118,7 @@ export default async function PantallaClase({
             {libres > 0 && <RanuraLibre />}
           </div>
 
-          <p className="mt-4 max-w-[68ch] text-[13.5px] leading-[1.6] text-gris">
+          <p className="mt-4 max-w-[68ch] text-[16px] leading-[1.6] text-gris">
             Este material ya está asociado a la clase: la docente no tuvo que moverlo
             desde ningún catálogo. Esa asociación automática es la diferencia entre un
             aula con contenido y un aula vacía.
@@ -139,16 +138,16 @@ export default async function PantallaClase({
                 {clase.proximaEntrega.entregadas}
                 <span className="text-gris">/{clase.proximaEntrega.total}</span>
               </p>
-              <p className="text-[12px] text-gris">entregas recibidas</p>
+              <p className="text-[14px] text-gris">entregas recibidas</p>
             </Panel>
           )}
 
           <Panel titulo="Grupo">
             <p className="font-heading text-[38px] font-bold leading-none text-tinta">25</p>
-            <p className="text-[12px] text-gris">
+            <p className="text-[14px] text-gris">
               estudiantes ficticios en {grupo ?? "el grupo"}
             </p>
-            <p className="mt-3 text-[12px] leading-[1.5] text-gris">
+            <p className="mt-3 text-[14px] leading-[1.5] text-gris">
               La maqueta no muestra nombres ni datos de menores. La planilla real
               requiere revisión jurídica del tratamiento de datos.
             </p>

@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { AREAS, type Area } from "@/data/demo";
+import type { Area } from "@/data/demo";
+import { AREAS } from "./areas";
 import { cn } from "@/lib/utils";
 
 /*
@@ -41,17 +42,17 @@ export function Plancha({
       className={cn("plancha trecho-entra h-full", className)}
       style={{
         background: paleta ? paleta.plancha : "var(--color-hueso)",
-        color: paleta ? "#fff" : "var(--color-tinta)",
+        color: paleta ? "var(--papel)" : "var(--color-tinta)",
         viewTransitionName: transicion,
       }}
     >
       <header className="px-[22px] pb-4 pt-5">
         <p className="font-heading text-[22px] font-bold leading-none">{hora}</p>
         <p
-          className="mt-2.5 text-[11px] font-extrabold uppercase tracking-[0.14em]"
+          className="mt-2.5 text-[13px] font-extrabold uppercase tracking-[0.14em]"
           style={{
             /* blanco pleno: al 82% no alcanza 4.5:1 sobre la plancha naranja */
-            color: paleta ? "#fff" : "var(--color-gris)",
+            color: paleta ? "var(--papel)" : "var(--color-gris)",
           }}
         >
           {rotulo}
@@ -90,12 +91,12 @@ export function Ficha({
       style={{ background: paleta.pale, color: paleta.tinta }}
     >
       <p
-        className="text-[11px] font-bold uppercase tracking-[0.07em]"
+        className="text-[13px] font-bold uppercase tracking-[0.07em]"
         style={{ color: paleta.medio }}
       >
         {tipo}
       </p>
-      <p className="mt-[3px] text-[13px] font-semibold leading-[1.3]">{titulo}</p>
+      <p className="mt-[3px] text-[15px] font-semibold leading-[1.3]">{titulo}</p>
       {meta && (
         <p className="mt-1.5 text-[11.5px] font-medium" style={{ color: paleta.medio }}>
           {meta}

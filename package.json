@@ -10,6 +10,7 @@
     "test": "npm --prefix apps/web run test",
     "db:migrate": "npm --prefix apps/web run db:migrate",
     "db:seed": "npm --prefix apps/web run db:seed",
-    "forjar": "npm --prefix tools/flipbook-forge run forjar --"
+    "forjar": "npm --prefix tools/flipbook-forge run forjar --",
+    "regresion:labs": "npm --prefix apps/web run regresion:labs"
   }
 }

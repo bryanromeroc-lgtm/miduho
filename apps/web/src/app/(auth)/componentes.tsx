@@ -1,11 +1,10 @@
 import Image from "next/image";
 import type { ComponentProps } from "react";
-import { Escudo } from "@/components/friso/escudo";
+
 
 /**
  * Piezas compartidas por las pantallas de acceso y Cuenta (Inc. 1R §10).
- * Usan la identidad visual de la maqueta: paisaje escolar del portal, naranja
- * del colegio (#bc461c, 5.2:1 sobre blanco), tinta #20334b y botones pastilla.
+ * Mundo nuevo: la noche, el escudo real, el wordmark y un panel sticker.
  */
 
 export function Campo({
@@ -73,33 +72,27 @@ export function Tarjeta({
   children: React.ReactNode;
 }) {
   return (
-    <main className="acceso" id="contenido">
-      <div className="acceso-paisaje" aria-hidden="true">
-        <Image className="acceso-sol" src="/images/portal/2600.svg" alt="" width={64} height={64} />
-        <Image className="acceso-nube acceso-nube-a" src="/images/portal/2601.svg" alt="" width={70} height={70} />
-        <Image className="acceso-nube acceso-nube-b" src="/images/portal/2601.svg" alt="" width={48} height={48} />
-        <Image className="acceso-arbol acceso-arbol-a" src="/images/portal/1f333.svg" alt="" width={84} height={84} />
-        <Image className="acceso-arbol acceso-arbol-b" src="/images/portal/1f332.svg" alt="" width={72} height={72} />
-        <Image className="acceso-colegio" src="/images/portal/1f3eb.svg" alt="" width={92} height={92} />
-      </div>
+    <main className="acceso sobre-noche" id="contenido">
       <div className="acceso-columna">
         <p className="acceso-marca">
           <span className="acceso-marca-escudo">
-            <Escudo size={34} />
+            <Image src="/images/escudo-colegio.jpg" alt="Escudo del Colegio Mi Dulce Hogar" width={92} height={92} priority />
           </span>
-          <span>
-            <strong>
-              MIDUHO <span>Virtual</span>
-            </strong>
-            <small>Colegio Mi Dulce Hogar</small>
+          <span className="wordmark" role="img" aria-label="MIDUHO">
+            {["M", "I", "D", "U", "H", "O"].map((l, i) => (
+              <span key={i} aria-hidden="true">
+                {l}
+              </span>
+            ))}
           </span>
+          <small>Colegio Mi Dulce Hogar</small>
         </p>
         <section className="acceso-tarjeta" aria-labelledby="acceso-titulo">
           <h1 id="acceso-titulo">{titulo}</h1>
           {bajada ? <p className="acceso-bajada">{bajada}</p> : null}
           {children}
         </section>
-        <p className="acceso-nota">Maqueta con datos ficticios · Madrid, Cundinamarca</p>
+        <p className="acceso-nota">Datos ficticios de demostración · Madrid, Cundinamarca</p>
       </div>
     </main>
   );

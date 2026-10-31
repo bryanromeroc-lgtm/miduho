@@ -156,8 +156,8 @@ const texto = (page, sel = "body") => page.$eval(sel, (e) => e.innerText).catch(
 // Espera a que el contenido aparezca/desaparezca tras una recarga del lado cliente.
 const esperarTexto = (page, t) => page.waitForFunction((txt) => document.querySelector("main")?.innerText.includes(txt), t, { timeout: 15000 });
 const esperarTextoAusente = (page, t) => page.waitForFunction((txt) => !(document.querySelector("main")?.innerText.includes(txt)), t, { timeout: 15000 });
-const navEtiquetas = (page) => page.$$eval("#menu-principal a span", (els) => els.map((e) => e.textContent.trim()));
-const chip = (page) => page.$eval(".school-group", (e) => e.innerText.replace(/\s+/g, " ").trim()).catch(() => null);
+const navEtiquetas = (page) => page.$$eval("#menu-principal a span", (els) => els.map((e) => e.textContent.replace(/\u00ad/g, "").trim()));
+const chip = (page) => page.$eval("[data-chip=grupo]", (e) => e.innerText.replace(/\s+/g, " ").trim()).catch(() => null);
 
 async function login(page, correo, clave) {
   await page.goto(`${BASE}/login`);
@@ -187,7 +187,7 @@ const api = (page, url, method = "GET", body) =>
     { url, method, body },
   );
 
-const NAV_EST = ["Hoy", "Mis clases", "Biblioteca", "Laboratorios", "Agenda", "Cuenta"];
+const NAV_EST = ["Mis materias", "Biblioteca", "Laboratorios", "Agenda", "Cuenta"];
 const NAV_DOC = ["Hoy", "Mis clases", "Biblioteca", "Laboratorios", "Agenda", "Mi curso", "Cuenta"];
 const NAV_ADMIN = ["Dashboard", "Usuarios", "Estudiantes", "Estructura", "Asignaciones", "Cuenta"];
 const MAQUETA = ["/", "/clases", "/biblioteca", "/laboratorios", "/agenda"];

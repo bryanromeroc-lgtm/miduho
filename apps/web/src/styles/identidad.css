@@ -1,0 +1,665 @@
+/*
+  MIDUHO · IDENTIDAD (rediseño juvenil)
+  Tipografía por rol y piezas del estilo sticker. Los colores salen de los
+  tokens de globals.css. Nada de aquí alcanza a Laboratorios: los títulos
+  leen --font-heading, que .cosmos congela en Nunito.
+*/
+
+:root {
+  --fuente-display: var(--font-heading), system-ui, sans-serif;
+  --fuente-cuerpo: var(--font-sans), system-ui, sans-serif;
+
+  /* Escala por rol. La jerarquía la marcan peso y caja tanto como tamaño. */
+  --tipo-wordmark: 2.5rem;
+  --tipo-display: clamp(1.5rem, 0.9rem + 1.3vw, 2.125rem);
+  --tipo-titulo: 1.625rem;
+  --tipo-saludo: 1.5rem;
+  --tipo-cifra: 1.5rem;
+  --tipo-boton-grande: 1.25rem;
+  --tipo-boton: 1.125rem;
+  --tipo-placa: clamp(0.875rem, 0.55rem + 0.55vw, 1.125rem);
+  --tipo-cuerpo: 1rem;
+  --tipo-apoyo: 0.875rem;
+  --tipo-rotulo: 0.8125rem;
+
+  /* El contorno de tinta del texto sobre color: placas, títulos y wordmark. */
+  --contorno-texto: 5px;
+  --contorno-wordmark: 7px;
+}
+
+body {
+  font-size: var(--tipo-cuerpo);
+  line-height: 1.5;
+}
+
+/* Títulos en Baloo 2 donde la vista no diga otra cosa. */
+h1,
+h2,
+h3 {
+  font-family: var(--fuente-display);
+}
+
+.tipo-display {
+  font-family: var(--fuente-display);
+  font-size: var(--tipo-display);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--tinta);
+  text-wrap: balance;
+}
+
+.tipo-titulo {
+  font-family: var(--fuente-display);
+  font-size: var(--tipo-titulo);
+  font-weight: 800;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.tipo-saludo {
+  font-family: var(--fuente-display);
+  font-size: var(--tipo-saludo);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--color-mar-800);
+}
+
+.tipo-boton {
+  font-family: var(--fuente-display);
+  font-size: var(--tipo-boton);
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.tipo-boton-grande {
+  font-family: var(--fuente-display);
+  font-size: var(--tipo-boton-grande);
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.tipo-cifra {
+  font-family: var(--fuente-display);
+  font-size: var(--tipo-cifra);
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-mar-800);
+}
+
+.tipo-cuerpo {
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tipo-cuerpo);
+  line-height: 1.45;
+  max-width: 68ch;
+}
+
+.tipo-apoyo {
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tipo-apoyo);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--gris);
+}
+
+/* Rótulo de campo («Sigue con»): corto, en versales y nunca sobre un título. */
+.tipo-rotulo {
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tipo-rotulo);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gris);
+}
+
+/* Texto blanco con contorno de tinta: legible sobre cualquier color de materia. */
+.texto-sticker {
+  color: var(--papel);
+  -webkit-text-stroke: var(--contorno-texto) var(--tinta);
+  paint-order: stroke fill;
+}
+
+.tipo-placa {
+  font-family: var(--fuente-display);
+  font-size: var(--tipo-placa);
+  font-weight: 800;
+  line-height: 1.02;
+}
+
+/*
+  WORDMARK — MIDUHO letra por letra en los colores del escudo, con contorno
+  de tinta y sombra sólida. Se escribe como texto real (una sola etiqueta
+  accesible): <span class="wordmark" aria-label="MIDUHO"><span aria-hidden>M</span>…
+*/
+.wordmark {
+  display: inline-flex;
+  font-family: var(--fuente-display);
+  font-size: var(--tipo-wordmark);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  -webkit-text-stroke: var(--contorno-wordmark) var(--tinta);
+  paint-order: stroke fill;
+  text-shadow: 0 5px 0 var(--sombra-solida);
+}
+.wordmark > :nth-child(6n + 1) { color: var(--color-sol-500); }
+.wordmark > :nth-child(6n + 2) { color: var(--color-naranja-400); }
+.wordmark > :nth-child(6n + 3) { color: var(--color-lima-500); }
+.wordmark > :nth-child(6n + 4) { color: var(--color-cielo-500); }
+.wordmark > :nth-child(6n + 5) { color: var(--color-durazno-200); }
+.wordmark > :nth-child(6n + 6) { color: var(--color-sol-500); }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ESTILO STICKER — contorno de tinta de 3 px, sombra interior inferior
+   (bisel) y sombra exterior sólida desplazada. Al presionar, la pieza se
+   hunde y pierde la sombra exterior.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --contorno: 3px;
+  --relieve: 5px;
+  --hundir: 4px;
+}
+
+/* Sobre la noche la sombra sólida es casi negra; sobre papel, tinta. */
+.sobre-noche { --sombra-solida: var(--color-noche-990); --foco: var(--acento); }
+.sobre-papel,
+.sticker-panel { --sombra-solida: var(--tinta); --foco: var(--tinta); }
+
+/* ── Botón sticker ─────────────────────────────────────────────────── */
+.sticker-boton {
+  --boton-fondo: var(--papel);
+  --boton-bisel: var(--color-niebla-400);
+  --boton-texto: var(--color-noche-700);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 50px;
+  padding: 0 18px;
+  border: var(--contorno) solid var(--tinta);
+  border-radius: 16px;
+  background: var(--boton-fondo);
+  color: var(--boton-texto);
+  box-shadow: inset 0 calc(-1 * var(--relieve)) 0 var(--boton-bisel), 0 var(--relieve) 0 var(--sombra-solida);
+  font-family: var(--fuente-display);
+  font-size: var(--tipo-boton);
+  font-weight: 800;
+  line-height: 1.05;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
+}
+.sticker-boton svg { flex-shrink: 0; }
+.sticker-boton[data-tono="lima"] { --boton-fondo: var(--color-lima-500); --boton-bisel: var(--color-lima-600); --boton-texto: var(--tinta); }
+.sticker-boton[data-tono="cielo"] { --boton-fondo: var(--color-cielo-500); --boton-bisel: var(--color-cielo-600); --boton-texto: var(--tinta); }
+.sticker-boton[data-tono="sol"] { --boton-fondo: var(--color-sol-500); --boton-bisel: var(--color-sol-600); --boton-texto: var(--tinta); }
+.sticker-boton[data-tono="naranja"] { --boton-fondo: var(--color-naranja-400); --boton-bisel: var(--color-naranja-300); --boton-texto: var(--tinta); }
+.sticker-boton[data-tono="rosa"] { --boton-fondo: var(--color-rosa-400); --boton-bisel: var(--color-rosa-300); --boton-texto: var(--tinta); }
+/* La página activa siempre es blanca, venga del tono que venga. */
+.sticker-boton[aria-current="page"] { --boton-fondo: var(--papel); --boton-bisel: var(--color-niebla-400); --boton-texto: var(--color-noche-700); }
+.sticker-boton[data-tamano="grande"] {
+  --relieve: 6px;
+  min-height: 64px;
+  padding: 6px 16px;
+  border-radius: 18px;
+  font-size: var(--tipo-boton-grande);
+  text-align: center;
+}
+.sticker-boton[data-tamano="icono"] {
+  width: 48px;
+  min-height: 48px;
+  padding: 0;
+  border-radius: 14px;
+  --relieve: 4px;
+}
+.sticker-boton:hover { transform: translateY(-2px); }
+.sticker-boton:active {
+  transform: translateY(var(--hundir));
+  box-shadow: inset 0 calc(-1 * var(--relieve)) 0 var(--boton-bisel);
+}
+.sticker-boton:disabled,
+.sticker-boton[aria-disabled="true"] {
+  cursor: not-allowed;
+  transform: none;
+  --boton-fondo: var(--color-niebla-200);
+  --boton-bisel: var(--color-niebla-300);
+  --boton-texto: var(--gris);
+}
+
+/* ── Botón redondo de jugar ────────────────────────────────────────── */
+.boton-jugar {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border: var(--contorno) solid var(--tinta);
+  border-radius: 50%;
+  background: var(--acento);
+  color: var(--tinta);
+  box-shadow: inset 0 -5px 0 var(--color-sol-600), 0 5px 0 var(--tinta);
+  transition: transform 0.15s cubic-bezier(0.3, 1.6, 0.5, 1), box-shadow 0.12s ease-out;
+}
+.boton-jugar:hover { transform: scale(1.08); }
+.boton-jugar:active { transform: translateY(3px); box-shadow: inset 0 -5px 0 var(--color-sol-600); }
+
+/* ── Panel ─────────────────────────────────────────────────────────── */
+.sticker-panel {
+  background: var(--papel);
+  color: var(--tinta);
+  border: var(--contorno) solid var(--tinta);
+  border-radius: 22px;
+  box-shadow: 0 7px 0 var(--sombra-solida);
+}
+
+/* ── Placa con el nombre ───────────────────────────────────────────── */
+.placa {
+  display: inline-block;
+  max-width: 100%;
+  margin: 0;
+  padding: 3px 12px 4px;
+  border: var(--contorno) solid var(--tinta);
+  border-radius: 12px;
+  background: var(--cinta, var(--acento));
+  box-shadow: 0 4px 0 var(--tinta);
+  transform: rotate(var(--giro, 0deg));
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+/* ── Barra de avance ───────────────────────────────────────────────── */
+.barra-avance {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.barra-avance-pista {
+  flex: 1;
+  height: 10px;
+  overflow: hidden;
+  border: 2px solid var(--tinta);
+  border-radius: 999px;
+  background: var(--color-niebla-200);
+}
+.barra-avance-relleno {
+  display: block;
+  height: 100%;
+  width: var(--avance, 0%);
+  background: var(--cinta, var(--acento));
+}
+.barra-avance-relleno:not([data-vacia]) { border-right: 2px solid var(--tinta); }
+.barra-avance-cifra {
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tipo-rotulo);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--tinta);
+}
+
+/* ── Estrellas ─────────────────────────────────────────────────────── */
+.estrellas {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.estrella { fill: var(--color-niebla-200); stroke: var(--tinta); stroke-width: 2.2; stroke-linejoin: round; }
+.estrella[data-llena] { fill: var(--acento); }
+
+/* ── Chip de estado (marca + texto, nunca solo color) ──────────────── */
+.chip-estado {
+  --chip-fondo: var(--papel);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 10px 2px 7px;
+  border: 2px solid var(--tinta);
+  border-radius: 999px;
+  background: var(--chip-fondo);
+  color: var(--tinta);
+  font-family: var(--fuente-display);
+  font-size: var(--tipo-rotulo);
+  font-weight: 800;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.chip-estado[data-tono="sol"] { --chip-fondo: var(--color-sol-500); }
+.chip-estado[data-tono="cielo"] { --chip-fondo: var(--color-cielo-100); }
+.chip-estado[data-tono="lima"] { --chip-fondo: var(--color-lima-100); }
+.chip-estado[data-tono="pino"] { --chip-fondo: var(--color-pino-100); }
+.chip-estado[data-tono="niebla"] { --chip-fondo: var(--color-niebla-200); }
+.chip-estado[data-tono="durazno"] { --chip-fondo: var(--color-durazno-200); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sticker-boton,
+  .sticker-boton:hover,
+  .boton-jugar,
+  .boton-jugar:hover {
+    transition: none;
+    transform: none;
+  }
+  .sticker-boton:active { transform: none; }
+  .boton-jugar:active { transform: none; }
+}
+
+/* Luces de relieve y destello: blanco y oro translúcidos sobre cualquier color. */
+:root {
+  --bisel-luz: rgb(255 255 255 / 0.45);
+  --bisel-sombra: rgb(0 0 0 / 0.18);
+  --destello-luz: rgb(255 255 255 / 0.75);
+  --destello-oro: rgb(255 240 180 / 0.5);
+}
+
+/* El engranaje de la escena de Robótica gira despacio (bucle permitido). */
+@keyframes escena-gira { to { transform: rotate(360deg); } }
+.escena-gira {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: escena-gira 9s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .escena-gira { animation: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SHELL DEL MUNDO NUEVO (MarcoJuego). Clases propias: las school-* y
+   shell-* anteriores quedan para Laboratorios.
+   ═══════════════════════════════════════════════════════════════════════ */
+.marco-juego {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 18px 16px;
+  background: var(--noche);
+  color: var(--papel);
+}
+.marco-juego ::selection { background: var(--color-sol-200); color: var(--tinta); }
+
+.marco-juego-saltar {
+  position: absolute;
+  left: 12px;
+  top: -80px;
+  z-index: 50;
+  padding: 10px 16px;
+  border: var(--contorno) solid var(--tinta);
+  border-radius: 14px;
+  background: var(--acento);
+  color: var(--tinta);
+  font-family: var(--fuente-display);
+  font-weight: 800;
+}
+.marco-juego-saltar:focus { top: 12px; }
+
+.marco-juego-cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+.marco-juego-marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+}
+.marco-juego-escudo {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border: 4px solid var(--papel);
+  border-radius: 50%;
+  background: var(--papel);
+  box-shadow: 0 0 0 var(--contorno) var(--tinta), 0 6px 0 var(--contorno) var(--sombra-solida);
+}
+.marco-juego-escudo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.marco-juego-nombre { display: flex; flex-direction: column; line-height: 0.9; }
+.marco-juego-colegio {
+  margin-top: 4px;
+  font-family: var(--fuente-display);
+  font-size: var(--tipo-apoyo);
+  font-weight: 700;
+  color: var(--texto-noche);
+}
+
+.marco-juego-menu ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.marco-juego-herramientas { display: flex; align-items: center; gap: 10px; }
+.marco-juego-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 4px 16px 4px 5px;
+  border: var(--contorno) solid var(--tinta);
+  border-radius: 999px;
+  background: var(--color-noche-950);
+  box-shadow: inset 0 0 0 2px var(--color-noche-400);
+}
+.marco-juego-chip-marca {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: var(--contorno) solid var(--tinta);
+  border-radius: 50%;
+  background: var(--acento);
+  color: var(--tinta);
+}
+.marco-juego-chip-icono { margin-left: 10px; color: var(--color-lima-500); }
+.marco-juego-chip-texto { display: flex; flex-direction: column; line-height: 1.05; }
+.marco-juego-chip-texto strong { font-family: var(--fuente-display); font-size: var(--tipo-boton); }
+.marco-juego-chip-texto span { font-size: var(--tipo-rotulo); color: var(--texto-noche); }
+
+/* Menú de la cuenta (componente compartido) con el traje del mundo nuevo. */
+.marco-juego .shell-cuenta-boton {
+  min-height: 48px;
+  border: var(--contorno) solid var(--tinta);
+  border-radius: 999px;
+  background: var(--color-noche-950);
+  box-shadow: inset 0 0 0 2px var(--color-noche-400);
+  color: var(--papel);
+}
+.marco-juego .shell-cuenta-nombre small { color: var(--texto-noche); }
+.marco-juego .shell-avatar { background: var(--acento); color: var(--tinta); border: 2px solid var(--tinta); }
+.marco-juego .shell-cuenta-panel { color: var(--tinta); }
+/* Con poco ancho la cuenta queda en su avatar; el botón conserva su nombre accesible. */
+@media (max-width: 1365px) {
+  .marco-juego .shell-cuenta-nombre { display: none; }
+}
+
+.marco-juego-contenido {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Variante hoja: campo claro; la noche queda solo en el encabezado ── */
+.marco-juego[data-variante="hoja"] { padding: 0 0 16px; background: var(--hueso); color: var(--tinta); }
+.marco-juego[data-variante="hoja"] .marco-juego-cabecera {
+  padding: 12px 18px 14px;
+  border-bottom: 4px solid var(--tinta);
+  background: var(--noche);
+  color: var(--papel);
+}
+.marco-juego[data-variante="hoja"] .marco-juego-contenido { display: block; }
+.marco-juego-hoja {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 18px clamp(16px, 3vw, 36px) 28px;
+  color: var(--tinta);
+}
+.marco-juego[data-variante="hoja"] .marco-juego-pie { padding: 0 clamp(16px, 3vw, 36px); color: var(--gris); }
+.marco-juego-pie {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 16px;
+  max-width: 1280px;
+  width: 100%;
+  margin: 12px auto 0;
+  font-size: var(--tipo-rotulo);
+  color: var(--texto-noche);
+}
+
+/* Selector de contexto (cuentas DOCENTE + ADMIN) sobre la noche. */
+.marco-juego .shell-contexto {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border: var(--contorno) solid var(--tinta);
+  border-radius: 999px;
+  background: var(--color-noche-950);
+  box-shadow: inset 0 0 0 2px var(--color-noche-400);
+}
+.marco-juego .shell-contexto-opcion {
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  color: var(--papel);
+  font-family: var(--fuente-display);
+  font-weight: 800;
+}
+.marco-juego .shell-contexto-opcion[aria-pressed="true"] { background: var(--papel); color: var(--color-noche-700); }
+
+/* ── Migas y cabecera de página ───────────────────────────────────── */
+.migas ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+  font-size: var(--tipo-apoyo);
+  font-weight: 700;
+  color: var(--gris);
+}
+.migas a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--tinta);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.migas [aria-current="page"] { color: var(--tinta); }
+
+.cabecera-pagina {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 32px;
+  margin-bottom: 24px;
+}
+.cabecera-pagina h1 {
+  font-size: clamp(1.875rem, 1.2rem + 2vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--tinta);
+}
+.cabecera-pagina-bajada { margin-top: 6px; font-size: var(--tipo-cuerpo); font-weight: 700; color: var(--gris); }
+.cabecera-pagina-nota { max-width: 44ch; font-size: var(--tipo-cuerpo); line-height: 1.5; color: var(--color-pizarra-700); }
+
+/* Con cinco o seis botones (docente, administración) el menú se compacta y
+   la cuenta queda en su avatar para que el encabezado quepa en una fila. */
+@media (min-width: 900px) and (max-width: 1600px) {
+  .marco-juego:has(.marco-juego-menu[data-items="5"]) .marco-juego-colegio,
+  .marco-juego:has(.marco-juego-menu[data-items="6"]) .marco-juego-colegio { display: none; }
+  .marco-juego:has(.marco-juego-menu[data-items="5"]) .wordmark,
+  .marco-juego:has(.marco-juego-menu[data-items="6"]) .wordmark { --tipo-wordmark: 2rem; }
+  .marco-juego-menu[data-items="5"] ul,
+  .marco-juego-menu[data-items="6"] ul { gap: 8px; }
+  .marco-juego-menu[data-items="5"] .sticker-boton,
+  .marco-juego-menu[data-items="6"] .sticker-boton { min-height: 46px; padding: 0 11px; gap: 6px; font-size: 1rem; }
+  .marco-juego:has(.marco-juego-menu[data-items="5"]) .shell-cuenta-nombre,
+  .marco-juego:has(.marco-juego-menu[data-items="6"]) .shell-cuenta-nombre { display: none; }
+}
+@media (min-width: 900px) and (max-width: 1279px) {
+  .marco-juego:has(.marco-juego-menu[data-items="6"]) .marco-juego-chip-texto span,
+  .marco-juego:has(.marco-juego-menu[data-items="5"]) .marco-juego-chip-texto span { display: none; }
+  .marco-juego-menu[data-items="6"] .sticker-boton svg { display: none; }
+}
+
+/* ── Escritorio angosto y tableta horizontal: el encabezado en una fila ── */
+@media (min-width: 900px) and (max-width: 1180px) {
+  .marco-juego .wordmark { --tipo-wordmark: 2rem; }
+  .marco-juego-escudo { width: 50px; height: 50px; }
+  .marco-juego-colegio { display: none; }
+  .marco-juego-menu ul { gap: 8px; }
+  .marco-juego-menu .sticker-boton { min-height: 46px; padding: 0 12px; font-size: 1rem; }
+}
+/* En el tablero el grupo ya lo nombra el saludo del panel. */
+@media (min-width: 900px) and (max-width: 1180px) {
+  .marco-juego[data-variante="tablero"] .marco-juego-chip[data-chip="grupo"] { display: none; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  .marco-juego-cabecera { gap: 10px; }
+  .marco-juego .wordmark { --tipo-wordmark: 1.75rem; }
+  .marco-juego-escudo { width: 46px; height: 46px; }
+  .marco-juego-menu ul { gap: 6px; }
+  .marco-juego-menu .sticker-boton { padding: 0 9px; gap: 6px; }
+}
+
+/* ── Móvil: el mismo <nav> se fija abajo ──────────────────────────── */
+@media (max-width: 899px) {
+  .marco-juego { padding: 10px 12px calc(96px + env(safe-area-inset-bottom)); }
+  .marco-juego[data-variante="hoja"] { padding: 0 0 calc(96px + env(safe-area-inset-bottom)); }
+  .marco-juego[data-variante="hoja"] .marco-juego-cabecera { padding: 10px 12px; }
+  .marco-juego-cabecera { flex-wrap: nowrap; }
+  .marco-juego .wordmark { --tipo-wordmark: 1.75rem; }
+  .marco-juego-escudo { width: 46px; height: 46px; border-width: 3px; }
+  .marco-juego-colegio { display: none; }
+  .marco-juego-herramientas .marco-juego-chip-texto span { display: none; }
+  .marco-juego-menu {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+    border-top: var(--contorno) solid var(--tinta);
+    background: var(--color-noche-950);
+  }
+  .marco-juego-menu ul { flex-wrap: nowrap; justify-content: space-between; gap: 6px; max-width: 640px; margin: 0 auto; }
+  .marco-juego-menu li { flex: 1; min-width: 0; }
+  .marco-juego-menu .sticker-boton {
+    width: 100%;
+    min-height: 56px;
+    flex-direction: column;
+    gap: 2px;
+    padding: 4px 2px;
+    border-radius: 14px;
+    font-size: 0.75rem;
+    --relieve: 4px;
+  }
+  .marco-juego-menu .sticker-boton span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .marco-juego-hoja { padding: 20px 14px 28px; border-radius: 22px; }
+}
+@media (max-width: 479px) {
+  .marco-juego-herramientas .marco-juego-chip[data-chip="grupo"] { display: none; }
+  /* Con cinco o seis botones, la etiqueta parte en dos líneas antes que cortarse. */
+  .marco-juego-menu .sticker-boton { font-size: 0.6875rem; line-height: 1.05; }
+  .marco-juego-menu .sticker-boton span {
+    white-space: normal;
+    text-overflow: clip;
+    text-align: center;
+    hyphens: manual;
+  }
+}

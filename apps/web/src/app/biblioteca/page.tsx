@@ -1,15 +1,14 @@
 "use client";
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Check, CornerDownLeft, Search } from "lucide-react";
 import { Marco, Migas } from "@/components/friso/marco";
+import { SpriteEscenas } from "@/features/materias/escenas/sprite-escenas";
 import { ValleDeCuentos } from "@/features/biblioteca/components/valle";
 import { Portada, formato } from "@/features/biblioteca/components/portada";
 import {
   TITULOS,
-  TOTAL_TITULOS,
   type Titulo,
   type TipoRecurso,
   type RangoEdad,
@@ -33,6 +32,8 @@ const TIPOS: TipoRecurso[] = ["Libro", "Guía", "Catálogo", "Audiolibro"];
 const EDADES: RangoEdad[] = ["0-5", "6-8", "9-11", "12-13", "+14"];
 const IDIOMAS: Idioma[] = ["Español", "Inglés", "Francés"];
 const POR_PAGINA = 12;
+/* Libros con páginas que la mesa de lectura muestra de frente. */
+const MESA = 4;
 
 /* El índice de búsqueda de una ficha. Se calcula una vez por título y no
    por pulsación: el catálogo no cambia mientras se escribe. */
@@ -86,14 +87,16 @@ export default function Biblioteca() {
     setPagina(0);
   }
 
-  /* Los dos libros con páginas: la mesa de lectura los muestra de frente. */
-  const leibles = LIBROS.map((l) => ({
+  /* La mesa de lectura muestra de frente unos pocos libros con páginas; el
+     resto sigue en los estantes (ya son decenas: la mesa no es un catálogo). */
+  const leibles = LIBROS.slice(0, MESA).map((l) => ({
     libro: l,
     titulo: TITULOS.find((t) => t.id === l.tituloId)!,
   }));
 
   return (
     <Marco>
+      <SpriteEscenas />
       <div className={styles.biblioteca}>
         <Migas pasos={[{ etiqueta: "Hoy", href: "/" }, { etiqueta: "Biblioteca" }]} />
 
@@ -106,7 +109,7 @@ export default function Biblioteca() {
               Biblioteca
             </h1>
             <p className={styles.cifra}>
-              {TOTAL_TITULOS} títulos · español, inglés y francés
+              {TITULOS.length} títulos · español, inglés y francés
             </p>
             <p className={styles.lema}>
               Un valle de cuentos para explorar sin orden: busca por título o
@@ -192,13 +195,9 @@ export default function Biblioteca() {
           {resultados.length === 0 ? (
             /* ESTADO VACÍO QUE ORIENTA — el estante quedó libre, no en blanco */
             <div className={styles.vacio}>
-              <Image
-                src="/images/aventura-lectora-mundo.webp"
-                alt=""
-                width={1000}
-                height={667}
-                sizes="220px"
-              />
+              <svg aria-hidden="true" focusable="false" viewBox="-150 -182 300 216" className={styles.vacioEscena}>
+                <use href="#escena-lectura" />
+              </svg>
               <div>
                 <p className={styles.vacioTitulo}>Este estante quedó vacío</p>
                 <p>
@@ -251,7 +250,9 @@ export default function Biblioteca() {
         <section className={styles.mesa} aria-labelledby="mesa-titulo">
           <div className={styles.mesaCabecera}>
             <h2 id="mesa-titulo">Listos para leer</h2>
-            <span>{leibles.length} obras con páginas digitalizadas</span>
+            <span>
+              {LIBROS.length} obras con páginas digitalizadas{LIBROS.length > MESA ? `; aquí, ${MESA}. Las demás están en los estantes.` : ""}
+            </span>
           </div>
           <ul className={styles.mesaLista}>
             {leibles.map(({ libro, titulo }, i) => (
@@ -298,13 +299,6 @@ export default function Biblioteca() {
           </ul>
         </section>
 
-        <p className={styles.nota}>
-          La obra y su guía docente son recursos hermanos: el vínculo es
-          explícito, no una coincidencia de título. La maqueta muestra{" "}
-          {TITULOS.length} fichas de ejemplo del corpus de {TOTAL_TITULOS}; en
-          producción el listado se pagina en servidor y nunca se cargan cientos
-          de fichas de una vez.
-        </p>
       </div>
     </Marco>
   );

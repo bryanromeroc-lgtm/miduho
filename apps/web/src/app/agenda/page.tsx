@@ -1,6 +1,7 @@
 import { Marco, Migas, Cabecera } from "@/components/friso/marco";
 import { RotuloArea } from "@/components/friso/piezas";
-import { PROGRAMAS, AREAS } from "@/data/demo";
+import { PROGRAMAS } from "@/data/demo";
+import { AREAS } from "@/components/friso/areas";
 import { cn } from "@/lib/utils";
 
 /*
@@ -104,7 +105,7 @@ export default function Agenda() {
                       <span
                         key={j}
                         className="agenda-event mt-1 block rounded-[6px] px-1.5 py-1 text-[10px] leading-[1.25]"
-                        style={{ background: a.plancha, color: "#fff" }}
+                        style={{ background: a.plancha, color: "var(--papel)" }}
                       >
                         <span className="block font-bold">{e.tipo}</span>
                         <span className="block">{e.titulo}</span>

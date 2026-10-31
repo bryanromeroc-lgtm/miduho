@@ -1,0 +1,136 @@
+/* Presentación del desempeño: tarjeta de actividad y pantalla de resultado. */
+
+.ejemplo {
+  display: inline-block;
+  padding: 0 8px;
+  border: 2px solid var(--tinta);
+  border-radius: 999px;
+  background: var(--papel);
+  color: var(--gris);
+  font-size: var(--tipo-rotulo);
+  font-weight: 700;
+}
+
+/* ── Tarjeta ───────────────────────────────────────────────────────── */
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 0 14px;
+  overflow: hidden;
+}
+.tarjetaCabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: var(--contorno) solid var(--tinta);
+  background: var(--cinta);
+}
+.tarjetaNombre {
+  font-family: var(--fuente-display);
+  font-size: var(--tipo-boton-grande);
+  font-weight: 800;
+  line-height: 1.1;
+}
+.tarjetaArea { padding: 0 14px; font-size: var(--tipo-apoyo); font-weight: 700; color: var(--gris); }
+.actividad { font-family: var(--fuente-display); font-size: var(--tipo-boton); font-weight: 800; color: var(--color-pizarra-700); }
+.tarjetaDatos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 14px;
+}
+.sinIntentos { font-size: var(--tipo-apoyo); font-weight: 700; color: var(--gris); }
+.intentos {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--tipo-apoyo);
+  font-weight: 700;
+  color: var(--gris);
+}
+.ficha {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--tinta);
+  border-radius: 50%;
+  background: var(--papel);
+}
+.ficha[data-usada] { background: var(--tinta); }
+.ficha:last-of-type { margin-right: 4px; }
+.empezar { margin: 0 14px; }
+.razon {
+  margin: -2px 14px 0;
+  font-size: var(--tipo-apoyo);
+  color: var(--color-pizarra-700);
+}
+
+/* ── Resultado ─────────────────────────────────────────────────────── */
+.resultado {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 22px 24px;
+  text-align: center;
+}
+.ejemploEsquina { position: absolute; top: 12px; right: 12px; }
+.escenario { position: relative; width: 160px; height: 120px; }
+.avatar {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 92px;
+  translate: -50% 0;
+  overflow: visible;
+}
+@keyframes celebra {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  30% { transform: translateY(-18%) rotate(-6deg); }
+  60% { transform: translateY(-6%) rotate(5deg); }
+}
+.avatar[data-celebra] { animation: celebra 1.1s cubic-bezier(0.3, 1.4, 0.5, 1) 2; }
+.chispas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: var(--acento);
+  stroke: var(--tinta);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+.resultadoTitulo { margin-top: 2px; }
+.resultadoEstrellas { margin: 4px 0; }
+.detalle { max-width: 36ch; font-size: var(--tipo-cuerpo); line-height: 1.45; color: var(--color-pizarra-700); }
+.brilla {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border: var(--contorno) solid var(--tinta);
+  border-radius: 999px;
+  background: var(--acento);
+  box-shadow: 0 3px 0 var(--tinta);
+  font-family: var(--fuente-display);
+  font-weight: 800;
+}
+.quedan { font-size: var(--tipo-apoyo); font-weight: 700; color: var(--gris); }
+.acciones :global(.sticker-boton) { white-space: nowrap; }
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .avatar[data-celebra] { animation: none; }
+}

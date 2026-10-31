@@ -4,8 +4,8 @@
 .valle { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
 
 .cielo { position: absolute; inset: 0; }
-.cielo img { position: absolute; display: block; }
-.sol { top: 10%; right: 5%; width: 54px; height: 54px; filter: drop-shadow(0 6px 14px rgb(219 143 15 / .35)); animation: valleFlota 4.5s ease-in-out infinite; }
+.cielo > svg { position: absolute; display: block; height: auto; }
+.sol { top: 10%; right: 5%; width: 54px; height: 54px; animation: valleFlota 4.5s ease-in-out infinite; }
 .nube { opacity: .85; animation: valleFlota 5.5s ease-in-out infinite; }
 .nubeA { top: 13%; left: 33%; width: 56px; animation-delay: -3.2s; }
 .nubeB { top: 27%; left: 55%; width: 40px; opacity: .7; animation-delay: -1.4s; }

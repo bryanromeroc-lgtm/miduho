@@ -49,3 +49,5 @@ next-env.d.ts
 
 # libros: enlace simbólico a /content/libros (fuera de git)
 /public/libros
+scripts/capturas/capturas.env
+scripts/capturas/servidor.log

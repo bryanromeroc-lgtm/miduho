@@ -20,6 +20,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Escudo } from "@/components/friso/escudo";
+import { MarcoJuego } from "@/components/shell/marco-juego";
 import { useShell } from "@/components/shell/contexto";
 import { MenuCuenta, SelectorContexto } from "@/components/shell/menu-cuenta";
 import { contextoVisible, rutaActiva, rutasPorContexto, textoGrupo, type IdRuta } from "@/lib/navegacion";
@@ -52,7 +53,19 @@ const ICONOS: Record<IdRuta, LucideIcon> = {
   cuenta: CircleUserRound,
 };
 
+/** Laboratorios conserva su shell (la cabina de .cosmos); el resto, el mundo nuevo. */
+function esLaboratorios(pathname: string) {
+  return ["/laboratorios", "/emprendimiento"].some((b) => pathname === b || pathname.startsWith(`${b}/`));
+}
+
 export function Marco({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  if (esLaboratorios(pathname)) return <MarcoLaboratorios>{children}</MarcoLaboratorios>;
+  return <MarcoJuego>{children}</MarcoJuego>;
+}
+
+/* Shell anterior, intacto: solo lo usa Laboratorios. */
+function MarcoLaboratorios({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const datos = useShell();
   const contexto = datos ? contextoVisible(datos.contexto, datos.roles, pathname) : null;
@@ -154,16 +167,14 @@ function ChipGrupo({
    jerarquías profundas observada en la referencia. */
 export function Migas({ pasos }: { pasos: { etiqueta: string; href?: string }[] }) {
   return (
-    <nav aria-label="Ruta de navegación" className="mb-5">
-      <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-gris">
+    <nav aria-label="Ruta de navegación" className="migas">
+      <ol>
         {pasos.map((p, i) => (
           <li key={p.etiqueta} className="flex items-center gap-2">
             {p.href ? (
-              <Link href={p.href} className="underline underline-offset-2 hover:text-tinta">
-                {p.etiqueta}
-              </Link>
+              <Link href={p.href}>{p.etiqueta}</Link>
             ) : (
-              <span className="text-tinta">{p.etiqueta}</span>
+              <span aria-current="page">{p.etiqueta}</span>
             )}
             {i < pasos.length - 1 && <span aria-hidden>›</span>}
           </li>
@@ -173,7 +184,7 @@ export function Migas({ pasos }: { pasos: { etiqueta: string; href?: string }[] 
   );
 }
 
-/* Encabezado de página: titular condensado a la izquierda, nota a la derecha. */
+/* Encabezado de página: título grande a la izquierda, nota a la derecha. */
 export function Cabecera({
   kicker,
   titulo,
@@ -184,16 +195,12 @@ export function Cabecera({
   nota?: string;
 }) {
   return (
-    <div className="page-heading mb-6 flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
+    <div className="cabecera-pagina">
       <div>
-        <h1 className="mt-2.5 font-heading text-[clamp(30px,4vw,44px)] font-bold leading-[1.12] text-tinta">
-          {titulo}
-        </h1>
-        <p className="mt-3 text-[13px] font-semibold text-gris">{kicker}</p>
+        <h1>{titulo}</h1>
+        <p className="cabecera-pagina-bajada">{kicker}</p>
       </div>
-      {nota && (
-        <p className="max-w-[40ch] text-[14px] leading-[1.55] text-gris">{nota}</p>
-      )}
+      {nota && <p className="cabecera-pagina-nota">{nota}</p>}
     </div>
   );
 }

@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(0.5, -0.35, 0.3, 1.35)",
+        "createdAt": "2026-10-31T09:21:11.332Z",
+        "reason": "Salto del avatar: spec avatar-explorador (salto con rebote <=650 ms) y maqueta v11 aprobada por el operador en la puerta 8.7"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(0.3, 1.5, 0.5, 1)",
+        "createdAt": "2026-10-31T09:21:11.342Z",
+        "reason": "Elevación del cromo al pasar el puntero: spec avatar-explorador (salto con rebote <=650 ms) y maqueta v11 aprobada por el operador en la puerta 8.7"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(0.3, 1.6, 0.5, 1)",
+        "createdAt": "2026-10-31T09:21:11.350Z",
+        "reason": "Personaje del cromo y botón de jugar al pasar el puntero: spec avatar-explorador (salto con rebote <=650 ms) y maqueta v11 aprobada por el operador en la puerta 8.7"
+      }
+    ]
+  }
+}

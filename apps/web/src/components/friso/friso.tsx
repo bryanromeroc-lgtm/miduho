@@ -1,4 +1,5 @@
-import { AREAS, type Area } from "@/data/demo";
+import type { Area } from "@/data/demo";
+import { AREAS } from "./areas";
 
 /*
   EL FRISO — la banda de trechos y su regla de horas.

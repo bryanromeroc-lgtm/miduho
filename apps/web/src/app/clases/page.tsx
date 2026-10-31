@@ -45,9 +45,8 @@ export default async function MisClases() {
                           ? `/clases/${clase.id}`
                           : "/biblioteca"
                       }
-                      tono={clase.area ? "tinta" : "area"}
-                      area={clase.area ? undefined : "robotica"}
-                      className="w-full justify-center !rounded-[9px] !px-4 !py-3 !text-[13px]"
+                      tono={clase.area ? "tinta" : "claro"}
+                      className="w-full"
                     >
                       {clase.contenidos.length > 0
                         ? "Entrar a la clase"
@@ -72,13 +71,13 @@ export default async function MisClases() {
                       );
                     })}
                     {libres > 0 && <RanuraLibre />}
-                    <p className="mt-auto border-t border-linea pt-2.5 text-[12px] text-gris">
+                    <p className="mt-auto border-t border-linea pt-2.5 text-[14px] text-gris">
                       {clase.contenidos.length} de {clase.ranuras} puestos ocupados
                     </p>
                   </>
                 ) : (
                   <>
-                    <p className="text-[13px] leading-[1.5] text-gris">
+                    <p className="text-[15px] leading-[1.5] text-gris">
                       Esta banda está vacía. El material no llega solo a la clase: es
                       exactamente el problema que la plataforma existe para resolver.
                     </p>

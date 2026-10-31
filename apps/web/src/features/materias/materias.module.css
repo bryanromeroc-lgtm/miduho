@@ -1,0 +1,586 @@
+/*
+  «Mis materias»: cromo, tablero y panel. Colores por token; la familia de la
+  materia llega por data-familia (--marco, --cinta, --cielo, --rayo, --suelo).
+*/
+
+/* ── Cromo ─────────────────────────────────────────────────────────── */
+.cromo {
+  container-type: inline-size;
+  position: relative;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  background: var(--marco);
+  border: var(--contorno) solid var(--tinta);
+  border-radius: 24px;
+  box-shadow: 0 7px 0 var(--tinta);
+  transition: transform 0.22s cubic-bezier(0.3, 1.5, 0.5, 1), box-shadow 0.15s ease-out;
+}
+.cromo:hover { transform: translateY(-5px); }
+.cromo[data-elegida] {
+  transform: translateY(-3px);
+  box-shadow: 0 0 0 4px var(--acento), 0 0 0 7px var(--tinta), 0 8px 0 7px var(--tinta);
+}
+.cromo[data-elegida]:hover { transform: translateY(-5px); }
+
+.elegir {
+  position: absolute;
+  inset: calc(-1 * var(--contorno));
+  z-index: 4;
+  border: 0;
+  border-radius: 24px;
+  background: transparent;
+  cursor: pointer;
+}
+/* El anillo de foco queda por fuera del anillo de elección. */
+.elegir:focus-visible {
+  outline: 4px solid var(--foco);
+  outline-offset: 10px;
+  border-radius: 30px;
+}
+
+.bisel {
+  position: absolute;
+  inset: 3px;
+  border: 2px solid var(--bisel-luz);
+  border-bottom-color: var(--bisel-sombra);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.escena {
+  position: relative;
+  flex: 1 1 56%;
+  min-height: 0;
+  pointer-events: none;
+}
+.ventana {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: var(--contorno) solid var(--tinta);
+  border-radius: 18px;
+  background: var(--cielo);
+}
+.rayos {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 100%;
+  transition: transform 0.6s ease-out;
+  fill: var(--rayo);
+}
+.resplandor { fill: var(--papel); opacity: 0.35; }
+.cromo:hover .rayos { transform: rotate(10deg) scale(1.08); }
+.suelo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 26%;
+  fill: var(--suelo);
+}
+.sueloBorde { fill: none; stroke: var(--tinta); stroke-width: 2.5; opacity: 0.35; }
+
+/* El personaje se sale del marco: su caja es más alta que la ventana. */
+.personaje {
+  position: absolute;
+  left: -4%;
+  right: -4%;
+  bottom: 4px;
+  width: 108%;
+  height: 128%;
+  overflow: visible;
+  transition: transform 0.3s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+.cromo:hover .personaje { transform: translateY(-7px) scale(1.04); }
+
+.cromo[data-preparacion] .ventana,
+.cromo[data-preparacion] .personaje {
+  filter: saturate(0.25) opacity(0.75);
+}
+
+/* Dominada: un destello recorre la escena. */
+@keyframes destello {
+  0% { background-position: 160% 0; }
+  60%, 100% { background-position: -60% 0; }
+}
+.brillo {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 38%, var(--destello-luz) 48%, var(--destello-oro) 52%, transparent 62%);
+  background-size: 260% 100%;
+  mix-blend-mode: screen;
+  animation: destello 3.6s ease-in-out infinite;
+}
+
+@keyframes latido {
+  0%, 100% { transform: rotate(-8deg) scale(1); }
+  50% { transform: rotate(-8deg) scale(1.08); }
+}
+.nuevo {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 8px 1px 6px;
+  border: var(--contorno) solid var(--tinta);
+  border-radius: 12px;
+  background: var(--acento);
+  color: var(--tinta);
+  box-shadow: 0 3px 0 var(--tinta);
+  font-family: var(--fuente-display);
+  font-size: var(--tipo-rotulo);
+  font-weight: 800;
+  transform: rotate(-8deg);
+  pointer-events: none;
+  animation: latido 1.6s ease-in-out infinite;
+}
+
+/* Nombres largos: escala menor y como mucho tres líneas; el nombre
+   completo sigue en el title, en el nombre accesible y en el panel. */
+.placaTexto {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.placaTexto[data-largo] { font-size: 0.86em; }
+
+
+/* La placa encaja entre la escena y la información. */
+.placa {
+  position: relative;
+  z-index: 2;
+  align-self: center;
+  max-width: calc(100% + 18px);
+  margin: -16px -9px -8px;
+  font-size: clamp(0.8125rem, 10.5cqi, 1.125rem);
+  hyphens: manual;
+  overflow-wrap: normal;
+  pointer-events: none;
+}
+
+.info {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 2px;
+  padding: 14px 10px 8px;
+  border: var(--contorno) solid var(--tinta);
+  border-radius: 16px;
+  background: var(--papel);
+  color: var(--tinta);
+  pointer-events: none;
+}
+/* Reserva el sitio del botón de jugar en la esquina. */
+.info[data-con-jugar] > * { padding-right: 46px; }
+.sigue {
+  font-size: var(--tipo-rotulo);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--gris);
+}
+.sigue strong {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: var(--fuente-display);
+  font-size: clamp(0.875rem, 0.6rem + 0.4vw, 1rem);
+  font-weight: 800;
+  color: var(--tinta);
+}
+.invitacion {
+  min-height: 2.5em;
+  display: flex;
+  align-items: center;
+  font-family: var(--fuente-display);
+  font-size: clamp(0.75rem, 9cqi, 0.875rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-pizarra-700);
+}
+/* Cromo angosto (900–1023 px) sin datos: no hay pie; el botón de jugar,
+   que se nombra «Entrar a {asignatura}», se asienta sobre el marco. */
+@container (max-width: 135px) {
+  .info:has(> .invitacion:only-child) { display: none; }
+  .cromo:has(.info > .invitacion:only-child) .placa { margin-bottom: 30px; }
+}
+
+.preparacion {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--tipo-rotulo);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-pizarra-700);
+}
+.preparacion svg { flex-shrink: 0; color: var(--tinta); }
+
+/* Solo en pantallas angostas (ver «Adaptación»): el avatar quieto en la esquina. */
+.avatarFijo {
+  display: none;
+  position: absolute;
+  top: -30px;
+  right: 6px;
+  z-index: 6;
+  width: 46px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.jugar {
+  position: absolute;
+  right: -8px;
+  bottom: -8px;
+  z-index: 5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cromo,
+  .cromo:hover,
+  .cromo[data-elegida],
+  .cromo[data-elegida]:hover,
+  .rayos,
+  .cromo:hover .rayos,
+  .personaje,
+  .cromo:hover .personaje {
+    transition: none;
+    transform: none;
+  }
+  .brillo,
+  .nuevo { animation: none; }
+}
+
+/* ── Página: tablero + panel, una sola pantalla ────────────────────── */
+.pagina {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 16px;
+}
+
+.tablero {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 18px 18px;
+  overflow: hidden;
+  border: 4px solid var(--tinta);
+  border-radius: 28px;
+  background: var(--sabana);
+  box-shadow: 0 0 0 5px var(--papel), 0 0 0 8px var(--tinta), 0 12px 0 8px var(--color-noche-990);
+  color: var(--tinta);
+}
+.fondo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.titulo {
+  position: relative;
+  align-self: center;
+  margin: 0 auto 14px;
+}
+
+.cuadricula {
+  --gap-col: 16px;
+  --gap-fila: 34px;
+  --pad: 22px;
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  column-gap: var(--gap-col);
+  row-gap: var(--gap-fila);
+  padding-top: var(--pad);
+}
+
+/*
+  El avatar viaja en dos capas del tamaño de la cuadrícula: una se desplaza
+  en horizontal con desaceleración y otra en vertical con rebote. Juntas
+  dibujan la curva del salto sin animar top ni left.
+*/
+.capaX,
+.capaY {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.capaX {
+  z-index: 6;
+  --ancho-col: calc((100% - (var(--cols) - 1) * var(--gap-col)) / var(--cols));
+  translate: calc(var(--col) * (var(--ancho-col) + var(--gap-col)) + 0.84 * var(--ancho-col)) 0;
+  transition: translate 0.65s cubic-bezier(0.3, 0, 0.3, 1);
+}
+.capaY {
+  translate: 0 calc(var(--pad) + var(--fila) * ((100% - var(--pad) - var(--gap-fila)) / 2 + var(--gap-fila)));
+  transition: translate 0.65s cubic-bezier(0.5, -0.35, 0.3, 1.35);
+}
+.viajero {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: max(44px, 4.6%);
+  translate: -50% -78%;
+}
+@keyframes flota {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6%); }
+}
+.flota {
+  display: block;
+  width: 100%;
+  overflow: visible;
+  animation: flota 2.4s ease-in-out infinite;
+}
+
+.vacio {
+  position: relative;
+  max-width: 34ch;
+  margin: auto;
+  padding: 18px 22px;
+  border: var(--contorno) solid var(--tinta);
+  border-radius: 20px;
+  background: var(--papel);
+  box-shadow: 0 6px 0 var(--tinta);
+  font-family: var(--fuente-display);
+  font-size: var(--tipo-boton-grande);
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.paginacion {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 14px;
+}
+.paginaActual {
+  font-family: var(--fuente-display);
+  font-weight: 800;
+}
+
+/* ── Panel ─────────────────────────────────────────────────────────── */
+.panel {
+  flex: 0 0 clamp(228px, 22vw, 300px);
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.explorador { padding: 14px; }
+/* Primer ingreso: el panel invita a elegir, con un anillo amarillo y un
+   latido suave en los avatares (sin movimiento con movimiento reducido). */
+.explorador[data-invitar] { box-shadow: 0 0 0 4px var(--acento), 0 7px 0 4px var(--sombra-solida); }
+.invitar {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 4px 0 10px;
+  padding: 6px 10px;
+  border: 2px solid var(--tinta);
+  border-radius: 12px;
+  background: var(--color-sol-100);
+  font-family: var(--fuente-display);
+  font-size: var(--tipo-apoyo);
+  font-weight: 800;
+  line-height: 1.25;
+}
+.invitar svg { flex-shrink: 0; margin-top: 1px; }
+@keyframes llamar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.explorador[data-invitar] .avatarBoton { animation: llamar 1.4s ease-in-out infinite; }
+.explorador[data-invitar] .avatarOpcion:nth-child(2) .avatarBoton { animation-delay: 0.15s; }
+.explorador[data-invitar] .avatarOpcion:nth-child(3) .avatarBoton { animation-delay: 0.3s; }
+.explorador[data-invitar] .avatarOpcion:nth-child(4) .avatarBoton { animation-delay: 0.45s; }
+.explicacion {
+  margin: 2px 0 10px;
+  font-size: var(--tipo-apoyo);
+  color: var(--gris);
+}
+.avatares {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.avatarOpcion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.avatarBoton {
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 4px;
+  border: var(--contorno) solid var(--tinta);
+  border-radius: 14px;
+  background: var(--color-cielo-50);
+  box-shadow: 0 4px 0 var(--color-noche-990);
+  cursor: pointer;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
+}
+.avatarBoton svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.avatarBoton:hover { transform: translateY(-2px); }
+.avatarBoton:active { transform: translateY(3px); box-shadow: none; }
+.avatarBoton[aria-pressed="true"] {
+  background: var(--color-sol-200);
+  box-shadow: 0 0 0 var(--contorno) var(--acento), 0 4px 0 var(--contorno) var(--tinta);
+}
+.avatarNombre {
+  font-size: var(--tipo-rotulo);
+  font-weight: 700;
+  color: var(--tinta);
+}
+.aviso {
+  margin-top: 10px;
+  font-size: var(--tipo-apoyo);
+  font-weight: 700;
+  color: var(--color-naranja-800);
+}
+
+.elegida {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.elegidaCabecera {
+  padding: 12px 14px 10px;
+  border-bottom: var(--contorno) solid var(--tinta);
+  background: var(--cinta);
+}
+.elegidaNombre { margin-top: 2px; }
+.elegidaCuerpo {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 14px 14px;
+}
+.elegidaTexto {
+  display: flex;
+  gap: 8px;
+  font-size: var(--tipo-cuerpo);
+  line-height: 1.4;
+  color: var(--color-pizarra-700);
+}
+.elegidaMarca { flex-shrink: 0; color: var(--tinta); }
+.cifra {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 2px solid var(--linea);
+  border-radius: 12px;
+  background: var(--hueso);
+  font-size: var(--tipo-apoyo);
+  color: var(--gris);
+}
+.elegidaEstrellas {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--tipo-apoyo);
+  color: var(--gris);
+}
+.elegidaEscena {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border: var(--contorno) solid var(--tinta);
+  border-radius: 16px;
+  background: var(--cielo);
+  overflow: hidden;
+}
+@media (max-height: 759px) {
+  .elegidaEscena { display: none; }
+}
+.elegidaEscena svg { width: 92%; height: 100%; min-height: 0; overflow: visible; }
+.entrar {
+  width: 100%;
+}
+.nota {
+  font-size: var(--tipo-rotulo);
+  color: var(--texto-noche);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .capaX,
+  .capaY,
+  .avatarBoton,
+  .avatarBoton:hover,
+  .avatarBoton:active {
+    transition: none;
+    transform: none;
+  }
+  .flota { animation: none; }
+  .explorador[data-invitar] .avatarBoton { animation: none; }
+}
+
+/* ── Adaptación ────────────────────────────────────────────────────
+   Una pantalla desde 900×640. Por debajo: 2 columnas (1 bajo 420 px),
+   scroll vertical, «Mi explorador» arriba y la materia elegida como hoja
+   inferior fija sobre el menú. 🔶 */
+@media (max-width: 899px), (max-height: 639px) {
+  .pagina { flex-direction: column; flex: none; }
+  .panel { display: contents; }
+  .explorador { order: -1; }
+  .avatares { max-width: 440px; }
+  .tablero { flex: none; overflow: visible; padding: 14px 14px 90px; }
+  .cuadricula {
+    flex: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+    grid-auto-rows: 290px;
+    row-gap: 40px;
+  }
+  .capaX { display: none; }
+  .avatarFijo { display: block; }
+  .elegida {
+    position: sticky;
+    bottom: calc(88px + env(safe-area-inset-bottom));
+    z-index: 30;
+    flex: none;
+  }
+  .elegida { background: transparent; border: 0; box-shadow: none; overflow: visible; }
+  .elegidaCabecera, .elegidaTexto, .cifra, .elegidaEstrellas, .elegidaEscena { display: none; }
+  .elegidaCuerpo { padding: 0; }
+  .entrar { min-height: 56px; }
+  .nota { display: none; }
+}
+@media (max-width: 419px) {
+  .cuadricula { grid-template-columns: minmax(0, 1fr); grid-auto-rows: 330px; }
+}
+@media (max-width: 599px) {
+  .explorador { padding: 10px 12px; }
+  .explorador :global(.tipo-saludo) { font-size: var(--tipo-boton-grande); }
+  .explicacion { margin: 0 0 6px; }
+  .avatares { max-width: 260px; gap: 6px; }
+  .avatarBoton { padding: 2px; border-radius: 12px; }
+}

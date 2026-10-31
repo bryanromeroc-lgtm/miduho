@@ -18,6 +18,15 @@ enum EstadoUsuario {
   INACTIVO
 }
 
+// Personaje que el estudiante elige en «Mi explorador». Preferencia de
+// presentación, no dato personal. Nulo equivale a CASITA. Avatares provisionales 🔶.
+enum AvatarExplorador {
+  CASITA
+  PINO
+  GOTA
+  SOL
+}
+
 model Usuario {
   id             String        @id @default(cuid())
   nombres        String
@@ -31,6 +40,7 @@ model Usuario {
   sesionesRevocadasEn DateTime?
   ultimoContexto String?
   ultimoAcceso   DateTime?
+  avatar         AvatarExplorador?
   creadoEn       DateTime      @default(now())
   actualizadoEn  DateTime      @updatedAt
 

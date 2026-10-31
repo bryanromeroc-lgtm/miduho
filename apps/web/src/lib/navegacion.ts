@@ -43,15 +43,22 @@ const R: Record<IdRuta, RutaNav> = {
   cuenta: { id: "cuenta", href: "/cuenta", etiqueta: "Cuenta" },
 };
 
+// 🔶 «Mis clases» sale del menú del estudiante: su inicio ya lista sus materias.
 const POR_CONTEXTO: Record<ContextoShell, IdRuta[]> = {
-  ESTUDIANTE: ["hoy", "clases", "biblioteca", "laboratorios", "agenda", "cuenta"],
+  ESTUDIANTE: ["hoy", "biblioteca", "laboratorios", "agenda", "cuenta"],
   DOCENTE: ["hoy", "clases", "biblioteca", "laboratorios", "agenda", "mi-curso", "cuenta"],
   ADMIN: ["dashboard", "usuarios", "estudiantes", "estructura", "asignaciones", "cuenta"],
 };
 
+/** El inicio del estudiante es su tablero de materias, no el día de la docente. */
+const ETIQUETA_POR_CONTEXTO: Partial<Record<ContextoShell, Partial<Record<IdRuta, string>>>> = {
+  ESTUDIANTE: { hoy: "Mis materias" },
+};
+
 export function rutasPorContexto(contexto: ContextoShell | null): RutaNav[] {
   if (!contexto) return [R.cuenta];
-  return POR_CONTEXTO[contexto].map((id) => R[id]);
+  const etiquetas = ETIQUETA_POR_CONTEXTO[contexto] ?? {};
+  return POR_CONTEXTO[contexto].map((id) => ({ ...R[id], etiqueta: etiquetas[id] ?? R[id].etiqueta }));
 }
 
 /** Destino inicial de cada contexto: ADMIN entra al Dashboard, el resto a Hoy. */
