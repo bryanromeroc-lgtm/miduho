@@ -16,11 +16,13 @@ datos reales y captura traza Playwright + captura en el primer fallo.
   `~/.cache/ms-playwright`, donde la suite lo detecta automáticamente). No se
   dependen de rutas de otros proyectos ni de otra máquina.
 - `openssl` para generar secretos temporales del smoke.
+- El PostgreSQL de desarrollo levantado (`docker compose -f docker-compose.dev.yml up -d`
+  desde la raíz). Si no escucha en `localhost:5432`, exporta `TEST_DATABASE_URL`.
 
 ## Cómo ejecutar
 
 ```bash
-# 1. Prepara una BD SQLite temporal con migraciones reales + seed + escenario ficticio.
+# 1. Recrea la base PostgreSQL desechable miduho_e2e con migraciones reales + seed + escenario ficticio.
 ./e2e/preparar.sh
 
 # 2. Levanta el servidor contra esa BD.
@@ -31,7 +33,7 @@ cd e2e && source smoke.env && BASE=http://localhost:3113 node smoke.mjs
 ```
 
 `preparar.sh` regenera `smoke.env` en cada ejecución y fija `DATABASE_URL` a la
-BD temporal del smoke (`e2e/smoke.db`); nunca reutiliza un env previo ni hereda
+base desechable del smoke (`miduho_e2e` en el servidor de `TEST_DATABASE_URL`); nunca reutiliza un env previo ni hereda
 `DATABASE_URL` del entorno, de modo que `migrate deploy` y `seed` jamás apuntan a
 una base externa.
 

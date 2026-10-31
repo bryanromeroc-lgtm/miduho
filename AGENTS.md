@@ -23,8 +23,10 @@ miduho/
 ├─ content/             # contenido pesado, FUERA de git
 │  ├─ biblioteca/       #   PDFs fuente (+ LICENCIA.md, versionada)
 │  └─ libros/           #   páginas generadas; apps/web/public/libros es un enlace a esta carpeta
-├─ docs/                # arquitectura, modelo de entidades, plan MVP, software factory, investigación
+├─ deploy/              # Caddyfile, deploy.sh, restore.sh (despliegue con Docker Compose)
+├─ docs/                # arquitectura, operación, modelo de entidades, plan MVP, software factory, investigación
 ├─ openspec/            # cambios y specs (flujo spec-driven, /opsx:*)
+├─ Dockerfile docker-compose.yml docker-compose.dev.yml .env.production.example heroku.yml
 ├─ PRODUCT.md DESIGN.md # producto y sistema de diseño
 ├─ .claude/ .agents/ .hermes/ .impeccable/   # configuración de agentes de IA
 └─ AGENTS.md            # este archivo (CLAUDE.md lo incluye)
@@ -32,20 +34,21 @@ miduho/
 
 ### Dentro de `apps/web/`
 
-- **Stack:** Next.js 16 (App Router), React 19, Tailwind CSS v4, shadcn (base-nova), `@base-ui/react`, `page-flip`, Prisma 7 + SQLite (dev), Auth.js v5, Zod, Vitest.
+- **Stack:** Next.js 16 (App Router, salida `standalone`), React 19, Tailwind CSS v4, shadcn (base-nova), `@base-ui/react`, `page-flip`, Prisma 7 + PostgreSQL 17 (`@prisma/adapter-pg`, en todos los entornos), Auth.js v5, Zod, Vitest.
 - `src/app/` — solo rutas (páginas, layouts, Route Handlers en `api/`). Deben ser delgadas.
 - `src/features/<dominio>/` — componentes y datos de UI de cada dominio (biblioteca, laboratorios, …).
 - `src/components/` — UI compartida: `ui/` (shadcn) y `shell/`.
 - `src/server/` — backend (`import "server-only"`): `db.ts`, `auth/`, `modules/<dominio>/`. **Nunca** se importa desde un Componente Cliente.
 - `src/lib/` — utilidades puras, importables desde cliente y servidor.
-- `prisma/` — esquema, migraciones y seed (datos ficticios).
+- `prisma/` — esquema, migraciones (`migrations/`, línea base PostgreSQL con las reglas de integridad en SQL) y seed (datos ficticios). `migrations-sqlite-archivo/` es solo referencia histórica.
 - `e2e/`, `scripts/` — smoke E2E y scripts de QA/demo.
+- `tests/` — integración (`integracion/`), base de pruebas (`soporte/base-pruebas.ts`: una base PostgreSQL por suite clonada de una plantilla) y carga k6 (`carga/`).
 
-Detalle de capas y decisiones: `docs/arquitectura-backend.md`.
+Detalle de capas y decisiones: `docs/arquitectura-backend.md`. Despliegue, respaldos y restauración: `docs/operacion.md` (§10: demo en Heroku).
 
 ## Verificación antes de dar por hecho un cambio
 
-Desde la raíz (delegan en `apps/web`):
+Desde la raíz (delegan en `apps/web`). `npm test` necesita el PostgreSQL de desarrollo: `docker compose -f docker-compose.dev.yml up -d`.
 
 ```bash
 npm run build    # debe compilar sin errores

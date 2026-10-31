@@ -1,6 +1,6 @@
 # MIDUHO — app web
 
-Plataforma educativa del Colegio Mi Dulce Hogar, construida con Next.js 16, NextAuth y Prisma/SQLite.
+Plataforma educativa del Colegio Mi Dulce Hogar, construida con Next.js 16, NextAuth y Prisma/PostgreSQL.
 
 ## Estado del Incremento 1
 
@@ -16,7 +16,11 @@ La matrícula de estudiantes no forma parte del alcance actual.
 
 ## Acceso local y desde la red
 
+Requiere Docker para el PostgreSQL de desarrollo (guía completa en [`docs/operacion.md`](../../docs/operacion.md)).
+
 ```bash
+docker compose -f ../../docker-compose.dev.yml up -d   # PostgreSQL en 127.0.0.1:5432
+cp .env.example .env                                   # completa AUTH_SECRET y SEED_*
 npm install
 npm run db:migrate
 npm run db:seed

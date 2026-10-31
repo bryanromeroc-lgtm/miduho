@@ -1,0 +1,37 @@
+# Proxy de MIDUHO. Variables (desde .env.production vía docker-compose.yml):
+#   MIDUHO_DOMINIO  dominio o IP con que se entra (p. ej. miduho.colegio.example o 192.168.1.20)
+#   MIDUHO_TLS      un correo  → certificado público de Let's Encrypt (dominio con DNS público)
+#                   internal   → certificado de la CA local de Caddy (servidor en la LAN)
+# Con una dirección de sitio así, Caddy redirige HTTP → HTTPS de forma permanente.
+
+{$MIDUHO_DOMINIO} {
+	tls {$MIDUHO_TLS}
+
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		X-Frame-Options "DENY"
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		-Server
+	}
+
+	# Páginas de los libros: volumen de solo lectura, nunca pasan por la app.
+	handle /libros/* {
+		root * /srv
+		header Cache-Control "public, max-age=2592000, immutable"
+		file_server
+	}
+
+	# Todo lo demás va a Next.js; reverse_proxy envía X-Forwarded-For/Proto/Host.
+	handle {
+		reverse_proxy app:3000
+	}
+
+	log {
+		output stdout
+		format json
+	}
+}

@@ -22,7 +22,7 @@ const saltar = ({ page, pageSize }: Pagina) => ({ skip: (page - 1) * pageSize, t
 
 /**
  * Divide la búsqueda en palabras (máx. 5); cada palabra debe coincidir con
- * alguno de los campos. En SQLite `contains` usa LIKE: ignora mayúsculas solo en ASCII.
+ * alguno de los campos. Las búsquedas usan `mode: "insensitive"` (ILIKE): ignoran mayúsculas.
  */
 export function palabrasBusqueda(q?: string, separadores: RegExp = /\s+/) {
   return (q ?? "").split(separadores).map((p) => p.trim()).filter(Boolean).slice(0, 5);
@@ -160,7 +160,7 @@ export function crearServicioAcademico(db: PrismaClient) {
     async listar(f: Entrada<typeof E.filtroPeriodos>) {
       const where: Prisma.PeriodoWhereInput = {
         ...(f.anioLectivoId ? { anioLectivoId: f.anioLectivoId } : {}),
-        ...(f.q ? { AND: palabrasBusqueda(f.q).map((p) => ({ nombre: { contains: p } })) } : {}),
+        ...(f.q ? { AND: palabrasBusqueda(f.q).map((p) => ({ nombre: { contains: p, mode: "insensitive" } })) } : {}),
       };
       const [data, total] = await Promise.all([
         db.periodo.findMany({
@@ -217,7 +217,7 @@ export function crearServicioAcademico(db: PrismaClient) {
   // ---------------- Grado ----------------
   const grados = {
     async listar(f: Busqueda) {
-      const where: Prisma.GradoWhereInput = f.q ? { AND: palabrasBusqueda(f.q).map((p) => ({ nombre: { contains: p } })) } : {};
+      const where: Prisma.GradoWhereInput = f.q ? { AND: palabrasBusqueda(f.q).map((p) => ({ nombre: { contains: p, mode: "insensitive" } })) } : {};
       const [data, total] = await Promise.all([
         db.grado.findMany({ where, orderBy: { orden: "asc" }, ...saltar(f) }),
         db.grado.count({ where }),
@@ -247,7 +247,7 @@ export function crearServicioAcademico(db: PrismaClient) {
   // ---------------- Área ----------------
   const areas = {
     async listar(f: Busqueda) {
-      const where: Prisma.AreaWhereInput = f.q ? { AND: palabrasBusqueda(f.q).map((p) => ({ nombre: { contains: p } })) } : {};
+      const where: Prisma.AreaWhereInput = f.q ? { AND: palabrasBusqueda(f.q).map((p) => ({ nombre: { contains: p, mode: "insensitive" } })) } : {};
       const [data, total] = await Promise.all([
         db.area.findMany({ where, orderBy: [{ orden: "asc" }, { nombre: "asc" }], ...saltar(f) }),
         db.area.count({ where }),
@@ -296,7 +296,7 @@ export function crearServicioAcademico(db: PrismaClient) {
         ...(f.q
           ? {
               AND: palabrasBusqueda(f.q, /[\s-]+/).map((p) => ({
-                OR: [{ identificador: { contains: p } }, { grado: { nombre: { contains: p } } }],
+                OR: [{ identificador: { contains: p, mode: "insensitive" } }, { grado: { nombre: { contains: p, mode: "insensitive" } } }],
               })),
             }
           : {}),
@@ -368,7 +368,7 @@ export function crearServicioAcademico(db: PrismaClient) {
         ...(f.areaId ? { areaId: f.areaId } : {}),
         ...(f.gradoId ? { grados: { some: { gradoId: f.gradoId } } } : {}),
         ...(f.q
-          ? { AND: palabrasBusqueda(f.q).map((p) => ({ OR: [{ nombre: { contains: p } }, { area: { nombre: { contains: p } } }] })) }
+          ? { AND: palabrasBusqueda(f.q).map((p) => ({ OR: [{ nombre: { contains: p, mode: "insensitive" } }, { area: { nombre: { contains: p, mode: "insensitive" } } }] })) }
           : {}),
       };
       const [data, total] = await Promise.all([
@@ -437,9 +437,9 @@ export function crearServicioAcademico(db: PrismaClient) {
         ...(f.docenteId ? { docenteId: f.docenteId } : {}), ...(f.grupoId ? { grupoId: f.grupoId } : {}),
         ...(f.anioLectivoId ? { anioLectivoId: f.anioLectivoId } : {}), ...(f.estado ? { estado: f.estado } : {}),
         ...(palabras.length ? { AND: palabras.map((p) => ({ OR: [
-          { docente: { nombres: { contains: p } } }, { docente: { apellidos: { contains: p } } },
-          { asignatura: { nombre: { contains: p } } }, { grupo: { identificador: { contains: p } } },
-          { grupo: { grado: { nombre: { contains: p } } } },
+          { docente: { nombres: { contains: p, mode: "insensitive" } } }, { docente: { apellidos: { contains: p, mode: "insensitive" } } },
+          { asignatura: { nombre: { contains: p, mode: "insensitive" } } }, { grupo: { identificador: { contains: p, mode: "insensitive" } } },
+          { grupo: { grado: { nombre: { contains: p, mode: "insensitive" } } } },
         ] })) } : {}),
       };
       const include = { docente: { select: { id: true, nombres: true, apellidos: true } }, asignatura: true, grupo: { include: { grado: true } }, anioLectivo: true, bloques: { orderBy: [{ dia: "asc" as const }, { horaInicio: "asc" as const }] } };

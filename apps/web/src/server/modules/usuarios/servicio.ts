@@ -14,7 +14,7 @@
  * - un año CERRADO es de solo lectura.
  *
  * Recibe Prisma y el servicio de cuentas por parámetro para probarse contra
- * una SQLite temporal con las migraciones reales.
+ * una base PostgreSQL de prueba con las migraciones reales.
  */
 import type { z } from "zod";
 import type { Prisma, PrismaClient } from "@/generated/prisma/client";
@@ -110,7 +110,7 @@ export function crearServicioUsuarios(db: PrismaClient, cuentas: ServicioCuentas
       if (f.q) {
         const palabras = f.q.split(/\s+/).filter(Boolean).slice(0, 5);
         for (const p of palabras) {
-          y.push({ OR: [{ nombres: { contains: p } }, { apellidos: { contains: p } }, { correo: { contains: p } }] });
+          y.push({ OR: [{ nombres: { contains: p, mode: "insensitive" } }, { apellidos: { contains: p, mode: "insensitive" } }, { correo: { contains: p, mode: "insensitive" } }] });
         }
       }
       if (f.rol) y.push({ roles: { some: { rol: { codigo: f.rol } } } });
@@ -362,7 +362,7 @@ export function crearServicioUsuarios(db: PrismaClient, cuentas: ServicioCuentas
       }
       const y: Prisma.UsuarioWhereInput[] = [{ roles: { some: { rol: { codigo: "ESTUDIANTE" } } } }];
       for (const p of (f.q ?? "").split(/\s+/).filter(Boolean).slice(0, 5)) {
-        y.push({ OR: [{ nombres: { contains: p } }, { apellidos: { contains: p } }, { correo: { contains: p } }] });
+        y.push({ OR: [{ nombres: { contains: p, mode: "insensitive" } }, { apellidos: { contains: p, mode: "insensitive" } }, { correo: { contains: p, mode: "insensitive" } }] });
       }
       if (f.estado) y.push({ estado: f.estado });
       const activa = { anioLectivoId: anio.id, finEn: null };

@@ -1,8 +1,3 @@
-import { mkdtempSync, readdirSync, readFileSync, rmSync } from "node:fs";
-import { tmpdir } from "node:os";
-import path from "node:path";
-import { PrismaLibSql } from "@prisma/adapter-libsql";
-import { createClient } from "@libsql/client";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@/generated/prisma/client";
 import { docenteIdSegunAlcance, evaluarAcceso, ROLES_ACADEMICO } from "@/server/http-acceso";
@@ -10,6 +5,7 @@ import { ErrorDominio } from "@/server/errores";
 import * as E from "./esquemas";
 import { dentroDe, ponderacionCompleta, ponderacionExcede, seSolapan, sumaPonderaciones } from "./reglas";
 import { crearServicioAcademico, type ServicioAcademico } from "./servicio";
+import { abrirBasePrueba, type BasePrueba } from "../../../../tests/soporte/base-pruebas";
 import { accionesAnio, campoIntensidad, CUERPO_CIERRE, cuerpoFormulario, type TipoApi } from "@/features/estructura-academica/edicion";
 
 const d = (s: string) => new Date(`${s}T00:00:00.000Z`);
@@ -77,8 +73,8 @@ describe("acceso académico", () => {
   });
 });
 
-// ---------- Integración contra una SQLite temporal con las migraciones reales ----------
-let dir: string;
+// ---------- Integración contra una base PostgreSQL de prueba con las migraciones reales ----------
+let base: BasePrueba;
 let db: PrismaClient;
 let S: ServicioAcademico;
 
@@ -93,25 +89,16 @@ async function codigoDe(p: Promise<unknown>) {
 }
 
 beforeAll(async () => {
-  dir = mkdtempSync(path.join(tmpdir(), "miduho-academico-"));
-  const url = `file:${path.join(dir, "test.db")}`;
-  const raiz = path.resolve(__dirname, "../../../../prisma/migrations");
-  const migrador = createClient({ url });
-  for (const m of readdirSync(raiz).filter((n) => /^\d+_/.test(n)).sort()) {
-    const sql = readFileSync(path.join(raiz, m, "migration.sql"), "utf8");
-    await migrador.executeMultiple(sql);
-  }
-  migrador.close();
-  db = new PrismaClient({ adapter: new PrismaLibSql({ url }) });
+  base = await abrirBasePrueba();
+  db = base.db;
   S = crearServicioAcademico(db);
 });
 
 afterAll(async () => {
-  await db?.$disconnect();
-  rmSync(dir, { recursive: true, force: true });
+  await base?.cerrar();
 });
 
-describe("servicio académico (SQLite temporal)", () => {
+describe("servicio académico (PostgreSQL de prueba)", () => {
   let anioId = "";
   let gradoId = "";
 

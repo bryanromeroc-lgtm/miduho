@@ -46,6 +46,7 @@ export const proxy = auth((request) => {
   return NextResponse.next();
 });
 
+// /api/* queda fuera (cada API autoriza por su cuenta); /api/health es público.
 export const config = {
   matcher: ["/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)"],
 };

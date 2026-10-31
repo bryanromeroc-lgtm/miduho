@@ -3,12 +3,13 @@
  * estudiante–grupo. No representa identidades reales ni contiene datos de menores.
  */
 import "dotenv/config";
-import { PrismaLibSql } from "@prisma/adapter-libsql";
+import { PrismaPg } from "@prisma/adapter-pg";
 import bcrypt from "bcryptjs";
 import { PrismaClient } from "../src/generated/prisma/client";
+import { urlBaseDatos } from "../src/lib/entorno";
 
 const db = new PrismaClient({
-  adapter: new PrismaLibSql({ url: process.env.DATABASE_URL ?? "file:./dev.db" }),
+  adapter: new PrismaPg({ connectionString: urlBaseDatos() }),
 });
 
 async function main() {

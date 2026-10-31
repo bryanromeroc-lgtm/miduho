@@ -2,10 +2,11 @@
 // - Una cuenta mixta DOCENTE+ADMIN para el selector de contexto.
 // - Cinco estudiantes ficticios más en 1°-01 (uno INACTIVO) para «Mi curso».
 // - Un segundo docente con 1°-02 y un estudiante: el docente sembrado NO debe verlos.
-import { PrismaLibSql } from "@prisma/adapter-libsql";
+import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../src/generated/prisma/client";
+import { urlBaseDatos } from "../src/lib/entorno";
 
-const db = new PrismaClient({ adapter: new PrismaLibSql({ url: process.env.DATABASE_URL! }) });
+const db = new PrismaClient({ adapter: new PrismaPg({ connectionString: urlBaseDatos() }) });
 
 async function main() {
   const docente = await db.usuario.findUniqueOrThrow({ where: { correo: "docente@miduho.test" } });

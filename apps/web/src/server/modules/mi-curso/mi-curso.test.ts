@@ -1,12 +1,8 @@
-import { mkdtempSync, readdirSync, readFileSync, rmSync } from "node:fs";
-import { tmpdir } from "node:os";
-import path from "node:path";
-import { PrismaLibSql } from "@prisma/adapter-libsql";
-import { createClient } from "@libsql/client";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@/generated/prisma/client";
 import { ErrorDominio } from "@/server/errores";
 import { crearServicioMiCurso, ordenarBloques, type ServicioMiCurso } from "./servicio";
+import { abrirBasePrueba, type BasePrueba } from "../../../../tests/soporte/base-pruebas";
 
 describe("orden de bloques (lógica pura)", () => {
   it("ordena por día de la semana y luego por hora inicial", () => {
@@ -20,8 +16,8 @@ describe("orden de bloques (lógica pura)", () => {
   });
 });
 
-// ---------- Integración contra SQLite temporal con las migraciones reales ----------
-let dir: string;
+// ---------- Integración contra una base PostgreSQL de prueba con las migraciones reales ----------
+let base: BasePrueba;
 let db: PrismaClient;
 let S: ServicioMiCurso;
 const ids: Record<string, string> = {};
@@ -44,15 +40,8 @@ async function usuario(correo: string, rol: string, estado: "ACTIVO" | "INACTIVO
 }
 
 beforeAll(async () => {
-  dir = mkdtempSync(path.join(tmpdir(), "miduho-micurso-"));
-  const url = `file:${path.join(dir, "test.db")}`;
-  const raiz = path.resolve(__dirname, "../../../../prisma/migrations");
-  const migrador = createClient({ url });
-  for (const m of readdirSync(raiz).filter((n) => /^\d+_/.test(n)).sort()) {
-    await migrador.executeMultiple(readFileSync(path.join(raiz, m, "migration.sql"), "utf8"));
-  }
-  migrador.close();
-  db = new PrismaClient({ adapter: new PrismaLibSql({ url }) });
+  base = await abrirBasePrueba();
+  db = base.db;
   for (const codigo of ["ADMIN", "DOCENTE", "ESTUDIANTE"]) await db.rol.create({ data: { codigo, nombre: codigo } });
   S = crearServicioMiCurso(db);
 
@@ -111,11 +100,10 @@ beforeAll(async () => {
   await db.asociacionEstudianteGrupo.create({
     data: { estudianteId: ids.eHistorico, grupoId: ids.gCerrado, anioLectivoId: cerrado.id, inicioEn: new Date("2025-02-03"), finEn: null },
   });
-}, 90_000); // migrar SQLite desde vacío tarda ~13 s aislado; con la suite en paralelo puede pasar de 30 s
+});
 
 afterAll(async () => {
-  await db?.$disconnect();
-  if (dir) rmSync(dir, { recursive: true, force: true });
+  await base?.cerrar();
 });
 
 describe("listado de grupos del docente", () => {

@@ -1,0 +1,167 @@
+# Stack de producción de MIDUHO. Guía completa: docs/operacion.md.
+# Siempre con el archivo de secretos:
+#   docker compose --env-file .env.production up -d --build
+# (deploy/deploy.sh lo hace por ti, con respaldo previo y chequeo de salud).
+#
+# Orden de arranque: db sana → migrate termina con 0 → app → proxy.
+# Solo `proxy` publica puertos; `db` vive en la red interna `datos`.
+name: miduho
+
+x-logs: &logs
+  logging:
+    driver: json-file
+    options:
+      max-size: "10m"
+      max-file: "5"
+
+x-base-datos: &base-datos
+  POSTGRES_USER: ${POSTGRES_USER:?Falta POSTGRES_USER en .env.production}
+  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Falta POSTGRES_PASSWORD en .env.production}
+  POSTGRES_DB: ${POSTGRES_DB:?Falta POSTGRES_DB en .env.production}
+
+x-url-base-datos: &url-base-datos
+  DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+
+services:
+  proxy:
+    image: caddy:2.11.7-alpine
+    restart: unless-stopped
+    depends_on:
+      app:
+        condition: service_started
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      MIDUHO_DOMINIO: ${MIDUHO_DOMINIO:?Falta MIDUHO_DOMINIO en .env.production}
+      MIDUHO_TLS: ${MIDUHO_TLS:?Falta MIDUHO_TLS en .env.production}
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ${MIDUHO_LIBROS:-./content/libros}:/srv/libros:ro
+      - caddy-datos:/data
+      - caddy-config:/config
+    networks: [web]
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:2019/config/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+    <<: *logs
+
+  app:
+    build:
+      context: .
+      target: runner
+    image: miduho-app:${MIDUHO_VERSION:-local}
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    environment:
+      <<: *url-base-datos
+      HOSTNAME: 0.0.0.0
+      AUTH_SECRET: ${AUTH_SECRET:?Falta AUTH_SECRET en .env.production}
+      AUTH_URL: https://${MIDUHO_DOMINIO}
+      AUTH_TRUST_HOST: "true"
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_SECURE: ${SMTP_SECURE:-false}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      SMTP_FROM: ${SMTP_FROM:-}
+    networks: [web, datos]
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/api/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+    <<: *logs
+
+  # De un solo uso: aplica las migraciones pendientes y termina. Usa la etapa
+  # `builder`, que trae la CLI de Prisma (la imagen final no la incluye).
+  migrate:
+    build:
+      context: .
+      target: builder
+    image: miduho-migrate:${MIDUHO_VERSION:-local}
+    restart: "no"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      <<: *url-base-datos
+      # Solo la primera carga (docs/operacion.md): `… run --rm migrate npx tsx prisma/seed.ts`.
+      SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL:-}
+      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:-}
+    command: ["npx", "prisma", "migrate", "deploy"]
+    networks: [datos]
+    <<: *logs
+
+  db:
+    image: postgres:17.11-alpine
+    restart: unless-stopped
+    environment:
+      <<: *base-datos
+    volumes:
+      - db-datos:/var/lib/postgresql/data
+    networks: [datos]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+    <<: *logs
+
+  # pg_dump programado con rotación 7 diarios / 4 semanales / 6 mensuales.
+  # Escribe en ./respaldos del host (carpeta separada del volumen de PostgreSQL).
+  backup:
+    image: prodrigestivill/postgres-backup-local:17-alpine-d257e5d
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      <<: *base-datos
+      POSTGRES_HOST: db
+      SCHEDULE: ${BACKUP_SCHEDULE:-0 2 * * *}
+      BACKUP_KEEP_DAYS: 7
+      BACKUP_KEEP_WEEKS: 4
+      BACKUP_KEEP_MONTHS: 6
+      BACKUP_ON_START: "FALSE"
+      TZ: ${TZ:-America/Bogota}
+    volumes:
+      - ${MIDUHO_RESPALDOS:-./respaldos}:/backups
+    networks: [datos]
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+    <<: *logs
+
+networks:
+  web:
+  # Sin salida a internet ni puertos publicados: solo app, migrate y backup llegan a db.
+  datos:
+    internal: true
+
+volumes:
+  db-datos:
+  caddy-datos:
+  caddy-config:

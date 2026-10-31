@@ -1,0 +1,20 @@
+# Despliegue de demostración en Heroku (stack container). Guía: docs/operacion.md §10.
+# Producción del colegio: docker-compose.yml + deploy/deploy.sh.
+#
+# `release` corre las migraciones antes de publicar cada versión: si fallan,
+# Heroku no cambia la versión en uso.
+build:
+  docker:
+    web:
+      dockerfile: Dockerfile
+      target: runner
+    release:
+      dockerfile: Dockerfile
+      target: builder
+  config:
+    # URL pública del bucket con content/libros (sin / final). Vacía: sin libros.
+    LIBROS_URL: ""
+release:
+  image: release
+  command:
+    - npx prisma migrate deploy

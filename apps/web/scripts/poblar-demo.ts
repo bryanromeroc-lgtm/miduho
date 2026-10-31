@@ -8,12 +8,13 @@
 import "dotenv/config";
 import { randomInt } from "node:crypto";
 import { writeFileSync } from "node:fs";
-import { PrismaLibSql } from "@prisma/adapter-libsql";
+import { PrismaPg } from "@prisma/adapter-pg";
 import bcrypt from "bcryptjs";
 import { PrismaClient } from "../src/generated/prisma/client";
+import { urlBaseDatos } from "../src/lib/entorno";
 
 const db = new PrismaClient({
-  adapter: new PrismaLibSql({ url: process.env.DATABASE_URL ?? "file:./dev.db" }),
+  adapter: new PrismaPg({ connectionString: urlBaseDatos() }),
 });
 
 const ANIO = 2026;

@@ -3,7 +3,7 @@
  *
  * Verificación independiente de los ciclos de contraseña y la revocación de
  * sesiones (requerimiento §4), desde el servicio real de cuentas contra una
- * SQLite temporal con las migraciones reales:
+ * base PostgreSQL de prueba con las migraciones reales:
  *
  *  - secretos no recuperables: solo hash bcrypt de contraseñas y SHA-256 de
  *    tokens; la contraseña legible del estudiante se entrega una sola vez;
@@ -13,11 +13,6 @@
  *  - revocación inmediata: toda mutación sensible incrementa versionSesion,
  *    que es la fuente de invalidación de los JWT.
  */
-import { mkdtempSync, readdirSync, readFileSync, rmSync } from "node:fs";
-import { tmpdir } from "node:os";
-import path from "node:path";
-import { PrismaLibSql } from "@prisma/adapter-libsql";
-import { createClient } from "@libsql/client";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@/generated/prisma/client";
 import { hashearToken, hashearContrasena, verificarContrasena, VIGENCIA_RESTABLECIMIENTO_MS } from "@/server/auth/contrasena";
@@ -27,6 +22,7 @@ import { ControlIntentos } from "@/server/auth/intentos";
 import { LimiteSolicitudes } from "@/server/auth/limite";
 import { ErrorDominio } from "@/server/errores";
 import { crearServicioUsuarios, type ServicioUsuarios } from "@/server/modules/usuarios/servicio";
+import { abrirBasePrueba, type BasePrueba } from "../soporte/base-pruebas";
 
 async function codigoDe(p: Promise<unknown>) {
   try {
@@ -38,7 +34,7 @@ async function codigoDe(p: Promise<unknown>) {
   return "OK";
 }
 
-let dir: string;
+let base: BasePrueba;
 let db: PrismaClient;
 let C: ServicioCuentas;
 let U: ServicioUsuarios;
@@ -46,15 +42,8 @@ const buzon: { para: string; texto: string }[] = [];
 const reloj = new Date("2026-03-01T12:00:00.000Z");
 
 beforeAll(async () => {
-  dir = mkdtempSync(path.join(tmpdir(), "miduho-qa-seguridad-"));
-  const url = `file:${path.join(dir, "test.db")}`;
-  const raiz = path.resolve(__dirname, "../../prisma/migrations");
-  const migrador = createClient({ url });
-  for (const m of readdirSync(raiz).filter((n) => /^\d+_/.test(n)).sort()) {
-    await migrador.executeMultiple(readFileSync(path.join(raiz, m, "migration.sql"), "utf8"));
-  }
-  migrador.close();
-  db = new PrismaClient({ adapter: new PrismaLibSql({ url }) });
+  base = await abrirBasePrueba();
+  db = base.db;
   for (const codigo of ["ADMIN", "DOCENTE", "ESTUDIANTE"]) await db.rol.create({ data: { codigo, nombre: codigo } });
   C = crearServicioCuentas(db, {
     notificar: async (m) => void buzon.push(m),
@@ -66,8 +55,7 @@ beforeAll(async () => {
 }, 90_000);
 
 afterAll(async () => {
-  await db?.$disconnect();
-  if (dir) rmSync(dir, { recursive: true, force: true });
+  await base?.cerrar();
 });
 
 describe("suite QA · secretos no recuperables", () => {

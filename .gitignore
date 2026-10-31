@@ -9,11 +9,17 @@ node_modules/
 .env
 .env.*
 !.env.example
+!.env.production.example
 
 # Contenido pesado: PDFs fuente y páginas generadas de los libros.
 # Viven fuera de git; en producción se sirven desde almacenamiento de objetos / CDN.
 /content/biblioteca/**/*.pdf
 /content/libros/
+
+# Respaldos de PostgreSQL del stack de producción (deploy/, docker-compose.yml)
+/respaldos/
+# Credenciales ficticias de la prueba de carga (docs/operacion.md §8)
+/carga/
 
 # Salidas de herramientas de navegador y capturas temporales
 /output/

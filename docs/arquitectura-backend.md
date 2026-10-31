@@ -25,15 +25,16 @@
 | Framework | Next.js 16 (App Router) | `next@16.3.4` (ya en `package.json`) |
 | UI | React 19, Tailwind CSS v4, shadcn | ya instalados |
 | Lenguaje | TypeScript (strict) | `strict: true` en `tsconfig.json` |
-| ORM | **Prisma** | a instalar |
-| Base de datos | SQLite (dev local) → PostgreSQL (producción) 🔶 | vía `DATABASE_URL`; ver §3 |
+| ORM | **Prisma 7** | adaptador `@prisma/adapter-pg` sobre `pg` |
+| Base de datos | **PostgreSQL 17** en desarrollo, pruebas y producción | solo vía `DATABASE_URL`, sin valor por defecto |
+| Despliegue | **Docker Compose**: Caddy (HTTPS, `/libros/*`), app standalone, `migrate`, PostgreSQL y respaldos | ver [operacion.md](operacion.md) |
 | Validación | **Zod** | a instalar |
 | Autenticación | **Auth.js v5** (`next-auth@beta`) | ver §5 |
 | Hash de contraseñas | `bcryptjs` | sin dependencia nativa |
 | Envío de correo | Resend / SMTP configurable | para recuperación (HU-02) |
 | Pruebas | Vitest | lógica crítica (RNF-MAN-5) |
 
-> 🔶 **Hospedaje pendiente:** la elección SQLite/PostgreSQL en producción se cierra al decidir el hospedaje (servidor del colegio vs nube). El esquema Prisma es el mismo en ambos; solo cambia `datasource.db.provider` y `DATABASE_URL`.
+> **Actualizado el 2026-10-30** (cambio `preparar-despliegue-produccion`): SQLite quedó retirado. Las migraciones se reiniciaron como `0001_base_postgresql`; las reglas que vivían en triggers de SQLite son `CHECK`, índices únicos parciales y funciones PL/pgSQL con los mismos códigos de error (inventario en `apps/web/prisma/migrations-sqlite-archivo/README.md`). El stack sirve igual para un VPS con dominio público o para un servidor en la LAN del colegio; cuál de los dos sigue pendiente (D-08 🔶).
 
 ---
 
@@ -198,13 +199,14 @@ Los archivos (entregas, recursos, fotos) **no** van en la base: se guardan en di
 
 | Variable | Uso |
 |---|---|
-| `DATABASE_URL` | SQLite dev / PostgreSQL prod |
+| `DATABASE_URL` | `postgresql://…`; obligatoria (la app no arranca sin ella) |
+| `TEST_DATABASE_URL` | servidor PostgreSQL de `npm test` (base de mantenimiento; crea y borra `miduho_test_*`) |
 | `AUTH_SECRET` | firma de sesiones Auth.js (generar con `npx auth secret`) |
-| `AUTH_TRUST_HOST=true` | necesario para Auth.js en entornos locales |
+| `AUTH_TRUST_HOST=true` | necesario para Auth.js en local y detrás del proxy |
 | `SMTP_*` o `RESEND_API_KEY` | envío del correo de recuperación |
-| `NEXTAUTH_URL` | URL base pública |
+| `AUTH_URL` | URL base pública (`https://<dominio>` en producción; la arma `docker-compose.yml`) |
 
-- Nunca secretos en el código ni en el repo (RNF-SEG-7); `.env` en `.gitignore`.
+- Nunca secretos en el código ni en el repo (RNF-SEG-7); `.env` y `.env.production` en `.gitignore`. Plantillas versionadas: `apps/web/.env.example` y `.env.production.example`.
 - Entornos: **Desarrollo** (datos ficticios), **Pruebas** (validación con el colegio, sin datos reales de menores), **Producción** (acceso restringido). Nunca datos reales de menores fuera de producción.
 
 ---
@@ -213,14 +215,14 @@ Los archivos (entregas, recursos, fotos) **no** van en la base: se guardan en di
 
 | Requisito | Cómo se cumple |
 |---|---|
-| HTTPS obligatorio | reverse proxy / hosting con TLS |
+| HTTPS obligatorio | Caddy: certificado automático (Let's Encrypt o `tls internal`), HSTS y redirección HTTP→HTTPS |
 | Hash fuerte + salt | `bcryptjs` |
 | Autorización en servidor | §6 |
 | IDs no adivinables | `cuid()` |
 | Inyección / XSS / CSRF | Prisma parametrizado, escape de salida, tokens de formulario |
 | Límite de intentos | bloqueo temporal de login |
 | Sin secretos en el repo | variables de entorno |
-| Copias de seguridad | backup del DB + restauración probada (op: del hosting 🔶) |
+| Copias de seguridad | `pg_dump` diario con rotación 7/4/6, `deploy/restore.sh` y ensayo mensual ([operacion.md](operacion.md)) |
 
 ---
 
@@ -231,6 +233,7 @@ Antes de dar por hecho cualquier cambio (regla de `AGENTS.md`):
 ```bash
 npm run build   # debe compilar sin errores
 npm run lint    # eslint debe pasar
+npm test        # Vitest contra el PostgreSQL de docker-compose.dev.yml
 ```
 
 Pruebas unitarias (Vitest) sobre la lógica crítica desde el Inc. 1: `permisos.ts` (reglas de AsignacionDocente/acudiente/estudiante), unicidad de asignación docente (RN-10) y suma de ponderaciones (RN-06).
@@ -239,7 +242,7 @@ Pruebas unitarias (Vitest) sobre la lógica crítica desde el Inc. 1: `permisos.
 
 ## 13. Decisiones pendientes 🔶
 
-Hospedaje (nube vs servidor del colegio), SIEE del colegio (bloquea Inc. 5), alcance real (3 vs 14 asignaturas), grado piloto, migración de contenido existente, revisión jurídica de datos de menores (Ley 1581 de 2012). Ninguna bloquea el Incremento 1.
+Hospedaje (VPS vs servidor del colegio; el motor ya es PostgreSQL y el despliegue Docker Compose), SIEE del colegio (bloquea Inc. 5), alcance real (3 vs 14 asignaturas), grado piloto, migración de contenido existente, revisión jurídica de datos de menores (Ley 1581 de 2012). Ninguna bloquea el Incremento 1.
 
 ---
 

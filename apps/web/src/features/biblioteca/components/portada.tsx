@@ -77,6 +77,9 @@ export function Portada({
           fill
           sizes="(max-width: 700px) 40vw, 200px"
           priority={prioridad}
+          // En producción /libros/* lo sirve el proxy desde un volumen aparte y las
+          // páginas ya están en webp al tamaño final: el optimizador no las ve.
+          unoptimized
         />
       </div>
     );
@@ -94,6 +97,7 @@ export function Portada({
               fill
               sizes="(max-width: 700px) 40vw, 200px"
               priority={prioridad}
+              unoptimized
             />
           )}
         </span>

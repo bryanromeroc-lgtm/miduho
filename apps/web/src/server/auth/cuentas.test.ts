@@ -1,8 +1,3 @@
-import { mkdtempSync, readdirSync, readFileSync, rmSync } from "node:fs";
-import { tmpdir } from "node:os";
-import path from "node:path";
-import { PrismaLibSql } from "@prisma/adapter-libsql";
-import { createClient } from "@libsql/client";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@/generated/prisma/client";
 import { ErrorDominio } from "@/server/errores";
@@ -11,6 +6,7 @@ import { celdaCsv, csvCredenciales, generarContrasenaEstudiante, generarContrase
 import { crearServicioCuentas, type ServicioCuentas } from "./cuentas";
 import { esquemaCambioContrasena } from "./esquemas";
 import { LimiteSolicitudes } from "./limite";
+import { abrirBasePrueba, type BasePrueba } from "../../../tests/soporte/base-pruebas";
 
 const politica = (s: string) => s.length >= 10 && /[a-z]/i.test(s) && /[0-9]/.test(s);
 
@@ -70,8 +66,8 @@ describe("esquema de cambio", () => {
   });
 });
 
-// ---------- Integración contra SQLite temporal con las migraciones reales ----------
-let dir: string;
+// ---------- Integración contra una base PostgreSQL de prueba con las migraciones reales ----------
+let base: BasePrueba;
 let db: PrismaClient;
 let S: ServicioCuentas;
 const buzon: { para: string; asunto: string; texto: string }[] = [];
@@ -113,15 +109,8 @@ async function usuario(correo: string, roles: string[], clave = "clave-inicial-1
 let ids: Record<string, string> = {};
 
 beforeAll(async () => {
-  dir = mkdtempSync(path.join(tmpdir(), "miduho-cuentas-"));
-  const url = `file:${path.join(dir, "test.db")}`;
-  const raiz = path.resolve(__dirname, "../../../prisma/migrations");
-  const migrador = createClient({ url });
-  for (const m of readdirSync(raiz).filter((n) => /^\d+_/.test(n)).sort()) {
-    await migrador.executeMultiple(readFileSync(path.join(raiz, m, "migration.sql"), "utf8"));
-  }
-  migrador.close();
-  db = new PrismaClient({ adapter: new PrismaLibSql({ url }) });
+  base = await abrirBasePrueba();
+  db = base.db;
   for (const codigo of ["ADMIN", "DOCENTE", "ESTUDIANTE"]) await db.rol.create({ data: { codigo, nombre: codigo } });
   S = crearServicioCuentas(db, {
     notificar: async (m) => void buzon.push(m),
@@ -166,8 +155,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  await db?.$disconnect();
-  if (dir) rmSync(dir, { recursive: true, force: true });
+  await base?.cerrar();
 });
 
 describe("recuperación por correo", () => {

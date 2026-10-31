@@ -11,8 +11,8 @@
  * contraseñas y SHA-256 para tokens. Los triggers SQL revocan las sesiones al
  * cambiar `hashContrasena` o `estado`.
  *
- * Recibe Prisma y el notificador por parámetro para probarse contra una SQLite
- * temporal y usarse desde el seed (sin `server-only`).
+ * Recibe Prisma y el notificador por parámetro para probarse contra una base
+ * PostgreSQL de prueba y usarse desde el seed (sin `server-only`).
  */
 import type { PrismaClient } from "@/generated/prisma/client";
 import { conflicto, ErrorDominio, noEncontrado } from "@/server/errores";
