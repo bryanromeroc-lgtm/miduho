@@ -13,7 +13,7 @@ build:
       target: builder
   config:
     # URL pública del bucket con content/libros (sin / final). Vacía: sin libros.
-    LIBROS_URL: ""
+    LIBROS_URL: "https://pub-08f69bf99eec4239a87607decfa8de7a.r2.dev"
 release:
   image: release
   command:
