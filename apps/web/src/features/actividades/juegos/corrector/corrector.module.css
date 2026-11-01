@@ -1,0 +1,134 @@
+/*
+  EL CORRECTOR DE LA CARTELERA · objeto del juego 3. La hoja cuadriculada
+  y el salón son ilustraciones generadas para el proyecto (🔶 provisionales).
+  La nota es texto real; cada parte es un botón que se lee como palabra.
+*/
+
+/* 9-slice de la hoja: chinche, cinta y bordes quedan fijos; el centro crece. */
+.hoja {
+  --k: clamp(0.08px, 0.017cqi, 0.16px);
+  --tinta-hoja: #1b2440;
+  --rojo: #b3261e;
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  width: min(88%, 780px);
+  min-height: clamp(140px, 24cqi, 230px);
+  margin-top: clamp(8px, 2.4cqi, 24px);
+  border-style: solid;
+  position: relative;
+  border-width: calc(300 * var(--k)) calc(360 * var(--k)) calc(110 * var(--k)) calc(150 * var(--k));
+  border-image-source: url("/images/juegos/corrector/hoja.webp");
+  border-image-slice: 300 360 110 150 fill;
+  border-image-repeat: stretch;
+  color: var(--tinta-hoja);
+  transform-origin: 50% 0;
+  animation: pega 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+/* La chinche va aparte para que no se estire con la hoja. */
+.chinche {
+  position: absolute;
+  top: calc(-300 * var(--k) + 4 * var(--k));
+  left: 50%;
+  width: calc(190 * var(--k));
+  height: auto;
+  translate: -50% 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+@keyframes pega {
+  from {
+    transform: translateY(-10px) rotate(-1.2deg) scale(0.97);
+    opacity: 0;
+  }
+}
+
+.nota {
+  margin: 0;
+  max-width: 34ch;
+  font-family: var(--fuente-display);
+  font-size: clamp(1.1rem, 0.6rem + 2.3cqi, 1.85rem);
+  font-weight: 600;
+  line-height: 1.55;
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* Cada parte de la nota: se lee como texto, se toca como botón. */
+.parte {
+  display: inline;
+  min-height: 0;
+  padding: 0 2px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  text-decoration: underline dotted 2px color-mix(in oklab, var(--tinta-hoja), transparent 55%);
+  text-underline-offset: 6px;
+  cursor: pointer;
+  transition: background-color 140ms ease-out;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.nota[data-paso="buscar"] .parte:not(:disabled):hover {
+  background: #fff1a8;
+}
+.parte:focus-visible {
+  outline: 3px solid var(--m-tinta);
+  outline-offset: 2px;
+}
+.parte:disabled {
+  cursor: default;
+  text-decoration: none;
+}
+.parte[data-estado="no"] {
+  background: #fde8e4;
+  text-decoration: underline wavy 2px #c4473b;
+}
+
+.marcada {
+  white-space: nowrap;
+}
+.tachado {
+  color: var(--rojo);
+  text-decoration: line-through 3px var(--rojo);
+}
+.nuevo {
+  margin-inline-start: 6px;
+  padding: 0 6px;
+  border-radius: 6px;
+  background: #dcf2e3;
+  color: #145c2e;
+  font-weight: 800;
+  text-decoration: none;
+  animation: escribe 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes escribe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+.hueco {
+  display: inline-block;
+  width: 3.2em;
+  height: 1em;
+  margin-inline-start: 6px;
+  vertical-align: -0.1em;
+  border-bottom: 3px dashed var(--rojo);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hoja,
+  .nuevo {
+    animation: none;
+  }
+  .parte {
+    transition: none;
+  }
+}

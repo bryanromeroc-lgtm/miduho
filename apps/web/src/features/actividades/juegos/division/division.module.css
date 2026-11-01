@@ -1,0 +1,135 @@
+/*
+  EL CAFÉ DE LA FINCA · la galera (dividendo | divisor) sobre la hoja
+  cuadriculada que comparte con el corrector. Las casillas son entradas
+  reales: teclado en pantalla o físico.
+*/
+
+.galera {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-areas:
+    "dividendo divisor"
+    "residuo cociente";
+  column-gap: 0;
+  row-gap: clamp(6px, 1.6cqi, 14px);
+  font-family: var(--fuente-display);
+  font-variant-numeric: tabular-nums;
+  color: #1b2440;
+}
+.dividendo,
+.divisor {
+  font-size: clamp(2rem, 1rem + 5cqi, 3.6rem);
+  font-weight: 800;
+  line-height: 1.1;
+}
+.dividendo {
+  grid-area: dividendo;
+  justify-self: end;
+  padding-inline-end: clamp(10px, 2cqi, 18px);
+}
+.divisor {
+  grid-area: divisor;
+  padding-inline: clamp(10px, 2cqi, 18px) 6px;
+  border-left: 4px solid #1b2440;
+  border-bottom: 4px solid #1b2440;
+}
+.casilla {
+  position: relative;
+  display: grid;
+  gap: 2px;
+  justify-items: center;
+}
+.casilla[data-campo="residuo"] {
+  grid-area: residuo;
+  justify-self: end;
+  padding-inline-end: clamp(10px, 2cqi, 18px);
+}
+.casilla[data-campo="cociente"] {
+  grid-area: cociente;
+  justify-self: start;
+  padding-inline-start: clamp(10px, 2cqi, 18px);
+}
+.rotulo {
+  color: #4a4430;
+  font-family: var(--fuente-cuerpo, inherit);
+  font-size: clamp(0.72rem, 0.55rem + 0.6cqi, 0.9rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.entrada {
+  width: clamp(92px, 20cqi, 160px);
+  min-height: clamp(50px, 9cqi, 70px);
+  padding: 0 10px;
+  border: 3px dashed #8f9cb3;
+  border-radius: 12px;
+  background: rgb(255 255 255 / 0.85);
+  color: #1b2440;
+  font: inherit;
+  font-size: clamp(1.6rem, 0.8rem + 3.6cqi, 2.6rem);
+  font-weight: 800;
+  text-align: center;
+  caret-color: var(--m-acento);
+}
+.casilla[data-activo] .entrada {
+  border-style: solid;
+  border-color: var(--m-acento);
+  background: #fff;
+}
+.entrada:focus-visible {
+  outline: 3px solid var(--m-tinta);
+  outline-offset: 2px;
+}
+.casilla[data-estado="ok"] .entrada {
+  border: 3px solid #2f9a57;
+  background: #dcf2e3;
+  color: #145c2e;
+}
+.casilla[data-estado="no"] .entrada {
+  border: 3px solid #d2574b;
+  background: #fbe4e1;
+  color: #962a22;
+}
+.marca {
+  position: absolute;
+  right: 6px;
+  bottom: clamp(14px, 3cqi, 24px);
+}
+.casilla[data-campo="residuo"] .marca {
+  right: calc(clamp(10px, 2cqi, 18px) + 6px);
+}
+
+.contexto {
+  margin: 0;
+  max-width: 70ch;
+  color: var(--m-suave);
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+.mando {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: center;
+  gap: 16px 28px;
+}
+
+.multiplos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.multiplos li {
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: var(--m-tarjeta);
+  color: var(--m-tinta);
+  font-family: var(--fuente-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}

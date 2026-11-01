@@ -1,0 +1,108 @@
+{
+  "slug": "el-taller-del-bocadillo",
+  "titulo": "El taller del bocadillo",
+  "tipo": "bocadillo",
+  "grado": 5,
+  "instruccion": "En el taller de bocadillo de Vélez, Armi necesita que dos barras queden cortadas igual. Elige el corte común y pinta la misma cantidad de bocadillo.",
+  "tema": "Reducción de fracciones a común denominador con fracciones equivalentes",
+  "contenido": {
+    "rondas": [
+      {
+        "id": "b1",
+        "a": [
+          1,
+          2
+        ],
+        "b": [
+          2,
+          3
+        ],
+        "cortes": [
+          5,
+          6,
+          8
+        ]
+      },
+      {
+        "id": "b2",
+        "a": [
+          2,
+          3
+        ],
+        "b": [
+          3,
+          4
+        ],
+        "cortes": [
+          7,
+          12,
+          9
+        ]
+      },
+      {
+        "id": "b3",
+        "a": [
+          1,
+          4
+        ],
+        "b": [
+          5,
+          6
+        ],
+        "cortes": [
+          10,
+          12,
+          8
+        ]
+      },
+      {
+        "id": "b4",
+        "a": [
+          3,
+          5
+        ],
+        "b": [
+          1,
+          2
+        ],
+        "cortes": [
+          10,
+          7,
+          15
+        ]
+      },
+      {
+        "id": "b5",
+        "a": [
+          2,
+          9
+        ],
+        "b": [
+          1,
+          3
+        ],
+        "cortes": [
+          9,
+          6,
+          12
+        ]
+      },
+      {
+        "id": "b6",
+        "a": [
+          3,
+          4
+        ],
+        "b": [
+          5,
+          8
+        ],
+        "cortes": [
+          8,
+          12,
+          6
+        ]
+      }
+    ]
+  }
+}

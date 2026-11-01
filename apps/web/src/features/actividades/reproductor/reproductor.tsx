@@ -4,6 +4,18 @@ import { ArrowLeft, RotateCcw } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState, type ComponentType } from "react";
 import { estrellasDe } from "@/lib/estrellas";
+import { JuegoAngulos } from "../juegos/angulos/juego";
+import { JuegoBocadillo } from "../juegos/bocadillo/juego";
+import { JuegoCorrector } from "../juegos/corrector/juego";
+import { JuegoDivision } from "../juegos/division/juego";
+import { JuegoJarras } from "../juegos/jarras/juego";
+import { JuegoMultiplos } from "../juegos/multiplos/juego";
+import { JuegoOperaciones } from "../juegos/operaciones/juego";
+import { JuegoPancarta } from "../juegos/pancarta/juego";
+import { JuegoPizarra } from "../juegos/pizarra/juego";
+import { JuegoPorcentaje } from "../juegos/porcentaje/juego";
+import { JuegoRectas } from "../juegos/rectas/juego";
+import { JuegoSello } from "../juegos/sello/juego";
 import { calificarIntento, type ResultadoIntento } from "../tipos/contrato";
 import { definicionDe, nombreTipo } from "../tipos/registro";
 import type { PropsJuego } from "./comun";
@@ -23,6 +35,18 @@ const JUEGOS: Record<string, ComponentType<PropsJuego<any>>> = {
   memoria: Memoria,
   "sopa-letras": SopaLetras,
   "palabra-secreta": PalabraSecreta,
+  pancarta: JuegoPancarta,
+  "pizarra-decimales": JuegoPizarra,
+  corrector: JuegoCorrector,
+  sello: JuegoSello,
+  division: JuegoDivision,
+  bocadillo: JuegoBocadillo,
+  jarras: JuegoJarras,
+  porcentaje: JuegoPorcentaje,
+  multiplos: JuegoMultiplos,
+  operaciones: JuegoOperaciones,
+  rectas: JuegoRectas,
+  angulos: JuegoAngulos,
 };
 
 export type ActividadParaJugar = { slug: string; titulo: string; tipo: string; instruccion: string; contenido: unknown };

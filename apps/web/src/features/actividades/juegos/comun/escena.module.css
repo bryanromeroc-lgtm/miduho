@@ -1,0 +1,139 @@
+/*
+  ESCENA de los juegos de Matemáticas: barra (rondas y controles), escena
+  ilustrada que crece con su contenido (Armi abajo, nunca encima del texto),
+  pregunta, opciones y pista. Cada juego pone su objeto (pancarta, pizarra…)
+  en la primera fila de la escena y su fondo por --fondo.
+*/
+
+.juego {
+  display: grid;
+  gap: 16px;
+}
+
+.barra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px 16px;
+}
+
+/* ---------- Escena ---------- */
+
+.escena {
+  container-type: inline-size;
+  position: relative;
+  display: grid;
+  grid-template-rows: auto minmax(clamp(96px, 22cqi, 190px), 1fr);
+  min-height: clamp(300px, 52cqi, 460px);
+  border-radius: 20px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* El fondo de cada juego llega por --fondo (url) y --fondo-pos. */
+.fondo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--fondo-color, #bfe3f7) var(--fondo) var(--fondo-pos, center) / cover no-repeat;
+}
+
+/* ---------- Armi ---------- */
+
+.armi {
+  align-self: end;
+  justify-self: start;
+  height: clamp(110px, 25cqi, 230px);
+  margin-left: clamp(4px, 3cqi, 40px);
+}
+
+/* ---------- Pregunta, opciones, pista ---------- */
+
+.pregunta {
+  margin: 0;
+  font-family: var(--fuente-display);
+  font-size: clamp(1.2rem, 1rem + 0.8vw, 1.6rem);
+  font-weight: 800;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+.pregunta:focus {
+  outline: none;
+}
+
+.opciones {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+}
+.opciones[data-largas] {
+  grid-template-columns: 1fr;
+}
+.opcion {
+  font-size: 1.15rem;
+}
+.opciones:not([data-largas]) .opcion {
+  justify-content: center;
+  font-family: var(--fuente-display);
+  font-size: clamp(1.35rem, 1.1rem + 0.8vw, 1.7rem);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.pista {
+  display: grid;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: var(--m-fondo);
+  animation: abre 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes abre {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+.pistaTitulo,
+.pistaNota {
+  margin: 0;
+  color: var(--m-tinta);
+  font-weight: 700;
+}
+.pistaNota {
+  color: var(--m-suave);
+  font-weight: 400;
+}
+.periodos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: 8px;
+  margin: 0;
+}
+.periodo {
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--m-tarjeta);
+}
+.periodo dt {
+  color: var(--m-suave);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.periodo dd {
+  margin: 0;
+  color: var(--m-tinta);
+  font-family: var(--fuente-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pista {
+    animation: none;
+  }
+}

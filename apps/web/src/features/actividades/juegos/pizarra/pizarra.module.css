@@ -1,0 +1,164 @@
+/*
+  LA PIZARRA DEL MERCADO · objeto del juego 2. Pizarra y báscula son
+  ilustraciones generadas para el proyecto (🔶 provisionales). El número es
+  texto real en tiza clara sobre el verde de la pizarra (≈ 9:1).
+*/
+
+/* 9-slice: marco y cordeles conservan su forma; el verde crece con el texto. */
+.pizarra {
+  --k: clamp(0.08px, 0.0165cqi, 0.16px);
+  --tiza: #f6f1e3;
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  width: min(90%, 820px);
+  min-height: clamp(130px, 24cqi, 220px);
+  margin-top: clamp(4px, 1.5cqi, 14px);
+  padding: clamp(4px, 1cqi, 10px) 0;
+  border-style: solid;
+  border-width: calc(240 * var(--k)) calc(400 * var(--k)) calc(110 * var(--k));
+  border-image-source: url("/images/juegos/pizarra/pizarra.webp");
+  border-image-slice: 240 400 110 fill;
+  border-image-repeat: stretch;
+  color: var(--tiza);
+  transform-origin: 50% 0;
+  animation: cuelga 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes cuelga {
+  0% {
+    transform: rotate(-1.6deg);
+    opacity: 0;
+  }
+  50% {
+    transform: rotate(0.8deg);
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+  }
+}
+
+.letras {
+  margin: 0;
+  max-width: 32ch;
+  font-family: var(--fuente-display);
+  font-size: clamp(1.05rem, 0.55rem + 2.3cqi, 1.9rem);
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-wrap: balance;
+  letter-spacing: 0.01em;
+}
+
+.cifras {
+  margin: 0;
+  font-family: var(--fuente-display);
+  font-size: clamp(2.4rem, 1rem + 8cqi, 5rem);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.03em;
+}
+
+/* ---------- Modo posición: cifras en tiza ---------- */
+
+.tablero {
+  display: flex;
+  justify-content: center;
+  gap: clamp(3px, 0.8cqi, 8px);
+}
+.casilla {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+.casilla[data-coma],
+.casilla[data-miles] {
+  margin-inline-end: clamp(10px, 2.4cqi, 22px);
+}
+.casilla[data-coma]::after,
+.casilla[data-miles]::after {
+  position: absolute;
+  top: clamp(26px, 5cqi, 44px);
+  right: calc(-1 * clamp(9px, 2cqi, 18px));
+  color: var(--tiza);
+  font-family: var(--fuente-display);
+  font-size: clamp(1.6rem, 1rem + 3cqi, 2.8rem);
+  font-weight: 800;
+  line-height: 1;
+}
+.casilla[data-coma]::after {
+  content: ",";
+}
+.casilla[data-miles]::after {
+  content: ".";
+}
+.cifra {
+  width: clamp(32px, 6.4cqi, 62px);
+  height: clamp(52px, 9cqi, 76px);
+  padding: 0;
+  border: 2px dashed rgb(246 241 227 / 0.55);
+  border-radius: 12px;
+  background: rgb(255 255 255 / 0.06);
+  color: var(--tiza);
+  font-family: var(--fuente-display);
+  font-size: clamp(1.6rem, 0.6rem + 4.4cqi, 3.1rem);
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease-out,
+    transform 160ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cifra:not(:disabled):hover {
+  background: rgb(255 255 255 / 0.16);
+  transform: translateY(-2px);
+}
+.cifra:focus-visible {
+  outline: 3px solid #ffd45c;
+  outline-offset: 2px;
+}
+.cifra:disabled {
+  cursor: default;
+}
+.cifra[data-estado="ok"] {
+  border: 3px solid #8fe0a8;
+  background: rgb(143 224 168 / 0.2);
+}
+.cifra[data-estado="no"] {
+  border: 3px solid #ff9a8c;
+  background: rgb(255 154 140 / 0.16);
+  text-decoration: line-through 3px;
+}
+.rotulo {
+  color: #fff3c4;
+  font-size: clamp(0.66rem, 0.45rem + 0.8cqi, 0.85rem);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+/* ---------- Suelo: Armi y la báscula ---------- */
+
+.suelo {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  padding-inline-end: clamp(8px, 4cqi, 48px);
+}
+.bascula {
+  width: auto;
+  height: clamp(70px, 15cqi, 150px);
+  margin-bottom: clamp(4px, 1.2cqi, 12px);
+  user-select: none;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pizarra {
+    animation: none;
+  }
+  .cifra {
+    transition: none;
+  }
+}

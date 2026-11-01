@@ -1,0 +1,173 @@
+/*
+  EL SELLO DE LA VERDAD · letrero de madera (9-slice, ilustración generada
+  🔶 provisional), figura para contar y dos sellos grandes. La estampa es
+  texto real decorativo: la respuesta también queda en el aviso.
+*/
+
+.letrero {
+  --k: clamp(0.08px, 0.017cqi, 0.16px);
+  --tinta-madera: #2b1a0c;
+  position: relative;
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  width: min(90%, 820px);
+  min-height: clamp(140px, 24cqi, 230px);
+  margin-top: clamp(4px, 1.5cqi, 14px);
+  padding: clamp(10px, 2.4cqi, 18px) 0 clamp(6px, 1.4cqi, 12px);
+  border-style: solid;
+  border-width: calc(var(--arriba, 340) * var(--k)) calc(var(--lado, 380) * var(--k)) calc(var(--abajo, 200) * var(--k));
+  border-image-source: url("/images/juegos/sello/letrero.webp");
+  border-image-slice: var(--arriba, 340) var(--lado, 380) var(--abajo, 200) fill;
+  border-image-repeat: stretch;
+  color: var(--tinta-madera);
+  transform-origin: 50% 0;
+  animation: cuelga 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes cuelga {
+  0% {
+    transform: rotate(-1.6deg);
+    opacity: 0;
+  }
+  50% {
+    transform: rotate(0.8deg);
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+  }
+}
+
+.contenido {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  gap: clamp(8px, 2cqi, 20px);
+}
+.contenido[data-figura] {
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+}
+@container (max-width: 520px) {
+  .contenido[data-figura] {
+    grid-template-columns: 1fr;
+  }
+}
+
+.afirmacion {
+  margin: 0;
+  max-width: 28ch;
+  font-family: var(--fuente-display);
+  font-size: clamp(1.1rem, 0.55rem + 2.4cqi, 1.95rem);
+  font-weight: 700;
+  line-height: 1.22;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.figura {
+  width: clamp(90px, 20cqi, 170px);
+  height: auto;
+}
+.figura[data-forma] {
+  width: auto;
+  max-width: 100%;
+  height: clamp(64px, 14cqi, 120px);
+}
+.figura[data-forma="barra"] {
+  height: clamp(36px, 7cqi, 60px);
+}
+
+/* La estampa cae girada sobre el letrero. */
+.estampa {
+  position: absolute;
+  left: 2%;
+  bottom: calc(-1 * clamp(14px, 3.4cqi, 30px));
+  padding: 0.15em 0.6em;
+  border: 0.16em solid currentColor;
+  border-radius: 0.4em;
+  font-family: var(--fuente-display);
+  font-size: clamp(1.1rem, 0.6rem + 2.2cqi, 1.9rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  rotate: -12deg;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  animation: estampa 380ms cubic-bezier(0.2, 1.6, 0.4, 1) both;
+}
+.estampa[data-valor="v"] {
+  color: #1d7a3e;
+}
+.estampa[data-valor="f"] {
+  color: #b3261e;
+}
+@keyframes estampa {
+  from {
+    opacity: 0;
+    scale: 1.8;
+  }
+}
+
+/* ---------- Sellos (botones) ---------- */
+
+.sellos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 64px;
+  padding: 10px 18px;
+  border: 3px solid var(--borde);
+  border-radius: 18px;
+  background: var(--fondo-boton);
+  color: var(--tinta);
+  font-family: var(--fuente-display);
+  font-size: clamp(1.25rem, 1rem + 0.8vw, 1.6rem);
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease-out,
+    transform 160ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.boton[data-valor="v"] {
+  --borde: #2f9a57;
+  --fondo-boton: #e7f6ec;
+  --tinta: #145c2e;
+}
+.boton[data-valor="f"] {
+  --borde: #d2574b;
+  --fondo-boton: #fdecea;
+  --tinta: #962a22;
+}
+.boton:not(:disabled):hover {
+  transform: translateY(-2px);
+  background: color-mix(in oklab, var(--fondo-boton), var(--borde) 14%);
+}
+.boton:not(:disabled):active {
+  transform: translateY(1px) scale(0.98);
+}
+.boton:focus-visible {
+  outline: 3px solid var(--m-tinta);
+  outline-offset: 3px;
+}
+.boton:disabled {
+  cursor: default;
+}
+.boton:disabled[aria-pressed="false"] {
+  opacity: 0.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .letrero,
+  .estampa {
+    animation: none;
+  }
+  .boton {
+    transition: none;
+  }
+}

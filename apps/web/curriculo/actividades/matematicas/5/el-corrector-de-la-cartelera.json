@@ -1,0 +1,227 @@
+{
+  "slug": "el-corrector-de-la-cartelera",
+  "titulo": "El corrector de la cartelera",
+  "tipo": "corrector",
+  "grado": 5,
+  "instruccion": "Las notas del club de matemáticas tienen un error cada una. Toca la parte equivocada y elige con qué corregirla.",
+  "tema": "Criterios de divisibilidad entre 2, 3, 5, 9 y 10",
+  "contenido": {
+    "notas": [
+      {
+        "id": "n1",
+        "partes": [
+          "Un",
+          "número",
+          "es",
+          "divisible",
+          "entre",
+          "2",
+          "si",
+          "su",
+          "última",
+          "cifra",
+          "es",
+          "impar"
+        ],
+        "error": 11,
+        "opciones": [
+          "par",
+          "cero",
+          "mayor que 5"
+        ],
+        "correcta": 0,
+        "pista": "Piensa en 10, 12, 14 y 16: ¿en qué cifras terminan?",
+        "explicacion": "Los números divisibles entre 2 terminan en 0, 2, 4, 6 u 8: en cifra par.",
+        "cierre": "."
+      },
+      {
+        "id": "n2",
+        "partes": [
+          "Un",
+          "número",
+          "es",
+          "divisible",
+          "entre",
+          "5",
+          "si",
+          "termina",
+          "en",
+          "0",
+          "o",
+          "en",
+          "2"
+        ],
+        "error": 12,
+        "opciones": [
+          "5",
+          "1",
+          "3"
+        ],
+        "correcta": 0,
+        "pista": "Cuenta de 5 en 5: 5, 10, 15, 20… ¿en qué terminan?",
+        "explicacion": "Los múltiplos de 5 terminan en 0 o en 5: 35, 120, 4.005…",
+        "cierre": "."
+      },
+      {
+        "id": "n3",
+        "partes": [
+          "Un",
+          "número",
+          "es",
+          "divisible",
+          "entre",
+          "3",
+          "si",
+          "la",
+          "suma",
+          "de",
+          "sus",
+          "cifras",
+          "es",
+          "divisible",
+          "entre",
+          "2"
+        ],
+        "error": 15,
+        "opciones": [
+          "3",
+          "5",
+          "10"
+        ],
+        "correcta": 0,
+        "pista": "Prueba con 12: 1 + 2 = 3, y 12 ÷ 3 = 4.",
+        "explicacion": "Un número es divisible entre 3 cuando la suma de sus cifras es múltiplo de 3. Por ejemplo, 471: 4 + 7 + 1 = 12.",
+        "cierre": "."
+      },
+      {
+        "id": "n4",
+        "partes": [
+          "Un",
+          "número",
+          "es",
+          "divisible",
+          "entre",
+          "10",
+          "si",
+          "termina",
+          "en",
+          "5"
+        ],
+        "error": 9,
+        "opciones": [
+          "0",
+          "1",
+          "2"
+        ],
+        "correcta": 0,
+        "pista": "Cuenta de 10 en 10: 10, 20, 30…",
+        "explicacion": "Los múltiplos de 10 terminan en 0: 10, 130, 4.500…",
+        "cierre": "."
+      },
+      {
+        "id": "n5",
+        "partes": [
+          "El",
+          "número",
+          "4.518",
+          "es",
+          "divisible",
+          "entre",
+          "9",
+          "porque",
+          "4 + 5 + 1 + 8",
+          "=",
+          "16"
+        ],
+        "error": 10,
+        "opciones": [
+          "18",
+          "17",
+          "9"
+        ],
+        "correcta": 0,
+        "pista": "Vuelve a sumar las cifras con calma, de dos en dos.",
+        "explicacion": "4 + 5 + 1 + 8 = 18, y 18 es múltiplo de 9. Por eso 4.518 es divisible entre 9: 4.518 ÷ 9 = 502.",
+        "cierre": "."
+      },
+      {
+        "id": "n6",
+        "partes": [
+          "El",
+          "número",
+          "735",
+          "no es",
+          "divisible",
+          "entre",
+          "5",
+          "porque",
+          "termina",
+          "en",
+          "5"
+        ],
+        "error": 3,
+        "opciones": [
+          "es",
+          "nunca es",
+          "solo a veces es"
+        ],
+        "correcta": 0,
+        "pista": "¿En qué cifra termina 735? Recuerda la regla del 5.",
+        "explicacion": "735 termina en 5, así que es múltiplo de 5: 735 ÷ 5 = 147.",
+        "cierre": "."
+      },
+      {
+        "id": "n7",
+        "partes": [
+          "Un",
+          "número",
+          "es",
+          "divisible",
+          "entre",
+          "otro",
+          "si",
+          "al",
+          "dividirlos",
+          "el",
+          "residuo",
+          "es",
+          "1"
+        ],
+        "error": 12,
+        "opciones": [
+          "0",
+          "2",
+          "igual al divisor"
+        ],
+        "correcta": 0,
+        "pista": "Piensa en 24 ÷ 6: ¿sobra algo?",
+        "explicacion": "Si el residuo es 0, la división es exacta: 24 ÷ 6 = 4 y no sobra nada.",
+        "cierre": "."
+      },
+      {
+        "id": "n8",
+        "partes": [
+          "El",
+          "número",
+          "2.346",
+          "es",
+          "divisible",
+          "entre",
+          "3",
+          "porque",
+          "termina en cifra par"
+        ],
+        "error": 8,
+        "opciones": [
+          "la suma de sus cifras es 15",
+          "termina en 6",
+          "tiene cuatro cifras"
+        ],
+        "correcta": 0,
+        "pista": "Para el 3 no importa la última cifra: suma todas las cifras.",
+        "explicacion": "2 + 3 + 4 + 6 = 15, y 15 es múltiplo de 3: 2.346 ÷ 3 = 782. Terminar en cifra par sirve para el 2, no para el 3.",
+        "cierre": "."
+      }
+    ]
+  }
+}

@@ -28,9 +28,9 @@ describe("currículo", () => {
     expect(catalogo.errores()).toEqual([]);
   });
 
-  it.each(ASIGNATURAS_QUINTO)("%s tiene cinco actividades de 5.° con al menos tres tipos distintos", (nombre) => {
+  it.each(ASIGNATURAS_QUINTO)("%s tiene al menos cinco actividades de 5.° con al menos tres tipos distintos", (nombre) => {
     const lista = catalogo.de(nombre, 5);
-    expect(lista).toHaveLength(5);
+    expect(lista.length).toBeGreaterThanOrEqual(5);
     expect(new Set(lista.map((a) => a.tipo)).size).toBeGreaterThanOrEqual(3);
   });
 

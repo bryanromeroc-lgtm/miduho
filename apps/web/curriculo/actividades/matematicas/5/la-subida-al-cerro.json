@@ -1,0 +1,40 @@
+{
+  "slug": "la-subida-al-cerro",
+  "titulo": "La subida al cerro",
+  "tipo": "operaciones",
+  "grado": 5,
+  "instruccion": "Armi sube al cerro un escalón por cada operación. Toca la operación que va primero, calcúlala y sigue hasta el resultado.",
+  "tema": "Operaciones combinadas y jerarquía de las operaciones con paréntesis",
+  "contenido": {
+    "expresiones": [
+      {
+        "id": "e1",
+        "expresion": "8 + 4 × 3"
+      },
+      {
+        "id": "e2",
+        "expresion": "20 − 12 ÷ 4"
+      },
+      {
+        "id": "e3",
+        "expresion": "(6 + 9) × 2"
+      },
+      {
+        "id": "e4",
+        "expresion": "5 × 6 − 4 × 3"
+      },
+      {
+        "id": "e5",
+        "expresion": "36 ÷ (3 + 6) + 7"
+      },
+      {
+        "id": "e6",
+        "expresion": "50 − (8 + 2) × 3"
+      },
+      {
+        "id": "e7",
+        "expresion": "7 + 3 × (10 − 4) ÷ 2"
+      }
+    ]
+  }
+}

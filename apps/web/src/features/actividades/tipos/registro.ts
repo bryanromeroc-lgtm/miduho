@@ -3,12 +3,24 @@
  * actividad de `curriculo/actividades/<asignatura>/<grado>/<slug>.json` (D1).
  */
 import { z } from "zod";
+import { angulos } from "../juegos/angulos/tipo";
+import { bocadillo } from "../juegos/bocadillo/tipo";
+import { corrector } from "../juegos/corrector/tipo";
+import { divisionTipo } from "../juegos/division/tipo";
+import { jarras } from "../juegos/jarras/tipo";
+import { multiplos } from "../juegos/multiplos/tipo";
+import { operaciones } from "../juegos/operaciones/tipo";
+import { pancarta } from "../juegos/pancarta/tipo";
+import { pizarraDecimales } from "../juegos/pizarra/tipo";
+import { porcentajeTipo } from "../juegos/porcentaje/tipo";
+import { rectas } from "../juegos/rectas/tipo";
+import { sello } from "../juegos/sello/tipo";
 import type { DefinicionTipoActividad } from "./contrato";
 import { palabraSecreta, sopaLetras } from "./palabras";
 import { completar, concurso, seleccionMultiple } from "./preguntas";
 import { clasificar, emparejar, memoria, ordenar } from "./relaciones";
 
-const DEFINICIONES = [seleccionMultiple, concurso, completar, emparejar, ordenar, clasificar, memoria, sopaLetras, palabraSecreta];
+const DEFINICIONES = [seleccionMultiple, concurso, completar, emparejar, ordenar, clasificar, memoria, sopaLetras, palabraSecreta, pancarta, pizarraDecimales, corrector, sello, divisionTipo, bocadillo, jarras, porcentajeTipo, multiplos, operaciones, rectas, angulos];
 
 function registrar(lista: DefinicionTipoActividad<never, never>[]) {
   const mapa = new Map<string, DefinicionTipoActividad>();

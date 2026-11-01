@@ -1,0 +1,76 @@
+{
+  "slug": "la-jugueria-de-la-plaza",
+  "titulo": "La juguería de la plaza",
+  "tipo": "jarras",
+  "grado": 5,
+  "instruccion": "Armi atiende la juguería. Mira las jarras, suma o resta el jugo y escribe el resultado como fracción.",
+  "tema": "Suma y resta de fracciones con el mismo denominador",
+  "contenido": {
+    "rondas": [
+      {
+        "id": "j1",
+        "denominador": 8,
+        "a": 2,
+        "b": 3,
+        "operacion": "+",
+        "sabor": "lulo"
+      },
+      {
+        "id": "j2",
+        "denominador": 5,
+        "a": 1,
+        "b": 2,
+        "operacion": "+",
+        "sabor": "mora"
+      },
+      {
+        "id": "j3",
+        "denominador": 10,
+        "a": 7,
+        "b": 4,
+        "operacion": "-",
+        "sabor": "maracuya"
+      },
+      {
+        "id": "j4",
+        "denominador": 6,
+        "a": 5,
+        "b": 1,
+        "operacion": "-",
+        "sabor": "mango"
+      },
+      {
+        "id": "j5",
+        "denominador": 12,
+        "a": 3,
+        "b": 4,
+        "operacion": "+",
+        "sabor": "fresa"
+      },
+      {
+        "id": "j6",
+        "denominador": 7,
+        "a": 4,
+        "b": 3,
+        "operacion": "+",
+        "sabor": "guayaba"
+      },
+      {
+        "id": "j7",
+        "denominador": 9,
+        "a": 8,
+        "b": 5,
+        "operacion": "-",
+        "sabor": "lulo"
+      },
+      {
+        "id": "j8",
+        "denominador": 4,
+        "a": 2,
+        "b": 1,
+        "operacion": "+",
+        "sabor": "mora"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "slug": "la-pizarra-del-mercado",
+  "titulo": "La pizarra del mercado",
+  "tipo": "pizarra-decimales",
+  "grado": 5,
+  "instruccion": "En la plaza de mercado, Armi anota en la pizarra cuánto pesa cada fruta. Lee cada número decimal y resuelve lo que te pide.",
+  "tema": "Números decimales: lectura, escritura y valor de décimas, centésimas y milésimas",
+  "contenido": {
+    "rondas": [
+      { "id": "r1", "modo": "letras", "numero": "3,25", "distractores": ["3,025", "32,5"] },
+      { "id": "r2", "modo": "letras", "numero": "0,8", "distractores": ["0,08", "0,008"] },
+      { "id": "r3", "modo": "cifras", "numero": "12,07", "distractores": ["12,7", "12,007"] },
+      { "id": "r4", "modo": "posicion", "numero": "45,362", "posicion": -2 },
+      { "id": "r5", "modo": "letras", "numero": "1508,4", "distractores": ["158,4", "1508,04"] },
+      { "id": "r6", "modo": "cifras", "numero": "7,125", "distractores": ["7,25", "71,25"] },
+      { "id": "r7", "modo": "posicion", "numero": "906,05", "posicion": -1 },
+      { "id": "r8", "modo": "letras", "numero": "21,009", "distractores": ["21,9", "21,09"] }
+    ]
+  }
+}

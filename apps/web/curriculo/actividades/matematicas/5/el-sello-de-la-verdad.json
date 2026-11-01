@@ -1,0 +1,83 @@
+{
+  "slug": "el-sello-de-la-verdad",
+  "titulo": "El sello de la verdad",
+  "tipo": "sello",
+  "grado": 5,
+  "instruccion": "Armi revisa los letreros de la bodega. Lee cada uno y estampa si es verdadero o falso. Las figuras te ayudan a contar.",
+  "tema": "Potencias: cuadrado y cubo de un número",
+  "contenido": {
+    "escena": "bodega",
+    "afirmaciones": [
+      {
+        "id": "a1",
+        "texto": "El cuadrado de 6 es 36.",
+        "verdadera": true,
+        "explicacion": "6² = 6 × 6 = 36: un patio de 6 por 6 tiene 36 baldosas.",
+        "figura": {
+          "tipo": "cuadrado",
+          "lado": 6
+        }
+      },
+      {
+        "id": "a2",
+        "texto": "El cubo de 3 es 9.",
+        "verdadera": false,
+        "explicacion": "3³ = 3 × 3 × 3 = 27 cajitas. 9 es el cuadrado de 3, no su cubo.",
+        "figura": {
+          "tipo": "cubo",
+          "lado": 3
+        }
+      },
+      {
+        "id": "a3",
+        "texto": "En 5², el 5 es la base y el 2 es el exponente.",
+        "verdadera": true,
+        "explicacion": "La base es el número que se multiplica y el exponente dice cuántas veces: 5² = 5 × 5."
+      },
+      {
+        "id": "a4",
+        "texto": "7² se lee «siete al cubo».",
+        "verdadera": false,
+        "explicacion": "7² se lee «siete al cuadrado». «Al cubo» es cuando el exponente es 3, como en 7³."
+      },
+      {
+        "id": "a5",
+        "texto": "4³ = 4 × 3 = 12.",
+        "verdadera": false,
+        "explicacion": "4³ = 4 × 4 × 4 = 64. El exponente no se multiplica por la base: dice cuántas veces se repite la base."
+      },
+      {
+        "id": "a6",
+        "texto": "Un patio cuadrado de 9 baldosas por lado tiene 81 baldosas.",
+        "verdadera": true,
+        "explicacion": "9² = 9 × 9 = 81 baldosas.",
+        "figura": {
+          "tipo": "cuadrado",
+          "lado": 9
+        }
+      },
+      {
+        "id": "a7",
+        "texto": "Una caja en forma de cubo con 2 cajitas por arista tiene 6 cajitas.",
+        "verdadera": false,
+        "explicacion": "2³ = 2 × 2 × 2 = 8 cajitas: 4 abajo y 4 arriba.",
+        "figura": {
+          "tipo": "cubo",
+          "lado": 2
+        }
+      },
+      {
+        "id": "a8",
+        "texto": "El cubo de 10 es 1.000.",
+        "verdadera": true,
+        "explicacion": "10³ = 10 × 10 × 10 = 1.000."
+      },
+      {
+        "id": "a9",
+        "texto": "8² es mayor que 4³.",
+        "verdadera": false,
+        "explicacion": "8² = 64 y 4³ = 64: son iguales, ninguno es mayor."
+      }
+    ]
+  }
+}
