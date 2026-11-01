@@ -1,0 +1,42 @@
+{
+  "slug": "organos-y-sistemas",
+  "titulo": "Órganos y sistemas del cuerpo",
+  "tipo": "emparejar",
+  "grado": 5,
+  "instruccion": "Toca un órgano y luego el sistema del cuerpo al que pertenece.",
+  "tema": "Sistemas del cuerpo humano",
+  "contenido": {
+    "pares": [
+      {
+        "id": "par1",
+        "izquierda": "Corazón",
+        "derecha": "Sistema circulatorio"
+      },
+      {
+        "id": "par2",
+        "izquierda": "Pulmones",
+        "derecha": "Sistema respiratorio"
+      },
+      {
+        "id": "par3",
+        "izquierda": "Estómago",
+        "derecha": "Sistema digestivo"
+      },
+      {
+        "id": "par4",
+        "izquierda": "Cerebro",
+        "derecha": "Sistema nervioso"
+      },
+      {
+        "id": "par5",
+        "izquierda": "Riñones",
+        "derecha": "Sistema excretor"
+      },
+      {
+        "id": "par6",
+        "izquierda": "Fémur",
+        "derecha": "Sistema óseo"
+      }
+    ]
+  }
+}

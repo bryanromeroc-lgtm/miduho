@@ -1,0 +1,79 @@
+{
+  "slug": "mi-municipio-y-mi-pais",
+  "titulo": "Mi municipio y mi país",
+  "tipo": "completar",
+  "grado": 5,
+  "instruccion": "Elige la palabra que completa cada frase sobre Madrid y Colombia.",
+  "tema": "Identidad local y nacional",
+  "contenido": {
+    "frases": [
+      {
+        "id": "f1",
+        "antes": "Madrid es un municipio del departamento de",
+        "despues": ".",
+        "opciones": [
+          "Cundinamarca",
+          "Boyacá",
+          "Antioquia"
+        ],
+        "correcta": "Cundinamarca"
+      },
+      {
+        "id": "f2",
+        "antes": "La capital de Colombia es",
+        "despues": ".",
+        "opciones": [
+          "Bogotá",
+          "Madrid",
+          "Medellín"
+        ],
+        "correcta": "Bogotá"
+      },
+      {
+        "id": "f3",
+        "antes": "Colombia tiene costas en el mar Caribe y en el océano",
+        "despues": ".",
+        "opciones": [
+          "Índico",
+          "Atlántico",
+          "Pacífico"
+        ],
+        "correcta": "Pacífico"
+      },
+      {
+        "id": "f4",
+        "antes": "La Constitución Política de Colombia que nos rige es de",
+        "despues": ".",
+        "opciones": [
+          "1810",
+          "2001",
+          "1991"
+        ],
+        "correcta": "1991"
+      },
+      {
+        "id": "f5",
+        "antes": "Los colores de la bandera de Colombia son amarillo, azul y",
+        "despues": ".",
+        "opciones": [
+          "blanco",
+          "verde",
+          "rojo"
+        ],
+        "correcta": "rojo"
+      },
+      {
+        "id": "f6",
+        "antes": "El 20 de julio celebramos el Día de la",
+        "despues": ".",
+        "opciones": [
+          "Independencia",
+          "Raza",
+          "Familia"
+        ],
+        "correcta": "Independencia",
+        "explicacion": "Recuerda el 20 de julio de 1810."
+      }
+    ]
+  }
+}

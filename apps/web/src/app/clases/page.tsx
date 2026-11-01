@@ -23,7 +23,7 @@ export default async function MisClases() {
       <Cabecera
         kicker={grupo ? `${grupo} · ${DOCENTE.periodo}` : DOCENTE.periodo}
         titulo="Mis clases"
-        nota={`${DOCENTE.clasesACargo} clases a cargo. La maqueta desarrolla ${HOY.length}; ${vacias} está sin material y se ve así en la banda. El plan de estudios completo queda abierto.`}
+        nota={`${DOCENTE.clasesACargo} clases a cargo; ${vacias} está sin material y se ve así en la banda.`}
       />
 
       <Friso>

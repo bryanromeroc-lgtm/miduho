@@ -7,7 +7,7 @@
  * sin tocar el servicio ni la interfaz.
  */
 
-import type { Estrellas } from "@/lib/materias";
+import type { ActividadResumen, Estrellas } from "@/lib/materias";
 
 /** Desempeño del estudiante en una asignatura. Lo alimentará `fundacion-actividades`. */
 export type DesempenoMateria = {
@@ -45,3 +45,57 @@ export const desempenoSinFuente: PuertoDesempeno = {
 export const contenidoSinFuente: PuertoContenidoClase = {
   porAsignatura: async () => new Map(),
 };
+
+/** Actividades asignadas al estudiante en una asignatura de su grupo. Lo alimentará `fundacion-actividades`. */
+export interface PuertoActividadesDeMateria {
+  /** null = fuente aún no conectada; [] = sin asignaciones. */
+  deMateria(estudianteId: string, grupoId: string, asignaturaId: string): Promise<ActividadResumen[] | null>;
+}
+
+/** Sin `fundacion-actividades`: la vista muestra «Aún no hay actividades», nunca actividades inventadas. */
+export const actividadesSinFuente: PuertoActividadesDeMateria = {
+  deMateria: async () => null,
+};
+
+/** Dónde vive el currículo: nombre de la asignatura y orden del grado → actividades del catálogo. */
+export type FuenteCatalogo = {
+  de(asignatura: string, grado: number): { slug: string; titulo: string; tipo: string }[];
+};
+
+type ConsultaCatalogo = {
+  asignatura: { findUnique(a: { where: { id: string }; select: { nombre: true } }): Promise<{ nombre: string } | null> };
+  grupo: {
+    findUnique(a: { where: { id: string }; select: { grado: { select: { orden: true } } } }): Promise<{ grado: { orden: number } } | null>;
+  };
+};
+
+/*
+  🔶 Práctica libre: mientras no exista la asignación de la docente
+  (fundacion-actividades, 4.x), cada actividad del currículo de la asignatura
+  y del grado del grupo se muestra «para jugar», sin fechas ni límite de
+  intentos, y nada se guarda. Al llegar 5.8, este adaptador se reemplaza por
+  el de «mis actividades» sin tocar la vista.
+*/
+export function actividadesDeCatalogo(db: ConsultaCatalogo, catalogo: FuenteCatalogo): PuertoActividadesDeMateria {
+  return {
+    async deMateria(_estudianteId, grupoId, asignaturaId) {
+      const [asignatura, grupo] = await Promise.all([
+        db.asignatura.findUnique({ where: { id: asignaturaId }, select: { nombre: true } }),
+        db.grupo.findUnique({ where: { id: grupoId }, select: { grado: { select: { orden: true } } } }),
+      ]);
+      if (!asignatura || !grupo) return [];
+      return catalogo.de(asignatura.nombre, grupo.grado.orden).map((a) => ({
+        id: a.slug,
+        titulo: a.titulo,
+        tipo: a.tipo,
+        estado: "disponible",
+        estrellas: null,
+        intentosUsados: 0,
+        intentosMax: null,
+        abre: null,
+        cierra: null,
+        href: `/materias/${encodeURIComponent(asignaturaId)}/actividades/${encodeURIComponent(a.slug)}`,
+      }));
+    },
+  };
+}

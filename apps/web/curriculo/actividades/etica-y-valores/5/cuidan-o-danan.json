@@ -1,0 +1,62 @@
+{
+  "slug": "cuidan-o-danan",
+  "titulo": "Acciones que cuidan y que dañan",
+  "tipo": "clasificar",
+  "grado": 5,
+  "instruccion": "Ubica cada acción según cuide o dañe la convivencia en el salón.",
+  "tema": "Convivencia escolar",
+  "contenido": {
+    "categorias": [
+      {
+        "id": "cuida",
+        "nombre": "Cuida la convivencia"
+      },
+      {
+        "id": "dana",
+        "nombre": "Daña la convivencia"
+      }
+    ],
+    "elementos": [
+      {
+        "id": "e1",
+        "texto": "Pedir la palabra",
+        "categoria": "cuida"
+      },
+      {
+        "id": "e2",
+        "texto": "Prestar los colores",
+        "categoria": "cuida"
+      },
+      {
+        "id": "e3",
+        "texto": "Saludar al llegar",
+        "categoria": "cuida"
+      },
+      {
+        "id": "e4",
+        "texto": "Ayudar a recoger",
+        "categoria": "cuida"
+      },
+      {
+        "id": "e5",
+        "texto": "Burlarse de un error",
+        "categoria": "dana"
+      },
+      {
+        "id": "e6",
+        "texto": "Esconder la maleta de otro",
+        "categoria": "dana"
+      },
+      {
+        "id": "e7",
+        "texto": "Dejar a alguien por fuera del juego",
+        "categoria": "dana"
+      },
+      {
+        "id": "e8",
+        "texto": "Empujar en la fila",
+        "categoria": "dana"
+      }
+    ]
+  }
+}

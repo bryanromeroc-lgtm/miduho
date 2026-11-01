@@ -27,7 +27,7 @@ export default async function PaginaAsignaciones({ searchParams }: { searchParam
   const opcionesGrupo = grupos.map((g) => ({ id: g.id, anioLectivoId: g.anioLectivoId, etiqueta: `${g.grado.nombre}-${g.identificador} · ${g.anioLectivo.anio}${g.anioLectivo.estado === "CERRADO" ? " (cerrado)" : ""}` }));
   const opcionesAnio = catalogo.anios.filter((a) => a.estado !== "CERRADO").map((a) => ({ id: a.id, etiqueta: String(a.anio) }));
 
-  return <Marco><Cabecera kicker="Administración" titulo="Asignaciones docentes" nota="Administra la carga docente y sus bloques horarios. Los datos de prueba de MIDUHO son ficticios." />
+  return <Marco><Cabecera kicker="Administración" titulo="Asignaciones docentes" nota="Administra la carga docente y sus bloques horarios." />
     <form method="get" className="admin-filtros asignaciones-filtros" role="search" aria-label="Buscar y filtrar asignaciones">
       <label className="admin-campo admin-campo-ancho">Buscar<input name="q" type="search" defaultValue={valor(sp.q)} placeholder="Docente, asignatura o grupo" maxLength={120} /></label>
       <label className="admin-campo">Docente<select name="docenteId" defaultValue={valor(sp.docenteId)}><option value="">Todos</option>{docentes.map((o) => <option key={o.id} value={o.id}>{o.etiqueta}</option>)}</select></label>

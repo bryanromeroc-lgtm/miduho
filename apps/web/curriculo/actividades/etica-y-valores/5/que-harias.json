@@ -1,0 +1,78 @@
+{
+  "slug": "que-harias",
+  "titulo": "¿Qué harías tú?",
+  "tipo": "seleccion-multiple",
+  "grado": 5,
+  "instruccion": "Lee cada situación y elige la acción que cuida a todos.",
+  "tema": "Convivencia, empatía y toma de decisiones",
+  "contenido": {
+    "preguntas": [
+      {
+        "id": "p1",
+        "enunciado": "Un compañero nuevo está solo en el descanso.",
+        "opciones": [
+          "Contarle a todos que está solo",
+          "Invitarlo a jugar",
+          "Ignorarlo",
+          "Reírse de él"
+        ],
+        "correcta": 1
+      },
+      {
+        "id": "p2",
+        "enunciado": "Encuentras una billetera en el patio.",
+        "opciones": [
+          "Entregarla a un profesor",
+          "Botarla",
+          "Esconderla",
+          "Quedarte con el dinero"
+        ],
+        "correcta": 0
+      },
+      {
+        "id": "p3",
+        "enunciado": "Dos amigos discuten por el balón.",
+        "opciones": [
+          "Proponer turnos para jugar",
+          "Quitarles el balón y salir corriendo",
+          "Apoyar al que grita más",
+          "Gritarles"
+        ],
+        "correcta": 0
+      },
+      {
+        "id": "p4",
+        "enunciado": "Rompiste sin querer el lápiz de una compañera.",
+        "opciones": [
+          "Decir que fue otro",
+          "No decir nada",
+          "Esconder el lápiz",
+          "Pedir disculpas y ofrecer una solución"
+        ],
+        "correcta": 3
+      },
+      {
+        "id": "p5",
+        "enunciado": "Ves que a alguien le dicen apodos que lo hacen sentir mal.",
+        "opciones": [
+          "Apoyarlo y avisar a un adulto",
+          "Reírte también",
+          "Grabarlo con el celular",
+          "Repetir el apodo"
+        ],
+        "correcta": 0
+      },
+      {
+        "id": "p6",
+        "enunciado": "Tu equipo perdió el partido.",
+        "opciones": [
+          "Felicitar al otro equipo",
+          "Dañar el balón",
+          "Culpar a un compañero",
+          "No volver a jugar"
+        ],
+        "correcta": 0
+      }
+    ]
+  }
+}

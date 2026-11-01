@@ -1,0 +1,62 @@
+{
+  "slug": "calidos-y-frios",
+  "titulo": "Colores cálidos y fríos",
+  "tipo": "clasificar",
+  "grado": 5,
+  "instruccion": "Ubica cada color: los cálidos recuerdan el sol y el fuego; los fríos, el agua y el cielo.",
+  "tema": "Gamas de color",
+  "contenido": {
+    "categorias": [
+      {
+        "id": "cal",
+        "nombre": "Cálido"
+      },
+      {
+        "id": "fri",
+        "nombre": "Frío"
+      }
+    ],
+    "elementos": [
+      {
+        "id": "e1",
+        "texto": "Rojo",
+        "categoria": "cal"
+      },
+      {
+        "id": "e2",
+        "texto": "Naranja",
+        "categoria": "cal"
+      },
+      {
+        "id": "e3",
+        "texto": "Amarillo",
+        "categoria": "cal"
+      },
+      {
+        "id": "e4",
+        "texto": "Ocre",
+        "categoria": "cal"
+      },
+      {
+        "id": "e5",
+        "texto": "Azul",
+        "categoria": "fri"
+      },
+      {
+        "id": "e6",
+        "texto": "Verde",
+        "categoria": "fri"
+      },
+      {
+        "id": "e7",
+        "texto": "Violeta",
+        "categoria": "fri"
+      },
+      {
+        "id": "e8",
+        "texto": "Turquesa",
+        "categoria": "fri"
+      }
+    ]
+  }
+}

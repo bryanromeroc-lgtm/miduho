@@ -1,0 +1,870 @@
+/*
+  VISTA DE MATERIA · flat (vistas-de-materia, D5–D8)
+  Planos de color sólidos y espacio; sin sombras, sin relieves, sin contornos
+  de tinta. Los colores salen de las variables --m-* de la materia
+  (tematica/tokens.ts). vista.estilos.test.ts vigila que esto no derive.
+
+  Escala tipográfica (typeset): Baloo 2 para nombre, títulos y botones;
+  Atkinson Hyperlegible Next para el cuerpo. Nada por debajo de 16 px.
+*/
+
+.pagina {
+  --t-nombre: clamp(2rem, 1.1rem + 2.2vw, 3.25rem);
+  --t-titulo: clamp(1.125rem, 0.95rem + 0.45vw, 1.375rem);
+  --t-boton: 1.125rem;
+  --t-cuerpo: 1rem;
+  --radio: 24px;
+  --foco: 3px solid var(--m-tinta);
+  --suave-salida: cubic-bezier(0.16, 1, 0.3, 1);
+
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(min-content, 1fr);
+  min-height: 100dvh;
+  background: var(--m-fondo);
+  color: var(--m-tinta);
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--t-cuerpo);
+  overflow-x: clip;
+}
+
+.pagina ::selection {
+  background: var(--m-banda);
+  color: var(--m-tinta);
+}
+
+.pagina :focus-visible {
+  outline: var(--foco);
+  outline-offset: 3px;
+}
+
+/*
+  Una pantalla sin scroll desde 900×640 (D6). Si un contenido raro no cabe,
+  la página crece y hace scroll: nunca se recorta ni se encima.
+*/
+@media (min-width: 900px) and (min-height: 640px) {
+  .pagina {
+    height: 100dvh;
+    min-height: max-content;
+  }
+}
+
+/* Decoración: ni se toca, ni se selecciona, ni aparece al buscar con Ctrl+F. */
+.marcas,
+.sueltos,
+.escenografia,
+.banda,
+.vacioEscena {
+  user-select: none;
+}
+
+.marcas {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* ---------- Encabezado flat ---------- */
+
+.encabezado {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  min-height: 64px;
+  padding: 10px clamp(16px, 3vw, 32px);
+  background: var(--m-tarjeta);
+}
+
+.saltar {
+  position: absolute;
+  left: 16px;
+  top: -64px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--m-acento);
+  color: var(--m-sobreAcento);
+  font-weight: 700;
+}
+.saltar:focus-visible {
+  top: 10px;
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.escudo {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.wordmark {
+  font-family: var(--fuente-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--m-tinta);
+}
+
+.volver {
+  flex: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 18px 8px 14px;
+  border-radius: 999px;
+  background: var(--m-fondo);
+  color: var(--m-acento);
+  font-family: var(--fuente-display);
+  font-size: var(--t-boton);
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  transition: background-color 160ms ease-out;
+}
+.volver:hover {
+  background: var(--m-banda);
+}
+/* En el reproductor, «a Ciencias naturales» se oculta a la vista en pantallas angostas; el lector lo sigue leyendo. */
+@media (max-width: 560px) {
+  .volverDetalle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+.volver svg {
+  transition: transform 220ms var(--suave-salida);
+}
+.volver:hover svg {
+  transform: translateX(-3px);
+}
+
+/*
+  Herramientas de la muestra (rótulo «Datos de ejemplo» y selector): flotan
+  arriba a la derecha, sobre la escenografía, para que el encabezado sea idéntico al de la vista real.
+*/
+.revision {
+  position: fixed;
+  z-index: 6;
+  top: 76px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  border-radius: 999px;
+  background: var(--m-tarjeta);
+  border: 2px solid var(--m-banda);
+}
+
+.rotulo {
+  white-space: nowrap;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--m-acento);
+  color: var(--m-sobreAcento);
+  font-weight: 700;
+}
+
+.herramientas {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.grupo {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--m-banda);
+  color: var(--m-tinta);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* La cuenta reutiliza MenuCuenta; aquí pierde su sombra y su borde. */
+.herramientas :global(.shell-cuenta-boton) {
+  box-shadow: none;
+  border: 0;
+  background: var(--m-fondo);
+  color: var(--m-tinta);
+}
+.herramientas :global(.shell-avatar) {
+  border: 0;
+  background: var(--m-acento);
+  color: var(--m-sobreAcento);
+}
+.herramientas :global(.shell-cuenta-panel) {
+  box-shadow: none;
+  border: 2px solid var(--m-banda);
+}
+
+/* ---------- Contenido ---------- */
+
+.contenido {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(min-content, 1fr) auto;
+  gap: clamp(12px, 2.2dvh, 24px);
+  width: min(1200px, 100% - 32px);
+  min-height: 0;
+  margin-inline: auto;
+  padding-block: clamp(12px, 2.4dvh, 28px);
+  outline: none;
+}
+
+/* ---------- Cabecera temática ---------- */
+
+.cabecera {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(8px, 2vw, 24px);
+}
+
+.escenografia {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(4px, 1vw, 14px);
+  height: clamp(64px, 12dvh, 112px);
+}
+.escenografia:last-child {
+  justify-content: flex-start;
+}
+
+.decorado {
+  height: 100%;
+  width: auto;
+  aspect-ratio: 1;
+}
+.escenografia:first-child .decorado:first-child {
+  transform: rotate(-6deg) translateY(6%);
+}
+.escenografia:last-child .decorado:last-child {
+  transform: rotate(5deg) translateY(-4%);
+}
+
+.plano {
+  position: relative;
+  min-width: min(560px, 100%);
+  padding: clamp(12px, 2dvh, 20px) clamp(28px, 4vw, 48px) clamp(12px, 1.8dvh, 18px);
+  border-radius: 28px;
+  background: var(--m-tarjeta);
+  text-align: center;
+}
+
+.nombre {
+  margin: 0;
+  font-family: var(--fuente-display);
+  font-size: min(var(--t-nombre), 7dvh);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  color: var(--m-tinta);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+.descripcion {
+  margin: 4px 0 0;
+  font-size: var(--t-cuerpo);
+  line-height: 1.35;
+  color: var(--m-suave);
+}
+
+.cinta {
+  position: absolute;
+  top: -12px;
+  width: 84px;
+  height: 26px;
+}
+.cintaIzq {
+  left: -18px;
+  transform: rotate(-24deg);
+}
+.cintaDer {
+  right: -18px;
+  transform: rotate(22deg);
+}
+
+.chinche {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  translate: -50% 0;
+}
+
+/* ---------- Cuadrícula de tarjetas ---------- */
+
+.cuadricula {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(min-content, 1fr));
+  gap: clamp(14px, 2.4dvh, 26px) clamp(16px, 2vw, 28px);
+  min-height: 0;
+  margin: 0;
+  padding: 10px 0 0;
+  list-style: none;
+}
+
+.celda {
+  display: flex;
+  min-height: 0;
+  animation: entrar 320ms var(--suave-salida) backwards;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+
+.tarjeta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+  border-radius: var(--radio);
+  background: var(--m-tarjeta);
+  color: var(--m-tinta);
+  text-decoration: none;
+  transition:
+    transform 260ms var(--suave-salida),
+    background-color 160ms ease-out;
+}
+.tarjeta[href]:hover {
+  transform: translateY(-4px);
+}
+.tarjeta[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
+.clip {
+  position: absolute;
+  z-index: 1;
+  top: -16px;
+  right: 22px;
+  width: 30px;
+  height: 46px;
+  transform-origin: 50% 12%;
+  transition: transform 320ms var(--suave-salida);
+}
+.tarjeta[href]:hover .clip {
+  transform: rotate(-12deg);
+}
+
+.banda {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: 1 1 0;
+  min-height: 28px;
+  overflow: hidden;
+  border-radius: var(--radio) var(--radio) 0 0;
+  background: var(--m-banda);
+}
+
+.marco {
+  position: absolute;
+  inset: 0 0 auto;
+}
+
+.ilustracion {
+  transition: transform 320ms var(--suave-salida);
+  width: auto;
+  height: min(76%, 112px);
+  max-width: 70%;
+  margin-top: 8px;
+}
+
+.cuerpo {
+  display: grid;
+  gap: 6px;
+  padding: 12px 18px 16px;
+}
+
+.fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 28px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 12px;
+  border-radius: 999px;
+  background: var(--m-banda);
+  color: var(--m-tinta);
+  font-size: var(--t-cuerpo);
+  font-weight: 700;
+  line-height: 1.5;
+}
+.chip[data-estado="disponible"] {
+  background: var(--m-fondo);
+}
+
+.estrellas {
+  display: inline-flex;
+  gap: 2px;
+}
+.estrellas svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--m-banda);
+}
+.estrellas svg[data-llena] {
+  fill: var(--m-acento);
+}
+
+.titulo {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-family: var(--fuente-display);
+  font-size: var(--t-titulo);
+  font-weight: 800;
+  line-height: 1.15;
+  text-wrap: balance;
+  /* Dos líneas reservadas: el chip, las fichas y el botón quedan alineados en toda la fila. */
+  min-height: calc(2 * 1.15em);
+}
+
+.cierre {
+  color: var(--m-tinta);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Intentos: fichas llenas = las que quedan; huecas = las usadas. */
+.intentos {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--m-suave);
+  line-height: 1.3;
+}
+.fichas {
+  display: inline-flex;
+  gap: 4px;
+}
+.ficha {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 2px solid var(--m-acento);
+}
+.ficha[data-queda] {
+  background: var(--m-acento);
+}
+
+.boton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: 4px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--m-banda);
+  color: var(--m-tinta);
+  font-family: var(--fuente-display);
+  font-size: var(--t-boton);
+  font-weight: 800;
+  line-height: 1;
+}
+/* Jugar y Continuar invitan; Repetir y Ver resultado quedan en segundo plano. */
+.boton[data-tipo="principal"] {
+  background: var(--m-acento);
+  color: var(--m-sobreAcento);
+}
+.boton[data-tipo="secundaria"] {
+  background: var(--m-tarjeta);
+  color: var(--m-acento);
+  border: 2px solid var(--m-acento);
+}
+.flecha {
+  transition: transform 220ms var(--suave-salida);
+}
+.tarjeta[href]:hover .flecha {
+  transform: translateX(4px);
+}
+
+/* ---------- Paginador ---------- */
+
+.paginador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.paginaBoton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--m-tarjeta);
+  color: var(--m-acento);
+  font-family: var(--fuente-display);
+  font-size: var(--t-boton);
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+}
+.paginaBoton[href]:hover {
+  background: var(--m-banda);
+}
+.paginaBoton[aria-disabled="true"] {
+  background: transparent;
+  color: var(--m-suave);
+  border: 2px dashed var(--m-banda);
+  cursor: not-allowed;
+}
+
+.paginaActual {
+  margin: 0;
+  white-space: nowrap;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Estado vacío ---------- */
+
+.vacio {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 8px;
+  width: min(640px, 100%);
+  margin: auto;
+  padding: clamp(20px, 4dvh, 40px) 32px;
+  border-radius: 28px;
+  background: var(--m-tarjeta);
+  text-align: center;
+}
+
+.vacioEscena {
+  display: flex;
+  gap: 12px;
+  height: clamp(56px, 11dvh, 96px);
+}
+.vacioPieza {
+  height: 100%;
+  width: auto;
+  aspect-ratio: 1;
+}
+.vacioPieza:nth-child(2) {
+  transform: translateY(-12%);
+}
+
+.vacioTitulo {
+  margin: 0;
+  font-family: var(--fuente-display);
+  font-size: clamp(1.5rem, 1.2rem + 0.8vw, 2rem);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.vacioAccion {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  margin-top: 8px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: var(--m-acento);
+  color: var(--m-sobreAcento);
+  font-family: var(--fuente-display);
+  font-size: var(--t-boton);
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.vacioTexto {
+  max-width: 44ch;
+  margin: 0;
+  color: var(--m-suave);
+  line-height: 1.45;
+}
+
+/* ---------- Primera visita ---------- */
+
+.tarjeta[href]:hover .ilustracion {
+  transform: scale(1.05) rotate(-1.5deg);
+}
+
+.bienvenida {
+  display: flex;
+  flex: 1 1 340px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+  max-width: 560px;
+  padding: 4px 4px 4px 16px;
+  border-radius: 22px;
+  background: var(--m-banda);
+  color: var(--m-tinta);
+  animation: asomar 420ms var(--suave-salida) 300ms backwards;
+}
+
+.bienvenidaTexto {
+  margin: 0;
+  line-height: 1.3;
+}
+
+.bienvenidaBoton {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  min-height: 46px;
+  padding: 6px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--m-tarjeta);
+  color: var(--m-tinta);
+  font-family: var(--fuente-display);
+  font-size: var(--t-boton);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+@keyframes asomar {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+/* ---------- Sueltos: en los márgenes, fuera de la zona de texto ---------- */
+
+.sueltos {
+  position: absolute;
+  inset: 64px 0 0;
+  z-index: -1;
+  display: none;
+  pointer-events: none;
+}
+
+.suelto {
+  position: absolute;
+  width: clamp(56px, 5vw, 84px);
+  height: auto;
+  aspect-ratio: 1;
+  animation: flotar 7s ease-in-out infinite alternate;
+  animation-delay: calc(var(--i, 0) * -1.7s);
+}
+.arribaIzq {
+  left: 1.5%;
+  top: 26%;
+}
+.abajoIzq {
+  left: 2.5%;
+  bottom: 10%;
+}
+.arribaDer {
+  right: 1.5%;
+  top: 34%;
+}
+.abajoDer {
+  right: 2.5%;
+  bottom: 6%;
+}
+
+/* Solo hay margen libre cuando la columna de 1200 px deja aire a los lados. */
+@media (min-width: 1400px) {
+  .sueltos {
+    display: block;
+  }
+}
+
+/* ---------- Movimiento ---------- */
+
+@keyframes entrar {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes flotar {
+  from {
+    transform: translateY(0) rotate(-4deg);
+  }
+  to {
+    transform: translateY(-12px) rotate(4deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .celda,
+  .suelto,
+  .bienvenida {
+    animation: none;
+  }
+  .tarjeta,
+  .clip,
+  .flecha,
+  .volver svg {
+    transition: none;
+  }
+  .tarjeta[href]:hover,
+  .tarjeta[href]:hover .clip,
+  .tarjeta[href]:hover .ilustracion,
+  .tarjeta[href]:hover .flecha,
+  .volver:hover svg {
+    transform: none;
+  }
+}
+
+/* ---------- Pantallas bajas: se compactan la cabecera y la tarjeta ---------- */
+
+@media (max-height: 800px) and (min-width: 900px) {
+  .contenido {
+    gap: 10px;
+    padding-block: 10px;
+  }
+  .cuadricula {
+    row-gap: 14px;
+    padding-top: 6px;
+  }
+  .escenografia {
+    height: 60px;
+  }
+  .plano {
+    padding-block: 10px;
+  }
+  .banda {
+    min-height: 14px;
+  }
+  .cuerpo {
+    gap: 4px;
+    padding: 8px 16px 10px;
+  }
+  .fila {
+    min-height: 26px;
+  }
+  .chip {
+    padding-block: 0;
+  }
+  .boton {
+    margin-top: 2px;
+  }
+}
+
+@media (max-height: 760px) and (min-width: 900px) {
+  .descripcion {
+    display: none;
+  }
+}
+
+@media (max-width: 1180px) {
+  .grupo {
+    display: none;
+  }
+  /* La cuenta queda en su avatar; el botón conserva su nombre accesible. */
+  .herramientas :global(.shell-cuenta-nombre),
+  .herramientas :global(.shell-cuenta-flecha) {
+    display: none;
+  }
+  .herramientas :global(.shell-cuenta-boton) {
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 3px;
+  }
+}
+
+/* ---------- Tableta angosta y móvil: 2 columnas, luego 1, con scroll ---------- */
+
+@media (max-width: 899px) {
+  .titulo {
+    min-height: 0;
+  }
+  .cuadricula {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+  }
+  .banda {
+    flex: 0 0 auto;
+    height: 120px;
+  }
+  .wordmark,
+  .grupo {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .cabecera {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .escenografia {
+    display: none;
+  }
+  .plano {
+    min-width: 0;
+  }
+  .cintaIzq {
+    left: -4px;
+  }
+  .cintaDer {
+    right: -4px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cuadricula {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .encabezado {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .bienvenida {
+    order: 9;
+    flex-basis: 100%;
+    max-width: none;
+  }
+  .volver {
+    padding-inline: 12px 14px;
+  }
+  .paginador {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .paginaActual {
+    order: -1;
+    flex-basis: 100%;
+    text-align: center;
+  }
+  .paginaBoton {
+    padding-inline: 14px;
+  }
+}

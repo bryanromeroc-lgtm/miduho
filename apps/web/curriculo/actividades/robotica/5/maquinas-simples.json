@@ -1,0 +1,78 @@
+{
+  "slug": "maquinas-simples",
+  "titulo": "Concurso de máquinas simples",
+  "tipo": "concurso",
+  "grado": 5,
+  "instruccion": "Responde antes de que se acabe el reloj. Si se acaba, igual puedes responder.",
+  "tema": "Máquinas simples y mecanismos",
+  "contenido": {
+    "segundos": 25,
+    "preguntas": [
+      {
+        "id": "p1",
+        "enunciado": "Un balancín del parque es un ejemplo de…",
+        "opciones": [
+          "Palanca",
+          "Cuña",
+          "Tornillo",
+          "Polea"
+        ],
+        "correcta": 0
+      },
+      {
+        "id": "p2",
+        "enunciado": "La rampa para subir una silla de ruedas es un…",
+        "opciones": [
+          "Imán",
+          "Plano inclinado",
+          "Resorte",
+          "Engranaje"
+        ],
+        "correcta": 1
+      },
+      {
+        "id": "p3",
+        "enunciado": "Para subir un balde a un pozo con una cuerda se usa una…",
+        "opciones": [
+          "Cuña",
+          "Tuerca",
+          "Polea",
+          "Palanca"
+        ],
+        "correcta": 2
+      },
+      {
+        "id": "p4",
+        "enunciado": "El filo de un hacha funciona como una…",
+        "opciones": [
+          "Rampa",
+          "Cuña",
+          "Polea",
+          "Rueda"
+        ],
+        "correcta": 1
+      },
+      {
+        "id": "p5",
+        "enunciado": "Dos ruedas dentadas que se mueven juntas forman un…",
+        "opciones": [
+          "Engranaje",
+          "Plano inclinado",
+          "Circuito",
+          "Sensor"
+        ],
+        "correcta": 0
+      },
+      {
+        "id": "p6",
+        "enunciado": "Las máquinas simples nos ayudan a hacer menos fuerza.",
+        "opciones": [
+          "Verdadero",
+          "Falso"
+        ],
+        "correcta": 0,
+        "explicacion": "Cambian la dirección o la cantidad de fuerza necesaria."
+      }
+    ]
+  }
+}

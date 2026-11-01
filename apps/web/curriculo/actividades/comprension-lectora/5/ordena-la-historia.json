@@ -1,0 +1,32 @@
+{
+  "slug": "ordena-la-historia",
+  "titulo": "Ordena la historia de la semilla",
+  "tipo": "ordenar",
+  "grado": 5,
+  "instruccion": "Mueve las partes con las flechas para que la historia tenga sentido de principio a fin.",
+  "tema": "Secuencia narrativa: inicio, nudo y desenlace",
+  "contenido": {
+    "elementos": [
+      {
+        "id": "e1",
+        "texto": "Una tarde, una niña encontró una semilla en el patio del colegio."
+      },
+      {
+        "id": "e2",
+        "texto": "La sembró en una maceta y la regó todos los días."
+      },
+      {
+        "id": "e3",
+        "texto": "Una semana después llegó una helada y la planta se marchitó."
+      },
+      {
+        "id": "e4",
+        "texto": "Ella no se rindió: puso la maceta junto a la ventana para darle sol."
+      },
+      {
+        "id": "e5",
+        "texto": "Al final del período, la planta tenía su primera flor amarilla."
+      }
+    ]
+  }
+}

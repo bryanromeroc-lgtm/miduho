@@ -1,0 +1,62 @@
+{
+  "slug": "entrada-o-salida",
+  "titulo": "¿Entrada o salida?",
+  "tipo": "clasificar",
+  "grado": 5,
+  "instruccion": "Ubica cada pieza: las de entrada perciben el entorno; las de salida actúan sobre él.",
+  "tema": "Sensores y actuadores",
+  "contenido": {
+    "categorias": [
+      {
+        "id": "entrada",
+        "nombre": "Entrada: percibe"
+      },
+      {
+        "id": "salida",
+        "nombre": "Salida: actúa"
+      }
+    ],
+    "elementos": [
+      {
+        "id": "e1",
+        "texto": "Sensor de luz",
+        "categoria": "entrada"
+      },
+      {
+        "id": "e2",
+        "texto": "Sensor de distancia",
+        "categoria": "entrada"
+      },
+      {
+        "id": "e3",
+        "texto": "Pulsador",
+        "categoria": "entrada"
+      },
+      {
+        "id": "e4",
+        "texto": "Micrófono",
+        "categoria": "entrada"
+      },
+      {
+        "id": "e5",
+        "texto": "Motor",
+        "categoria": "salida"
+      },
+      {
+        "id": "e6",
+        "texto": "Luz LED",
+        "categoria": "salida"
+      },
+      {
+        "id": "e7",
+        "texto": "Zumbador",
+        "categoria": "salida"
+      },
+      {
+        "id": "e8",
+        "texto": "Pantalla",
+        "categoria": "salida"
+      }
+    ]
+  }
+}

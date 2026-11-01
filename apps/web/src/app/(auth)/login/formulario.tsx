@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useActionState } from "react";
 import { iniciarSesion, type EstadoFormulario } from "../acciones";
+import { CampoContrasena } from "../campo-contrasena";
 import { Aviso, BotonEnviar, Campo } from "../componentes";
 
 export function FormularioLogin({ desde, restablecida }: { desde?: string; restablecida: boolean }) {
@@ -14,19 +15,28 @@ export function FormularioLogin({ desde, restablecida }: { desde?: string; resta
       ) : null}
       {estado.error ? <Aviso tipo="error">{estado.error}</Aviso> : null}
       <input type="hidden" name="desde" value={desde ?? ""} />
-      <Campo id="correo" etiqueta="Correo" type="email" autoComplete="email" required error={estado.errores?.correo} />
       <Campo
+        id="correo"
+        etiqueta="Correo"
+        type="email"
+        autoComplete="email"
+        placeholder="Escribe tu correo"
+        required
+        error={estado.errores?.correo}
+      />
+      <CampoContrasena
         id="contrasena"
         etiqueta="Contraseña"
-        type="password"
         autoComplete="current-password"
         required
         error={estado.errores?.contrasena}
       />
-      <BotonEnviar pendiente={pendiente}>Ingresar</BotonEnviar>
-      <Link href="/recuperar" className="acceso-enlace">
+      <Link href="/recuperar" className="acceso-enlace acceso-enlace-olvido">
         ¿Olvidaste tu contraseña?
       </Link>
+      <BotonEnviar pendiente={pendiente} textoPendiente="Ingresando…">
+        Ingresar
+      </BotonEnviar>
     </form>
   );
 }

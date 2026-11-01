@@ -1,0 +1,70 @@
+{
+  "slug": "cuentas-de-la-tienda",
+  "titulo": "Cuentas de la tienda escolar",
+  "tipo": "completar",
+  "grado": 5,
+  "instruccion": "Haz la cuenta y elige el valor que completa cada frase.",
+  "tema": "Cálculo de ingresos, costos y ganancia",
+  "contenido": {
+    "frases": [
+      {
+        "id": "f1",
+        "antes": "Cada galleta cuesta $500. Si vendo 6, recibo $",
+        "despues": ".",
+        "opciones": [
+          "3.500",
+          "2.500",
+          "3.000"
+        ],
+        "correcta": "3.000",
+        "explicacion": "6 × 500 = 3.000."
+      },
+      {
+        "id": "f2",
+        "antes": "Vendí $8.000 y los materiales costaron $5.000. Mi ganancia es $",
+        "despues": ".",
+        "opciones": [
+          "5.000",
+          "13.000",
+          "3.000"
+        ],
+        "correcta": "3.000",
+        "explicacion": "8.000 − 5.000 = 3.000."
+      },
+      {
+        "id": "f3",
+        "antes": "Un jugo cuesta $1.500. Si pagan con $2.000, devuelvo $",
+        "despues": ".",
+        "opciones": [
+          "1.500",
+          "3.500",
+          "500"
+        ],
+        "correcta": "500"
+      },
+      {
+        "id": "f4",
+        "antes": "Quiero ahorrar $12.000 en 4 semanas. Debo ahorrar $",
+        "despues": "cada semana.",
+        "opciones": [
+          "48.000",
+          "4.000",
+          "3.000"
+        ],
+        "correcta": "3.000",
+        "explicacion": "12.000 ÷ 4 = 3.000."
+      },
+      {
+        "id": "f5",
+        "antes": "Compré 10 lápices a $800 cada uno. Gasté $",
+        "despues": ".",
+        "opciones": [
+          "8.000",
+          "800",
+          "1.800"
+        ],
+        "correcta": "8.000"
+      }
+    ]
+  }
+}

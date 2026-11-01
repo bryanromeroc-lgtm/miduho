@@ -2,34 +2,32 @@
 
 import { useActionState } from "react";
 import { cambiarContrasenaPropia, type EstadoFormulario } from "../../(auth)/acciones";
-import { Aviso, BotonEnviar, Campo } from "../../(auth)/componentes";
+import { CampoContrasena } from "../../(auth)/campo-contrasena";
+import { Aviso, BotonEnviar } from "../../(auth)/componentes";
 
 export function FormularioCambioContrasena() {
   const [estado, accion, pendiente] = useActionState<EstadoFormulario, FormData>(cambiarContrasenaPropia, {});
   return (
     <form action={accion} noValidate className="acceso-formulario">
       {estado.error ? <Aviso tipo="error">{estado.error}</Aviso> : null}
-      <Campo
+      <CampoContrasena
         id="actual"
         etiqueta="Contraseña actual"
-        type="password"
         autoComplete="current-password"
         required
         error={estado.errores?.actual}
       />
-      <Campo
+      <CampoContrasena
         id="contrasena"
         etiqueta="Nueva contraseña"
-        type="password"
         autoComplete="new-password"
         required
         ayuda="Mínimo 10 caracteres, con al menos una letra y un número."
         error={estado.errores?.contrasena}
       />
-      <Campo
+      <CampoContrasena
         id="confirmacion"
         etiqueta="Repite la nueva contraseña"
-        type="password"
         autoComplete="new-password"
         required
         error={estado.errores?.confirmacion}

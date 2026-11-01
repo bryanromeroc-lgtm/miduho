@@ -1,0 +1,38 @@
+{
+  "slug": "emociones-escondidas",
+  "titulo": "Emociones escondidas",
+  "tipo": "palabra-secreta",
+  "grado": 5,
+  "instruccion": "Lee la pista y adivina la emoción letra por letra.",
+  "tema": "Reconocimiento de emociones",
+  "contenido": {
+    "fallos": 6,
+    "palabras": [
+      {
+        "id": "s1",
+        "palabra": "ALEGRÍA",
+        "pista": "Lo que sientes cuando recibes una buena noticia."
+      },
+      {
+        "id": "s2",
+        "palabra": "MIEDO",
+        "pista": "Lo que sientes ante un peligro."
+      },
+      {
+        "id": "s3",
+        "palabra": "EMPATÍA",
+        "pista": "Ponerte en el lugar de otra persona."
+      },
+      {
+        "id": "s4",
+        "palabra": "SORPRESA",
+        "pista": "Lo que sientes ante algo inesperado."
+      },
+      {
+        "id": "s5",
+        "palabra": "TRISTEZA",
+        "pista": "Lo que sientes cuando pierdes algo que quieres."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "slug": "el-viaje-del-agua",
+  "titulo": "El viaje del agua",
+  "tipo": "ordenar",
+  "grado": 5,
+  "instruccion": "Ordena con las flechas las etapas del ciclo del agua, empezando por el Sol que calienta el mar.",
+  "tema": "El ciclo del agua",
+  "contenido": {
+    "elementos": [
+      {
+        "id": "e1",
+        "texto": "El Sol calienta el agua de mares, ríos y lagos."
+      },
+      {
+        "id": "e2",
+        "texto": "El agua se evapora y sube como vapor."
+      },
+      {
+        "id": "e3",
+        "texto": "El vapor se enfría en el cielo y se condensa en nubes."
+      },
+      {
+        "id": "e4",
+        "texto": "Las gotas se juntan y caen como lluvia."
+      },
+      {
+        "id": "e5",
+        "texto": "El agua corre por la tierra o se filtra y vuelve a ríos y mares."
+      }
+    ]
+  }
+}

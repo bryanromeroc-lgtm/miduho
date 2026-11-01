@@ -1,0 +1,78 @@
+{
+  "slug": "ingresos-gastos-ahorro",
+  "titulo": "Ingresos, gastos y ahorro",
+  "tipo": "seleccion-multiple",
+  "grado": 5,
+  "instruccion": "Lee cada situación y elige la respuesta correcta.",
+  "tema": "Educación financiera: ingresos, gastos, ahorro y ganancia",
+  "contenido": {
+    "preguntas": [
+      {
+        "id": "p1",
+        "enunciado": "El dinero que recibes por vender un producto se llama…",
+        "opciones": [
+          "Ingreso",
+          "Deuda",
+          "Gasto",
+          "Préstamo"
+        ],
+        "correcta": 0
+      },
+      {
+        "id": "p2",
+        "enunciado": "Si compras materiales para hacer pulseras, eso es un…",
+        "opciones": [
+          "Ahorro",
+          "Premio",
+          "Ingreso",
+          "Gasto"
+        ],
+        "correcta": 3
+      },
+      {
+        "id": "p3",
+        "enunciado": "Ganaste $10.000 y gastaste $6.000. ¿Cuánto te queda?",
+        "opciones": [
+          "$4.000",
+          "$3.000",
+          "$6.000",
+          "$16.000"
+        ],
+        "correcta": 0
+      },
+      {
+        "id": "p4",
+        "enunciado": "Guardar una parte del dinero para usarla después se llama…",
+        "opciones": [
+          "Ahorrar",
+          "Gastar",
+          "Vender",
+          "Prestar"
+        ],
+        "correcta": 0
+      },
+      {
+        "id": "p5",
+        "enunciado": "Ganancia es…",
+        "opciones": [
+          "Todo el dinero que gastas",
+          "El dinero que pides prestado",
+          "Lo que queda después de restar los costos a los ingresos",
+          "El precio de los materiales"
+        ],
+        "correcta": 2
+      },
+      {
+        "id": "p6",
+        "enunciado": "Ahorras $2.000 cada semana. ¿Cuánto tendrás en 5 semanas?",
+        "opciones": [
+          "$2.500",
+          "$7.000",
+          "$12.000",
+          "$10.000"
+        ],
+        "correcta": 3
+      }
+    ]
+  }
+}

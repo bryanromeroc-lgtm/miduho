@@ -1,0 +1,42 @@
+{
+  "slug": "deportes-e-implementos",
+  "titulo": "Deportes y sus implementos",
+  "tipo": "emparejar",
+  "grado": 5,
+  "instruccion": "Toca un deporte y luego lo que se usa para jugarlo.",
+  "tema": "Deportes e implementos deportivos",
+  "contenido": {
+    "pares": [
+      {
+        "id": "par1",
+        "izquierda": "Baloncesto",
+        "derecha": "Aro y tablero"
+      },
+      {
+        "id": "par2",
+        "izquierda": "Voleibol",
+        "derecha": "Red alta"
+      },
+      {
+        "id": "par3",
+        "izquierda": "Tenis de mesa",
+        "derecha": "Raqueta pequeña"
+      },
+      {
+        "id": "par4",
+        "izquierda": "Tejo",
+        "derecha": "Bocín y mechas"
+      },
+      {
+        "id": "par5",
+        "izquierda": "Relevos",
+        "derecha": "Testigo o bastón"
+      },
+      {
+        "id": "par6",
+        "izquierda": "Natación",
+        "derecha": "Gorro y gafas"
+      }
+    ]
+  }
+}

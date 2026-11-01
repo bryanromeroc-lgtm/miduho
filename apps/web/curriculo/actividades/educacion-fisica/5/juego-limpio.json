@@ -1,0 +1,67 @@
+{
+  "slug": "juego-limpio",
+  "titulo": "Concurso del juego limpio",
+  "tipo": "concurso",
+  "grado": 5,
+  "instruccion": "Responde antes de que se acabe el reloj. Si se acaba, igual puedes responder.",
+  "tema": "Juego limpio y trabajo en equipo",
+  "contenido": {
+    "segundos": 25,
+    "preguntas": [
+      {
+        "id": "p1",
+        "enunciado": "Un jugador del otro equipo se cae. ¿Qué haces?",
+        "opciones": [
+          "Reírme",
+          "Aprovechar y anotar",
+          "Seguir sin mirar",
+          "Detenerme y ayudarlo"
+        ],
+        "correcta": 3
+      },
+      {
+        "id": "p2",
+        "enunciado": "El árbitro marca una falta que no te gusta.",
+        "opciones": [
+          "Salirte del juego",
+          "Botar el balón",
+          "Respetar la decisión",
+          "Gritarle"
+        ],
+        "correcta": 2
+      },
+      {
+        "id": "p3",
+        "enunciado": "¿Qué significa trabajar en equipo?",
+        "opciones": [
+          "Que gane el mejor",
+          "Ayudarnos para lograr un objetivo común",
+          "Esconder el balón",
+          "Jugar solo"
+        ],
+        "correcta": 1
+      },
+      {
+        "id": "p4",
+        "enunciado": "Al terminar un partido se debe…",
+        "opciones": [
+          "Saludar al otro equipo",
+          "Reclamar",
+          "Burlarse del que perdió",
+          "Irse sin decir nada"
+        ],
+        "correcta": 0
+      },
+      {
+        "id": "p5",
+        "enunciado": "Hacer trampa para ganar es parte del juego.",
+        "opciones": [
+          "Verdadero",
+          "Falso"
+        ],
+        "correcta": 1,
+        "explicacion": "Ganar con trampa no es ganar: el juego limpio es una regla de todos."
+      }
+    ]
+  }
+}

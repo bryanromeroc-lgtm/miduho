@@ -1,0 +1,77 @@
+{
+  "slug": "partes-de-un-robot",
+  "titulo": "Partes de un robot",
+  "tipo": "seleccion-multiple",
+  "grado": 5,
+  "instruccion": "Elige la respuesta correcta sobre cómo funciona un robot.",
+  "tema": "Componentes de un sistema robótico",
+  "contenido": {
+    "preguntas": [
+      {
+        "id": "p1",
+        "enunciado": "¿Qué parte del robot recibe información del entorno, como la luz o la distancia?",
+        "opciones": [
+          "La batería",
+          "El motor",
+          "La carcasa",
+          "El sensor"
+        ],
+        "correcta": 3
+      },
+      {
+        "id": "p2",
+        "enunciado": "¿Qué parte convierte la energía en movimiento?",
+        "opciones": [
+          "El motor",
+          "El cable",
+          "El sensor de luz",
+          "El tornillo"
+        ],
+        "correcta": 0
+      },
+      {
+        "id": "p3",
+        "enunciado": "La parte que toma decisiones siguiendo el programa se llama…",
+        "opciones": [
+          "Pila",
+          "Chasis",
+          "Controlador",
+          "Rueda"
+        ],
+        "correcta": 2
+      },
+      {
+        "id": "p4",
+        "enunciado": "¿De dónde obtiene la energía un robot escolar?",
+        "opciones": [
+          "Del aire",
+          "De la pantalla",
+          "Del sonido",
+          "De baterías o pilas"
+        ],
+        "correcta": 3
+      },
+      {
+        "id": "p5",
+        "enunciado": "Un programa es…",
+        "opciones": [
+          "Un tipo de motor",
+          "Una lista de instrucciones en orden",
+          "Un cable especial",
+          "Una pieza de plástico"
+        ],
+        "correcta": 1
+      },
+      {
+        "id": "p6",
+        "enunciado": "Un robot siempre tiene forma de persona.",
+        "opciones": [
+          "Verdadero",
+          "Falso"
+        ],
+        "correcta": 1,
+        "explicacion": "Hay robots con ruedas, brazos o patas: su forma depende de su tarea."
+      }
+    ]
+  }
+}

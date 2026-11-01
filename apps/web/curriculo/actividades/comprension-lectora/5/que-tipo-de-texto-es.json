@@ -1,0 +1,83 @@
+{
+  "slug": "que-tipo-de-texto-es",
+  "titulo": "¿Qué tipo de texto es?",
+  "tipo": "seleccion-multiple",
+  "grado": 5,
+  "instruccion": "Lee el fragmento y elige qué tipo de texto es.",
+  "tema": "Tipologías textuales: narrativo, informativo, instructivo, argumentativo, poético",
+  "contenido": {
+    "preguntas": [
+      {
+        "id": "p1",
+        "enunciado": "«Había una vez un colibrí que quería cruzar la sabana antes del amanecer…»",
+        "opciones": [
+          "Instructivo",
+          "Narrativo",
+          "Argumentativo",
+          "Informativo"
+        ],
+        "correcta": 1,
+        "explicacion": "Cuenta una historia con un personaje: es narrativo."
+      },
+      {
+        "id": "p2",
+        "enunciado": "«Mezcla la harina con el agua. Luego amasa durante cinco minutos.»",
+        "opciones": [
+          "Instructivo",
+          "Narrativo",
+          "Argumentativo",
+          "Poético"
+        ],
+        "correcta": 0,
+        "explicacion": "Da pasos para hacer algo: es instructivo."
+      },
+      {
+        "id": "p3",
+        "enunciado": "«Los colibríes pueden batir sus alas más de 50 veces por segundo.»",
+        "opciones": [
+          "Poético",
+          "Narrativo",
+          "Instructivo",
+          "Informativo"
+        ],
+        "correcta": 3,
+        "explicacion": "Presenta un dato sobre el mundo: es informativo."
+      },
+      {
+        "id": "p4",
+        "enunciado": "«Creo que el colegio debe tener más canecas de reciclaje, porque así cuidamos el ambiente.»",
+        "opciones": [
+          "Narrativo",
+          "Instructivo",
+          "Argumentativo",
+          "Informativo"
+        ],
+        "correcta": 2,
+        "explicacion": "Da una opinión y una razón: es argumentativo."
+      },
+      {
+        "id": "p5",
+        "enunciado": "«La luna, lámpara de plata, se asoma por mi ventana.»",
+        "opciones": [
+          "Argumentativo",
+          "Instructivo",
+          "Poético",
+          "Informativo"
+        ],
+        "correcta": 2,
+        "explicacion": "Juega con imágenes y ritmo: es poético."
+      },
+      {
+        "id": "p6",
+        "enunciado": "¿Qué texto leerías para saber cómo armar una cometa?",
+        "opciones": [
+          "Un instructivo",
+          "Una carta",
+          "Una fábula",
+          "Un poema"
+        ],
+        "correcta": 0
+      }
+    ]
+  }
+}

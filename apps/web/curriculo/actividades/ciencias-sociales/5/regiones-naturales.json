@@ -1,0 +1,89 @@
+{
+  "slug": "regiones-naturales",
+  "titulo": "Regiones naturales de Colombia",
+  "tipo": "seleccion-multiple",
+  "grado": 5,
+  "instruccion": "Elige la región natural de Colombia que corresponde a cada descripción.",
+  "tema": "Regiones naturales de Colombia",
+  "contenido": {
+    "preguntas": [
+      {
+        "id": "p1",
+        "enunciado": "Allí están las tres cordilleras y vive la mayor parte de la población.",
+        "opciones": [
+          "Amazonía",
+          "Insular",
+          "Andina",
+          "Orinoquía"
+        ],
+        "correcta": 2
+      },
+      {
+        "id": "p2",
+        "enunciado": "Es la región de la gran selva tropical del sur del país.",
+        "opciones": [
+          "Andina",
+          "Caribe",
+          "Amazonía",
+          "Insular"
+        ],
+        "correcta": 2
+      },
+      {
+        "id": "p3",
+        "enunciado": "Es la región de los llanos, con grandes sabanas y ganadería.",
+        "opciones": [
+          "Pacífica",
+          "Caribe",
+          "Orinoquía",
+          "Amazonía"
+        ],
+        "correcta": 2
+      },
+      {
+        "id": "p4",
+        "enunciado": "Está formada por el archipiélago de San Andrés, Providencia y Santa Catalina.",
+        "opciones": [
+          "Insular",
+          "Orinoquía",
+          "Pacífica",
+          "Andina"
+        ],
+        "correcta": 0
+      },
+      {
+        "id": "p5",
+        "enunciado": "Queda al occidente, junto al océano, y es una de las zonas más lluviosas del mundo.",
+        "opciones": [
+          "Andina",
+          "Caribe",
+          "Orinoquía",
+          "Pacífica"
+        ],
+        "correcta": 3
+      },
+      {
+        "id": "p6",
+        "enunciado": "Queda al norte, junto al mar, y allí están ciudades como Barranquilla y Cartagena.",
+        "opciones": [
+          "Insular",
+          "Pacífica",
+          "Caribe",
+          "Amazonía"
+        ],
+        "correcta": 2
+      },
+      {
+        "id": "p7",
+        "enunciado": "¿En qué región queda Madrid, Cundinamarca?",
+        "opciones": [
+          "Amazonía",
+          "Andina",
+          "Caribe",
+          "Pacífica"
+        ],
+        "correcta": 1
+      }
+    ]
+  }
+}

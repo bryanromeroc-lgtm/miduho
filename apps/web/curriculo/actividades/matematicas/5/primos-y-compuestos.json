@@ -1,0 +1,62 @@
+{
+  "slug": "primos-y-compuestos",
+  "titulo": "¿Primo o compuesto?",
+  "tipo": "clasificar",
+  "grado": 5,
+  "instruccion": "Ubica cada número: primo si solo se divide entre 1 y él mismo; compuesto si tiene más divisores.",
+  "tema": "Números primos y compuestos",
+  "contenido": {
+    "categorias": [
+      {
+        "id": "primo",
+        "nombre": "Número primo"
+      },
+      {
+        "id": "compuesto",
+        "nombre": "Número compuesto"
+      }
+    ],
+    "elementos": [
+      {
+        "id": "e1",
+        "texto": "2",
+        "categoria": "primo"
+      },
+      {
+        "id": "e2",
+        "texto": "7",
+        "categoria": "primo"
+      },
+      {
+        "id": "e3",
+        "texto": "13",
+        "categoria": "primo"
+      },
+      {
+        "id": "e4",
+        "texto": "29",
+        "categoria": "primo"
+      },
+      {
+        "id": "e5",
+        "texto": "9",
+        "categoria": "compuesto"
+      },
+      {
+        "id": "e6",
+        "texto": "15",
+        "categoria": "compuesto"
+      },
+      {
+        "id": "e7",
+        "texto": "21",
+        "categoria": "compuesto"
+      },
+      {
+        "id": "e8",
+        "texto": "36",
+        "categoria": "compuesto"
+      }
+    ]
+  }
+}

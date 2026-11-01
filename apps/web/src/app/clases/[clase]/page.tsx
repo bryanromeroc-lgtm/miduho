@@ -142,17 +142,6 @@ export default async function PantallaClase({
             </Panel>
           )}
 
-          <Panel titulo="Grupo">
-            <p className="font-heading text-[38px] font-bold leading-none text-tinta">25</p>
-            <p className="text-[14px] text-gris">
-              estudiantes ficticios en {grupo ?? "el grupo"}
-            </p>
-            <p className="mt-3 text-[14px] leading-[1.5] text-gris">
-              La maqueta no muestra nombres ni datos de menores. La planilla real
-              requiere revisión jurídica del tratamiento de datos.
-            </p>
-          </Panel>
-
           <Boton href="/" tono="claro" className="w-full justify-center">
             Volver al día
           </Boton>

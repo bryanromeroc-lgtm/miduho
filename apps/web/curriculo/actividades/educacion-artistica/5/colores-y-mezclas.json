@@ -1,0 +1,79 @@
+{
+  "slug": "colores-y-mezclas",
+  "titulo": "Colores y mezclas",
+  "tipo": "seleccion-multiple",
+  "grado": 5,
+  "instruccion": "Elige la respuesta correcta sobre los colores.",
+  "tema": "Teoría del color: primarios, secundarios y complementarios",
+  "contenido": {
+    "preguntas": [
+      {
+        "id": "p1",
+        "enunciado": "¿Cuáles son los colores primarios tradicionales en la pintura?",
+        "opciones": [
+          "Rojo, amarillo y azul",
+          "Rosado, café y verde",
+          "Blanco, negro y gris",
+          "Verde, naranja y morado"
+        ],
+        "correcta": 0
+      },
+      {
+        "id": "p2",
+        "enunciado": "Amarillo + azul =",
+        "opciones": [
+          "Naranja",
+          "Verde",
+          "Café",
+          "Morado"
+        ],
+        "correcta": 1
+      },
+      {
+        "id": "p3",
+        "enunciado": "Rojo + amarillo =",
+        "opciones": [
+          "Gris",
+          "Violeta",
+          "Naranja",
+          "Verde"
+        ],
+        "correcta": 2
+      },
+      {
+        "id": "p4",
+        "enunciado": "Rojo + azul =",
+        "opciones": [
+          "Amarillo",
+          "Verde",
+          "Naranja",
+          "Violeta"
+        ],
+        "correcta": 3
+      },
+      {
+        "id": "p5",
+        "enunciado": "¿Qué color se agrega a otro para aclararlo?",
+        "opciones": [
+          "Azul",
+          "Café",
+          "Blanco",
+          "Negro"
+        ],
+        "correcta": 2
+      },
+      {
+        "id": "p6",
+        "enunciado": "El color complementario del rojo es el…",
+        "opciones": [
+          "Amarillo",
+          "Verde",
+          "Naranja",
+          "Rosado"
+        ],
+        "correcta": 1,
+        "explicacion": "Los complementarios están en lados opuestos del círculo cromático."
+      }
+    ]
+  }
+}

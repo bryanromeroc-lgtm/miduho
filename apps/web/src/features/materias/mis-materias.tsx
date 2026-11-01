@@ -25,15 +25,19 @@ export function MisMaterias({
   datos,
   avatarInicial,
   primeraVez = false,
+  materiaInicial,
 }: {
   datos: Datos;
   avatarInicial: Avatar;
   /** Aún no ha elegido avatar: «Mi explorador» lo invita, sin bloquear nada. */
   primeraVez?: boolean;
+  /** Id de la asignatura que vuelve elegida al regresar de su vista (`?materia=`). */
+  materiaInicial?: string;
 }) {
   const { grupo, materias } = datos;
-  const [elegida, setElegida] = useState(0);
-  const [pagina, setPagina] = useState(0);
+  const inicial = Math.max(0, materias.findIndex((m) => m.id === materiaInicial));
+  const [elegida, setElegida] = useState(inicial);
+  const [pagina, setPagina] = useState(posicionAvatar(inicial, COLUMNAS).pagina);
   const [avatar, setAvatar] = useState<Avatar>(avatarInicial);
   const [aviso, setAviso] = useState<string | null>(null);
   const [invitar, setInvitar] = useState(primeraVez);
@@ -213,7 +217,6 @@ export function MisMaterias({
             </div>
           </div>
         )}
-        <p className={s.nota}>Avatares provisionales</p>
       </aside>
     </div>
   );

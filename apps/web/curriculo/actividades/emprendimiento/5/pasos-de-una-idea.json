@@ -1,0 +1,36 @@
+{
+  "slug": "pasos-de-una-idea",
+  "titulo": "De la idea al producto",
+  "tipo": "ordenar",
+  "grado": 5,
+  "instruccion": "Ordena con las flechas los pasos para crear un emprendimiento escolar.",
+  "tema": "Proceso emprendedor",
+  "contenido": {
+    "elementos": [
+      {
+        "id": "e1",
+        "texto": "Detectar un problema o una necesidad"
+      },
+      {
+        "id": "e2",
+        "texto": "Pensar varias ideas para resolverlo"
+      },
+      {
+        "id": "e3",
+        "texto": "Elegir la mejor idea"
+      },
+      {
+        "id": "e4",
+        "texto": "Hacer un prototipo"
+      },
+      {
+        "id": "e5",
+        "texto": "Probarlo con otras personas y mejorarlo"
+      },
+      {
+        "id": "e6",
+        "texto": "Ofrecer el producto"
+      }
+    ]
+  }
+}

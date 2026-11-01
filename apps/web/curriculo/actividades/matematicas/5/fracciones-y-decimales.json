@@ -1,0 +1,42 @@
+{
+  "slug": "fracciones-y-decimales",
+  "titulo": "Une fracciones y decimales",
+  "tipo": "emparejar",
+  "grado": 5,
+  "instruccion": "Toca una fracción y luego el decimal que tiene el mismo valor.",
+  "tema": "Relación entre fracciones y números decimales",
+  "contenido": {
+    "pares": [
+      {
+        "id": "par1",
+        "izquierda": "1/2",
+        "derecha": "0,5"
+      },
+      {
+        "id": "par2",
+        "izquierda": "1/4",
+        "derecha": "0,25"
+      },
+      {
+        "id": "par3",
+        "izquierda": "3/4",
+        "derecha": "0,75"
+      },
+      {
+        "id": "par4",
+        "izquierda": "1/10",
+        "derecha": "0,1"
+      },
+      {
+        "id": "par5",
+        "izquierda": "2/5",
+        "derecha": "0,4"
+      },
+      {
+        "id": "par6",
+        "izquierda": "7/10",
+        "derecha": "0,7"
+      }
+    ]
+  }
+}

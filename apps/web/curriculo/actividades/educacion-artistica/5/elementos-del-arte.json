@@ -1,0 +1,67 @@
+{
+  "slug": "elementos-del-arte",
+  "titulo": "Elementos del arte y la música",
+  "tipo": "completar",
+  "grado": 5,
+  "instruccion": "Elige la palabra que completa cada definición.",
+  "tema": "Elementos de la expresión plástica y musical",
+  "contenido": {
+    "frases": [
+      {
+        "id": "f1",
+        "antes": "La",
+        "despues": "es el camino que deja un punto en movimiento.",
+        "opciones": [
+          "melodía",
+          "línea",
+          "textura"
+        ],
+        "correcta": "línea"
+      },
+      {
+        "id": "f2",
+        "antes": "La",
+        "despues": "es cómo se siente o se ve una superficie: suave, rugosa o áspera.",
+        "opciones": [
+          "línea",
+          "textura",
+          "altura"
+        ],
+        "correcta": "textura"
+      },
+      {
+        "id": "f3",
+        "antes": "El",
+        "despues": "es la repetición organizada de sonidos y silencios.",
+        "opciones": [
+          "ritmo",
+          "color",
+          "volumen"
+        ],
+        "correcta": "ritmo"
+      },
+      {
+        "id": "f4",
+        "antes": "La",
+        "despues": "dice si un sonido es agudo o grave.",
+        "opciones": [
+          "textura",
+          "forma",
+          "altura"
+        ],
+        "correcta": "altura"
+      },
+      {
+        "id": "f5",
+        "antes": "La",
+        "despues": "dice si un sonido es fuerte o suave.",
+        "opciones": [
+          "altura",
+          "intensidad",
+          "línea"
+        ],
+        "correcta": "intensidad"
+      }
+    ]
+  }
+}

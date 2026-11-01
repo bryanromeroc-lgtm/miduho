@@ -124,7 +124,6 @@ function MarcoLaboratorios({ children }: { children: React.ReactNode }) {
 
       <footer className="school-footer">
         <span>Colegio Mi Dulce Hogar · Madrid, Cundinamarca</span>
-        <details><summary>Sobre esta maqueta</summary><p>Propuesta visual a validar. Todos los datos son ficticios. No hay datos reales de estudiantes, docentes ni acudientes. Los títulos de literatura son obras de dominio público. Esta propuesta no constituye la identidad oficial del colegio.</p></details>
       </footer>
     </div>
   );

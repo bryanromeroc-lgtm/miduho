@@ -1,0 +1,101 @@
+{
+  "slug": "multiplicaciones-contra-el-reloj",
+  "titulo": "Multiplicaciones contra el reloj",
+  "tipo": "concurso",
+  "grado": 5,
+  "instruccion": "Resuelve cada multiplicación antes de que se acabe el reloj. Si se acaba, igual puedes responder.",
+  "tema": "Multiplicación y división de números naturales",
+  "contenido": {
+    "segundos": 20,
+    "preguntas": [
+      {
+        "id": "p1",
+        "enunciado": "7 × 8",
+        "opciones": [
+          "64",
+          "54",
+          "56",
+          "48"
+        ],
+        "correcta": 2
+      },
+      {
+        "id": "p2",
+        "enunciado": "9 × 6",
+        "opciones": [
+          "54",
+          "56",
+          "63",
+          "45"
+        ],
+        "correcta": 0
+      },
+      {
+        "id": "p3",
+        "enunciado": "12 × 5",
+        "opciones": [
+          "65",
+          "50",
+          "60",
+          "70"
+        ],
+        "correcta": 2
+      },
+      {
+        "id": "p4",
+        "enunciado": "25 × 4",
+        "opciones": [
+          "100",
+          "125",
+          "80",
+          "90"
+        ],
+        "correcta": 0
+      },
+      {
+        "id": "p5",
+        "enunciado": "81 ÷ 9",
+        "opciones": [
+          "7",
+          "11",
+          "8",
+          "9"
+        ],
+        "correcta": 3
+      },
+      {
+        "id": "p6",
+        "enunciado": "15 × 3",
+        "opciones": [
+          "48",
+          "45",
+          "53",
+          "35"
+        ],
+        "correcta": 1
+      },
+      {
+        "id": "p7",
+        "enunciado": "144 ÷ 12",
+        "opciones": [
+          "11",
+          "13",
+          "12",
+          "14"
+        ],
+        "correcta": 2
+      },
+      {
+        "id": "p8",
+        "enunciado": "8 × 125",
+        "opciones": [
+          "800",
+          "900",
+          "1.250",
+          "1.000"
+        ],
+        "correcta": 3
+      }
+    ]
+  }
+}

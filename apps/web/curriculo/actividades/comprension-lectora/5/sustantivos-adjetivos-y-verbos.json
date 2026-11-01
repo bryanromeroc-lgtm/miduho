@@ -1,0 +1,71 @@
+{
+  "slug": "sustantivos-adjetivos-y-verbos",
+  "titulo": "Sustantivos, adjetivos y verbos",
+  "tipo": "clasificar",
+  "grado": 5,
+  "instruccion": "Ubica cada palabra en su clase: nombra (sustantivo), describe (adjetivo) o expresa una acción (verbo).",
+  "tema": "Categorías gramaticales",
+  "contenido": {
+    "categorias": [
+      {
+        "id": "sus",
+        "nombre": "Sustantivo"
+      },
+      {
+        "id": "adj",
+        "nombre": "Adjetivo"
+      },
+      {
+        "id": "ver",
+        "nombre": "Verbo"
+      }
+    ],
+    "elementos": [
+      {
+        "id": "e1",
+        "texto": "montaña",
+        "categoria": "sus"
+      },
+      {
+        "id": "e2",
+        "texto": "cuaderno",
+        "categoria": "sus"
+      },
+      {
+        "id": "e3",
+        "texto": "Madrid",
+        "categoria": "sus"
+      },
+      {
+        "id": "e4",
+        "texto": "brillante",
+        "categoria": "adj"
+      },
+      {
+        "id": "e5",
+        "texto": "tranquilo",
+        "categoria": "adj"
+      },
+      {
+        "id": "e6",
+        "texto": "enorme",
+        "categoria": "adj"
+      },
+      {
+        "id": "e7",
+        "texto": "correr",
+        "categoria": "ver"
+      },
+      {
+        "id": "e8",
+        "texto": "escribe",
+        "categoria": "ver"
+      },
+      {
+        "id": "e9",
+        "texto": "soñamos",
+        "categoria": "ver"
+      }
+    ]
+  }
+}

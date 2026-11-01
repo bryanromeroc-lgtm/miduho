@@ -1,0 +1,77 @@
+{
+  "slug": "calentamiento-y-salud",
+  "titulo": "Calentamiento y salud",
+  "tipo": "seleccion-multiple",
+  "grado": 5,
+  "instruccion": "Elige la respuesta correcta sobre cómo cuidar tu cuerpo al hacer ejercicio.",
+  "tema": "Hábitos saludables y actividad física",
+  "contenido": {
+    "preguntas": [
+      {
+        "id": "p1",
+        "enunciado": "¿Para qué sirve calentar antes de hacer ejercicio?",
+        "opciones": [
+          "Para cansarse antes",
+          "Para correr más lento",
+          "Para no tener que estirar",
+          "Para preparar los músculos y evitar lesiones"
+        ],
+        "correcta": 3
+      },
+      {
+        "id": "p2",
+        "enunciado": "¿Qué es mejor tomar durante y después del ejercicio?",
+        "opciones": [
+          "Gaseosa",
+          "Café",
+          "Agua",
+          "Nada"
+        ],
+        "correcta": 2
+      },
+      {
+        "id": "p3",
+        "enunciado": "¿Cuánto tiempo de actividad física al día se recomienda para niñas y niños?",
+        "opciones": [
+          "5 minutos",
+          "Al menos 60 minutos",
+          "Ninguno",
+          "Solo los fines de semana"
+        ],
+        "correcta": 1
+      },
+      {
+        "id": "p4",
+        "enunciado": "Después de una actividad intensa conviene…",
+        "opciones": [
+          "Estirar y respirar despacio",
+          "Acostarse de inmediato",
+          "Correr más rápido",
+          "Comer dulces"
+        ],
+        "correcta": 0
+      },
+      {
+        "id": "p5",
+        "enunciado": "Al hacer ejercicio, el corazón late…",
+        "opciones": [
+          "Se detiene",
+          "Más despacio",
+          "Igual que dormido",
+          "Más rápido"
+        ],
+        "correcta": 3
+      },
+      {
+        "id": "p6",
+        "enunciado": "Dormir bien ayuda a que el cuerpo se recupere.",
+        "opciones": [
+          "Verdadero",
+          "Falso"
+        ],
+        "correcta": 0,
+        "explicacion": "El descanso también es parte de una vida activa."
+      }
+    ]
+  }
+}

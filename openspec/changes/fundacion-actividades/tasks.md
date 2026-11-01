@@ -41,6 +41,7 @@
 - [ ] 5.5 Consultas: resultados por asignación («sin entregar» distinto de 0), «mis actividades» con estado e intentos restantes, y resumen por referente (los ítems sin referente propio heredan los de su actividad); excluir lo `ANULADA` y lo que no cuenta como nota
 - [ ] 5.6 Route Handlers de estudiante (`mias`, `intentos`, `respuestas`, `envio`) y de docente (`resultados`, `resumen-referentes`), con `404` para recursos ajenos
 - [ ] 5.7 Pruebas con el tipo de prueba: reanudar en otro dispositivo, intentos agotados, asignación cerrada, reintento de red, mejor intento que no baja, cierre automático y empate
+- [ ] 5.8 Adaptadores de la vista de materia (cambio `vistas-de-materia`): implementar `PuertoActividadesDeMateria` (`src/server/modules/materias/puertos.ts`) con «mis actividades» de 5.5, mapeando cada asignación a `ActividadResumen` (`src/lib/materias.ts`: `estado` porAbrir/disponible/enCurso/hecha/cerrada, `estrellas` con `estrellasDe` del mejor porcentaje, intentos usados y máximos, `abre`/`cierra`, `href` = `/materias/[asignatura]/actividades/[id]`), y `PuertoDesempeno` para estrellas, avance y «Sigue con» de «Mis materias». Se pasan a `crearServicioMaterias(db, { actividades, desempeno })` en `src/server/modules/materias/index.ts`; no se toca la interfaz
 
 ## 6. Verificación
 

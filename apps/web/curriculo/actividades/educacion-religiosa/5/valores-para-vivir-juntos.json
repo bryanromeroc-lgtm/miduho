@@ -1,0 +1,37 @@
+{
+  "slug": "valores-para-vivir-juntos",
+  "titulo": "Valores para vivir juntos",
+  "tipo": "memoria",
+  "grado": 5,
+  "instruccion": "Voltea dos cartas a la vez y une cada valor con su significado.",
+  "tema": "Valores para la vida en comunidad",
+  "contenido": {
+    "parejas": [
+      {
+        "id": "m1",
+        "a": "Perdón",
+        "b": "Dejar atrás una ofensa y reconciliarse"
+      },
+      {
+        "id": "m2",
+        "a": "Servicio",
+        "b": "Ayudar sin esperar nada a cambio"
+      },
+      {
+        "id": "m3",
+        "a": "Gratitud",
+        "b": "Reconocer lo bueno que recibimos"
+      },
+      {
+        "id": "m4",
+        "a": "Esperanza",
+        "b": "Confiar en que lo bueno puede llegar"
+      },
+      {
+        "id": "m5",
+        "a": "Fraternidad",
+        "b": "Tratar a los demás como hermanos"
+      }
+    ]
+  }
+}

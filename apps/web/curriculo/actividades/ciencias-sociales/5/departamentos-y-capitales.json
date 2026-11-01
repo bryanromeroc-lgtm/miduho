@@ -1,0 +1,47 @@
+{
+  "slug": "departamentos-y-capitales",
+  "titulo": "Departamentos y capitales",
+  "tipo": "emparejar",
+  "grado": 5,
+  "instruccion": "Toca un departamento y luego su capital.",
+  "tema": "División político-administrativa de Colombia",
+  "contenido": {
+    "pares": [
+      {
+        "id": "par1",
+        "izquierda": "Cundinamarca",
+        "derecha": "Bogotá"
+      },
+      {
+        "id": "par2",
+        "izquierda": "Antioquia",
+        "derecha": "Medellín"
+      },
+      {
+        "id": "par3",
+        "izquierda": "Valle del Cauca",
+        "derecha": "Cali"
+      },
+      {
+        "id": "par4",
+        "izquierda": "Atlántico",
+        "derecha": "Barranquilla"
+      },
+      {
+        "id": "par5",
+        "izquierda": "Santander",
+        "derecha": "Bucaramanga"
+      },
+      {
+        "id": "par6",
+        "izquierda": "Boyacá",
+        "derecha": "Tunja"
+      },
+      {
+        "id": "par7",
+        "izquierda": "Meta",
+        "derecha": "Villavicencio"
+      }
+    ]
+  }
+}

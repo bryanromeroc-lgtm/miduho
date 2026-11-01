@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-31T00:00:00Z",
+  "title": "Design System: MIDUHO",
+  "extensions": {
+    "shadows": [
+      {
+        "name": "Ambient Card",
+        "value": "0 12px 30px rgb(32 51 75 / .09)",
+        "purpose": "tarjetas de mundo en reposo."
+      },
+      {
+        "name": "Ambient Card Hover",
+        "value": "0 18px 38px rgb(32 51 75 / .14)",
+        "purpose": "elevación breve de una tarjeta interactiva."
+      },
+      {
+        "name": "Portal Surface",
+        "value": "0 10px 24px rgb(44 93 116 / .12)",
+        "purpose": "marca y controles blancos sobre el paisaje."
+      },
+      {
+        "name": "Status Lift",
+        "value": "0 7px 18px rgb(32 51 75 / .14)",
+        "purpose": "selección o confirmación compacta."
+      }
+    ],
+    "motion": [
+      {
+        "name": "materia-suave-salida",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Vista de materia: curva de entrada, hover y balanceo."
+      },
+      {
+        "name": "materia-entrada-tarjeta",
+        "value": "320ms cubic-bezier(0.16, 1, 0.3, 1), 60ms entre tarjetas",
+        "purpose": "Vista de materia: entrada escalonada (opacity + translateY 14px)."
+      },
+      {
+        "name": "materia-hover-tarjeta",
+        "value": "translateY(-4px) 260ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Vista de materia: la tarjeta sube; el clip gira −12° y la ilustración crece 5 % con −1.5° en 320ms."
+      },
+      {
+        "name": "materia-flecha",
+        "value": "220ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Vista de materia: flecha del botón +4px; flecha de «Volver» −3px."
+      },
+      {
+        "name": "materia-flotar",
+        "value": "7s ease-in-out infinite alternate",
+        "purpose": "Vista de materia: sueltos de los márgenes, 12px y ±4°, desfasados 1.7s."
+      },
+      {
+        "name": "materia-asomar",
+        "value": "420ms cubic-bezier(0.16, 1, 0.3, 1) 300ms",
+        "purpose": "Vista de materia: aviso de primera visita (opacity + translateY 16px)."
+      },
+      {
+        "name": "materia-movimiento-reducido",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Vista de materia: sin entrada, flotar, balanceo ni desplazamientos."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "materia-sueltos",
+        "value": "min-width: 1400px"
+      },
+      {
+        "name": "materia-cuenta-compacta",
+        "value": "max-width: 1180px"
+      },
+      {
+        "name": "materia-una-pantalla",
+        "value": "min-width: 900px and min-height: 640px"
+      },
+      {
+        "name": "materia-compacta-baja",
+        "value": "min-width: 900px and max-height: 800px"
+      },
+      {
+        "name": "materia-sin-descripcion",
+        "value": "min-width: 900px and max-height: 760px"
+      },
+      {
+        "name": "materia-dos-columnas",
+        "value": "max-width: 899px"
+      },
+      {
+        "name": "materia-cabecera-apilada",
+        "value": "max-width: 720px"
+      },
+      {
+        "name": "materia-una-columna",
+        "value": "max-width: 600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón principal de actividad",
+      "kind": "button",
+      "refersTo": "materia-boton-principal",
+      "description": "Vista de materia: «Jugar» y «Continuar»; relleno acento, texto blanco, flecha que avanza 4px. Valores literales del kit de Matemáticas; en la vista salen de --m-* de cada materia.",
+      "html": "<button class=\"ds-m-btn-principal\">Jugar <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></button>",
+      "css": ".ds-m-btn-principal{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 18px;border-radius:999px;font-family:'Baloo 2', system-ui, sans-serif;font-size:1.125rem;font-weight:800;line-height:1;cursor:pointer;background:#1f5fbf;color:#ffffff;border:0;} .ds-m-btn-principal svg{transition:transform 220ms cubic-bezier(0.16,1,0.3,1);} .ds-m-btn-principal:hover svg{transform:translateX(4px);} .ds-m-btn-principal:focus-visible{outline:3px solid #132f57;outline-offset:3px;} @media (prefers-reduced-motion:reduce){.ds-m-btn-principal:hover svg{transform:none;}}"
+    },
+    {
+      "name": "Botón secundario de actividad",
+      "kind": "button",
+      "refersTo": "materia-boton-secundario",
+      "description": "Vista de materia: «Repetir» y «Ver resultado»; plano tarjeta con contorno de 2px y texto en acento. Valores literales del kit de Matemáticas; en la vista salen de --m-* de cada materia.",
+      "html": "<button class=\"ds-m-btn-secundario\">Ver resultado <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></button>",
+      "css": ".ds-m-btn-secundario{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 18px;border-radius:999px;font-family:'Baloo 2', system-ui, sans-serif;font-size:1.125rem;font-weight:800;line-height:1;cursor:pointer;background:#ffffff;color:#1f5fbf;border:2px solid #1f5fbf;} .ds-m-btn-secundario svg{transition:transform 220ms cubic-bezier(0.16,1,0.3,1);} .ds-m-btn-secundario:hover svg{transform:translateX(4px);} .ds-m-btn-secundario:focus-visible{outline:3px solid #132f57;outline-offset:3px;}"
+    },
+    {
+      "name": "Acción bloqueada de actividad",
+      "kind": "button",
+      "refersTo": "materia-boton-bloqueado",
+      "description": "Vista de materia: «Abre el …» o «Cerrada»; plano banda con tinta y candado, sin flecha ni destino. Valores literales del kit de Matemáticas; en la vista salen de --m-* de cada materia.",
+      "html": "<span class=\"ds-m-btn-bloqueado\" aria-disabled=\"true\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"4\" y=\"11\" width=\"16\" height=\"10\" rx=\"2\"/><path d=\"M8 11V7a4 4 0 0 1 8 0v4\"/></svg> Abre el 4 de noviembre</span>",
+      "css": ".ds-m-btn-bloqueado{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 18px;border-radius:999px;font-family:'Baloo 2', system-ui, sans-serif;font-size:1.125rem;font-weight:800;line-height:1;cursor:pointer;background:#dce8f8;color:#132f57;cursor:not-allowed;}"
+    },
+    {
+      "name": "Chip de estado",
+      "kind": "chip",
+      "refersTo": "materia-chip-estado",
+      "description": "Vista de materia: estado de la actividad en texto; banda con tinta, «Disponible» sobre fondo. Valores literales del kit de Matemáticas; en la vista salen de --m-* de cada materia.",
+      "html": "<span class=\"ds-m-chip\">En curso</span> <span class=\"ds-m-chip ds-m-chip-disponible\">Disponible</span>",
+      "css": ".ds-m-chip{display:inline-flex;align-items:center;padding:2px 12px;border-radius:999px;background:#dce8f8;color:#132f57;font-family:'Atkinson Hyperlegible Next', system-ui, sans-serif;font-size:1rem;font-weight:700;line-height:1.5;} .ds-m-chip-disponible{background:#eef3fa;}"
+    },
+    {
+      "name": "Tarjeta de actividad plana",
+      "kind": "card",
+      "refersTo": "materia-tarjeta",
+      "description": "Vista de materia: un solo enlace; banda de ilustración, chip, estrellas planas, fichas de intentos y botón. Sube 4px al pasar el puntero. Valores literales del kit de Matemáticas; en la vista salen de --m-* de cada materia.",
+      "html": "<a href=\"#\" class=\"ds-m-tarjeta\" aria-label=\"Parejas de figuras. Hecha. 2 de 3 estrellas. Repetir.\"><span class=\"ds-m-banda\" aria-hidden=\"true\"></span><span class=\"ds-m-cuerpo\"><span class=\"ds-m-fila\"><span class=\"ds-m-chip\">Hecha</span><span class=\"ds-m-estrellas\" aria-hidden=\"true\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"#1f5fbf\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5L2.5 9.3l6.6-.8z\"/></svg><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"#1f5fbf\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5L2.5 9.3l6.6-.8z\"/></svg><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"#dce8f8\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5L2.5 9.3l6.6-.8z\"/></svg></span></span><span class=\"ds-m-titulo\">Parejas de figuras</span><span class=\"ds-m-intentos\" aria-hidden=\"true\"><span class=\"ds-m-ficha ds-m-queda\"></span><span class=\"ds-m-ficha\"></span><span class=\"ds-m-ficha\"></span> Quedan 1</span><span class=\"ds-m-boton\">Repetir <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></span></span></a>",
+      "css": ".ds-m-tarjeta{display:flex;flex-direction:column;width:300px;border-radius:24px;background:#ffffff;color:#132f57;text-decoration:none;font-family:'Atkinson Hyperlegible Next', system-ui, sans-serif;transition:transform 260ms cubic-bezier(0.16,1,0.3,1);} .ds-m-tarjeta:hover{transform:translateY(-4px);} .ds-m-tarjeta:focus-visible{outline:3px solid #132f57;outline-offset:3px;} .ds-m-banda{display:block;height:120px;border-radius:24px 24px 0 0;background:#dce8f8;border-top:14px solid #f2b52a;} .ds-m-cuerpo{display:grid;gap:6px;padding:12px 18px 16px;} .ds-m-fila{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:28px;} .ds-m-chip{padding:2px 12px;border-radius:999px;background:#dce8f8;font-weight:700;line-height:1.5;} .ds-m-estrellas{display:inline-flex;gap:2px;} .ds-m-titulo{font-family:'Baloo 2', system-ui, sans-serif;font-size:1.25rem;font-weight:800;line-height:1.15;} .ds-m-intentos{display:inline-flex;align-items:center;gap:4px;color:#3b5578;line-height:1.3;} .ds-m-ficha{width:14px;height:14px;border-radius:999px;border:2px solid #1f5fbf;} .ds-m-queda{background:#1f5fbf;} .ds-m-ficha:last-of-type{margin-right:4px;} .ds-m-boton{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 18px;border-radius:999px;font-family:'Baloo 2', system-ui, sans-serif;font-size:1.125rem;font-weight:800;line-height:1;cursor:pointer;margin-top:4px;background:#ffffff;color:#1f5fbf;border:2px solid #1f5fbf;} @media (prefers-reduced-motion:reduce){.ds-m-tarjeta:hover{transform:none;}}"
+    },
+    {
+      "name": "Volver a Mis materias",
+      "kind": "nav",
+      "refersTo": "materia-volver",
+      "description": "Vista de materia: enlace del encabezado flat; pastilla fondo con texto acento, banda al pasar el puntero. Valores literales del kit de Matemáticas; en la vista salen de --m-* de cada materia.",
+      "html": "<a href=\"#\" class=\"ds-m-volver\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M19 12H5M11 18l-6-6 6-6\"/></svg> Volver a Mis materias</a>",
+      "css": ".ds-m-volver{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 18px 8px 14px;border-radius:999px;background:#eef3fa;color:#1f5fbf;font-family:'Baloo 2', system-ui, sans-serif;font-size:1.125rem;font-weight:800;line-height:1;text-decoration:none;white-space:nowrap;transition:background-color 160ms ease-out;} .ds-m-volver:hover{background:#dce8f8;} .ds-m-volver svg{transition:transform 220ms cubic-bezier(0.16,1,0.3,1);} .ds-m-volver:hover svg{transform:translateX(-3px);} .ds-m-volver:focus-visible{outline:3px solid #132f57;outline-offset:3px;}"
+    },
+    {
+      "name": "Paginador de actividades",
+      "kind": "nav",
+      "refersTo": "materia-paginador",
+      "description": "Vista de materia: de 6 en 6; pastillas tarjeta con texto acento, la no disponible transparente con contorno punteado en banda. Valores literales del kit de Matemáticas; en la vista salen de --m-* de cada materia.",
+      "html": "<nav class=\"ds-m-pag\" aria-label=\"Páginas de actividades\"><span class=\"ds-m-pag-btn\" aria-disabled=\"true\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M19 12H5M11 18l-6-6 6-6\"/></svg> Anteriores</span><p class=\"ds-m-pag-actual\">Página 1 de 2</p><a href=\"#\" class=\"ds-m-pag-btn\">Siguientes <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a></nav>",
+      "css": ".ds-m-pag{display:flex;align-items:center;justify-content:center;gap:16px;background:#eef3fa;padding:12px;font-family:'Atkinson Hyperlegible Next', system-ui, sans-serif;color:#132f57;} .ds-m-pag-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 18px;border-radius:999px;background:#ffffff;color:#1f5fbf;font-family:'Baloo 2', system-ui, sans-serif;font-size:1.125rem;font-weight:800;line-height:1;text-decoration:none;} a.ds-m-pag-btn:hover{background:#dce8f8;} a.ds-m-pag-btn:focus-visible{outline:3px solid #132f57;outline-offset:3px;} .ds-m-pag-btn[aria-disabled=\"true\"]{background:transparent;color:#3b5578;border:2px dashed #dce8f8;cursor:not-allowed;} .ds-m-pag-actual{margin:0;font-weight:700;font-variant-numeric:tabular-nums;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Friso de Aula",
+    "overview": "MIDUHO se siente como el friso que una docente fija sobre el tablero: una banda de planchas de color que ordena el día de izquierda a derecha y deja ver, aun a distancia, qué clase tiene material y cuál sigue vacía. Es una herramienta adulta, clara y operativa con la escala amable de un aula de primaria; no es un panel LMS corporativo ni una escenografía infantil.\n\nEl portal escolar ilustrado amplía ese mundo sin sustituirlo. En escritorio, una franja breve de cielo, colinas, árboles y escuela enmarca el encabezado, y la navegación adopta pestañas de “mundos” por color. La ilustración siempre queda detrás de la tarea docente: el contenido, las fichas y el friso siguen siendo texto real sobre superficies de lectura claras. En móvil, el paisaje desaparece, el encabezado vuelve a una barra sobria y el mismo menú ocupa la navegación inferior.\n\nLa personalidad es institucional, cálida, optimista y muy legible. La identidad y los personajes de productos de referencia no son autoridad visual; los recursos ilustrados son propios o de procedencia compatible y nunca reemplazan contenido pedagógico.",
+    "keyCharacteristics": [
+      "Friso envolvente de planchas saturadas con estantes blancos interiores.",
+      "Paleta institucional provisional, clara y codificada por área.",
+      "Portal escolar ilustrado solo como marco ambiental en escritorio.",
+      "Pestañas de navegación con colores de mundo y un único menú adaptable.",
+      "Tipografía Nunito de gran peso, amable y legible a distancia.",
+      "Movimiento breve que confirma continuidad, siempre reducible."
+    ],
+    "rules": [
+      {
+        "name": "The Area Owns the Surface Rule",
+        "body": "Cuando un área codifica una unidad, su color posee la plancha completa; no se reduce a una línea decorativa y siempre aparece acompañado por el nombre textual del área.",
+        "section": "colors"
+      },
+      {
+        "name": "The Clear Classroom Rule",
+        "body": "El sistema permanece claro y proyectable; no existe tema oscuro ni texto normal sobre Azul Vivo.",
+        "section": "colors"
+      },
+      {
+        "name": "The Provisional Identity Rule",
+        "body": "Esta paleta es la identidad visual implementada de la maqueta, no un manual oficial del colegio; debe revisarse cuando exista una identidad institucional aprobada.",
+        "section": "colors"
+      },
+      {
+        "name": "The Real Text Rule",
+        "body": "Todo texto pedagógico es seleccionable, buscable, traducible y accesible; ninguna ilustración ni imagen contiene la explicación que la persona necesita para completar una tarea.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Menu Rule",
+        "body": "Escritorio y móvil comparten un solo menú en el DOM; la adaptación ocurre únicamente por CSS.",
+        "section": "layout"
+      },
+      {
+        "name": "The Frieze Wraps Rule",
+        "body": "Ninguna cantidad de asignaturas autoriza scroll horizontal: el friso siempre envuelve.",
+        "section": "layout"
+      },
+      {
+        "name": "The Tonal First Rule",
+        "body": "Una superficie se distingue primero por color y encaje; la sombra aparece solo cuando mejora la separación o explica interacción.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Flat Boundary Rule",
+        "body": "«Mis materias» conserva su identidad sticker; al entrar a una materia, todo es plano, encabezado incluido. La vista no usa `MarcoJuego` ni `BotonSticker`: lleva un encabezado flat propio. El corte ocurre en la puerta de la materia, nunca dentro de ella.",
+        "section": "components"
+      },
+      {
+        "name": "The Subject Owns Every Object Rule",
+        "body": "Cada objeto decorativo pertenece a la materia que se está viendo. Ningún id de pieza se repite entre kits; solo el kit `generica` (útiles escolares neutros) puede compartir piezas, y solo lo usan las asignaturas sin coincidencia temática. El catálogo prohíbe árbol, bosque, madera, tronco, pino, montaña, paisaje, colina y nube. Sin banderas de otros países; Sociales lleva la bandera de Colombia por decisión del operador.",
+        "section": "components"
+      },
+      {
+        "name": "The No Text On Apoyo Rule",
+        "body": "El token `apoyo` es solo para utilería, marco de tarjeta y sueltos; nunca lleva texto encima. La tinta sobre `apoyo` no alcanza 4.5:1 en todas las materias (la auditoría midió 3.65–3.97 en Lectura, Emprendimiento y Sociales).",
+        "section": "components"
+      },
+      {
+        "name": "The One Screen, Growth Not Overlap Rule",
+        "body": "Desde 900×640 la vista cabe en una pantalla sin scroll; si un contenido raro no cabe, la página crece y hace scroll. Nada se recorta ni se encima.",
+        "section": "components"
+      },
+      {
+        "name": "The Silent Decoration Rule",
+        "body": "Toda la decoración (marcas de agua, escenografía, sueltos, banda de la tarjeta, utilería, escena del estado vacío) es `aria-hidden`, no recibe puntero y lleva `user-select: none`, para no aparecer al seleccionar ni al buscar con Ctrl+F.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "**Do** conservar Friso de Aula como tesis del sistema y tratar el portal ilustrado como marco subordinado.",
+      "**Do** servir localmente los assets Twemoji, mantenerlos decorativos y conservar la atribución “Twemoji graphics by Twitter/X, licensed under CC BY 4.0”.",
+      "**Do** nombrar cada área además de codificarla con color y verificar contraste WCAG 2.1 AA.",
+      "**Do** usar texto real, foco visible, etiquetas asociadas y un único menú adaptable.",
+      "**Do** mantener el encabezado móvil sobrio y la navegación principal fija abajo.",
+      "**Do** paginar listados extensos y asegurar que el friso envuelva en todos los anchos.",
+      "**Do** vestir la vista de materia solo con el kit de esa materia y con sus tokens `--m-*`; usar el kit `generica` únicamente cuando no hay coincidencia temática.",
+      "**Do** mantener la vista de materia en una pantalla desde 900×640 y dejarla crecer con scroll cuando el contenido no cabe."
+    ],
+    "donts": [
+      "**Don't** copiar identidad, personajes, imágenes, código o tono visual de la plataforma tomada como referencia funcional.",
+      "**Don't** convertir el paisaje o los emojis en una nueva mascota o identidad oficial de MIDUHO.",
+      "**Don't** mezclar colores de área ni usar color como único portador de significado.",
+      "**Don't** entregar texto pedagógico dentro de imágenes ni usar imágenes decorativas con alternativas redundantes.",
+      "**Don't** añadir texturas fotográficas, grapas, pliegues o rayado diagonal a las planchas.",
+      "**Don't** crear un segundo menú móvil ni permitir scroll horizontal.",
+      "**Don't** llevar el sticker de «Mis materias» (contornos de tinta, sombras, `MarcoJuego`) dentro de una materia, ni poner texto sobre el token `apoyo`.",
+      "**Don't** decorar la vista de materia con bosque, madera, paisajes, banderas de otros países o piezas de otra materia."
+    ]
+  }
+}

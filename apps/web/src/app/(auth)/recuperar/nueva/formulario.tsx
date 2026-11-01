@@ -2,7 +2,8 @@
 
 import { useActionState } from "react";
 import { guardarNuevaContrasena, type EstadoFormulario } from "../../acciones";
-import { Aviso, BotonEnviar, Campo } from "../../componentes";
+import { CampoContrasena } from "../../campo-contrasena";
+import { Aviso, BotonEnviar } from "../../componentes";
 
 export function FormularioNuevaContrasena({ token }: { token: string }) {
   const [estado, accion, pendiente] = useActionState<EstadoFormulario, FormData>(guardarNuevaContrasena, {});
@@ -18,19 +19,17 @@ export function FormularioNuevaContrasena({ token }: { token: string }) {
         </Aviso>
       ) : null}
       <input type="hidden" name="token" value={token} />
-      <Campo
+      <CampoContrasena
         id="contrasena"
         etiqueta="Nueva contraseña"
-        type="password"
         autoComplete="new-password"
         required
         ayuda="Mínimo 10 caracteres, con al menos una letra y un número."
         error={estado.errores?.contrasena}
       />
-      <Campo
+      <CampoContrasena
         id="confirmacion"
         etiqueta="Repite la contraseña"
-        type="password"
         autoComplete="new-password"
         required
         error={estado.errores?.confirmacion}

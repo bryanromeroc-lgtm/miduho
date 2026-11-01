@@ -1,0 +1,68 @@
+{
+  "slug": "si-entonces",
+  "titulo": "Si pasa esto, entonces…",
+  "tipo": "completar",
+  "grado": 5,
+  "instruccion": "Elige la acción que completa cada instrucción del programa.",
+  "tema": "Condicionales y ciclos en programación",
+  "contenido": {
+    "frases": [
+      {
+        "id": "f1",
+        "antes": "Si el sensor detecta un obstáculo, entonces el robot",
+        "despues": ".",
+        "opciones": [
+          "apaga la batería",
+          "se detiene",
+          "acelera"
+        ],
+        "correcta": "se detiene"
+      },
+      {
+        "id": "f2",
+        "antes": "Repetir 4 veces: avanzar y girar. El robot dibuja un",
+        "despues": ".",
+        "opciones": [
+          "triángulo",
+          "círculo",
+          "cuadrado"
+        ],
+        "correcta": "cuadrado",
+        "explicacion": "Cuatro lados iguales y cuatro giros: un cuadrado."
+      },
+      {
+        "id": "f3",
+        "antes": "Si el sensor de luz detecta oscuridad, entonces",
+        "despues": "la luz LED.",
+        "opciones": [
+          "rompe",
+          "esconde",
+          "enciende"
+        ],
+        "correcta": "enciende"
+      },
+      {
+        "id": "f4",
+        "antes": "Una instrucción que se repite muchas veces se llama",
+        "despues": ".",
+        "opciones": [
+          "rueda",
+          "sensor",
+          "ciclo"
+        ],
+        "correcta": "ciclo"
+      },
+      {
+        "id": "f5",
+        "antes": "Si el pulsador está presionado, entonces el zumbador",
+        "despues": ".",
+        "opciones": [
+          "camina",
+          "suena",
+          "se derrite"
+        ],
+        "correcta": "suena"
+      }
+    ]
+  }
+}
