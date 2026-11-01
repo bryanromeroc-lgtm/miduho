@@ -1,0 +1,36 @@
+{
+  "slug": "algoritmo-del-robot",
+  "titulo": "El algoritmo del robot repartidor",
+  "tipo": "ordenar",
+  "grado": 5,
+  "instruccion": "Ordena con las flechas las instrucciones para que el robot lleve la caja a la mesa.",
+  "tema": "Algoritmos y secuencias",
+  "contenido": {
+    "elementos": [
+      {
+        "id": "e1",
+        "texto": "Encender el robot"
+      },
+      {
+        "id": "e2",
+        "texto": "Avanzar hasta la caja"
+      },
+      {
+        "id": "e3",
+        "texto": "Cerrar la pinza para tomar la caja"
+      },
+      {
+        "id": "e4",
+        "texto": "Girar a la derecha"
+      },
+      {
+        "id": "e5",
+        "texto": "Avanzar hasta la mesa"
+      },
+      {
+        "id": "e6",
+        "texto": "Abrir la pinza para soltar la caja"
+      }
+    ]
+  }
+}

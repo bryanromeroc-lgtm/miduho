@@ -1,0 +1,108 @@
+{
+  "slug": "fracciones-en-la-vida-diaria",
+  "titulo": "Fracciones en la vida diaria",
+  "tipo": "seleccion-multiple",
+  "grado": 5,
+  "instruccion": "Lee cada situación y elige la respuesta correcta.",
+  "tema": "Fracciones: parte de un todo, equivalencias y operaciones sencillas",
+  "contenido": {
+    "preguntas": [
+      {
+        "id": "p1",
+        "enunciado": "Una pizza se partió en 8 porciones iguales y te comiste 3. ¿Qué fracción de la pizza comiste?",
+        "opciones": [
+          "3/5",
+          "5/8",
+          "8/3",
+          "3/8"
+        ],
+        "correcta": 3,
+        "explicacion": "Comiste 3 de las 8 partes iguales: 3/8."
+      },
+      {
+        "id": "p2",
+        "enunciado": "¿Cuál fracción es equivalente a 1/2?",
+        "opciones": [
+          "4/8",
+          "2/3",
+          "1/4",
+          "3/4"
+        ],
+        "correcta": 0,
+        "explicacion": "Si multiplicas 1 y 2 por 4, obtienes 4/8."
+      },
+      {
+        "id": "p3",
+        "enunciado": "¿Cuánto es 2/5 + 1/5?",
+        "opciones": [
+          "1/5",
+          "3/5",
+          "3/10",
+          "2/25"
+        ],
+        "correcta": 1,
+        "explicacion": "Con el mismo denominador se suman los numeradores: 2 + 1 = 3."
+      },
+      {
+        "id": "p4",
+        "enunciado": "En un salón hay 30 estudiantes y 1/3 usa gafas. ¿Cuántos usan gafas?",
+        "opciones": [
+          "10",
+          "20",
+          "3",
+          "15"
+        ],
+        "correcta": 0,
+        "explicacion": "30 ÷ 3 = 10."
+      },
+      {
+        "id": "p5",
+        "enunciado": "¿Cuál de estas fracciones es mayor que 1?",
+        "opciones": [
+          "3/4",
+          "7/4",
+          "1/4",
+          "4/7"
+        ],
+        "correcta": 1,
+        "explicacion": "En 7/4 el numerador es mayor que el denominador."
+      },
+      {
+        "id": "p6",
+        "enunciado": "¿Cómo se escribe 3/4 como número decimal?",
+        "opciones": [
+          "0,34",
+          "0,75",
+          "3,4",
+          "0,25"
+        ],
+        "correcta": 1,
+        "explicacion": "3 ÷ 4 = 0,75."
+      },
+      {
+        "id": "p7",
+        "enunciado": "Simplifica 6/9 a su mínima expresión.",
+        "opciones": [
+          "2/3",
+          "3/6",
+          "1/3",
+          "6/9 no se puede simplificar"
+        ],
+        "correcta": 0,
+        "explicacion": "6 y 9 se dividen entre 3: 2/3."
+      },
+      {
+        "id": "p8",
+        "enunciado": "Leíste 1/4 de un libro el lunes y 2/4 el martes. ¿Qué parte te falta?",
+        "opciones": [
+          "3/4",
+          "1/4",
+          "2/4",
+          "Nada"
+        ],
+        "correcta": 1,
+        "explicacion": "Leíste 3/4; te falta 4/4 − 3/4 = 1/4."
+      }
+    ]
+  }
+}

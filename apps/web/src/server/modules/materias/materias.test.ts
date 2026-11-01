@@ -2,8 +2,8 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@/generated/prisma/client";
 import { ErrorDominio } from "@/server/errores";
 import { guardarAvatarDe } from "./avatar";
-import type { PuertoContenidoClase, PuertoDesempeno } from "./puertos";
-import { crearServicioMaterias, ordenarMaterias, rutaMateria, type ServicioMaterias } from "./servicio";
+import { actividadesDeCatalogo, type PuertoActividadesDeMateria, type PuertoContenidoClase, type PuertoDesempeno } from "./puertos";
+import { crearServicioMaterias, ordenarMaterias, rutaMateria, rutaVolver, type ServicioMaterias } from "./servicio";
 import { abrirBasePrueba, type BasePrueba } from "../../../../tests/soporte/base-pruebas";
 
 describe("orden y destino (lógica pura)", () => {
@@ -17,11 +17,10 @@ describe("orden y destino (lógica pura)", () => {
     expect(r.map((m) => m.nombre)).toEqual(["Lectura", "Álgebra", "Zeta", "Ética"]);
   });
 
-  it("las materias con contenido real apuntan a su mundo; el resto, a Mis clases", () => {
-    expect(rutaMateria("robotica")).toBe("/laboratorios?mundo=robotica");
-    expect(rutaMateria("emprendimiento")).toBe("/laboratorios?mundo=emprendimiento");
-    expect(rutaMateria("lectura")).toBe("/biblioteca");
-    expect(rutaMateria("matematicas")).toBe("/clases");
+  it("cada materia entra a su vista propia y vuelve al tablero con la misma materia elegida", () => {
+    expect(rutaMateria("abc-123")).toBe("/materias/abc-123");
+    expect(rutaVolver("abc-123")).toBe("/?materia=abc-123");
+    expect(rutaMateria("a/b")).toBe("/materias/a%2Fb");
   });
 });
 
@@ -147,7 +146,7 @@ describe("asignaturas del grupo del estudiante", () => {
     const [lectura] = (await S.deEstudiante(ids.est)).materias;
     expect(lectura).toMatchObject({
       escena: "lectura",
-      claseHref: "/biblioteca",
+      claseHref: `/materias/${ids.lectura}`,
       estrellas: null,
       avance: null,
       sigue: null,
@@ -166,6 +165,78 @@ describe("asignaturas del grupo del estudiante", () => {
     const r = await crearServicioMaterias(db, { desempeno, contenido }).deEstudiante(ids.est);
     expect(r.materias[0]).toMatchObject({ nombre: "Comprensión Lectora", conMaterial: false, estrellas: null });
     expect(r.materias[1]).toMatchObject({ nombre: "Matemáticas", estrellas: 2, avance: { hechas: 4, total: 6 }, sigue: "Sumas hasta 20" });
+  });
+});
+
+describe("vista de una materia", () => {
+  const estudiante = () => ({ user: { id: ids.est, contexto: "ESTUDIANTE" } });
+
+  it("una asignatura activa de su grupo: la materia, su grupo y actividades null sin fuente", async () => {
+    const v = await S.vistaMateria(estudiante(), ids.matematicas);
+    expect(v).toMatchObject({
+      materia: { id: ids.matematicas, nombre: "Matemáticas", escena: "matematicas", claseHref: `/materias/${ids.matematicas}` },
+      grupo: { id: ids.g1, etiqueta: "1°-01" },
+      actividades: null,
+    });
+  });
+
+  it("una asignatura de otro grupo, inactiva, de un año cerrado o inexistente: null (404)", async () => {
+    expect(await S.vistaMateria(estudiante(), ids.ingles)).toBeNull();
+    expect(await S.vistaMateria(estudiante(), ids.musica)).toBeNull();
+    expect(await S.vistaMateria(estudiante(), ids.viejo)).toBeNull();
+    expect(await S.vistaMateria(estudiante(), "no-existe")).toBeNull();
+  });
+
+  it("el contexto docente o la sesión ausente reciben null (404)", async () => {
+    expect(await S.vistaMateria({ user: { id: ids.docA, contexto: "DOCENTE" } }, ids.matematicas)).toBeNull();
+    expect(await S.vistaMateria(null, ids.matematicas)).toBeNull();
+    expect(await S.vistaMateria({ user: { id: ids.est } }, ids.matematicas)).toBeNull();
+  });
+
+  it("no expone nombres ni correos de docentes", async () => {
+    expect(JSON.stringify(await S.vistaMateria(estudiante(), ids.matematicas))).not.toMatch(/Apellidoúnico|doc-a@|doc-b@/);
+  });
+
+  it("con el puerto conectado, pide las actividades de esa asignatura y grupo, y las ordena", async () => {
+    const pedidos: string[][] = [];
+    const actividades: PuertoActividadesDeMateria = {
+      deMateria: async (...args) => {
+        pedidos.push(args);
+        const base = { tipo: "quiz", estrellas: null, intentosUsados: 0, intentosMax: 3, abre: null, cierra: null, href: "#" };
+        return [
+          { ...base, id: "a2", titulo: "Hecha", estado: "hecha" as const },
+          { ...base, id: "a1", titulo: "Para jugar", estado: "disponible" as const },
+        ];
+      },
+    };
+    const v = await crearServicioMaterias(db, { actividades }).vistaMateria(estudiante(), ids.lectura);
+    expect(pedidos).toEqual([[ids.est, ids.g1, ids.lectura]]);
+    expect(v?.actividades?.map((a) => a.id)).toEqual(["a1", "a2"]);
+  });
+  it("práctica libre: el catálogo del currículo según el nombre de la asignatura y el grado del grupo", async () => {
+    const consultas: [string, number][] = [];
+    const catalogo = {
+      de: (asignatura: string, grado: number) => {
+        consultas.push([asignatura, grado]);
+        return [{ slug: "parejas", titulo: "Parejas", tipo: "memoria" }];
+      },
+    };
+    const v = await crearServicioMaterias(db, { actividades: actividadesDeCatalogo(db, catalogo) }).vistaMateria(estudiante(), ids.matematicas);
+    expect(consultas).toEqual([["Matemáticas", 1]]);
+    expect(v?.actividades).toEqual([
+      {
+        id: "parejas",
+        titulo: "Parejas",
+        tipo: "memoria",
+        estado: "disponible",
+        estrellas: null,
+        intentosUsados: 0,
+        intentosMax: null,
+        abre: null,
+        cierra: null,
+        href: `/materias/${ids.matematicas}/actividades/parejas`,
+      },
+    ]);
   });
 });
 

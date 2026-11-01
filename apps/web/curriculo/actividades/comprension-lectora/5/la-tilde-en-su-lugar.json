@@ -1,0 +1,84 @@
+{
+  "slug": "la-tilde-en-su-lugar",
+  "titulo": "La tilde en su lugar",
+  "tipo": "completar",
+  "grado": 5,
+  "instruccion": "Elige la palabra escrita correctamente para completar cada oración.",
+  "tema": "Acentuación: palabras agudas, graves y esdrújulas",
+  "contenido": {
+    "frases": [
+      {
+        "id": "f1",
+        "antes": "Mañana tenemos examen de",
+        "despues": ".",
+        "opciones": [
+          "matemáticás",
+          "matematicas",
+          "matemáticas"
+        ],
+        "correcta": "matemáticas",
+        "explicacion": "Es esdrújula: todas las esdrújulas llevan tilde."
+      },
+      {
+        "id": "f2",
+        "antes": "Mi abuela me regaló un",
+        "despues": "de cuentos.",
+        "opciones": [
+          "album",
+          "albúm",
+          "álbum"
+        ],
+        "correcta": "álbum",
+        "explicacion": "Es grave terminada en «m»: lleva tilde."
+      },
+      {
+        "id": "f3",
+        "antes": "El",
+        "despues": "pasó muy rápido por la vía.",
+        "opciones": [
+          "camion",
+          "cámion",
+          "camión"
+        ],
+        "correcta": "camión",
+        "explicacion": "Es aguda terminada en «n»: lleva tilde."
+      },
+      {
+        "id": "f4",
+        "antes": "Me gusta jugar con mi",
+        "despues": "en el parque.",
+        "opciones": [
+          "pérro",
+          "perro",
+          "perró"
+        ],
+        "correcta": "perro",
+        "explicacion": "Es grave terminada en vocal: no lleva tilde."
+      },
+      {
+        "id": "f5",
+        "antes": "Guardé las tijeras en el",
+        "despues": "del escritorio.",
+        "opciones": [
+          "cájon",
+          "cajón",
+          "cajon"
+        ],
+        "correcta": "cajón",
+        "explicacion": "Es aguda terminada en «n»: lleva tilde."
+      },
+      {
+        "id": "f6",
+        "antes": "La",
+        "despues": "de ciencias explicó el experimento.",
+        "opciones": [
+          "profésora",
+          "profesorá",
+          "profesora"
+        ],
+        "correcta": "profesora",
+        "explicacion": "Es grave terminada en vocal: no lleva tilde."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "slug": "la-familia-comunidad",
+  "titulo": "La familia, mi primera comunidad",
+  "tipo": "completar",
+  "grado": 5,
+  "instruccion": "Elige la palabra que completa cada frase.",
+  "tema": "La familia y la comunidad",
+  "contenido": {
+    "frases": [
+      {
+        "id": "f1",
+        "antes": "La familia es la primera",
+        "despues": "donde aprendemos a convivir.",
+        "opciones": [
+          "tienda",
+          "comunidad",
+          "competencia"
+        ],
+        "correcta": "comunidad"
+      },
+      {
+        "id": "f2",
+        "antes": "Cuando ayudo en casa sin que me lo pidan, practico el",
+        "despues": ".",
+        "opciones": [
+          "egoísmo",
+          "desorden",
+          "servicio"
+        ],
+        "correcta": "servicio"
+      },
+      {
+        "id": "f3",
+        "antes": "Pedir",
+        "despues": "cuando me equivoco ayuda a reparar la relación.",
+        "opciones": [
+          "silencio",
+          "dinero",
+          "perdón"
+        ],
+        "correcta": "perdón"
+      },
+      {
+        "id": "f4",
+        "antes": "Escuchar a los abuelos es una forma de",
+        "despues": ".",
+        "opciones": [
+          "pereza",
+          "respeto",
+          "burla"
+        ],
+        "correcta": "respeto"
+      },
+      {
+        "id": "f5",
+        "antes": "Compartir lo que tengo con quien lo necesita es un acto de",
+        "despues": ".",
+        "opciones": [
+          "rabia",
+          "generosidad",
+          "envidia"
+        ],
+        "correcta": "generosidad"
+      }
+    ]
+  }
+}

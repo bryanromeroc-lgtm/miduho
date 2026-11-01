@@ -176,7 +176,6 @@ export function MarcoJuego({
       {variante === "hoja" ? (
         <footer className="marco-juego-pie">
           <span>Colegio Mi Dulce Hogar · Madrid, Cundinamarca</span>
-          <span>Datos ficticios de demostración · avatares provisionales</span>
         </footer>
       ) : null}
     </div>

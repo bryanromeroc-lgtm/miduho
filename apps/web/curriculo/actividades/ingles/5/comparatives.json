@@ -1,0 +1,81 @@
+{
+  "slug": "comparatives",
+  "titulo": "Bigger, faster, taller",
+  "tipo": "completar",
+  "grado": 5,
+  "instruccion": "Elige la forma correcta del adjetivo para comparar.",
+  "tema": "Adjetivos comparativos",
+  "contenido": {
+    "frases": [
+      {
+        "id": "f1",
+        "antes": "An elephant is",
+        "despues": "than a dog.",
+        "opciones": [
+          "bigger",
+          "big",
+          "biggest"
+        ],
+        "correcta": "bigger",
+        "explicacion": "Para comparar dos cosas: big → bigger."
+      },
+      {
+        "id": "f2",
+        "antes": "A cheetah is",
+        "despues": "than a turtle.",
+        "opciones": [
+          "fast",
+          "fastest",
+          "faster"
+        ],
+        "correcta": "faster"
+      },
+      {
+        "id": "f3",
+        "antes": "My father is",
+        "despues": "than me.",
+        "opciones": [
+          "tallest",
+          "tall",
+          "taller"
+        ],
+        "correcta": "taller"
+      },
+      {
+        "id": "f4",
+        "antes": "Summer is",
+        "despues": "than winter.",
+        "opciones": [
+          "hottest",
+          "hot",
+          "hotter"
+        ],
+        "correcta": "hotter",
+        "explicacion": "Se dobla la consonante: hot → hotter."
+      },
+      {
+        "id": "f5",
+        "antes": "This book is",
+        "despues": "than that one.",
+        "opciones": [
+          "most interesting",
+          "more interesting",
+          "interestinger"
+        ],
+        "correcta": "more interesting",
+        "explicacion": "Con adjetivos largos se usa «more»."
+      },
+      {
+        "id": "f6",
+        "antes": "A mouse is",
+        "despues": "than a cat.",
+        "opciones": [
+          "small",
+          "smaller",
+          "smallest"
+        ],
+        "correcta": "smaller"
+      }
+    ]
+  }
+}

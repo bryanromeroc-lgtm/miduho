@@ -1,0 +1,47 @@
+{
+  "slug": "places-in-town",
+  "titulo": "Places in town",
+  "tipo": "emparejar",
+  "grado": 5,
+  "instruccion": "Toca el lugar en inglés y luego su nombre en español.",
+  "tema": "Vocabulario: lugares del barrio y el municipio",
+  "contenido": {
+    "pares": [
+      {
+        "id": "par1",
+        "izquierda": "Library",
+        "derecha": "Biblioteca"
+      },
+      {
+        "id": "par2",
+        "izquierda": "Bakery",
+        "derecha": "Panadería"
+      },
+      {
+        "id": "par3",
+        "izquierda": "Drugstore",
+        "derecha": "Droguería"
+      },
+      {
+        "id": "par4",
+        "izquierda": "Park",
+        "derecha": "Parque"
+      },
+      {
+        "id": "par5",
+        "izquierda": "Supermarket",
+        "derecha": "Supermercado"
+      },
+      {
+        "id": "par6",
+        "izquierda": "Church",
+        "derecha": "Iglesia"
+      },
+      {
+        "id": "par7",
+        "izquierda": "Fire station",
+        "derecha": "Estación de bomberos"
+      }
+    ]
+  }
+}

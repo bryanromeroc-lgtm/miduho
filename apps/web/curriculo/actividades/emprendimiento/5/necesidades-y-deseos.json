@@ -1,0 +1,62 @@
+{
+  "slug": "necesidades-y-deseos",
+  "titulo": "Necesidades y deseos",
+  "tipo": "clasificar",
+  "grado": 5,
+  "instruccion": "Ubica cada cosa: una necesidad es lo que hace falta para vivir bien; un deseo es lo que nos gustaría tener.",
+  "tema": "Necesidades y deseos",
+  "contenido": {
+    "categorias": [
+      {
+        "id": "nec",
+        "nombre": "Necesidad"
+      },
+      {
+        "id": "des",
+        "nombre": "Deseo"
+      }
+    ],
+    "elementos": [
+      {
+        "id": "e1",
+        "texto": "Agua potable",
+        "categoria": "nec"
+      },
+      {
+        "id": "e2",
+        "texto": "Alimentos",
+        "categoria": "nec"
+      },
+      {
+        "id": "e3",
+        "texto": "Una vivienda",
+        "categoria": "nec"
+      },
+      {
+        "id": "e4",
+        "texto": "Atención médica",
+        "categoria": "nec"
+      },
+      {
+        "id": "e5",
+        "texto": "Un videojuego nuevo",
+        "categoria": "des"
+      },
+      {
+        "id": "e6",
+        "texto": "Tenis de marca",
+        "categoria": "des"
+      },
+      {
+        "id": "e7",
+        "texto": "Dulces",
+        "categoria": "des"
+      },
+      {
+        "id": "e8",
+        "texto": "Un celular último modelo",
+        "categoria": "des"
+      }
+    ]
+  }
+}

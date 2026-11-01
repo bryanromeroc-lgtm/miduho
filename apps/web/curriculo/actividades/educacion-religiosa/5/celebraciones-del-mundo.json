@@ -1,0 +1,37 @@
+{
+  "slug": "celebraciones-del-mundo",
+  "titulo": "Celebraciones del mundo",
+  "tipo": "emparejar",
+  "grado": 5,
+  "instruccion": "Toca una celebración y luego lo que recuerda o celebra.",
+  "tema": "Celebraciones de distintas tradiciones religiosas",
+  "contenido": {
+    "pares": [
+      {
+        "id": "par1",
+        "izquierda": "Navidad",
+        "derecha": "El nacimiento de Jesús, en el cristianismo"
+      },
+      {
+        "id": "par2",
+        "izquierda": "Semana Santa",
+        "derecha": "La pasión, muerte y resurrección de Jesús"
+      },
+      {
+        "id": "par3",
+        "izquierda": "Janucá",
+        "derecha": "Fiesta judía que enciende una vela más cada noche"
+      },
+      {
+        "id": "par4",
+        "izquierda": "Ramadán",
+        "derecha": "Mes de ayuno del islam"
+      },
+      {
+        "id": "par5",
+        "izquierda": "Diwali",
+        "derecha": "Fiesta hindú de las luces"
+      }
+    ]
+  }
+}

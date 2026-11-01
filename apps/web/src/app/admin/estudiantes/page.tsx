@@ -34,7 +34,7 @@ export default async function PaginaEstudiantesGrupos({ searchParams }: { search
   };
   const plano = JSON.parse(JSON.stringify(resultado.data));
 
-  return <Marco><Cabecera kicker="Administración" titulo="Estudiantes y grupos" nota="Asigna o traslada estudiantes. Cada estudiante tiene un solo grupo activo por año y el historial se conserva. Los datos de prueba de MIDUHO son ficticios." />
+  return <Marco><Cabecera kicker="Administración" titulo="Estudiantes y grupos" nota="Asigna o traslada estudiantes. Cada estudiante tiene un solo grupo activo por año y el historial se conserva." />
     <form method="get" className="admin-filtros asignaciones-filtros" role="search" aria-label="Buscar y filtrar estudiantes">
       <label className="admin-campo admin-campo-ancho">Buscar<input name="q" type="search" defaultValue={valor(sp.q)} placeholder="Nombre o correo" maxLength={120} /></label>
       <label className="admin-campo">Año<select name="anioLectivoId" defaultValue={anio?.id ?? ""}>{anios.map((a) => <option key={a.id} value={a.id}>{a.anio}{a.estado === "CERRADO" ? " (cerrado)" : ""}</option>)}</select></label>

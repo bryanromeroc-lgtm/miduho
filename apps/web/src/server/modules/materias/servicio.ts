@@ -7,24 +7,31 @@
  * la consulta solo selecciona la asignatura y su área.
  */
 import type { PrismaClient } from "@/generated/prisma/client";
-import { escenaDe, type Escena } from "@/lib/escenas";
-import type { MisMaterias } from "@/lib/materias";
+import { escenaDe } from "@/lib/escenas";
+import { ordenarActividades, type MisMaterias, type VistaMateria } from "@/lib/materias";
 import { etiquetaGrupo } from "@/lib/navegacion";
-import { contenidoSinFuente, desempenoSinFuente, type PuertoContenidoClase, type PuertoDesempeno } from "./puertos";
+import {
+  actividadesSinFuente,
+  contenidoSinFuente,
+  desempenoSinFuente,
+  type PuertoActividadesDeMateria,
+  type PuertoContenidoClase,
+  type PuertoDesempeno,
+} from "./puertos";
 
 export type { MisMaterias, ResumenMateria } from "@/lib/materias";
 
-/**
- * Destino del botón de jugar. 🔶 Provisional: la vista de clase aún usa datos
- * de demostración, así que cada materia apunta a donde hoy vive su contenido
- * real; el resto, a «Mis clases».
- */
-export function rutaMateria(escena: Escena): string {
-  if (escena === "robotica") return "/laboratorios?mundo=robotica";
-  if (escena === "emprendimiento") return "/laboratorios?mundo=emprendimiento";
-  if (escena === "lectura") return "/biblioteca";
-  return "/clases";
+/** Destino del botón de jugar: la vista propia de la materia (vistas-de-materia, D9). */
+export function rutaMateria(asignaturaId: string): string {
+  return `/materias/${encodeURIComponent(asignaturaId)}`;
 }
+
+/** Regreso a «Mis materias» con la misma materia elegida. */
+export function rutaVolver(asignaturaId: string): string {
+  return `/?materia=${encodeURIComponent(asignaturaId)}`;
+}
+
+type SesionMinima = { user?: { id?: string | null; contexto?: string | null } | null } | null;
 
 type Fila = { id: string; nombre: string; area: { nombre: string; orden: number | null } };
 
@@ -38,12 +45,13 @@ export function ordenarMaterias<T extends Fila>(filas: T[]): T[] {
 
 export function crearServicioMaterias(
   db: PrismaClient,
-  puertos: { desempeno?: PuertoDesempeno; contenido?: PuertoContenidoClase } = {},
+  puertos: { desempeno?: PuertoDesempeno; contenido?: PuertoContenidoClase; actividades?: PuertoActividadesDeMateria } = {},
 ) {
   const desempeno = puertos.desempeno ?? desempenoSinFuente;
   const contenido = puertos.contenido ?? contenidoSinFuente;
+  const actividades = puertos.actividades ?? actividadesSinFuente;
 
-  return {
+  const servicio = {
     async deEstudiante(estudianteId: string): Promise<MisMaterias> {
       const asociacion = await db.asociacionEstudianteGrupo.findFirst({
         where: {
@@ -85,7 +93,7 @@ export function crearServicioMaterias(
             nombre: f.nombre,
             area: { nombre: f.area.nombre, orden: f.area.orden },
             escena,
-            claseHref: rutaMateria(escena),
+            claseHref: rutaMateria(f.id),
             estrellas: d?.estrellas ?? null,
             avance: d?.avance ?? null,
             sigue: d?.sigue ?? null,
@@ -95,7 +103,24 @@ export function crearServicioMaterias(
         }),
       };
     },
+
+    /**
+     * Vista de una asignatura (vistas-de-materia, D3). null —la ruta responde
+     * 404— si la sesión no es ESTUDIANTE o la asignatura no tiene asignación
+     * ACTIVA en su grupo vigente. Reusa el tablero, así que no expone más de
+     * lo que ya ve en «Mis materias».
+     */
+    async vistaMateria(sesion: SesionMinima, asignaturaId: string): Promise<VistaMateria | null> {
+      const id = sesion?.user?.id;
+      if (!id || sesion.user?.contexto !== "ESTUDIANTE") return null;
+      const { grupo, materias } = await servicio.deEstudiante(id);
+      const materia = materias.find((m) => m.id === asignaturaId);
+      if (!grupo || !materia) return null;
+      const lista = await actividades.deMateria(id, grupo.id, materia.id);
+      return { materia, grupo, actividades: lista && ordenarActividades(lista) };
+    },
   };
+  return servicio;
 }
 
 export type ServicioMaterias = ReturnType<typeof crearServicioMaterias>;

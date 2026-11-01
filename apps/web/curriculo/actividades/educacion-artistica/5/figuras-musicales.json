@@ -1,0 +1,37 @@
+{
+  "slug": "figuras-musicales",
+  "titulo": "Memoria de figuras musicales",
+  "tipo": "memoria",
+  "grado": 5,
+  "instruccion": "Voltea dos cartas a la vez y une cada figura con los tiempos que dura.",
+  "tema": "Lectura musical: figuras y duración",
+  "contenido": {
+    "parejas": [
+      {
+        "id": "m1",
+        "a": "Redonda",
+        "b": "4 tiempos"
+      },
+      {
+        "id": "m2",
+        "a": "Blanca",
+        "b": "2 tiempos"
+      },
+      {
+        "id": "m3",
+        "a": "Negra",
+        "b": "1 tiempo"
+      },
+      {
+        "id": "m4",
+        "a": "Corchea",
+        "b": "Medio tiempo"
+      },
+      {
+        "id": "m5",
+        "a": "Semicorchea",
+        "b": "Un cuarto de tiempo"
+      }
+    ]
+  }
+}

@@ -215,46 +215,7 @@
 .boton-pastilla:active { transform: translateY(4px); box-shadow: inset 0 -4px 0 var(--boton-bisel); }
 .boton-pastilla[data-variante="primario"] { --boton-fondo: var(--acento); --boton-bisel: var(--color-sol-600); }
 
-/* ── Pantallas de acceso: la noche, el escudo y un panel sticker ────── */
-.acceso {
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 16px;
-  background: var(--noche);
-  color: var(--papel);
-}
-.acceso-columna { width: 100%; max-width: 460px; display: flex; flex-direction: column; align-items: center; gap: 22px; }
-.acceso-marca { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
-.acceso-marca-escudo {
-  width: 92px;
-  height: 92px;
-  overflow: hidden;
-  border: 5px solid var(--papel);
-  border-radius: 50%;
-  background: var(--papel);
-  box-shadow: 0 0 0 var(--contorno) var(--tinta), 0 7px 0 var(--contorno) var(--color-noche-990);
-}
-.acceso-marca-escudo img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.acceso-marca .wordmark { --tipo-wordmark: 3rem; }
-.acceso-marca small { font-family: var(--fuente-display); font-size: var(--tipo-cuerpo); font-weight: 700; color: var(--texto-noche); }
-
-.acceso-tarjeta {
-  width: 100%;
-  padding: 26px 24px 24px;
-  border: var(--contorno) solid var(--tinta);
-  border-radius: 24px;
-  background: var(--papel);
-  color: var(--tinta);
-  box-shadow: 0 8px 0 var(--color-noche-990);
-}
-.acceso-tarjeta h1 { font-size: clamp(1.625rem, 5vw, 2rem); font-weight: 800; line-height: 1.1; color: var(--tinta); }
-.acceso-bajada { margin-top: 8px; font-size: var(--tipo-cuerpo); line-height: 1.5; color: var(--gris); }
-.acceso-tarjeta > :not(h1, .acceso-bajada) { margin-top: 20px; }
-.acceso-nota { font-size: var(--tipo-rotulo); font-weight: 700; color: var(--texto-noche); }
-
+/* ── Campos, avisos y botón de los formularios (acceso, Cuenta, Admin) ── */
 .acceso-formulario { display: flex; flex-direction: column; gap: 16px; }
 .acceso-campo { display: flex; flex-direction: column; gap: 6px; }
 .acceso-campo label { font-family: var(--fuente-display); font-size: var(--tipo-cuerpo); font-weight: 800; color: var(--tinta); }
@@ -307,14 +268,191 @@
 .acceso-enlace:hover { text-decoration-thickness: 3px; }
 .acceso-enlace-aviso { font-weight: 800; text-decoration: underline; text-underline-offset: 4px; }
 
-@media (max-width: 600px) {
-  .acceso { align-items: flex-start; padding-top: 24px; }
-  .acceso-tarjeta { padding: 22px 18px 20px; border-radius: 22px; }
-  .acceso-marca .wordmark { --tipo-wordmark: 2.25rem; }
+.acceso-boton-flecha { display: none; }
+/* Campo con control adentro (el ojo de la contraseña): el borde lo lleva el campo. */
+.acceso-entrada { position: relative; display: flex; }
+.acceso-entrada input { flex: 1; min-width: 0; padding-right: 56px; }
+.acceso-ojo {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  color: var(--tinta);
+  cursor: pointer;
+  transform: translateY(-50%);
 }
+.acceso-ojo:focus-visible { outline: 3px solid var(--foco); outline-offset: 0; }
 @media (prefers-reduced-motion: reduce) {
   .boton-pastilla, .boton-pastilla:hover, .boton-pastilla:active,
   .acceso-boton, .acceso-boton:hover, .acceso-boton:active { transition: none; transform: none; }
+}
+
+/*
+  ── Pantallas de acceso: un día en el Colegio Mi Dulce Hogar ──────────
+  El paisaje de cielo y colinas (el mismo de la casa del escudo) ocupa
+  toda la pantalla. Centrado: bienvenida, escudo real grande,
+  nombre del colegio, wordmark MIDUHO y el formulario claro. El botón es
+  la pastilla con bisel de Mis materias, en el azul del tejado del escudo.
+  Las reglas van bajo .acceso para no tocar los formularios de Cuenta y Admin.
+*/
+.acceso {
+  --a-texto: #092a55;
+  --a-suave: #1f4a7a;
+  --a-azul: #0066d6;
+  --a-azul-hondo: #0055b4;
+  --a-borde-campo: #4f86b8;
+  --a-borde-panel: #a9d4f0;
+  --a-error: #b42318;
+  --foco: var(--a-texto);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  background: #c8ecfa;
+  color: var(--a-texto);
+  caret-color: var(--a-azul);
+}
+.acceso ::selection { background: #b7e0f7; color: var(--a-texto); }
+
+.acceso-marco {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px 56px;
+  background: #c8ecfa url("/images/acceso/fondo-dia.webp") center bottom / cover no-repeat;
+}
+
+.acceso-columna { width: 100%; max-width: 560px; display: flex; flex-direction: column; align-items: center; }
+
+.acceso-marca { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.acceso-bienvenida { font-family: var(--fuente-display); font-size: 1.5rem; font-weight: 800; line-height: 1.1; }
+.acceso-escudo {
+  display: block;
+  width: 148px;
+  height: 148px;
+  margin-top: 12px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: var(--papel);
+  box-shadow: 0 10px 24px -10px #0a3d6b59;
+}
+.acceso-colegio {
+  margin-top: 14px;
+  font-family: var(--fuente-display);
+  font-size: clamp(1.875rem, 1.2rem + 2.4vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.acceso-plataforma {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px 12px;
+  margin-top: 8px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--a-suave);
+}
+.acceso-plataforma .wordmark { --tipo-wordmark: 1.75rem; --contorno-wordmark: 3px; --sombra-solida: var(--a-texto); text-shadow: 0 3px 0 var(--sombra-solida); }
+
+.acceso-tarjeta {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  padding: 22px 32px 26px;
+  border: 2px solid var(--a-borde-panel);
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--papel) 92%, transparent);
+  box-shadow: 0 12px 28px -16px #0a3d6b4d;
+}
+.acceso-tarjeta h1 { font-size: 1.5rem; font-weight: 800; line-height: 1.15; color: var(--a-texto); text-wrap: balance; }
+.acceso-bajada { margin-top: 4px; font-size: var(--tipo-cuerpo); line-height: 1.5; color: var(--a-suave); }
+.acceso-tarjeta > :not(h1, .acceso-bajada) { margin-top: 20px; }
+/*
+  En el ingreso el botón queda montado sobre el borde inferior del panel,
+  como en la referencia; sigue siendo parte del formulario.
+*/
+.acceso-tarjeta:has(> .acceso-formulario:last-child > .acceso-boton:last-child) { padding-bottom: 0; margin-bottom: 34px; }
+.acceso-tarjeta > .acceso-formulario:last-child > .acceso-boton:last-child { margin-bottom: -34px; }
+.acceso-nota { margin-top: 18px; text-align: center; padding: 4px 14px; border-radius: 999px; background: color-mix(in srgb, var(--papel) 80%, transparent); font-size: var(--tipo-rotulo); font-weight: 700; color: var(--a-suave); }
+
+.acceso .acceso-formulario { gap: 18px; }
+.acceso .acceso-campo { gap: 6px; }
+.acceso .acceso-campo label { font-size: 1.125rem; color: var(--a-texto); }
+.acceso .acceso-campo input {
+  min-height: 54px;
+  padding: 0 16px;
+  border: 2px solid var(--a-borde-campo);
+  border-radius: 14px;
+  background: #f4fbff;
+  font-size: 1.125rem;
+  color: var(--a-texto);
+  transition: border-color .15s ease-out, background .15s ease-out;
+}
+.acceso .acceso-campo input::placeholder { color: #5a6f8c; opacity: 1; }
+.acceso .acceso-campo input:hover { background: var(--papel); border-color: var(--a-azul); }
+.acceso .acceso-campo input:focus-visible { outline: 3px solid var(--a-azul); outline-offset: 2px; border-color: var(--a-azul); background: var(--papel); }
+.acceso .acceso-campo input[aria-invalid="true"] { border-color: var(--a-error); background: #fff5f4; }
+.acceso .acceso-ayuda { color: var(--a-suave); }
+.acceso .acceso-error { color: var(--a-error); }
+.acceso .acceso-aviso { border: 2px solid; border-radius: 14px; padding: 12px 16px; font-weight: 700; }
+.acceso .acceso-aviso[data-tipo="error"] { background: #fdecea; border-color: #f2b8b2; color: #8f1d14; }
+.acceso .acceso-aviso[data-tipo="ok"] { background: #e3f4e6; border-color: #a9d8b3; color: #145c2e; }
+.acceso .acceso-enlace-aviso { color: inherit; }
+.acceso .acceso-ojo { color: var(--a-suave); }
+.acceso .acceso-ojo:hover { color: var(--a-azul); background: #e3f2fc; }
+.acceso .acceso-ojo:focus-visible { outline: 3px solid var(--a-azul); outline-offset: 0; }
+
+/* La pastilla grande: azul del tejado, aro blanco y bisel como los botones de Mis materias. */
+.acceso .acceso-boton {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-width: min(290px, 100%);
+  min-height: 64px;
+  margin-top: 6px;
+  padding: 0 40px;
+  border: 4px solid var(--papel);
+  border-radius: 999px;
+  background: var(--a-azul);
+  color: var(--papel);
+  box-shadow: inset 0 -6px 0 var(--a-azul-hondo), 0 10px 22px -8px #0055b48c;
+  font-size: 1.5rem;
+}
+.acceso .acceso-boton:hover { transform: translateY(-2px); background: #0a6fe0; }
+.acceso .acceso-boton:active { transform: translateY(3px); box-shadow: inset 0 -3px 0 var(--a-azul-hondo), 0 4px 10px -6px #0055b48c; }
+.acceso .acceso-boton:focus-visible { outline: 3px solid var(--a-texto); outline-offset: 3px; }
+.acceso .acceso-boton:disabled { transform: none; background: #5a8fd0; box-shadow: inset 0 -6px 0 #4a7cbc; }
+.acceso .acceso-boton-flecha { display: block; transition: transform .26s cubic-bezier(0.16, 1, 0.3, 1); }
+.acceso .acceso-boton:hover .acceso-boton-flecha { transform: translateX(4px); }
+.acceso .acceso-enlace { align-self: center; color: #0058b8; text-decoration-thickness: 2px; }
+.acceso .acceso-enlace-olvido { align-self: flex-end; margin-top: -10px; font-size: 1rem; }
+.acceso .acceso-enlace:focus-visible { outline: 3px solid var(--a-azul); outline-offset: 2px; border-radius: 4px; }
+
+@media (max-width: 600px) {
+  .acceso-marco { align-items: flex-start; padding: 32px 16px 48px; background-image: url("/images/acceso/fondo-dia-768.webp"); }
+  .acceso-bienvenida { font-size: 1.25rem; }
+  .acceso-escudo { width: 112px; height: 112px; margin-top: 10px; }
+  .acceso-plataforma { font-size: 1.0625rem; }
+  .acceso-plataforma .wordmark { --tipo-wordmark: 1.5rem; }
+  .acceso-tarjeta { margin-top: 22px; padding: 22px 18px 26px; }
+  .acceso .acceso-boton { min-width: 0; width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .acceso .acceso-boton, .acceso .acceso-boton:hover, .acceso .acceso-boton:active { transform: none; }
+  .acceso .acceso-boton-flecha { transition: none; }
+  .acceso .acceso-boton:hover .acceso-boton-flecha { transform: none; }
 }
 
 /* ── Secciones aún en construcción (placeholders de rutas del shell) ─── */

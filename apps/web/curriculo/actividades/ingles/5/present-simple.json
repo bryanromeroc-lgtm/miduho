@@ -1,0 +1,86 @@
+{
+  "slug": "present-simple",
+  "titulo": "My daily routine",
+  "tipo": "seleccion-multiple",
+  "grado": 5,
+  "instruccion": "Elige la palabra en inglés que completa bien cada oración.",
+  "tema": "Presente simple y rutinas diarias",
+  "contenido": {
+    "preguntas": [
+      {
+        "id": "p1",
+        "enunciado": "I ___ breakfast at seven o'clock.",
+        "opciones": [
+          "eats",
+          "eating",
+          "eat"
+        ],
+        "correcta": 2,
+        "explicacion": "Con «I» el verbo va sin «s»."
+      },
+      {
+        "id": "p2",
+        "enunciado": "She ___ to school by bus.",
+        "opciones": [
+          "go",
+          "going",
+          "goes"
+        ],
+        "correcta": 2,
+        "explicacion": "Con «she» se agrega «-es» a «go»."
+      },
+      {
+        "id": "p3",
+        "enunciado": "We ___ our teeth every night.",
+        "opciones": [
+          "brushing",
+          "brush",
+          "brushes"
+        ],
+        "correcta": 1
+      },
+      {
+        "id": "p4",
+        "enunciado": "My brother ___ football on Saturdays.",
+        "opciones": [
+          "play",
+          "plays",
+          "playing"
+        ],
+        "correcta": 1,
+        "explicacion": "Con «he/she» se agrega «s»."
+      },
+      {
+        "id": "p5",
+        "enunciado": "___ you like ice cream?",
+        "opciones": [
+          "Is",
+          "Does",
+          "Do"
+        ],
+        "correcta": 2
+      },
+      {
+        "id": "p6",
+        "enunciado": "He ___ not watch TV in the morning.",
+        "opciones": [
+          "do",
+          "does",
+          "is"
+        ],
+        "correcta": 1
+      },
+      {
+        "id": "p7",
+        "enunciado": "¿Cómo se dice «me levanto» en inglés?",
+        "opciones": [
+          "I get up",
+          "I have lunch",
+          "I take a shower",
+          "I go to bed"
+        ],
+        "correcta": 0
+      }
+    ]
+  }
+}

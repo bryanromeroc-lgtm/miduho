@@ -1,0 +1,38 @@
+{
+  "slug": "palabras-de-paz",
+  "titulo": "Palabras de paz",
+  "tipo": "palabra-secreta",
+  "grado": 5,
+  "instruccion": "Lee la pista y adivina la palabra letra por letra.",
+  "tema": "Valores para la convivencia y la paz",
+  "contenido": {
+    "fallos": 6,
+    "palabras": [
+      {
+        "id": "s1",
+        "palabra": "RESPETO",
+        "pista": "Tratar bien a todos, aunque sean distintos a mí."
+      },
+      {
+        "id": "s2",
+        "palabra": "PERDÓN",
+        "pista": "Lo que pido cuando me equivoco con alguien."
+      },
+      {
+        "id": "s3",
+        "palabra": "DIÁLOGO",
+        "pista": "Conversar para entendernos."
+      },
+      {
+        "id": "s4",
+        "palabra": "PAZ",
+        "pista": "Vivir juntos sin violencia."
+      },
+      {
+        "id": "s5",
+        "palabra": "GRATITUD",
+        "pista": "Dar las gracias de corazón."
+      }
+    ]
+  }
+}

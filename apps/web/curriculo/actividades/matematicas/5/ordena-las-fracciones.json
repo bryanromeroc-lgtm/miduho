@@ -1,0 +1,36 @@
+{
+  "slug": "ordena-las-fracciones",
+  "titulo": "Ordena de la fracción menor a la mayor",
+  "tipo": "ordenar",
+  "grado": 5,
+  "instruccion": "Mueve las fracciones con las flechas hasta que queden de la más pequeña a la más grande.",
+  "tema": "Comparación y orden de fracciones",
+  "contenido": {
+    "elementos": [
+      {
+        "id": "e1",
+        "texto": "1/8"
+      },
+      {
+        "id": "e2",
+        "texto": "1/4"
+      },
+      {
+        "id": "e3",
+        "texto": "1/3"
+      },
+      {
+        "id": "e4",
+        "texto": "1/2"
+      },
+      {
+        "id": "e5",
+        "texto": "2/3"
+      },
+      {
+        "id": "e6",
+        "texto": "3/4"
+      }
+    ]
+  }
+}

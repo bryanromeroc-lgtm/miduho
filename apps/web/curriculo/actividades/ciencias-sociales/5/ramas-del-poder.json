@@ -1,0 +1,71 @@
+{
+  "slug": "ramas-del-poder",
+  "titulo": "Las ramas del poder público",
+  "tipo": "clasificar",
+  "grado": 5,
+  "instruccion": "Ubica cada institución o tarea en su rama del poder público.",
+  "tema": "Organización del Estado colombiano",
+  "contenido": {
+    "categorias": [
+      {
+        "id": "leg",
+        "nombre": "Legislativa"
+      },
+      {
+        "id": "eje",
+        "nombre": "Ejecutiva"
+      },
+      {
+        "id": "jud",
+        "nombre": "Judicial"
+      }
+    ],
+    "elementos": [
+      {
+        "id": "e1",
+        "texto": "Hace las leyes",
+        "categoria": "leg"
+      },
+      {
+        "id": "e2",
+        "texto": "Senado de la República",
+        "categoria": "leg"
+      },
+      {
+        "id": "e3",
+        "texto": "Cámara de Representantes",
+        "categoria": "leg"
+      },
+      {
+        "id": "e4",
+        "texto": "Presidente de la República",
+        "categoria": "eje"
+      },
+      {
+        "id": "e5",
+        "texto": "Ministerios",
+        "categoria": "eje"
+      },
+      {
+        "id": "e6",
+        "texto": "Alcaldes y gobernadores",
+        "categoria": "eje"
+      },
+      {
+        "id": "e7",
+        "texto": "Corte Constitucional",
+        "categoria": "jud"
+      },
+      {
+        "id": "e8",
+        "texto": "Jueces",
+        "categoria": "jud"
+      },
+      {
+        "id": "e9",
+        "texto": "Resuelve los conflictos según la ley",
+        "categoria": "jud"
+      }
+    ]
+  }
+}

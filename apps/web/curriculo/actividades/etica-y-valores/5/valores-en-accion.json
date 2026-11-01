@@ -1,0 +1,42 @@
+{
+  "slug": "valores-en-accion",
+  "titulo": "Valores en acción",
+  "tipo": "emparejar",
+  "grado": 5,
+  "instruccion": "Toca un valor y luego la acción que lo muestra.",
+  "tema": "Valores para la convivencia",
+  "contenido": {
+    "pares": [
+      {
+        "id": "par1",
+        "izquierda": "Respeto",
+        "derecha": "Escuchar sin interrumpir"
+      },
+      {
+        "id": "par2",
+        "izquierda": "Responsabilidad",
+        "derecha": "Entregar las tareas a tiempo"
+      },
+      {
+        "id": "par3",
+        "izquierda": "Honestidad",
+        "derecha": "Decir la verdad aunque cueste"
+      },
+      {
+        "id": "par4",
+        "izquierda": "Solidaridad",
+        "derecha": "Ayudar a quien lo necesita"
+      },
+      {
+        "id": "par5",
+        "izquierda": "Tolerancia",
+        "derecha": "Aceptar que otros piensen distinto"
+      },
+      {
+        "id": "par6",
+        "izquierda": "Gratitud",
+        "derecha": "Dar las gracias por lo que recibimos"
+      }
+    ]
+  }
+}

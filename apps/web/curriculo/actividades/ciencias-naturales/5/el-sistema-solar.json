@@ -1,0 +1,89 @@
+{
+  "slug": "el-sistema-solar",
+  "titulo": "El sistema solar",
+  "tipo": "seleccion-multiple",
+  "grado": 5,
+  "instruccion": "Elige la respuesta correcta sobre el Sol, los planetas y la Luna.",
+  "tema": "El sistema solar y los movimientos de la Tierra",
+  "contenido": {
+    "preguntas": [
+      {
+        "id": "p1",
+        "enunciado": "¿Qué planeta está más cerca del Sol?",
+        "opciones": [
+          "Tierra",
+          "Marte",
+          "Mercurio",
+          "Venus"
+        ],
+        "correcta": 2
+      },
+      {
+        "id": "p2",
+        "enunciado": "¿Cuál es el planeta más grande del sistema solar?",
+        "opciones": [
+          "Saturno",
+          "Júpiter",
+          "Neptuno",
+          "Tierra"
+        ],
+        "correcta": 1
+      },
+      {
+        "id": "p3",
+        "enunciado": "El movimiento de la Tierra sobre sí misma, que produce el día y la noche, se llama…",
+        "opciones": [
+          "Rotación",
+          "Gravedad",
+          "Eclipse",
+          "Traslación"
+        ],
+        "correcta": 0,
+        "explicacion": "La rotación dura cerca de 24 horas."
+      },
+      {
+        "id": "p4",
+        "enunciado": "¿Cuánto tarda la Tierra en dar una vuelta completa alrededor del Sol?",
+        "opciones": [
+          "24 horas",
+          "Diez años",
+          "Un mes",
+          "Cerca de 365 días"
+        ],
+        "correcta": 3
+      },
+      {
+        "id": "p5",
+        "enunciado": "La Luna es…",
+        "opciones": [
+          "Un planeta",
+          "Una estrella",
+          "El satélite natural de la Tierra",
+          "Un cometa"
+        ],
+        "correcta": 2
+      },
+      {
+        "id": "p6",
+        "enunciado": "¿Qué planeta es conocido como el planeta rojo?",
+        "opciones": [
+          "Marte",
+          "Urano",
+          "Venus",
+          "Mercurio"
+        ],
+        "correcta": 0
+      },
+      {
+        "id": "p7",
+        "enunciado": "El Sol es una estrella.",
+        "opciones": [
+          "Verdadero",
+          "Falso"
+        ],
+        "correcta": 0,
+        "explicacion": "El Sol es la estrella más cercana a la Tierra."
+      }
+    ]
+  }
+}

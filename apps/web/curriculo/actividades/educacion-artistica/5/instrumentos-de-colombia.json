@@ -1,0 +1,37 @@
+{
+  "slug": "instrumentos-de-colombia",
+  "titulo": "Instrumentos de Colombia",
+  "tipo": "emparejar",
+  "grado": 5,
+  "instruccion": "Toca un instrumento y luego la música y la región donde suena.",
+  "tema": "Músicas tradicionales colombianas",
+  "contenido": {
+    "pares": [
+      {
+        "id": "par1",
+        "izquierda": "Tiple",
+        "derecha": "Bambuco, región Andina"
+      },
+      {
+        "id": "par2",
+        "izquierda": "Arpa llanera",
+        "derecha": "Joropo, Llanos Orientales"
+      },
+      {
+        "id": "par3",
+        "izquierda": "Marimba de chonta",
+        "derecha": "Currulao, Pacífico"
+      },
+      {
+        "id": "par4",
+        "izquierda": "Acordeón",
+        "derecha": "Vallenato, Caribe"
+      },
+      {
+        "id": "par5",
+        "izquierda": "Gaita",
+        "derecha": "Cumbia, Caribe"
+      }
+    ]
+  }
+}

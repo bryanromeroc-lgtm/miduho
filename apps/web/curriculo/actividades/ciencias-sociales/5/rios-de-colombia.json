@@ -1,0 +1,44 @@
+{
+  "slug": "rios-de-colombia",
+  "titulo": "Ríos de Colombia",
+  "tipo": "sopa-letras",
+  "grado": 5,
+  "instruccion": "Busca los ríos escondidos. Toca la primera letra y luego la última.",
+  "tema": "Hidrografía de Colombia",
+  "contenido": {
+    "filas": 10,
+    "columnas": 10,
+    "palabras": [
+      {
+        "id": "w1",
+        "palabra": "MAGDALENA",
+        "pista": "El río más importante de Colombia."
+      },
+      {
+        "id": "w2",
+        "palabra": "CAUCA",
+        "pista": "Principal afluente del Magdalena."
+      },
+      {
+        "id": "w3",
+        "palabra": "AMAZONAS",
+        "pista": "Río del sur, en la frontera con Perú y Brasil."
+      },
+      {
+        "id": "w4",
+        "palabra": "ORINOCO",
+        "pista": "Río de la frontera con Venezuela."
+      },
+      {
+        "id": "w5",
+        "palabra": "ATRATO",
+        "pista": "Gran río del Chocó."
+      },
+      {
+        "id": "w6",
+        "palabra": "META",
+        "pista": "Río de los Llanos que da nombre a un departamento."
+      }
+    ]
+  }
+}

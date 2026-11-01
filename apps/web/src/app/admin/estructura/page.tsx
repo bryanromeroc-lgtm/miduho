@@ -107,7 +107,7 @@ export default async function PaginaEstructura({ searchParams }: { searchParams:
     return { filtros: filtrosForm, resumen, vacio, pie };
   };
 
-  return <Marco><Cabecera kicker="Administración" titulo="Estructura académica" nota="Configura años, períodos, áreas, grados, grupos y asignaturas. Todos los datos de prueba de MIDUHO son ficticios." />
+  return <Marco><Cabecera kicker="Administración" titulo="Estructura académica" nota="Configura años, períodos, áreas, grados, grupos y asignaturas." />
     <FormularioEstructura
       anios={plano(anios.data)} periodos={plano(periodos.data)} areas={plano(areas.data)} grados={plano(grados.data)}
       grupos={plano(grupos.data)} asignaturas={plano(asignaturas.data)}

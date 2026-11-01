@@ -1,0 +1,66 @@
+{
+  "slug": "respeto-por-las-creencias",
+  "titulo": "Respeto por las creencias",
+  "tipo": "seleccion-multiple",
+  "grado": 5,
+  "instruccion": "Elige la respuesta correcta sobre la libertad religiosa y el respeto.",
+  "tema": "Libertad religiosa y respeto a la diversidad",
+  "contenido": {
+    "preguntas": [
+      {
+        "id": "p1",
+        "enunciado": "En Colombia, la Constitución de 1991 reconoce…",
+        "opciones": [
+          "Que las creencias se votan",
+          "Una sola religión obligatoria",
+          "La libertad de cultos",
+          "Que nadie puede tener creencias"
+        ],
+        "correcta": 2
+      },
+      {
+        "id": "p2",
+        "enunciado": "Una compañera celebra una fiesta religiosa distinta a la tuya. ¿Qué haces?",
+        "opciones": [
+          "Burlarme",
+          "Respetarla y preguntar con interés",
+          "Decirle que está mal",
+          "Dejar de hablarle"
+        ],
+        "correcta": 1
+      },
+      {
+        "id": "p3",
+        "enunciado": "Tener una creencia distinta es motivo para excluir a alguien.",
+        "opciones": [
+          "Verdadero",
+          "Falso"
+        ],
+        "correcta": 1,
+        "explicacion": "Todas las personas merecen respeto, crean o no crean."
+      },
+      {
+        "id": "p4",
+        "enunciado": "¿Qué valor nos ayuda a convivir con personas que piensan distinto?",
+        "opciones": [
+          "El egoísmo",
+          "La envidia",
+          "La burla",
+          "La tolerancia"
+        ],
+        "correcta": 3
+      },
+      {
+        "id": "p5",
+        "enunciado": "El diálogo entre personas de distintas creencias sirve para…",
+        "opciones": [
+          "Conocernos y vivir en paz",
+          "Imponer ideas",
+          "Burlarse",
+          "Pelear"
+        ],
+        "correcta": 0
+      }
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "slug": "habilidades-motrices",
+  "titulo": "Habilidades del movimiento",
+  "tipo": "clasificar",
+  "grado": 5,
+  "instruccion": "Ubica cada acción en su habilidad: moverse de un lugar a otro, manejar un objeto o mantener el equilibrio.",
+  "tema": "Habilidades motrices básicas",
+  "contenido": {
+    "categorias": [
+      {
+        "id": "loc",
+        "nombre": "Desplazarse"
+      },
+      {
+        "id": "man",
+        "nombre": "Manejar objetos"
+      },
+      {
+        "id": "equ",
+        "nombre": "Equilibrio"
+      }
+    ],
+    "elementos": [
+      {
+        "id": "e1",
+        "texto": "Correr",
+        "categoria": "loc"
+      },
+      {
+        "id": "e2",
+        "texto": "Saltar",
+        "categoria": "loc"
+      },
+      {
+        "id": "e3",
+        "texto": "Reptar",
+        "categoria": "loc"
+      },
+      {
+        "id": "e4",
+        "texto": "Lanzar",
+        "categoria": "man"
+      },
+      {
+        "id": "e5",
+        "texto": "Atrapar",
+        "categoria": "man"
+      },
+      {
+        "id": "e6",
+        "texto": "Patear",
+        "categoria": "man"
+      },
+      {
+        "id": "e7",
+        "texto": "Pararse en un pie",
+        "categoria": "equ"
+      },
+      {
+        "id": "e8",
+        "texto": "Caminar sobre una línea",
+        "categoria": "equ"
+      },
+      {
+        "id": "e9",
+        "texto": "Hacer el avión",
+        "categoria": "equ"
+      }
+    ]
+  }
+}

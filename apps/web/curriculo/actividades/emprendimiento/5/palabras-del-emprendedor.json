@@ -1,0 +1,42 @@
+{
+  "slug": "palabras-del-emprendedor",
+  "titulo": "Palabras del emprendedor",
+  "tipo": "memoria",
+  "grado": 5,
+  "instruccion": "Voltea dos cartas a la vez y une cada palabra con su significado.",
+  "tema": "Vocabulario del emprendimiento",
+  "contenido": {
+    "parejas": [
+      {
+        "id": "m1",
+        "a": "Cliente",
+        "b": "Quien compra el producto"
+      },
+      {
+        "id": "m2",
+        "a": "Producto",
+        "b": "Lo que se ofrece para vender"
+      },
+      {
+        "id": "m3",
+        "a": "Precio",
+        "b": "Lo que se paga por algo"
+      },
+      {
+        "id": "m4",
+        "a": "Presupuesto",
+        "b": "Plan para usar el dinero"
+      },
+      {
+        "id": "m5",
+        "a": "Ahorro",
+        "b": "Dinero guardado para después"
+      },
+      {
+        "id": "m6",
+        "a": "Prototipo",
+        "b": "Primera versión para probar una idea"
+      }
+    ]
+  }
+}

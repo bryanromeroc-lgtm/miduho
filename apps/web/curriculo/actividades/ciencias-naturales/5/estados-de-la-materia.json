@@ -1,0 +1,44 @@
+{
+  "slug": "estados-de-la-materia",
+  "titulo": "Sopa de la materia",
+  "tipo": "sopa-letras",
+  "grado": 5,
+  "instruccion": "Busca las palabras escondidas. Toca la primera letra y luego la última.",
+  "tema": "Estados de la materia y sus cambios",
+  "contenido": {
+    "filas": 10,
+    "columnas": 10,
+    "palabras": [
+      {
+        "id": "w1",
+        "palabra": "SOLIDO",
+        "pista": "Estado con forma propia."
+      },
+      {
+        "id": "w2",
+        "palabra": "LIQUIDO",
+        "pista": "Toma la forma del recipiente."
+      },
+      {
+        "id": "w3",
+        "palabra": "GAS",
+        "pista": "Ocupa todo el espacio que encuentra."
+      },
+      {
+        "id": "w4",
+        "palabra": "FUSION",
+        "pista": "Paso de sólido a líquido."
+      },
+      {
+        "id": "w5",
+        "palabra": "VAPOR",
+        "pista": "Agua en estado gaseoso."
+      },
+      {
+        "id": "w6",
+        "palabra": "HIELO",
+        "pista": "Agua en estado sólido."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "slug": "resolver-un-conflicto",
+  "titulo": "Pasos para resolver un conflicto",
+  "tipo": "ordenar",
+  "grado": 5,
+  "instruccion": "Ordena con las flechas los pasos para resolver un desacuerdo hablando.",
+  "tema": "Resolución pacífica de conflictos",
+  "contenido": {
+    "elementos": [
+      {
+        "id": "e1",
+        "texto": "Calmarme y respirar profundo"
+      },
+      {
+        "id": "e2",
+        "texto": "Escuchar lo que siente la otra persona"
+      },
+      {
+        "id": "e3",
+        "texto": "Decir lo que siento sin ofender"
+      },
+      {
+        "id": "e4",
+        "texto": "Buscar juntos posibles soluciones"
+      },
+      {
+        "id": "e5",
+        "texto": "Elegir una solución y cumplir el acuerdo"
+      }
+    ]
+  }
+}

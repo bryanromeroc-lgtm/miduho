@@ -1,0 +1,71 @@
+{
+  "slug": "cadena-alimentaria",
+  "titulo": "¿Quién produce y quién consume?",
+  "tipo": "clasificar",
+  "grado": 5,
+  "instruccion": "Ubica cada ser vivo según su papel en la cadena alimentaria.",
+  "tema": "Ecosistemas: productores, consumidores y descomponedores",
+  "contenido": {
+    "categorias": [
+      {
+        "id": "pro",
+        "nombre": "Productor"
+      },
+      {
+        "id": "con",
+        "nombre": "Consumidor"
+      },
+      {
+        "id": "des",
+        "nombre": "Descomponedor"
+      }
+    ],
+    "elementos": [
+      {
+        "id": "e1",
+        "texto": "Pasto",
+        "categoria": "pro"
+      },
+      {
+        "id": "e2",
+        "texto": "Árbol de mango",
+        "categoria": "pro"
+      },
+      {
+        "id": "e3",
+        "texto": "Algas",
+        "categoria": "pro"
+      },
+      {
+        "id": "e4",
+        "texto": "Vaca",
+        "categoria": "con"
+      },
+      {
+        "id": "e5",
+        "texto": "Águila",
+        "categoria": "con"
+      },
+      {
+        "id": "e6",
+        "texto": "Rana",
+        "categoria": "con"
+      },
+      {
+        "id": "e7",
+        "texto": "Hongos",
+        "categoria": "des"
+      },
+      {
+        "id": "e8",
+        "texto": "Bacterias del suelo",
+        "categoria": "des"
+      },
+      {
+        "id": "e9",
+        "texto": "Lombriz de tierra",
+        "categoria": "des"
+      }
+    ]
+  }
+}

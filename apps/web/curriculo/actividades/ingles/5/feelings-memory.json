@@ -1,0 +1,42 @@
+{
+  "slug": "feelings-memory",
+  "titulo": "Feelings memory",
+  "tipo": "memoria",
+  "grado": 5,
+  "instruccion": "Voltea dos cartas a la vez y encuentra cada emoción en inglés con su significado.",
+  "tema": "Vocabulario: emociones y estados",
+  "contenido": {
+    "parejas": [
+      {
+        "id": "m1",
+        "a": "Happy",
+        "b": "Feliz"
+      },
+      {
+        "id": "m2",
+        "a": "Sad",
+        "b": "Triste"
+      },
+      {
+        "id": "m3",
+        "a": "Angry",
+        "b": "Enojado"
+      },
+      {
+        "id": "m4",
+        "a": "Tired",
+        "b": "Cansado"
+      },
+      {
+        "id": "m5",
+        "a": "Scared",
+        "b": "Asustado"
+      },
+      {
+        "id": "m6",
+        "a": "Hungry",
+        "b": "Con hambre"
+      }
+    ]
+  }
+}

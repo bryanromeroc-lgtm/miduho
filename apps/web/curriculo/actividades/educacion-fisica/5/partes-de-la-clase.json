@@ -1,0 +1,32 @@
+{
+  "slug": "partes-de-la-clase",
+  "titulo": "Las partes de la clase",
+  "tipo": "ordenar",
+  "grado": 5,
+  "instruccion": "Ordena con las flechas lo que pasa en una clase de educación física.",
+  "tema": "Estructura de la sesión de actividad física",
+  "contenido": {
+    "elementos": [
+      {
+        "id": "e1",
+        "texto": "Escuchar las indicaciones del profesor"
+      },
+      {
+        "id": "e2",
+        "texto": "Calentamiento con movilidad y trote suave"
+      },
+      {
+        "id": "e3",
+        "texto": "Actividad principal o juego"
+      },
+      {
+        "id": "e4",
+        "texto": "Vuelta a la calma con estiramientos"
+      },
+      {
+        "id": "e5",
+        "texto": "Hidratarse y asearse"
+      }
+    ]
+  }
+}

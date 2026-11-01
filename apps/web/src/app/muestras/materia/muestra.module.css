@@ -1,0 +1,59 @@
+/* Selector de la muestra: herramienta de revisión, fuera del diseño de la vista. */
+.menu {
+  position: relative;
+}
+
+.resumen {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--m-fondo);
+  color: var(--m-tinta);
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.selector {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 8px);
+  right: 0;
+  max-height: calc(100dvh - 160px);
+  overflow-y: auto;
+  display: grid;
+  gap: 4px;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  padding: 8px;
+  border-radius: 18px;
+  background: var(--m-tarjeta);
+  border: 2px solid var(--m-banda);
+}
+
+.opcion {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  color: var(--m-tinta);
+  font-size: 1rem;
+  text-decoration: none;
+}
+.opcion:hover {
+  background: var(--m-banda);
+}
+.opcion[aria-current="page"] {
+  background: var(--m-acento);
+  color: var(--m-sobreAcento);
+}
+
+.separador {
+  height: 2px;
+  margin: 4px 8px;
+  border-radius: 1px;
+  background: var(--m-banda);
+}

@@ -11,6 +11,8 @@ const nextConfig: NextConfig = {
   // Imagen de contenedor: .next/standalone trae server.js y solo las dependencias trazadas.
   output: "standalone",
   poweredByHeader: false,
+  // El currículo (curriculo/actividades/**/*.json) se lee en tiempo de ejecución: va dentro de la salida standalone.
+  outputFileTracingIncludes: { "/materias/**": ["./curriculo/**/*.json"] },
 
   // Las mismas cabeceras que pone Caddy (deploy/Caddyfile), para cuando no hay
   // proxy propio delante (Heroku). Detrás de Caddy, este las reemplaza.
