@@ -2,10 +2,12 @@
 version: 1
 slug: "apps-web-src-app-page-tsx"
 primary_target: "apps/web/src/app/page.tsx"
-related_targets: ["apps/web/src/features/materias/mis-materias.tsx","apps/web/src/features/materias/cromo.tsx","apps/web/src/features/materias/escenas"]
+related_targets: ["apps/web/src/features/materias/mis-materias.tsx","apps/web/src/lib/guias.ts","apps/web/src/components/shell/marco-juego.tsx"]
 ---
 
 # Inicio del estudiante «Mis materias» — surface brief
+
+> **Rediseño 2026-11-01 — reemplaza el álbum de cromos (v11).** El operador entregó una maqueta nueva: el inicio pasa al **mundo de día del ingreso** (fondo `fondo-dia`, tinta `#092a55`, azul `#0066d6`). Marco `variante="dia"`: encabezado de papel con escudo, wordmark en tinta y pestañas con raya azul en la activa. Título «Mis materias» + bajada; cuadrícula 5×2 de tarjetas blancas con la ilustración 2D de la guía de cada materia (`public/images/guias/*.webp`, 3:2, procedencia: `~/Documentos/ChatGPT/BRC/entregables/tarjetas-miduho-2d`), nombre, «Guía · Especie» y «Ver actividades»; toda la tarjeta enlaza. «Tu siguiente actividad» solo con dato real (`sigue`). Paginación de 10 y diálogo «Conoce a tus guías». El selector de avatar y el avatar viajero salen del inicio 🔶 (por decidir dónde viven). Lo que sigue abajo es el contrato anterior, como historia.
 
 Scope: `/` con contexto ESTUDIANTE (`apps/web/src/app/page.tsx` → `features/materias/mis-materias.tsx`, `cromo.tsx`, `escenas/`). Visitor mode: Operate (el niño elige su materia y entra con un toque), con el registro expresivo de un álbum en modo juego.
 

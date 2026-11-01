@@ -7,6 +7,7 @@
  * la consulta solo selecciona la asignatura y su área.
  */
 import type { PrismaClient } from "@/generated/prisma/client";
+import { diaDe, type DatosAgenda } from "@/lib/agenda";
 import { escenaDe } from "@/lib/escenas";
 import { ordenarActividades, type MisMaterias, type VistaMateria } from "@/lib/materias";
 import { etiquetaGrupo } from "@/lib/navegacion";
@@ -118,6 +119,29 @@ export function crearServicioMaterias(
       if (!grupo || !materia) return null;
       const lista = await actividades.deMateria(id, grupo.id, materia.id);
       return { materia, grupo, actividades: lista && ordenarActividades(lista) };
+    },
+
+    /**
+     * «Mi agenda» del ESTUDIANTE: las actividades de todas sus materias, por
+     * la misma fuente que su vista de materia. Las actividades por abrir no
+     * salen del servidor: una unidad futura no se muestra hasta publicarse.
+     * null si la sesión no es ESTUDIANTE.
+     */
+    async agenda(sesion: SesionMinima, ahora = new Date()): Promise<DatosAgenda | null> {
+      const id = sesion?.user?.id;
+      if (!id || sesion.user?.contexto !== "ESTUDIANTE") return null;
+      const hoy = diaDe(ahora.toISOString());
+      const { grupo, materias } = await servicio.deEstudiante(id);
+      const lista = materias.map((m) => ({ id: m.id, nombre: m.nombre, escena: m.escena }));
+      if (!grupo) return { grupo: null, materias: lista, actividades: [], hoy };
+      const porMateria = await Promise.all(
+        lista.map(async (m) =>
+          ((await actividades.deMateria(id, grupo.id, m.id)) ?? [])
+            .filter((a) => a.estado !== "porAbrir")
+            .map((a) => ({ ...a, materia: m })),
+        ),
+      );
+      return { grupo, materias: lista, actividades: porMateria.flat(), hoy };
     },
   };
   return servicio;

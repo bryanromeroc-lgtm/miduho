@@ -663,3 +663,177 @@ h3 {
     hyphens: manual;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MUNDO DE DÍA (MarcoJuego variante «dia»): el mismo día del ingreso.
+   Encabezado de papel con pestañas, tinta azul marino y el paisaje de
+   cielo y colinas (fondo-dia) detrás del contenido. Hoy solo lo usa
+   «Mis materias» del estudiante.
+   ═══════════════════════════════════════════════════════════════════════ */
+.mundo-dia,
+.superficie-dia {
+  --dia-texto: #092a55;
+  --dia-suave: #1f4a7a;
+  --dia-azul: #0066d6;
+  --dia-azul-hondo: #0055b4;
+  --dia-borde: #cfe3f2;
+  --dia-borde-panel: #a9d4f0;
+  --dia-tinte: #eef7fd;
+  --dia-sombra: 0 10px 24px -14px #0a3d6b59;
+  --foco: var(--dia-azul);
+}
+.mundo-dia { --sombra-solida: #0a3d6b; }
+
+/* Migas sobre el día: tinta marino, la página actual en peso. */
+.superficie-dia .migas ol { margin-bottom: 10px; color: var(--dia-suave); }
+.superficie-dia .migas a { color: var(--dia-azul-hondo); text-decoration-thickness: 2px; }
+.superficie-dia .migas [aria-current="page"] { color: var(--dia-texto); }
+.marco-juego[data-variante="dia"] {
+  gap: 0;
+  padding: 0;
+  background: #cdeefc url("/images/acceso/fondo-dia.webp") center bottom / cover no-repeat fixed;
+  color: var(--dia-texto);
+}
+.marco-juego[data-variante="dia"] ::selection { background: #b7e0f7; color: var(--dia-texto); }
+.marco-juego[data-variante="dia"] .marco-juego-saltar { border-color: var(--dia-texto); background: var(--papel); color: var(--dia-texto); }
+
+.marco-juego[data-variante="dia"] .marco-juego-cabecera {
+  position: relative;
+  z-index: 2;
+  flex-wrap: nowrap;
+  padding: 10px clamp(16px, 2.4vw, 32px);
+  background: color-mix(in srgb, var(--papel) 94%, transparent);
+  border-bottom: 1.5px solid var(--dia-borde);
+  box-shadow: 0 6px 18px -14px #0a3d6b59;
+}
+.marco-juego[data-variante="dia"] .marco-juego-escudo {
+  width: 64px;
+  height: 64px;
+  border: 2px solid var(--dia-borde);
+  box-shadow: 0 6px 14px -8px #0a3d6b59;
+}
+.marco-juego[data-variante="dia"] .marco-juego-nombre { line-height: 1.1; white-space: nowrap; }
+.marco-juego[data-variante="dia"] .wordmark {
+  font-size: 1.875rem;
+  letter-spacing: 0.01em;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+}
+.marco-juego[data-variante="dia"] .wordmark > * { color: var(--dia-texto); }
+.marco-juego[data-variante="dia"] .marco-juego-colegio { margin-top: 0; font-size: 1rem; font-weight: 800; color: var(--dia-texto); }
+.marco-juego-plataforma { font-size: var(--tipo-rotulo); font-weight: 600; color: var(--dia-suave); }
+
+/* Pestañas en una banda de papel; la activa, azul con su raya. */
+.marco-juego[data-variante="dia"] .marco-juego-menu ul {
+  flex-wrap: nowrap;
+  gap: 4px;
+  padding: 0 10px;
+  border: 1.5px solid var(--dia-borde);
+  border-radius: 18px;
+  background: var(--papel);
+  box-shadow: 0 8px 20px -14px #0a3d6b73;
+}
+.pestana-dia {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 60px;
+  padding: 0 18px;
+  color: var(--dia-texto);
+  font-family: var(--fuente-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: color 0.18s ease-out;
+}
+.pestana-dia::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 0;
+  height: 4px;
+  border-radius: 4px 4px 0 0;
+  background: var(--dia-azul);
+  transform: scaleX(0);
+  transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pestana-dia:hover { color: var(--dia-azul); }
+.pestana-dia:hover::after { transform: scaleX(0.5); }
+.pestana-dia[aria-current="page"] { color: var(--dia-azul); font-weight: 800; }
+.pestana-dia[aria-current="page"]::after { transform: scaleX(1); }
+.pestana-dia:focus-visible { outline: 3px solid var(--dia-azul); outline-offset: -3px; border-radius: 12px; }
+
+.marco-juego[data-variante="dia"] .marco-juego-herramientas { gap: 12px; }
+.marco-juego[data-variante="dia"] .marco-juego-chip {
+  min-height: 52px;
+  padding: 4px 18px 4px 6px;
+  border: 1.5px solid var(--dia-borde);
+  background: var(--dia-tinte);
+  box-shadow: none;
+  color: var(--dia-texto);
+}
+.marco-juego[data-variante="dia"] .marco-juego-chip-texto { white-space: nowrap; }
+.marco-juego[data-variante="dia"] .marco-juego-chip-marca { border: 0; background: #ffc21a; color: var(--dia-texto); }
+.marco-juego[data-variante="dia"] .marco-juego-chip-icono { color: var(--dia-texto); }
+.marco-juego[data-variante="dia"] .marco-juego-chip-texto span { color: var(--dia-suave); }
+.marco-juego[data-variante="dia"] .shell-cuenta-boton {
+  min-height: 52px;
+  border: 1.5px solid var(--dia-borde);
+  background: var(--papel);
+  box-shadow: none;
+  color: var(--dia-texto);
+}
+.marco-juego[data-variante="dia"] .shell-cuenta-boton:hover { border-color: var(--dia-azul); }
+.marco-juego[data-variante="dia"] .shell-cuenta-boton:focus-visible { outline: 3px solid var(--dia-azul); outline-offset: 2px; }
+.marco-juego[data-variante="dia"] .shell-cuenta-nombre small { color: var(--dia-suave); }
+.marco-juego[data-variante="dia"] .shell-avatar { border: 0; background: #ffc21a; color: var(--dia-texto); }
+
+@media (min-width: 900px) and (max-width: 1365px) {
+  .marco-juego[data-variante="dia"] .marco-juego-plataforma { display: none; }
+  .pestana-dia { padding: 0 12px; gap: 8px; font-size: 1rem; }
+}
+@media (min-width: 900px) and (max-width: 1180px) {
+  .marco-juego[data-variante="dia"] .marco-juego-colegio { display: none; }
+  .marco-juego[data-variante="dia"] .marco-juego-escudo { width: 52px; height: 52px; }
+  .marco-juego[data-variante="dia"] .marco-juego-chip[data-chip="grupo"] { display: none; }
+  .pestana-dia svg { display: none; }
+}
+
+/* Móvil: el mismo <nav> baja a una barra de papel con icono sobre etiqueta. */
+@media (max-width: 899px) {
+  .marco-juego[data-variante="dia"] { padding: 0 0 calc(84px + env(safe-area-inset-bottom)); background-attachment: scroll; }
+  .marco-juego[data-variante="dia"] .marco-juego-cabecera { padding: 8px 12px; }
+  .marco-juego[data-variante="dia"] .marco-juego-escudo { width: 48px; height: 48px; }
+  .marco-juego[data-variante="dia"] .wordmark { font-size: 1.5rem; }
+  .marco-juego[data-variante="dia"] .marco-juego-plataforma { display: none; }
+  .marco-juego[data-variante="dia"] .marco-juego-menu {
+    padding: 0 0 env(safe-area-inset-bottom);
+    border-top: 1.5px solid var(--dia-borde);
+    background: var(--papel);
+    box-shadow: 0 -8px 20px -16px #0a3d6b73;
+  }
+  .marco-juego[data-variante="dia"] .marco-juego-menu ul {
+    justify-content: space-around;
+    gap: 0;
+    padding: 0 4px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .marco-juego[data-variante="dia"] .pestana-dia {
+    width: 100%;
+    min-height: 64px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    padding: 6px 2px;
+    font-size: 0.8125rem;
+  }
+  .marco-juego[data-variante="dia"] .pestana-dia svg { display: block; }
+  .marco-juego[data-variante="dia"] .pestana-dia::after { top: 0; bottom: auto; border-radius: 0 0 4px 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pestana-dia::after { transition: none; }
+}

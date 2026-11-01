@@ -58,10 +58,11 @@ function esLaboratorios(pathname: string) {
   return ["/laboratorios", "/emprendimiento"].some((b) => pathname === b || pathname.startsWith(`${b}/`));
 }
 
-export function Marco({ children }: { children: React.ReactNode }) {
+/** `dia`: la página pide el mundo de día; el marco lo da solo al estudiante (el resto, hoja). */
+export function Marco({ dia = false, children }: { dia?: boolean; children: React.ReactNode }) {
   const pathname = usePathname();
   if (esLaboratorios(pathname)) return <MarcoLaboratorios>{children}</MarcoLaboratorios>;
-  return <MarcoJuego>{children}</MarcoJuego>;
+  return <MarcoJuego variante={dia ? "dia" : "hoja"}>{children}</MarcoJuego>;
 }
 
 /* Shell anterior, intacto: solo lo usa Laboratorios. */

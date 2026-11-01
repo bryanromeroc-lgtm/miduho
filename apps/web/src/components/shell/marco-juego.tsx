@@ -32,7 +32,9 @@ import { contextoVisible, rutaActiva, rutasPorContexto, textoGrupo, type IdRuta 
   <nav> en el DOM; en móvil el mismo menú se fija abajo. Laboratorios sigue
   con el shell anterior (congelado bajo .cosmos).
 
-  Variantes: «tablero» deja que la página ocupe la pantalla (Mis materias);
+  Variantes: «tablero» deja que la página ocupe la pantalla sobre la noche;
+  «dia» es el mundo de día del ingreso (Mis materias del estudiante):
+  encabezado blanco con pestañas y paisaje de cielo y colinas;
   «hoja» pone el contenido en una hoja enmarcada, con scroll normal.
 */
 
@@ -76,7 +78,7 @@ export function MarcoJuego({
   estrellas,
   children,
 }: {
-  variante?: "tablero" | "hoja";
+  variante?: "tablero" | "dia" | "hoja";
   estrellas?: number | null;
   children: React.ReactNode;
 }) {
@@ -87,9 +89,12 @@ export function MarcoJuego({
   const rutas = rutasPorContexto(contexto).filter((r) => r.id !== "cuenta");
   const mixta = !!datos && datos.roles.includes("ADMIN") && datos.roles.includes("DOCENTE");
   const grupo = datos && contexto !== "ADMIN" ? textoGrupo(contexto, datos.grupo, datos.gruposDocente) : null;
+  // El mundo de día es del estudiante; con otro contexto la misma página va en hoja.
+  if (variante === "dia" && contexto !== "ESTUDIANTE") variante = "hoja";
+  const dia = variante === "dia";
 
   return (
-    <div className="marco-juego sobre-noche" data-variante={variante} data-contexto={contexto ?? undefined}>
+    <div className={dia ? "marco-juego mundo-dia" : "marco-juego sobre-noche"} data-variante={variante} data-contexto={contexto ?? undefined}>
       <a href="#contenido" className="marco-juego-saltar">
         Saltar al contenido
       </a>
@@ -107,6 +112,7 @@ export function MarcoJuego({
               ))}
             </span>
             <span className="marco-juego-colegio">Colegio Mi Dulce Hogar</span>
+            {dia ? <span className="marco-juego-plataforma">Plataforma educativa</span> : null}
           </span>
         </Link>
 
@@ -120,9 +126,9 @@ export function MarcoJuego({
                   <Link
                     href={r.href}
                     aria-current={activa ? "page" : undefined}
-                    className="sticker-boton"
-                    data-tono={TONO[r.id] ?? "papel"}
-                    data-tamano="normal"
+                    className={dia ? "pestana-dia" : "sticker-boton"}
+                    data-tono={dia ? undefined : (TONO[r.id] ?? "papel")}
+                    data-tamano={dia ? undefined : "normal"}
                   >
                     <Icono size={22} strokeWidth={2.6} aria-hidden="true" />
                     <span>{PARTIR[r.etiqueta] ?? r.etiqueta}</span>

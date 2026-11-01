@@ -9,13 +9,8 @@ export default async function Inicio({ searchParams }: { searchParams: Promise<{
   const [estudiante, { materia }] = await Promise.all([misMateriasDeSesion(), searchParams]);
   if (!estudiante) return <InicioDocente />;
   return (
-    <MarcoJuego variante="tablero" estrellas={totalEstrellas(estudiante.datos.materias)}>
-      <MisMaterias
-        datos={estudiante.datos}
-        avatarInicial={estudiante.avatar}
-        primeraVez={!estudiante.avatarElegido}
-        materiaInicial={typeof materia === "string" ? materia : undefined}
-      />
+    <MarcoJuego variante="dia" estrellas={totalEstrellas(estudiante.datos.materias)}>
+      <MisMaterias datos={estudiante.datos} materiaInicial={typeof materia === "string" ? materia : undefined} />
     </MarcoJuego>
   );
 }

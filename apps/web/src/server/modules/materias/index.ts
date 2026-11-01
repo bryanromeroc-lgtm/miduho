@@ -1,6 +1,7 @@
 import "server-only";
 import { auth } from "@/auth";
 import { avatarOPorDefecto, type Avatar } from "@/lib/avatares";
+import type { DatosAgenda } from "@/lib/agenda";
 import type { MisMaterias, VistaMateria } from "@/lib/materias";
 import { db } from "@/server/db";
 import { catalogoActividades, type ActividadDeCatalogo } from "@/server/modules/curriculo";
@@ -22,6 +23,11 @@ export async function misMateriasDeSesion(): Promise<{ datos: MisMaterias; avata
     db.usuario.findUnique({ where: { id }, select: { avatar: true } }),
   ]);
   return { datos, avatar: avatarOPorDefecto(usuario?.avatar), avatarElegido: usuario?.avatar != null };
+}
+
+/** «Mi agenda» de la sesión actual; null si el contexto no es ESTUDIANTE. */
+export async function agendaDeSesion(): Promise<DatosAgenda | null> {
+  return servicioMaterias.agenda(await auth());
 }
 
 /** Vista de una asignatura para la sesión actual; null (404) si no es del grupo del estudiante. */
