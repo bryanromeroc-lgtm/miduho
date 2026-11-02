@@ -1,0 +1,532 @@
+/*
+  LA ENTREGA DE ARMI · historia a pantalla completa. Cada escena trae su
+  fondo ilustrado; encima, un pergamino con lo que pasa, la carreta con la
+  carga que queda y, abajo, Armi con su globo y las respuestas en tarjetas
+  grandes. Al corregir aparece un dibujo de apoyo con cajones numerados.
+  Movimiento: solo transform y opacity; con prefers-reduced-motion se apaga.
+*/
+
+.escenario {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  justify-items: center;
+  gap: clamp(8px, 1.6vh, 16px);
+  padding: clamp(8px, 1.4vh, 14px) clamp(10px, 3vw, 40px) 0;
+}
+
+/* ---------- Carreta ---------- */
+
+.carreta {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px 6px 10px;
+  border-radius: 999px;
+  background: #fff3d6;
+  border: 2px solid #b98a4e;
+  animation: sube 480ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+.carretaDibujo {
+  width: 44px;
+  height: auto;
+}
+.carretaTexto {
+  display: grid;
+  margin: 0;
+  line-height: 1.15;
+}
+.carretaEtiqueta {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #4a5572;
+}
+.carretaCantidad {
+  font-family: var(--fuente-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  animation: pop 520ms cubic-bezier(0.2, 1.5, 0.4, 1) backwards;
+}
+/* «−16» que sale de la carreta al entregar. */
+.baja {
+  position: absolute;
+  right: 14px;
+  top: -6px;
+  color: #b4501f;
+  font-family: var(--fuente-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+  pointer-events: none;
+  animation: sale 1300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ---------- Pergamino con el relato ---------- */
+
+.pergamino {
+  width: min(100%, 780px);
+  justify-self: start;
+  padding: clamp(12px, 2vh, 20px) clamp(16px, 2.4vw, 28px);
+  border-radius: 18px;
+  background: #fff8e6;
+  border: 3px solid #b98a4e;
+  box-shadow: 0 8px 0 #8a5f2d, 0 16px 28px rgb(60 30 10 / 0.22);
+  animation: desenrolla 640ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  transform-origin: 50% 0;
+}
+.pergamino[data-grande] {
+  justify-self: center;
+  width: min(100%, 720px);
+  margin-top: clamp(8px, 6vh, 56px);
+  text-align: center;
+}
+.titulo {
+  margin: 0 0 8px;
+  font-family: var(--fuente-display);
+  font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.1;
+}
+.titulo:focus {
+  outline: none;
+}
+.relato {
+  margin: 0;
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem);
+  font-weight: 600;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.resumen {
+  margin: 12px 0 0;
+  font-weight: 800;
+  color: #145c2e;
+}
+
+@media (min-width: 1000px) {
+  .escenario {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+  .pergamino {
+    grid-column: 1;
+  }
+  .pergamino[data-grande] {
+    grid-column: 1 / -1;
+  }
+  .apoyo {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+/* ---------- Dibujo de apoyo ---------- */
+
+.apoyo {
+  container-type: inline-size;
+  justify-self: end;
+  display: grid;
+  gap: 8px;
+  width: min(100%, 620px);
+  padding: 12px 16px 14px;
+  border-radius: 18px;
+  background: rgb(255 251 242 / 0.96);
+  box-shadow: 0 10px 24px rgb(60 30 10 / 0.22);
+  animation: sube 520ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+.apoyoTitulo {
+  margin: 0;
+  font-weight: 800;
+}
+.objeto {
+  flex: none;
+  width: clamp(18px, 5.4cqi, 34px);
+  height: auto;
+}
+/* Los objetos juntos, en una canasta de madera. */
+.monton {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px;
+  border-radius: 14px;
+  background: #fff3d6;
+  border: 3px solid #9a6235;
+  box-shadow: 0 4px 0 #7a4a26;
+  animation: cae 560ms cubic-bezier(0.2, 1.3, 0.4, 1) backwards;
+}
+.monton .objeto {
+  width: clamp(28px, 9cqi, 56px);
+}
+.bandeja {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  gap: 14px 12px;
+  padding-top: 8px;
+}
+.parte {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+  gap: 2px;
+  padding: 12px 6px 6px;
+  border-radius: 12px;
+  background: #fff3d6;
+  border: 3px solid #9a6235;
+  box-shadow: 0 4px 0 #7a4a26;
+  animation: cae 560ms cubic-bezier(0.2, 1.3, 0.4, 1) backwards;
+  animation-delay: calc(var(--i) * 70ms);
+}
+.numero {
+  position: absolute;
+  top: -11px;
+  left: -8px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #1b2440;
+  color: #fff;
+  font-family: var(--fuente-display);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+.parte[data-uso="1"] {
+  border-color: var(--m-acento);
+  background: #e4f1fb;
+  box-shadow: 0 4px 0 #1b3d78;
+}
+.parte[data-uso="2"] {
+  border-style: dashed;
+  border-color: #b4501f;
+  background: #fdeadb;
+  box-shadow: 0 4px 0 #8a3a14;
+}
+.parte[data-uso="0"] .objeto {
+  opacity: 0.5;
+}
+.leyenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-weight: 700;
+}
+.leyenda li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.marcaLey {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: #fff3d6;
+  border: 3px solid #9a6235;
+}
+.marcaLey[data-uso="1"] {
+  border-color: var(--m-acento);
+  background: #e4f1fb;
+}
+.marcaLey[data-uso="2"] {
+  border-style: dashed;
+  border-color: #b4501f;
+  background: #fdeadb;
+}
+
+/* ---------- Armi, globo y respuestas ---------- */
+
+.pie {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: end;
+  gap: 10px 20px;
+  padding: 0 clamp(8px, 2vw, 24px) clamp(8px, 1.6vh, 18px);
+}
+.dialogo {
+  display: flex;
+  align-items: end;
+  gap: clamp(4px, 1vw, 12px);
+}
+.armi {
+  flex: none;
+  height: clamp(96px, 22dvh, 230px);
+  transform-origin: 50% 100%;
+  animation: llega 760ms cubic-bezier(0.16, 1, 0.3, 1) backwards, respira 3.6s ease-in-out 760ms infinite;
+}
+
+.globo {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  align-self: center;
+  max-width: 760px;
+  padding: clamp(10px, 1.6vh, 16px) clamp(14px, 2vw, 22px);
+  border-radius: 20px;
+  background: rgb(255 251 242 / 0.97);
+  box-shadow: 0 8px 22px rgb(60 30 10 / 0.2);
+  animation: sube 520ms cubic-bezier(0.16, 1, 0.3, 1) 200ms backwards;
+}
+.globo::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  bottom: 26px;
+  width: 20px;
+  height: 20px;
+  background: inherit;
+  clip-path: polygon(100% 0, 100% 100%, 0 60%);
+}
+.pregunta {
+  margin: 0;
+  font-family: var(--fuente-display);
+  font-size: clamp(1.15rem, 0.95rem + 0.9vw, 1.65rem);
+  font-weight: 800;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+.pregunta:focus {
+  outline: none;
+}
+
+/* Respuestas: tarjetas grandes, tocables, en 2 columnas. */
+.opciones {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.opcion {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  padding: 8px 16px 8px 10px;
+  border: 3px solid #b98a4e;
+  border-radius: 16px;
+  background: #fff8e6;
+  box-shadow: 0 5px 0 #8a5f2d;
+  color: #1b2440;
+  font: inherit;
+  font-family: var(--fuente-display);
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.8rem);
+  font-weight: 800;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 140ms cubic-bezier(0.16, 1, 0.3, 1), background-color 140ms ease-out;
+  animation: sube 420ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+.opcion:nth-child(2) {
+  animation-delay: 60ms;
+}
+.opcion:nth-child(3) {
+  animation-delay: 120ms;
+}
+.opcion:nth-child(4) {
+  animation-delay: 180ms;
+}
+.opcion:not(:disabled):hover {
+  background: #ffefc2;
+  transform: translateY(-2px);
+}
+.opcion:not(:disabled):active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #8a5f2d;
+}
+.opcion:focus-visible {
+  outline: 4px solid var(--m-tinta);
+  outline-offset: 3px;
+}
+.opcion:disabled {
+  cursor: default;
+}
+.opcion[data-estado="ok"] {
+  border-color: var(--ok-borde);
+  background: var(--ok-fondo);
+  box-shadow: 0 5px 0 #1f6b3c;
+  color: var(--ok-tinta);
+  animation: brinca 560ms cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+.opcion[data-estado="no"] {
+  border-color: var(--no-borde);
+  background: var(--no-fondo);
+  box-shadow: 0 5px 0 #a8423a;
+  color: var(--no-tinta);
+}
+.letra {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #1b2440;
+  color: #fff;
+  font-size: 1.2rem;
+}
+.textoOpcion {
+  flex: 1;
+}
+.marca {
+  flex: none;
+}
+
+.accion {
+  display: flex;
+  justify-content: center;
+}
+.pie[data-fase="inicio"],
+.pie[data-fase="final"] {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 1000px) {
+  .pie[data-fase="escena"] {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  }
+  .pie[data-fase="escena"] .accion {
+    grid-column: 2;
+  }
+}
+@media (max-width: 560px) {
+  .opciones {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Ambiente (decoración) ---------- */
+
+.ambiente {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.nube {
+  position: absolute;
+  top: 9%;
+  left: -14%;
+  width: clamp(90px, 14vw, 190px);
+  animation: deriva 52s linear infinite;
+}
+.destello {
+  position: absolute;
+  width: clamp(16px, 2.4vw, 30px);
+  opacity: 0.2;
+  animation: brilla 3.8s ease-in-out infinite;
+}
+
+@keyframes sube {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+@keyframes desenrolla {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scaleY(0.86);
+  }
+}
+@keyframes pop {
+  from {
+    transform: scale(1.35);
+  }
+}
+@keyframes sale {
+  from {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  15% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-46px);
+  }
+}
+@keyframes cae {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) rotate(-3deg) scale(0.9);
+  }
+  60% {
+    transform: translateY(3px) rotate(0.6deg) scale(1.02);
+  }
+}
+@keyframes brinca {
+  0% {
+    transform: none;
+  }
+  40% {
+    transform: translateY(-8px) scale(1.03);
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes llega {
+  from {
+    opacity: 0;
+    transform: translateX(-60%);
+  }
+}
+@keyframes respira {
+  50% {
+    transform: scale(1.015, 0.985);
+  }
+}
+@keyframes deriva {
+  to {
+    transform: translateX(120vw);
+  }
+}
+@keyframes brilla {
+  50% {
+    opacity: 0.9;
+    transform: scale(1.3) rotate(14deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carreta,
+  .carretaCantidad,
+  .baja,
+  .pergamino,
+  .apoyo,
+  .parte,
+  .monton,
+  .armi,
+  .globo,
+  .opcion,
+  .opcion[data-estado="ok"],
+  .nube,
+  .destello {
+    animation: none;
+  }
+  .baja {
+    opacity: 1;
+  }
+  .destello {
+    opacity: 0.5;
+  }
+  .nube {
+    left: 10%;
+  }
+  .opcion {
+    transition: none;
+  }
+}

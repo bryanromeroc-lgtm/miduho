@@ -1,0 +1,118 @@
+/*
+  Marco de pantalla completa. El <dialog> modal ocupa toda la ventana; en
+  modo «ventana» queda en el flujo de la página, con esquinas redondeadas.
+  El fondo ilustrado llega por --fondo y nunca lleva texto.
+*/
+
+.pantalla {
+  display: none;
+  color: #1b2440;
+  font: inherit;
+}
+.pantalla[open] {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: clamp(6px, 1.4vh, 14px);
+  position: relative;
+  inset: auto;
+  width: 100%;
+  max-width: none;
+  max-height: none;
+  min-height: min(820px, 90dvh);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #fbe3cf;
+}
+.pantalla[open][data-completa] {
+  --pie-cols: minmax(0, 1fr) auto;
+  position: fixed;
+  inset: 0;
+  width: 100dvw;
+  height: 100dvh;
+  min-height: 0;
+  border-radius: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.pantalla::backdrop {
+  background: #1b2440;
+}
+
+.mundo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: center bottom / cover no-repeat;
+  animation: acerca 16s ease-out both;
+}
+/* Al cambiar de escena, el fondo nuevo se funde sobre el anterior. */
+.mundo[data-nuevo] {
+  z-index: -1;
+  animation: aparece 700ms ease-out both, acerca 16s ease-out both;
+}
+@keyframes aparece {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes acerca {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+.pantalla[data-completa] .mundo {
+  position: fixed;
+}
+
+.cima {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin: clamp(8px, 1.6vh, 16px) clamp(8px, 2vw, 24px) 0;
+  padding: 8px 14px;
+  border-radius: 18px;
+  background: rgb(255 251 242 / 0.94);
+  box-shadow: 0 6px 18px rgb(60 30 10 / 0.18);
+}
+
+.modo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 2px solid var(--m-acento);
+  border-radius: 999px;
+  background: var(--m-tarjeta);
+  color: var(--m-acento);
+  font-family: var(--fuente-display);
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+.modo:hover {
+  background: var(--m-fondo);
+}
+.modo:focus-visible {
+  outline: 3px solid var(--m-tinta);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mundo,
+  .mundo[data-nuevo] {
+    animation: none;
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "slug": "la-entrega-de-armi",
+  "titulo": "La entrega de Armi",
+  "tipo": "aventura",
+  "grado": 5,
+  "instruccion": "Ayuda a Armi a entregar los huevos por todo el pueblo. En cada lugar hay un problema: lee la escena y elige la respuesta correcta.",
+  "tema": "Fracción de una cantidad, fracción de un todo y fracciones equivalentes en una historia de la vida diaria",
+  "contenido": {
+    "carga": { "objeto": "huevos", "inicio": 48 },
+    "inicio": "Armi, la armadilla de la finca, tiene un encargo importante: llevar 48 huevos frescos a todo el pueblo antes de que acabe el día. Para que la entrega salga bien, necesita tu ayuda en cada problema del camino.",
+    "final": "Armi repartió los huevos por todo el pueblo: la tienda, la panadería, el mercado y el colegio tuvieron lo que necesitaban. Gracias a tus cuentas, nadie se quedó esperando.",
+    "escenas": [
+      {
+        "id": "e1",
+        "lugar": "gallinero",
+        "narracion": "Es de madrugada en el gallinero. Las gallinas pusieron 48 huevos y Armi los acomoda en 6 canastas iguales para que no se rompan en el camino.",
+        "pregunta": "¿Cuántos huevos lleva cada canasta?",
+        "opciones": ["6", "8", "12", "42"],
+        "correcta": 1,
+        "pista": "Hay que repartir los 48 huevos en 6 grupos iguales. ¿Qué operación sirve para repartir en partes iguales?",
+        "explicacion": "48 ÷ 6 = 8. Cada canasta es 1/6 de los huevos y lleva 8.",
+        "entrega": 0,
+        "visual": { "objeto": "huevos", "total": 48, "den": 6, "usos": [{ "num": 1, "nombre": "Una canasta" }] }
+      },
+      {
+        "id": "e2",
+        "lugar": "tienda",
+        "narracion": "Primera parada: la tienda del barrio. El pedido dice que necesita 2/6 de los huevos. Armi mira sus canastas y piensa cuántos debe bajar de la carreta.",
+        "pregunta": "¿Cuántos huevos entrega Armi en la tienda?",
+        "opciones": ["8", "12", "16", "96"],
+        "correcta": 2,
+        "pista": "Cada sexto tiene 8 huevos, como cada canasta. La tienda pidió 2 sextos.",
+        "explicacion": "2/6 de 48: primero un sexto son 8 huevos, y 2 × 8 = 16.",
+        "entrega": 16,
+        "visual": { "objeto": "huevos", "total": 48, "den": 6, "usos": [{ "num": 2, "nombre": "Para la tienda" }] }
+      },
+      {
+        "id": "e3",
+        "lugar": "puente",
+        "narracion": "Armi cruza el puente de madera sobre el río. Antes de seguir, quiere comprobar su cuenta: ya entregó 16 de los 48 huevos.",
+        "pregunta": "¿Qué fracción de los huevos ya entregó?",
+        "opciones": ["1/6", "1/4", "1/3", "2/3"],
+        "correcta": 2,
+        "pista": "Parte los 48 huevos en grupos de 16. ¿Cuántos grupos salen? La fracción dice 1 de esos grupos.",
+        "explicacion": "48 ÷ 16 = 3, así que 16 huevos son 1 de 3 partes iguales: 1/3. Es lo mismo que 2/6.",
+        "entrega": 0,
+        "visual": { "objeto": "huevos", "total": 48, "den": 3, "usos": [{ "num": 1, "nombre": "Ya entregados" }] }
+      },
+      {
+        "id": "e4",
+        "lugar": "panaderia",
+        "narracion": "Segunda parada: la panadería. Están preparando el pan de la mañana y piden 3/6 de los 48 huevos que Armi lleva desde el principio.",
+        "pregunta": "¿Cuántos huevos entrega Armi en la panadería?",
+        "opciones": ["3", "8", "24", "144"],
+        "correcta": 2,
+        "pista": "Un sexto de los huevos son 8. La panadería pidió 3 sextos.",
+        "explicacion": "3 × 8 = 24. Además, 3/6 es la mitad, y la mitad de 48 también es 24.",
+        "entrega": 24,
+        "visual": { "objeto": "huevos", "total": 48, "den": 6, "usos": [{ "num": 3, "nombre": "Para la panadería" }] }
+      },
+      {
+        "id": "e5",
+        "lugar": "mercado",
+        "narracion": "En la plaza de mercado, a la carreta solo le quedan 8 huevos. Un vendedor pide la mitad de esos huevos, es decir, 1/2.",
+        "pregunta": "¿Cuántos huevos le da Armi al vendedor?",
+        "opciones": ["2", "4", "6", "8"],
+        "correcta": 1,
+        "pista": "La mitad significa partir los 8 huevos en 2 grupos iguales y tomar uno.",
+        "explicacion": "1/2 de 8: 8 ÷ 2 = 4 huevos.",
+        "entrega": 4,
+        "visual": { "objeto": "huevos", "total": 8, "den": 2, "usos": [{ "num": 1, "nombre": "Para el vendedor" }] }
+      },
+      {
+        "id": "e6",
+        "lugar": "salon",
+        "narracion": "Última entrega del día: el colegio prepara un desayuno para el curso. Piden 3/4 de los 4 huevos que le quedan a Armi.",
+        "pregunta": "¿Cuántos huevos deja Armi en el colegio?",
+        "opciones": ["1", "3", "4", "12"],
+        "correcta": 1,
+        "pista": "Parte los 4 huevos en 4 grupos iguales. ¿Cuántos huevos tiene cada cuarto? Después toma 3 cuartos.",
+        "explicacion": "Cada cuarto es 1 huevo, así que 3/4 de 4 son 3 huevos.",
+        "entrega": 3,
+        "visual": { "objeto": "huevos", "total": 4, "den": 4, "usos": [{ "num": 3, "nombre": "Para el desayuno" }] }
+      },
+      {
+        "id": "e7",
+        "lugar": "plaza",
+        "narracion": "Anocheció en la plaza y hay fiesta. A Armi le queda un solo huevo de los 48 que llevaba al comenzar, y se lo guarda para su cena.",
+        "pregunta": "¿Qué fracción de los 48 huevos es ese último huevo?",
+        "opciones": ["1/47", "1/48", "48/1", "1/24"],
+        "correcta": 1,
+        "pista": "En una fracción, el numerador es la parte que tomas y el denominador es el total de partes iguales.",
+        "explicacion": "Es 1 huevo de un total de 48: la fracción es 1/48.",
+        "entrega": 1,
+        "muestra": { "objeto": "huevos", "cantidad": 1, "titulo": "Lo que le queda a Armi" }
+      }
+    ]
+  }
+}

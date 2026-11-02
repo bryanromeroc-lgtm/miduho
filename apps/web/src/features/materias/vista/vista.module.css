@@ -334,6 +334,11 @@
   animation-delay: calc(var(--i, 0) * 60ms);
 }
 
+/* La tarjeta destacada (sticker) ocupa dos columnas de la cuadrícula. */
+.celdaDestacada {
+  grid-column: span 2;
+}
+
 .tarjeta {
   position: relative;
   display: flex;
@@ -850,6 +855,9 @@
   }
   .cuadricula {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .celdaDestacada {
+    grid-column: auto;
   }
   .encabezado {
     flex-wrap: wrap;

@@ -2,10 +2,11 @@ import type { CSSProperties, ReactNode } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { DESCRIPCION_ESCENA } from "@/lib/escenas";
-import { paginar, type VistaMateria as Datos } from "@/lib/materias";
+import { paginarPorPeso, type ActividadResumen, type VistaMateria as Datos } from "@/lib/materias";
 import { Cinta, PatronMarcas, Pieza } from "../tematica/piezas";
 import { kitDe, variablesDe } from "../tematica";
 import { EncabezadoMateria } from "./encabezado";
+import { TarjetaDestacada, TIPOS_DESTACADOS } from "./tarjeta-destacada";
 import { TarjetaPlana } from "./tarjeta-plana";
 import s from "./vista.module.css";
 
@@ -39,7 +40,9 @@ export function VistaMateria({
   const { materia, actividades } = datos;
   const kit = kitDe(materia.escena);
   const mitad = Math.ceil(kit.cabecera.length / 2);
-  const hoja = actividades?.length ? paginar(actividades, pagina) : null;
+  // Las aventuras van primero, como sticker destacado de dos casillas.
+  const ordenadas = actividades ? [...actividades.filter((a) => TIPOS_DESTACADOS.has(a.tipo)), ...actividades.filter((a) => !TIPOS_DESTACADOS.has(a.tipo))] : null;
+  const hoja = ordenadas?.length ? paginarPorPeso(ordenadas, (a: ActividadResumen) => (TIPOS_DESTACADOS.has(a.tipo) ? 2 : 1), pagina) : null;
 
   return (
     <div className={s.pagina} data-escena={materia.escena} style={variablesDe(materia.escena) as CSSProperties}>
@@ -97,9 +100,13 @@ export function VistaMateria({
         ) : (
           <>
             <ul className={s.cuadricula} aria-label={`Actividades de ${materia.nombre}`}>
-              {hoja.elementos.map((a, i) => (
-                <TarjetaPlana key={a.id} actividad={a} kit={kit} indice={i} />
-              ))}
+              {hoja.elementos.map((a, i) =>
+                TIPOS_DESTACADOS.has(a.tipo) ? (
+                  <TarjetaDestacada key={a.id} actividad={a} indice={i} />
+                ) : (
+                  <TarjetaPlana key={a.id} actividad={a} kit={kit} indice={i} />
+                ),
+              )}
             </ul>
             {hoja.total > 1 && (
               <nav className={s.paginador} aria-label="Páginas de actividades">

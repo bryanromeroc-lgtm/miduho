@@ -171,6 +171,17 @@ const DIBUJOS: Record<string, Dibujo> = {
       {pieza(0, 128, 2, 26)}
     </g>
   ),
+  // Un camino con tres paradas y una bandera al final: la historia avanza.
+  aventura: (pieza) => (
+    <g>
+      <path d="M16 66 C44 66 44 30 76 30 C106 30 104 62 132 56" fill="none" stroke={A} strokeWidth="4" strokeLinecap="round" strokeDasharray="2 9" />
+      {[[16, 66], [76, 30]].map(([x, y]) => (
+        <circle key={x} cx={x} cy={y} r="9" fill={P} />
+      ))}
+      <path d="M132 56 V28 L148 36 L132 44" fill={A} stroke={A} strokeWidth="3" strokeLinejoin="round" />
+      {pieza(0, 4, 2, 26)}
+    </g>
+  ),
   // Etiqueta de precio con una flecha que sube.
   porcentaje: (pieza) => (
     <g>

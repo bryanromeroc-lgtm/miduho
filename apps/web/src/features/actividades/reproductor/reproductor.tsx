@@ -33,6 +33,7 @@ const JuegoMultiplos = dynamic(() => import("../juegos/multiplos/juego").then((m
 const JuegoOperaciones = dynamic(() => import("../juegos/operaciones/juego").then((m) => m.JuegoOperaciones), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoRectas = dynamic(() => import("../juegos/rectas/juego").then((m) => m.JuegoRectas), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoAngulos = dynamic(() => import("../juegos/angulos/juego").then((m) => m.JuegoAngulos), { loading: () => <p role="status">Cargando juego…</p> });
+const JuegoAventura = dynamic(() => import("../juegos/aventura/juego").then((m) => m.JuegoAventura), { loading: () => <p role="status">Cargando juego…</p> });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const JUEGOS: Record<string, ComponentType<PropsJuego<any>>> = {
@@ -57,6 +58,7 @@ const JUEGOS: Record<string, ComponentType<PropsJuego<any>>> = {
   operaciones: JuegoOperaciones,
   rectas: JuegoRectas,
   angulos: JuegoAngulos,
+  aventura: JuegoAventura,
 };
 
 export type ActividadParaJugar = { slug: string; titulo: string; tipo: string; instruccion: string; contenido: unknown };

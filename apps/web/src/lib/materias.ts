@@ -121,6 +121,26 @@ export function ordenarActividades<T extends Pick<ActividadResumen, "estado" | "
 
 export type Pagina<T> = { elementos: T[]; pagina: number; total: number };
 
+/**
+ * Como `paginar`, pero cada elemento ocupa `peso(x)` casillas de la página
+ * (una tarjeta destacada ocupa dos). Un elemento nunca se parte entre páginas.
+ */
+export function paginarPorPeso<T>(lista: T[], peso: (x: T) => number, pagina: number, capacidad = ACTIVIDADES_POR_PAGINA): Pagina<T> {
+  const paginas: T[][] = [[]];
+  let usado = 0;
+  for (const x of lista) {
+    const p = Math.min(Math.max(1, peso(x)), capacidad);
+    if (usado + p > capacidad) {
+      paginas.push([]);
+      usado = 0;
+    }
+    paginas[paginas.length - 1].push(x);
+    usado += p;
+  }
+  const actual = Math.min(paginas.length, Math.max(1, Math.trunc(Number.isFinite(pagina) ? pagina : 1)));
+  return { elementos: paginas[actual - 1], pagina: actual, total: paginas.length };
+}
+
 /** Página `pagina` (desde 1) de la lista; un número fuera de rango se ajusta al más cercano. */
 export function paginar<T>(lista: T[], pagina: number, tamano = ACTIVIDADES_POR_PAGINA): Pagina<T> {
   const total = Math.max(1, Math.ceil(lista.length / tamano));

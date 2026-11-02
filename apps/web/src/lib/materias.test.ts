@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { accionDe, fechaCorta, ordenarActividades, paginar, resumenTarjeta, textoCierre, type ActividadResumen } from "./materias";
+import { accionDe, fechaCorta, ordenarActividades, paginar, paginarPorPeso, resumenTarjeta, textoCierre, type ActividadResumen } from "./materias";
 
 const act = (titulo: string, estado: ActividadResumen["estado"], fechas: { abre?: string; cierra?: string } = {}) => ({
   titulo,
@@ -93,5 +93,24 @@ describe("texto de la tarjeta", () => {
     expect(textoCierre({ estado: "enCurso", cierra })).toBe("Hasta el 6 de nov.");
     expect(textoCierre({ estado: "hecha", cierra })).toBeNull();
     expect(textoCierre({ estado: "disponible", cierra: null })).toBeNull();
+  });
+});
+
+describe("paginarPorPeso", () => {
+  const peso = (x: { p: number }) => x.p;
+  const lista = (...ps: number[]) => ps.map((p, i) => ({ p, i }));
+
+  it("una destacada de peso 2 deja cuatro tarjetas en la primera página", () => {
+    const r = paginarPorPeso(lista(2, 1, 1, 1, 1, 1, 1), peso, 1);
+    expect(r.elementos.map((x) => x.i)).toEqual([0, 1, 2, 3, 4]);
+    expect(r.total).toBe(2);
+    expect(paginarPorPeso(lista(2, 1, 1, 1, 1, 1, 1), peso, 2).elementos.map((x) => x.i)).toEqual([5, 6]);
+  });
+
+  it("sin destacadas se comporta como paginar y ajusta páginas fuera de rango", () => {
+    const l = lista(1, 1, 1, 1, 1, 1, 1);
+    expect(paginarPorPeso(l, peso, 1).elementos).toHaveLength(6);
+    expect(paginarPorPeso(l, peso, 99).pagina).toBe(2);
+    expect(paginarPorPeso([], peso, 1)).toEqual({ elementos: [], pagina: 1, total: 1 });
   });
 });
