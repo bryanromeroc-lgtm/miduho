@@ -6,6 +6,7 @@ import { barajar } from "../../tipos/contrato";
 import { Avanzar, Aviso, Marca, useFocoAlCambiar, type PropsJuego } from "../../reproductor/comun";
 import rp from "../../reproductor/reproductor.module.css";
 import { Armi, Controles, Guirnalda } from "../comun/piezas";
+import { Chispas } from "../comun/efectos";
 import { useRondas } from "../comun/rondas";
 import e from "../comun/escena.module.css";
 import { describirTarjeta } from "./acceso";
@@ -23,7 +24,7 @@ import s from "./rectas.module.css";
 const ESCENA = { "--fondo": "url(/images/juegos/rectas/pueblo.webp)", "--fondo-pos": "center 50%", "--fondo-color": "#d9ead2" } as CSSProperties;
 
 export function JuegoRectas({ contenido, semilla, alTerminar }: PropsJuego<ContenidoRectas>) {
-  const { indice, ronda: r, intentos, estados, acerto, cerrada, ultima, pose, responder, siguiente, voz, sonido } = useRondas<RondaRectas, number>({
+  const { indice, ronda: r, intentos, estados, acerto, cerrada, ultima, pose, responder, siguiente, voz, sonido, reaccion } = useRondas<RondaRectas, number>({
     rondas: contenido.rondas,
     correcta: (x) => x.opciones.findIndex((t) => categoria(t) === x.busca),
     alTerminar,
@@ -40,6 +41,7 @@ export function JuegoRectas({ contenido, semilla, alTerminar }: PropsJuego<Conte
       </div>
 
       <div className={e.escena} style={ESCENA}>
+        <Chispas reaccion={reaccion} />
         <div className={e.fondo} aria-hidden="true" />
         <div className={s.plano} key={r.id}>
           <h2 ref={titulo} tabIndex={-1} className={s.pregunta}>

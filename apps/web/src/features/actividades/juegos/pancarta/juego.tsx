@@ -6,6 +6,7 @@ import { formatearNumero, numeroEnLetras, periodosEnLetras, POSICIONES, POSICION
 import { barajar } from "../../tipos/contrato";
 import { Avanzar, Aviso, Marca, useFocoAlCambiar, type PropsJuego } from "../../reproductor/comun";
 import { Armi, Controles, Guirnalda } from "../comun/piezas";
+import { Chispas } from "../comun/efectos";
 import { useRondas } from "../comun/rondas";
 import { preguntaDe, respuestaCorrecta, type ContenidoPancarta, type RondaPancarta } from "./tipo";
 import rp from "../../reproductor/reproductor.module.css";
@@ -23,7 +24,7 @@ import s from "./pancarta.module.css";
 const NOMBRE_PERIODO = { millones: "Millones", miles: "Miles", unidades: "Unidades" } as const;
 
 export function JuegoPancarta({ contenido, semilla, alTerminar }: PropsJuego<ContenidoPancarta>) {
-  const { indice, ronda: r, solucion: correcta, intentos, estados, acerto, cerrada, conPista, ultima, pose, responder, siguiente, voz, sonido } =
+  const { indice, ronda: r, solucion: correcta, intentos, estados, acerto, cerrada, conPista, ultima, pose, responder, siguiente, voz, sonido, reaccion } =
     useRondas({ rondas: contenido.rondas, correcta: respuestaCorrecta, alTerminar });
   const titulo = useFocoAlCambiar<HTMLHeadingElement>(indice);
 
@@ -43,6 +44,7 @@ export function JuegoPancarta({ contenido, semilla, alTerminar }: PropsJuego<Con
       </div>
 
       <div className={e.escena} style={{ "--fondo": "url(/images/juegos/pancarta/plaza.webp)", "--fondo-pos": "center 72%" } as React.CSSProperties}>
+        <Chispas reaccion={reaccion} />
         <div className={e.fondo} aria-hidden="true" />
         <div className={s.pancarta} key={r.id} data-modo={r.modo}>
           <Tela ronda={r} intentos={intentos} cerrada={cerrada} conPista={conPista} responder={responder} />

@@ -113,6 +113,19 @@
 .banderines li[data-estado="corregida"] .bandera path {
   fill: var(--m-suave);
 }
+/* Al cerrarse la ronda el banderín «pega un saltito» y se asienta (squash + overshoot). */
+.banderines li[data-estado="bien"],
+.banderines li[data-estado="corregida"] {
+  animation: banderin 460ms cubic-bezier(0.2, 1.5, 0.4, 1) both;
+}
+@keyframes banderin {
+  0% {
+    scale: 0.7 1.25;
+  }
+  100% {
+    scale: 1;
+  }
+}
 
 /* ---------- Controles ---------- */
 
@@ -152,7 +165,9 @@
   .armi[data-pose] {
     animation: none;
   }
-  .banderines li {
+  .banderines li,
+  .banderines li[data-estado] {
     transition: none;
+    animation: none;
   }
 }

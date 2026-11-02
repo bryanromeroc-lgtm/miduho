@@ -5,6 +5,7 @@ import type { CSSProperties } from "react";
 import { Avanzar, Aviso, useFocoAlCambiar, type PropsJuego } from "../../reproductor/comun";
 import rp from "../../reproductor/reproductor.module.css";
 import { Armi, Controles, Guirnalda, type Pose } from "../comun/piezas";
+import { Chispas } from "../comun/efectos";
 import { useRondas } from "../comun/rondas";
 import e from "../comun/escena.module.css";
 import { fila, objetivo, type ContenidoMultiplos, type RondaMultiplos } from "./tipo";
@@ -25,7 +26,7 @@ const ESCENAS: Record<ContenidoMultiplos["escena"], CSSProperties> = {
 
 export function JuegoMultiplos({ contenido, alTerminar }: PropsJuego<ContenidoMultiplos>) {
   const { modo, filas } = contenido;
-  const { indice, ronda: r, solucion, intentos, estados, acerto, cerrada, conPista, ultima, pose, responder, siguiente, voz, sonido } = useRondas<RondaMultiplos, number>({
+  const { indice, ronda: r, solucion, intentos, estados, acerto, cerrada, conPista, ultima, pose, responder, siguiente, voz, sonido, reaccion } = useRondas<RondaMultiplos, number>({
     rondas: contenido.rondas,
     correcta: (x) => objetivo(modo, x),
     alTerminar,
@@ -45,6 +46,7 @@ export function JuegoMultiplos({ contenido, alTerminar }: PropsJuego<ContenidoMu
       </div>
 
       <div className={e.escena} style={ESCENAS[contenido.escena]}>
+        <Chispas reaccion={reaccion} />
         <div className={e.fondo} aria-hidden="true" />
         <div className={s.tablero} key={r.id}>
           {[

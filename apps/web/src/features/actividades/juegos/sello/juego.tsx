@@ -5,6 +5,7 @@ import type { CSSProperties } from "react";
 import { Avanzar, Aviso, useFocoAlCambiar, type PropsJuego } from "../../reproductor/comun";
 import rp from "../../reproductor/reproductor.module.css";
 import { Armi, Controles, Guirnalda, type Pose } from "../comun/piezas";
+import { Chispas } from "../comun/efectos";
 import { useRondas } from "../comun/rondas";
 import e from "../comun/escena.module.css";
 import { Figura } from "./figura";
@@ -23,7 +24,7 @@ const ESCENAS: Record<ContenidoSello["escena"], CSSProperties> = {
 };
 
 export function JuegoSello({ contenido, alTerminar }: PropsJuego<ContenidoSello>) {
-  const { indice, ronda: a, intentos, estados, acerto, cerrada, ultima, responder, siguiente, voz, sonido } = useRondas<Afirmacion, 0 | 1>({
+  const { indice, ronda: a, intentos, estados, acerto, cerrada, ultima, responder, siguiente, voz, sonido, reaccion } = useRondas<Afirmacion, 0 | 1>({
     rondas: contenido.afirmaciones,
     correcta: (x) => (x.verdadera ? 1 : 0),
     alTerminar: (r) => alTerminar(Object.fromEntries(Object.entries(r).map(([k, v]) => [k, v === 1]))),
@@ -41,6 +42,7 @@ export function JuegoSello({ contenido, alTerminar }: PropsJuego<ContenidoSello>
       </div>
 
       <div className={e.escena} style={ESCENAS[contenido.escena]}>
+        <Chispas reaccion={reaccion} />
         <div className={e.fondo} aria-hidden="true" />
         <div className={s.letrero} key={a.id}>
           <div className={s.contenido} data-figura={a.figura ? "" : undefined}>

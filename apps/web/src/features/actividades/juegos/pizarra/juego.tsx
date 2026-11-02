@@ -8,6 +8,7 @@ import { barajar } from "../../tipos/contrato";
 import { Avanzar, Aviso, Marca, useFocoAlCambiar, type PropsJuego } from "../../reproductor/comun";
 import rp from "../../reproductor/reproductor.module.css";
 import { Armi, Controles, Guirnalda } from "../comun/piezas";
+import { Chispas } from "../comun/efectos";
 import { useRondas } from "../comun/rondas";
 import e from "../comun/escena.module.css";
 import { preguntaDe, respuestaCorrecta, type ContenidoPizarra, type RondaPizarra } from "./tipo";
@@ -25,7 +26,7 @@ const UNIDAD_DECIMAL = ["", "décimas", "centésimas", "milésimas"] as const;
 const ESCENA = { "--fondo": "url(/images/juegos/pizarra/mercado.webp)", "--fondo-pos": "center 60%", "--fondo-color": "#f6dfb5" } as CSSProperties;
 
 export function JuegoPizarra({ contenido, semilla, alTerminar }: PropsJuego<ContenidoPizarra>) {
-  const { indice, ronda: r, solucion, intentos, estados, acerto, cerrada, conPista, ultima, pose, responder, siguiente, voz, sonido } =
+  const { indice, ronda: r, solucion, intentos, estados, acerto, cerrada, conPista, ultima, pose, responder, siguiente, voz, sonido, reaccion } =
     useRondas<RondaPizarra, string | number>({ rondas: contenido.rondas, correcta: respuestaCorrecta, alTerminar });
   const titulo = useFocoAlCambiar<HTMLHeadingElement>(indice);
   const opciones = useMemo(
@@ -42,6 +43,7 @@ export function JuegoPizarra({ contenido, semilla, alTerminar }: PropsJuego<Cont
       </div>
 
       <div className={e.escena} style={ESCENA}>
+        <Chispas reaccion={reaccion} />
         <div className={e.fondo} aria-hidden="true" />
         <div className={s.pizarra} key={r.id}>
           {r.modo === "letras" && <p className={s.letras}>{decimalEnLetras(r.numero)}</p>}

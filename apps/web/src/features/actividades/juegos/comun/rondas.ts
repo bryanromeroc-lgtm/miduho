@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { EstadoRonda, Pose } from "./piezas";
+import { useReaccion } from "./efectos";
 import { useSonido } from "./sonido";
 import { useVoz } from "./voz";
 
@@ -29,6 +30,7 @@ export function useRondas<R extends { id: string }, V extends string | number>({
   const [estados, setEstados] = useState<EstadoRonda[]>(() => rondas.map(() => "pendiente"));
   const voz = useVoz();
   const sonido = useSonido();
+  const { reaccion, disparar } = useReaccion();
 
   const ronda = rondas[indice];
   const solucion = correcta(ronda);
@@ -46,6 +48,7 @@ export function useRondas<R extends { id: string }, V extends string | number>({
     if (nuevos.length === 1) setRespuestas((x) => ({ ...x, [ronda.id]: valor }));
     const bien = valor === solucion;
     sonido.tocar(bien ? "acierto" : "error");
+    if (bien) disparar(nuevos.length === 1 ? "acierto" : "corregida");
     if (bien || nuevos.length >= maxIntentos) {
       const estado: EstadoRonda = nuevos.length === 1 && bien ? "bien" : "corregida";
       setEstados((e) => e.map((v, i) => (i === indice ? estado : v)));
@@ -63,5 +66,5 @@ export function useRondas<R extends { id: string }, V extends string | number>({
     setIntentos([]);
   }
 
-  return { indice, ronda, solucion, intentos, estados, acerto, cerrada, conPista, ultima, pose, responder, siguiente, voz, sonido };
+  return { indice, ronda, solucion, intentos, estados, acerto, cerrada, conPista, ultima, pose, responder, siguiente, voz, sonido, reaccion };
 }

@@ -41,3 +41,14 @@ node_modules/
 # Python
 __pycache__/
 *.pyc
+
+# Skills de terceros: instalación local, no se versionan (ver .claude/skills/TERCEROS.md)
+/.claude/skills/a11y-audit/
+/.claude/skills/k12-lesson-*/
+/.claude/skills/adaptive-hint-sequence-designer/
+/.claude/skills/formative-assessment-*/
+/.claude/skills/productive-failure-*/
+/.claude/skills/progressive-hint-ladder/
+/.claude/skills/spaced-practice-scheduler/
+/.claude/skills/game-feel/
+/.claude/skills/design-game/

@@ -6,6 +6,7 @@ import { barajar } from "../../tipos/contrato";
 import { Avanzar, Aviso, useFocoAlCambiar, type PropsJuego } from "../../reproductor/comun";
 import rp from "../../reproductor/reproductor.module.css";
 import { Armi, Controles, Guirnalda } from "../comun/piezas";
+import { Chispas } from "../comun/efectos";
 import { useRondas } from "../comun/rondas";
 import { Teclado } from "../comun/teclado";
 import e from "../comun/escena.module.css";
@@ -24,7 +25,7 @@ import s from "./angulos.module.css";
 const ESCENA = { "--fondo": "url(/images/juegos/angulos/cometas.webp)", "--fondo-pos": "center 40%", "--fondo-color": "#cfe6f7" } as CSSProperties;
 
 export function JuegoAngulos({ contenido, semilla, alTerminar }: PropsJuego<ContenidoAngulos>) {
-  const { indice, ronda: r, intentos, estados, acerto, cerrada, conPista, ultima, pose, responder, siguiente, voz, sonido } = useRondas<RondaAngulos, number>({
+  const { indice, ronda: r, intentos, estados, acerto, cerrada, conPista, ultima, pose, responder, siguiente, voz, sonido, reaccion } = useRondas<RondaAngulos, number>({
     rondas: contenido.rondas,
     correcta,
     alTerminar,
@@ -58,6 +59,7 @@ export function JuegoAngulos({ contenido, semilla, alTerminar }: PropsJuego<Cont
       </div>
 
       <div className={e.escena} style={ESCENA}>
+        <Chispas reaccion={reaccion} />
         <div className={e.fondo} aria-hidden="true" />
         <div className={s.panel} key={r.id}>
           {r.modo === "medir" ? (
