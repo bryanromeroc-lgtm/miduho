@@ -12,6 +12,8 @@ Crea un juego educativo 2D para la plataforma MIDUHO a partir de este pedido:
 
 Sigue las fases **en orden**. No saltes a escribir código sin haber pasado por las fases 1 y 2. Las reglas duras de `AGENTS.md` mandan sobre todo lo demás: sin datos personales de menores, sin copiar contenido protegido, WCAG 2.1 AA, marcar con 🔶 lo no confirmado, español de Colombia.
 
+Si el pedido es un **simulador o manipulativo** (laboratorio libre + retos, al estilo de PhET o Toy Theater), usa `/crear-simulador` en su lugar.
+
 Antes de empezar, lee `.claude/skills/juegos-2d-miduho/SKILL.md` (adaptador: pila real, piezas ya hechas, presupuesto de peso). Las skills `game-feel` y `design-game` se leen **a través de ese adaptador**; si algo choca, gana el adaptador.
 
 ## Fase 1 — Analizar (solo lectura, no se crea nada)
@@ -37,21 +39,23 @@ El resumen incluye: decisión (reutilizar o tipo nuevo), mecánica en una frase,
 1. `tipos/registro.ts` → importar y añadir a `DEFINICIONES`.
 2. `reproductor/reproductor.tsx` → `dynamic(...)` del juego y entrada en el mapa de juegos.
 3. `reproductor/reglas.ts` → añadir el tipo a la lista.
-4. `materias/vista/ilustracion-tipo.tsx` → ilustración de la tarjeta.
+4. `materias/vista/ilustracion-tipo.tsx` → ilustración de respaldo de la tarjeta.
 
-**C. Interfaz.** `juego.tsx` + `<tipo>.module.css`, reutilizando `juegos/comun/` (`useRondas`, `Armi`, `Guirnalda`, `Controles`, `escena.module.css`, `teclado`, `fraccion` si aplica). Ayúdate de `/impeccable` para decisiones visuales (regla del proyecto: toda UI pasa por impeccable).
+**C. Interfaz.** `juego.tsx` + `<tipo>.module.css`, reutilizando `juegos/comun/` (`useRondas`, `Armi`, `Guirnalda`, `Controles`, `escena.module.css`, `teclado`, `fraccion` si aplica). Ayúdate de `/impeccable` para decisiones visuales (regla del proyecto: toda UI pasa por impeccable). **El juego se juega en pantalla completa**: el reproductor ya pone la barra con «Salir del juego»; el juego debe aprovechar el ancho y el alto (sin anchos fijos estrechos). Reglas en la sección «Pantalla completa, imágenes con ChatGPT y portada» del adaptador.
 
-**D. Contenido.** JSON en `apps/web/curriculo/actividades/<asignatura>/<grado>/<slug>.json`, con datos ficticios, redacción propia y la instrucción dicha al estudiante.
+**D. Imágenes con ChatGPT.** Genera con Codex (comando y prompt en el adaptador) el fondo de la escena si el juego lo necesita y **siempre la portada** de la actividad: `public/images/juegos/<tipo>/portada.webp`, recortada a ~3,6:1 (1200×333). Mira cada imagen antes de usarla; si Codex falla, dilo.
 
-**E. Juice** con `game-feel` por medio del adaptador: empieza con 2–3 canales (sonido + movimiento + color); conecta `<Chispas reaccion={reaccion} />` si el juego usa `useRondas`. Respeta el presupuesto: ≤ 12 elementos, solo `transform`/`opacity`, sin dependencias nuevas, `prefers-reduced-motion` en todo efecto.
+**E. Contenido.** JSON en `apps/web/curriculo/actividades/<asignatura>/<grado>/<slug>.json`, con datos ficticios, redacción propia, la instrucción dicha al estudiante y `"imagen"` apuntando a la portada.
+
+**F. Juice** con `game-feel` por medio del adaptador: empieza con 2–3 canales (sonido + movimiento + color); conecta `<Chispas reaccion={reaccion} />` si el juego usa `useRondas`. Respeta el presupuesto: ≤ 12 elementos, solo `transform`/`opacity`, sin dependencias nuevas, `prefers-reduced-motion` en todo efecto.
 
 ## Fase 4 — Revisar
 
 1. **`design-game`** (vía adaptador): auditoría con tabla de puntajes sobre el juego nuevo. Muestra la tabla; aplica solo mejoras que quepan en el presupuesto y no toquen la calificación.
 2. **`/a11y-audit`** si las dependencias están instaladas; si no, revisión manual de: contraste ≥ 4.5:1, teclado, foco visible, `alt`, nada de información solo en color o animación, texto pedagógico en HTML.
 3. **Verificación** desde la raíz: `npm run build`, `npm run lint`, `npm test` (necesita `docker compose -f docker-compose.dev.yml up -d`). Reporta los resultados tal como salgan; si algo falla, dilo.
-4. **Verlo funcionando** con `/run` si es posible; si no se pudo ver, dilo.
+4. **Verlo funcionando** con `/run` si es posible: a 1440×900 y 390×844, juego en pantalla completa sin desplazamiento horizontal, «Salir del juego» vuelve a la materia, y la tarjeta muestra la portada sin recortar lo importante. Si no se pudo ver, dilo.
 
 ## Cierre
 
-Entrega: qué se creó (archivos), qué se reutilizó, resultado de cada verificación, lo que quedó 🔶 y lo que no se pudo comprobar. **No hagas commit ni push** salvo que se pida.
+Entrega: qué se creó (archivos), qué se reutilizó, qué imágenes se generaron, resultado de cada verificación, lo que quedó 🔶 y lo que no se pudo comprobar. **No hagas commit ni push** salvo que se pida.

@@ -33,6 +33,7 @@ const JuegoMultiplos = dynamic(() => import("../juegos/multiplos/juego").then((m
 const JuegoOperaciones = dynamic(() => import("../juegos/operaciones/juego").then((m) => m.JuegoOperaciones), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoRectas = dynamic(() => import("../juegos/rectas/juego").then((m) => m.JuegoRectas), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoAngulos = dynamic(() => import("../juegos/angulos/juego").then((m) => m.JuegoAngulos), { loading: () => <p role="status">Cargando juego…</p> });
+const JuegoFracciones = dynamic(() => import("../juegos/fracciones/juego").then((m) => m.JuegoFracciones), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoAventura = dynamic(() => import("../juegos/aventura/juego").then((m) => m.JuegoAventura), { loading: () => <p role="status">Cargando juego…</p> });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -59,6 +60,7 @@ const JUEGOS: Record<string, ComponentType<PropsJuego<any>>> = {
   rectas: JuegoRectas,
   angulos: JuegoAngulos,
   aventura: JuegoAventura,
+  "taller-fracciones": JuegoFracciones,
 };
 
 export type ActividadParaJugar = { slug: string; titulo: string; tipo: string; instruccion: string; contenido: unknown };
@@ -77,12 +79,21 @@ export function Reproductor({ actividad, materia, volverHref }: { actividad: Act
 
   return (
     <main className={s.reproductor} id="juego" tabIndex={-1}>
-      <header className={s.cabeza}>
-        <span className={s.tipo}>{nombreTipo(actividad.tipo)}</span>
-        <h1 className={s.titulo}>{actividad.titulo}</h1>
+      <header className={s.barraJuego}>
+        <Link href={volverHref} className={s.salir}>
+          <ArrowLeft size={20} strokeWidth={2.8} aria-hidden="true" />
+          Salir del juego
+        </Link>
+        <div className={s.cabeza}>
+          <h1 className={s.titulo}>{actividad.titulo}</h1>
+          <span className={s.tipo}>{nombreTipo(actividad.tipo)}</span>
+        </div>
+      </header>
+
+      <div className={s.notas}>
         {!resultado && <p className={s.instruccion}>{actividad.instruccion}</p>}
         <p className={s.practica}>{textoReglas(actividad.tipo)}</p>
-      </header>
+      </div>
 
       <section className={s.mesa} aria-label={resultado ? "Resultado" : "Juego"}>
         {resultado ? (

@@ -16,3 +16,5 @@ Referencia (no es skill, no se instala): GamED-AI (MIT) clonado en `~/Documentos
 
 
 `/crear-juego` (en `.claude/commands/crear-juego.md`) es propio y versionado: orquesta estas skills con el adaptador `juegos-2d-miduho`.
+
+`simuladores-miduho` (skill) y `/crear-simulador` (comando) también son propios y versionados: diseño de simuladores con laboratorio y retos, a partir del estudio de PhET y Toy Theater.

@@ -16,12 +16,13 @@ import { porcentajeTipo } from "../juegos/porcentaje/tipo";
 import { rectas } from "../juegos/rectas/tipo";
 import { aventura } from "../juegos/aventura/tipo";
 import { sello } from "../juegos/sello/tipo";
+import { tallerFracciones } from "../juegos/fracciones/tipo";
 import type { DefinicionTipoActividad } from "./contrato";
 import { palabraSecreta, sopaLetras } from "./palabras";
 import { completar, concurso, seleccionMultiple } from "./preguntas";
 import { clasificar, emparejar, memoria, ordenar } from "./relaciones";
 
-const DEFINICIONES = [seleccionMultiple, concurso, completar, emparejar, ordenar, clasificar, memoria, sopaLetras, palabraSecreta, pancarta, pizarraDecimales, corrector, sello, divisionTipo, bocadillo, jarras, porcentajeTipo, multiplos, operaciones, rectas, angulos, aventura];
+const DEFINICIONES = [seleccionMultiple, concurso, completar, emparejar, ordenar, clasificar, memoria, sopaLetras, palabraSecreta, pancarta, pizarraDecimales, corrector, sello, divisionTipo, bocadillo, jarras, porcentajeTipo, multiplos, operaciones, rectas, angulos, aventura, tallerFracciones];
 
 function registrar(lista: DefinicionTipoActividad<never, never>[]) {
   const mapa = new Map<string, DefinicionTipoActividad>();
@@ -57,6 +58,8 @@ export const esquemaArchivoActividad = z.object({
   instruccion: z.string().trim().min(5).max(220),
   /** Tema curricular en palabras propias. 🔶 Los códigos DBA llegan con curriculo/referentes (3.2). */
   tema: z.string().trim().min(3).max(120),
+  /** Imagen de portada de la tarjeta (ruta bajo /images, .webp). Decorativa: el título ya nombra la actividad. */
+  imagen: z.string().regex(/^\/images\/[\w\-/]+\.webp$/, "ruta /images/….webp").optional(),
   contenido: z.unknown(),
 });
 

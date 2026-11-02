@@ -25,7 +25,7 @@
   position: relative;
   display: grid;
   grid-template-rows: auto minmax(clamp(96px, 22cqi, 190px), 1fr);
-  min-height: clamp(300px, 52cqi, 460px);
+  min-height: clamp(300px, 52cqi, max(460px, 64dvh));
   border-radius: 20px;
   overflow: hidden;
   isolation: isolate;

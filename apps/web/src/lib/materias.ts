@@ -80,6 +80,8 @@ export type ActividadResumen = {
   id: string;
   titulo: string;
   tipo: string;
+  /** Portada de la tarjeta, si la actividad tiene una; decorativa. */
+  imagen?: string | null;
   estado: EstadoActividad;
   /** Estrellas del mejor intento; null si no hay intentos. */
   estrellas: Estrellas | null;

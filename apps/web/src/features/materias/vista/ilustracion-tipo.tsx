@@ -171,6 +171,18 @@ const DIBUJOS: Record<string, Dibujo> = {
       {pieza(0, 128, 2, 26)}
     </g>
   ),
+  // Un círculo partido en cuartos con tres pintados y una barra: la fracción en dos formas.
+  "taller-fracciones": (pieza) => (
+    <g>
+      <circle cx="44" cy="45" r="28" fill={P} />
+      <path d="M44 45 V17 A28 28 0 1 1 16 45 Z" fill={A} />
+      <path d="M44 17 V73 M16 45 H72" stroke={P} strokeWidth="3" />
+      <rect x="86" y="30" width="60" height="30" rx="5" fill={P} />
+      <rect x="86" y="30" width="40" height="30" rx="5" fill={A} />
+      <path d="M106 30 V60 M126 30 V60" stroke={P} strokeWidth="3" />
+      {pieza(0, 122, 2, 26)}
+    </g>
+  ),
   // Un camino con tres paradas y una bandera al final: la historia avanza.
   aventura: (pieza) => (
     <g>

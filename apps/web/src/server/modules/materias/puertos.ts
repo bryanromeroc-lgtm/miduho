@@ -59,7 +59,7 @@ export const actividadesSinFuente: PuertoActividadesDeMateria = {
 
 /** Dónde vive el currículo: nombre de la asignatura y orden del grado → actividades del catálogo. */
 export type FuenteCatalogo = {
-  de(asignatura: string, grado: number): { slug: string; titulo: string; tipo: string }[];
+  de(asignatura: string, grado: number): { slug: string; titulo: string; tipo: string; imagen?: string }[];
 };
 
 type ConsultaCatalogo = {
@@ -88,6 +88,7 @@ export function actividadesDeCatalogo(db: ConsultaCatalogo, catalogo: FuenteCata
         id: a.slug,
         titulo: a.titulo,
         tipo: a.tipo,
+        ...(a.imagen ? { imagen: a.imagen } : {}),
         estado: "disponible",
         estrellas: null,
         intentosUsados: 0,

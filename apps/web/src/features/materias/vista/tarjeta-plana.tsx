@@ -56,7 +56,12 @@ export function TarjetaPlana({ actividad: a, kit, indice }: { actividad: Activid
       <Pieza kit={kit} id={kit.utileria.clip} className={s.clip} />
       <span className={s.banda}>
         <MarcoTarjeta kit={kit} color="var(--m-apoyo)" className={s.marco} />
-        <IlustracionTipo tipo={a.tipo} kit={kit} indice={indice} className={s.ilustracion} />
+        {a.imagen ? (
+          // eslint-disable-next-line @next/next/no-img-element -- portada decorativa ya en webp
+          <img src={a.imagen} alt="" className={s.portada} loading="lazy" decoding="async" />
+        ) : (
+          <IlustracionTipo tipo={a.tipo} kit={kit} indice={indice} className={s.ilustracion} />
+        )}
       </span>
       <span className={s.cuerpo}>
         <span className={s.fila}>

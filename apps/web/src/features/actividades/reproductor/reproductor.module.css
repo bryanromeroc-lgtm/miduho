@@ -16,25 +16,67 @@
   --radio: 24px;
   --suave-salida: cubic-bezier(0.16, 1, 0.3, 1);
 
-  display: grid;
-  align-content: start;
-  justify-items: center;
-  gap: clamp(12px, 2dvh, 20px);
-  width: min(920px, 100% - 32px);
-  margin: 0 auto;
-  padding: clamp(14px, 3dvh, 32px) 0 32px;
+  /* Pantalla completa: el juego cubre toda la ventana, con su barra y el botón de salida. */
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: var(--m-fondo);
+  color: var(--m-tinta);
 }
 .reproductor:focus {
   outline: none;
 }
 
+/* ---------- Barra: salir, tipo y título ---------- */
+
+.barraJuego {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  padding: 10px clamp(12px, 2.4vw, 28px);
+  background: var(--m-tarjeta);
+}
+
+.salir {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 18px 8px 12px;
+  border-radius: 999px;
+  background: var(--m-banda);
+  color: var(--m-tinta);
+  font-family: var(--fuente-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: background-color 160ms ease-out;
+}
+.salir:hover {
+  background: var(--m-acento);
+  color: var(--m-sobreAcento);
+}
+.salir:focus-visible {
+  outline: 3px solid var(--m-tinta);
+  outline-offset: 2px;
+}
+
 /* ---------- Cabeza: tipo, título, instrucción ---------- */
 
 .cabeza {
-  display: grid;
-  justify-items: center;
-  gap: 6px;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 12px;
+  min-width: 0;
+  flex: 1 1 280px;
 }
 
 .tipo {
@@ -49,37 +91,44 @@
 .titulo {
   margin: 0;
   font-family: var(--fuente-display);
-  font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.5rem);
+  font-size: clamp(1.2rem, 1rem + 0.8vw, 1.6rem);
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 1.15;
   text-wrap: balance;
 }
 
 .instruccion {
   margin: 0;
-  max-width: 60ch;
+  max-width: 110ch;
   color: var(--m-suave);
   line-height: 1.45;
   text-wrap: pretty;
 }
 
+/* Instrucción y aviso de práctica, bajo la barra. */
+.notas {
+  display: grid;
+  gap: 4px;
+  width: min(1400px, 100% - 2 * clamp(12px, 2.4vw, 28px));
+  margin: 12px auto 0;
+}
+
 /* ---------- Mesa: el plano blanco donde se juega ---------- */
 
 .mesa {
-  width: 100%;
-  padding: clamp(16px, 3vw, 32px);
+  flex: 1 0 auto;
+  width: min(1400px, 100% - 2 * clamp(12px, 2.4vw, 28px));
+  margin: 12px auto clamp(12px, 2.4vw, 28px);
+  padding: clamp(16px, 2.4vw, 32px);
   border-radius: var(--radio);
   background: var(--m-tarjeta);
 }
 
 .practica {
   margin: 0;
-  max-width: 62ch;
-  padding: 8px 12px;
-  border-radius: 10px;
-  background: var(--m-fondo);
+  max-width: 110ch;
   color: var(--m-suave);
-  text-align: center;
+  font-size: 0.95rem;
 }
 .notaResultado {
   max-width: 54ch;

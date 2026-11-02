@@ -36,7 +36,7 @@ No uses OpenSpec para contenido nuevo. Si hay que ampliar el tipo (nuevo lugar u
 - Redacción propia, tono cálido, lugares y objetos colombianos, **sin nombres de personas**. Las opciones que parecen fracción («1/3») se dibujan en vertical automáticamente.
 - `inicio` presenta el encargo; `final` cierra la historia sea cual sea el resultado (sin repetir el título «¡Entrega completa!» que la interfaz ya pone).
 
-**B. Ilustraciones con Codex.** Reutiliza primero los lugares existentes: `gallinero`, `tienda`, `puente`, `panaderia`, `mercado`, `salon`, `plaza`. Para un lugar nuevo, genera la imagen con el CLI de ChatGPT/Codex (el usuario ya autorizó este servicio; no envíes datos personales):
+**B. Ilustraciones con Codex** (detalles comunes de Codex, pantalla completa y portada en la sección «Pantalla completa, imágenes con ChatGPT y portada» del adaptador `juegos-2d-miduho`). Reutiliza primero los lugares existentes: `gallinero`, `tienda`, `puente`, `panaderia`, `mercado`, `salon`, `plaza`. Para un lugar nuevo, genera la imagen con el CLI de ChatGPT/Codex (el usuario ya autorizó este servicio; no envíes datos personales):
 - Binario: `/usr/lib/chatgpt/resources/codex` (no está en el PATH). Trabaja en el directorio de scratchpad, no dentro del repo.
 - **El prompt va por stdin**: `-i` acepta varios archivos y se traga el prompt si lo pasas como argumento.
   ```bash
@@ -53,11 +53,11 @@ No uses OpenSpec para contenido nuevo. Si hay que ampliar el tipo (nuevo lugar u
 
 **E. Pruebas.** Copia el patrón de `juegos/aventura/contenido.test.ts`: valida el archivo con `leerActividad`, comprueba que la opción correcta de cada escena coincide con una **tabla de respuestas esperadas calculada aparte** del JSON, y que la carga se entrega completa (`cargaRestante`).
 
-**F. La tarjeta en la vista de la materia.** No hay que hacer nada: toda actividad `aventura` sale como sticker destacado (`TIPOS_DESTACADOS`). Limitación conocida 🔶: el sticker dibuja siempre a Armi con la carreta de huevos sobre el gallinero; si la historia es de otra carga, dilo en el cierre y propón parametrizarlo.
+**F. La tarjeta en la vista de la materia.** No hay que hacer nada: toda actividad `aventura` sale como sticker destacado (`TIPOS_DESTACADOS`). Limitación conocida 🔶: el sticker dibuja siempre a Armi con la carreta de huevos sobre el gallinero y **todavía no lee el campo `imagen`** de portada; si la historia es de otra carga, dilo en el cierre y propón parametrizar el sticker con una portada generada con ChatGPT.
 
 ## Fase 4 — Revisar
 
-1. **Ver la historia completa.** No hay cuenta de estudiante a mano y los intentos fallidos bloquean el acceso 15 min: **no pruebes contraseñas**. Crea una página temporal pública bajo `apps/web/src/app/login/prueba-<slug>/page.tsx` (el proxy deja pasar `/login/*`) que monte `<Reproductor>` con el JSON, recórrela con `playwright-core` headless (`/opt/google/chrome/chrome`, `--no-sandbox`) a 1366×768 y 390×844 contra el servidor de desarrollo que ya corra, falla una respuesta a propósito para ver la pista, mira las capturas y **borra la página temporal**. Comprueba que nada se sale de la pantalla a 1366×768 y que no hay errores de consola.
+1. **Ver la historia completa.** No hay cuenta de estudiante a mano y los intentos fallidos bloquean el acceso 15 min: **no pruebes contraseñas**. Crea una página temporal pública bajo `apps/web/src/app/login/prueba-<slug>/page.tsx` (el proxy deja pasar `/login/*`) que monte `<Reproductor>` con el JSON, recórrela con `playwright-core` headless (`/opt/google/chrome/chrome`, `--no-sandbox`) a 1366×768 y 390×844 contra el servidor de desarrollo que ya corra, falla una respuesta a propósito para ver la pista, mira las capturas y **borra la página temporal**. El juego se ve en pantalla completa (barra con «Salir del juego»): comprueba que nada se sale de la pantalla a 1366×768, que no hay desplazamiento horizontal y que no hay errores de consola.
 2. **Accesibilidad:** `/a11y-audit` si hay dependencias; si no, revisión manual: contraste ≥ 4.5:1, teclado, foco visible, información nunca solo en color o animación, texto pedagógico en HTML, imágenes decorativas `aria-hidden`.
 3. **`design-game`** (vía adaptador) solo si se pide: tabla de puntajes; aplica solo mejoras que quepan en el presupuesto y no toquen la calificación.
 4. **Verificación** desde la raíz: `npm run build`, `npm run lint`, `npm test` (necesita `docker compose -f docker-compose.dev.yml up -d`). Reporta los resultados tal como salgan.
