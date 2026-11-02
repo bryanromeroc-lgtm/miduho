@@ -85,7 +85,7 @@ function Reloj({ segundos, detenido }: { segundos: number; detenido: boolean }) 
     <span className={s.reloj} data-fin={quedan <= 0 ? "" : undefined}>
       <Timer size={20} strokeWidth={2.6} aria-hidden="true" />
       <span className={s.relojBarra} aria-hidden="true">
-        <span style={{ width: `${(quedan / segundos) * 100}%` }} />
+        <span style={{ transform: `scaleX(${quedan / segundos})` }} />
       </span>
       {/* El conteo no se anuncia cada segundo; solo el fin del tiempo. */}
       <span aria-hidden={quedan > 0}>{quedan > 0 ? `${quedan} s` : "¡Tiempo! Igual puedes responder"}</span>

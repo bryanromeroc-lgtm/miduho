@@ -58,10 +58,10 @@ export function JuegoBocadillo({ contenido, semilla, alTerminar }: PropsJuego<Co
     if (bien || nuevos.length >= 2) setPaso("pintar");
   }
 
-  function pintar(cual: "a" | "b", k: number) {
+  function pintar(cual: "a" | "b", cantidad: number) {
     if (paso !== "pintar") return;
     sonido.tocar("toque");
-    setPintadas((p) => ({ ...p, [cual]: p[cual] === k + 1 ? k : k + 1 }));
+    setPintadas((p) => ({ ...p, [cual]: cantidad }));
   }
 
   function comprobar() {
@@ -120,7 +120,7 @@ export function JuegoBocadillo({ contenido, semilla, alTerminar }: PropsJuego<Co
               pintadas={pintadas[cual]}
               activa={paso === "pintar"}
               estado={paso === "hecho" ? "ok" : undefined}
-              pintar={(k) => pintar(cual, k)}
+              pintar={(k) => pintar(cual, pintadas[cual] === k + 1 ? k : k + 1)}
             />
           ))}
         </div>
@@ -132,6 +132,21 @@ export function JuegoBocadillo({ contenido, semilla, alTerminar }: PropsJuego<Co
       <h2 ref={titulo} tabIndex={-1} className={e.pregunta}>
         {pregunta}
       </h2>
+
+      {paso === "pintar" && (
+        <div className={s.selectorPartes} role="group" aria-label="Elegir partes pintadas con controles grandes">
+          {(["a", "b"] as const).map((cual) => (
+            <label key={cual} className={s.selectorCampo}>
+              <span>Barra {cual === "a" ? "uno" : "dos"}: partes pintadas</span>
+              <select value={pintadas[cual]} onChange={(ev) => pintar(cual, Number(ev.target.value))}>
+                {Array.from({ length: sol.corte + 1 }, (_, n) => (
+                  <option key={n} value={n}>{n} de {sol.corte}</option>
+                ))}
+              </select>
+            </label>
+          ))}
+        </div>
+      )}
 
       {paso === "cortar" && (
         <div className={`${rp.opciones} ${e.opciones}`} role="group" aria-label="Cortes posibles">

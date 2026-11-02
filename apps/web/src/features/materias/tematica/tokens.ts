@@ -51,7 +51,8 @@ export const TOKENS: Record<Escena, TokensMateria> = {
   emprendimiento: t("#faf6ea", "#f4e8c5", "#865600", "#3f2c06", "#64502a", "#2f9e6a"),
   etica: t("#fbf1f3", "#f7dde3", "#ae3555", "#4d1424", "#734552", "#f4a8b8"),
   artistica: t("#f8f1f7", "#f0dcef", "#963888", "#43163d", "#6a4564", "#f2b52a"),
-  fisica: t("#f1f1fa", "#e0e0f6", "#4343b5", "#1f1f58", "#4a4a7a", "#f08a3c"),
+  fisica: t("#eff7f0", "#d7ecd9", "#166438", "#153922", "#3e5b4a", "#e97736"),
+  ciencias_fisicas: t("#f1f1fa", "#e0e0f6", "#4343b5", "#1f1f58", "#4a4a7a", "#f08a3c"),
   sociales: t("#f4f4ea", "#e7e9cf", "#566615", "#2c330b", "#535a35", "#2f8ec4"),
   generica: t("#f3f3f1", "#e4e6ea", "#3b4d66", "#1d2836", "#4b5563", "#f2b52a"),
 };

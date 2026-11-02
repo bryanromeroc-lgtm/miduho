@@ -4,25 +4,35 @@ import { ArrowLeft, RotateCcw } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState, type ComponentType } from "react";
 import { estrellasDe } from "@/lib/estrellas";
-import { JuegoAngulos } from "../juegos/angulos/juego";
-import { JuegoBocadillo } from "../juegos/bocadillo/juego";
-import { JuegoCorrector } from "../juegos/corrector/juego";
-import { JuegoDivision } from "../juegos/division/juego";
-import { JuegoJarras } from "../juegos/jarras/juego";
-import { JuegoMultiplos } from "../juegos/multiplos/juego";
-import { JuegoOperaciones } from "../juegos/operaciones/juego";
-import { JuegoPancarta } from "../juegos/pancarta/juego";
-import { JuegoPizarra } from "../juegos/pizarra/juego";
-import { JuegoPorcentaje } from "../juegos/porcentaje/juego";
-import { JuegoRectas } from "../juegos/rectas/juego";
-import { JuegoSello } from "../juegos/sello/juego";
+import dynamic from "next/dynamic";
 import { calificarIntento, type ResultadoIntento } from "../tipos/contrato";
 import { definicionDe, nombreTipo } from "../tipos/registro";
 import type { PropsJuego } from "./comun";
-import { PalabraSecreta, SopaLetras } from "./juegos-palabras";
-import { Completar, Concurso, Quiz } from "./juegos-preguntas";
-import { Clasificar, Emparejar, Memoria, Ordenar } from "./juegos-relaciones";
+import { primeraRespuestaCuenta, textoReglas } from "./reglas";
 import s from "./reproductor.module.css";
+
+// Cada juego se descarga al abrirlo; la ruta inicial no incorpora los otros veinte.
+const Quiz = dynamic(() => import("./juegos-preguntas").then((m) => m.Quiz), { loading: () => <p role="status">Cargando juego…</p> });
+const Concurso = dynamic(() => import("./juegos-preguntas").then((m) => m.Concurso), { loading: () => <p role="status">Cargando juego…</p> });
+const Completar = dynamic(() => import("./juegos-preguntas").then((m) => m.Completar), { loading: () => <p role="status">Cargando juego…</p> });
+const Emparejar = dynamic(() => import("./juegos-relaciones").then((m) => m.Emparejar), { loading: () => <p role="status">Cargando juego…</p> });
+const Ordenar = dynamic(() => import("./juegos-relaciones").then((m) => m.Ordenar), { loading: () => <p role="status">Cargando juego…</p> });
+const Clasificar = dynamic(() => import("./juegos-relaciones").then((m) => m.Clasificar), { loading: () => <p role="status">Cargando juego…</p> });
+const Memoria = dynamic(() => import("./juegos-relaciones").then((m) => m.Memoria), { loading: () => <p role="status">Cargando juego…</p> });
+const SopaLetras = dynamic(() => import("./juegos-palabras").then((m) => m.SopaLetras), { loading: () => <p role="status">Cargando juego…</p> });
+const PalabraSecreta = dynamic(() => import("./juegos-palabras").then((m) => m.PalabraSecreta), { loading: () => <p role="status">Cargando juego…</p> });
+const JuegoPancarta = dynamic(() => import("../juegos/pancarta/juego").then((m) => m.JuegoPancarta), { loading: () => <p role="status">Cargando juego…</p> });
+const JuegoPizarra = dynamic(() => import("../juegos/pizarra/juego").then((m) => m.JuegoPizarra), { loading: () => <p role="status">Cargando juego…</p> });
+const JuegoCorrector = dynamic(() => import("../juegos/corrector/juego").then((m) => m.JuegoCorrector), { loading: () => <p role="status">Cargando juego…</p> });
+const JuegoSello = dynamic(() => import("../juegos/sello/juego").then((m) => m.JuegoSello), { loading: () => <p role="status">Cargando juego…</p> });
+const JuegoDivision = dynamic(() => import("../juegos/division/juego").then((m) => m.JuegoDivision), { loading: () => <p role="status">Cargando juego…</p> });
+const JuegoBocadillo = dynamic(() => import("../juegos/bocadillo/juego").then((m) => m.JuegoBocadillo), { loading: () => <p role="status">Cargando juego…</p> });
+const JuegoJarras = dynamic(() => import("../juegos/jarras/juego").then((m) => m.JuegoJarras), { loading: () => <p role="status">Cargando juego…</p> });
+const JuegoPorcentaje = dynamic(() => import("../juegos/porcentaje/juego").then((m) => m.JuegoPorcentaje), { loading: () => <p role="status">Cargando juego…</p> });
+const JuegoMultiplos = dynamic(() => import("../juegos/multiplos/juego").then((m) => m.JuegoMultiplos), { loading: () => <p role="status">Cargando juego…</p> });
+const JuegoOperaciones = dynamic(() => import("../juegos/operaciones/juego").then((m) => m.JuegoOperaciones), { loading: () => <p role="status">Cargando juego…</p> });
+const JuegoRectas = dynamic(() => import("../juegos/rectas/juego").then((m) => m.JuegoRectas), { loading: () => <p role="status">Cargando juego…</p> });
+const JuegoAngulos = dynamic(() => import("../juegos/angulos/juego").then((m) => m.JuegoAngulos), { loading: () => <p role="status">Cargando juego…</p> });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const JUEGOS: Record<string, ComponentType<PropsJuego<any>>> = {
@@ -69,6 +79,7 @@ export function Reproductor({ actividad, materia, volverHref }: { actividad: Act
         <span className={s.tipo}>{nombreTipo(actividad.tipo)}</span>
         <h1 className={s.titulo}>{actividad.titulo}</h1>
         {!resultado && <p className={s.instruccion}>{actividad.instruccion}</p>}
+        <p className={s.practica}>{textoReglas(actividad.tipo)}</p>
       </header>
 
       <section className={s.mesa} aria-label={resultado ? "Resultado" : "Juego"}>
@@ -77,6 +88,7 @@ export function Reproductor({ actividad, materia, volverHref }: { actividad: Act
             resultado={resultado}
             materia={materia}
             volverHref={volverHref}
+            primeraCuenta={primeraRespuestaCuenta(actividad.tipo)}
             otraVez={() => {
               setResultado(null);
               setPartida((n) => n + 1);
@@ -92,7 +104,6 @@ export function Reproductor({ actividad, materia, volverHref }: { actividad: Act
         )}
       </section>
 
-      <p className={s.practica}>Práctica libre: puedes jugar las veces que quieras. Tu resultado todavía no se guarda.</p>
     </main>
   );
 }
@@ -105,11 +116,13 @@ function Resultado({
   materia,
   volverHref,
   otraVez,
+  primeraCuenta,
 }: {
   resultado: ResultadoIntento;
   materia: string;
   volverHref: string;
   otraVez: () => void;
+  primeraCuenta: boolean;
 }) {
   const estrellas = estrellasDe(resultado.porcentaje);
   const titulo = useRef<HTMLHeadingElement>(null);
@@ -132,6 +145,9 @@ function Resultado({
       <p className={s.resultadoCifra}>
         {varios ? `Acertaste ${aciertos} de ${resultado.items.length}.` : `Lograste ${resultado.puntaje} de ${resultado.puntajeMaximo}.`}
       </p>
+      {primeraCuenta && aciertos < resultado.items.length && (
+        <p className={s.notaResultado}>Las estrellas muestran tus primeras respuestas. Las pistas y correcciones te ayudan a practicar.</p>
+      )}
 
       <details className={s.repaso} open={estrellas < 3}>
         <summary>Repasa las respuestas</summary>

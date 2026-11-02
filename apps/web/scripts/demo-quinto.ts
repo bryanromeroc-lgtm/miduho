@@ -1,6 +1,7 @@
 /**
  * Cuenta de DEMO de un estudiante de 5° con todo el currículo a la vista
- * (no forma parte del seed versionado). Requiere haber corrido poblar-demo.ts.
+ * (no forma parte del seed versionado). Usa docentes de poblar-demo.ts si
+ * existen; en la base desechable de capturas usa la cuenta docente del seed.
  *
  * Crea el grupo 5°01 y las asignaturas cuyos nombres coinciden con las
  * carpetas de `curriculo/actividades/` (el catálogo busca por nombre
@@ -71,7 +72,8 @@ async function main() {
       update: {},
       create: { asignaturaId: asig.id, gradoId: grado.id },
     });
-    const docente = await db.usuario.findUniqueOrThrow({ where: { correo: a.docente } });
+    const docente = await db.usuario.findUnique({ where: { correo: a.docente } })
+      ?? await db.usuario.findUniqueOrThrow({ where: { correo: "docente@miduho.test" } });
     const asignacion = await db.asignacionDocente.findFirst({
       where: { docenteId: docente.id, asignaturaId: asig.id, grupoId: grupo.id, anioLectivoId: anio.id },
     });

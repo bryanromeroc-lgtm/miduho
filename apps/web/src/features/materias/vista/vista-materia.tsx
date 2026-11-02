@@ -1,23 +1,13 @@
 import type { CSSProperties, ReactNode } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { DESCRIPCION_ESCENA, type Escena } from "@/lib/escenas";
+import { DESCRIPCION_ESCENA } from "@/lib/escenas";
 import { paginar, type VistaMateria as Datos } from "@/lib/materias";
 import { Cinta, PatronMarcas, Pieza } from "../tematica/piezas";
 import { kitDe, variablesDe } from "../tematica";
 import { EncabezadoMateria } from "./encabezado";
 import { TarjetaPlana } from "./tarjeta-plana";
 import s from "./vista.module.css";
-
-/*
-  🔶 `fisica` es Física (decisión del operador del 2026-10-31), pero
-  DESCRIPCION_ESCENA aún describe Educación física porque «Mis materias» la
-  usa así. Mientras se decide la escena de Educación física, la vista usa
-  su propia descripción.
-*/
-const DESCRIPCION_VISTA: Partial<Record<Escena, string>> = {
-  fisica: "Fuerzas, movimiento, luz y energía.",
-};
 
 // Dónde flotan los sueltos: en los márgenes, fuera de la columna de texto.
 const LUGAR_SUELTO = ["arribaIzq", "abajoIzq", "arribaDer", "abajoDer"] as const;
@@ -64,7 +54,7 @@ export function VistaMateria({
         volverHref={volverHref}
         rotulo={rotulo}
         extra={extra}
-        bienvenida={{ materiaId: materia.id, conActividades: !!hoja }}
+        bienvenida={rotulo ? undefined : { materiaId: materia.id, conActividades: !!hoja }}
       />
 
       <main className={s.contenido} id="actividades" tabIndex={-1}>
@@ -81,7 +71,7 @@ export function VistaMateria({
             <h1 id="materia-titulo" className={s.nombre}>
               {materia.nombre}
             </h1>
-            <p className={s.descripcion}>{DESCRIPCION_VISTA[materia.escena] ?? DESCRIPCION_ESCENA[materia.escena]}</p>
+            <p className={s.descripcion}>{DESCRIPCION_ESCENA[materia.escena]}</p>
           </div>
           <span className={s.escenografia} aria-hidden="true">
             {kit.cabecera.slice(mitad).map((id) => (

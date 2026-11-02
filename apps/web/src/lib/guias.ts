@@ -16,7 +16,7 @@ export type Guia = {
   accion: string;
 };
 
-export const GUIAS: Record<Exclude<Escena, "generica">, Guia> = {
+export const GUIAS: Partial<Record<Escena, Guia>> = {
   lectura: {
     nombre: "Bruno",
     especie: "Oso de anteojos",
@@ -89,7 +89,7 @@ export const GUIAS: Record<Exclude<Escena, "generica">, Guia> = {
   },
 };
 
-/** La guía de una escena; la escena genérica no tiene guía propia. */
+/** La guía de una escena; Física y la escena genérica aún no tienen guía propia. */
 export function guiaDe(escena: Escena): Guia | null {
-  return escena === "generica" ? null : GUIAS[escena];
+  return GUIAS[escena] ?? null;
 }

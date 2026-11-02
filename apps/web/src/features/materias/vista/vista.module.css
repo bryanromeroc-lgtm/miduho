@@ -840,6 +840,14 @@
 }
 
 @media (max-width: 600px) {
+  .revision {
+    position: static;
+    order: 8;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-radius: 18px;
+  }
   .cuadricula {
     grid-template-columns: minmax(0, 1fr);
   }

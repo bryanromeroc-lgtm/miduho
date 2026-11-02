@@ -8,8 +8,9 @@ import rp from "../../reproductor/reproductor.module.css";
 import { Armi, Controles, Guirnalda } from "../comun/piezas";
 import { useRondas } from "../comun/rondas";
 import e from "../comun/escena.module.css";
+import { describirTarjeta } from "./acceso";
 import { FiguraRectas } from "./figura";
-import { categoria, EXPLICACIONES, PREGUNTAS, type ContenidoRectas, type RondaRectas, type Tarjeta } from "./tipo";
+import { categoria, EXPLICACIONES, PREGUNTAS, type ContenidoRectas, type RondaRectas } from "./tipo";
 import s from "./rectas.module.css";
 
 /*
@@ -20,11 +21,6 @@ import s from "./rectas.module.css";
 */
 
 const ESCENA = { "--fondo": "url(/images/juegos/rectas/pueblo.webp)", "--fondo-pos": "center 50%", "--fondo-color": "#d9ead2" } as CSSProperties;
-
-function describir(t: Tarjeta, revelar: boolean): string {
-  if (t.figura === "linea") return "Una línea";
-  return revelar ? `Dos rectas ${t.relacion === "paralelas" ? "que no se cortan" : "que se cortan"}` : "Dos rectas";
-}
 
 export function JuegoRectas({ contenido, semilla, alTerminar }: PropsJuego<ContenidoRectas>) {
   const { indice, ronda: r, intentos, estados, acerto, cerrada, ultima, pose, responder, siguiente, voz, sonido } = useRondas<RondaRectas, number>({
@@ -63,7 +59,7 @@ export function JuegoRectas({ contenido, semilla, alTerminar }: PropsJuego<Conte
                   className={s.tarjeta}
                   data-estado={estado}
                   disabled={cerrada || elegida}
-                  aria-label={`Tarjeta ${String.fromCharCode(65 + pos)}: ${describir(t, revelar)}`}
+                  aria-label={`Tarjeta ${String.fromCharCode(65 + pos)}: ${describirTarjeta(t)}`}
                   onClick={() => responder(i)}
                 >
                   <span className={s.letra} aria-hidden="true">

@@ -92,6 +92,38 @@ button.parte:focus-visible {
   font-weight: 800;
 }
 
+.selectorPartes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: min(100%, 600px);
+  margin-inline: auto;
+}
+.selectorCampo {
+  display: grid;
+  gap: 6px;
+  color: var(--m-tinta);
+  font-weight: 700;
+}
+.selectorCampo select {
+  width: 100%;
+  min-height: 48px;
+  padding: 8px 12px;
+  border: 2px solid var(--m-acento);
+  border-radius: 12px;
+  background: var(--m-tarjeta);
+  color: var(--m-tinta);
+  font: inherit;
+  font-size: 1rem;
+}
+.selectorCampo select:focus-visible {
+  outline: 3px solid var(--m-tinta);
+  outline-offset: 2px;
+}
+@media (max-width: 560px) {
+  .selectorPartes { grid-template-columns: minmax(0, 1fr); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .parte {
     transition: none;

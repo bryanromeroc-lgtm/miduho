@@ -23,13 +23,14 @@ const base: ResumenMateria = {
 const tarjeta = (m: Partial<ResumenMateria>) => renderToStaticMarkup(<Tarjeta materia={{ ...base, ...m }} />);
 
 describe("guías de las materias", () => {
-  it("toda escena salvo la genérica tiene guía con ilustración publicada", () => {
+  it("las escenas con guía tienen ilustración publicada", () => {
     for (const e of ESCENAS) {
-      if (e === "generica") {
+      if (e === "generica" || e === "ciencias_fisicas") {
         expect(guiaDe(e)).toBeNull();
         continue;
       }
       const g = GUIAS[e];
+      if (!g) throw new Error(`Falta la guía de ${e}`);
       expect(g.nombre && g.especie && g.accion).toBeTruthy();
       expect(existsSync(resolve(__dirname, "../../../public", `.${g.imagen}`))).toBe(true);
     }
@@ -67,6 +68,14 @@ describe("tarjeta de materia", () => {
     const h = tarjeta({ escena: "generica", nombre: "Educación Religiosa" });
     expect(h).toContain("#escena-generica");
     expect(h).not.toContain(" · ");
+  });
+
+  it("Física usa una escena propia sin atribuirle la guía de Educación Física", () => {
+    const h = tarjeta({ escena: "ciencias_fisicas", nombre: "Física" });
+    expect(h).toContain("<svg");
+    expect(h).toContain('data-familia="ciencias_fisicas"');
+    expect(h).not.toContain(" · ");
+    expect(h).not.toContain("#escena-ciencias_fisicas");
   });
 });
 

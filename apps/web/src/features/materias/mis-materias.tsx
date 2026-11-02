@@ -9,6 +9,8 @@ import { guiaDe, type Guia } from "@/lib/guias";
 import { partesDelCromo, type MisMaterias as Datos, type ResumenMateria } from "@/lib/materias";
 import { POR_PAGINA, totalPaginas } from "@/lib/posicion-avatar";
 import { SpriteEscenas } from "./escenas/sprite-escenas";
+import { kitDe } from "./tematica";
+import { Pieza } from "./tematica/piezas";
 import s from "./mis-materias.module.css";
 
 /*
@@ -123,6 +125,11 @@ export function Tarjeta({ materia, temprana = false }: { materia: ResumenMateria
             loading={temprana ? "eager" : "lazy"}
             className={s.ilustracion}
           />
+        ) : materia.escena === "ciencias_fisicas" ? (
+          <span className={s.fisicaCiencias} aria-hidden="true">
+            <Pieza kit={kitDe("ciencias_fisicas")} id="pendulo" className={s.fisicaObjeto} />
+            <Pieza kit={kitDe("ciencias_fisicas")} id="prisma-luz" className={s.fisicaObjeto} />
+          </span>
         ) : (
           <svg aria-hidden="true" className={s.generica} viewBox="-150 -182 300 216" preserveAspectRatio="xMidYMax meet">
             <use href={`#escena-${materia.escena}`} />

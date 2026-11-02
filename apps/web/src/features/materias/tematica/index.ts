@@ -2,6 +2,7 @@ import type { Escena } from "@/lib/escenas";
 import { arteArtistica } from "./arte/artistica";
 import { arteEmprendimiento } from "./arte/emprendimiento";
 import { arteEtica } from "./arte/etica";
+import { arteEducacionFisica } from "./arte/educacion-fisica";
 import { arteFisica } from "./arte/fisica";
 import { arteGenerica } from "./arte/generica";
 import { arteIngles } from "./arte/ingles";
@@ -25,7 +26,8 @@ export const ARTE: Record<Escena, ArteKit> = {
   emprendimiento: arteEmprendimiento,
   etica: arteEtica,
   artistica: arteArtistica,
-  fisica: arteFisica,
+  fisica: arteEducacionFisica,
+  ciencias_fisicas: arteFisica,
   sociales: arteSociales,
   generica: arteGenerica,
 };

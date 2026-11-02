@@ -20,7 +20,7 @@ export function Progreso({ actual, total, nombre = "Pregunta" }: { actual: numbe
         {nombre} {Math.min(actual, total)} de {total}
       </span>
       <span className={s.progresoBarra} aria-hidden="true">
-        <span style={{ width: `${(Math.min(actual, total) / total) * 100}%` }} />
+        <span style={{ transform: `scaleX(${Math.min(actual, total) / total})` }} />
       </span>
     </div>
   );

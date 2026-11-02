@@ -6,6 +6,7 @@
 
 | Artefacto | Estado | Propósito |
 |---|---|---|
+| [Correcciones de auditoría UI de materias y juegos](auditoria-ui-materias-juegos-correcciones.md) | En ejecución | Alcance, criterios, decisiones y QA de harden, adapt, clarify, onboard, optimize y polish. |
 | [Inc. 2 · Contenido de Laboratorios y Emprendimiento](inc-2-contenido-laboratorios-emprendimiento.md) | Implementado y verificado | Cinco rutas propias de Robótica y cinco ejercicios de Emprendimiento, sin progreso ficticio ni contenido protegido. |
 | [Modelo de entidades](../modelo-de-entidades.md) | Confirmado para Inc. 1 | Entidades, relaciones y reglas del dominio educativo. |
 | [Arquitectura backend](../arquitectura-backend.md) | Propuesta técnica para Inc. 1 | Decisiones de backend, auth, Prisma y contratos. |

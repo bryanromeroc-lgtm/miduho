@@ -1,4 +1,5 @@
 import s from "./angulos.module.css";
+import { describirRayo, describirTransportador } from "./acceso";
 
 /*
   Ángulo con transportador (SVG propio). El vértice está abajo al centro;
@@ -45,7 +46,7 @@ export function Transportador({ angulo, desde, resaltar }: { angulo: number; des
   const a1 = punto(Math.min(lado1, lado2), arcoR);
   const a2 = punto(Math.max(lado1, lado2), arcoR);
   return (
-    <svg className={s.figura} viewBox="0 0 400 240" role="img" aria-label={`Ángulo con el transportador encima; el primer lado sale hacia la ${desde}`}>
+    <svg className={s.figura} viewBox="0 0 400 240" role="img" aria-label={describirTransportador(angulo, desde)}>
       <path d={`M${CX - R} ${CY} A${R} ${R} 0 0 1 ${CX + R} ${CY} Z`} fill="rgb(214 234 252 / 0.72)" stroke="#1b2440" strokeWidth="2" />
       <path d={`M${CX - R + 56} ${CY} A${R - 56} ${R - 56} 0 0 1 ${CX + R - 56} ${CY}`} fill="none" stroke="#7a8db0" strokeWidth="1" />
       {marcas}
@@ -92,7 +93,7 @@ export function Bisectriz({
                 className={s.rayo}
                 data-estado={estado}
                 disabled={deshabilitado(grados)}
-                aria-label={`Rayo ${letra}${estado === "ok" ? ", es la bisectriz" : estado === "no" ? ", no es la bisectriz" : ""}`}
+                aria-label={`${describirRayo(letra, grados)}${estado === "ok" ? " Es la bisectriz." : estado === "no" ? " No es la bisectriz." : ""}`}
                 onClick={() => elegir(grados)}
               >
                 {letra}

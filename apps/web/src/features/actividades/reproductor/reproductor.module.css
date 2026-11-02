@@ -74,8 +74,18 @@
 
 .practica {
   margin: 0;
+  max-width: 62ch;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--m-fondo);
   color: var(--m-suave);
   text-align: center;
+}
+.notaResultado {
+  max-width: 54ch;
+  margin: 0;
+  color: var(--m-suave);
+  line-height: 1.45;
 }
 
 .juego {
@@ -109,10 +119,12 @@
 }
 .progresoBarra span {
   display: block;
+  width: 100%;
   height: 100%;
   border-radius: inherit;
   background: var(--m-acento);
-  transition: width 320ms var(--suave-salida);
+  transform-origin: left center;
+  transition: transform 320ms var(--suave-salida);
 }
 
 .enunciado {
@@ -272,9 +284,11 @@
 }
 .relojBarra span {
   display: block;
+  width: 100%;
   height: 100%;
   background: var(--m-apoyo);
-  transition: width 1s linear;
+  transform-origin: left center;
+  transition: transform 1s linear;
 }
 .reloj[data-fin] .relojBarra {
   display: none;
@@ -517,6 +531,81 @@
 .letra[data-hallada] {
   background: var(--ok-fondo);
   color: var(--ok-tinta);
+}
+.selectorGrande {
+  min-width: 0;
+  border: 2px solid var(--m-banda);
+  border-radius: 14px;
+  background: var(--m-fondo);
+}
+.selectorGrande summary {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 8px 14px;
+  color: var(--m-tinta);
+  font-weight: 800;
+  cursor: pointer;
+}
+.selectorGrande summary:focus-visible,
+.selectorGrande select:focus-visible,
+.letraGrande:focus-visible {
+  outline: 3px solid var(--m-acento);
+  outline-offset: 2px;
+}
+.selectorGrandeCuerpo {
+  display: grid;
+  gap: 10px;
+  padding: 0 14px 14px;
+}
+.selectorGrandeCuerpo label {
+  font-weight: 700;
+}
+.selectorGrandeCuerpo select {
+  min-height: 48px;
+  padding: 8px;
+  border: 2px solid var(--m-acento);
+  border-radius: 10px;
+  background: var(--m-tarjeta);
+  color: var(--m-tinta);
+  font: inherit;
+}
+.selectorGrandeCuerpo p {
+  margin: 0;
+  color: var(--m-suave);
+}
+.filaGrande {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(44px, 1fr));
+  gap: 6px;
+}
+.letraGrande {
+  display: grid;
+  place-items: center;
+  min-height: 48px;
+  padding: 4px;
+  border: 2px solid var(--m-acento);
+  border-radius: 10px;
+  background: var(--m-tarjeta);
+  color: var(--m-tinta);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+.letraGrande small {
+  font-size: 0.7rem;
+  line-height: 1;
+}
+.letraGrande[aria-pressed="true"] {
+  background: var(--m-acento);
+  color: var(--m-sobreAcento);
+}
+.letraGrande[data-hallada] {
+  border-color: var(--ok-tinta);
+}
+@media (max-width: 360px) {
+  .selectorGrandeCuerpo { padding-inline: 8px; }
+  .filaGrande { gap: 4px; }
 }
 .palabras {
   display: grid;
