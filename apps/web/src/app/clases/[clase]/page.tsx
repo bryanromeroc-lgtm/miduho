@@ -47,42 +47,39 @@ export default async function PantallaClase({
         ]}
       />
 
-      {/* La plancha desplegada: el trecho a página completa. */}
+      {/* La plancha desplegada: el trecho a página completa, sin contorno de tinta. */}
       <header
-        className="trecho-entra rounded-[22px] border-[3px] border-tinta px-8 py-7 shadow-[0_6px_0_var(--color-tinta)]"
+        className="trecho-entra rounded-[22px] px-8 py-7 shadow-[0_18px_40px_-26px_#0a3d6b80]"
         style={{
           background: a ? a.plancha : "var(--color-apagado)",
-          color: a ? "var(--papel)" : "var(--color-tinta)",
+          color: a ? "var(--papel)" : "var(--dia-texto)",
           viewTransitionName: `plancha-${clase.id}`,
         }}
       >
         <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
           <div>
-            <p
-              className="text-[13px] font-extrabold uppercase tracking-[0.14em]"
-              style={{ color: a ? "var(--papel)" : "var(--color-rob-tinta)" }}
-            >
-              {rotulo}
-            </p>
-            <h1 className="mt-2 font-heading text-[clamp(34px,5vw,54px)] font-bold leading-[0.96]">
+            <h1 className="font-heading text-[clamp(34px,5vw,54px)] font-extrabold leading-[0.98]">
               {clase.tema ?? "Sin material todavía"}
             </h1>
+            <p className="mt-2 font-heading text-[18px] font-bold">{rotulo}</p>
           </div>
-          <p className="font-heading text-[15px] font-bold uppercase tracking-[0.08em]">
+          <p className="rounded-full bg-white/15 px-4 py-1.5 font-heading text-[16px] font-bold tabular-nums">
             {DOCENTE.periodo} · hoy a las {clase.hora}
           </p>
         </div>
       </header>
 
-      {/* Pestañas: la activa es tinta sólida; las demás viven sobre el hueso. */}
+      {/* Secciones de la clase: la activa en azul, las demás en papel. */}
       <nav aria-label="Secciones de la clase" className="mt-6 flex flex-wrap gap-2">
         {PESTANAS.map((p, i) => (
           <span
             key={p}
             aria-current={i === 0 ? "page" : undefined}
             className={cn(
-              "rounded-full border-[3px] border-tinta px-5 py-2 font-heading text-[15px] font-extrabold text-tinta",
-              i === 0 ? "bg-acento" : "bg-papel"
+              "inline-flex min-h-11 items-center rounded-full border-[1.5px] px-5 font-heading text-[16px] font-extrabold",
+              i === 0
+                ? "border-transparent bg-[var(--dia-azul)] text-white"
+                : "border-[var(--dia-borde)] bg-papel text-[var(--dia-texto)]"
             )}
           >
             {p}
@@ -93,7 +90,7 @@ export default async function PantallaClase({
       <div className="mt-5 grid gap-4 lg:grid-cols-[1fr_320px]">
         <section className="sticker-panel p-5">
           <div className="mb-4 flex items-baseline justify-between gap-4">
-            <h2 className="font-heading text-[15px] font-bold uppercase tracking-[0.1em] text-tinta">
+            <h2 className="font-heading text-[20px] font-extrabold text-tinta">
               Contenidos de este período
             </h2>
             <span className="text-[13px] text-gris">

@@ -58,7 +58,7 @@ function esLaboratorios(pathname: string) {
   return ["/laboratorios", "/emprendimiento"].some((b) => pathname === b || pathname.startsWith(`${b}/`));
 }
 
-/** `dia`: la página pide el mundo de día; el marco lo da solo al estudiante (el resto, hoja). */
+/** `dia`: la página pone su propio ancho sobre el día; si no, va en la hoja centrada. */
 export function Marco({ dia = false, children }: { dia?: boolean; children: React.ReactNode }) {
   const pathname = usePathname();
   if (esLaboratorios(pathname)) return <MarcoLaboratorios>{children}</MarcoLaboratorios>;

@@ -488,14 +488,7 @@ h3 {
   flex-direction: column;
 }
 
-/* ── Variante hoja: campo claro; la noche queda solo en el encabezado ── */
-.marco-juego[data-variante="hoja"] { padding: 0 0 16px; background: var(--hueso); color: var(--tinta); }
-.marco-juego[data-variante="hoja"] .marco-juego-cabecera {
-  padding: 12px 18px 14px;
-  border-bottom: 4px solid var(--tinta);
-  background: var(--noche);
-  color: var(--papel);
-}
+/* ── Variante hoja: columna centrada (el mundo de día la viste más abajo) ── */
 .marco-juego[data-variante="hoja"] .marco-juego-contenido { display: block; }
 .marco-juego-hoja {
   width: 100%;
@@ -504,7 +497,6 @@ h3 {
   padding: 18px clamp(16px, 3vw, 36px) 28px;
   color: var(--tinta);
 }
-.marco-juego[data-variante="hoja"] .marco-juego-pie { padding: 0 clamp(16px, 3vw, 36px); color: var(--gris); }
 .marco-juego-pie {
   display: flex;
   flex-wrap: wrap;
@@ -620,8 +612,6 @@ h3 {
 /* ── Móvil: el mismo <nav> se fija abajo ──────────────────────────── */
 @media (max-width: 899px) {
   .marco-juego { padding: 10px 12px calc(96px + env(safe-area-inset-bottom)); }
-  .marco-juego[data-variante="hoja"] { padding: 0 0 calc(96px + env(safe-area-inset-bottom)); }
-  .marco-juego[data-variante="hoja"] .marco-juego-cabecera { padding: 10px 12px; }
   .marco-juego-cabecera { flex-wrap: nowrap; }
   .marco-juego .wordmark { --tipo-wordmark: 1.75rem; }
   .marco-juego-escudo { width: 46px; height: 46px; border-width: 3px; }
@@ -667,8 +657,8 @@ h3 {
 /* ═══════════════════════════════════════════════════════════════════════
    MUNDO DE DÍA (MarcoJuego variante «dia»): el mismo día del ingreso.
    Encabezado de papel con pestañas, tinta azul marino y el paisaje de
-   cielo y colinas (fondo-dia) detrás del contenido. Hoy solo lo usa
-   «Mis materias» del estudiante.
+   cielo y colinas (fondo-dia) detrás del contenido. Es el mundo de los
+   tres roles; solo Laboratorios conserva su shell (.cosmos).
    ═══════════════════════════════════════════════════════════════════════ */
 .mundo-dia,
 .superficie-dia {
@@ -688,16 +678,16 @@ h3 {
 .superficie-dia .migas ol { margin-bottom: 10px; color: var(--dia-suave); }
 .superficie-dia .migas a { color: var(--dia-azul-hondo); text-decoration-thickness: 2px; }
 .superficie-dia .migas [aria-current="page"] { color: var(--dia-texto); }
-.marco-juego[data-variante="dia"] {
+.marco-juego.mundo-dia {
   gap: 0;
   padding: 0;
   background: #cdeefc url("/images/acceso/fondo-dia.webp") center bottom / cover no-repeat fixed;
   color: var(--dia-texto);
 }
-.marco-juego[data-variante="dia"] ::selection { background: #b7e0f7; color: var(--dia-texto); }
-.marco-juego[data-variante="dia"] .marco-juego-saltar { border-color: var(--dia-texto); background: var(--papel); color: var(--dia-texto); }
+.marco-juego.mundo-dia ::selection { background: #b7e0f7; color: var(--dia-texto); }
+.marco-juego.mundo-dia .marco-juego-saltar { border-color: var(--dia-texto); background: var(--papel); color: var(--dia-texto); }
 
-.marco-juego[data-variante="dia"] .marco-juego-cabecera {
+.marco-juego.mundo-dia .marco-juego-cabecera {
   position: relative;
   z-index: 2;
   flex-wrap: nowrap;
@@ -706,25 +696,25 @@ h3 {
   border-bottom: 1.5px solid var(--dia-borde);
   box-shadow: 0 6px 18px -14px #0a3d6b59;
 }
-.marco-juego[data-variante="dia"] .marco-juego-escudo {
+.marco-juego.mundo-dia .marco-juego-escudo {
   width: 64px;
   height: 64px;
   border: 2px solid var(--dia-borde);
   box-shadow: 0 6px 14px -8px #0a3d6b59;
 }
-.marco-juego[data-variante="dia"] .marco-juego-nombre { line-height: 1.1; white-space: nowrap; }
-.marco-juego[data-variante="dia"] .wordmark {
+.marco-juego.mundo-dia .marco-juego-nombre { line-height: 1.1; white-space: nowrap; }
+.marco-juego.mundo-dia .wordmark {
   font-size: 1.875rem;
   letter-spacing: 0.01em;
   -webkit-text-stroke: 0;
   text-shadow: none;
 }
-.marco-juego[data-variante="dia"] .wordmark > * { color: var(--dia-texto); }
-.marco-juego[data-variante="dia"] .marco-juego-colegio { margin-top: 0; font-size: 1rem; font-weight: 800; color: var(--dia-texto); }
+.marco-juego.mundo-dia .wordmark > * { color: var(--dia-texto); }
+.marco-juego.mundo-dia .marco-juego-colegio { margin-top: 0; font-size: 1rem; font-weight: 800; color: var(--dia-texto); }
 .marco-juego-plataforma { font-size: var(--tipo-rotulo); font-weight: 600; color: var(--dia-suave); }
 
 /* Pestañas en una banda de papel; la activa, azul con su raya. */
-.marco-juego[data-variante="dia"] .marco-juego-menu ul {
+.marco-juego.mundo-dia .marco-juego-menu ul {
   flex-wrap: nowrap;
   gap: 4px;
   padding: 0 10px;
@@ -765,8 +755,8 @@ h3 {
 .pestana-dia[aria-current="page"]::after { transform: scaleX(1); }
 .pestana-dia:focus-visible { outline: 3px solid var(--dia-azul); outline-offset: -3px; border-radius: 12px; }
 
-.marco-juego[data-variante="dia"] .marco-juego-herramientas { gap: 12px; }
-.marco-juego[data-variante="dia"] .marco-juego-chip {
+.marco-juego.mundo-dia .marco-juego-herramientas { gap: 12px; }
+.marco-juego.mundo-dia .marco-juego-chip {
   min-height: 52px;
   padding: 4px 18px 4px 6px;
   border: 1.5px solid var(--dia-borde);
@@ -774,47 +764,47 @@ h3 {
   box-shadow: none;
   color: var(--dia-texto);
 }
-.marco-juego[data-variante="dia"] .marco-juego-chip-texto { white-space: nowrap; }
-.marco-juego[data-variante="dia"] .marco-juego-chip-marca { border: 0; background: #ffc21a; color: var(--dia-texto); }
-.marco-juego[data-variante="dia"] .marco-juego-chip-icono { color: var(--dia-texto); }
-.marco-juego[data-variante="dia"] .marco-juego-chip-texto span { color: var(--dia-suave); }
-.marco-juego[data-variante="dia"] .shell-cuenta-boton {
+.marco-juego.mundo-dia .marco-juego-chip-texto { white-space: nowrap; }
+.marco-juego.mundo-dia .marco-juego-chip-marca { border: 0; background: #ffc21a; color: var(--dia-texto); }
+.marco-juego.mundo-dia .marco-juego-chip-icono { color: var(--dia-texto); }
+.marco-juego.mundo-dia .marco-juego-chip-texto span { color: var(--dia-suave); }
+.marco-juego.mundo-dia .shell-cuenta-boton {
   min-height: 52px;
   border: 1.5px solid var(--dia-borde);
   background: var(--papel);
   box-shadow: none;
   color: var(--dia-texto);
 }
-.marco-juego[data-variante="dia"] .shell-cuenta-boton:hover { border-color: var(--dia-azul); }
-.marco-juego[data-variante="dia"] .shell-cuenta-boton:focus-visible { outline: 3px solid var(--dia-azul); outline-offset: 2px; }
-.marco-juego[data-variante="dia"] .shell-cuenta-nombre small { color: var(--dia-suave); }
-.marco-juego[data-variante="dia"] .shell-avatar { border: 0; background: #ffc21a; color: var(--dia-texto); }
+.marco-juego.mundo-dia .shell-cuenta-boton:hover { border-color: var(--dia-azul); }
+.marco-juego.mundo-dia .shell-cuenta-boton:focus-visible { outline: 3px solid var(--dia-azul); outline-offset: 2px; }
+.marco-juego.mundo-dia .shell-cuenta-nombre small { color: var(--dia-suave); }
+.marco-juego.mundo-dia .shell-avatar { border: 0; background: #ffc21a; color: var(--dia-texto); }
 
 @media (min-width: 900px) and (max-width: 1365px) {
-  .marco-juego[data-variante="dia"] .marco-juego-plataforma { display: none; }
+  .marco-juego.mundo-dia .marco-juego-plataforma { display: none; }
   .pestana-dia { padding: 0 12px; gap: 8px; font-size: 1rem; }
 }
 @media (min-width: 900px) and (max-width: 1180px) {
-  .marco-juego[data-variante="dia"] .marco-juego-colegio { display: none; }
-  .marco-juego[data-variante="dia"] .marco-juego-escudo { width: 52px; height: 52px; }
-  .marco-juego[data-variante="dia"] .marco-juego-chip[data-chip="grupo"] { display: none; }
+  .marco-juego.mundo-dia .marco-juego-colegio { display: none; }
+  .marco-juego.mundo-dia .marco-juego-escudo { width: 52px; height: 52px; }
+  .marco-juego.mundo-dia .marco-juego-chip[data-chip="grupo"] { display: none; }
   .pestana-dia svg { display: none; }
 }
 
 /* Móvil: el mismo <nav> baja a una barra de papel con icono sobre etiqueta. */
 @media (max-width: 899px) {
-  .marco-juego[data-variante="dia"] { padding: 0 0 calc(84px + env(safe-area-inset-bottom)); background-attachment: scroll; }
-  .marco-juego[data-variante="dia"] .marco-juego-cabecera { padding: 8px 12px; }
-  .marco-juego[data-variante="dia"] .marco-juego-escudo { width: 48px; height: 48px; }
-  .marco-juego[data-variante="dia"] .wordmark { font-size: 1.5rem; }
-  .marco-juego[data-variante="dia"] .marco-juego-plataforma { display: none; }
-  .marco-juego[data-variante="dia"] .marco-juego-menu {
+  .marco-juego.mundo-dia { padding: 0 0 calc(84px + env(safe-area-inset-bottom)); background-attachment: scroll; }
+  .marco-juego.mundo-dia .marco-juego-cabecera { padding: 8px 12px; }
+  .marco-juego.mundo-dia .marco-juego-escudo { width: 48px; height: 48px; }
+  .marco-juego.mundo-dia .wordmark { font-size: 1.5rem; }
+  .marco-juego.mundo-dia .marco-juego-plataforma { display: none; }
+  .marco-juego.mundo-dia .marco-juego-menu {
     padding: 0 0 env(safe-area-inset-bottom);
     border-top: 1.5px solid var(--dia-borde);
     background: var(--papel);
     box-shadow: 0 -8px 20px -16px #0a3d6b73;
   }
-  .marco-juego[data-variante="dia"] .marco-juego-menu ul {
+  .marco-juego.mundo-dia .marco-juego-menu ul {
     justify-content: space-around;
     gap: 0;
     padding: 0 4px;
@@ -822,7 +812,7 @@ h3 {
     border-radius: 0;
     box-shadow: none;
   }
-  .marco-juego[data-variante="dia"] .pestana-dia {
+  .marco-juego.mundo-dia .pestana-dia {
     width: 100%;
     min-height: 64px;
     flex-direction: column;
@@ -831,9 +821,221 @@ h3 {
     padding: 6px 2px;
     font-size: 0.8125rem;
   }
-  .marco-juego[data-variante="dia"] .pestana-dia svg { display: block; }
-  .marco-juego[data-variante="dia"] .pestana-dia::after { top: 0; bottom: auto; border-radius: 0 0 4px 4px; }
+  .marco-juego.mundo-dia .pestana-dia svg { display: block; }
+  .marco-juego.mundo-dia .pestana-dia::after { top: 0; bottom: auto; border-radius: 0 0 4px 4px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .pestana-dia::after { transition: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   HOJA DE DÍA — docente, administración y cuenta. Las piezas compartidas
+   (boton-pastilla, sticker-boton, paneles, campos, tablas) dejan el traje
+   sticker y toman el del estudiante: papel con borde celeste fino, sombra
+   suave, azul para la acción principal y tinta marino para el texto.
+   ═══════════════════════════════════════════════════════════════════════ */
+.marco-juego-hoja {
+  --tinta: var(--dia-texto);
+  --color-tinta: var(--dia-texto);
+  --gris: var(--dia-suave);
+  --color-gris: var(--dia-suave);
+  --color-pizarra-700: var(--dia-suave);
+  --dia-campo: #b9d2e6;
+  --dia-campo-fondo: #f7fbfe;
+  color: var(--dia-texto);
+}
+
+/* Pie y selector de contexto dentro del día. */
+.marco-juego.mundo-dia .marco-juego-pie { padding: 0 clamp(16px, 3vw, 36px) 18px; color: var(--dia-texto); }
+.marco-juego.mundo-dia .marco-juego-pie span {
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--papel) 82%, transparent);
+  font-weight: 700;
+}
+.marco-juego.mundo-dia .shell-contexto {
+  border: 1.5px solid var(--dia-borde);
+  background: var(--dia-tinte);
+  box-shadow: none;
+}
+.marco-juego.mundo-dia .shell-contexto-opcion { color: var(--dia-texto); }
+.marco-juego.mundo-dia .shell-contexto-opcion[aria-pressed="true"] { background: var(--dia-azul); color: var(--papel); }
+
+/* Cabecera de página: la misma voz que «Biblioteca» y «Mi agenda». */
+.marco-juego-hoja .cabecera-pagina { margin-bottom: 20px; }
+.marco-juego-hoja .cabecera-pagina h1 { font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.5rem); color: var(--dia-texto); }
+.marco-juego-hoja .cabecera-pagina-bajada { margin-top: 4px; font-size: 1.125rem; font-weight: 600; color: var(--dia-suave); }
+.marco-juego-hoja .cabecera-pagina-nota { font-weight: 600; color: var(--dia-suave); }
+.marco-juego-hoja .section-heading h2 { color: var(--dia-texto); }
+
+/* ── Botones ─────────────────────────────────────────────────────── */
+.marco-juego-hoja :is(.boton-pastilla, .sticker-boton) {
+  min-height: 48px;
+  padding: 0 20px;
+  border: 1.5px solid var(--dia-borde-panel);
+  border-radius: 14px;
+  background: var(--papel);
+  color: var(--dia-texto);
+  box-shadow: 0 6px 14px -10px #0a3d6b59;
+  font-size: 1.0625rem;
+  transition: background 0.18s ease-out, border-color 0.18s ease-out, color 0.18s ease-out;
+}
+.marco-juego-hoja :is(.boton-pastilla, .sticker-boton):hover { transform: none; border-color: var(--dia-azul); color: var(--dia-azul-hondo); }
+.marco-juego-hoja :is(.boton-pastilla, .sticker-boton):active { transform: translateY(1px); box-shadow: none; }
+.marco-juego-hoja :is(.boton-pastilla[data-variante="primario"], .sticker-boton[data-tono="sol"]) {
+  border-color: transparent;
+  background: var(--dia-azul);
+  color: var(--papel);
+  box-shadow: inset 0 -3px 0 var(--dia-azul-hondo), 0 8px 16px -10px #0055b4a6;
+}
+.marco-juego-hoja :is(.boton-pastilla[data-variante="primario"], .sticker-boton[data-tono="sol"]):hover { background: var(--dia-azul-hondo); color: var(--papel); }
+.marco-juego-hoja .boton-pastilla[data-variante="peligro"] { border-color: transparent; background: var(--color-naranja-800); color: var(--papel); }
+.marco-juego-hoja .boton-pastilla[data-variante="peligro"]:hover { background: #7a2a0c; color: var(--papel); }
+.marco-juego-hoja .boton-pastilla:disabled { opacity: 1; border-color: var(--dia-borde); background: #eef3f8; color: #5b6f86; box-shadow: none; }
+.marco-juego-hoja :is(.boton-pastilla, .sticker-boton, .admin-enlace-fila, .admin-volver, .micurso-ir):focus-visible {
+  outline: 3px solid var(--dia-azul);
+  outline-offset: 3px;
+}
+
+/* ── Paneles: papel, borde celeste, sombra suave ─────────────────── */
+.marco-juego-hoja :is(.cuenta-panel, .sticker-panel, .admin-filtros, .admin-tabla-marco, .panel-cifra, .panel-acceso, .micurso-grupo, .admin-estructura) {
+  border: 1.5px solid var(--dia-borde);
+  border-radius: 20px;
+  background: var(--papel);
+  box-shadow: var(--dia-sombra);
+}
+.marco-juego-hoja :is(.admin-vacio, .seccion-pendiente) { border: 1.5px dashed var(--dia-borde-panel); background: color-mix(in srgb, var(--papel) 92%, transparent); }
+.marco-juego-hoja .admin-resumen > div { border: 1.5px solid var(--dia-borde); background: var(--dia-campo-fondo); }
+.marco-juego-hoja .admin-estructura .admin-formulario { background: var(--dia-tinte); }
+.marco-juego-hoja .panel-acceso:hover { transform: translateY(-3px); border-color: var(--dia-borde-panel); box-shadow: 0 18px 30px -18px #0a3d6b73; }
+.marco-juego-hoja .panel-acceso strong { color: var(--dia-texto); }
+.marco-juego-hoja .panel-acceso strong svg { color: var(--dia-azul); }
+.marco-juego-hoja .panel-cifra dd { font-family: var(--fuente-display); font-weight: 800; font-variant-numeric: tabular-nums; color: var(--dia-texto); }
+.marco-juego-hoja .micurso-bloques li { background: var(--dia-tinte); color: var(--dia-texto); }
+
+/* ── Campos ──────────────────────────────────────────────────────── */
+.marco-juego-hoja :is(.admin-campo, .acceso-campo, .asignacion-bloque) label { color: var(--dia-texto); }
+.marco-juego-hoja :is(.admin-campo, .acceso-campo, .asignacion-bloque) :is(input:not([type="checkbox"], [type="radio"]), select, textarea) {
+  min-height: 46px;
+  border: 1.5px solid var(--dia-campo);
+  border-radius: 12px;
+  background-color: var(--dia-campo-fondo);
+  color: var(--dia-texto);
+  font-family: var(--fuente-cuerpo);
+  font-size: 1rem;
+  font-weight: 400;
+  transition: border-color 0.18s ease-out, background-color 0.18s ease-out;
+}
+.marco-juego-hoja :is(.admin-campo, .asignacion-bloque) :is(input:not([type="checkbox"], [type="radio"]), select) { padding: 0 14px; }
+.marco-juego-hoja :is(.admin-campo, .acceso-campo, .asignacion-bloque) :is(input, select, textarea):hover { border-color: var(--dia-azul); }
+.marco-juego-hoja :is(.admin-campo, .acceso-campo, .asignacion-bloque) :is(input, select, textarea):focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--dia-azul) 30%, transparent);
+  outline-offset: 0;
+  border-color: var(--dia-azul);
+  background-color: var(--papel);
+}
+.marco-juego-hoja :is(.admin-campo, .acceso-campo) :is(input, select)::placeholder { color: #557090; opacity: 1; }
+.marco-juego-hoja .acceso-campo input[aria-invalid="true"] { border-color: var(--color-naranja-800); background-color: var(--color-naranja-100); }
+.marco-juego-hoja :is(input[type="checkbox"], input[type="radio"]) { accent-color: var(--dia-azul); }
+
+.marco-juego-hoja .admin-opcion { border: 1.5px solid var(--dia-borde); background: var(--papel); }
+.marco-juego-hoja .admin-opcion:has(input:checked) { border-color: var(--dia-azul); background: var(--dia-tinte); }
+.marco-juego-hoja .admin-opcion:has(input:focus-visible) { outline-color: var(--dia-azul); }
+
+.marco-juego-hoja .acceso-aviso { border: 1.5px solid var(--dia-borde-panel); }
+.marco-juego-hoja .admin-aviso { border-width: 1.5px; }
+
+/* ── Tablas ──────────────────────────────────────────────────────── */
+.marco-juego-hoja .admin-tabla :is(th, td) { border-bottom-color: var(--dia-borde); }
+.marco-juego-hoja .admin-tabla thead th {
+  background: var(--dia-tinte);
+  color: var(--dia-suave);
+  font-size: var(--tipo-rotulo);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.marco-juego-hoja .admin-tabla tbody tr:hover { background: var(--dia-campo-fondo); }
+.marco-juego-hoja .admin-tabla td { font-variant-numeric: tabular-nums; }
+.marco-juego-hoja .admin-enlace-fila { min-height: 38px; border-width: 1.5px; color: var(--dia-azul-hondo); }
+.marco-juego-hoja .admin-enlace-fila:hover { border-color: var(--dia-azul); background: var(--dia-azul); color: var(--papel); }
+.marco-juego-hoja .admin-volver { color: var(--dia-azul-hondo); }
+.marco-juego-hoja .admin-volver:hover { color: var(--dia-texto); }
+.marco-juego-hoja .admin-estado[data-estado="PENDIENTE_ACTIVACION"],
+.marco-juego-hoja .admin-estado[data-estado="ERROR"] { color: var(--color-naranja-800); }
+
+/* ── Chips y diálogos ────────────────────────────────────────────── */
+.marco-juego-hoja .chip-estado { border-width: 1.5px; border-color: color-mix(in srgb, var(--dia-texto) 55%, transparent); }
+.marco-juego-hoja .admin-dialogo { border: 1.5px solid var(--dia-borde); box-shadow: 0 30px 60px -24px #0a3d6b8c; }
+.marco-juego-hoja .admin-dialogo::backdrop { background: color-mix(in srgb, var(--dia-texto) 40%, transparent); }
+
+/* Hoja sobre el paisaje: la migas y el título viven en el cielo. */
+@media (max-width: 899px) {
+  .marco-juego-hoja { border-radius: 0; }
+}
+
+/* ── Docente y administración: cinco o seis pestañas en una fila ─── */
+@media (min-width: 900px) and (max-width: 1600px) {
+  .marco-juego.mundo-dia:has(.marco-juego-menu:is([data-items="5"], [data-items="6"])) .marco-juego-plataforma { display: none; }
+  .marco-juego.mundo-dia .marco-juego-menu:is([data-items="5"], [data-items="6"]) ul { padding: 0 6px; }
+  .marco-juego.mundo-dia .marco-juego-menu:is([data-items="5"], [data-items="6"]) .pestana-dia { padding: 0 11px; gap: 7px; font-size: 1rem; }
+}
+@media (min-width: 900px) and (max-width: 1400px) {
+  .marco-juego.mundo-dia .marco-juego-menu[data-items="6"] .pestana-dia svg { display: none; }
+  .marco-juego.mundo-dia:has(.marco-juego-menu[data-items="6"]) .marco-juego-chip[data-chip="grupo"] .marco-juego-chip-texto span { display: none; }
+}
+@media (min-width: 900px) and (max-width: 1240px) {
+  .marco-juego.mundo-dia:has(.marco-juego-menu:is([data-items="5"], [data-items="6"])) .marco-juego-chip[data-chip="grupo"] { display: none; }
+  .marco-juego.mundo-dia .marco-juego-menu:is([data-items="5"], [data-items="6"]) .pestana-dia svg { display: none; }
+  .marco-juego.mundo-dia .marco-juego-menu:is([data-items="5"], [data-items="6"]) .pestana-dia { padding: 0 9px; }
+}
+@media (max-width: 479px) {
+  .marco-juego.mundo-dia .marco-juego-menu:is([data-items="5"], [data-items="6"]) .pestana-dia { font-size: 0.6875rem; line-height: 1.05; white-space: normal; text-align: center; hyphens: manual; }
+}
+
+/* ── Mis clases: la plancha del friso, sin contorno de tinta ─────── */
+.marco-juego-hoja .plancha {
+  border: 0;
+  border-radius: 22px;
+  box-shadow: 0 18px 34px -22px #0a3d6b8c;
+}
+.marco-juego-hoja .plancha-estante {
+  border: 0;
+  border-radius: 16px;
+  margin: 0 8px 8px;
+}
+.plancha[data-vacia] { background: var(--color-hueso); }
+.marco-juego-hoja .plancha[data-vacia] { border: 1.5px dashed var(--dia-borde-panel); background: color-mix(in srgb, var(--papel) 80%, transparent); box-shadow: none; }
+.marco-juego-hoja .plancha[data-vacia] .plancha-estante { border: 1.5px solid var(--dia-borde); }
+.marco-juego-hoja .ranura-libre { border: 1.5px dashed var(--dia-borde-panel); border-radius: 12px; color: var(--dia-azul-hondo); font-weight: 700; }
+.marco-juego-hoja .ranura-libre:hover { border-color: var(--dia-azul); background: var(--dia-tinte); color: var(--dia-azul-hondo); }
+.marco-juego-hoja .regla-hora { border-top-color: color-mix(in srgb, var(--dia-texto) 25%, transparent); color: var(--dia-texto); }
+
+/* Con espacio, el nombre del colegio vuelve bajo el wordmark. */
+@media (min-width: 1300px) {
+  .marco-juego.mundo-dia .marco-juego-colegio { display: inline; }
+}
+
+/* ── Secciones de administración (asignaciones, estudiantes) ─────── */
+.marco-juego-hoja .admin-seccion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 22px 22px;
+  border: 1.5px solid var(--dia-borde);
+  border-radius: 20px;
+  background: var(--papel);
+  box-shadow: var(--dia-sombra);
+}
+.marco-juego-hoja .admin-seccion-cabecera { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 8px 16px; }
+.marco-juego-hoja .admin-seccion-cabecera h2 { font-size: 1.375rem; font-weight: 800; line-height: 1.15; color: var(--dia-texto); }
+.marco-juego-hoja .admin-seccion-cabecera p { margin-top: 2px; font-size: var(--tipo-apoyo); color: var(--dia-suave); }
+.marco-juego-hoja .admin-tabla-contenedor { overflow-x: auto; border: 1.5px solid var(--dia-borde); border-radius: 16px; }
+.marco-juego-hoja label.admin-campo { font-size: 0.9375rem; font-weight: 700; color: var(--dia-texto); }
+.marco-juego-hoja .admin-opciones legend { color: var(--dia-texto); }
+.marco-juego-hoja .asignacion-bloque { border-bottom-color: var(--dia-borde); }
+.marco-juego-hoja .asignacion-bloque select { text-transform: none; }
+
+/* Gana a la regla que lo ocultaba con cinco o seis pestañas. */
+@media (min-width: 1300px) {
+  .marco-juego.mundo-dia:has(.marco-juego-menu[data-items]) .marco-juego-colegio { display: inline; }
 }

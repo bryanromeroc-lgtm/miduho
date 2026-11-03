@@ -40,16 +40,20 @@ export function Plancha({
   return (
     <article
       className={cn("plancha trecho-entra h-full", className)}
+      data-vacia={paleta ? undefined : ""}
       style={{
-        background: paleta ? paleta.plancha : "var(--color-hueso)",
+        background: paleta?.plancha,
         color: paleta ? "var(--papel)" : "var(--color-tinta)",
         viewTransitionName: transicion,
       }}
     >
       <header className="px-[22px] pb-4 pt-5">
         <p className="font-heading text-[22px] font-bold leading-none">{hora}</p>
+        <h2 className="mt-2 font-heading text-[21px] font-bold leading-[1.2]">
+          {titulo}
+        </h2>
         <p
-          className="mt-2.5 text-[13px] font-extrabold uppercase tracking-[0.14em]"
+          className="mt-1.5 font-heading text-[16px] font-bold"
           style={{
             /* blanco pleno: al 82% no alcanza 4.5:1 sobre la plancha naranja */
             color: paleta ? "var(--papel)" : "var(--color-gris)",
@@ -57,9 +61,6 @@ export function Plancha({
         >
           {rotulo}
         </p>
-        <h2 className="mt-1 font-heading text-[21px] font-bold leading-[1.2]">
-          {titulo}
-        </h2>
       </header>
 
       <div className="plancha-estante">{children}</div>

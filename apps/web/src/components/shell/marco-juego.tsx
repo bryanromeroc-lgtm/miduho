@@ -33,9 +33,10 @@ import { contextoVisible, rutaActiva, rutasPorContexto, textoGrupo, type IdRuta 
   con el shell anterior (congelado bajo .cosmos).
 
   Variantes: «tablero» deja que la página ocupe la pantalla sobre la noche;
-  «dia» es el mundo de día del ingreso (Mis materias del estudiante):
-  encabezado blanco con pestañas y paisaje de cielo y colinas;
-  «hoja» pone el contenido en una hoja enmarcada, con scroll normal.
+  «dia» es el mundo de día del ingreso: encabezado blanco con pestañas y
+  paisaje de cielo y colinas, y la página pone su propio ancho;
+  «hoja» es el mismo mundo de día con el contenido en una columna centrada.
+  Estudiante, docente y administración comparten el mundo de día.
 */
 
 const ICONOS: Record<IdRuta, LucideIcon> = {
@@ -89,9 +90,7 @@ export function MarcoJuego({
   const rutas = rutasPorContexto(contexto).filter((r) => r.id !== "cuenta");
   const mixta = !!datos && datos.roles.includes("ADMIN") && datos.roles.includes("DOCENTE");
   const grupo = datos && contexto !== "ADMIN" ? textoGrupo(contexto, datos.grupo, datos.gruposDocente) : null;
-  // El mundo de día es del estudiante; con otro contexto la misma página va en hoja.
-  if (variante === "dia" && contexto !== "ESTUDIANTE") variante = "hoja";
-  const dia = variante === "dia";
+  const dia = variante !== "tablero";
 
   return (
     <div className={dia ? "marco-juego mundo-dia" : "marco-juego sobre-noche"} data-variante={variante} data-contexto={contexto ?? undefined}>
@@ -176,7 +175,7 @@ export function MarcoJuego({
       </header>
 
       <main id="contenido" className="marco-juego-contenido">
-        {variante === "hoja" ? <div className="marco-juego-hoja sobre-papel">{children}</div> : children}
+        {variante === "hoja" ? <div className="marco-juego-hoja superficie-dia">{children}</div> : children}
       </main>
 
       {variante === "hoja" ? (
