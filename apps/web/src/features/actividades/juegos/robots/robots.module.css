@@ -1,0 +1,111 @@
+.juego { width: 100%; color: #f7fbff; }
+.juego[data-expandido], .juego:fullscreen { position: fixed; inset: 0; z-index: 100; width: 100vw; height: 100dvh; overflow: auto; background: #101840; }
+.juego[data-expandido] .escena, .juego:fullscreen .escena { width: 100%; min-height: max(100dvh, 560px); border-radius: 0; }
+.juego[data-expandido] .inicio, .juego:fullscreen .inicio { margin-top: clamp(36px, 10vh, 110px); }
+.juego[data-expandido] .tablero, .juego:fullscreen .tablero { margin-top: clamp(20px, 8vh, 100px); }
+.juego[data-expandido] .ayuda, .juego:fullscreen .ayuda { position: absolute; right: 12px; bottom: max(8px, env(safe-area-inset-bottom)); left: 12px; z-index: 3; width: fit-content; max-width: calc(100% - 24px); margin: auto; padding: 5px 12px; border-radius: 8px; background: #101840; color: #fff; text-align: center; }
+.escena { position: relative; min-height: clamp(540px, 62vw, 640px); overflow: hidden; isolation: isolate; border-radius: 24px; background: #101840 url('/images/juegos/robots/azotea.webp') center / cover no-repeat; }
+.escena::before { position: absolute; inset: 0; z-index: -1; content: ''; background: linear-gradient(180deg, rgb(7 14 47 / .48), transparent 55%, rgb(7 14 47 / .26)); }
+.inicio { position: relative; z-index: 2; display: grid; justify-items: center; gap: 18px; width: min(90%, 720px); margin: 72px auto 28px; padding: 28px; text-align: center; border: 2px solid #83dded; border-radius: 24px; background: rgb(12 23 61 / .95); box-shadow: 0 16px 42px rgb(0 0 0 / .35); }
+.inicio h2 { margin: 0; font: 900 clamp(2rem, 5vw, 3.4rem)/1.1 var(--fuente-display, sans-serif); }
+.inicio p { max-width: 48ch; margin: 0; font-size: 1.05rem; line-height: 1.5; }
+.selector { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; width: 100%; }
+.robotOpcion { display: grid; justify-items: center; gap: 3px; min-height: 116px; padding: 8px; border: 2px solid #b6d8e6; border-radius: 16px; background: #eafaff; color: #17334d; font: 800 1rem var(--fuente-cuerpo, sans-serif); cursor: pointer; }
+.robotOpcion[data-elegido] { border: 4px solid #ffb13b; padding: 6px; background: #fff9de; }
+.robotMini { width: 75px; height: 75px; object-fit: contain; }
+.robotMini[data-color="1"], .robotEnArena[data-color="1"] { filter: hue-rotate(70deg); }
+.robotMini[data-color="2"], .robotEnArena[data-color="2"] { filter: hue-rotate(165deg); }
+.robotMini[data-color="3"], .robotEnArena[data-color="3"] { filter: hue-rotate(245deg); }
+.robotEnArena[data-rival="1"] { filter: hue-rotate(48deg); }
+.robotEnArena[data-rival="2"] { filter: hue-rotate(125deg); }
+.robotEnArena[data-rival="3"] { filter: hue-rotate(210deg); }
+.primario { min-height: 52px; padding: 10px 36px; border: 2px solid #fff; border-radius: 999px; background: #a7441a; color: #fff; font: 900 1.15rem var(--fuente-cuerpo, sans-serif); cursor: pointer; }
+.primario:hover { background: #86300f; }
+.panelSuperior { position: relative; z-index: 4; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding: 16px; }
+.dato { position: relative; display: inline-flex; align-items: baseline; gap: 6px; min-height: 42px; padding: 10px 14px; border: 1px solid #83dded; border-radius: 12px; background: #eafaff; color: #17334d; font-size: .9rem; font-weight: 700; }
+.dato strong { font-variant-numeric: tabular-nums; }
+.monedas { position: absolute; inset: 0; pointer-events: none; }
+.monedas i { position: absolute; top: 14px; left: 50%; width: 18px; height: 18px; border: 3px solid #a76410; border-radius: 50%; background: #ffd053; box-shadow: 0 3px 8px rgb(68 41 8 / .3); animation: monedas 760ms ease-out both; }
+.monedas i:nth-child(2) { animation-delay: 100ms; }
+.monedas i:nth-child(3) { animation-delay: 200ms; }
+.icono { display: grid; place-items: center; width: 44px; height: 44px; border: 2px solid #fff; border-radius: 12px; background: #143e72; color: #fff; cursor: pointer; }
+.icono:disabled { opacity: .55; cursor: default; }
+.tachado { position: absolute; width: 28px; height: 3px; background: #fff; transform: rotate(-42deg); }
+.icono { position: relative; }
+.arena { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+.combatiente { position: absolute; bottom: 4%; width: clamp(120px, 23%, 230px); transform-origin: center bottom; }
+.combatiente[data-lado="jugador"] { left: 4%; }
+.combatiente[data-lado="rival"] { right: 4%; }
+.escena:not([data-duelo]):not([data-pausa]) .combatiente[data-lado="jugador"] { animation: esperaRobot 1800ms ease-in-out infinite alternate; }
+.escena:not([data-duelo]):not([data-pausa]) .combatiente[data-lado="rival"] { animation: esperaRobot 2100ms ease-in-out 350ms infinite alternate; }
+.robotEnArena { display: block; width: 100%; height: auto; max-height: 210px; object-fit: contain; filter: drop-shadow(0 12px 6px rgb(18 11 44 / .52)); }
+.combatiente::after { position: absolute; right: 12%; bottom: 5%; left: 12%; z-index: -1; height: 16px; border-radius: 50%; background: rgb(9 6 42 / .42); filter: blur(6px); content: ''; }
+.onda { position: absolute; bottom: 21%; left: 28%; width: 44%; height: 10px; opacity: 0; transform-origin: left center; background: linear-gradient(90deg, transparent, #b8fcff 18%, #4ad8ef 70%, #faffff); box-shadow: 0 0 16px #72ebff, 0 0 32px rgb(114 235 255 / .65); }
+.impacto { position: absolute; bottom: 13%; left: 68%; width: 110px; height: 110px; border: 7px solid #b8faff; border-radius: 50%; opacity: 0; box-shadow: 0 0 32px #65e7ff, inset 0 0 24px #65e7ff; }
+.escena[data-duelo="fallo"] .onda { transform-origin: right center; }
+.escena[data-duelo="fallo"] .impacto { left: 21%; }
+.tablero { position: relative; z-index: 2; display: grid; justify-items: center; align-content: center; gap: 12px; width: min(61%, 590px); min-height: 300px; margin: 50px auto 0; padding: 20px; border: 2px solid #a4d9ed; border-radius: 22px; background: rgb(12 23 61 / .96); box-shadow: 0 18px 35px rgb(0 0 0 / .32); }
+.reloj { padding: 8px 16px; border-radius: 999px; background: #fff5dc; color: #56330e; font-size: 1.05rem; font-weight: 900; font-variant-numeric: tabular-nums; }
+.operacion { margin: 0; color: #fff; font: 900 clamp(2.2rem, 5vw, 4.3rem)/1.1 var(--fuente-display, sans-serif); font-variant-numeric: tabular-nums; text-align: center; }
+.consiga { margin: 0; color: #d5f7ff; font-size: 1.1rem; font-weight: 800; }
+.opciones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; width: 100%; }
+.opcion { position: relative; min-height: 70px; border: 2px solid #91c6e0; border-radius: 14px; background: #f0fbff; color: #16334d; font: 900 2rem var(--fuente-display, sans-serif); cursor: pointer; }
+.opcion:hover:not(:disabled) { background: #d8f5ff; transform: translateY(-2px); }
+.opcion:disabled { cursor: default; }
+.opcion[data-estado="bien"] { border-color: #177d52; background: #d4f6df; color: #164d30; }
+.opcion[data-estado="mal"] { border-color: #a8322d; background: #ffe3dd; color: #8b201e; }
+.tecla { position: absolute; left: 10px; top: 10px; padding: 3px 7px; border: 1px solid currentColor; border-radius: 5px; font: 700 .8rem var(--fuente-cuerpo, sans-serif); }
+.mensaje { position: absolute; top: 53%; left: 50%; z-index: 3; width: min(86%, 530px); margin: 0; color: #fff; font-size: 1.1rem; font-weight: 900; text-align: center; text-shadow: 0 2px 5px #071337; transform: translate(-50%, -50%); opacity: 0; pointer-events: none; }
+.escena[data-duelo] .tablero { animation: retirarPanel 2650ms both; }
+.escena[data-duelo] .mensaje { animation: mostrarMensaje 2650ms both; }
+.escena[data-duelo="acierto"] .combatiente[data-lado="jugador"] { animation: avanceJugador 2650ms cubic-bezier(.16, 1, .3, 1) both; }
+.escena[data-duelo="acierto"] .combatiente[data-lado="rival"] { animation: golpeRival 2650ms ease-out both; }
+.escena[data-duelo="fallo"] .combatiente[data-lado="rival"] { animation: avanceRival 2650ms cubic-bezier(.16, 1, .3, 1) both; }
+.escena[data-duelo="fallo"] .combatiente[data-lado="jugador"] { animation: golpeJugador 2650ms ease-out both; }
+.escena[data-duelo="acierto"] .onda { animation: pulsoDerecha 2650ms both; }
+.escena[data-duelo="fallo"] .onda { animation: pulsoIzquierda 2650ms both; }
+.escena[data-duelo] .impacto { animation: estallido 2650ms both; }
+@keyframes esperaRobot { from { transform: translateY(0) rotate(-1deg); } to { transform: translateY(-9px) rotate(1deg); } }
+@keyframes retirarPanel { 0%, 12% { opacity: 1; transform: scale(1); } 26%, 100% { opacity: 0; transform: scale(.94); } }
+@keyframes mostrarMensaje { 0%, 29%, 86% { opacity: 0; } 36%, 72% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes avanceJugador { 0%, 24% { transform: translateX(0) rotate(0); } 49% { transform: translateX(250%) rotate(-7deg); } 59% { transform: translateX(270%) rotate(5deg); } 73% { transform: translateX(240%) rotate(0); } 100% { transform: translateX(0) rotate(0); } }
+@keyframes avanceRival { 0%, 24% { transform: translateX(0) rotate(0); } 49% { transform: translateX(-250%) rotate(7deg); } 59% { transform: translateX(-270%) rotate(-5deg); } 73% { transform: translateX(-240%) rotate(0); } 100% { transform: translateX(0) rotate(0); } }
+@keyframes golpeRival { 0%, 52% { transform: translateX(0) rotate(0); opacity: 1; } 61% { transform: translateX(27%) rotate(16deg); opacity: .55; } 72% { transform: translateX(38%) rotate(24deg); opacity: 1; } 100% { transform: translateX(0) rotate(0); } }
+@keyframes golpeJugador { 0%, 52% { transform: translateX(0) rotate(0); opacity: 1; } 61% { transform: translateX(-27%) rotate(-16deg); opacity: .55; } 72% { transform: translateX(-38%) rotate(-24deg); opacity: 1; } 100% { transform: translateX(0) rotate(0); } }
+@keyframes pulsoDerecha { 0%, 48% { opacity: 0; transform: scaleX(0); } 55%, 62% { opacity: 1; transform: scaleX(1); } 70%, 100% { opacity: 0; transform: scaleX(1); } }
+@keyframes pulsoIzquierda { 0%, 48% { opacity: 0; transform: scaleX(0); } 55%, 62% { opacity: 1; transform: scaleX(1); } 70%, 100% { opacity: 0; transform: scaleX(1); } }
+@keyframes estallido { 0%, 53% { opacity: 0; transform: scale(.1); } 60% { opacity: 1; transform: scale(1); } 69%, 100% { opacity: 0; transform: scale(1.6); } }
+@keyframes monedas { 0% { opacity: 1; transform: translateY(100px) scale(.7); } 55% { opacity: 1; transform: translateY(-12px) scale(1.15); } 100% { opacity: 0; transform: translateY(0) scale(.7); } }
+.pausa { position: absolute; inset: 0; z-index: 5; display: grid; place-content: center; justify-items: center; gap: 20px; background: rgb(9 16 49 / .94); }
+.pausa p { margin: 0; font: 900 2rem var(--fuente-display, sans-serif); }
+.ayuda { margin: 14px 0 0; color: var(--m-tinta, #20334b); font-size: .95rem; }
+.juego button:focus-visible { outline: 4px solid #ffcf56; outline-offset: 3px; }
+@media (max-width: 650px) {
+  .escena { min-height: 660px; }
+  .selector { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .inicio { margin-top: 28px; padding: 18px; }
+  .robotOpcion { min-height: 95px; }
+  .robotMini { width: 55px; height: 55px; }
+  .panelSuperior { padding: 10px; }
+  .dato { padding: 7px; font-size: .8rem; }
+  .tablero { width: calc(100% - 24px); min-height: 280px; margin-top: 42px; padding: 16px; }
+  .combatiente { bottom: 7%; width: 37%; }
+  .combatiente[data-lado="jugador"] { left: 2%; }
+  .combatiente[data-lado="rival"] { right: 2%; }
+  .onda { bottom: 18%; left: 28%; }
+  .impacto { bottom: 12%; left: 60%; width: 75px; height: 75px; }
+  .escena[data-duelo="fallo"] .impacto { left: 18%; }
+  .mensaje { top: 72%; }
+  .juego[data-expandido] .escena, .juego:fullscreen .escena { min-height: max(100dvh, 560px); }
+  .juego[data-expandido] .tablero, .juego:fullscreen .tablero { min-height: 250px; margin-top: 15px; }
+  .juego[data-expandido] .combatiente, .juego:fullscreen .combatiente { bottom: 6%; }
+  .juego[data-expandido] .ayuda, .juego:fullscreen .ayuda { font-size: .78rem; }
+  @keyframes avanceJugador { 0%, 24% { transform: translateX(0); } 55%, 70% { transform: translateX(170%); } 100% { transform: translateX(0); } }
+  @keyframes avanceRival { 0%, 24% { transform: translateX(0); } 55%, 70% { transform: translateX(-170%); } 100% { transform: translateX(0); } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .opcion:hover:not(:disabled) { transform: none; }
+  .escena .combatiente, .escena[data-duelo] .onda, .escena[data-duelo] .impacto, .monedas i { animation: none !important; }
+  .escena[data-duelo="acierto"] .combatiente[data-lado="rival"] { opacity: .5; }
+  .escena[data-duelo="fallo"] .combatiente[data-lado="jugador"] { opacity: .5; }
+}

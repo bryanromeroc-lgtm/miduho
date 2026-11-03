@@ -6,6 +6,7 @@
 
 | Artefacto | Estado | Propósito |
 |---|---|---|
+| [Inc. 2 · Duelo de divisiones](inc-2-duelo-divisiones.md) | Implementado; ruta autenticada por revisar 🔶 | Duelo animado con divisor oculto, 100 rondas, recursos originales y QA. |
 | [Correcciones de auditoría UI de materias y juegos](auditoria-ui-materias-juegos-correcciones.md) | En ejecución | Alcance, criterios, decisiones y QA de harden, adapt, clarify, onboard, optimize y polish. |
 | [Inc. 2 · Contenido de Laboratorios y Emprendimiento](inc-2-contenido-laboratorios-emprendimiento.md) | Implementado y verificado | Cinco rutas propias de Robótica y cinco ejercicios de Emprendimiento, sin progreso ficticio ni contenido protegido. |
 | [Modelo de entidades](../modelo-de-entidades.md) | Confirmado para Inc. 1 | Entidades, relaciones y reglas del dominio educativo. |

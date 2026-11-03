@@ -26,6 +26,7 @@ const JuegoPizarra = dynamic(() => import("../juegos/pizarra/juego").then((m) =>
 const JuegoCorrector = dynamic(() => import("../juegos/corrector/juego").then((m) => m.JuegoCorrector), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoSello = dynamic(() => import("../juegos/sello/juego").then((m) => m.JuegoSello), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoDivision = dynamic(() => import("../juegos/division/juego").then((m) => m.JuegoDivision), { loading: () => <p role="status">Cargando juego…</p> });
+const JuegoRobots = dynamic(() => import("../juegos/robots/juego").then((m) => m.JuegoRobots), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoBocadillo = dynamic(() => import("../juegos/bocadillo/juego").then((m) => m.JuegoBocadillo), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoJarras = dynamic(() => import("../juegos/jarras/juego").then((m) => m.JuegoJarras), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoPorcentaje = dynamic(() => import("../juegos/porcentaje/juego").then((m) => m.JuegoPorcentaje), { loading: () => <p role="status">Cargando juego…</p> });
@@ -52,6 +53,7 @@ const JUEGOS: Record<string, ComponentType<PropsJuego<any>>> = {
   corrector: JuegoCorrector,
   sello: JuegoSello,
   division: JuegoDivision,
+  "robots-divisiones": JuegoRobots,
   bocadillo: JuegoBocadillo,
   jarras: JuegoJarras,
   porcentaje: JuegoPorcentaje,
@@ -112,7 +114,7 @@ export function Reproductor({ actividad, materia, volverHref }: { actividad: Act
             key={partida}
             contenido={actividad.contenido}
             semilla={`${actividad.slug}:${partida}`}
-            alTerminar={(respuestas) => setResultado(calificarIntento(definicion, actividad.contenido, respuestas))}
+            alTerminar={(respuestas) => setResultado(calificarIntento(definicion, actividad.contenido, respuestas, { soloRespondidos: actividad.tipo === "robots-divisiones" }))}
           />
         )}
       </section>

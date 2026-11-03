@@ -1,0 +1,10 @@
+{
+  "slug": "duelo-de-divisiones",
+  "titulo": "Duelo de divisiones",
+  "tipo": "robots-divisiones",
+  "grado": 5,
+  "imagen": "/images/juegos/robots/portada.webp",
+  "instruccion": "Elige un robot y encuentra el divisor que falta antes de que se acabe el tiempo. Puedes usar los botones o las teclas 1 a 4.",
+  "tema": "Divisiones exactas y relación entre división y multiplicación",
+  "contenido": { "semilla": 731, "rondas": 100 }
+}

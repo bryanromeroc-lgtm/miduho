@@ -86,8 +86,8 @@ async function main() {
 
   const clave = generarClave();
   const datos = {
-    nombres: "Estudiante",
-    apellidos: "Demo Quinto",
+    nombres: "Cuenta",
+    apellidos: "Demostración",
     hashContrasena: await bcrypt.hash(clave, 10),
     estado: "ACTIVO" as const,
     debeCambiarContrasena: false,

@@ -8,7 +8,7 @@ import { useCallback, useEffect, useRef, useSyncExternalStore } from "react";
   zumbido de castigo. La preferencia se recuerda en este navegador.
 */
 
-export type Efecto = "acierto" | "error" | "fin" | "toque";
+export type Efecto = "acierto" | "error" | "fin" | "toque" | "reloj" | "impacto";
 
 const LLAVE = "miduho:juegos:sonido";
 
@@ -30,6 +30,11 @@ const NOTAS: Record<Efecto, [number, number, number, OscillatorType, number][]> 
     [1046.5, 0.36, 0.42, "triangle", 0.22],
   ],
   toque: [[880, 0, 0.05, "sine", 0.06]],
+  reloj: [[740, 0, 0.08, "sine", 0.1]],
+  impacto: [
+    [164.81, 0, 0.12, "sawtooth", 0.08],
+    [392, 0.06, 0.16, "triangle", 0.12],
+  ],
 };
 
 // Preferencia como almacén externo: el servidor la da por encendida y el cliente lee su navegador sin desajuste de hidratación.
