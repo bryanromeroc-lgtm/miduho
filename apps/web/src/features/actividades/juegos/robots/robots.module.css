@@ -1,16 +1,46 @@
+/*
+  DUELO DE DIVISIONES · combate en la azotea.
+  Escala con la pantalla: el tamaño del robot (--robot) sale del ancho de la
+  escena (cqw) y del alto de la ventana (dvh), así en un PC a pantalla
+  completa los combatientes ocupan cerca de un tercio del alto.
+  El choque se cuenta en cuatro tiempos dentro de los 2650 ms de la ronda:
+  carga (aura y retroceso) → embestida (estiramiento y líneas de velocidad)
+  → impacto (ambos se congelan ~130 ms, estrella, chispas y un temblor corto
+  de la cámara) → retroceso del golpeado y vuelta al reposo.
+  El acierto lleva todo; el fallo, una versión suave sin temblor ni «¡PUM!»
+  (el error no castiga). Solo transform, opacity y filter; con
+  prefers-reduced-motion todo queda quieto y el resultado sigue escrito.
+*/
+
 .juego { width: 100%; color: #f7fbff; }
 .juego[data-expandido], .juego:fullscreen { position: fixed; inset: 0; z-index: 100; width: 100vw; height: 100dvh; overflow: auto; background: #101840; }
 .juego[data-expandido] .escena, .juego:fullscreen .escena { width: 100%; min-height: max(100dvh, 560px); border-radius: 0; }
 .juego[data-expandido] .inicio, .juego:fullscreen .inicio { margin-top: clamp(36px, 10vh, 110px); }
-.juego[data-expandido] .tablero, .juego:fullscreen .tablero { margin-top: clamp(20px, 8vh, 100px); }
+.juego[data-expandido] .tablero, .juego:fullscreen .tablero { margin-top: clamp(16px, 6vh, 80px); }
 .juego[data-expandido] .ayuda, .juego:fullscreen .ayuda { position: absolute; right: 12px; bottom: max(8px, env(safe-area-inset-bottom)); left: 12px; z-index: 3; width: fit-content; max-width: calc(100% - 24px); margin: auto; padding: 5px 12px; border-radius: 8px; background: #101840; color: #fff; text-align: center; }
-.escena { position: relative; min-height: clamp(540px, 62vw, 640px); overflow: hidden; isolation: isolate; border-radius: 24px; background: #101840 url('/images/juegos/robots/azotea.webp') center / cover no-repeat; }
+
+.escena {
+  --robot: clamp(120px, min(24cqw, 40dvh), 460px);
+  --margen: 3cqw;
+  /* Distancia que recorre quien ataca hasta tocar al otro (con un leve solape). */
+  --alcance: calc(100cqw - 2 * var(--margen) - 2 * var(--robot) + 5cqw);
+  --suelo: 4%;
+  position: relative;
+  container-type: inline-size;
+  min-height: clamp(540px, 62vw, 640px);
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 24px;
+  background: #101840 url('/images/juegos/robots/azotea.webp') center / cover no-repeat;
+}
 .escena::before { position: absolute; inset: 0; z-index: -1; content: ''; background: linear-gradient(180deg, rgb(7 14 47 / .48), transparent 55%, rgb(7 14 47 / .26)); }
+
 .inicio { position: relative; z-index: 2; display: grid; justify-items: center; gap: 18px; width: min(90%, 720px); margin: 72px auto 28px; padding: 28px; text-align: center; border: 2px solid #83dded; border-radius: 24px; background: rgb(12 23 61 / .95); box-shadow: 0 16px 42px rgb(0 0 0 / .35); }
 .inicio h2 { margin: 0; font: 900 clamp(2rem, 5vw, 3.4rem)/1.1 var(--fuente-display, sans-serif); }
 .inicio p { max-width: 48ch; margin: 0; font-size: 1.05rem; line-height: 1.5; }
 .selector { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; width: 100%; }
-.robotOpcion { display: grid; justify-items: center; gap: 3px; min-height: 116px; padding: 8px; border: 2px solid #b6d8e6; border-radius: 16px; background: #eafaff; color: #17334d; font: 800 1rem var(--fuente-cuerpo, sans-serif); cursor: pointer; }
+.robotOpcion { display: grid; justify-items: center; gap: 3px; min-height: 116px; padding: 8px; border: 2px solid #b6d8e6; border-radius: 16px; background: #eafaff; color: #17334d; font: 800 1rem var(--fuente-cuerpo, sans-serif); cursor: pointer; transition: transform 160ms cubic-bezier(.16, 1, .3, 1); }
+.robotOpcion:hover { transform: translateY(-3px); }
 .robotOpcion[data-elegido] { border: 4px solid #ffb13b; padding: 6px; background: #fff9de; }
 .robotMini { width: 75px; height: 75px; object-fit: contain; }
 .robotMini[data-color="1"], .robotEnArena[data-color="1"] { filter: hue-rotate(70deg); }
@@ -21,6 +51,7 @@
 .robotEnArena[data-rival="3"] { filter: hue-rotate(210deg); }
 .primario { min-height: 52px; padding: 10px 36px; border: 2px solid #fff; border-radius: 999px; background: #a7441a; color: #fff; font: 900 1.15rem var(--fuente-cuerpo, sans-serif); cursor: pointer; }
 .primario:hover { background: #86300f; }
+
 .panelSuperior { position: relative; z-index: 4; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding: 16px; }
 .dato { position: relative; display: inline-flex; align-items: baseline; gap: 6px; min-height: 42px; padding: 10px 14px; border: 1px solid #83dded; border-radius: 12px; background: #eafaff; color: #17334d; font-size: .9rem; font-weight: 700; }
 .dato strong { font-variant-numeric: tabular-nums; }
@@ -28,60 +59,216 @@
 .monedas i { position: absolute; top: 14px; left: 50%; width: 18px; height: 18px; border: 3px solid #a76410; border-radius: 50%; background: #ffd053; box-shadow: 0 3px 8px rgb(68 41 8 / .3); animation: monedas 760ms ease-out both; }
 .monedas i:nth-child(2) { animation-delay: 100ms; }
 .monedas i:nth-child(3) { animation-delay: 200ms; }
-.icono { display: grid; place-items: center; width: 44px; height: 44px; border: 2px solid #fff; border-radius: 12px; background: #143e72; color: #fff; cursor: pointer; }
+.icono { position: relative; display: grid; place-items: center; width: 44px; height: 44px; border: 2px solid #fff; border-radius: 12px; background: #143e72; color: #fff; cursor: pointer; }
 .icono:disabled { opacity: .55; cursor: default; }
 .tachado { position: absolute; width: 28px; height: 3px; background: #fff; transform: rotate(-42deg); }
-.icono { position: relative; }
+
+/* ---------- Arena y cámara ---------- */
+
 .arena { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
-.combatiente { position: absolute; bottom: 4%; width: clamp(120px, 23%, 230px); transform-origin: center bottom; }
-.combatiente[data-lado="jugador"] { left: 4%; }
-.combatiente[data-lado="rival"] { right: 4%; }
+/* Todo lo que «filma» la cámara: fondo, robots y efectos. El marcador no se mueve. */
+.camara { position: absolute; inset: 0; transform-origin: 50% 72%; }
+.fondo { position: absolute; inset: -2%; background: url('/images/juegos/robots/azotea.webp') center / cover no-repeat; }
+.fondo::after { position: absolute; inset: 0; content: ''; background: linear-gradient(180deg, rgb(7 14 47 / .48), transparent 55%, rgb(7 14 47 / .26)); }
+
+/* z-index propio: el aura y la sombra (z -1) quedan detrás del robot pero delante del fondo. */
+.combatiente { position: absolute; z-index: 1; bottom: var(--suelo); width: var(--robot); transform-origin: center bottom; }
+.combatiente[data-lado="jugador"] { left: var(--margen); }
+.combatiente[data-lado="rival"] { right: var(--margen); }
+.combatiente::after { position: absolute; right: 14%; bottom: 3%; left: 14%; z-index: -1; height: 7%; border-radius: 50%; background: rgb(9 6 42 / .5); filter: blur(6px); content: ''; }
+.robotEnArena { display: block; width: 100%; height: auto; object-fit: contain; filter: drop-shadow(0 12px 6px rgb(18 11 44 / .52)); transform-origin: center bottom; animation: aterriza 760ms cubic-bezier(.16, 1, .3, 1) both; }
+.combatiente[data-lado="rival"] .robotEnArena { animation-delay: 260ms; }
+/* Dos estados por personaje: en guardia y en ataque, en el mismo lienzo y con los pies en el mismo suelo. */
+.poseNormal { display: block; }
+.poseAtaque { position: absolute; bottom: 0; left: 0; opacity: 0; animation: none; }
 .escena:not([data-duelo]):not([data-pausa]) .combatiente[data-lado="jugador"] { animation: esperaRobot 1800ms ease-in-out infinite alternate; }
 .escena:not([data-duelo]):not([data-pausa]) .combatiente[data-lado="rival"] { animation: esperaRobot 2100ms ease-in-out 350ms infinite alternate; }
-.robotEnArena { display: block; width: 100%; height: auto; max-height: 210px; object-fit: contain; filter: drop-shadow(0 12px 6px rgb(18 11 44 / .52)); }
-.combatiente::after { position: absolute; right: 12%; bottom: 5%; left: 12%; z-index: -1; height: 16px; border-radius: 50%; background: rgb(9 6 42 / .42); filter: blur(6px); content: ''; }
-.onda { position: absolute; bottom: 21%; left: 28%; width: 44%; height: 10px; opacity: 0; transform-origin: left center; background: linear-gradient(90deg, transparent, #b8fcff 18%, #4ad8ef 70%, #faffff); box-shadow: 0 0 16px #72ebff, 0 0 32px rgb(114 235 255 / .65); }
-.impacto { position: absolute; bottom: 13%; left: 68%; width: 110px; height: 110px; border: 7px solid #b8faff; border-radius: 50%; opacity: 0; box-shadow: 0 0 32px #65e7ff, inset 0 0 24px #65e7ff; }
-.escena[data-duelo="fallo"] .onda { transform-origin: right center; }
-.escena[data-duelo="fallo"] .impacto { left: 21%; }
-.tablero { position: relative; z-index: 2; display: grid; justify-items: center; align-content: center; gap: 12px; width: min(61%, 590px); min-height: 300px; margin: 50px auto 0; padding: 20px; border: 2px solid #a4d9ed; border-radius: 22px; background: rgb(12 23 61 / .96); box-shadow: 0 18px 35px rgb(0 0 0 / .32); }
+
+/* Aura de carga detrás de quien ataca. */
+.aura { position: absolute; inset: 0 -10% 6%; z-index: -1; border-radius: 50%; background: radial-gradient(circle, rgb(140 245 255 / .85), rgb(74 216 239 / .35) 42%, transparent 68%); opacity: 0; }
+.combatiente[data-lado="rival"] .aura { background: radial-gradient(circle, rgb(255 210 120 / .7), rgb(255 160 60 / .25) 42%, transparent 68%); }
+
+/* Líneas de velocidad que convergen en el punto de choque. */
+.lineas {
+  --x: calc(100cqw - var(--margen) - var(--robot));
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: repeating-conic-gradient(from 0deg at var(--x) 74%, rgb(255 255 255 / .6) 0deg 1.1deg, transparent 1.1deg 8deg);
+  -webkit-mask: radial-gradient(circle at var(--x) 74%, transparent 18%, #000 62%);
+  mask: radial-gradient(circle at var(--x) 74%, transparent 18%, #000 62%);
+}
+.escena[data-duelo="fallo"] .lineas { --x: calc(var(--margen) + var(--robot)); }
+
+/* Punto de choque: un contenedor sin tamaño en el borde de quien recibe el golpe. */
+.impacto { position: absolute; z-index: 2; bottom: calc(var(--suelo) + var(--robot) * .42); left: calc(100cqw - var(--margen) - var(--robot) + 3cqw); width: 0; height: 0; }
+.escena[data-duelo="fallo"] .impacto { left: calc(var(--margen) + var(--robot) - 3cqw); }
+.estrella, .anillo, .impacto i, .onomatopeya { position: absolute; top: 0; left: 0; opacity: 0; }
+.estrella {
+  width: calc(var(--robot) * .78);
+  aspect-ratio: 1;
+  margin: calc(var(--robot) * -.39) 0 0 calc(var(--robot) * -.39);
+  background: radial-gradient(circle, #fff 0 22%, #fff3a6 34%, #ffc23d 52%, #5fe3f5 74%);
+  clip-path: polygon(50% 0, 60% 32%, 92% 14%, 70% 44%, 100% 56%, 66% 62%, 80% 96%, 52% 70%, 28% 100%, 34% 64%, 0 70%, 30% 48%, 6% 18%, 40% 34%);
+}
+.anillo { width: calc(var(--robot) * .6); aspect-ratio: 1; margin: calc(var(--robot) * -.3) 0 0 calc(var(--robot) * -.3); border: calc(var(--robot) * .018 + 3px) solid #c8fbff; border-radius: 50%; box-shadow: 0 0 24px #65e7ff, inset 0 0 18px #65e7ff; }
+.impacto i { width: calc(var(--robot) * .16); height: calc(var(--robot) * .025 + 3px); margin-top: calc(var(--robot) * -.0125 - 1.5px); border-radius: 99px; background: linear-gradient(90deg, #fff, #ffd053); transform-origin: left center; }
+.onomatopeya {
+  margin: calc(var(--robot) * -.62) 0 0 calc(var(--robot) * -.32);
+  color: #ffd053;
+  font: 900 calc(var(--robot) * .28)/1 var(--fuente-display, sans-serif);
+  letter-spacing: -.02em;
+  white-space: nowrap;
+  -webkit-text-stroke: calc(var(--robot) * .022) #101840;
+  paint-order: stroke fill;
+  text-shadow: 0 6px 0 #101840, 0 12px 18px rgb(0 0 0 / .4);
+}
+.escena[data-duelo="fallo"] .onomatopeya { display: none; }
+
+/* ---------- Tablero de la pregunta ---------- */
+
+.tablero { position: relative; z-index: 2; display: grid; justify-items: center; align-content: center; gap: 12px; width: min(61%, 620px); min-height: 300px; margin: 50px auto 0; padding: 20px; border: 2px solid #a4d9ed; border-radius: 22px; background: rgb(12 23 61 / .96); box-shadow: 0 18px 35px rgb(0 0 0 / .32); }
 .reloj { padding: 8px 16px; border-radius: 999px; background: #fff5dc; color: #56330e; font-size: 1.05rem; font-weight: 900; font-variant-numeric: tabular-nums; }
 .operacion { margin: 0; color: #fff; font: 900 clamp(2.2rem, 5vw, 4.3rem)/1.1 var(--fuente-display, sans-serif); font-variant-numeric: tabular-nums; text-align: center; }
 .consiga { margin: 0; color: #d5f7ff; font-size: 1.1rem; font-weight: 800; }
 .opciones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; width: 100%; }
-.opcion { position: relative; min-height: 70px; border: 2px solid #91c6e0; border-radius: 14px; background: #f0fbff; color: #16334d; font: 900 2rem var(--fuente-display, sans-serif); cursor: pointer; }
+.opcion { position: relative; min-height: 70px; border: 2px solid #91c6e0; border-radius: 14px; background: #f0fbff; color: #16334d; font: 900 2rem var(--fuente-display, sans-serif); cursor: pointer; transition: transform 140ms cubic-bezier(.16, 1, .3, 1), background-color 140ms ease-out; }
 .opcion:hover:not(:disabled) { background: #d8f5ff; transform: translateY(-2px); }
+.opcion:active:not(:disabled) { transform: translateY(2px) scale(.98); }
 .opcion:disabled { cursor: default; }
-.opcion[data-estado="bien"] { border-color: #177d52; background: #d4f6df; color: #164d30; }
+.opcion[data-estado="bien"] { border-color: #177d52; background: #d4f6df; color: #164d30; animation: marca 420ms cubic-bezier(.16, 1, .3, 1); }
 .opcion[data-estado="mal"] { border-color: #a8322d; background: #ffe3dd; color: #8b201e; }
 .tecla { position: absolute; left: 10px; top: 10px; padding: 3px 7px; border: 1px solid currentColor; border-radius: 5px; font: 700 .8rem var(--fuente-cuerpo, sans-serif); }
-.mensaje { position: absolute; top: 53%; left: 50%; z-index: 3; width: min(86%, 530px); margin: 0; color: #fff; font-size: 1.1rem; font-weight: 900; text-align: center; text-shadow: 0 2px 5px #071337; transform: translate(-50%, -50%); opacity: 0; pointer-events: none; }
+.mensaje { position: absolute; top: 46%; left: 50%; z-index: 3; width: fit-content; max-width: min(86%, 560px); margin: 0; padding: 12px 22px; border-radius: 16px; background: rgb(12 23 61 / .9); box-shadow: 0 10px 24px rgb(0 0 0 / .3); color: #fff; font-size: clamp(1.05rem, .9rem + .5vw, 1.35rem); font-weight: 900; text-align: center; transform: translate(-50%, -50%); opacity: 0; pointer-events: none; }
+
+/* ---------- Secuencia del duelo (2650 ms, igual que el temporizador del componente) ---------- */
+
 .escena[data-duelo] .tablero { animation: retirarPanel 2650ms both; }
 .escena[data-duelo] .mensaje { animation: mostrarMensaje 2650ms both; }
-.escena[data-duelo="acierto"] .combatiente[data-lado="jugador"] { animation: avanceJugador 2650ms cubic-bezier(.16, 1, .3, 1) both; }
-.escena[data-duelo="acierto"] .combatiente[data-lado="rival"] { animation: golpeRival 2650ms ease-out both; }
-.escena[data-duelo="fallo"] .combatiente[data-lado="rival"] { animation: avanceRival 2650ms cubic-bezier(.16, 1, .3, 1) both; }
-.escena[data-duelo="fallo"] .combatiente[data-lado="jugador"] { animation: golpeJugador 2650ms ease-out both; }
-.escena[data-duelo="acierto"] .onda { animation: pulsoDerecha 2650ms both; }
-.escena[data-duelo="fallo"] .onda { animation: pulsoIzquierda 2650ms both; }
-.escena[data-duelo] .impacto { animation: estallido 2650ms both; }
-@keyframes esperaRobot { from { transform: translateY(0) rotate(-1deg); } to { transform: translateY(-9px) rotate(1deg); } }
-@keyframes retirarPanel { 0%, 12% { opacity: 1; transform: scale(1); } 26%, 100% { opacity: 0; transform: scale(.94); } }
-@keyframes mostrarMensaje { 0%, 29%, 86% { opacity: 0; } 36%, 72% { opacity: 1; } 100% { opacity: 0; } }
-@keyframes avanceJugador { 0%, 24% { transform: translateX(0) rotate(0); } 49% { transform: translateX(250%) rotate(-7deg); } 59% { transform: translateX(270%) rotate(5deg); } 73% { transform: translateX(240%) rotate(0); } 100% { transform: translateX(0) rotate(0); } }
-@keyframes avanceRival { 0%, 24% { transform: translateX(0) rotate(0); } 49% { transform: translateX(-250%) rotate(7deg); } 59% { transform: translateX(-270%) rotate(-5deg); } 73% { transform: translateX(-240%) rotate(0); } 100% { transform: translateX(0) rotate(0); } }
-@keyframes golpeRival { 0%, 52% { transform: translateX(0) rotate(0); opacity: 1; } 61% { transform: translateX(27%) rotate(16deg); opacity: .55; } 72% { transform: translateX(38%) rotate(24deg); opacity: 1; } 100% { transform: translateX(0) rotate(0); } }
-@keyframes golpeJugador { 0%, 52% { transform: translateX(0) rotate(0); opacity: 1; } 61% { transform: translateX(-27%) rotate(-16deg); opacity: .55; } 72% { transform: translateX(-38%) rotate(-24deg); opacity: 1; } 100% { transform: translateX(0) rotate(0); } }
-@keyframes pulsoDerecha { 0%, 48% { opacity: 0; transform: scaleX(0); } 55%, 62% { opacity: 1; transform: scaleX(1); } 70%, 100% { opacity: 0; transform: scaleX(1); } }
-@keyframes pulsoIzquierda { 0%, 48% { opacity: 0; transform: scaleX(0); } 55%, 62% { opacity: 1; transform: scaleX(1); } 70%, 100% { opacity: 0; transform: scaleX(1); } }
-@keyframes estallido { 0%, 53% { opacity: 0; transform: scale(.1); } 60% { opacity: 1; transform: scale(1); } 69%, 100% { opacity: 0; transform: scale(1.6); } }
+.escena[data-duelo="acierto"] .camara { transform-origin: calc(100cqw - var(--margen) - var(--robot)) 74%; animation: camaraAcierto 2650ms both; }
+.escena[data-duelo="fallo"] .camara { transform-origin: calc(var(--margen) + var(--robot)) 74%; animation: camaraFallo 2650ms both; }
+.escena[data-duelo="acierto"] .combatiente[data-lado="jugador"] { animation: atacaJugador 2650ms both; }
+.escena[data-duelo="acierto"] .combatiente[data-lado="rival"] { animation: recibeRival 2650ms both; }
+.escena[data-duelo="fallo"] .combatiente[data-lado="rival"] { animation: atacaRival 2650ms both; }
+.escena[data-duelo="fallo"] .combatiente[data-lado="jugador"] { animation: recibeJugador 2650ms both; }
+.escena[data-duelo="acierto"] .combatiente[data-lado="jugador"] .aura,
+.escena[data-duelo="fallo"] .combatiente[data-lado="rival"] .aura { animation: carga 2650ms both; }
+/* Quien ataca cambia a la pose de ataque al lanzarse (tras la carga) y vuelve a la guardia al regresar. */
+.escena[data-duelo="acierto"] .combatiente[data-lado="jugador"] .poseAtaque,
+.escena[data-duelo="fallo"] .combatiente[data-lado="rival"] .poseAtaque { animation: poseAtaque 2650ms both; }
+.escena[data-duelo="acierto"] .combatiente[data-lado="jugador"] .poseNormal,
+.escena[data-duelo="fallo"] .combatiente[data-lado="rival"] .poseNormal { animation: poseNormal 2650ms both; }
+.escena[data-duelo="acierto"] .lineas { animation: lineas 2650ms both; }
+.escena[data-duelo="fallo"] .lineas { animation: lineasSuave 2650ms both; }
+.escena[data-duelo] .estrella { animation: estrella 2650ms both; }
+.escena[data-duelo="fallo"] .estrella { animation-name: estrellaSuave; }
+.escena[data-duelo] .anillo { animation: anillo 2650ms both; }
+.escena[data-duelo] .impacto i { animation: chispa 2650ms both; }
+.escena[data-duelo="acierto"] .onomatopeya { animation: pum 2650ms both; }
+
+@keyframes poseAtaque { 0%, 33% { opacity: 0; } 33.5%, 72% { opacity: 1; } 72.5%, 100% { opacity: 0; } }
+@keyframes poseNormal { 0%, 33% { opacity: 1; } 33.5%, 72% { opacity: 0; } 72.5%, 100% { opacity: 1; } }
+@keyframes esperaRobot { from { transform: translateY(0) rotate(-1deg); } to { transform: translateY(-1.8%) rotate(1deg); } }
+@keyframes aterriza {
+  0% { opacity: 0; transform: translateY(-70%) scale(.9, 1.1); }
+  55% { opacity: 1; transform: translateY(0) scale(1.08, .88); }
+  78% { transform: translateY(-3%) scale(.98, 1.02); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes retirarPanel { 0%, 12% { opacity: 1; transform: scale(1); } 24%, 100% { opacity: 0; transform: scale(.92) translateY(-12px); } }
+/* El texto entra en cuanto se retira el tablero y se queda casi dos segundos: la acción ocurre debajo. */
+@keyframes mostrarMensaje { 0%, 20% { opacity: 0; transform: translate(-50%, -40%); } 27%, 94% { opacity: 1; transform: translate(-50%, -50%); } 100% { opacity: 0; transform: translate(-50%, -50%); } }
+@keyframes marca { 0% { transform: scale(1); } 40% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+/* Quien ataca: carga hacia atrás, embiste estirado, se congela en el choque y regresa. */
+@keyframes atacaJugador {
+  0%, 22% { transform: none; animation-timing-function: cubic-bezier(.3, 0, .2, 1); }
+  38% { transform: translateX(-9%) scale(.9, 1.08) rotate(-7deg); animation-timing-function: cubic-bezier(.55, 0, .9, .4); }
+  48% { transform: translateX(var(--alcance)) scale(1.16, .9) rotate(7deg); }
+  53% { transform: translateX(var(--alcance)) scale(1.06, .96) rotate(4deg); animation-timing-function: cubic-bezier(.16, 1, .3, 1); }
+  64% { transform: translateX(calc(var(--alcance) - 9%)) rotate(-3deg); animation-timing-function: cubic-bezier(.45, 0, .25, 1); }
+  88%, 100% { transform: none; }
+}
+@keyframes atacaRival {
+  0%, 22% { transform: none; animation-timing-function: cubic-bezier(.3, 0, .2, 1); }
+  38% { transform: translateX(9%) scale(.92, 1.06) rotate(6deg); animation-timing-function: cubic-bezier(.55, 0, .9, .4); }
+  48% { transform: translateX(calc(var(--alcance) * -1)) scale(1.1, .93) rotate(-6deg); }
+  53% { transform: translateX(calc(var(--alcance) * -1)) scale(1.04, .97) rotate(-3deg); animation-timing-function: cubic-bezier(.16, 1, .3, 1); }
+  64% { transform: translateX(calc(var(--alcance) * -1 + 9%)) rotate(2deg); animation-timing-function: cubic-bezier(.45, 0, .25, 1); }
+  88%, 100% { transform: none; }
+}
+/* Quien recibe: un destello único al contacto, sale despedido y se recompone. */
+@keyframes recibeRival {
+  0%, 47% { transform: none; filter: none; }
+  48%, 53% { transform: translateX(2%) scale(.94, 1.04) rotate(4deg); filter: brightness(1.9) saturate(.6); animation-timing-function: cubic-bezier(.16, 1, .3, 1); }
+  63% { transform: translateX(26%) rotate(18deg); filter: none; }
+  72% { transform: translateX(30%) rotate(10deg) translateY(-2%); }
+  82% { transform: translateX(14%) rotate(-3deg); animation-timing-function: cubic-bezier(.16, 1, .3, 1); }
+  100% { transform: none; filter: none; }
+}
+@keyframes recibeJugador {
+  0%, 47% { transform: none; }
+  48%, 53% { transform: translateX(-1%) scale(.97, 1.02) rotate(-3deg); animation-timing-function: cubic-bezier(.16, 1, .3, 1); }
+  64% { transform: translateX(-14%) rotate(-10deg); }
+  80% { transform: translateX(-5%) rotate(2deg); animation-timing-function: cubic-bezier(.16, 1, .3, 1); }
+  100% { transform: none; }
+}
+@keyframes carga {
+  0%, 22% { opacity: 0; transform: scale(.4); }
+  38% { opacity: 1; transform: scale(1.15); }
+  47% { opacity: .9; transform: scale(1); }
+  56%, 100% { opacity: 0; transform: scale(1.3); }
+}
+/* La cámara se acerca al choque y tiembla una sola vez (decae en ~170 ms). */
+@keyframes camaraAcierto {
+  0%, 30% { transform: none; animation-timing-function: cubic-bezier(.3, 0, .2, 1); }
+  47% { transform: scale(1.07); }
+  48.5% { transform: translate(-1.1%, .8%) scale(1.09); }
+  50% { transform: translate(.9%, -.7%) scale(1.09); }
+  51.5% { transform: translate(-.6%, .4%) scale(1.09); }
+  53% { transform: translate(.3%, -.2%) scale(1.085); }
+  55% { transform: scale(1.08); animation-timing-function: cubic-bezier(.45, 0, .25, 1); }
+  86%, 100% { transform: none; }
+}
+@keyframes camaraFallo {
+  0%, 30% { transform: none; animation-timing-function: cubic-bezier(.3, 0, .2, 1); }
+  48% { transform: scale(1.04); animation-timing-function: cubic-bezier(.45, 0, .25, 1); }
+  86%, 100% { transform: none; }
+}
+@keyframes lineas { 0%, 40% { opacity: 0; } 47% { opacity: .6; } 56% { opacity: .35; } 66%, 100% { opacity: 0; } }
+@keyframes lineasSuave { 0%, 40% { opacity: 0; } 48% { opacity: .25; } 62%, 100% { opacity: 0; } }
+@keyframes estrella {
+  0%, 47.9% { opacity: 0; transform: scale(.2) rotate(0); }
+  49% { opacity: 1; transform: scale(1.1) rotate(8deg); }
+  55% { opacity: 1; transform: scale(1) rotate(14deg); }
+  64%, 100% { opacity: 0; transform: scale(1.35) rotate(24deg); }
+}
+@keyframes estrellaSuave {
+  0%, 47.9% { opacity: 0; transform: scale(.2); }
+  50% { opacity: .9; transform: scale(.7) rotate(8deg); }
+  60%, 100% { opacity: 0; transform: scale(.85) rotate(16deg); }
+}
+@keyframes anillo { 0%, 48% { opacity: 0; transform: scale(.2); } 50% { opacity: 1; transform: scale(.6); } 66%, 100% { opacity: 0; transform: scale(2); } }
+@keyframes chispa {
+  0%, 48% { opacity: 0; transform: rotate(var(--a)) translateX(0) scaleX(.4); }
+  51% { opacity: 1; transform: rotate(var(--a)) translateX(calc(var(--robot) * var(--d) * .35)) scaleX(1.2); }
+  64%, 100% { opacity: 0; transform: rotate(var(--a)) translateX(calc(var(--robot) * var(--d))) scaleX(.3); }
+}
+@keyframes pum {
+  0%, 49% { opacity: 0; transform: scale(.3) rotate(-14deg); }
+  53% { opacity: 1; transform: scale(1.12) rotate(-8deg); }
+  58%, 70% { opacity: 1; transform: scale(1) rotate(-6deg) translateY(0); }
+  80%, 100% { opacity: 0; transform: scale(.96) rotate(-6deg) translateY(-18%); }
+}
 @keyframes monedas { 0% { opacity: 1; transform: translateY(100px) scale(.7); } 55% { opacity: 1; transform: translateY(-12px) scale(1.15); } 100% { opacity: 0; transform: translateY(0) scale(.7); } }
+
 .pausa { position: absolute; inset: 0; z-index: 5; display: grid; place-content: center; justify-items: center; gap: 20px; background: rgb(9 16 49 / .94); }
 .pausa p { margin: 0; font: 900 2rem var(--fuente-display, sans-serif); }
 .ayuda { margin: 14px 0 0; color: var(--m-tinta, #20334b); font-size: .95rem; }
 .juego button:focus-visible { outline: 4px solid #ffcf56; outline-offset: 3px; }
+
 @media (max-width: 650px) {
-  .escena { min-height: 660px; }
+  .escena { --robot: 37cqw; --margen: 2cqw; --suelo: 7%; min-height: 660px; }
   .selector { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .inicio { margin-top: 28px; padding: 18px; }
   .robotOpcion { min-height: 95px; }
@@ -89,23 +276,18 @@
   .panelSuperior { padding: 10px; }
   .dato { padding: 7px; font-size: .8rem; }
   .tablero { width: calc(100% - 24px); min-height: 280px; margin-top: 42px; padding: 16px; }
-  .combatiente { bottom: 7%; width: 37%; }
-  .combatiente[data-lado="jugador"] { left: 2%; }
-  .combatiente[data-lado="rival"] { right: 2%; }
-  .onda { bottom: 18%; left: 28%; }
-  .impacto { bottom: 12%; left: 60%; width: 75px; height: 75px; }
-  .escena[data-duelo="fallo"] .impacto { left: 18%; }
-  .mensaje { top: 72%; }
-  .juego[data-expandido] .escena, .juego:fullscreen .escena { min-height: max(100dvh, 560px); }
+  .mensaje { top: 58%; }
+  .juego[data-expandido] .escena, .juego:fullscreen .escena { --suelo: 6%; min-height: max(100dvh, 560px); }
   .juego[data-expandido] .tablero, .juego:fullscreen .tablero { min-height: 250px; margin-top: 15px; }
-  .juego[data-expandido] .combatiente, .juego:fullscreen .combatiente { bottom: 6%; }
   .juego[data-expandido] .ayuda, .juego:fullscreen .ayuda { font-size: .78rem; }
-  @keyframes avanceJugador { 0%, 24% { transform: translateX(0); } 55%, 70% { transform: translateX(170%); } 100% { transform: translateX(0); } }
-  @keyframes avanceRival { 0%, 24% { transform: translateX(0); } 55%, 70% { transform: translateX(-170%); } 100% { transform: translateX(0); } }
 }
 @media (prefers-reduced-motion: reduce) {
-  .opcion:hover:not(:disabled) { transform: none; }
-  .escena .combatiente, .escena[data-duelo] .onda, .escena[data-duelo] .impacto, .monedas i { animation: none !important; }
+  .opcion, .robotOpcion { transition: none; }
+  .opcion:hover:not(:disabled), .opcion:active:not(:disabled), .robotOpcion:hover { transform: none; }
+  .escena .combatiente, .escena .robotEnArena, .escena .poseNormal, .escena .poseAtaque, .escena .camara, .escena .aura, .escena .lineas,
+  .escena .estrella, .escena .anillo, .escena .impacto i, .escena .onomatopeya, .opcion[data-estado], .monedas i { animation: none !important; }
+  .escena[data-duelo] .mensaje { animation: none; opacity: 1; }
+  .escena[data-duelo] .tablero { animation: none; opacity: 0; }
   .escena[data-duelo="acierto"] .combatiente[data-lado="rival"] { opacity: .5; }
   .escena[data-duelo="fallo"] .combatiente[data-lado="jugador"] { opacity: .5; }
 }

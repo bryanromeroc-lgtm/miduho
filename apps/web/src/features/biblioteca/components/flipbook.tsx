@@ -45,6 +45,7 @@ const CLASE_DISPOSICION: Record<Disposicion, string> = {
   arriba: estilos.arriba,
   fondo: estilos.fondo,
   pasos: estilos.pasos,
+  pliego: estilos.pliego,
   creditos: estilos.creditos,
   contraportada: estilos.contraportada,
 };
@@ -68,13 +69,14 @@ function Compuesta({
     <div
       className={cn(estilos.compuesta, CLASE_DISPOSICION[pagina.disposicion])}
       data-alineado={pagina.textoAlineado}
+      data-mitad={pagina.mitad}
     >
       {pagina.ilustracion && (
         // eslint-disable-next-line @next/next/no-img-element -- ver abajo
         <img
           className={estilos.ilustracion}
           src={pagina.ilustracion}
-          alt={`${titulo}, ilustración de la página ${numero}`}
+          alt={pagina.alt ?? `${titulo}, ilustración de la página ${numero}`}
           loading={urgente ? "eager" : "lazy"}
           decoding="async"
           draggable={false}

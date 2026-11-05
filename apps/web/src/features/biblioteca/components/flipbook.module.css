@@ -834,3 +834,81 @@
 [data-hoja="suelta"] .fondo:not(:has(.texto)) .ilustracion {
   object-position: center;
 }
+
+/* ── Pliego: mitad de una ilustración a doble página ───────────────────────
+   La ilustración llega al borde de la hoja (cover, como las escaneadas) para
+   que las dos mitades se junten en el lomo sin marco blanco. El texto va en
+   la zona superior clara que dejan las ilustraciones, sobre una lámina de
+   papel casi opaca: el contraste no depende de qué asome debajo (tinta
+   #20334b sobre crema ≈ 11:1, por encima de AA aunque cruce una hoja verde).
+   Lleva su propio tamaño de letra: son pocas líneas para lectores de 6–8
+   años, y caben con holgura en el cielo de cada escena. */
+.pliego {
+  display: block;
+  padding: 0;
+  font-size: max(calc(var(--u) * 3.7), 13px);
+  line-height: 1.45;
+}
+
+.pliego .ilustracion {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+}
+
+.pliego .texto {
+  position: absolute;
+  top: calc(var(--u) * 5);
+  left: calc(var(--u) * 5);
+  right: calc(var(--u) * 5);
+  align-self: auto;
+  gap: 0.5em;
+  padding: 0.75em 0.95em;
+  border-radius: calc(var(--u) * 2.4);
+  background: rgb(255 251 242 / 0.92);
+  box-shadow: 0 1px 0 rgb(121 55 15 / 0.08);
+  color: #20334b;
+}
+
+/* el margen junto al lomo crece: ahí la curvatura del papel se come letra */
+.pliego[data-mitad="izquierda"] .texto {
+  right: calc(var(--u) * 8);
+}
+
+.pliego[data-mitad="derecha"] .texto {
+  left: calc(var(--u) * 8);
+}
+
+/* La ilustración tapa el fondo de la hoja y con él el sombreado del lomo
+   (.derecha/.izquierda). Se repone encima, sin capturar eventos. */
+.pliego::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.pliego[data-mitad="izquierda"]::after {
+  background: linear-gradient(to left, rgb(0 0 0 / 0.12) 0%, rgb(0 0 0 / 0) 5%);
+}
+
+.pliego[data-mitad="derecha"]::after {
+  background: linear-gradient(to right, rgb(0 0 0 / 0.12) 0%, rgb(0 0 0 / 0) 5%);
+}
+
+/* A hoja suelta (móvil) no hay lomo al lado: márgenes iguales y letra algo
+   mayor. La hoja conserva la razón 3:4 de la ilustración, así que el texto
+   sigue cayendo en el cielo de la escena y nunca se corta. */
+[data-hoja="suelta"] .pliego {
+  font-size: max(calc(var(--u) * 4.4), 15px);
+}
+
+[data-hoja="suelta"] .pliego .texto {
+  top: calc(var(--u) * 4);
+  left: calc(var(--u) * 4);
+  right: calc(var(--u) * 4);
+}
+
+[data-hoja="suelta"] .pliego::after {
+  content: none;
+}

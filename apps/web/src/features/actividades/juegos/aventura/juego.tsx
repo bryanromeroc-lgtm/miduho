@@ -44,7 +44,19 @@ const EXTERIORES = new Set<Lugar>(["gallinero", "puente", "mercado"]);
 export function JuegoAventura({ contenido, alTerminar }: PropsJuego<ContenidoAventura>) {
   const [fase, setFase] = useState<Fase>("inicio");
   const [pendientes, setPendientes] = useState<Record<string, unknown>>({});
+  const [saliendo, setSaliendo] = useState(false);
   const fin = useReaccion();
+
+  /** Armi sale caminando y luego cambia el lugar; sin animación (o con movimiento reducido), cambia de una vez. */
+  function caminar(despues: () => void) {
+    if (saliendo) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return despues();
+    setSaliendo(true);
+    window.setTimeout(() => {
+      setSaliendo(false);
+      despues();
+    }, 620);
+  }
 
   const r = useRondas<EscenaAventura, number>({
     rondas: contenido.escenas,
@@ -118,10 +130,10 @@ export function JuegoAventura({ contenido, alTerminar }: PropsJuego<ContenidoAve
         )}
       </div>
 
-      <div className={s.pie} data-fase={fase}>
+      <div className={s.pie} data-fase={fase} data-saliendo={saliendo ? "" : undefined}>
         <div className={s.dialogo}>
           <div className={s.armi} key={fase === "escena" ? e.id : fase}>
-            <Armi pose={pose} />
+            <Armi pose={pose} sizes="(max-width: 600px) 30vw, 420px" />
           </div>
           {fase === "escena" && (
             <div className={s.globo}>
@@ -156,7 +168,7 @@ export function JuegoAventura({ contenido, alTerminar }: PropsJuego<ContenidoAve
 
         {fase === "inicio" && (
           <div className={s.accion}>
-            <Avanzar onClick={() => setFase("escena")}>
+            <Avanzar onClick={() => caminar(() => setFase("escena"))}>
               Empezar la entrega
               <ArrowRight size={20} strokeWidth={2.8} aria-hidden="true" />
             </Avanzar>
@@ -164,7 +176,7 @@ export function JuegoAventura({ contenido, alTerminar }: PropsJuego<ContenidoAve
         )}
         {fase === "escena" && r.cerrada && (
           <div className={s.accion}>
-            <Avanzar onClick={r.siguiente}>
+            <Avanzar onClick={() => caminar(r.siguiente)}>
               {r.ultima ? "Terminar la entrega" : "Seguir el camino"}
               <ArrowRight size={20} strokeWidth={2.8} aria-hidden="true" />
             </Avanzar>

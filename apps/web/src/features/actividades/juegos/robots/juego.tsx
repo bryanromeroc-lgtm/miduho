@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Maximize2, Minimize2, Music2, Pause, Play, Volume2, VolumeX } from "lucide-react";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import type { PropsJuego } from "../../reproductor/comun";
 import { useFocoAlCambiar } from "../../reproductor/comun";
 import { useSonido } from "../comun/sonido";
@@ -11,6 +11,8 @@ import s from "./robots.module.css";
 
 const SEGUNDOS = 15;
 const ROBOTS = ["Turquesa", "Violeta", "Cobre", "Azul"] as const;
+/** Chispas del impacto: ángulo de salida y distancia (fracción del tamaño del robot). */
+const CHISPAS: [number, number][] = [[-165, 0.5], [-122, 0.62], [-78, 0.55], [-34, 0.66], [12, 0.52], [58, 0.6], [104, 0.48], [148, 0.58]];
 
 export function JuegoRobots({ contenido, alTerminar }: PropsJuego<ContenidoRobots>) {
   const retos = useMemo(() => retosDe(contenido), [contenido]);
@@ -114,7 +116,8 @@ export function JuegoRobots({ contenido, alTerminar }: PropsJuego<ContenidoRobot
 
   useEffect(() => {
     if (respuesta === undefined) return;
-    const impacto = window.setTimeout(() => tocar("impacto"), 1480);
+    // Coincide con el choque de la animación (48 % de 2650 ms).
+    const impacto = window.setTimeout(() => tocar("impacto"), 1280);
     const siguiente = window.setTimeout(() => {
       if (vidas === 0 || indice === retos.length - 1) {
         tocar("fin");
@@ -141,7 +144,7 @@ export function JuegoRobots({ contenido, alTerminar }: PropsJuego<ContenidoRobot
 
   return (
     <div ref={juegoRef} className={s.juego} data-expandido={expandido ? "" : undefined}>
-      <audio ref={musicaRef} src="/audio/juegos/robots/accion-original.mp3" loop preload="auto" aria-hidden="true" />
+      <audio ref={musicaRef} src="/audio/juegos/robots/musica-duelo.mp3" loop preload="none" aria-hidden="true" />
       <div className={s.escena} data-duelo={duelo} data-pausa={pausa ? "" : undefined}>
         {fase === "elegir" ? (
           <div className={s.inicio}>
@@ -168,15 +171,35 @@ export function JuegoRobots({ contenido, alTerminar }: PropsJuego<ContenidoRobot
               <button type="button" className={s.icono} aria-label={musicaActiva ? "Desactivar música" : "Activar música"} aria-pressed={musicaActiva} onClick={() => setMusicaActiva((actual) => !actual)}><Music2 aria-hidden="true" />{!musicaActiva && <span className={s.tachado} aria-hidden="true" />}</button>
               <button type="button" className={s.icono} aria-label={expandido ? "Salir de pantalla completa" : "Abrir pantalla completa"} aria-pressed={expandido} onClick={() => void alternarPantalla()}>{expandido ? <Minimize2 aria-hidden="true" /> : <Maximize2 aria-hidden="true" />}</button>
             </div>
+            {/* Escena de acción, solo decorativa: el resultado ya está escrito en el tablero y en el mensaje. */}
             <div className={s.arena} aria-hidden="true">
-              <div className={s.combatiente} data-lado="jugador">
-                <Image src="/images/juegos/robots/robot.webp" alt="" width={300} height={280} className={s.robotEnArena} data-color={robot} />
+              <div className={s.camara}>
+                <span className={s.fondo} />
+                <span className={s.lineas} />
+                <div className={s.combatiente} data-lado="jugador">
+                  <span className={s.aura} />
+                  {/* Dos estados: en guardia (normal) y en ataque; el CSS cambia de uno a otro durante el golpe. */}
+                  <span className={s.poseNormal}>
+                    <Image src="/images/juegos/robots/robot.webp" alt="" width={300} height={280} sizes="(max-width: 650px) 40vw, 460px" className={s.robotEnArena} data-color={robot} />
+                  </span>
+                  <Image src="/images/juegos/robots/robot-ataque.webp" alt="" width={300} height={280} sizes="(max-width: 650px) 40vw, 460px" className={`${s.robotEnArena} ${s.poseAtaque}`} data-color={robot} />
+                </div>
+                <div className={s.combatiente} data-lado="rival">
+                  <span className={s.aura} />
+                  <span className={s.poseNormal}>
+                    <Image src="/images/juegos/robots/rival.webp" alt="" width={300} height={280} sizes="(max-width: 650px) 40vw, 460px" className={s.robotEnArena} data-rival={indice % 4} />
+                  </span>
+                  <Image src="/images/juegos/robots/rival-ataque.webp" alt="" width={300} height={280} sizes="(max-width: 650px) 40vw, 460px" className={`${s.robotEnArena} ${s.poseAtaque}`} data-rival={indice % 4} />
+                </div>
+                <span className={s.impacto}>
+                  <span className={s.estrella} />
+                  <span className={s.anillo} />
+                  {CHISPAS.map(([angulo, distancia]) => (
+                    <i key={angulo} style={{ "--a": `${angulo}deg`, "--d": distancia } as CSSProperties} />
+                  ))}
+                  <b className={s.onomatopeya}>¡PUM!</b>
+                </span>
               </div>
-              <div className={s.combatiente} data-lado="rival">
-                <Image src="/images/juegos/robots/rival.webp" alt="" width={300} height={280} className={s.robotEnArena} data-rival={indice % 4} />
-              </div>
-              <span className={s.onda} />
-              <span className={s.impacto} />
             </div>
             <div className={s.tablero} data-estado={respuesta === undefined ? undefined : correcta ? "bien" : "mal"}>
               <div className={s.reloj} role="timer" aria-label={`${tiempo} segundos restantes`}>{tiempo} s</div>

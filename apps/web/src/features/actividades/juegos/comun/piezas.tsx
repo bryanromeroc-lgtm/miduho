@@ -20,7 +20,7 @@ const POSES: Record<Pose, { ancho: number; alto: number }> = {
   sello: { ancho: 595, alto: 560 },
 };
 
-export function Armi({ pose, className }: { pose: Pose; className?: string }) {
+export function Armi({ pose, className, sizes = "(max-width: 600px) 30vw, 220px" }: { pose: Pose; className?: string; sizes?: string }) {
   const { ancho, alto } = POSES[pose];
   return (
     <Image
@@ -30,7 +30,7 @@ export function Armi({ pose, className }: { pose: Pose; className?: string }) {
       aria-hidden="true"
       width={ancho}
       height={alto}
-      sizes="(max-width: 600px) 30vw, 220px"
+      sizes={sizes}
       className={`${s.armi} ${className ?? ""}`}
       data-pose={pose}
       draggable={false}
