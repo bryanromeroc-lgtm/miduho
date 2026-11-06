@@ -1,0 +1,10 @@
+{
+  "slug": "el-taller-de-los-topos",
+  "titulo": "El taller de los topos",
+  "tipo": "golpea",
+  "grado": 5,
+  "imagen": "/images/juegos/golpea/portada.webp",
+  "instruccion": "Resuelve cada suma o resta y dale un golpecito al topo que tiene el resultado. Puedes usar el ratón, el dedo o las teclas 1 a 9 y 0.",
+  "tema": "Cálculo mental: sumas y restas hasta 100, con llevadas y desagrupando",
+  "contenido": { "semilla": 2611, "rondas": 10, "rango": 100, "operaciones": ["suma", "resta"], "llevadas": true }
+}

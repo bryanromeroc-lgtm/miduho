@@ -18,11 +18,14 @@ export function useRondas<R extends { id: string }, V extends string | number>({
   correcta,
   alTerminar,
   maxIntentos = 2,
+  efectosPropios = false,
 }: {
   rondas: R[];
   correcta: (r: R) => V;
   alTerminar: (respuestas: Record<string, unknown>) => void;
   maxIntentos?: number;
+  /** El juego toca sus propios efectos (p. ej. sincronizados con una escena); aquí no suena nada. */
+  efectosPropios?: boolean;
 }) {
   const [indice, setIndice] = useState(0);
   const [respuestas, setRespuestas] = useState<Record<string, V>>({});
@@ -47,7 +50,7 @@ export function useRondas<R extends { id: string }, V extends string | number>({
     setIntentos(nuevos);
     if (nuevos.length === 1) setRespuestas((x) => ({ ...x, [ronda.id]: valor }));
     const bien = valor === solucion;
-    sonido.tocar(bien ? "acierto" : "error");
+    if (!efectosPropios) sonido.tocar(bien ? "acierto" : "error");
     if (bien) disparar(nuevos.length === 1 ? "acierto" : "corregida");
     if (bien || nuevos.length >= maxIntentos) {
       const estado: EstadoRonda = nuevos.length === 1 && bien ? "bien" : "corregida";
@@ -58,7 +61,7 @@ export function useRondas<R extends { id: string }, V extends string | number>({
   function siguiente() {
     voz.callar();
     if (ultima) {
-      sonido.tocar("fin");
+      if (!efectosPropios) sonido.tocar("fin");
       alTerminar(respuestas);
       return;
     }

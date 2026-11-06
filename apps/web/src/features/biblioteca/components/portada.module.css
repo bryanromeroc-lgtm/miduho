@@ -32,6 +32,34 @@
 .rotulo strong { font-size: clamp(12px, 9.4cqw, 19px); }
 .rotulo em { color: var(--color-lit-medio); }
 
+/* La ficha reproduce la jerarquía de la portada editorial del lector. */
+.editorial { background: #fffdf8; color: #086783; text-align: center; }
+.editorialTitulo {
+  display: grid;
+  flex: 0 0 28%;
+  place-items: center;
+  padding: 4% 6% 2%;
+}
+.editorialTitulo strong {
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(10px, 9.6cqw, 19px);
+  font-weight: 800;
+  line-height: 1.04;
+}
+.editorialIlustracion { position: relative; display: block; flex: 1; min-height: 0; overflow: hidden; }
+.editorialMarca {
+  display: flex;
+  flex: 0 0 25%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 2% 4%;
+  color: #086783;
+}
+.editorialMarca img { width: clamp(20px, 23cqw, 38px); height: auto; object-fit: contain; }
+.editorialMarca span { font-size: clamp(7px, 6.4cqw, 12px); font-weight: 800; line-height: 1.05; }
+
 /* Tela de color: lomo, marco interior y ornamento; tres composiciones. */
 .tela { justify-content: center; padding: 14% 12% 14% 17%; }
 .lomo { position: absolute; inset: 0 auto 0 0; width: 9%; background: rgb(0 0 0 / .22); }

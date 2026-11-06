@@ -514,6 +514,30 @@
     flex: none;
   }
 
+  /* En entrada directa móvil, `height: auto` de la vista inmersiva creaba
+     un ciclo: la escena medía el marcador de carga y la hoja nacía a media
+     anchura. La altura disponible debe existir antes de construir PageFlip. */
+  .dedicado .escena,
+  .pleno .escena {
+    height: var(--alto-escena);
+  }
+
+  /* La página de fuentes tiene texto de arriba abajo; sus flechas descansan
+     bajo el papel en vez de tapar enlaces o párrafos al centro. */
+  .escena[data-pagina-estilo="creditos-editoriales"] .paso {
+    top: auto;
+    bottom: 10px;
+    transform: none;
+  }
+
+  .escena[data-pagina-estilo="creditos-editoriales"] .pasoAnterior:hover:not(:disabled) {
+    transform: translateX(-3px);
+  }
+
+  .escena[data-pagina-estilo="creditos-editoriales"] .pasoSiguiente:hover:not(:disabled) {
+    transform: translateX(3px);
+  }
+
   .paso {
     width: 46px;
     height: 46px;
@@ -803,6 +827,245 @@
 .contraportada p:last-child {
   font-weight: 700;
   color: var(--color-lit-tinta);
+}
+
+/* Edición MIDUHO: marca y procedencia en HTML, con arte sin letras.
+   Las cuatro disposiciones son reutilizables por futuros libros propios. */
+.portadaEditorial,
+.creditosEditoriales,
+.inicioEditorial,
+.cierreEditorial {
+  background: #fffdf8;
+  color: #20343e;
+}
+
+.portadaEditorial {
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 0;
+  padding: 0;
+  font-size: max(calc(var(--u) * 2.55), 10px);
+  text-align: center;
+}
+
+.cabeceraEditorial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  min-width: 0;
+  text-align: center;
+}
+
+.portadaEditorial .cabeceraEditorial {
+  padding: calc(var(--u) * 6) calc(var(--u) * 5) calc(var(--u) * 4);
+}
+
+.cabeceraEditorial h2,
+.creditosEditoriales h2 {
+  margin: 0;
+  font-family: var(--font-heading), Georgia, serif;
+  color: #086783;
+  font-weight: 800;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.portadaEditorial h2 {
+  font-size: 3.05em;
+}
+
+.epigrafeEditorial {
+  margin: 0;
+  color: #086783;
+  font-size: 0.86em;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.subtituloEditorial {
+  margin: 0;
+  font-size: 1.05em;
+}
+
+.compuesta .ilustracionEditorial {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.creditoPortadaEditorial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  padding: calc(var(--u) * 4) calc(var(--u) * 5);
+  text-align: center;
+}
+
+.creditoPortadaEditorial p {
+  margin: 0;
+  font-size: 0.9em;
+  line-height: 1.3;
+}
+
+.marcaEditorial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25em;
+  color: #086783;
+  font-size: 1.16em;
+  line-height: 1.15;
+}
+
+.marcaEditorial img {
+  width: calc(var(--u) * 13);
+  height: calc(var(--u) * 13);
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.creditosEditoriales {
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  gap: calc(var(--u) * 2.2);
+  padding: calc(var(--u) * 6);
+  font-size: max(calc(var(--u) * 2.4), 10.5px);
+}
+
+.creditosEditoriales h2 {
+  font-size: 2.25em;
+}
+
+.identidadEditorial {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.identidadEditorial .marcaEditorial {
+  flex-direction: row;
+  gap: 0.7em;
+  font-size: 1em;
+}
+
+.identidadEditorial .marcaEditorial img {
+  width: calc(var(--u) * 10);
+  height: calc(var(--u) * 10);
+}
+
+.identidadEditorial > p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.seccionesEditoriales {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+  align-self: start;
+}
+
+.seccionesEditoriales section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.seccionesEditoriales h3 {
+  margin: 0;
+  color: #086783;
+  font-size: 1.13em;
+}
+
+.seccionesEditoriales p {
+  margin: 0;
+  line-height: 1.3;
+}
+
+.seccionesEditoriales a {
+  width: fit-content;
+  color: #086783;
+  font-size: 0.93em;
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.seccionesEditoriales a:focus-visible {
+  outline: 2px solid #9c492c;
+  outline-offset: 2px;
+}
+
+.pieEditorial {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  align-self: end;
+  color: #276342;
+  font-size: 0.86em;
+  line-height: 1.2;
+}
+
+.inicioEditorial {
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  gap: calc(var(--u) * 2.5);
+  padding: calc(var(--u) * 6);
+  font-size: max(calc(var(--u) * 2.75), 11px);
+}
+
+.inicioEditorial .cabeceraEditorial {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.inicioEditorial h2 {
+  font-size: 2.35em;
+}
+
+.inicioEditorial .ilustracionEditorial,
+.cierreEditorial .ilustracionEditorial {
+  border-radius: calc(var(--u) * 2);
+  object-position: center 72%;
+}
+
+.prosaEditorial p {
+  margin: 0;
+  font-size: 1.14em;
+  line-height: 1.35;
+}
+
+.cierreEditorial {
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: calc(var(--u) * 3);
+  padding: calc(var(--u) * 6);
+  text-align: center;
+  font-size: max(calc(var(--u) * 2.55), 10px);
+}
+
+.cierreEditorial h2 {
+  font-size: 2.5em;
+}
+
+.cierreEditorial .cabeceraEditorial p {
+  margin: 0;
+  font-size: 1.07em;
+}
+
+.cierreEditorial .creditoPortadaEditorial {
+  padding: 0;
+}
+
+.finEditorial {
+  margin-top: 0.5em;
+  color: #9c492c;
+  font-size: 0.9em;
+  letter-spacing: 0.1em;
 }
 
 /* Hoja suelta (móvil): la hoja es vertical y estrecha, así que la letra

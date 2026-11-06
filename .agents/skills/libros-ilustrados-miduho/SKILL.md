@@ -1,11 +1,11 @@
 ---
 name: libros-ilustrados-miduho
-description: Crear cuentos ilustrados originales para MIDUHO e integrarlos en su Biblioteca, especialmente con escenas continuas a doble página y texto accesible. Usar al encargar un libro nuevo o al convertir un cuento autorizado en libro; no para una consulta aislada sobre licencias o para catalogar un título existente.
+description: Crear o actualizar libros ilustrados de MIDUHO con portada y créditos editoriales, escenas a doble página y texto accesible, e integrarlos en Biblioteca. Usar para un libro nuevo, una adaptación autorizada o su presentación editorial; no para una consulta aislada sobre licencias o para catalogar un título existente.
 ---
 
 # Libros ilustrados MIDUHO
 
-Produce un libro infantil que pueda leerse en la plataforma y cuya historia, imágenes, procedencia y experiencia de lectura sean verificables. Aplica `AGENTS.md` y la skill `miduho-sdlc` del repositorio. El libro «La orquesta de la lluvia» sirve como ejemplo técnico del lector de pliegos, no como plantilla narrativa obligatoria.
+Produce un libro infantil que pueda leerse en la plataforma y cuya historia, imágenes, procedencia y experiencia de lectura sean verificables. Aplica `AGENTS.md` y la skill `miduho-sdlc` del repositorio. El libro «La orquesta de la lluvia» sirve como ejemplo técnico del lector de pliegos, no como plantilla narrativa obligatoria. Para crear o actualizar la presentación de un libro de MIDUHO, lee [references/edicion-editorial.md](references/edicion-editorial.md).
 
 ## Antes de crear
 
@@ -18,6 +18,7 @@ Produce un libro infantil que pueda leerse en la plataforma y cuya historia, im�
 - Si el usuario pide muestras antes del libro, entrega dos imágenes de orientación (por ejemplo, portada y pliego interior) y espera su elección o ajustes antes de producir el resto. Si ya autorizó el libro completo y no pidió esa pausa, continúa hasta integrarlo.
 - Para ilustraciones raster nuevas usa la skill `imagegen`. Crea una guía breve de personajes, paleta, escenario y técnica; usa solo activos propios o autorizados como referencias de continuidad. Inspecciona cada resultado y corrige personajes que cambien, manos o elementos deformes, texto accidental y discontinuidades.
 - Para una doble página, compón **una escena continua** y luego divide el archivo final exactamente por el centro. Deja fuera del lomo rostros, acciones y detalles esenciales. Reserva áreas tranquilas para texto en ambas mitades. Portada y contraportada pueden ser imágenes independientes. No incrustes narración ni créditos en las ilustraciones.
+- Los libros editados por MIDUHO llevan portada, página de procedencia y cierre institucional según la guía editorial enlazada. La marca identifica esta edición, sin atribuir al colegio la autoría de una obra fuente. No agregues la marca a libros de terceros que no hayan sido editados o autorizados para MIDUHO.
 - El texto pedagógico vive en HTML: seleccionable, buscable, responsive y legible con lector de pantalla. Cada ilustración informativa necesita un `alt` que describa su mitad incluso si se lee sola en móvil; las puramente decorativas llevan `alt=""`. Revisa contraste WCAG 2.1 AA, foco visible, teclado y orden de lectura.
 
 ## Integración y cierre

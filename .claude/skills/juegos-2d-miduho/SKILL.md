@@ -141,6 +141,10 @@ Reglas que aplican a **todo juego nuevo o pulido** (pedido del usuario, 2026-11-
 
 Si el juego es un simulador o manipulativo, el diseño (principios, retos, calificación, error que enseña) está en `simuladores-miduho`; esta skill sigue mandando en la construcción.
 
+## Juego a partir de una referencia web
+
+Si el juego reproduce la mecánica de otro (Cokitos, Digipuzzle…), estúdialo primero con REA según `referencia-rea` y sigue `/crear-juego-referencia` (modelo aprobado: `juegos/golpea/`). Solo se reproduce la mecánica; esta skill sigue mandando en la construcción.
+
 ## Qué usar de cada skill
 
 - **`game-feel`**: capas breves de retroalimentación por evento (sonido + movimiento + color), easing en vez de movimiento lineal, juice proporcional a la importancia, que siempre vuelva al reposo. Sus patrones 1–4 están traducidos arriba (temblor, hit-stop, squash & stretch, paquete por importancia).

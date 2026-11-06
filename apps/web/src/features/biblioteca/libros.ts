@@ -24,7 +24,17 @@ export type Disposicion =
   | "pliego" /* mitad de una ilustración a doble página; texto en su zona
                 superior clara */
   | "creditos"
-  | "contraportada";
+  | "contraportada"
+  | "portada-editorial"
+  | "creditos-editoriales"
+  | "inicio-editorial"
+  | "cierre-editorial";
+
+export interface SeccionEditorial {
+  titulo: string;
+  parrafos: string[];
+  enlaces?: { texto: string; url: string }[];
+}
 
 export interface PaginaCompuesta {
   disposicion: Disposicion;
@@ -36,6 +46,11 @@ export interface PaginaCompuesta {
   mitad?: "izquierda" | "derecha";
   titulo?: string;
   parrafos?: string[];
+  /* páginas de edición MIDUHO: textos y fuentes siguen siendo HTML */
+  epigrafe?: string;
+  subtitulo?: string;
+  secciones?: SeccionEditorial[];
+  pie?: string;
   /* solo para «fondo»: en qué lado del hueco blanco cae el texto */
   textoAlineado?: "izquierda" | "derecha";
   /* solo para «pasos»: número del primer paso cuando la lista sigue de la
@@ -49,6 +64,10 @@ import {
   CARPETA_ORQUESTA,
   PAGINAS_ORQUESTA,
 } from "@/features/biblioteca/paginas/la-orquesta-de-la-lluvia";
+import {
+  CARPETA_QUIJOTE,
+  PAGINAS_QUIJOTE,
+} from "@/features/biblioteca/paginas/don-quijote-y-los-molinos";
 
 export interface Libro {
   slug: string;
@@ -1791,6 +1810,25 @@ export const LIBROS: Libro[] = [
       "Una tarde de lluvia, un copetón y una rana descubren los sonidos del patio. Cuando dejan de apresurarse, escuchan y toman turnos, construyen juntos un ritmo para compartir.",
     contenido: PAGINAS_ORQUESTA,
     carpeta: CARPETA_ORQUESTA,
+  },
+  {
+    /* Adaptación nueva del capítulo VIII de la primera parte de Don Quijote,
+       obra de dominio público de Miguel de Cervantes. Edición MIDUHO: portada,
+       créditos y cierre con escudo; cinco pliegos continuos con texto HTML,
+       sin páginas escaneadas de ninguna edición moderna. */
+    slug: "don-quijote-y-los-molinos",
+    tituloId: "lit-182",
+    titulo: "Don Quijote y los molinos",
+    autor: "Miguel de Cervantes · adaptación MIDUHO",
+    editorial: "MIDUHO",
+    paginas: PAGINAS_QUIJOTE.length,
+    razon: 0.75,
+    pliegos: [[4, 5], [6, 7], [8, 9], [10, 11], [12, 13]],
+    edad: "9-11",
+    resumen:
+      "Don Quijote cree ver gigantes donde Sancho reconoce molinos de viento. Una aventura para comparar sus miradas y descubrir qué pistas ofrece el relato.",
+    contenido: PAGINAS_QUIJOTE,
+    carpeta: CARPETA_QUIJOTE,
   },
 ];
 

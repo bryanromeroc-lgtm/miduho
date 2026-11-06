@@ -165,6 +165,7 @@ export const TITULOS: Titulo[] = [
   { id: "lit-179", titulo: "La liebre y la tortuga", autor: "Fábula tradicional (adaptación Mi Dulce Hogar)", tipo: "Libro", edad: "0-5", idioma: "Español" },
   { id: "lit-180", titulo: "Tula y el mural del bosque", autor: "Bryan Romero", tipo: "Libro", edad: "6-8", idioma: "Español" },
   { id: "lit-181", titulo: "La orquesta de la lluvia", autor: "MIDUHO", tipo: "Libro", edad: "6-8", idioma: "Español" },
+  { id: "lit-182", titulo: "Don Quijote y los molinos", autor: "Miguel de Cervantes · adaptación MIDUHO", tipo: "Libro", edad: "9-11", idioma: "Español" },
   { id: "lit-001", titulo: "Caperucita Roja", autor: "Charles Perrault", tipo: "Libro", edad: "6-8", idioma: "Español" },
   { id: "lit-002", titulo: "Caperucita Roja — Guía docente", autor: "MIDUHO", tipo: "Guía", edad: "6-8", idioma: "Español", hermanoDe: "lit-001", soloDocente: true },
   { id: "lit-003", titulo: "Hansel y Gretel", autor: "Hermanos Grimm", tipo: "Libro", edad: "6-8", idioma: "Español" },

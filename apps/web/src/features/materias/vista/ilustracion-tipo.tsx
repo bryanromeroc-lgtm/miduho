@@ -244,6 +244,30 @@ const DIBUJOS: Record<string, Dibujo> = {
       {pieza(0, 30, 44, 26)}
     </g>
   ),
+  // Tres escotillas; de la del centro asoma una pieza y un mazo cae sobre ella.
+  golpea: (pieza) => (
+    <g>
+      {[34, 80, 126].map((cx) => (
+        <ellipse key={cx} cx={cx} cy="70" rx="20" ry="7" fill={P} />
+      ))}
+      {pieza(0, 66, 38, 28)}
+      <rect x="92" y="14" width="30" height="16" rx="5" fill={A} transform="rotate(-24 107 22)" />
+      <rect x="112" y="24" width="30" height="6" rx="3" fill={P} transform="rotate(-24 107 22)" />
+    </g>
+  ),
+  // Tres carriles; en cada uno un cartel (pieza del kit) y una bicicleta en el primero.
+  "ruta-palabras": (pieza) => (
+    <g>
+      {[20, 45, 70].map((cy) => (
+        <rect key={cy} x="10" y={cy - 1} width="140" height="3" rx="1.5" fill={P} opacity=".55" />
+      ))}
+      <circle cx="30" cy="62" r="9" fill="none" stroke={A} strokeWidth="3" />
+      <circle cx="52" cy="62" r="9" fill="none" stroke={A} strokeWidth="3" />
+      <path d="M30 62 L41 46 L52 62 M41 46 L48 46" stroke={A} strokeWidth="3" fill="none" strokeLinecap="round" />
+      {pieza(0, 96, 6, 32)}
+      {pieza(1, 112, 30, 32)}
+    </g>
+  ),
 };
 
 /** Banda de la tarjeta: el tipo armado con piezas del kit; un tipo desconocido usa el de selección múltiple. */

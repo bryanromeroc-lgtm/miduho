@@ -48,7 +48,23 @@ const CLASE_DISPOSICION: Record<Disposicion, string> = {
   pliego: estilos.pliego,
   creditos: estilos.creditos,
   contraportada: estilos.contraportada,
+  "portada-editorial": estilos.portadaEditorial,
+  "creditos-editoriales": estilos.creditosEditoriales,
+  "inicio-editorial": estilos.inicioEditorial,
+  "cierre-editorial": estilos.cierreEditorial,
 };
+
+const ESCUDO_EDITORIAL = "/images/biblioteca/escudo-editorial.webp";
+
+function MarcaEditorial() {
+  return (
+    <div className={estilos.marcaEditorial}>
+      {/* eslint-disable-next-line @next/next/no-img-element -- escudo estático del colegio */}
+      <img src={ESCUDO_EDITORIAL} alt="Escudo del Colegio Mi Dulce Hogar" />
+      <strong>Colegio Mi Dulce Hogar</strong>
+    </div>
+  );
+}
 
 /* Página compuesta. Nada de aquí lleva estado ni eventos: el nodo se clona
    y StPageFlip lo adopta fuera del árbol de React. */
@@ -63,11 +79,104 @@ function Compuesta({
   titulo: string;
   urgente: boolean;
 }) {
+  const clase = cn(estilos.compuesta, CLASE_DISPOSICION[pagina.disposicion]);
+  const imagenEditorial = pagina.ilustracion && (
+    // eslint-disable-next-line @next/next/no-img-element -- recurso local ya optimizado para el lector
+    <img
+      className={estilos.ilustracionEditorial}
+      src={pagina.ilustracion}
+      alt={pagina.alt ?? ""}
+      loading={urgente ? "eager" : "lazy"}
+      decoding="async"
+      draggable={false}
+    />
+  );
+
+  if (pagina.disposicion === "portada-editorial") {
+    return (
+      <div className={clase}>
+        <header className={estilos.cabeceraEditorial}>
+          {pagina.epigrafe && <p className={estilos.epigrafeEditorial}>{pagina.epigrafe}</p>}
+          <h2>{pagina.titulo}</h2>
+          {pagina.subtitulo && <p className={estilos.subtituloEditorial}>{pagina.subtitulo}</p>}
+        </header>
+        {imagenEditorial}
+        <div className={estilos.creditoPortadaEditorial}>
+          <MarcaEditorial />
+          {pagina.parrafos?.map((parrafo, i) => <p key={i}>{parrafo}</p>)}
+        </div>
+      </div>
+    );
+  }
+
+  if (pagina.disposicion === "creditos-editoriales") {
+    return (
+      <div className={clase}>
+        <h2>{pagina.titulo}</h2>
+        <div className={estilos.identidadEditorial}>
+          <MarcaEditorial />
+          <p>{pagina.subtitulo}</p>
+        </div>
+        <div className={estilos.seccionesEditoriales}>
+          {pagina.secciones?.map((seccion) => (
+            <section key={seccion.titulo}>
+              <h3>{seccion.titulo}</h3>
+              {seccion.parrafos.map((parrafo, i) => <p key={i}>{parrafo}</p>)}
+              {seccion.enlaces?.map((enlace) => (
+                <a key={enlace.url} href={enlace.url} target="_blank" rel="noreferrer">
+                  {enlace.texto}
+                </a>
+              ))}
+            </section>
+          ))}
+        </div>
+        <footer className={estilos.pieEditorial}>
+          <span>{pagina.pie}</span><span>{numero}</span>
+        </footer>
+      </div>
+    );
+  }
+
+  if (pagina.disposicion === "inicio-editorial") {
+    return (
+      <div className={clase}>
+        <header className={estilos.cabeceraEditorial}>
+          {pagina.epigrafe && <p className={estilos.epigrafeEditorial}>{pagina.epigrafe}</p>}
+          <h2>{pagina.titulo}</h2>
+        </header>
+        {imagenEditorial}
+        <div className={estilos.prosaEditorial}>
+          {pagina.parrafos?.map((parrafo, i) => <p key={i}>{parrafo}</p>)}
+        </div>
+        <footer className={estilos.pieEditorial}>
+          <span>Colegio Mi Dulce Hogar</span><span>{numero}</span>
+        </footer>
+      </div>
+    );
+  }
+
+  if (pagina.disposicion === "cierre-editorial") {
+    return (
+      <div className={clase}>
+        <header className={estilos.cabeceraEditorial}>
+          <h2>{pagina.titulo}</h2>
+          {pagina.parrafos?.map((parrafo, i) => <p key={i}>{parrafo}</p>)}
+        </header>
+        {imagenEditorial}
+        <div className={estilos.creditoPortadaEditorial}>
+          <MarcaEditorial />
+          <p>{pagina.pie}</p>
+          <strong className={estilos.finEditorial}>FIN</strong>
+        </div>
+      </div>
+    );
+  }
+
   const conTexto = pagina.titulo || pagina.parrafos?.length;
   const Lista = pagina.disposicion === "pasos" ? "ol" : "div";
   return (
     <div
-      className={cn(estilos.compuesta, CLASE_DISPOSICION[pagina.disposicion])}
+      className={clase}
       data-alineado={pagina.textoAlineado}
       data-mitad={pagina.mitad}
     >
@@ -523,7 +632,11 @@ export function Flipbook({
       </div>
 
       <div className={estilos.cuerpo}>
-        <div ref={escenaRef} className={estilos.escena}>
+        <div
+          ref={escenaRef}
+          className={estilos.escena}
+          data-pagina-estilo={paginas[indice]?.compuesta?.disposicion}
+        >
           <button
             type="button"
             className={cn(estilos.paso, estilos.pasoAnterior)}
