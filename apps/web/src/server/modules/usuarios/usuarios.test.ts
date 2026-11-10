@@ -144,7 +144,7 @@ describe("alta individual", () => {
   it("ESTUDIANTE con grupo: asociación activa creada en la misma operación", async () => {
     const r = await U.crear({ nombres: "Est", apellidos: "Uno", correo: "est-1@miduho.test", combinacion: "ESTUDIANTE", grupoId: ids.g1 });
     const f = await U.obtener(r.id);
-    expect(f.grupoActual?.etiqueta).toBe("2°-01");
+    expect(f.grupoActual?.etiqueta).toBe("2°");
     ids.est1 = r.id;
   });
 
@@ -167,7 +167,7 @@ describe("listado", () => {
     expect(est.data.every((u) => u.combinacion === "ESTUDIANTE")).toBe(true);
     const porGrupo = await U.listar(filtroUsuarios.parse({ grupoId: ids.g1 }));
     expect(porGrupo.data.map((u) => u.correo)).toEqual(["est-1@miduho.test"]);
-    expect(porGrupo.data[0].grupo?.etiqueta).toBe("2°-01");
+    expect(porGrupo.data[0].grupo?.etiqueta).toBe("2°");
     const busq = await U.listar(filtroUsuarios.parse({ q: "doc-libre" }));
     expect(busq.data.map((u) => u.correo)).toEqual(["doc-libre@miduho.test"]);
     const pend = await U.listar(filtroUsuarios.parse({ estado: "PENDIENTE_ACTIVACION" }));
@@ -257,7 +257,7 @@ describe("grupo del estudiante", () => {
     const e = await usuario("est-2@miduho.test", ["ESTUDIANTE"]);
     ids.est2 = e.id;
     const r = await U.asignarGrupo(e.id, { grupoId: ids.g2, confirmarTraslado: false });
-    expect(r).toMatchObject({ traslado: false, grupo: { etiqueta: "2°-02" } });
+    expect(r).toMatchObject({ traslado: false, grupo: { etiqueta: "2°" } });
   });
 
   it("traslado exige confirmación, cierra la asociación anterior y deja una sola activa", async () => {
@@ -272,7 +272,7 @@ describe("grupo del estudiante", () => {
     expect(asociaciones).toHaveLength(2);
     expect(asociaciones.filter((a) => a.finEn === null)).toHaveLength(1);
     expect(asociaciones[0].finEn?.toISOString()).toBe("2026-04-01T12:00:00.000Z");
-    expect((await U.obtener(ids.est2)).grupoActual?.etiqueta).toBe("2°-01");
+    expect((await U.obtener(ids.est2)).grupoActual?.etiqueta).toBe("2°");
   });
 
   it("rechaza personal, cuentas inactivas, grupos inexistentes y años cerrados", async () => {

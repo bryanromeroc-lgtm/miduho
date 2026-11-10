@@ -139,12 +139,14 @@ describe("servicio académico (PostgreSQL de prueba)", () => {
     expect(await codigoDe(S.aniosLectivos.actualizar(anioId, { fechaFin: d("2026-10-01") }))).toBe("PERIODO_FUERA_DE_ANIO");
   });
 
-  it("grados y grupos: grupo único por grado+año+identificador (RN-07) y director docente", async () => {
+  it("grados y grupos: un solo grupo por grado y año (RN-07) y director docente", async () => {
     const g = await S.grados.crear({ nombre: "1°", nivel: "PRIMARIA", orden: 1 });
     gradoId = g.id;
-    const grupo = await S.grupos.crear({ gradoId, anioLectivoId: anioId, identificador: "01" });
+    const grupo = await S.grupos.crear(E.crearGrupo.parse({ gradoId, anioLectivoId: anioId }));
     expect(grupo.grado.nombre).toBe("1°");
-    await expect(S.grupos.crear({ gradoId, anioLectivoId: anioId, identificador: "01" })).rejects.toMatchObject({ code: "P2002" });
+    expect(grupo.identificador).toBe("01");
+    expect(await codigoDe(S.grupos.crear({ gradoId, anioLectivoId: anioId }))).toBe("GRUPO_DUPLICADO");
+    expect(E.crearGrupo.safeParse({ gradoId, anioLectivoId: anioId, identificador: "02" }).success).toBe(false);
 
     const noDocente = await db.usuario.create({
       data: { nombres: "Cuenta", apellidos: "Ficticia sin rol", correo: "sin-rol@miduho.test", hashContrasena: "x", estado: "ACTIVO" },
@@ -194,7 +196,7 @@ describe("servicio académico (PostgreSQL de prueba)", () => {
     expect(
       await codigoDe(S.periodos.crear({ anioLectivoId: anioId, nombre: "P3", orden: 3, ponderacion: 1, fechaInicio: d("2026-12-01"), fechaFin: d("2026-12-02") })),
     ).toBe("ANIO_CERRADO");
-    expect(await codigoDe(S.grupos.crear({ gradoId, anioLectivoId: anioId, identificador: "02" }))).toBe("ANIO_CERRADO");
+    expect(await codigoDe(S.grupos.crear({ gradoId, anioLectivoId: anioId }))).toBe("ANIO_CERRADO");
     // Cerrado el anterior, ya se puede activar uno nuevo (RN-01).
     expect(await codigoDe(S.aniosLectivos.crear({ anio: 2027, fechaInicio: d("2027-01-18"), fechaFin: d("2027-12-03"), estado: "ACTIVO" }))).toBe("OK");
   });
@@ -224,10 +226,10 @@ describe("servicio académico (PostgreSQL de prueba)", () => {
     expect((await S.grados.listar({ ...pagina, q: "1°" })).total).toBe(1);
     expect((await S.grados.listar({ ...pagina, q: "9°" })).total).toBe(0);
 
-    // Grupos: "1°-01" o "1° 01" coinciden con grado + identificador; los filtros se combinan.
-    expect((await S.grupos.listar({ ...pagina, q: "1°-01" })).total).toBe(1);
-    expect((await S.grupos.listar({ ...pagina, q: "1° 02" })).total).toBe(0);
-    expect((await S.grupos.listar({ ...pagina, q: "01", anioLectivoId: anio2040 })).total).toBe(0);
+    // Grupos: se buscan por el nombre del grado; los filtros se combinan.
+    expect((await S.grupos.listar({ ...pagina, q: "1°" })).total).toBe(1);
+    expect((await S.grupos.listar({ ...pagina, q: "9°" })).total).toBe(0);
+    expect((await S.grupos.listar({ ...pagina, q: "1°", anioLectivoId: anio2040 })).total).toBe(0);
     expect((await S.grupos.listar({ ...pagina, gradoId, anioLectivoId: anioId })).total).toBe(1);
 
     // Asignaturas: por nombre propio o del área, combinable con área y grado.
@@ -269,8 +271,8 @@ describe("servicio académico (PostgreSQL de prueba)", () => {
     expect(fechasAnio.fechaFin.toISOString().slice(0, 10)).toBe("2027-11-26");
     const p1 = await S.periodos.crear(E.crearPeriodo.parse(cuerpo("periodos", "crear", { anioLectivoId: anio.id, nombre: "Período 1", orden: "1", ponderacion: "50", fechaInicio: "2027-01-25", fechaFin: "2027-06-11" })));
     await S.periodos.crear(E.crearPeriodo.parse(cuerpo("periodos", "crear", { anioLectivoId: anio.id, nombre: "Período 2", orden: "2", ponderacion: "40", fechaInicio: "2027-06-28", fechaFin: "2027-11-26" })));
-    const grupo = await S.grupos.crear(E.crearGrupo.parse(cuerpo("grupos", "crear", { anioLectivoId: anio.id, gradoId: grado.id, identificador: "01", directorId: "" })));
-    expect((await S.grupos.actualizar(grupo.id, E.actualizarGrupo.parse(cuerpo("grupos", "editar", { identificador: "B", directorId: "" }, { directorId: null })))).identificador).toBe("B");
+    const grupo = await S.grupos.crear(E.crearGrupo.parse(cuerpo("grupos", "crear", { anioLectivoId: anio.id, gradoId: grado.id, directorId: "" })));
+    expect(grupo.identificador).toBe("01");
 
     // 50 + 40 = 90 %: el cierre devuelve el error de dominio; al editar el período a 60 % ya se puede cerrar.
     expect(await codigoDe(S.aniosLectivos.actualizar(anio.id, E.actualizarAnioLectivo.parse(CUERPO_CIERRE)))).toBe("PONDERACION_INCOMPLETA");
@@ -281,7 +283,7 @@ describe("servicio académico (PostgreSQL de prueba)", () => {
     expect(accionesAnio(cerrado.estado)).toEqual({ editar: false, cerrar: false, eliminar: false });
     expect(await codigoDe(S.aniosLectivos.actualizar(anio.id, E.actualizarAnioLectivo.parse(cuerpo("anios-lectivos", "editar", { fechaInicio: "2027-01-26", fechaFin: "2027-11-26" }))))).toBe("ANIO_CERRADO");
     expect(await codigoDe(S.periodos.actualizar(p1.id, E.actualizarPeriodo.parse(cuerpo("periodos", "editar", { ...datosP1, nombre: "Otro" }))))).toBe("ANIO_CERRADO");
-    expect(await codigoDe(S.grupos.actualizar(grupo.id, E.actualizarGrupo.parse(cuerpo("grupos", "editar", { identificador: "C", directorId: "" }, { directorId: null }))))).toBe("ANIO_CERRADO");
+    expect(await codigoDe(S.grupos.actualizar(grupo.id, E.actualizarGrupo.parse(cuerpo("grupos", "editar", { directorId: "" }, { directorId: "otro" }))))).toBe("ANIO_CERRADO");
 
     // Asignatura: nombre, área, intensidad general y conjunto de grados con intensidad por grado.
     const asignatura = await S.asignaturas.crear(E.crearAsignatura.parse(cuerpo("asignaturas", "crear", { nombre: "Asignatura contrato", areaId: area.id, intensidadHoraria: "", gradoId: [grado.id] })));
@@ -297,11 +299,13 @@ describe("servicio académico (PostgreSQL de prueba)", () => {
     const anio = await S.aniosLectivos.crear({ anio: 2050, fechaInicio: d("2050-01-20"), fechaFin: d("2050-11-30"), estado: "ACTIVO" });
     const grado = await S.grados.crear({ nombre: "3° prueba", nivel: "PRIMARIA", orden: 30 });
     const otroGrado = await S.grados.crear({ nombre: "4° prueba", nivel: "PRIMARIA", orden: 40 });
-    const grupoA = await S.grupos.crear({ gradoId: grado.id, anioLectivoId: anio.id, identificador: "A" });
-    const grupoB = await S.grupos.crear({ gradoId: grado.id, anioLectivoId: anio.id, identificador: "B" });
-    const grupoOtro = await S.grupos.crear({ gradoId: otroGrado.id, anioLectivoId: anio.id, identificador: "A" });
+    const gradoB = await S.grados.crear({ nombre: "5° prueba", nivel: "PRIMARIA", orden: 50 });
+    // Un solo grupo por grado: A y B son los grupos de dos grados distintos.
+    const grupoA = await S.grupos.crear({ gradoId: grado.id, anioLectivoId: anio.id });
+    const grupoB = await S.grupos.crear({ gradoId: gradoB.id, anioLectivoId: anio.id });
+    const grupoOtro = await S.grupos.crear({ gradoId: otroGrado.id, anioLectivoId: anio.id });
     const area = await S.areas.crear({ nombre: "Área horario (ficticia)", tipo: "AREA", idioma: "es" });
-    const asignatura = await S.asignaturas.crear({ nombre: "Horario prueba", areaId: area.id, grados: [{ gradoId: grado.id }] });
+    const asignatura = await S.asignaturas.crear({ nombre: "Horario prueba", areaId: area.id, grados: [{ gradoId: grado.id }, { gradoId: gradoB.id }] });
     const noHabilitada = await S.asignaturas.crear({ nombre: "No habilitada", areaId: area.id, grados: [] });
     const rol = await db.rol.findUniqueOrThrow({ where: { codigo: "DOCENTE" } });
     const docente = await db.usuario.create({ data: { nombres: "Docente", apellidos: "Ficticio A", correo: "horario-a@miduho.test", hashContrasena: "x", estado: "ACTIVO", roles: { create: { rolId: rol.id } } } });

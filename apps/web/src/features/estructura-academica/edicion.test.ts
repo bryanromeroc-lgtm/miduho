@@ -42,14 +42,14 @@ describe("contrato de formularios de /admin/estructura", () => {
     expect(errorCuerpo("grados", "editar", grado)).toBeNull();
   });
 
-  it("edición de grupo: identificador y director (o quitarlo); un director sin cambios no se reenvía", () => {
-    const quitar = cuerpoFormulario("grupos", fd([["identificador", "02"], ["directorId", ""]]), "editar", { id: "g", directorId: "d-1" });
-    expect(quitar).toEqual({ identificador: "02", directorId: null });
+  it("edición de grupo: solo el director (o quitarlo); un director sin cambios no se reenvía", () => {
+    const quitar = cuerpoFormulario("grupos", fd([["directorId", ""]]), "editar", { id: "g", directorId: "d-1" });
+    expect(quitar).toEqual({ directorId: null });
     expect(errorCuerpo("grupos", "editar", quitar)).toBeNull();
-    const igual = cuerpoFormulario("grupos", fd([["identificador", "02"], ["directorId", "d-1"]]), "editar", { id: "g", directorId: "d-1" });
-    expect(igual).toEqual({ identificador: "02" });
-    const alta = cuerpoFormulario("grupos", fd([["anioLectivoId", "a"], ["gradoId", "g"], ["identificador", "01"], ["directorId", ""]]), "crear");
-    expect(alta).toEqual({ anioLectivoId: "a", gradoId: "g", identificador: "01", directorId: null });
+    const igual = cuerpoFormulario("grupos", fd([["directorId", "d-1"]]), "editar", { id: "g", directorId: "d-1" });
+    expect(igual).toEqual({});
+    const alta = cuerpoFormulario("grupos", fd([["anioLectivoId", "a"], ["gradoId", "g"], ["directorId", ""]]), "crear");
+    expect(alta).toEqual({ anioLectivoId: "a", gradoId: "g", directorId: null });
   });
 
   it("edición de asignatura: área, intensidad y conjunto completo de grados con intensidad por grado", () => {
@@ -66,7 +66,7 @@ describe("contrato de formularios de /admin/estructura", () => {
 
   it("errores de esquema se devuelven como texto para la UI", () => {
     expect(errorCuerpo("periodos", "editar", { nombre: "", orden: 0 })).toMatch(/Escribe el nombre del período/);
-    expect(errorCuerpo("grupos", "editar", { identificador: "01-A" })).toMatch(/1 a 4 letras o números/);
+    expect(errorCuerpo("grupos", "crear", { gradoId: "g", anioLectivoId: "a", identificador: "02" })).toMatch(/un solo grupo por grado/);
     expect(errorCuerpo("anios-lectivos", "editar", { estado: "ACTIVO", anio: 2031 })).not.toBeNull();
   });
 
@@ -81,19 +81,15 @@ describe("contrato de formularios de /admin/estructura", () => {
 
 describe("render de FormularioEstructura (datos ficticios)", () => {
   const vacio: Listado = { filtros: null, resumen: null, vacio: null, pie: null };
-  const listados = Object.fromEntries(["anios", "periodos", "areas", "grados", "grupos", "asignaturas"].map((c) => [c, vacio])) as Record<Clave, Listado>;
   const anioActivo = { id: "a-activo", anio: 2031, estado: "ACTIVO", fechaInicio: "2031-01-20", fechaFin: "2031-12-05" };
   const anioCerradoReg = { id: "a-cerrado", anio: 2030, estado: "CERRADO", fechaInicio: "2030-01-20", fechaFin: "2030-12-05" };
-  const html = renderToStaticMarkup(createElement(FormularioEstructura, {
-    anios: [anioActivo, anioCerradoReg],
-    periodos: [
-      { id: "p-activo", nombre: "Período A", orden: 1, ponderacion: 50, fechaInicio: "2031-01-27", fechaFin: "2031-06-13", anioLectivoId: "a-activo", anioLectivo: { anio: 2031, estado: "ACTIVO" } },
-      { id: "p-cerrado", nombre: "Período B", orden: 1, ponderacion: 100, fechaInicio: "2030-01-27", fechaFin: "2030-11-27", anioLectivoId: "a-cerrado", anioLectivo: { anio: 2030, estado: "CERRADO" } },
-    ],
-    areas: [], grados: [], grupos: [], asignaturas: [],
-    catalogo: { anios: [{ id: "a-activo", etiqueta: "2031" }, { id: "a-cerrado", etiqueta: "2030 (cerrado)" }], aniosEditables: [{ id: "a-activo", etiqueta: "2031" }], grados: [], areas: [], docentes: [] },
-    listados,
-  }));
+  const catalogo = { anios: [{ id: "a-activo", etiqueta: "2031" }, { id: "a-cerrado", etiqueta: "2030 (cerrado)" }], aniosEditables: [{ id: "a-activo", etiqueta: "2031" }], grados: [], areas: [], docentes: [] };
+  const render = (ver: Clave, registros: Array<Record<string, unknown> & { id: string }>) =>
+    renderToStaticMarkup(createElement(FormularioEstructura, { ver, registros, catalogo, listado: vacio }));
+  const html = render("anios", [anioActivo, anioCerradoReg]) + render("periodos", [
+    { id: "p-activo", nombre: "Período A", orden: 1, ponderacion: 50, fechaInicio: "2031-01-27", fechaFin: "2031-06-13", anioLectivoId: "a-activo", anioLectivo: { anio: 2031, estado: "ACTIVO" } },
+    { id: "p-cerrado", nombre: "Período B", orden: 1, ponderacion: 100, fechaInicio: "2030-01-27", fechaFin: "2030-11-27", anioLectivoId: "a-cerrado", anioLectivo: { anio: 2030, estado: "CERRADO" } },
+  ]);
   const formularioAnio = html.slice(html.indexOf('aria-label="Crear año lectivo"'), html.indexOf("</form>", html.indexOf('aria-label="Crear año lectivo"')));
 
   it("el alta de año no ofrece el estado CERRADO", () => {
@@ -106,6 +102,16 @@ describe("render de FormularioEstructura (datos ficticios)", () => {
     expect(html).toContain("Editar<span class=\"sr-only\"> el año 2031</span>");
     expect(html).not.toContain("el año 2030</span>");
     expect(html).toContain("Solo lectura (año cerrado)");
+  });
+
+  it("muestra una sola sección como tarjetas, con el alta plegada si ya hay registros", () => {
+    const soloAnios = render("anios", [anioActivo]);
+    expect(soloAnios).toContain('id="estructura-anios"');
+    expect(soloAnios).not.toContain('id="estructura-periodos"');
+    expect(soloAnios).toContain('class="config-ficha"');
+    expect(soloAnios).toContain('aria-expanded="false"');
+    expect(soloAnios).toContain("20 ene 2031 – 5 dic 2031");
+    expect(render("areas", [])).toContain('aria-expanded="true"');
   });
 
   it("los períodos de un año cerrado no se editan ni se borran; el alta solo ofrece años activos", () => {

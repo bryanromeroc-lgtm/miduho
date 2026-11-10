@@ -101,15 +101,12 @@ export const actualizarArea = crearArea.partial().strict();
 export const crearGrupo = z.object({
   gradoId: id,
   anioLectivoId: id,
-  identificador: z
-    .string({ error: "Escribe el identificador del grupo." })
-    .trim()
-    .regex(/^[0-9A-Za-z]{1,4}$/, "El identificador del grupo debe tener de 1 a 4 letras o números (ej. 01)."),
+  // El colegio tiene un solo grupo por grado (1°, 2°, …): el identificador es fijo.
+  identificador: z.literal("01", { error: "El colegio tiene un solo grupo por grado." }).optional(),
   directorId: id.nullable().optional(),
 });
 export const actualizarGrupo = z
   .object({
-    identificador: crearGrupo.shape.identificador.optional(),
     directorId: id.nullable().optional(),
   })
   .strict();

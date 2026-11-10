@@ -32,7 +32,7 @@ export const obtenerDatosShell = cache(async (): Promise<DatosShell | null> => {
       where: { estudianteId: id, anioLectivoId: anio.id, finEn: null },
       select: { grupo: { select: { identificador: true, grado: { select: { nombre: true } } } } },
     });
-    if (asociacion) grupo = etiquetaGrupo(asociacion.grupo.grado.nombre, asociacion.grupo.identificador);
+    if (asociacion) grupo = etiquetaGrupo(asociacion.grupo.grado.nombre);
   }
 
   if (anio && roles.includes("DOCENTE")) {
@@ -42,7 +42,7 @@ export const obtenerDatosShell = cache(async (): Promise<DatosShell | null> => {
     });
     const unicos = new Map<string, number>();
     for (const a of asignaciones) {
-      unicos.set(etiquetaGrupo(a.grupo.grado.nombre, a.grupo.identificador), a.grupo.grado.orden);
+      unicos.set(etiquetaGrupo(a.grupo.grado.nombre), a.grupo.grado.orden);
     }
     gruposDocente = [...unicos.entries()].sort((x, y) => x[1] - y[1] || x[0].localeCompare(y[0])).map(([g]) => g);
   }

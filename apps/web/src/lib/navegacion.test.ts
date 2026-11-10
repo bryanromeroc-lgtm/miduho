@@ -110,30 +110,30 @@ describe("utilidades", () => {
     expect(rutaActiva("/clases", "/clasesx")).toBe(false);
   });
 
-  it("nombra el grupo como grado-identificador", () => {
-    expect(etiquetaGrupo("1°", "01")).toBe("1°-01");
+  it("nombra el grupo como su grado (un solo grupo por grado)", () => {
+    expect(etiquetaGrupo("1°")).toBe("1°");
   });
 });
 
 describe("grupo real en shell y maqueta (INC1R-11)", () => {
   it("ESTUDIANTE ve su grupo real o el aviso de sin grupo", () => {
-    expect(textoGrupo("ESTUDIANTE", "2°-03", [])).toBe("Grupo 2°-03");
+    expect(textoGrupo("ESTUDIANTE", "3°", [])).toBe("Grupo 3°");
     expect(textoGrupo("ESTUDIANTE", null, [])).toBe("Sin grupo asignado");
-    expect(grupoMaqueta("ESTUDIANTE", "2°-03", [])).toBe("2°-03");
+    expect(grupoMaqueta("ESTUDIANTE", "3°", [])).toBe("3°");
     expect(grupoMaqueta("ESTUDIANTE", null, [])).toBeNull();
   });
 
   it("DOCENTE rotula la maqueta solo con un grupo inequívoco", () => {
-    expect(textoGrupo("DOCENTE", null, ["1°-01", "2°-01"])).toBe("Grupos 1°-01, 2°-01");
-    expect(grupoMaqueta("DOCENTE", null, ["1°-01"])).toBe("1°-01");
-    expect(grupoMaqueta("DOCENTE", null, ["1°-01", "2°-01"])).toBeNull();
+    expect(textoGrupo("DOCENTE", null, ["1°", "2°"])).toBe("Grupos 1°, 2°");
+    expect(grupoMaqueta("DOCENTE", null, ["1°"])).toBe("1°");
+    expect(grupoMaqueta("DOCENTE", null, ["1°", "2°"])).toBeNull();
     expect(grupoMaqueta("DOCENTE", null, [])).toBeNull();
   });
 
   it("ADMIN y sin contexto nunca reciben un grupo", () => {
-    expect(textoGrupo("ADMIN", "1°-01", ["1°-01"])).toBeNull();
-    expect(textoGrupo(null, "1°-01", [])).toBeNull();
-    expect(grupoMaqueta("ADMIN", "1°-01", ["1°-01"])).toBeNull();
-    expect(grupoMaqueta(null, "1°-01", [])).toBeNull();
+    expect(textoGrupo("ADMIN", "1°", ["1°"])).toBeNull();
+    expect(textoGrupo(null, "1°", [])).toBeNull();
+    expect(grupoMaqueta("ADMIN", "1°", ["1°"])).toBeNull();
+    expect(grupoMaqueta(null, "1°", [])).toBeNull();
   });
 });

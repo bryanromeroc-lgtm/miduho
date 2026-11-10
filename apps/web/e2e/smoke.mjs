@@ -507,39 +507,48 @@ let ID_EST_SMOKE = null;
   const estTexto = (await texto(pa)).toLowerCase();
   ok("estructura sin datos reales", !tieneDatoReal(estTexto));
 
-  // Crear área nueva
+  // Ruta de configuración: seis tarjetas; se ve una sola sección a la vez.
+  ok("estructura ruta de seis pasos", (await pa.locator(".config-ruta .config-paso").count()) === 6);
+  ok("estructura una sola sección visible", (await pa.locator(".config-seccion").count()) === 1);
+
+  // Crear área nueva: tarjeta Áreas → «Nueva área» despliega el formulario.
+  await pa.click(".config-ruta a:has-text('Áreas')");
+  await pa.waitForSelector("#estructura-areas");
+  await pa.click("button:has-text('Nueva área')");
   await pa.fill("form[aria-label='Crear área'] input[name=nombre]", "Ciencias naturales E2E");
   await pa.click("form[aria-label='Crear área'] button");
   await esperarTexto(pa, "Ciencias naturales E2E");
   ok("crear área aparece en listado", true);
 
   // Crear grado nuevo
+  await pa.goto(`${BASE}/admin/estructura?ver=grados`);
+  await pa.click("button:has-text('Nuevo grado')");
   await pa.fill("form[aria-label='Crear grado'] input[name=nombre]", "6°");
   await pa.fill("form[aria-label='Crear grado'] input[name=orden]", "6");
   await pa.click("form[aria-label='Crear grado'] button");
   await esperarTexto(pa, "6°");
   ok("crear grado aparece en listado", true);
 
-  // Crear grupo nuevo en el año activo
+  // Crear grupo nuevo en el año activo para el grado recién creado (un grupo por grado).
+  await pa.goto(`${BASE}/admin/estructura?ver=grupos`);
+  await pa.click("button:has-text('Nuevo grupo')");
   const anioEdit = await pa.locator("form[aria-label='Crear grupo'] select[name=anioLectivoId] option").nth(1).getAttribute("value");
-  const gradoEdit = await pa.locator("form[aria-label='Crear grupo'] select[name=gradoId] option").nth(1).getAttribute("value");
   await pa.selectOption("form[aria-label='Crear grupo'] select[name=anioLectivoId]", anioEdit);
-  await pa.selectOption("form[aria-label='Crear grupo'] select[name=gradoId]", gradoEdit);
-  await pa.fill("form[aria-label='Crear grupo'] input[name=identificador]", "99");
+  await pa.selectOption("form[aria-label='Crear grupo'] select[name=gradoId]", { label: "6°" });
   await pa.click("form[aria-label='Crear grupo'] button");
-  await esperarTexto(pa, "-99");
+  await pa.waitForFunction(() => [...document.querySelectorAll(".config-ficha h3")].some((h) => h.textContent === "6°"));
   ok("crear grupo aparece en listado", true);
 
   // Eliminar el área recién creada (sin relaciones) funciona; eliminar un área con relaciones se bloquea
-  await pa.goto(`${BASE}/admin/estructura`);
-  const filaArea = pa.locator("tr", { hasText: "Ciencias naturales E2E" }).first();
+  await pa.goto(`${BASE}/admin/estructura?ver=areas`);
+  const filaArea = pa.locator(".config-ficha", { hasText: "Ciencias naturales E2E" }).first();
   await filaArea.locator("text=Eliminar").click();
   await pa.waitForSelector("dialog[open]");
   await pa.click("dialog[open] >> text=Eliminar definitivamente");
   await esperarTextoAusente(pa, "Ciencias naturales E2E");
   ok("borrado físico de registro sin relaciones", true);
 
-  const filaHumanidades = pa.locator("tr", { hasText: "Humanidades: lengua castellana" }).first();
+  const filaHumanidades = pa.locator(".config-ficha", { hasText: "Humanidades: lengua castellana" }).first();
   await filaHumanidades.locator("text=Eliminar").click();
   await pa.waitForSelector("dialog[open]");
   await pa.click("dialog[open] >> text=Eliminar definitivamente");
@@ -664,14 +673,17 @@ let ID_EST_SMOKE = null;
   ok("móvil estructura carga", (await pa.textContent("h1"))?.includes("Estructura académica"));
   ok("móvil estructura una <main>", (await mains(pa)) === 1);
   ok("móvil estructura sin scroll horizontal", !(await scrollX(pa)));
-  ok("móvil estructura formularios de alta visibles", (await pa.locator("form[aria-label='Crear área']").count()) === 1 && (await pa.locator("form[aria-label='Crear grado']").count()) === 1);
-  // Alta y baja de un área con nombre único desde el móvil: el formulario funciona.
+  // Alta y baja de un área con nombre único desde el móvil: tarjeta → «Nueva área» → formulario.
+  await pa.click(".config-ruta a:has-text('Áreas')");
+  await pa.waitForSelector("#estructura-areas");
+  await pa.click("button:has-text('Nueva área')");
+  ok("móvil estructura formulario de alta visible", await pa.locator("form[aria-label='Crear área']").isVisible());
   await pa.fill("form[aria-label='Crear área'] input[name=nombre]", "Arte móvil E2E");
   await pa.click("form[aria-label='Crear área'] button");
   await esperarTexto(pa, "Arte móvil E2E");
   ok("móvil estructura crea área", true);
-  await pa.goto(`${BASE}/admin/estructura`);
-  const filaArte = pa.locator("tr", { hasText: "Arte móvil E2E" }).first();
+  await pa.goto(`${BASE}/admin/estructura?ver=areas`);
+  const filaArte = pa.locator(".config-ficha", { hasText: "Arte móvil E2E" }).first();
   await filaArte.locator("text=Eliminar").click();
   await pa.waitForSelector("dialog[open]");
   await pa.click("dialog[open] >> text=Eliminar definitivamente");
@@ -682,8 +694,9 @@ let ID_EST_SMOKE = null;
   ok("móvil asignaciones carga", (await pa.textContent("h1"))?.includes("Asignaciones docentes"));
   ok("móvil asignaciones una <main>", (await mains(pa)) === 1);
   ok("móvil asignaciones sin scroll horizontal", !(await scrollX(pa)));
-  ok("móvil asignaciones listado con filas", (await pa.locator(".admin-tabla tbody tr").count()) >= 1);
-  ok("móvil asignaciones formulario de alta visible", (await pa.locator("h2#crear-asignacion").count()) === 1);
+  ok("móvil asignaciones listado con tarjetas", (await pa.locator(".config-ficha").count()) >= 1);
+  await pa.click("button:has-text('Nueva asignación')");
+  ok("móvil asignaciones formulario de alta visible", await pa.locator("#crear-asignacion").isVisible());
   await pa.screenshot({ path: `${OUT}movil-estructura-asignaciones.png` });
   await ctx.close();
 }

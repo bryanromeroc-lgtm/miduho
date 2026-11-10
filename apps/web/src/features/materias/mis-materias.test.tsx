@@ -81,7 +81,7 @@ describe("tarjeta de materia", () => {
 
 describe("Mis materias", () => {
   const datos = (materias: Partial<ResumenMateria>[]) => ({
-    grupo: { id: "g", etiqueta: "1°-01" },
+    grupo: { id: "g", etiqueta: "1°" },
     materias: materias.map((m, i) => ({ ...base, id: `m${i}`, ...m })),
   });
 

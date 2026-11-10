@@ -95,7 +95,7 @@ export function crearServicioMiCurso(db: PrismaClient) {
       if (!grupo) {
         grupo = {
           id: g.id,
-          etiqueta: etiquetaGrupo(g.grado.nombre, g.identificador),
+          etiqueta: etiquetaGrupo(g.grado.nombre),
           anio: g.anioLectivo.anio,
           orden: g.grado.orden,
           asignaturas: [],

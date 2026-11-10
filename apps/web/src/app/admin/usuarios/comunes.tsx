@@ -7,7 +7,7 @@
  */
 
 import { useEffect, useId, useRef, useState } from "react";
-import { Copy, Download } from "lucide-react";
+import { Copy, Download, Plus, X } from "lucide-react";
 import { csvUnaCredencial } from "@/lib/usuarios";
 
 export type Resultado<T> = { ok: true; datos: T } | { ok: false; codigo: string; mensaje: string };
@@ -34,6 +34,23 @@ export async function llamarApi<T = unknown>(url: string, metodo: string, cuerpo
   } catch {
     return { ok: false, codigo: "RED", mensaje: "No hay conexión con el servidor. Revisa la red e intenta de nuevo." };
   }
+}
+
+/**
+ * Alta plegable: el botón «Nuevo …» despliega el formulario en su lugar, sin
+ * modal ni scroll extra. Empieza abierta solo cuando el listado está vacío.
+ */
+export function AltaPlegable({ texto, abiertoInicial, children }: { texto: string; abiertoInicial: boolean; children: React.ReactNode }) {
+  const [abierto, setAbierto] = useState(abiertoInicial);
+  const id = useId();
+  return (
+    <div className="config-alta" data-abierto={abierto}>
+      <button type="button" className="boton-pastilla" data-variante={abierto ? "secundario" : "primario"} aria-expanded={abierto} aria-controls={id} onClick={() => setAbierto((v) => !v)}>
+        {abierto ? <X size={18} aria-hidden="true" /> : <Plus size={18} aria-hidden="true" />} {abierto ? "Cerrar formulario" : texto}
+      </button>
+      <div id={id} className="config-alta-panel" hidden={!abierto}>{children}</div>
+    </div>
+  );
 }
 
 /**

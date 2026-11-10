@@ -24,7 +24,7 @@ export default async function PaginaEstudiantesGrupos({ searchParams }: { search
     db.grupo.findMany({ include: { grado: true, anioLectivo: true }, orderBy: [{ anioLectivo: { anio: "desc" } }, { grado: { orden: "asc" } }, { identificador: "asc" }] }),
   ]);
   const anio = resultado.anio;
-  const gruposDelAnio = grupos.filter((g) => g.anioLectivoId === anio?.id).map((g) => ({ id: g.id, etiqueta: etiquetaGrupo(g.grado.nombre, g.identificador) }));
+  const gruposDelAnio = grupos.filter((g) => g.anioLectivoId === anio?.id).map((g) => ({ id: g.id, etiqueta: etiquetaGrupo(g.grado.nombre) }));
   const paginas = Math.max(1, Math.ceil(resultado.total / filtros.pageSize));
   const query = (page: number) => {
     const p = new URLSearchParams();

@@ -91,17 +91,30 @@ export function parametros(filtros: Filtros, excepto?: Clave): [string, string][
   return pares;
 }
 
+/** Sección visible del panel (`?ver=`): una sola a la vez para no apilar seis listados. */
+export function leerVer(sp: Busqueda): Clave {
+  const v = primero(sp.ver);
+  return (CLAVES as readonly string[]).includes(v) ? (v as Clave) : "anios";
+}
+
+/** Enlace para abrir otra sección conservando la búsqueda y los filtros de todas. */
+export function enlaceSeccion(filtros: Filtros, clave: Clave) {
+  const params = new URLSearchParams(parametros(filtros));
+  params.set("ver", clave);
+  return `/admin/estructura?${params}`;
+}
+
 /** Enlace a la página `page` de un listado; `limpiar` descarta su búsqueda y filtros. */
 export function enlace(filtros: Filtros, clave: Clave, page: number, limpiar = false) {
   const params = new URLSearchParams(parametros(filtros, clave));
+  params.set("ver", clave);
   if (!limpiar) {
     const f = filtros[clave] as Record<string, unknown>;
     if (f.q !== undefined) params.set(nombreParametro(clave, "q"), String(f.q));
     for (const r of RELACIONES[clave]) if (f[r]) params.set(nombreParametro(clave, r), String(f[r]));
   }
   if (page > 1) params.set(nombreParametro(clave, "page"), String(page));
-  const consulta = params.toString();
-  return `/admin/estructura${consulta ? `?${consulta}` : ""}#estructura-${clave}`;
+  return `/admin/estructura?${params}#estructura-${clave}`;
 }
 
 export function hayFiltros(filtros: Filtros, clave: Clave) {

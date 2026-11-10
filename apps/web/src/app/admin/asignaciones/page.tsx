@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import type { ReactNode } from "react";
+import { Search } from "lucide-react";
 import { Cabecera, Marco } from "@/components/friso/marco";
 import { db } from "@/server/db";
 import { exigirRolPagina } from "@/server/pagina";
@@ -24,20 +26,25 @@ export default async function PaginaAsignaciones({ searchParams }: { searchParam
   const paginas = Math.max(1, Math.ceil(resultado.total / filtros.pageSize));
   const plano = JSON.parse(JSON.stringify(resultado.data));
   const docentes = catalogo.docentes.map((d) => ({ id: d.id, etiqueta: `${d.nombres} ${d.apellidos}` }));
-  const opcionesGrupo = grupos.map((g) => ({ id: g.id, anioLectivoId: g.anioLectivoId, etiqueta: `${g.grado.nombre}-${g.identificador} · ${g.anioLectivo.anio}${g.anioLectivo.estado === "CERRADO" ? " (cerrado)" : ""}` }));
+  const opcionesGrupo = grupos.map((g) => ({ id: g.id, anioLectivoId: g.anioLectivoId, etiqueta: `${g.grado.nombre} · ${g.anioLectivo.anio}${g.anioLectivo.estado === "CERRADO" ? " (cerrado)" : ""}` }));
   const opcionesAnio = catalogo.anios.filter((a) => a.estado !== "CERRADO").map((a) => ({ id: a.id, etiqueta: String(a.anio) }));
 
-  return <Marco><Cabecera kicker="Administración" titulo="Asignaciones docentes" nota="Administra la carga docente y sus bloques horarios." />
-    <form method="get" className="admin-filtros asignaciones-filtros" role="search" aria-label="Buscar y filtrar asignaciones">
+  const barraFiltros = <>
+    <form method="get" action="/admin/asignaciones#listado-asignaciones" className="admin-filtros asignaciones-filtros" role="search" aria-label="Buscar y filtrar asignaciones">
       <label className="admin-campo admin-campo-ancho">Buscar<input name="q" type="search" defaultValue={valor(sp.q)} placeholder="Docente, asignatura o grupo" maxLength={120} /></label>
       <label className="admin-campo">Docente<select name="docenteId" defaultValue={valor(sp.docenteId)}><option value="">Todos</option>{docentes.map((o) => <option key={o.id} value={o.id}>{o.etiqueta}</option>)}</select></label>
       <label className="admin-campo">Grupo<select name="grupoId" defaultValue={valor(sp.grupoId)}><option value="">Todos</option>{opcionesGrupo.map((o) => <option key={o.id} value={o.id}>{o.etiqueta}</option>)}</select></label>
       <label className="admin-campo">Año<select name="anioLectivoId" defaultValue={valor(sp.anioLectivoId)}><option value="">Todos</option>{catalogo.anios.map((a) => <option key={a.id} value={a.id}>{a.anio}</option>)}</select></label>
-      <label className="admin-campo">Estado<select name="estado" defaultValue={valor(sp.estado)}><option value="">Todos</option><option value="ACTIVA">Activas</option><option value="INACTIVA">Inactivas</option></select></label>
-      <div className="admin-filtros-acciones"><button className="boton-pastilla" data-variante="primario">Aplicar</button><Link href="/admin/asignaciones" className="boton-pastilla" data-variante="secundario">Limpiar</Link></div>
-      {!entrada.success ? <p role="alert" className="admin-aviso admin-campo-ancho" data-tipo="error">Los filtros no son válidos; se muestra el listado completo.</p> : null}
+      <label className="admin-campo">Estado<select name="estado" defaultValue={valor(sp.estado)}><option value="">Todas</option><option value="ACTIVA">Activas</option><option value="INACTIVA">Inactivas</option></select></label>
+      <div className="admin-filtros-acciones"><button className="boton-pastilla" data-variante="primario"><Search size={18} aria-hidden="true" /> Aplicar</button><Link href="/admin/asignaciones" className="boton-pastilla" data-variante="secundario">Limpiar</Link></div>
+        {!entrada.success ? <p role="alert" className="admin-aviso admin-campo-ancho" data-tipo="error">Los filtros no son válidos; se muestra el listado completo.</p> : null}
     </form>
-    <FormularioAsignaciones asignaciones={plano} docentes={docentes} grupos={opcionesGrupo} asignaturas={asignaturas.map((a) => ({ id: a.id, etiqueta: `${a.nombre} · ${a.area.nombre}` }))} anios={opcionesAnio} />
-    {paginas > 1 ? <nav className="admin-paginacion" aria-label="Paginación de asignaciones">{filtros.page > 1 ? <Link className="boton-pastilla" data-variante="secundario" href={query(filtros.page - 1)}>Anterior</Link> : <span />}<span>Página {Math.min(filtros.page, paginas)} de {paginas} · {resultado.total} resultados</span>{filtros.page < paginas ? <Link className="boton-pastilla" data-variante="secundario" href={query(filtros.page + 1)}>Siguiente</Link> : <span />}</nav> : null}
+  </>;
+
+  return <Marco><Cabecera kicker="Administración" titulo="Asignaciones docentes" nota="Administra la carga docente y sus bloques horarios." />
+    <FormularioAsignaciones asignaciones={plano} total={resultado.total} docentes={docentes} grupos={opcionesGrupo} asignaturas={asignaturas.map((a) => ({ id: a.id, etiqueta: `${a.nombre} · ${a.area.nombre}` }))} anios={opcionesAnio} filtros={barraFiltros} pie={paginas > 1 ? <Paginacion><nav className="admin-paginacion" aria-label="Paginación de asignaciones">{filtros.page > 1 ? <Link key="ant" className="boton-pastilla" data-variante="secundario" href={`${query(filtros.page - 1)}#listado-asignaciones`}>Anterior</Link> : <span key="ant" />}<span key="pag">Página {Math.min(filtros.page, paginas)} de {paginas} · {resultado.total} resultados</span>{filtros.page < paginas ? <Link key="sig" className="boton-pastilla" data-variante="secundario" href={`${query(filtros.page + 1)}#listado-asignaciones`}>Siguiente</Link> : <span key="sig" />}</nav></Paginacion> : null} />
   </Marco>;
 }
+
+/** Envoltura de servidor: entrega la paginación al cliente como un único hijo. */
+function Paginacion({ children }: { children: ReactNode }) { return <>{children}</>; }

@@ -107,7 +107,7 @@ afterAll(async () => {
 describe("asignaturas del grupo del estudiante", () => {
   it("lista solo las asignaturas activas de su grupo, sin duplicar y en orden de área", async () => {
     const r = await S.deEstudiante(ids.est);
-    expect(r.grupo?.etiqueta).toBe("1°-01");
+    expect(r.grupo?.etiqueta).toBe("1°");
     expect(r.materias.map((m) => m.nombre)).toEqual(["Comprensión Lectora", "Matemáticas"]);
   });
 
@@ -175,7 +175,7 @@ describe("vista de una materia", () => {
     const v = await S.vistaMateria(estudiante(), ids.matematicas);
     expect(v).toMatchObject({
       materia: { id: ids.matematicas, nombre: "Matemáticas", escena: "matematicas", claseHref: `/materias/${ids.matematicas}` },
-      grupo: { id: ids.g1, etiqueta: "1°-01" },
+      grupo: { id: ids.g1, etiqueta: "1°" },
       actividades: null,
     });
   });

@@ -1057,3 +1057,188 @@ h3 {
 @media (min-width: 1300px) {
   .marco-juego.mundo-dia:has(.marco-juego-menu[data-items]) .marco-juego-colegio { display: inline; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CONFIGURACIÓN DEL ADMIN (Estructura y Asignaciones)
+   Ruta de seis tarjetas-paso arriba; debajo, una sola sección a la vez
+   con el alta plegada y los registros como tarjetas. Nada se apila: el
+   scroll queda en una sección, nunca en seis.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Ruta de configuración ───────────────────────────────────────── */
+.config-ruta { margin-bottom: 18px; }
+.config-ruta ol { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; counter-reset: none; }
+.config-paso {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: 100%;
+  padding: 14px 15px 15px;
+  border: 1.5px solid var(--dia-borde);
+  border-radius: 18px;
+  background: var(--papel);
+  color: var(--dia-texto);
+  text-decoration: none;
+  box-shadow: var(--dia-sombra);
+  transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.18s ease-out, box-shadow 0.26s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.18s ease-out;
+}
+.config-paso:hover { transform: translateY(-2px); border-color: var(--dia-borde-panel); box-shadow: 0 16px 28px -18px #0a3d6b80; }
+.config-paso:focus-visible { outline: 3px solid var(--dia-azul); outline-offset: 3px; }
+.config-paso-cabeza { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.config-paso-icono { display: grid; place-items: center; width: 38px; height: 38px; flex: 0 0 auto; border-radius: 12px; background: var(--dia-tinte); color: var(--dia-azul); }
+.config-paso-orden { white-space: nowrap; font-size: var(--tipo-rotulo); font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--dia-suave); }
+.config-paso-estado {
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.config-paso-estado[data-estado="listo"] { background: var(--color-pino-100); color: #0b4a26; }
+.config-paso-estado[data-estado="atencion"] { background: var(--color-naranja-100); color: var(--color-naranja-800); }
+.config-paso-estado[data-estado="pendiente"] { border: 1.5px dashed var(--dia-borde-panel); color: var(--dia-suave); }
+.config-paso-titulo { font-family: var(--fuente-display); font-size: 1.1875rem; font-weight: 800; line-height: 1.15; }
+.config-paso-cifra { font-size: 0.9375rem; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--dia-azul-hondo); }
+.config-paso-detalle { font-size: 0.875rem; line-height: 1.4; color: var(--dia-suave); text-wrap: pretty; }
+
+/* Paso abierto: se vuelve azul y apunta a la sección que tiene debajo. */
+.config-paso[aria-current="page"] { border-color: var(--dia-azul); background: var(--dia-azul); color: var(--papel); box-shadow: 0 16px 28px -16px #0055b4a6; }
+.config-paso[aria-current="page"]:hover { transform: none; }
+.config-paso[aria-current="page"] :is(.config-paso-orden, .config-paso-cifra, .config-paso-detalle) { color: var(--papel); }
+.config-paso[aria-current="page"] .config-paso-icono { background: var(--papel); color: var(--dia-azul); }
+.config-paso[aria-current="page"] .config-paso-estado[data-estado="pendiente"] { border-color: var(--papel); color: var(--papel); }
+.config-paso[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -9px;
+  width: 16px;
+  height: 16px;
+  border-radius: 0 0 4px 0;
+  background: var(--dia-azul);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+/* ── Sección abierta ─────────────────────────────────────────────── */
+.config-seccion {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(16px, 2vw, 24px);
+  border: 1.5px solid var(--dia-borde);
+  border-radius: 22px;
+  background: var(--papel);
+  box-shadow: var(--dia-sombra);
+  scroll-margin-top: 16px;
+  animation: config-entra 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes config-entra { from { opacity: 0.4; transform: translateY(8px); } }
+.config-seccion-cabeza { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 10px 16px; }
+.config-seccion-cabeza h2 { font-family: var(--fuente-display); font-size: clamp(1.375rem, 1.1rem + 0.8vw, 1.75rem); font-weight: 800; line-height: 1.1; color: var(--dia-texto); }
+.config-seccion-resumen { margin-top: 2px; font-size: 0.9375rem; font-weight: 700; color: var(--dia-suave); font-variant-numeric: tabular-nums; }
+.config-seccion-nota { max-width: 75ch; margin-top: -6px; font-size: 0.9375rem; line-height: 1.5; color: var(--dia-suave); }
+
+/* Alta plegable: botón y, abierto, un panel tintado en su lugar. */
+.config-alta { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.config-alta-panel { align-self: stretch; padding: 16px; border-radius: 16px; background: var(--dia-tinte); }
+.config-alta-panel[hidden] { display: none; }
+.config-alta-titulo { font-family: var(--fuente-display); font-size: 1.125rem; font-weight: 800; color: var(--dia-texto); }
+
+/* Filtros dentro de la sección: planos, en una fila que envuelve. */
+.marco-juego-hoja .config-seccion .admin-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px 12px;
+  margin: 0;
+  padding: 12px 14px;
+  border: 1.5px solid var(--dia-borde);
+  border-radius: 16px;
+  background: var(--dia-campo-fondo);
+  box-shadow: none;
+}
+.config-seccion .admin-filtros .admin-campo { flex: 1 1 150px; }
+.config-seccion .admin-filtros .admin-campo-ancho { flex: 2 1 240px; grid-column: auto; }
+.config-seccion .admin-filtros .admin-filtros-acciones { flex: 0 0 auto; }
+.config-seccion .admin-filtros > .admin-aviso { flex-basis: 100%; margin: 0; }
+.config-seccion .admin-aviso { margin-bottom: 0; }
+.config-seccion .admin-paginacion { margin-top: 0; }
+
+/* ── Tarjetas de registro ────────────────────────────────────────── */
+.config-fichas { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.config-ficha {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 16px;
+  border: 1.5px solid var(--dia-borde);
+  border-radius: 18px;
+  background: var(--papel);
+  transition: border-color 0.18s ease-out;
+}
+.config-ficha:hover, .config-ficha:focus-within { border-color: var(--dia-borde-panel); }
+.config-ficha[data-estado="INACTIVA"] { border-style: dashed; background: var(--dia-campo-fondo); }
+.config-ficha-cabeza { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 6px 10px; }
+.config-ficha-cabeza h3 { flex: 1 1 12ch; min-width: 0; font-family: var(--fuente-display); font-size: 1.25rem; font-weight: 800; line-height: 1.15; color: var(--dia-texto); overflow-wrap: anywhere; }
+.config-ficha-cabeza > :not(h3) { flex: 0 1 auto; max-width: 100%; margin-top: 2px; }
+.config-ficha-cabeza .config-insignia { border-radius: 10px; white-space: normal; text-wrap: balance; }
+.config-ficha-datos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 110px), 1fr)); gap: 8px 14px; margin: 0; }
+.config-ficha-datos > div { display: grid; gap: 1px; }
+.config-ficha-datos dt { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--dia-suave); }
+.config-ficha-datos dd { margin: 0; font-size: 0.9375rem; font-weight: 700; line-height: 1.4; color: var(--dia-texto); font-variant-numeric: tabular-nums; }
+.config-ficha-grupo { margin-top: -6px; font-size: 0.9375rem; font-weight: 800; color: var(--dia-azul-hondo); }
+.config-ficha-docente { display: flex; align-items: center; gap: 8px; font-size: 0.9375rem; font-weight: 700; color: var(--dia-texto); }
+.config-ficha-docente svg { flex: 0 0 auto; color: var(--dia-azul); }
+.config-ficha-acciones { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 12px; border-top: 1px solid var(--dia-borde); }
+.config-solo-lectura { flex-wrap: nowrap; align-items: center; gap: 6px; font-size: 0.875rem; font-weight: 700; color: var(--dia-suave); }
+
+.config-insignia { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 999px; background: var(--dia-tinte); color: var(--dia-texto); font-size: 0.8125rem; font-weight: 800; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.config-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.config-chip { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 999px; background: var(--dia-tinte); color: var(--dia-texto); font-size: 0.8125rem; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.config-chip svg { color: var(--dia-azul); }
+.config-falta { font-weight: 800; color: var(--color-naranja-800); }
+
+.config-accion {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1 1 auto;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 10px;
+  border: 1.5px solid var(--dia-borde-panel);
+  border-radius: 999px;
+  background: var(--papel);
+  color: var(--dia-azul-hondo);
+  font-size: 0.875rem;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.18s ease-out, border-color 0.18s ease-out, color 0.18s ease-out;
+}
+.config-accion:hover { border-color: var(--dia-azul); background: var(--dia-tinte); }
+.config-accion:focus-visible { outline: 3px solid var(--dia-azul); outline-offset: 2px; }
+.config-accion[data-tono="peligro"] { border-color: color-mix(in srgb, var(--color-naranja-800) 35%, transparent); color: var(--color-naranja-800); }
+.config-accion[data-tono="peligro"]:hover { border-color: var(--color-naranja-800); background: #fff1e8; }
+
+/* ── Adaptación ──────────────────────────────────────────────────── */
+@media (max-width: 1240px) { .config-ruta ol { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .config-ruta ol { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .config-paso { padding: 11px 12px 12px; border-radius: 15px; }
+  .config-paso-icono { width: 32px; height: 32px; border-radius: 10px; }
+  .config-paso-icono svg { width: 18px; height: 18px; }
+  .config-paso-orden { display: none; }
+  .config-paso-titulo { font-size: 1.0625rem; }
+  .config-paso:not([aria-current="page"]) .config-paso-detalle { display: none; }
+  .config-alta > .boton-pastilla { align-self: stretch; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .config-seccion { animation: none; }
+  .config-paso, .config-paso:hover { transition: none; transform: none; }
+}

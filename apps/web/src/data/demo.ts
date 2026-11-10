@@ -467,7 +467,7 @@ export const HOY: Clase[] = [
     id: "c1",
     asignatura: "Comprensión Lectora",
     tema: "El círculo de lectura",
-    grupo: "1°-01",
+    grupo: "1°",
     hora: "07:00",
     area: "literatura",
     ranuras: 5,
@@ -483,7 +483,7 @@ export const HOY: Clase[] = [
     id: "c2",
     asignatura: "Robótica",
     tema: "Circuitos seguros",
-    grupo: "1°-01",
+    grupo: "1°",
     hora: "09:00",
     area: "robotica",
     ranuras: 4,
@@ -497,7 +497,7 @@ export const HOY: Clase[] = [
     id: "c3",
     asignatura: "Emprendimiento",
     tema: "Preguntar antes de crear",
-    grupo: "1°-01",
+    grupo: "1°",
     hora: "10:30",
     area: "emprendimiento",
     ranuras: 4,
@@ -516,7 +516,7 @@ export const HOY: Clase[] = [
   {
     id: "c4",
     asignatura: "Ética y Valores",
-    grupo: "1°-01",
+    grupo: "1°",
     hora: "11:30",
     ranuras: 4,
     contenidos: [],
@@ -525,7 +525,7 @@ export const HOY: Clase[] = [
 
 export const DOCENTE = {
   nombre: "Docente de ejemplo",
-  grupo: "1°-01",
+  grupo: "1°",
   periodo: "Período 3",
   clasesACargo: 14,
 };

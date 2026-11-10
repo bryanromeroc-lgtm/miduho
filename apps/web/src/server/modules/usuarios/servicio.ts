@@ -47,7 +47,7 @@ type GrupoSel = {
 function grupoDto(g: GrupoSel) {
   return {
     id: g.id,
-    etiqueta: etiquetaGrupo(g.grado.nombre, g.identificador),
+    etiqueta: etiquetaGrupo(g.grado.nombre),
     anio: g.anioLectivo.anio,
     anioLectivoId: g.anioLectivo.id,
     anioCerrado: g.anioLectivo.estado === "CERRADO",

@@ -111,7 +111,7 @@ describe("listado de grupos del docente", () => {
     const grupos = await S.listarGrupos(ids.docA);
     expect(grupos.map((g) => g.id)).toEqual([ids.g1]); // G2 tiene solo una asignación INACTIVA
     const [g1] = grupos;
-    expect(g1).toMatchObject({ etiqueta: "3°-01", anio: 2026, totalEstudiantes: 2 }); // e4 ya salió de G1
+    expect(g1).toMatchObject({ etiqueta: "3°", anio: 2026, totalEstudiantes: 2 }); // e4 ya salió de G1
     expect(g1.asignaturas.map((a) => a.asignatura)).toEqual(["Asignatura A", "Asignatura B"]);
     expect(g1.asignaturas[1].bloques.map((b) => b.dia)).toEqual(["LUNES", "JUEVES"]);
   });

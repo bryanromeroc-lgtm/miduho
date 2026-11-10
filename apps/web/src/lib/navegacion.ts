@@ -120,9 +120,12 @@ export function nombreRol(rol: string) {
   return NOMBRE_ROL[rol] ?? rol;
 }
 
-/** "1°" + "01" → "1°-01", la forma en que el colegio nombra sus grupos. */
-export function etiquetaGrupo(grado: string, identificador: string) {
-  return `${grado}-${identificador}`;
+/**
+ * El colegio tiene un solo grupo por grado: el grupo se nombra como su grado
+ * ("1°", "2°", …).
+ */
+export function etiquetaGrupo(grado: string) {
+  return grado;
 }
 
 /**

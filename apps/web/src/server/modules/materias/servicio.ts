@@ -84,7 +84,7 @@ export function crearServicioMaterias(
       ]);
 
       return {
-        grupo: { id: grupo.id, etiqueta: etiquetaGrupo(grupo.grado.nombre, grupo.identificador) },
+        grupo: { id: grupo.id, etiqueta: etiquetaGrupo(grupo.grado.nombre) },
         materias: filas.map((f) => {
           const escena = escenaDe(f.nombre, f.area.nombre);
           const d = porDesempeno.get(f.id);
