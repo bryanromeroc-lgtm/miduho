@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   contextoVisible,
+  esRutaMaqueta,
   etiquetaGrupo,
   grupoMaqueta,
   inicioDeContexto,
@@ -29,8 +30,19 @@ describe("navegación por contexto", () => {
     ]);
   });
 
-  it("ADMIN ve solo administración y Cuenta", () => {
-    expect(etiquetas("ADMIN")).toEqual(["Dashboard", "Usuarios", "Estudiantes", "Estructura", "Asignaciones", "Cuenta"]);
+  it("ADMIN (la coordinadora) ve contenido, Biblioteca y Laboratorios antes de la administración", () => {
+    expect(etiquetas("ADMIN")).toEqual([
+      "Dashboard",
+      "Contenido",
+      "Biblioteca",
+      "Laboratorios",
+      "Usuarios",
+      "Estudiantes",
+      "Estructura",
+      "Asignaciones",
+      "Cuenta",
+    ]);
+    expect(rutasPorContexto("ADMIN")[1].href).toBe("/admin/contenido");
     const hrefs = rutasPorContexto("ADMIN").map((r) => r.href);
     expect(hrefs).not.toContain("/");
     expect(hrefs).not.toContain("/mi-curso");
@@ -59,6 +71,28 @@ describe("contexto visible", () => {
     expect(contextoVisible("ADMIN", ["ADMIN", "DOCENTE"], "/biblioteca")).toBe("ADMIN");
     expect(contextoVisible("ADMIN", ["ADMIN"], "/cuenta")).toBe("ADMIN");
     expect(contextoVisible("DOCENTE", ["ADMIN", "DOCENTE"], "/cuenta")).toBe("DOCENTE");
+  });
+
+  it("Laboratorios conserva el contexto guardado en cada combinación de roles", () => {
+    for (const ruta of ["/laboratorios", "/laboratorios/u1", "/emprendimiento"]) {
+      expect(contextoVisible("ADMIN", ["ADMIN"], ruta)).toBe("ADMIN");
+      expect(contextoVisible("DOCENTE", ["DOCENTE"], ruta)).toBe("DOCENTE");
+      expect(contextoVisible("ESTUDIANTE", ["ESTUDIANTE"], ruta)).toBe("ESTUDIANTE");
+      expect(contextoVisible("ADMIN", ["ADMIN", "DOCENTE"], ruta)).toBe("ADMIN");
+      expect(contextoVisible("DOCENTE", ["ADMIN", "DOCENTE"], ruta)).toBe("DOCENTE");
+    }
+  });
+
+  it("el resto de rutas de la maqueta siguen pintando DOCENTE a una cuenta mixta", () => {
+    for (const ruta of ["/", "/clases", "/clases/c1", "/agenda", "/mi-curso"]) {
+      expect(contextoVisible("ADMIN", ["ADMIN", "DOCENTE"], ruta)).toBe("DOCENTE");
+    }
+    expect(esRutaMaqueta("/laboratorios")).toBe(false);
+    expect(esRutaMaqueta("/agenda")).toBe(true);
+  });
+
+  it("/admin/contenido pinta ADMIN a la cuenta mixta aunque su contexto sea DOCENTE", () => {
+    expect(contextoVisible("DOCENTE", ["ADMIN", "DOCENTE"], "/admin/contenido/x/5")).toBe("ADMIN");
   });
 
   it("no eleva a ADMIN a quien no tiene el rol", () => {

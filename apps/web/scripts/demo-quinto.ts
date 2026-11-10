@@ -15,6 +15,7 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import bcrypt from "bcryptjs";
 import { PrismaClient } from "../src/generated/prisma/client";
 import { urlBaseDatos } from "../src/lib/entorno";
+import { ASIGNATURAS_CURRICULO } from "../prisma/asignaturas-curriculo";
 
 const db = new PrismaClient({
   adapter: new PrismaPg({ connectionString: urlBaseDatos() }),
@@ -23,20 +24,7 @@ const db = new PrismaClient({
 const ANIO = 2026;
 const CORREO = "estudiante.quinto@miduho.test";
 
-/** Asignatura (nombre = carpeta del currículo) → área y docente demo que la dicta. */
-const ASIGNATURAS = [
-  { nombre: "Comprensión Lectora", area: "Humanidades: Lengua Castellana", orden: 1, docente: "claudia.rincon@miduho.test" },
-  { nombre: "Ciencias Naturales", area: "Ciencias Naturales y Educación Ambiental", orden: 2, docente: "andres.moreno@miduho.test" },
-  { nombre: "Robótica", area: "Tecnología e Informática", orden: 3, docente: "luz.castaneda@miduho.test" },
-  { nombre: "Emprendimiento", area: "Emprendimiento", orden: 4, docente: "luz.castaneda@miduho.test" },
-  { nombre: "Matemáticas", area: "Matemáticas", orden: 5, docente: "andres.moreno@miduho.test" },
-  { nombre: "Ciencias Sociales", area: "Ciencias Sociales, Historia, Geografía, Constitución Política y Democracia", orden: 6, docente: "andres.moreno@miduho.test" },
-  { nombre: "Inglés", area: "Humanidades: Idioma Extranjero (Inglés)", orden: 7, docente: "claudia.rincon@miduho.test" },
-  { nombre: "Educación Artística", area: "Educación Artística y Cultural", orden: 8, docente: "luz.castaneda@miduho.test" },
-  { nombre: "Educación Física", area: "Educación Física, Recreación y Deportes", orden: 9, docente: "andres.moreno@miduho.test" },
-  { nombre: "Ética y Valores", area: "Educación Ética y en Valores Humanos", orden: 10, docente: "claudia.rincon@miduho.test" },
-  { nombre: "Educación Religiosa", area: "Educación Religiosa", orden: 11, docente: "claudia.rincon@miduho.test" },
-] as const;
+const ASIGNATURAS = ASIGNATURAS_CURRICULO;
 
 const ALFABETO = "abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ";
 function generarClave() {

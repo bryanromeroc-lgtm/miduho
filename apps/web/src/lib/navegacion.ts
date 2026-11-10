@@ -16,6 +16,7 @@ export type IdRuta =
   | "agenda"
   | "mi-curso"
   | "dashboard"
+  | "contenido"
   | "usuarios"
   | "estructura"
   | "asignaciones"
@@ -36,6 +37,7 @@ const R: Record<IdRuta, RutaNav> = {
   agenda: { id: "agenda", href: "/agenda", etiqueta: "Agenda" },
   "mi-curso": { id: "mi-curso", href: "/mi-curso", etiqueta: "Mi curso" },
   dashboard: { id: "dashboard", href: "/admin", etiqueta: "Dashboard" },
+  contenido: { id: "contenido", href: "/admin/contenido", etiqueta: "Contenido" },
   usuarios: { id: "usuarios", href: "/admin/usuarios", etiqueta: "Usuarios" },
   estructura: { id: "estructura", href: "/admin/estructura", etiqueta: "Estructura" },
   asignaciones: { id: "asignaciones", href: "/admin/asignaciones", etiqueta: "Asignaciones" },
@@ -47,7 +49,8 @@ const R: Record<IdRuta, RutaNav> = {
 const POR_CONTEXTO: Record<ContextoShell, IdRuta[]> = {
   ESTUDIANTE: ["hoy", "biblioteca", "laboratorios", "agenda", "cuenta"],
   DOCENTE: ["hoy", "clases", "biblioteca", "laboratorios", "agenda", "mi-curso", "cuenta"],
-  ADMIN: ["dashboard", "usuarios", "estudiantes", "estructura", "asignaciones", "cuenta"],
+  // La coordinadora ve el contenido pedagógico antes que la administración (vista-admin-contenido, D6).
+  ADMIN: ["dashboard", "contenido", "biblioteca", "laboratorios", "usuarios", "estudiantes", "estructura", "asignaciones", "cuenta"],
 };
 
 /** El inicio del estudiante es su tablero de materias, no el día de la docente. */
@@ -78,10 +81,14 @@ export function rutaActiva(href: string, pathname: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-/** Rutas de la maqueta general (Hoy, clases, laboratorios, agenda) y Mi curso. */
+/**
+ * Rutas de la maqueta de la docente (Hoy, clases, agenda) y Mi curso.
+ * Laboratorios ya no está aquí: es común a los tres contextos y, como la
+ * Biblioteca, conserva el contexto guardado (vista-admin-contenido, D5).
+ */
 export function esRutaMaqueta(pathname: string) {
   if (pathname === "/") return true;
-  return ["/clases", "/laboratorios", "/agenda", "/emprendimiento", "/mi-curso"].some(
+  return ["/clases", "/agenda", "/mi-curso"].some(
     (base) => pathname === base || pathname.startsWith(`${base}/`),
   );
 }
@@ -90,7 +97,8 @@ export function esRutaMaqueta(pathname: string) {
  * Contexto que pinta el shell. Una cuenta DOCENTE + ADMIN que abre una ruta de
  * administración ve la navegación ADMIN aunque su último contexto sea DOCENTE,
  * y la de DOCENTE dentro de la maqueta o Mi curso: la barra nunca contradice
- * la página. Biblioteca y Cuenta, comunes a todos, conservan el contexto guardado.
+ * la página. Biblioteca, Laboratorios y Cuenta, comunes a todos, conservan el
+ * contexto guardado.
  */
 export function contextoVisible(
   contexto: ContextoShell | null,

@@ -13,6 +13,9 @@ import s from "./vista.module.css";
 // Dónde flotan los sueltos: en los márgenes, fuera de la columna de texto.
 const LUGAR_SUELTO = ["arribaIzq", "abajoIzq", "arribaDer", "abajoDer"] as const;
 
+/** Quién mira: el estudiante (por defecto) o la coordinadora en vista previa de un grado (vista-admin-contenido, D3). */
+export type ModoVista = { tipo: "estudiante" } | { tipo: "vista-previa"; grado: string };
+
 /*
   VISTA DE MATERIA — pantalla completa de una asignatura del estudiante
   (vistas-de-materia, D6). Encabezado flat, cabecera temática, cuadrícula
@@ -26,8 +29,10 @@ export function VistaMateria({
   volverHref,
   rotulo,
   extra,
+  modo = { tipo: "estudiante" },
 }: {
-  datos: Datos;
+  /** El grupo no se pinta: la vista previa no tiene. */
+  datos: Pick<Datos, "materia" | "actividades">;
   pagina: number;
   /** Enlace a otra página de la cuadrícula. */
   hrefPagina: (n: number) => string;
@@ -36,8 +41,12 @@ export function VistaMateria({
   rotulo?: string;
   /** Herramienta extra en el encabezado (selector de la muestra). */
   extra?: ReactNode;
+  /** En vista previa: franja «Vista previa · {grado}», «Volver a Contenido», sin aviso de primera visita. */
+  modo?: ModoVista;
 }) {
   const { materia, actividades } = datos;
+  const previa = modo.tipo === "vista-previa" ? modo : null;
+  const volverTexto = previa ? "Volver a Contenido" : "Volver a Mis materias";
   const kit = kitDe(materia.escena);
   const mitad = Math.ceil(kit.cabecera.length / 2);
   // Las aventuras van primero, como sticker destacado de dos casillas.
@@ -55,9 +64,11 @@ export function VistaMateria({
 
       <EncabezadoMateria
         volverHref={volverHref}
+        volverTexto={volverTexto}
         rotulo={rotulo}
         extra={extra}
-        bienvenida={rotulo ? undefined : { materiaId: materia.id, conActividades: !!hoja }}
+        franja={previa ? `Vista previa · ${previa.grado}` : undefined}
+        bienvenida={rotulo || previa ? undefined : { materiaId: materia.id, conActividades: !!hoja }}
       />
 
       <main className={s.contenido} id="actividades" tabIndex={-1}>
@@ -83,10 +94,19 @@ export function VistaMateria({
           </span>
         </section>
 
-        {materia.conMaterial === false ? (
+        {previa && !hoja ? (
           <Vacio
             kit={kit}
             volverHref={volverHref}
+            volverTexto={volverTexto}
+            titulo={`Aún no hay actividades para ${previa.grado}`}
+            texto={`El currículo de ${materia.nombre} todavía no tiene actividades para este grado.`}
+          />
+        ) : materia.conMaterial === false ? (
+          <Vacio
+            kit={kit}
+            volverHref={volverHref}
+            volverTexto={volverTexto}
             titulo="Esta materia está en preparación"
             texto="Tu docente está alistando el material. Vuelve pronto."
           />
@@ -94,6 +114,7 @@ export function VistaMateria({
           <Vacio
             kit={kit}
             volverHref={volverHref}
+            volverTexto={volverTexto}
             titulo="Aún no hay actividades"
             texto="Cuando tu docente asigne actividades, aparecerán aquí."
           />
@@ -104,7 +125,7 @@ export function VistaMateria({
                 TIPOS_DESTACADOS.has(a.tipo) ? (
                   <TarjetaDestacada key={a.id} actividad={a} indice={i} />
                 ) : (
-                  <TarjetaPlana key={a.id} actividad={a} kit={kit} indice={i} />
+                  <TarjetaPlana key={a.id} actividad={a} kit={kit} indice={i} previa={!!previa} />
                 ),
               )}
             </ul>
@@ -145,7 +166,19 @@ function PaginaEnlace({ href, children }: { href: string | null; children: React
   );
 }
 
-function Vacio({ kit, titulo, texto, volverHref }: { kit: ReturnType<typeof kitDe>; titulo: string; texto: string; volverHref: string }) {
+function Vacio({
+  kit,
+  titulo,
+  texto,
+  volverHref,
+  volverTexto,
+}: {
+  kit: ReturnType<typeof kitDe>;
+  titulo: string;
+  texto: string;
+  volverHref: string;
+  volverTexto: string;
+}) {
   return (
     <section className={s.vacio} aria-labelledby="vacio-titulo">
       <span className={s.vacioEscena} aria-hidden="true">
@@ -159,7 +192,7 @@ function Vacio({ kit, titulo, texto, volverHref }: { kit: ReturnType<typeof kitD
       <p className={s.vacioTexto}>{texto}</p>
       <Link href={volverHref} className={s.vacioAccion}>
         <ArrowLeft size={20} strokeWidth={2.8} aria-hidden="true" />
-        Volver a Mis materias
+        {volverTexto}
       </Link>
     </section>
   );

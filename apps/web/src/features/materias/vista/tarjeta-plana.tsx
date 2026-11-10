@@ -45,10 +45,21 @@ function Intentos({ usados, maximo, tipo }: { usados: number; maximo: number | n
   fuera del orden de tabulación. Variante plana de la tarjeta sticker de
   features/actividades/presentacion, que no se modifica.
 */
-export function TarjetaPlana({ actividad: a, kit, indice }: { actividad: ActividadResumen; kit: Kit; indice: number }) {
+export function TarjetaPlana({
+  actividad: a,
+  kit,
+  indice,
+  previa = false,
+}: {
+  actividad: ActividadResumen;
+  kit: Kit;
+  indice: number;
+  /** Vista previa de la coordinadora: sin estrellas, intentos ni fechas; la línea dice solo el tipo de juego. */
+  previa?: boolean;
+}) {
   const accion = accionDe(a);
-  const cierre = textoCierre(a);
-  const resumen = resumenTarjeta(a);
+  const cierre = previa ? null : textoCierre(a);
+  const resumen = previa ? null : resumenTarjeta(a);
   const nombre = [a.titulo, nombreTipo(a.tipo), CHIP_ESTADO[a.estado], cierre?.replace(/\.$/, ""), resumen, accion.texto].filter(Boolean).join(". ") + ".";
   const tipoBoton = !accion.habilitada ? "bloqueada" : accion.principal ? "principal" : "secundaria";
   const contenido = (
@@ -68,10 +79,16 @@ export function TarjetaPlana({ actividad: a, kit, indice }: { actividad: Activid
           <span className={s.chip} data-estado={a.estado}>
             {CHIP_ESTADO[a.estado]}
           </span>
-          {a.estrellas !== null ? <EstrellasPlanas cantidad={a.estrellas} /> : cierre && <span className={s.cierre}>{cierre}</span>}
+          {!previa && (a.estrellas !== null ? <EstrellasPlanas cantidad={a.estrellas} /> : cierre && <span className={s.cierre}>{cierre}</span>)}
         </span>
         <span className={s.titulo}>{a.titulo}</span>
-        <Intentos usados={a.intentosUsados} maximo={a.intentosMax} tipo={a.tipo} />
+        {previa ? (
+          <span className={s.intentos} aria-hidden="true">
+            {nombreTipo(a.tipo)}
+          </span>
+        ) : (
+          <Intentos usados={a.intentosUsados} maximo={a.intentosMax} tipo={a.tipo} />
+        )}
         <span className={s.boton} data-tipo={tipoBoton}>
           {!accion.habilitada && <Lock size={18} strokeWidth={2.6} aria-hidden="true" />}
           {accion.texto}

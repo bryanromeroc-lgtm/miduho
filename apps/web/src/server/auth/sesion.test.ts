@@ -22,6 +22,13 @@ describe("matriz de rutas", () => {
     }
   });
 
+  it("Laboratorios admite a la coordinadora, la docente y el estudiante", () => {
+    for (const rol of ["ADMIN", "DOCENTE", "ESTUDIANTE"]) expect(puedeAccederRuta([rol], "LABORATORIOS")).toBe(true);
+    expect(puedeAccederRuta([], "LABORATORIOS")).toBe(false);
+    // Las rutas del estudiante y de la docente (familia GENERAL) siguen cerradas a ADMIN.
+    expect(puedeAccederRuta(["ADMIN"], "GENERAL")).toBe(false);
+  });
+
   it("rechaza accesos verticales y horizontales fuera del rol", () => {
     expect(puedeAccederRuta(["DOCENTE"], "ADMIN")).toBe(false);
     expect(puedeAccederRuta(["ESTUDIANTE"], "MI_CURSO")).toBe(false);

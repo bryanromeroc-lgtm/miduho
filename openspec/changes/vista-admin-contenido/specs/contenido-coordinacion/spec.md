@@ -43,7 +43,7 @@ Cada celda con actividades y cada celda «Sin contenido» SHALL ser un enlace a 
 - **THEN** llega a la vista previa de esa materia y grado, que muestra su estado vacío
 
 ### Requirement: Solo consulta
-La sección MUST NOT ofrecer ninguna acción que escriba datos: ni crear, editar o borrar actividades, ni asignarlas, ni modificar la estructura académica. No MUST exponer nombres de estudiantes, docentes ni resultados.
+La sección MUST NOT ofrecer ninguna acción que escriba datos: ni crear, editar o borrar actividades, ni asignarlas, ni modificar la estructura académica. MUST NOT exponer nombres de estudiantes, docentes ni resultados.
 
 #### Scenario: Sin acciones de escritura
 - **WHEN** la coordinadora recorre `/admin/contenido` y sus vistas previas

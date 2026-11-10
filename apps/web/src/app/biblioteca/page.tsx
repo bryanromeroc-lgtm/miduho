@@ -11,6 +11,7 @@ import { Portada } from "@/features/biblioteca/components/portada";
 import { TITULOS, type Titulo, type TipoRecurso, type RangoEdad, type Idioma } from "@/data/demo";
 import { libroDeTitulo } from "@/features/biblioteca/libros";
 import { buscar, indexar, sugerir } from "@/features/biblioteca/buscar";
+import { titulosVisibles } from "@/features/biblioteca/visibles";
 import { contextoVisible } from "@/lib/navegacion";
 import { cn } from "@/lib/utils";
 import styles from "./biblioteca.module.css";
@@ -38,8 +39,9 @@ const sinSigno = (s: string) => s.replace(/^[¡¿«"'\s]+/, "");
 export default function Biblioteca() {
   const pathname = usePathname();
   const datos = useShell();
-  const estudiante = !!datos && contextoVisible(datos.contexto, datos.roles, pathname) === "ESTUDIANTE";
-  const catalogo = useMemo(() => (estudiante ? TITULOS.filter((t) => !t.soloDocente) : TITULOS), [estudiante]);
+  const contexto = datos ? contextoVisible(datos.contexto, datos.roles, pathname) : null;
+  const estudiante = contexto === "ESTUDIANTE";
+  const catalogo = useMemo(() => titulosVisibles(TITULOS, contexto), [contexto]);
   const tipos = estudiante ? TIPOS.filter((t) => catalogo.some((c) => c.tipo === t)) : TIPOS;
 
   const [tipo, setTipo] = useState<TipoRecurso | "">("");

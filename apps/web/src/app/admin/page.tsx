@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Building2, CalendarClock, Users, UsersRound } from "lucide-react";
+import { Building2, CalendarClock, Library, Users, UsersRound } from "lucide-react";
 import { Cabecera, Marco } from "@/components/friso/marco";
 import { db } from "@/server/db";
 import { exigirRolPagina } from "@/server/pagina";
@@ -26,7 +26,7 @@ export default async function PaginaDashboard() {
       <Cabecera
         kicker={anio ? `Año lectivo ${anio.anio}` : "Sin año lectivo activo"}
         titulo="Administración"
-        nota="Usuarios, estructura académica y asignaciones docentes del colegio."
+        nota="Contenido pedagógico, usuarios, estructura académica y asignaciones docentes del colegio."
       />
       <dl className="panel-cifras">
         <div className="panel-cifra"><dt>Docentes activos</dt><dd>{docentes}</dd></div>
@@ -37,6 +37,10 @@ export default async function PaginaDashboard() {
       <section aria-labelledby="accesos-admin">
         <div className="section-heading"><h2 id="accesos-admin">Secciones</h2></div>
         <div className="panel-accesos">
+          <Link href="/admin/contenido" className="panel-acceso">
+            <strong><Library size={20} aria-hidden="true" /> Contenido pedagógico</strong>
+            <span>Actividades por área, asignatura y grado, y la vista previa de cada materia.</span>
+          </Link>
           <Link href="/admin/usuarios" className="panel-acceso">
             <strong><Users size={20} aria-hidden="true" /> Usuarios</strong>
             <span>Crear, editar, activar o desactivar cuentas y asignar roles.</span>

@@ -11,6 +11,7 @@ const RUTA_CAMBIO = "/cuenta/contrasena";
 
 function familia(pathname: string): FamiliaRuta {
   if (pathname.startsWith("/biblioteca")) return "BIBLIOTECA";
+  if (/^\/(laboratorios|emprendimiento)(\/|$)/.test(pathname)) return "LABORATORIOS";
   if (pathname.startsWith("/cuenta")) return "CUENTA";
   if (pathname.startsWith("/mi-curso")) return "MI_CURSO";
   if (/^\/(admin|usuarios|estructura|asignaciones)(\/|$)/.test(pathname)) return "ADMIN";

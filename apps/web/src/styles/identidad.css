@@ -992,6 +992,24 @@ h3 {
   .marco-juego.mundo-dia .marco-juego-menu:is([data-items="5"], [data-items="6"]) .pestana-dia { font-size: 0.6875rem; line-height: 1.05; white-space: normal; text-align: center; hyphens: manual; }
 }
 
+/* ── Coordinadora: ocho pestañas (vista-admin-contenido, D6) ──────────
+   No caben junto a la marca y la cuenta: el menú baja a su propia fila,
+   centrado bajo el encabezado, y nunca empuja la página a lo ancho. */
+@media (min-width: 900px) {
+  .marco-juego.mundo-dia:has(.marco-juego-menu:is([data-items="7"], [data-items="8"])) .marco-juego-cabecera { flex-wrap: wrap; row-gap: 10px; }
+  .marco-juego.mundo-dia .marco-juego-menu:is([data-items="7"], [data-items="8"]) { order: 3; flex: 1 0 100%; display: flex; justify-content: center; }
+  .marco-juego.mundo-dia .marco-juego-menu:is([data-items="7"], [data-items="8"]) ul { max-width: 100%; padding: 0 6px; }
+  .marco-juego.mundo-dia .marco-juego-menu:is([data-items="7"], [data-items="8"]) .pestana-dia { min-height: 52px; padding: 0 12px; gap: 7px; font-size: 1rem; }
+}
+@media (min-width: 900px) and (max-width: 1120px) {
+  .marco-juego.mundo-dia .marco-juego-menu:is([data-items="7"], [data-items="8"]) .pestana-dia svg { display: none; }
+  .marco-juego.mundo-dia .marco-juego-menu:is([data-items="7"], [data-items="8"]) .pestana-dia { padding: 0 10px; }
+}
+@media (max-width: 899px) {
+  .marco-juego.mundo-dia .marco-juego-menu:is([data-items="7"], [data-items="8"]) .pestana-dia { font-size: 0.6875rem; line-height: 1.05; white-space: normal; text-align: center; hyphens: manual; padding: 6px 0; }
+  .marco-juego.mundo-dia .marco-juego-menu:is([data-items="7"], [data-items="8"]) li { flex: 1 1 0; min-width: 0; }
+}
+
 /* ── Mis clases: la plancha del friso, sin contorno de tinta ─────── */
 .marco-juego-hoja .plancha {
   border: 0;

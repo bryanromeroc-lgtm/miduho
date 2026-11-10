@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 import { calificarIntento, type ResultadoIntento } from "../tipos/contrato";
 import { definicionDe, nombreTipo } from "../tipos/registro";
 import type { PropsJuego } from "./comun";
-import { primeraRespuestaCuenta, textoReglas } from "./reglas";
+import { AVISO_VISTA_PREVIA, primeraRespuestaCuenta, textoReglas, type ModoReproductor } from "./reglas";
 import s from "./reproductor.module.css";
 
 // Cada juego se descarga al abrirlo; la ruta inicial no incorpora los otros veinte.
@@ -78,7 +78,18 @@ export type ActividadParaJugar = { slug: string; titulo: string; tipo: string; i
   se califica con la misma función pura del tipo y se muestra el resultado
   con su repaso. Nada se guarda todavía, y la pantalla lo dice.
 */
-export function Reproductor({ actividad, materia, volverHref }: { actividad: ActividadParaJugar; materia: string; volverHref: string }) {
+export function Reproductor({
+  actividad,
+  materia,
+  volverHref,
+  modo = "practica",
+}: {
+  actividad: ActividadParaJugar;
+  materia: string;
+  volverHref: string;
+  /** `vista-previa`: la coordinadora revisa la actividad; el resultado lo dice y nada se guarda. */
+  modo?: ModoReproductor;
+}) {
   const [partida, setPartida] = useState(1);
   const [resultado, setResultado] = useState<ResultadoIntento | null>(null);
   const definicion = definicionDe(actividad.tipo);
@@ -100,7 +111,7 @@ export function Reproductor({ actividad, materia, volverHref }: { actividad: Act
 
       <div className={s.notas}>
         {!resultado && <p className={s.instruccion}>{actividad.instruccion}</p>}
-        <p className={s.practica}>{textoReglas(actividad.tipo)}</p>
+        <p className={s.practica}>{textoReglas(actividad.tipo, modo)}</p>
       </div>
 
       <section className={s.mesa} aria-label={resultado ? "Resultado" : "Juego"}>
@@ -110,6 +121,7 @@ export function Reproductor({ actividad, materia, volverHref }: { actividad: Act
             materia={materia}
             volverHref={volverHref}
             primeraCuenta={primeraRespuestaCuenta(actividad.tipo)}
+            aviso={modo === "vista-previa" ? AVISO_VISTA_PREVIA : null}
             otraVez={() => {
               setResultado(null);
               setPartida((n) => n + 1);
@@ -138,12 +150,15 @@ function Resultado({
   volverHref,
   otraVez,
   primeraCuenta,
+  aviso,
 }: {
   resultado: ResultadoIntento;
   materia: string;
   volverHref: string;
   otraVez: () => void;
   primeraCuenta: boolean;
+  /** Aviso visible en el resultado (vista previa). */
+  aviso: string | null;
 }) {
   const estrellas = estrellasDe(resultado.porcentaje);
   const titulo = useRef<HTMLHeadingElement>(null);
@@ -166,6 +181,7 @@ function Resultado({
       <p className={s.resultadoCifra}>
         {varios ? `Acertaste ${aciertos} de ${resultado.items.length}.` : `Lograste ${resultado.puntaje} de ${resultado.puntajeMaximo}.`}
       </p>
+      {aviso && <p className={s.notaResultado}>{aviso}</p>}
       {primeraCuenta && aciertos < resultado.items.length && (
         <p className={s.notaResultado}>Las estrellas muestran tus primeras respuestas. Las pistas y correcciones te ayudan a practicar.</p>
       )}

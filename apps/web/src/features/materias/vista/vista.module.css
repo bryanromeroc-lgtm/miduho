@@ -899,3 +899,24 @@
     padding-inline: 14px;
   }
 }
+
+/* ---------- Vista previa de la coordinadora (vista-admin-contenido, D3) ---------- */
+
+/* Franja visible «Vista previa · 5°»: texto real sobre `banda` con tinta (par permitido ≥ 4.5:1). */
+.franja {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin: 0;
+  padding: 8px 18px 8px 14px;
+  border-radius: 999px;
+  background: var(--m-banda);
+  color: var(--m-tinta);
+  font-family: var(--fuente-display);
+  font-size: var(--t-boton);
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+}

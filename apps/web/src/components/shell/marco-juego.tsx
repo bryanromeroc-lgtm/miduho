@@ -13,6 +13,7 @@ import {
   GraduationCap,
   Home,
   LayoutDashboard,
+  Library,
   LayoutGrid,
   School,
   ShieldCheck,
@@ -47,6 +48,7 @@ const ICONOS: Record<IdRuta, LucideIcon> = {
   agenda: CalendarDays,
   "mi-curso": UsersRound,
   dashboard: LayoutDashboard,
+  contenido: Library,
   usuarios: Users,
   estructura: Building2,
   asignaciones: CalendarClock,
@@ -70,6 +72,7 @@ const PARTIR: Record<string, string> = {
   Biblioteca: "Biblio\u00adteca",
   Laboratorios: "Labora\u00adtorios",
   Asignaciones: "Asigna\u00adciones",
+  Contenido: "Conte\u00adnido",
   Estudiantes: "Estu\u00addiantes",
   Estructura: "Estruc\u00adtura",
 };
