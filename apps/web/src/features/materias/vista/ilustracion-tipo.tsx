@@ -255,6 +255,18 @@ const DIBUJOS: Record<string, Dibujo> = {
       <rect x="112" y="24" width="30" height="6" rx="3" fill={P} transform="rotate(-24 107 22)" />
     </g>
   ),
+  // Un mapa de regiones; una chincheta (pieza del kit) clavada en una de ellas.
+  mapa: (pieza) => (
+    <g>
+      <path d="M48 14 L86 10 L104 26 L98 46 L118 54 L112 80 L74 84 L60 66 L40 62 L36 36 Z" fill={P} />
+      <path d="M60 66 L70 44 L98 46 M70 44 L62 22" stroke={A} strokeWidth="2" fill="none" opacity=".5" />
+      <path d="M70 44 L98 46 L112 80 L74 84 L60 66 Z" fill={A} opacity=".35" />
+      <path d="M88 64 L88 40" stroke={A} strokeWidth="3" strokeLinecap="round" />
+      <path d="M88 40 L104 46 L88 52 Z" fill={A} />
+      <circle cx="88" cy="64" r="4" fill={A} />
+      {pieza(0, 10, 50, 30)}
+    </g>
+  ),
   // Tres carriles; en cada uno un cartel (pieza del kit) y una bicicleta en el primero.
   "ruta-palabras": (pieza) => (
     <g>

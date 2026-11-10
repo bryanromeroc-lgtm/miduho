@@ -9,6 +9,7 @@ import { corrector } from "../juegos/corrector/tipo";
 import { divisionTipo } from "../juegos/division/tipo";
 import { golpea } from "../juegos/golpea/tipo";
 import { jarras } from "../juegos/jarras/tipo";
+import { mapa as mapaTipo } from "../juegos/mapa/tipo";
 import { multiplos } from "../juegos/multiplos/tipo";
 import { operaciones } from "../juegos/operaciones/tipo";
 import { pancarta } from "../juegos/pancarta/tipo";
@@ -25,7 +26,7 @@ import { palabraSecreta, sopaLetras } from "./palabras";
 import { completar, concurso, seleccionMultiple } from "./preguntas";
 import { clasificar, emparejar, memoria, ordenar } from "./relaciones";
 
-const DEFINICIONES = [seleccionMultiple, concurso, completar, emparejar, ordenar, clasificar, memoria, sopaLetras, palabraSecreta, pancarta, pizarraDecimales, corrector, sello, divisionTipo, robotsDivisiones, bocadillo, jarras, porcentajeTipo, multiplos, operaciones, rectas, angulos, aventura, tallerFracciones, golpea, rutaPalabras];
+const DEFINICIONES = [seleccionMultiple, concurso, completar, emparejar, ordenar, clasificar, memoria, sopaLetras, palabraSecreta, pancarta, pizarraDecimales, corrector, sello, divisionTipo, robotsDivisiones, bocadillo, jarras, porcentajeTipo, multiplos, operaciones, rectas, angulos, aventura, tallerFracciones, golpea, rutaPalabras, mapaTipo];
 
 function registrar(lista: DefinicionTipoActividad<never, never>[]) {
   const mapa = new Map<string, DefinicionTipoActividad>();

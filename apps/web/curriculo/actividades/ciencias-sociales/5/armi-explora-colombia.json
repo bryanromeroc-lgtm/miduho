@@ -1,0 +1,16 @@
+{
+  "slug": "armi-explora-colombia",
+  "titulo": "Armi explora Colombia",
+  "tipo": "mapa",
+  "grado": 5,
+  "imagen": "/images/juegos/mapa/portada.webp",
+  "instruccion": "Busca en el mapa el departamento que te dice Armi y tócalo. Si fallas, lee la pista: te dice hacia dónde mirar.",
+  "tema": "Organización territorial: departamentos y regiones naturales de Colombia en el mapa",
+  "contenido": {
+    "mapa": "colombia-departamentos",
+    "semilla": 1810,
+    "rondas": 10,
+    "regiones": ["caribe", "andina", "pacifica", "orinoquia", "amazonia", "insular"],
+    "fronteras": true
+  }
+}

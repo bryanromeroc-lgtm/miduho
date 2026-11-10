@@ -37,6 +37,7 @@ const JuegoAngulos = dynamic(() => import("../juegos/angulos/juego").then((m) =>
 const JuegoFracciones = dynamic(() => import("../juegos/fracciones/juego").then((m) => m.JuegoFracciones), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoRutaPalabras = dynamic(() => import("../juegos/ruta-palabras/juego").then((m) => m.JuegoRutaPalabras), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoGolpea = dynamic(() => import("../juegos/golpea/juego").then((m) => m.JuegoGolpea), { loading: () => <p role="status">Cargando juego…</p> });
+const JuegoMapa = dynamic(() => import("../juegos/mapa/juego").then((m) => m.JuegoMapa), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoAventura = dynamic(() => import("../juegos/aventura/juego").then((m) => m.JuegoAventura), { loading: () => <p role="status">Cargando juego…</p> });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -57,6 +58,7 @@ const JUEGOS: Record<string, ComponentType<PropsJuego<any>>> = {
   division: JuegoDivision,
   "robots-divisiones": JuegoRobots,
   golpea: JuegoGolpea,
+  mapa: JuegoMapa,
   "ruta-palabras": JuegoRutaPalabras,
   bocadillo: JuegoBocadillo,
   jarras: JuegoJarras,

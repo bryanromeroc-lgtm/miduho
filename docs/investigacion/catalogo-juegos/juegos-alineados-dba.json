@@ -1,0 +1,3621 @@
+{
+ "version": 1,
+ "fecha_consulta": "2026-11-07",
+ "rubrica": {
+  "alineacion": "0–3: el juego ejercita lo que pide el enunciado o una evidencia del DBA",
+  "evidencia": "0–2: lo que hace el niño para ganar demuestra el aprendizaje",
+  "mecanica_wcag": "0–2: reproducible en MIDUHO sin arrastre obligatorio ni reloj que corte (2), con adaptación (1), no (0)",
+  "tipo": "0–1: reutiliza un tipo de MIDUHO o aporta uno nuevo valioso",
+  "umbral": "se selecciona con total ≥ 5"
+ },
+ "regla": "Solo se toma la mecánica y la idea; la actividad de MIDUHO se escribe y se ilustra desde cero (ver /crear-juego-referencia).",
+ "seleccionados": [
+  {
+   "dba": "NAT-1-03",
+   "grado": 1,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Diferencias entre seres vivos y materia inerte",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/natu-svi-1-1",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Clasificar existente",
+   "adaptacion": "Vivo o inerte justificando con la función vital.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": true,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "observado en navegador (carga)",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "NAT-1-03",
+   "grado": 1,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Clasificación de Seres Vivos e Inertes – COKITOS",
+   "url": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Clasificar existente",
+   "adaptacion": "Clasificar elementos del parque; tocar objeto y luego grupo.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "NAT-1-03",
+   "grado": 1,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "¿En qué se diferencian los seres vivos de los objetos inertes?",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/en-que-se-diferencian-los-seres-vivos-de-los-objetos-inertes",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Clasificar existente",
+   "adaptacion": "Lección MEN de 1.° (fuente de ítems).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "NAT-2-02",
+   "grado": 2,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "PhET",
+   "titulo": "Estados de la Materia: Intro",
+   "url": "https://phet.colorado.edu/es/simulations/states-of-matter-basics",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Simulador de variables 🆕",
+   "adaptacion": "Estados del agua al cambiar la temperatura; predecir antes.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "CC BY 4.0 🔶 (según PhET; confirmar por simulación)"
+  },
+  {
+   "dba": "NAT-2-02",
+   "grado": 2,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "¿A qué se parece más la gelatina, a un sólido o a un líquido?",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/que-se-parece-mas-la-gelatina-un-solido-o-un-liquido",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Clasificar existente",
+   "adaptacion": "Lección MEN de 2.°: sólido, líquido o gas.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "NAT-2-03",
+   "grado": 2,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Relacionar Animales y su Hábitat – COKITOS",
+   "url": "https://www.cokitos.com/relacionar-animales-y-su-habitat/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Emparejar existente",
+   "adaptacion": "Relacionar animales de Colombia (páramo, selva, río) con su hábitat y rasgo de adaptación.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "NAT-2-03",
+   "grado": 2,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "¿Qué necesita un ser vivo para subsistir?",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/que-necesita-un-ser-vivo-para-subsistir",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Simulador de variables 🆕",
+   "adaptacion": "Necesidades básicas; quitar agua o luz y predecir.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "NAT-3-04",
+   "grado": 3,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "PhET",
+   "titulo": "Estados de la materia",
+   "url": "https://phet.colorado.edu/es/simulations/states-of-matter",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Simulador de variables 🆕",
+   "adaptacion": "Temperatura y cambios de estado del agua.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "CC BY 4.0 🔶 (según PhET; confirmar por simulación)"
+  },
+  {
+   "dba": "NAT-3-04",
+   "grado": 3,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "¿Cómo influye la temperatura sobre el estado de la materia?",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/como-influye-la-temperatura-sobre-el-estado-de-la-materia",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Ordenar existente",
+   "adaptacion": "Ordenar las etapas del ciclo del agua y los cambios de estado.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "NAT-3-04",
+   "grado": 3,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "GCompris",
+   "titulo": "El ciclo del agua",
+   "url": "https://gcompris.net/screenshots-es.html#watercycle",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 1,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 6
+   },
+   "tipo_miduho": "Ordenar existente",
+   "adaptacion": "Ciclo del agua como secuencia.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "GPL-3.0"
+  },
+  {
+   "dba": "NAT-3-05",
+   "grado": 3,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "¿Cómo se relacionan los factores bióticos y abióticos de un ecosistema?",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/como-se-relacionan-los-factores-bioticos-y-abioticos-de-un-ecosistema",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Simulador de variables 🆕",
+   "adaptacion": "Terrario regional: cambiar luz, temperatura y agua y predecir el efecto (Catálogo MVP #3).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "NAT-3-05",
+   "grado": 3,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "¿Qué relaciones existen entre los factores abióticos y los seres vivos?",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/que-relaciones-existen-entre-los-factores-abioticos-y-los-seres-vivos",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Clasificar existente",
+   "adaptacion": "Clasificar biótico/abiótico y relacionarlos.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "NAT-4-05",
+   "grado": 4,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "¿Cómo puedo diferenciar que un material es una mezcla o es un compuesto puro?",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/como-puedo-diferenciar-que-un-material-es-una-mezcla-o-es-un-compuesto",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Simulador 🆕",
+   "adaptacion": "Elegir técnica (filtrar, tamizar, decantar, evaporar) para cada mezcla.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "NAT-4-05",
+   "grado": 4,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Las sustancias puras y las mezclas",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/natu-mat-6-1",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Clasificar existente",
+   "adaptacion": "Homogénea o heterogénea (es de 6.° en España; bajar dificultad).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "NAT-4-06",
+   "grado": 4,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "¿Cómo afecta la agricultura a las redes tróficas?",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/como-afecta-la-agricultura-las-redes-troficas",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Red trófica 🆕",
+   "adaptacion": "Conectar especies y predecir qué pasa si una desaparece.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "NAT-4-06",
+   "grado": 4,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "2048 cadena alimenticia",
+   "url": "https://www.cokitos.com/2048-cadena-alimenticia/",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 1,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 5
+   },
+   "tipo_miduho": "Ordenar existente",
+   "adaptacion": "Idea de cadena; en MIDUHO ordenar productor→consumidores→descomponedor con especies colombianas.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "NAT-4-07",
+   "grado": 4,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Los ecosistemas: componentes y relaciones",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/natu-svi-5-4",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Clasificar existente",
+   "adaptacion": "Ecosistemas: componentes y relaciones.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "NAT-4-07",
+   "grado": 4,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "¿Cuáles son las características del ecosistema local?",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/cuales-son-las-caracteristicas-del-ecosistema-local",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Mapa interactivo 🆕",
+   "adaptacion": "Ecosistemas colombianos según altitud y humedad.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "NAT-5-01",
+   "grado": 5,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "PhET",
+   "titulo": "Kit de Construcción de Circuitos: CD",
+   "url": "https://phet.colorado.edu/es/simulations/circuit-construction-kit-dc",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Simulador de circuito 🆕",
+   "adaptacion": "Armar circuitos en serie y en paralelo; retos calificados (Catálogo MVP #10).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "CC BY 4.0 🔶 (según PhET; confirmar por simulación)"
+  },
+  {
+   "dba": "NAT-5-01",
+   "grado": 5,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Cerrar el Circuito Eléctrico: CONNECTOR – COKITOS",
+   "url": "https://www.cokitos.com/cerrar-el-circuito-electrico/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Simulador de circuito 🆕",
+   "adaptacion": "Cerrar el circuito eligiendo piezas; tocar en lugar de arrastrar.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": true,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "observado en navegador (carga)",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "NAT-5-01",
+   "grado": 5,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "¿Qué necesitamos para construir un circuito eléctrico?",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/que-necesitamos-para-construir-un-circuito-electrico",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Etiquetar imagen 🆕",
+   "adaptacion": "Lección MEN de 5.°: partes del circuito.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "NAT-5-03",
+   "grado": 5,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Diagrama de la CÉLULA ANIMAL – COKITOS",
+   "url": "https://www.cokitos.com/diagrama-de-la-celula-animal/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Etiquetar imagen 🆕",
+   "adaptacion": "Etiquetar organelos de la célula animal y vegetal.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "NAT-5-03",
+   "grado": 5,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "¿Cómo se organizan las células para formar un ser vivo?",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/como-se-organizan-las-celulas-para-formar-un-ser-vivo",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Ordenar existente",
+   "adaptacion": "Niveles de organización: célula, tejido, órgano, sistema.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "NAT-5-04",
+   "grado": 5,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Partes del Sistema Digestivo – COKITOS",
+   "url": "https://www.cokitos.com/partes-del-sistema-digestivo/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Etiquetar imagen 🆕",
+   "adaptacion": "Partes del sistema digestivo y recorrido del alimento.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": true,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "observado en navegador (carga)",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "NAT-5-04",
+   "grado": 5,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Diagrama del SISTEMA RESPIRATORIO – COKITOS",
+   "url": "https://www.cokitos.com/diagrama-del-sistema-respiratorio/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Etiquetar imagen 🆕",
+   "adaptacion": "Sistema respiratorio; luego relación con el circulatorio.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "NAT-5-04",
+   "grado": 5,
+   "area": "ciencias-naturales",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Función de nutrición: el aparato digestivo",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/natu-seh-4-2",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Quiz",
+   "adaptacion": "Función de nutrición y aparato digestivo.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "SOC-1-01",
+   "grado": 1,
+   "area": "ciencias-sociales",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "﻿Orientación espacial: situación en el espacio",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/mat-geo-1-1",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Cuadrícula de instrucciones 🆕",
+   "adaptacion": "Orientación espacial con el propio cuerpo: delante, detrás, izquierda, derecha.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "SOC-1-01",
+   "grado": 1,
+   "area": "ciencias-sociales",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Atencion izquierda y derecha con el mono",
+   "url": "https://www.cokitos.com/atencion-izquierda-y-derecha-con-el-mono/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Golpea existente",
+   "adaptacion": "Izquierda y derecha; sin tiempo que corte.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "SOC-1-03",
+   "grado": 1,
+   "area": "ciencias-sociales",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Acontecimientos del pasado y del presente",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/soc-hue-1-2",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Línea de tiempo 🆕",
+   "adaptacion": "Pasado y presente; ordenar la rutina del día.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "SOC-1-03",
+   "grado": 1,
+   "area": "ciencias-sociales",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Juego de RUTINAS DIARIAS – COKITOS",
+   "url": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Ordenar existente",
+   "adaptacion": "Ordenar momentos del día.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "SOC-1-03",
+   "grado": 1,
+   "area": "ciencias-sociales",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Ordenar los meses del ano",
+   "url": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Ordenar existente",
+   "adaptacion": "Días de la semana y meses en orden.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "SOC-2-02",
+   "grado": 2,
+   "area": "ciencias-sociales",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Características de la Tierra y puntos cardinales",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/soc-mun-1-2",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Mapa interactivo 🆕",
+   "adaptacion": "Puntos cardinales; en MIDUHO misiones por Madrid, Cundinamarca.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "SOC-2-02",
+   "grado": 2,
+   "area": "ciencias-sociales",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "REPARTIDOR DE PIZZA: Orientación en el Mapa – COKITOS",
+   "url": "https://www.cokitos.com/repartidor-de-pizza-orientacion-en-el-mapa/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Cuadrícula de instrucciones 🆕",
+   "adaptacion": "Llevar pedidos siguiendo indicaciones N, S, E, O en un plano.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "SOC-2-05",
+   "grado": 2,
+   "area": "ciencias-sociales",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Las profesiones en los sectores de producción",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/soc-viv-2-3",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Clasificar existente",
+   "adaptacion": "Profesiones por sector productivo; oficios del municipio.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "SOC-2-05",
+   "grado": 2,
+   "area": "ciencias-sociales",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Juego de las Profesiones para niños – COKITOS",
+   "url": "https://www.cokitos.com/juego-de-las-profesiones-para-ninos/",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Emparejar existente",
+   "adaptacion": "Oficio y herramienta.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "SOC-3-02",
+   "grado": 3,
+   "area": "ciencias-sociales",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Juego de CAPITALES y DEPARTAMENTOS de COLOMBIA – COKITOS",
+   "url": "https://www.cokitos.com/juego-de-capitales-y-departamentos-de-colombia/",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 6
+   },
+   "tipo_miduho": "Mapa interactivo 🆕",
+   "adaptacion": "Ubicar Cundinamarca y su capital; luego relieve y economía (Catálogo MVP #4).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "SOC-4-01",
+   "grado": 4,
+   "area": "ciencias-sociales",
+   "prioridad_dba": "A",
+   "plataforma": "Seterra (GeoGuessr)",
+   "titulo": "Colombia: departamentos (mapa)",
+   "url": "https://www.geoguessr.com/vgp/3274?locale=es",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Mapa interactivo 🆕",
+   "adaptacion": "Departamentos de Colombia en el mapa; versión MIDUHO con límites y países vecinos.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": true,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "observado en navegador (carga)"
+  },
+  {
+   "dba": "SOC-4-01",
+   "grado": 4,
+   "area": "ciencias-sociales",
+   "prioridad_dba": "A",
+   "plataforma": "Digipuzzle",
+   "titulo": "Colombia con la carrera",
+   "url": "https://www.digipuzzle.net/minigames/mathracer/mathracer_colombia.htm?language=spanish",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Mapa interactivo 🆕",
+   "adaptacion": "Carrera geográfica de Colombia: sin cronómetro en MIDUHO.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": true,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "observado en navegador (carga)",
+   "nota": "Puede tener cronómetro (observado en la carrera de Colombia): en MIDUHO el reloj nunca corta."
+  },
+  {
+   "dba": "SOC-4-04",
+   "grado": 4,
+   "area": "ciencias-sociales",
+   "prioridad_dba": "A",
+   "plataforma": "MaguaRED",
+   "titulo": "Juguetes y juegos wayuu, muiscas e ingas",
+   "url": "https://maguared.gov.co/experiencias/juguetes-y-juegos-wayuu-muiscas-e-ingas",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 1,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 5
+   },
+   "tipo_miduho": "Aventura existente",
+   "adaptacion": "Fuente colombiana (MinCultura) sobre muiscas e ingas; juego propio de viaje en el tiempo.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶"
+  },
+  {
+   "dba": "SOC-4-07",
+   "grado": 4,
+   "area": "ciencias-sociales",
+   "prioridad_dba": "A",
+   "plataforma": "Cristic",
+   "titulo": "Derechos del menor",
+   "url": "https://www.cristic.com/derechos-del-menor/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Emparejar existente",
+   "adaptacion": "Derechos de la niñez y deberes; adaptar al Código de Infancia de Colombia.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Directorio de una docente de España; muchos recursos en Canva, Genially o Wordwall 🔶."
+  },
+  {
+   "dba": "SOC-5-01",
+   "grado": 5,
+   "area": "ciencias-sociales",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Juego con DEPARTAMENTOS de COLOMBIA (mapa) – COKITOS",
+   "url": "https://www.cokitos.com/juego-con-departamentos-de-colombia-mapa/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Mapa interactivo 🆕",
+   "adaptacion": "Ubicar departamentos y regiones naturales de Colombia.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": true,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "observado en navegador (carga)",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "SOC-5-01",
+   "grado": 5,
+   "area": "ciencias-sociales",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Juego de CAPITALES y DEPARTAMENTOS de COLOMBIA – COKITOS",
+   "url": "https://www.cokitos.com/juego-de-capitales-y-departamentos-de-colombia/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Mapa interactivo 🆕",
+   "adaptacion": "Capitales y departamentos.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "SOC-5-01",
+   "grado": 5,
+   "area": "ciencias-sociales",
+   "prioridad_dba": "A",
+   "plataforma": "Seterra (GeoGuessr)",
+   "titulo": "Colombia: departamentos (mapa)",
+   "url": "https://www.geoguessr.com/vgp/3274?locale=es",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Mapa interactivo 🆕",
+   "adaptacion": "Modo «ubicar» (pin) y modo «escribir».",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": true,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "observado en navegador (carga)"
+  },
+  {
+   "dba": "CIU-1a3-CP",
+   "grado": "1-3",
+   "area": "etica-y-valores",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "CLASIFICAR EMOCIONES Positivas y Negativas – COKITOS",
+   "url": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Clasificar existente",
+   "adaptacion": "Reconocer emociones propias y ajenas en escenas del recreo.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": true,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "observado en navegador (carga)",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "CIU-1a3-CP",
+   "grado": "1-3",
+   "area": "etica-y-valores",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Emociones y sentimientos",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/natu-seh-1-4",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Quiz",
+   "adaptacion": "Emociones y sentimientos.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "CIU-1a3-CP",
+   "grado": "1-3",
+   "area": "etica-y-valores",
+   "prioridad_dba": "A",
+   "plataforma": "Cristic",
+   "titulo": "Detectives emocionales",
+   "url": "https://www.cristic.com/detectives-emocionales-canva/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Novela de dilemas 🆕",
+   "adaptacion": "Detectar la emoción y elegir cómo ayudar.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Directorio de una docente de España; muchos recursos en Canva, Genially o Wordwall 🔶."
+  },
+  {
+   "dba": "CIU-1a3-PI",
+   "grado": "1-3",
+   "area": "etica-y-valores",
+   "prioridad_dba": "A",
+   "plataforma": "Toy Theater",
+   "titulo": "Feelings cards",
+   "url": "https://toytheater.com/feelings-cards/",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 1,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 5
+   },
+   "tipo_miduho": "Novela de dilemas 🆕",
+   "adaptacion": "Tarjetas de sentimientos como base para escenas de exclusión (VACÍO casi total de juegos).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶"
+  },
+  {
+   "dba": "CIU-4a5-CP",
+   "grado": "4-5",
+   "area": "etica-y-valores",
+   "prioridad_dba": "A",
+   "plataforma": "Cristic",
+   "titulo": "Emociones desagradables",
+   "url": "https://www.cristic.com/emociones-desagradables-2/",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 6
+   },
+   "tipo_miduho": "Novela de dilemas 🆕",
+   "adaptacion": "Manejo de la rabia; la respuesta asertiva/pasiva/agresiva se califica.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Directorio de una docente de España; muchos recursos en Canva, Genially o Wordwall 🔶."
+  },
+  {
+   "dba": "ING-1-01",
+   "grado": 1,
+   "area": "ingles",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Juegos de Simón dice online gratuitos para niños de primaria",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/juegos-simon-dice",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Golpea existente",
+   "adaptacion": "«Simon says» con órdenes de clase: tocar el objeto pedido sin traducción.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "ING-1-01",
+   "grado": 1,
+   "area": "ingles",
+   "prioridad_dba": "A",
+   "plataforma": "Árbol ABC",
+   "titulo": "Explora los saludos en inglés",
+   "url": "https://arbolabc.com/vocabulario-en-ingles/saludos-exploratorios",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 1,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 6
+   },
+   "tipo_miduho": "Emparejar + audio 🆕",
+   "adaptacion": "Saludos e instrucciones con audio.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶"
+  },
+  {
+   "dba": "ING-1-04",
+   "grado": 1,
+   "area": "ingles",
+   "prioridad_dba": "A",
+   "plataforma": "Árbol ABC",
+   "titulo": "Identifica la familia en inglés",
+   "url": "https://arbolabc.com/vocabulario-en-ingles/conoce-la-familia-christian",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Emparejar + audio 🆕",
+   "adaptacion": "Familia en inglés con audio.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶"
+  },
+  {
+   "dba": "ING-1-04",
+   "grado": 1,
+   "area": "ingles",
+   "prioridad_dba": "A",
+   "plataforma": "Cristic",
+   "titulo": "Greetings",
+   "url": "https://www.cristic.com/greetings/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Quiz + audio 🆕",
+   "adaptacion": "Greetings y preguntas personales básicas.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Directorio de una docente de España; muchos recursos en Canva, Genially o Wordwall 🔶."
+  },
+  {
+   "dba": "ING-2-02",
+   "grado": 2,
+   "area": "ingles",
+   "prioridad_dba": "A",
+   "plataforma": "Toy Theater",
+   "titulo": "Story sequence",
+   "url": "https://toytheater.com/story-sequence/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Ordenar existente",
+   "adaptacion": "Secuencia de historia en inglés con imágenes (first, then, finally).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶"
+  },
+  {
+   "dba": "ING-3-01",
+   "grado": 3,
+   "area": "ingles",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Juegos de comprensión lectora en inglés - English reading",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/juegos-de-ingles/english-reading",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Aventura existente",
+   "adaptacion": "Textos cortos con preguntas de detalle.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "ING-3-02",
+   "grado": 3,
+   "area": "ingles",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Comprension lectora en ingles",
+   "url": "https://www.cokitos.com/comprension-lectora-en-ingles/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Quiz",
+   "adaptacion": "Preguntas sobre textos descriptivos cortos.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "ING-4-01",
+   "grado": 4,
+   "area": "ingles",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Juegos de comprensión lectora en inglés - English reading",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/juegos-de-ingles/english-reading",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Aventura existente",
+   "adaptacion": "Texto informativo: idea general y detalles.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "ING-4-02",
+   "grado": 4,
+   "area": "ingles",
+   "prioridad_dba": "A",
+   "plataforma": "Cristic",
+   "titulo": "Story maker",
+   "url": "https://www.cristic.com/story-maker/",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 1,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 5
+   },
+   "tipo_miduho": "Aventura existente",
+   "adaptacion": "Preguntas who, when, where sobre un relato propio.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Directorio de una docente de España; muchos recursos en Canva, Genially o Wordwall 🔶."
+  },
+  {
+   "dba": "ING-5-01",
+   "grado": 5,
+   "area": "ingles",
+   "prioridad_dba": "A",
+   "plataforma": "Cristic",
+   "titulo": "Past simple: irregular verbs",
+   "url": "https://www.cristic.com/past-simple-irregular-verbs/",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Completar existente",
+   "adaptacion": "Pasado simple como apoyo para comprender narraciones.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Directorio de una docente de España; muchos recursos en Canva, Genially o Wordwall 🔶."
+  },
+  {
+   "dba": "LEN-1-04",
+   "grado": 1,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Los cuentos tradicionales",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/lengua-lit-1-3",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Aventura existente",
+   "adaptacion": "Cuento tradicional corto con preguntas de personajes y acciones (tipo aventura).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "LEN-1-04",
+   "grado": 1,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Árbol ABC",
+   "titulo": "Zoologico",
+   "url": "https://arbolabc.com/lectores-emergentes/zoologico",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Aventura + audio 🆕",
+   "adaptacion": "Lector emergente con audio; preguntas literales al final.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶"
+  },
+  {
+   "dba": "LEN-1-04",
+   "grado": 1,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "Lectura de cuentos",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/lectura-de-cuentos",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Aventura existente",
+   "adaptacion": "Lección oficial MEN de 1.° sobre lectura de cuentos.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "LEN-1-05",
+   "grado": 1,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Separar Sílabas en las Palabras – COKITOS",
+   "url": "https://www.cokitos.com/separar-silabas-en-las-palabras/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Ordenar existente",
+   "adaptacion": "Separar palabras en sílabas; con audio de la palabra.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "LEN-1-05",
+   "grado": 1,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Digipuzzle",
+   "titulo": "Cuenta las sílabas",
+   "url": "https://www.digipuzzle.net/digipuzzle/kids/puzzles/syllablescount_names_es.htm?language=spanish",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Quiz",
+   "adaptacion": "Contar sílabas de nombres de objetos (con imagen y audio).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": true,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "observado en navegador (carga)",
+   "nota": "Puede tener cronómetro (observado en la carrera de Colombia): en MIDUHO el reloj nunca corta."
+  },
+  {
+   "dba": "LEN-1-05",
+   "grado": 1,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "Distinción entre sonidos no lingüísticos de los sonidos de las letras",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Clasificar existente",
+   "adaptacion": "Lección MEN: distinguir sonidos de letras de otros sonidos.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "LEN-1-06",
+   "grado": 1,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Cristic",
+   "titulo": "Zoo sílabas",
+   "url": "https://www.cristic.com/zoo-silabas/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Emparejar existente",
+   "adaptacion": "Unir sílabas para formar nombres de animales.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Directorio de una docente de España; muchos recursos en Canva, Genially o Wordwall 🔶."
+  },
+  {
+   "dba": "LEN-1-06",
+   "grado": 1,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Árbol ABC",
+   "titulo": "Silibas encantadas",
+   "url": "https://arbolabc.com/lectores-emergentes/silibas-encantadas",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Ruta de palabras existente",
+   "adaptacion": "Formar y leer palabras de 2 y 3 sílabas con imagen.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": true,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "observado en navegador (carga)"
+  },
+  {
+   "dba": "LEN-2-03",
+   "grado": 2,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Fábulas y leyendas",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/lengua-lit-2-2",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Clasificar existente",
+   "adaptacion": "Fábulas y leyendas: identificar personajes, espacios y acciones.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "LEN-2-03",
+   "grado": 2,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Toy Theater",
+   "titulo": "Story sequence",
+   "url": "https://toytheater.com/story-sequence/",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 6
+   },
+   "tipo_miduho": "Ordenar existente",
+   "adaptacion": "Ordenar escenas de un relato (inicio, nudo, desenlace); en MIDUHO con textos en español.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶"
+  },
+  {
+   "dba": "LEN-2-05",
+   "grado": 2,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Clasificar las Palabras según el número de Sílabas – COKITOS",
+   "url": "https://www.cokitos.com/clasificar-las-palabras-segun-el-numero-de-silabas/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Clasificar existente",
+   "adaptacion": "Sílabas trabadas: clasificar palabras con bl, br, cl, cr…",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "LEN-2-05",
+   "grado": 2,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Digipuzzle",
+   "titulo": "Panal – Sílabas",
+   "url": "https://www.digipuzzle.net/minigames/beehive/beehive_syllables_es.htm?language=spanish",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Ruta de palabras existente",
+   "adaptacion": "Panal: armar palabras uniendo sílabas vecinas.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Puede tener cronómetro (observado en la carrera de Colombia): en MIDUHO el reloj nunca corta."
+  },
+  {
+   "dba": "LEN-2-06",
+   "grado": 2,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "Identificación de la silueta o formato de diferentes tipos de texto. Expresión efectiva de ideas",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/identificacion-de-la-silueta-o-formato-de-diferentes-tipos-de-texto",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Clasificar existente",
+   "adaptacion": "Predecir el tipo de texto por su silueta (receta, carta, noticia, cuento).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "LEN-2-06",
+   "grado": 2,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "Identificación de la idea principal de un texto",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/identificacion-de-la-idea-principal-de-un-texto",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Marcar en el texto 🆕",
+   "adaptacion": "Idea principal: tocar la oración que resume el párrafo.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "LEN-3-03",
+   "grado": 3,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Características de los cuentos",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/lengua-lit-3-2",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Quiz",
+   "adaptacion": "Características del cuento: narrador, estructura, personajes.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "LEN-3-03",
+   "grado": 3,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "Identificación de las diferentes clases de cuentos",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/identificacion-de-las-diferentes-clases-de-cuentos",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 6
+   },
+   "tipo_miduho": "Clasificar existente",
+   "adaptacion": "Clasificar cuentos (maravilloso, realista, fábula).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "LEN-3-06",
+   "grado": 3,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Cristic",
+   "titulo": "Lectura comprensiva",
+   "url": "https://www.cristic.com/lectura-comprensiva/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Quiz",
+   "adaptacion": "Lectura comprensiva con preguntas de inferencia; reescribir con textos colombianos propios.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Directorio de una docente de España; muchos recursos en Canva, Genially o Wordwall 🔶."
+  },
+  {
+   "dba": "LEN-3-06",
+   "grado": 3,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "Interpretación de textos informativos",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/interpretacion-de-textos-informativos",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Aventura existente",
+   "adaptacion": "Texto informativo corto con preguntas literales, inferenciales y críticas.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "LEN-3-08",
+   "grado": 3,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Normas de uso de las mayúsculas",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/lengua-ort-2-1",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Corrector existente",
+   "adaptacion": "Uso de mayúsculas: encontrar y corregir errores (tipo Corrector).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "LEN-3-08",
+   "grado": 3,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "El adjetivo",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/lengua-gra-3-3",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Clasificar existente",
+   "adaptacion": "Sustantivos y adjetivos; concordancia.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "LEN-4-06",
+   "grado": 4,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "Comprensión de textos expositivos",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/comprension-de-textos-expositivos",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Marcar en el texto 🆕",
+   "adaptacion": "Organizar la información de un texto expositivo en un esquema.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "LEN-4-06",
+   "grado": 4,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "Inferencia de significados a partir de la información de un texto",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/inferencia-de-significados-partir-de-la-informacion-de-un-texto",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Quiz",
+   "adaptacion": "Inferir significados por contexto.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "LEN-5-05",
+   "grado": 5,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "Comprensión de diversos tipos de texto",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/comprension-de-diversos-tipos-de-texto",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Aventura existente",
+   "adaptacion": "Sentido global: relacionar información explícita e implícita.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "LEN-5-05",
+   "grado": 5,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Comprension lectora en ingles",
+   "url": "https://www.cokitos.com/comprension-lectora-en-ingles/",
+   "puntaje": {
+    "alineacion": 1,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 0,
+    "total": 5
+   },
+   "tipo_miduho": "Quiz",
+   "adaptacion": "Solo como modelo de mecánica (lectura + preguntas); el texto en MIDUHO es en español.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "LEN-5-06",
+   "grado": 5,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Árbol ABC",
+   "titulo": "Hecho opinion",
+   "url": "https://arbolabc.com/juegos-de-lenguaje/hecho-opinion",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Sello existente",
+   "adaptacion": "Hecho u opinión; luego intención (informar, persuadir, entretener).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": true,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "observado en navegador (carga)"
+  },
+  {
+   "dba": "LEN-5-06",
+   "grado": 5,
+   "area": "lenguaje",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "Interpretación de textos argumentativos",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/interpretacion-de-textos-argumentativos",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Marcar en el texto 🆕",
+   "adaptacion": "Marcar tesis y argumentos en un texto argumentativo corto.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "MAT-1-02",
+   "grado": 1,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Sumas y restas de números de 1-2 cifras",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/mates-prob-1-4",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Quiz + Respuesta numérica 🆕",
+   "adaptacion": "Problemas de juntar, quitar y completar con objetos de la tienda escolar; escribir el resultado, sin reloj.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "MAT-1-02",
+   "grado": 1,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Árbol ABC",
+   "titulo": "Componer y descomponer hasta 10",
+   "url": "https://arbolabc.com/juegos-de-sumas/componer-y-descomponer-hasta-10",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Tablero de valor posicional 🆕",
+   "adaptacion": "Componer y descomponer 10 con fichas tocando (no arrastrando); evidencia: 5 descomposiciones distintas.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶"
+  },
+  {
+   "dba": "MAT-1-02",
+   "grado": 1,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "PhET",
+   "titulo": "Haz un Diez",
+   "url": "https://phet.colorado.edu/es/simulations/make-a-ten",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Simulador (laboratorio + retos)",
+   "adaptacion": "Estrategia «hacer un diez» para sumar; laboratorio libre y retos calificados como en simuladores-miduho.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "CC BY 4.0 🔶 (según PhET; confirmar por simulación)"
+  },
+  {
+   "dba": "MAT-1-03",
+   "grado": 1,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Valor posicional unidades y decenas",
+   "url": "https://www.cokitos.com/valor-posicional-unidades-y-decenas/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Tablero de valor posicional 🆕",
+   "adaptacion": "Agrupar útiles en cajas de 10; leer el número; comparar dos pedidos.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": true,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "observado en navegador (carga)",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "MAT-1-03",
+   "grado": 1,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "PhET",
+   "titulo": "Comparar Números",
+   "url": "https://phet.colorado.edu/es/simulations/number-compare",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Quiz (comparar)",
+   "adaptacion": "Comparar cantidades representadas de varias formas (bloques, recta, palabra).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "CC BY 4.0 🔶 (según PhET; confirmar por simulación)"
+  },
+  {
+   "dba": "MAT-1-03",
+   "grado": 1,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Toy Theater",
+   "titulo": "Base ten blocks",
+   "url": "https://toytheater.com/base-ten-blocks/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 1,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 6
+   },
+   "tipo_miduho": "Tablero de valor posicional 🆕",
+   "adaptacion": "Manipulativo de bloques base diez; en MIDUHO con botones +10/+1 y lectura en voz alta del número.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": true,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "observado en navegador (carga)"
+  },
+  {
+   "dba": "MAT-1-09",
+   "grado": 1,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "PhET",
+   "titulo": "Explorador de Igualdades: Intro",
+   "url": "https://phet.colorado.edu/es/simulations/equality-explorer-basics",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Simulador de balanza 🆕",
+   "adaptacion": "Balanza que se equilibra con expresiones de suma y resta; evidencia: completa 6 igualdades a + ? = c.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "CC BY 4.0 🔶 (según PhET; confirmar por simulación)"
+  },
+  {
+   "dba": "MAT-1-09",
+   "grado": 1,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "MATH BOX BALANCE: Equilibrio de Sumas – COKITOS",
+   "url": "https://www.cokitos.com/math-box-balance-equilibrio-de-sumas/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Simulador de balanza 🆕",
+   "adaptacion": "Equilibrar la balanza con sumas; tocar caja y platillo en vez de arrastrar.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "MAT-2-01",
+   "grado": 2,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Sumas, restas y multiplicaciones",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/mates-prob-2-4",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Problema por pasos 🆕",
+   "adaptacion": "Problemas aditivos y de grupos iguales en el mercado del pueblo con pesos ficticios.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "MAT-2-01",
+   "grado": 2,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "La multiplicación como suma de sumandos iguales",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/mat-num-2-10",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Quiz + Respuesta numérica 🆕",
+   "adaptacion": "Multiplicación como suma repetida con canastas de frutas.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "MAT-2-02",
+   "grado": 2,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Divisiones sencillas (repartos)",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/mat-num-2-12",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Respuesta numérica 🆕",
+   "adaptacion": "Repartos equitativos (bocadillos entre amigos) y estimación antes de calcular.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "MAT-2-02",
+   "grado": 2,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Digipuzzle",
+   "titulo": "Monos con tablas de multiplicar",
+   "url": "https://www.digipuzzle.net/minigames/numberline_monkeys/numberline_monkeys_multiplications.htm?language=spanish",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 6
+   },
+   "tipo_miduho": "Recta numérica 🆕",
+   "adaptacion": "Saltos en la recta para sumar y multiplicar; elegir el punto con teclado.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Puede tener cronómetro (observado en la carrera de Colombia): en MIDUHO el reloj nunca corta."
+  },
+  {
+   "dba": "MAT-2-03",
+   "grado": 2,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "La centena",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/mat-num-2-1",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Tablero de valor posicional 🆕",
+   "adaptacion": "Centenas, decenas y unidades con paquetes de 100, 10 y 1 en los vagones.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "MAT-2-03",
+   "grado": 2,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "GCompris",
+   "titulo": "Ordenar números",
+   "url": "https://gcompris.net/screenshots-es.html#ordering_numbers",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Ordenar",
+   "adaptacion": "Ordenar números de 3 cifras de menor a mayor (tipo Ordenar existente).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "GPL-3.0"
+  },
+  {
+   "dba": "MAT-2-03",
+   "grado": 2,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Toy Theater",
+   "titulo": "Place value chart",
+   "url": "https://toytheater.com/place-value-chart/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 1,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 6
+   },
+   "tipo_miduho": "Tablero de valor posicional 🆕",
+   "adaptacion": "Tabla de valor posicional hasta 999; retos de componer el número dictado.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶"
+  },
+  {
+   "dba": "MAT-3-01",
+   "grado": 3,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Suma o resta combinadas con multiplicación",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/mat-num-3-8",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Problema por pasos 🆕",
+   "adaptacion": "Problemas aditivos y multiplicativos directos e inversos con contexto de la plaza de mercado.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "MAT-3-01",
+   "grado": 3,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Sumas, restas y multiplicaciones con números decimales",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/mates-prob-3-1",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Problema por pasos 🆕",
+   "adaptacion": "Elegir la operación antes de calcular; el error de operación da pista.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "MAT-3-02",
+   "grado": 3,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "PhET",
+   "titulo": "Modelo de Áreas: Multiplicación",
+   "url": "https://phet.colorado.edu/es/simulations/area-model-multiplication",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Simulador (modelo de área)",
+   "adaptacion": "Estrategia de descomponer factores en el modelo de área; justifica el cálculo.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "CC BY 4.0 🔶 (según PhET; confirmar por simulación)"
+  },
+  {
+   "dba": "MAT-3-02",
+   "grado": 3,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Digipuzzle",
+   "titulo": "Practica las tablas de multiplicar con el laberinto",
+   "url": "https://www.digipuzzle.net/minigames/mathmaze/mathmaze.htm?language=spanish",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 6
+   },
+   "tipo_miduho": "Laberinto de resultados 🆕",
+   "adaptacion": "Tablas de multiplicar en laberinto, sin cronómetro, con teclas de dirección.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Puede tener cronómetro (observado en la carrera de Colombia): en MIDUHO el reloj nunca corta."
+  },
+  {
+   "dba": "MAT-3-03",
+   "grado": 3,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Multiplicación: concepto y términos",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/mat-num-3-5",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Sello (verdadero/falso) existente",
+   "adaptacion": "Comparar expresiones (3×4 ? 2×6) con > < =; reutiliza el tipo Sello.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "MAT-3-04",
+   "grado": 3,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Perímetro y área de triángulos y cuadriláteros",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/mat-geo-3-1",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Quiz + Respuesta numérica 🆕",
+   "adaptacion": "Perímetro y área de cuadriláteros de los puestos de la feria.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "MAT-3-04",
+   "grado": 3,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "PhET",
+   "titulo": "Constructor de Áreas",
+   "url": "https://phet.colorado.edu/es/simulations/area-builder",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Simulador (laboratorio + retos)",
+   "adaptacion": "Construir figuras con área y perímetro dados en cuadrícula; botones para colocar cuadros.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "CC BY 4.0 🔶 (según PhET; confirmar por simulación)"
+  },
+  {
+   "dba": "MAT-3-04",
+   "grado": 3,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "ÁREA y PERÍMETRO: Dibujar Figuras (1-2 jugadores) – COKITOS",
+   "url": "https://www.cokitos.com/area-y-perimetro-dibujar-una-figura/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Construir figuras 🆕",
+   "adaptacion": "Dibujar en cuadrícula una figura con área y perímetro dados; celdas tocables.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "MAT-3-10",
+   "grado": 3,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Toy Theater",
+   "titulo": "Bar graph",
+   "url": "https://toytheater.com/bar-graph/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Gráfico interactivo 🆕",
+   "adaptacion": "Construir el gráfico de barras de una encuesta del salón (datos ficticios) y responder preguntas.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": true,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "observado en navegador (carga)"
+  },
+  {
+   "dba": "MAT-3-10",
+   "grado": 3,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Grafico de barras",
+   "url": "https://www.cokitos.com/grafico-de-barras/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Gráfico interactivo 🆕",
+   "adaptacion": "Leer e interpretar gráficos de barras y pictogramas con escala.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "MAT-3-10",
+   "grado": 3,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "Traducción entre representaciones de datos cualitativos",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/traduccion-entre-representaciones-de-datos-cualitativos",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Quiz",
+   "adaptacion": "Lección oficial MEN de 3.°: pasar de tabla a gráfico; insumo para redactar ítems.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "MAT-4-01",
+   "grado": 4,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Concepto, lectura y escritura de fracciones",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/mat-num-4-4",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Fracción visual existente",
+   "adaptacion": "Leer y escribir fracciones a partir de su representación.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": true,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "observado en navegador (carga)",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "MAT-4-01",
+   "grado": 4,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "PhET",
+   "titulo": "Fracciones: Intro",
+   "url": "https://phet.colorado.edu/es/simulations/fractions-intro",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Fracción visual (bocadillo) existente",
+   "adaptacion": "Fracción como parte-todo y como cociente con distintas representaciones.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "CC BY 4.0 🔶 (según PhET; confirmar por simulación)"
+  },
+  {
+   "dba": "MAT-4-01",
+   "grado": 4,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "PhET",
+   "titulo": "Construye una fracción",
+   "url": "https://phet.colorado.edu/es/simulations/build-a-fraction",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Simulador (laboratorio + retos)",
+   "adaptacion": "Construir fracciones pedidas con piezas; retos por niveles.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "CC BY 4.0 🔶 (según PhET; confirmar por simulación)"
+  },
+  {
+   "dba": "MAT-4-02",
+   "grado": 4,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Suma y resta de fracciones con el mismo denominador",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/mat-num-5-8",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Jarras existente",
+   "adaptacion": "Suma y resta de fracciones de igual denominador con jarras de jugo.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "MAT-4-02",
+   "grado": 4,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "PIRÁMIDE de FRACCIONES – COKITOS",
+   "url": "https://www.cokitos.com/piramide-de-suma-de-fracciones/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Completar",
+   "adaptacion": "Pirámide de sumas de fracciones: completar las casillas.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "MAT-4-02",
+   "grado": 4,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "PhET",
+   "titulo": "Modelo de Áreas: Decimales",
+   "url": "https://phet.colorado.edu/es/simulations/area-model-decimals",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 6
+   },
+   "tipo_miduho": "Simulador",
+   "adaptacion": "Multiplicar decimales con el modelo de área.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "CC BY 4.0 🔶 (según PhET; confirmar por simulación)"
+  },
+  {
+   "dba": "MAT-4-03",
+   "grado": 4,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "COMPARACIÓN DE FRACCIONES – COKITOS",
+   "url": "https://www.cokitos.com/comparar-fracciones/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Sello / Quiz existente",
+   "adaptacion": "Comparar fracciones con > < = y justificar con la barra.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": true,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "observado en navegador (carga)",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "MAT-4-03",
+   "grado": 4,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "PhET",
+   "titulo": "Fracciones: Igualdades",
+   "url": "https://phet.colorado.edu/es/simulations/fractions-equality",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Fracción visual existente",
+   "adaptacion": "Fracciones equivalentes con representaciones; evidencia: 6 parejas equivalentes.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "CC BY 4.0 🔶 (según PhET; confirmar por simulación)"
+  },
+  {
+   "dba": "MAT-4-03",
+   "grado": 4,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "PhET",
+   "titulo": "Parejas de Fracciones",
+   "url": "https://phet.colorado.edu/es/simulations/fraction-matcher",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Emparejar existente",
+   "adaptacion": "Emparejar fracciones equivalentes en distintas representaciones.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "CC BY 4.0 🔶 (según PhET; confirmar por simulación)"
+  },
+  {
+   "dba": "MAT-4-10",
+   "grado": 4,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Toy Theater",
+   "titulo": "Graph",
+   "url": "https://toytheater.com/graph/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Gráfico interactivo 🆕",
+   "adaptacion": "Tablas de doble entrada y barras agrupadas con datos ficticios de la tienda escolar.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶"
+  },
+  {
+   "dba": "MAT-4-10",
+   "grado": 4,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "Traducción entre representaciones de datos cuantitativos",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/traduccion-entre-representaciones-de-datos-cuantitativos",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Quiz",
+   "adaptacion": "Lección oficial MEN de 4.°: de tabla a gráfico de barras o de líneas.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "MAT-5-01",
+   "grado": 5,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "ASTRONAUTA: Problemas con Fracciones Matemáticas – COKITOS",
+   "url": "https://www.cokitos.com/problemas-con-fracciones-matematicas/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Problema por pasos 🆕",
+   "adaptacion": "Problemas con fracciones en la finca (cosecha repartida).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "MAT-5-01",
+   "grado": 5,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Sumas, restas, multiplicaciones y divisiones",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/mates-prob-4-1",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Operaciones existente",
+   "adaptacion": "Problemas de varias operaciones; reutiliza el tipo Operaciones.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "MAT-5-02",
+   "grado": 5,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Operaciones combinadas",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/mat-num-5-12",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Operaciones existente",
+   "adaptacion": "Operaciones combinadas y jerarquía; potencias en el último nivel.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "MAT-5-02",
+   "grado": 5,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "OPERACIONES COMBINADAS: Descubre el Dibujo Oculto – COKITOS",
+   "url": "https://www.cokitos.com/operaciones-combinadas-descubre-el-dibujo-oculto/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Operaciones existente",
+   "adaptacion": "Cada operación bien resuelta descubre parte de una imagen; sin tiempo.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "MAT-5-03",
+   "grado": 5,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "ORDENAR FRACCIONES con el Mono – COKITOS",
+   "url": "https://www.cokitos.com/ordenar-fracciones-con-el-mono/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Ordenar existente",
+   "adaptacion": "Ordenar fracciones de distinto denominador usando la recta.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "MAT-5-03",
+   "grado": 5,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Duelo de Comparar Fracciones propias con distinto denominador – COKITOS",
+   "url": "https://www.cokitos.com/duelo-de-comparar-fracciones-propias-con-distinto-denominador/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Sello existente",
+   "adaptacion": "Comparar fracciones con distinto denominador; versión individual sin duelo.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "MAT-5-03",
+   "grado": 5,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "PhET",
+   "titulo": "Fracciones: números mixtos",
+   "url": "https://phet.colorado.edu/es/simulations/fractions-mixed-numbers",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 6
+   },
+   "tipo_miduho": "Fracción visual existente",
+   "adaptacion": "Números mixtos y su ubicación.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "CC BY 4.0 🔶 (según PhET; confirmar por simulación)"
+  },
+  {
+   "dba": "MAT-5-05",
+   "grado": 5,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "PhET",
+   "titulo": "Constructor de Áreas",
+   "url": "https://phet.colorado.edu/es/simulations/area-builder",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Simulador (laboratorio + retos)",
+   "adaptacion": "Retos: mismo perímetro y distinta área, y viceversa (justo lo que pide el DBA).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "CC BY 4.0 🔶 (según PhET; confirmar por simulación)"
+  },
+  {
+   "dba": "MAT-5-05",
+   "grado": 5,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Colombia Aprende",
+   "titulo": "Aplicación de los modelos geométricos en problemas de áreas y perímetros",
+   "url": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/aplicacion-de-los-modelos-geometricos-en-problemas-de-areas-y-perimetros",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Problema por pasos 🆕",
+   "adaptacion": "Lección oficial de 5.°; base para ítems de problemas.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "MEN; uso educativo, licencia por confirmar 🔶"
+  },
+  {
+   "dba": "MAT-5-07",
+   "grado": 5,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Mundo Primaria",
+   "titulo": "Coordenadas de un punto y ejes de coordenadas",
+   "url": "https://www.mundoprimaria.com/juegos-educativos/mat-geo-5-7",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Rectas / plano existente",
+   "adaptacion": "Ubicar y leer coordenadas de puntos en el plano.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Exige aceptar cookies publicitarias o pagar (observado). Currículo de España: adaptar."
+  },
+  {
+   "dba": "MAT-5-07",
+   "grado": 5,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "BATALLA DE COORDENADAS Plano Cartesiano – COKITOS",
+   "url": "https://www.cokitos.com/batalla-de-coordenadas/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Plano cartesiano 🆕",
+   "adaptacion": "Batalla naval con coordenadas: evidencia de localizar puntos con pares ordenados.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": true,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "observado en navegador (carga)",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "MAT-5-07",
+   "grado": 5,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Representar las Coordenadas en Plano Cartesiano – COKITOS",
+   "url": "https://www.cokitos.com/representar-las-coordenadas-en-plano-cartesiano/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Plano cartesiano 🆕",
+   "adaptacion": "Representar puntos y trayectorias; celdas tocables.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "MAT-5-10",
+   "grado": 5,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "Toy Theater",
+   "titulo": "Graph color bars",
+   "url": "https://toytheater.com/graph-color-bars/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 1,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 6
+   },
+   "tipo_miduho": "Gráfico interactivo 🆕",
+   "adaptacion": "Comparar dos grupos de datos con barras; preguntas de comparación.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶"
+  },
+  {
+   "dba": "MAT-5-10",
+   "grado": 5,
+   "area": "matematicas",
+   "prioridad_dba": "A",
+   "plataforma": "PhET",
+   "titulo": "Centro y Variabilidad",
+   "url": "https://phet.colorado.edu/es/simulations/center-and-variability",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 6
+   },
+   "tipo_miduho": "Simulador",
+   "adaptacion": "Organizar datos y comparar grupos; apoyo también para MAT-5-11 (media y mediana).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "CC BY 4.0 🔶 (según PhET; confirmar por simulación)"
+  },
+  {
+   "dba": "MAT-5-11",
+   "grado": 5,
+   "area": "matematicas",
+   "prioridad_dba": "B",
+   "plataforma": "PhET",
+   "titulo": "Media: Distribuye y Equilibra",
+   "url": "https://phet.colorado.edu/es/simulations/mean-share-and-balance",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 7
+   },
+   "tipo_miduho": "Simulador",
+   "adaptacion": "Media como reparto equitativo; retos calificados.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "CC BY 4.0 🔶 (según PhET; confirmar por simulación)"
+  },
+  {
+   "dba": "MAT-5-12",
+   "grado": 5,
+   "area": "matematicas",
+   "prioridad_dba": "B",
+   "plataforma": "PhET",
+   "titulo": "Probabilidad Plinko",
+   "url": "https://phet.colorado.edu/es/simulations/plinko-probability",
+   "puntaje": {
+    "alineacion": 2,
+    "evidencia": 1,
+    "mecanica_wcag": 1,
+    "tipo": 1,
+    "total": 5
+   },
+   "tipo_miduho": "Simulador",
+   "adaptacion": "Espacio muestral y frecuencia; predecir antes de lanzar.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "licencia": "CC BY 4.0 🔶 (según PhET; confirmar por simulación)"
+  },
+  {
+   "dba": "TEC-1a3-SP",
+   "grado": "1-3",
+   "area": "robotica",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "PROGRAMACIÓN para NIÑOS – COKITOS",
+   "url": "https://www.cokitos.com/programacion-para-ninos/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Cuadrícula de instrucciones 🆕",
+   "adaptacion": "Secuencias de pasos para llevar al robot a la meta.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "TEC-1a3-SP",
+   "grado": "1-3",
+   "area": "robotica",
+   "prioridad_dba": "A",
+   "plataforma": "Code.org",
+   "titulo": "Curso 1: secuencias y bucles para primeros lectores",
+   "url": "https://studio.code.org/s/course1",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Cuadrícula de instrucciones 🆕",
+   "adaptacion": "Curso 1 de Code.org: secuencias y bucles para prelectores.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶"
+  },
+  {
+   "dba": "TEC-1a3-SP",
+   "grado": "1-3",
+   "area": "robotica",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "Programación Inversa para niños: ¿a dónde va el robot? – COKITOS",
+   "url": "https://www.cokitos.com/programacion-inversa-para-ninos-donde-va-el-robot/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Cuadrícula de instrucciones 🆕",
+   "adaptacion": "Programación inversa: predecir dónde llega el robot (evidencia «corregir secuencias»).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "TEC-4a5-SP",
+   "grado": "4-5",
+   "area": "robotica",
+   "prioridad_dba": "A",
+   "plataforma": "Cokitos",
+   "titulo": "LIGHTBOT Online – COKITOS",
+   "url": "https://www.cokitos.com/lightbot/",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Cuadrícula de instrucciones 🆕",
+   "adaptacion": "Procedimientos y bucles con límite de instrucciones (Catálogo MVP #6).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": true,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "observado en navegador (carga)",
+   "nota": "Agregador con publicidad intensa (observado); el juego carga al pulsar «Jugar»; origen incrustado por determinar con REA 🔶."
+  },
+  {
+   "dba": "TEC-4a5-SP",
+   "grado": "4-5",
+   "area": "robotica",
+   "prioridad_dba": "A",
+   "plataforma": "Blockly Games",
+   "titulo": "Laberinto",
+   "url": "https://blockly.games/maze?lang=es",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Cuadrícula de instrucciones 🆕",
+   "adaptacion": "Laberinto con bloques: repetir y condicionales «si hay camino»; software libre (Apache-2.0).",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": true,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "observado en navegador (carga)",
+   "licencia": "Apache-2.0"
+  },
+  {
+   "dba": "TEC-4a5-SP",
+   "grado": "4-5",
+   "area": "robotica",
+   "prioridad_dba": "A",
+   "plataforma": "Code.org",
+   "titulo": "Laberinto clásico: programación por bloques (Hora del código)",
+   "url": "https://studio.code.org/s/hourofcode",
+   "puntaje": {
+    "alineacion": 3,
+    "evidencia": 2,
+    "mecanica_wcag": 2,
+    "tipo": 1,
+    "total": 8
+   },
+   "tipo_miduho": "Cuadrícula de instrucciones 🆕",
+   "adaptacion": "Laberinto clásico; incluye depuración.",
+   "verificacion": {
+    "http": 200,
+    "muestra_visual": false,
+    "fecha": "2026-11-07"
+   },
+   "certeza": "inferido por título y catálogo 🔶"
+  }
+ ],
+ "dba_a_sin_juego": [
+  {
+   "dba": "SOC-2-07",
+   "tema": "Organización territorial del municipio",
+   "area": "ciencias-sociales",
+   "referencia_debil": [
+    "https://www.colombiaaprende.edu.co/contenidos-para-aprender/que-tipo-de-oficios-tienen-las-personas-de-mi-entorno"
+   ]
+  },
+  {
+   "dba": "SOC-3-07",
+   "tema": "Gobierno escolar",
+   "area": "ciencias-sociales",
+   "referencia_debil": [
+    "https://www.cristic.com/derechos-del-menor/"
+   ]
+  },
+  {
+   "dba": "SOC-4-06",
+   "tema": "División de poderes",
+   "area": "ciencias-sociales",
+   "referencia_debil": []
+  },
+  {
+   "dba": "SOC-5-05",
+   "tema": "Independencia y república",
+   "area": "ciencias-sociales",
+   "referencia_debil": []
+  },
+  {
+   "dba": "SOC-5-07",
+   "tema": "Derechos, deberes y Constitución",
+   "area": "ciencias-sociales",
+   "referencia_debil": []
+  },
+  {
+   "dba": "CIU-4a5-PR",
+   "tema": "Gobierno escolar y participación",
+   "area": "etica-y-valores",
+   "referencia_debil": [
+    "https://www.cristic.com/derechos-del-menor/"
+   ]
+  }
+ ],
+ "resumen": {
+  "catalogo": 8877,
+  "seleccionados": 143,
+  "dba_cubiertos": 68,
+  "dba_a_total": 72,
+  "dba_a_cubiertos": 66
+ }
+}

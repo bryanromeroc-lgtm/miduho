@@ -1,0 +1,284 @@
+/*
+  UBICA EN EL MAPA · la mesa de la exploradora.
+  Escala con la pantalla: --armi (≈ ⅓ del alto en 1920×1080) y --alto-mapa
+  salen del alto de la ventana (dvh); en el teléfono Armi se encoge y se
+  para sobre el océano Pacífico del propio mapa.
+
+  Escena del acierto, 1800 ms (tiempos iguales a los de juego.tsx):
+  lectura 0–16 % → carga 16–30 % (Armi se agacha y echa el brazo atrás) →
+  acción 30–50 % (pose de lanzamiento; la chincheta vuela en arco con
+  offset-path) → impacto 50–56 % (se clava; pausa, anillo, chispas, «¡TAC!»
+  y temblor de cámara) → recuperación 56–100 % (Armi vuelve a la guardia).
+  Fallo, 700 ms y suave: onda tenue en el departamento tocado, Armi duda.
+  Solo transform, opacity, filter y offset. Con prefers-reduced-motion todo
+  queda quieto: el resultado sigue escrito en el aviso y en el mapa.
+*/
+
+.juego { width: 100%; color: #20334b; font-family: var(--font-sans, var(--font-atkinson), sans-serif); }
+
+.escena {
+  --armi: clamp(150px, 36dvh, 430px);
+  --alto-mapa: clamp(380px, calc(80dvh - 200px), 980px);
+  --pin: clamp(18px, calc(var(--alto-mapa) * .05), 44px);
+  --tierra: #f7eed6;
+  --borde: #8a6a44;
+  position: relative;
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  min-height: max(560px, 80dvh);
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 24px;
+  background: #cfe9f4;
+}
+
+.fondo { position: absolute; inset: -3%; z-index: -1; background: #cfe9f4 url('/images/juegos/mapa/mesa.webp') center / cover no-repeat; }
+
+/* ---------- Cabecera: guirnalda, consigna y aviso (no se mueve con la cámara) ---------- */
+
+.cabecera { position: relative; z-index: 4; display: grid; gap: 8px; padding: 12px 16px 0; }
+.panel { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 8px 16px; width: 100%; padding: 8px 14px; border-radius: 16px; background: rgb(255 252 244 / .95); box-shadow: 0 6px 18px rgb(18 52 75 / .2); }
+.dato { font-size: clamp(.95rem, .85rem + .3vw, 1.2rem); font-weight: 700; }
+.dato strong { font-size: 1.25em; font-variant-numeric: tabular-nums; }
+.botones { display: flex; align-items: center; justify-content: flex-end; gap: 8px 12px; flex-wrap: wrap; }
+.icono { position: relative; display: grid; place-items: center; width: 44px; height: 44px; border: 2px solid #8a4b16; border-radius: 12px; background: #fff3df; color: #6b3610; cursor: pointer; }
+.icono:hover { background: #ffe4bb; }
+.icono:focus-visible { outline: 3px solid #1d3d8f; outline-offset: 2px; }
+.tachado { position: absolute; width: 28px; height: 3px; background: currentColor; transform: rotate(-42deg); }
+
+.consigna {
+  margin: 0;
+  padding: clamp(6px, 1.1dvh, 12px) clamp(18px, 2.6cqw, 40px);
+  border: 4px solid #f39a3d;
+  border-radius: 20px;
+  background: #15243f;
+  box-shadow: 0 8px 0 #0a1428, 0 14px 24px rgb(0 0 0 / .3);
+  color: #fff;
+  font: 900 clamp(1.5rem, 1rem + 2cqw, 3rem)/1.1 var(--font-heading, var(--font-baloo), sans-serif);
+  text-align: center;
+  text-wrap: balance;
+  animation: consigna 460ms cubic-bezier(.16, 1, .3, 1);
+}
+.consigna:focus-visible { outline: 4px solid #ffd053; outline-offset: 4px; }
+.verbo { font-weight: 800; color: #dce7f7; }
+.lugar { color: #ffd053; }
+.solo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* En flujo y con alto reservado: nunca tapa el mapa. */
+.aviso {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(2.6em + 18px);
+  max-width: min(100%, 860px);
+  margin: 0;
+  padding: 6px 18px;
+  border-radius: 14px;
+  background: rgb(255 252 244 / .96);
+  color: #20334b;
+  font-size: clamp(1rem, .9rem + .4vw, 1.25rem);
+  font-weight: 800;
+  line-height: 1.3;
+  text-align: center;
+  text-wrap: balance;
+  box-shadow: 0 6px 16px rgb(18 52 75 / .18);
+}
+.aviso:empty { visibility: hidden; }
+.aviso[data-tono="ok"] { border: 3px solid #177d52; color: #0f5233; }
+.aviso[data-tono="no"] { border: 3px solid #b8571a; color: #7a3208; }
+.aviso[data-tono="solucion"] { border: 3px solid #1d3d8f; color: #15306f; }
+
+/* ---------- Cámara: Armi y el mapa ---------- */
+
+.camara {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(8px, 3cqw, 56px);
+  padding: 8px 16px 14px;
+  transform-origin: var(--gx, 60%) var(--gy, 50%);
+}
+
+.armi { position: relative; flex: none; height: var(--armi); aspect-ratio: 486 / 640; margin-bottom: 2%; }
+.sombra { position: absolute; left: 14%; right: 10%; bottom: -2%; height: 9%; border-radius: 50%; background: rgb(18 52 75 / .28); filter: blur(6px); }
+.cuerpo { position: absolute; inset: 0; transform-origin: 50% 100%; }
+.poseNormal, .poseLanza { position: absolute; inset: 0; display: block; }
+.armi img { position: absolute; inset: 0; width: 100%; max-width: none; height: 100%; object-fit: contain; user-select: none; filter: drop-shadow(0 4px 3px rgb(18 52 75 / .25)); }
+.poseLanza { opacity: 0; }
+
+.tierra { position: relative; flex: none; height: var(--alto-mapa); aspect-ratio: 760 / 1035; }
+.svg { display: block; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 10px 14px rgb(18 52 75 / .22)); }
+
+.recuadro { fill: rgb(255 255 255 / .4); stroke: var(--borde); stroke-width: 1.5; stroke-dasharray: 6 5; vector-effect: non-scaling-stroke; }
+
+.depto { cursor: pointer; outline: none; }
+/* Gana a «.pagina :focus-visible»: el foco del departamento se dibuja con .foco (su silueta, no una caja). */
+.tierra .depto:focus, .tierra .depto:focus-visible { outline: none; }
+.depto path { fill: var(--tierra); stroke: var(--borde); stroke-width: 1.2; stroke-linejoin: round; vector-effect: non-scaling-stroke; transition: fill 220ms cubic-bezier(.25, 1, .5, 1); }
+.tierra:not([data-fronteras]) .depto path { stroke: var(--tierra); }
+.tierra:not([data-fronteras]) .depto[data-estado] path { stroke: var(--borde); }
+.depto:hover path { fill: #fffaf0; }
+.depto[aria-disabled] { cursor: default; }
+.area { fill: transparent; stroke: none; }
+/* Lo resuelto queda pintado: verde a la primera, durazno al corregir, rayas azules si se reveló. */
+.depto[data-estado="bien"] path { fill: #a9d18e; }
+.depto[data-estado="corregida"] path { fill: #f7c48f; }
+.depto[data-estado="revelada"] path { fill: url(#rayas-revelada); }
+.depto[data-estado="fallo"] path { fill: #eadfcd; }
+.escena[data-lanza="acierto"] .depto[data-estado="bien"] path,
+.escena[data-lanza="acierto"] .depto[data-estado="corregida"] path { transition-delay: 900ms; }
+
+.contorno { fill: rgb(255 208 83 / .18); stroke: #1d3d8f; stroke-width: 3.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; pointer-events: none; }
+.focoHalo { fill: none; stroke: #ffd053; stroke-width: 9; stroke-linejoin: round; vector-effect: non-scaling-stroke; pointer-events: none; }
+.foco { fill: rgb(255 208 83 / .22); stroke: #15243f; stroke-width: 3.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; pointer-events: none; }
+.revelado { fill: none; stroke: #1d3d8f; stroke-width: 4; stroke-dasharray: 10 6; vector-effect: non-scaling-stroke; pointer-events: none; animation: revela 1200ms cubic-bezier(.16, 1, .3, 1) 2; }
+.onda { fill: none; stroke: #b8571a; stroke-width: 3; vector-effect: non-scaling-stroke; pointer-events: none; animation: onda 650ms cubic-bezier(.16, 1, .3, 1) both; }
+
+/* Chinchetas y nombres encima del mapa (HTML, misma proporción). */
+.capa { position: absolute; inset: 0; pointer-events: none; }
+.clavada { position: absolute; width: var(--pin); max-width: none; height: auto; transform: translate(-8%, -97%); filter: drop-shadow(1px 3px 2px rgb(18 52 75 / .35)); }
+.clavada[data-nueva] { animation: clavada 1800ms both; }
+.etiqueta {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  max-width: 13em;
+  padding: 2px 9px;
+  border: 2px solid #1d3d8f;
+  border-radius: 999px;
+  background: #fffcf4;
+  color: #15306f;
+  font: 800 clamp(.78rem, .7rem + .25vw, 1rem)/1.2 var(--font-sans, var(--font-atkinson), sans-serif);
+  text-align: center;
+  transform: translate(-50%, 35%);
+  box-shadow: 0 3px 8px rgb(18 52 75 / .2);
+  animation: etiqueta 360ms cubic-bezier(.16, 1, .3, 1) both;
+}
+.etiqueta[data-estado="bien"] { border-color: #177d52; color: #0f5233; }
+.etiqueta[data-estado="corregida"] { border-color: #8a4b16; color: #6b3610; }
+.etiqueta[data-estado="fallo"] { border-color: #b8571a; color: #7a3208; }
+.etiqueta[data-nueva][data-estado="bien"], .etiqueta[data-nueva][data-estado="corregida"] { animation: etiquetaAcierto 1800ms both; }
+.equis { flex: none; width: 1em; height: 1em; }
+
+/* ---------- La chincheta en vuelo y el impacto ---------- */
+
+.vuelo { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
+.chincheta {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(var(--pin) * 1.6);
+  max-width: none;
+  height: auto;
+  offset-path: var(--vuelo);
+  offset-rotate: 0deg;
+  offset-anchor: 8% 97%;
+  filter: drop-shadow(2px 6px 4px rgb(18 52 75 / .35));
+  animation: vuelo 1800ms both;
+}
+.impacto { position: absolute; left: var(--gx); top: var(--gy); width: 0; height: 0; }
+.anillo, .impacto i, .onomatopeya { position: absolute; top: 0; left: 0; opacity: 0; }
+.anillo { width: calc(var(--pin) * 3); aspect-ratio: 1; margin: calc(var(--pin) * -1.5) 0 0 calc(var(--pin) * -1.5); border: calc(var(--pin) * .12 + 2px) solid #fff2c4; border-radius: 50%; box-shadow: 0 0 18px #ffb347; animation: anillo 1800ms both; }
+.impacto i { width: calc(var(--pin) * 1.1); height: calc(var(--pin) * .14 + 2px); margin-top: calc(var(--pin) * -.07 - 1px); border-radius: 99px; background: linear-gradient(90deg, #fff, #ffd053); transform-origin: left center; animation: chispa 1800ms both; }
+.onomatopeya {
+  margin: calc(var(--pin) * -3.4) 0 0 calc(var(--pin) * .6);
+  color: #ffd053;
+  font: 900 calc(var(--pin) * 1.5)/1 var(--font-heading, var(--font-baloo), sans-serif);
+  white-space: nowrap;
+  -webkit-text-stroke: calc(var(--pin) * .12) #20334b;
+  paint-order: stroke fill;
+  text-shadow: 0 4px 0 #20334b;
+  animation: onomatopeya 1800ms both;
+}
+
+.escena[data-lanza="acierto"] .camara { animation: camaraAcierto 1800ms both; }
+.escena[data-lanza="acierto"] .cuerpo { animation: armiLanza 1800ms both; }
+.escena[data-lanza="acierto"] .poseNormal { animation: poseNormal 1800ms both; }
+.escena[data-lanza="acierto"] .poseLanza { animation: poseLanza 1800ms both; }
+.escena[data-lanza="fallo"] .cuerpo { animation: armiDuda 700ms both; }
+
+/* ---------- Inicio ---------- */
+
+.inicio { position: absolute; inset: 0; z-index: 6; display: grid; place-content: center; justify-items: center; gap: 18px; padding: 24px; text-align: center; background: rgb(207 233 244 / .55); }
+.inicio > * { max-width: min(92vw, 660px); }
+.inicio h2 { margin: 0; padding: 10px 28px; border: 4px solid #f39a3d; border-radius: 20px; background: #15243f; color: #fff; font: 900 clamp(2rem, 5vw, 3.6rem)/1.1 var(--font-heading, var(--font-baloo), sans-serif); }
+.inicio p { margin: 0; padding: 14px 20px; border-radius: 16px; background: rgb(255 252 244 / .97); font-size: clamp(1rem, .9rem + .4vw, 1.25rem); font-weight: 600; line-height: 1.5; text-wrap: pretty; }
+.primario { min-height: 56px; padding: 10px 44px; border: 3px solid #fff; border-radius: 999px; background: #bc461c; color: #fff; font: 900 1.3rem var(--font-sans, var(--font-atkinson), sans-serif); cursor: pointer; box-shadow: 0 8px 0 #7a2a0c; }
+.primario:hover { background: #903712; }
+.primario:focus-visible { outline: 4px solid #1d3d8f; outline-offset: 4px; }
+
+/* ---------- Teléfono: Armi se para sobre el océano Pacífico del mapa ---------- */
+
+@container (max-width: 720px) {
+  .camara { --armi: 34cqw; --pin: clamp(14px, 4cqw, 24px); }
+  .cabecera { padding: 8px 8px 0; }
+  .panel { display: flex; flex-wrap: wrap; justify-content: space-between; padding: 8px 10px; }
+  .consigna { order: 3; flex-basis: 100%; }
+  .aviso { min-height: calc(3.9em + 18px); font-size: 1rem; }
+  .camara { display: block; padding: 8px; }
+  .tierra { width: 100%; height: auto; }
+  .armi { position: absolute; z-index: 2; left: 4px; bottom: 6px; margin: 0; }
+}
+
+/* ---------- Animaciones ---------- */
+
+@keyframes consigna { from { transform: scale(.92); opacity: .4; } to { transform: none; opacity: 1; } }
+@keyframes etiqueta { from { opacity: 0; translate: 0 6px; } to { opacity: 1; translate: 0 0; } }
+@keyframes etiquetaAcierto { 0%, 52% { opacity: 0; translate: 0 10px; } 62%, 100% { opacity: 1; translate: 0 0; } }
+@keyframes revela { 0% { stroke-width: 4; } 45% { stroke-width: 7; } 100% { stroke-width: 4; } }
+@keyframes onda { from { opacity: .9; r: 8px; } to { opacity: 0; r: 42px; } }
+
+/* Armi: carga (16–30 %), lanza (30–50 %), sostiene durante el impacto (50–56 %) y vuelve. */
+@keyframes armiLanza {
+  0%, 16% { transform: none; }
+  29% { transform: translateX(-5%) rotate(-5deg) scale(.93, 1.06); }
+  40% { transform: translateX(7%) rotate(6deg) scale(1.06, .95); }
+  56% { transform: translateX(7%) rotate(6deg) scale(1.06, .95); }
+  76% { transform: translateX(2%) rotate(1deg); }
+  100% { transform: none; }
+}
+@keyframes poseNormal { 0%, 30% { opacity: 1; } 30.5%, 74% { opacity: 0; } 74.5%, 100% { opacity: 1; } }
+@keyframes poseLanza { 0%, 30% { opacity: 0; } 30.5%, 74% { opacity: 1; } 74.5%, 100% { opacity: 0; } }
+@keyframes armiDuda { 0% { transform: none; } 35% { transform: rotate(-5deg) translateY(-2%); } 70% { transform: rotate(3deg); } 100% { transform: none; } }
+
+/* La chincheta sale de la mano en el lanzamiento y se clava al 50 %; ahí la reemplaza la clavada. */
+@keyframes vuelo {
+  0%, 30% { opacity: 0; offset-distance: 0%; transform: rotate(-30deg) scale(.8); }
+  31% { opacity: 1; offset-distance: 0%; transform: rotate(-30deg) scale(.8); }
+  50% { opacity: 1; offset-distance: 100%; transform: rotate(0deg) scale(1); }
+  51%, 100% { opacity: 0; offset-distance: 100%; transform: none; }
+}
+@keyframes clavada {
+  0%, 49.5% { opacity: 0; transform: translate(-8%, -97%) scale(1); }
+  50% { opacity: 1; transform: translate(-8%, -97%) scale(1.2, .82); }
+  56% { opacity: 1; transform: translate(-8%, -97%) scale(1.2, .82); }
+  66%, 100% { opacity: 1; transform: translate(-8%, -97%) scale(1); }
+}
+@keyframes anillo { 0%, 50% { opacity: 0; transform: scale(.3); } 52% { opacity: .95; } 70% { opacity: 0; transform: scale(1.6); } 100% { opacity: 0; } }
+@keyframes chispa { 0%, 50% { opacity: 0; transform: rotate(var(--a)) translateX(0) scaleX(.4); } 53% { opacity: 1; } 70% { opacity: 0; transform: rotate(var(--a)) translateX(calc(var(--pin) * 2.6 * var(--d))) scaleX(1); } 100% { opacity: 0; } }
+@keyframes onomatopeya { 0%, 50% { opacity: 0; transform: scale(.4) rotate(-12deg); } 54% { opacity: 1; transform: scale(1.1) rotate(-6deg); } 76% { opacity: 1; transform: scale(1) rotate(-6deg); } 86%, 100% { opacity: 0; transform: translateY(-20%) rotate(-6deg); } }
+/* Acercamiento al departamento y temblor que decae en ~110 ms, una sola pasada. */
+@keyframes camaraAcierto {
+  0%, 30% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  51.5% { transform: scale(1.1) translate(-.8%, .5%); }
+  53% { transform: scale(1.1) translate(.6%, -.4%); }
+  54.5% { transform: scale(1.1) translate(-.3%, .2%); }
+  56% { transform: scale(1.1); }
+  78% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .consigna, .etiqueta, .etiqueta[data-nueva], .clavada[data-nueva], .revelado, .onda,
+  .escena[data-lanza] .camara, .escena[data-lanza] .cuerpo, .escena[data-lanza] .poseNormal, .escena[data-lanza] .poseLanza { animation: none !important; }
+  .depto path { transition: none; }
+  .escena[data-lanza] .poseLanza { opacity: 0; }
+  .vuelo, .onda { display: none; }
+}
