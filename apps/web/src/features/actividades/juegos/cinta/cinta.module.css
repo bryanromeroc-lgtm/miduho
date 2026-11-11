@@ -117,7 +117,7 @@
   position: relative;
   display: grid;
   place-items: start center;
-  min-height: clamp(220px, 34vw, 360px);
+  min-height: clamp(190px, 21vw, 290px);
   margin-top: -0.4rem;
 }
 .colgante {
@@ -126,9 +126,9 @@
   position: relative;
   display: grid;
   place-items: center;
-  width: clamp(200px, 30vw, 330px);
+  width: clamp(170px, 19vw, 260px);
   margin: 0.2rem 0 0;
-  padding: 0.9rem;
+  padding: 0.7rem;
   border: 3px solid var(--k-borde);
   border-radius: 10px;
   background: var(--k-fondo);
@@ -247,14 +247,24 @@
 /* Fichas */
 .fichas {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(clamp(104px, 11vw, 138px), 1fr));
-  gap: 0.7rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 .hueco {
-  min-height: 96px;
+  min-height: 84px;
+}
+@media (min-width: 560px) {
+  .fichas {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+@media (min-width: 1000px) {
+  .fichas {
+    grid-template-columns: repeat(9, 1fr);
+  }
 }
 .ficha {
   --f-fondo: #ffe3ef;
@@ -263,15 +273,15 @@
   display: grid;
   place-items: center;
   width: 100%;
-  min-height: 96px;
-  padding: 1.1rem 0.5rem 0.6rem;
+  min-height: 84px;
+  padding: 1.1rem 0.4rem 0.5rem;
   border: 3px solid var(--f-borde);
   border-radius: 6px;
   background: var(--f-fondo);
   color: var(--c-tinta);
   font: inherit;
   font-family: var(--fuente-display);
-  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+  font-size: clamp(0.95rem, 1.25vw, 1.15rem);
   font-weight: 800;
   line-height: 1.15;
   text-align: center;
@@ -337,12 +347,13 @@
   translate: -50% 0;
 }
 .palabra {
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  hyphens: manual;
 }
 .marcaFicha {
   position: absolute;
-  right: 4px;
-  bottom: 4px;
+  top: -12px;
+  right: -10px;
   padding: 2px;
   border-radius: 999px;
   background: #fff;
@@ -360,9 +371,30 @@
   background: rgb(255 255 255 / 0.94);
   font-weight: 700;
 }
+.aviso:empty {
+  min-height: 0;
+  padding: 0;
+  background: none;
+}
 .acciones {
   display: flex;
   justify-content: center;
+}
+
+@media (max-width: 559px) {
+  .escenario {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    margin-inline: calc(-1 * clamp(0.75rem, 1.6vw, 1.5rem));
+    padding-bottom: 0.5rem;
+    background: var(--c-corcho);
+    box-shadow: 0 8px 10px -8px rgb(0 0 0 / 0.5);
+  }
+  .ficha {
+    padding-inline: 0.25rem;
+    font-size: 0.9rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -180,62 +180,62 @@ export function TableroCinta({ contenido, semilla, alTerminar }: Props) {
           </button>
         </div>
       ) : (
-        <>
-          <div className={s.escenario}>
-            {actual && (
-              <figure className={s.colgante} data-movimiento={movimiento} data-tinte={estado.indice % TINTES}>
-                <span className={s.pinza} aria-hidden="true" />
-                {actual.imagen && (
-                  // eslint-disable-next-line @next/next/no-img-element -- ilustración pequeña ya optimizada (webp)
-                  <img src={actual.imagen} alt={actual.izquierda} width={320} height={320} className={s.imagen} draggable={false} />
-                )}
-                {marca && (
-                  <span className={s.sello} data-ok={marca.ok ? "" : undefined} aria-hidden="true">
-                    {marca.ok ? <Check size={64} strokeWidth={4} /> : <X size={64} strokeWidth={4} />}
-                  </span>
-                )}
-              </figure>
-            )}
-            {fin && <p className={s.cierre}>¡Colgaste todas las tarjetas!</p>}
-          </div>
-
-          <ul className={s.fichas} aria-label="Fichas">
-            {fichas.map((f) => {
-              const fuera = estado.quitadas.includes(f.id);
-              if (fuera)
-                return <li key={f.id} className={s.hueco} aria-hidden="true" />;
-              const esErrada = errada === f.id;
-              const esRevelada = revelada === f.id;
-              return (
-                <li key={f.id}>
-                  <button
-                    type="button"
-                    ref={(el) => {
-                      if (el) botones.current.set(f.id, el);
-                      else botones.current.delete(f.id);
-                    }}
-                    className={s.ficha}
-                    data-tinte={tinte[f.id]}
-                    data-estado={esRevelada ? "revelada" : esErrada ? "no" : undefined}
-                    disabled={fin}
-                    aria-disabled={bloqueado || undefined}
-                    onClick={() => tocar(f.id)}
-                  >
-                    <span className={s.chinche} aria-hidden="true" />
-                    <span className={s.palabra}>{f.derecha}</span>
-                    {esErrada && <X className={s.marcaFicha} size={34} strokeWidth={4} aria-hidden="true" />}
-                    {esRevelada && <Check className={s.marcaFicha} size={34} strokeWidth={4} aria-hidden="true" />}
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </>
+        <div className={s.escenario}>
+          {actual && (
+            <figure className={s.colgante} data-movimiento={movimiento} data-tinte={estado.indice % TINTES}>
+              <span className={s.pinza} aria-hidden="true" />
+              {actual.imagen && (
+                // eslint-disable-next-line @next/next/no-img-element -- ilustración pequeña ya optimizada (webp)
+                <img src={actual.imagen} alt={actual.izquierda} width={320} height={320} className={s.imagen} draggable={false} />
+              )}
+              {marca && (
+                <span className={s.sello} data-ok={marca.ok ? "" : undefined} aria-hidden="true">
+                  {marca.ok ? <Check size={64} strokeWidth={4} /> : <X size={64} strokeWidth={4} />}
+                </span>
+              )}
+            </figure>
+          )}
+          {fin && <p className={s.cierre}>¡Colgaste todas las tarjetas!</p>}
+        </div>
       )}
 
       <p className={s.aviso} role="status">
         {aviso}
       </p>
+
+      {fase !== "inicio" && (
+        <ul className={s.fichas} aria-label="Fichas">
+          {fichas.map((f) => {
+            const fuera = estado.quitadas.includes(f.id);
+            if (fuera)
+              return <li key={f.id} className={s.hueco} aria-hidden="true" />;
+            const esErrada = errada === f.id;
+            const esRevelada = revelada === f.id;
+            return (
+              <li key={f.id}>
+                <button
+                  type="button"
+                  ref={(el) => {
+                    if (el) botones.current.set(f.id, el);
+                    else botones.current.delete(f.id);
+                  }}
+                  className={s.ficha}
+                  data-tinte={tinte[f.id]}
+                  data-estado={esRevelada ? "revelada" : esErrada ? "no" : undefined}
+                  disabled={fin}
+                  aria-disabled={bloqueado || undefined}
+                  onClick={() => tocar(f.id)}
+                >
+                  <span className={s.chinche} aria-hidden="true" />
+                  <span className={s.palabra}>{f.derecha}</span>
+                  {esErrada && <X className={s.marcaFicha} size={34} strokeWidth={4} aria-hidden="true" />}
+                  {esRevelada && <Check className={s.marcaFicha} size={34} strokeWidth={4} aria-hidden="true" />}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      )}
 
       {fin && (
         <div className={s.acciones}>

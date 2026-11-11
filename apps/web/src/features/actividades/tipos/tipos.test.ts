@@ -34,6 +34,16 @@ describe("completar", () => {
 });
 
 describe("relaciones", () => {
+  it("emparejar en cinta admite hasta 18 tarjetas, todas con imagen; en columnas, hasta 8", () => {
+    const par = (i: number, imagen?: string) => ({ id: `p${i}`, izquierda: `Imagen ${i}`, derecha: `Ficha ${i}`, ...(imagen ? { imagen } : {}) });
+    const ok = (n: number, imagen?: string) => Array.from({ length: n }, (_, i) => par(i, imagen));
+    const esquema = emparejar.esquemaContenido;
+    expect(esquema.safeParse({ presentacion: "cinta", pares: ok(18, "/images/juegos/x/a.webp") }).success).toBe(true);
+    expect(esquema.safeParse({ presentacion: "cinta", pares: ok(4) }).success).toBe(false);
+    expect(esquema.safeParse({ pares: ok(9) }).success).toBe(false);
+    expect(esquema.safeParse({ pares: ok(8) }).success).toBe(true);
+  });
+
   it("emparejar acierta cuando se elige el mismo par", () => {
     expect(emparejar.calificar({ pares: [] }, "par1", "par1").puntaje).toBe(1);
     expect(emparejar.calificar({ pares: [] }, "par1", "par2").puntaje).toBe(0);

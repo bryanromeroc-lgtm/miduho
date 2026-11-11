@@ -44,10 +44,10 @@ El nombre de la actividad de MIDUHO («mi día en orden», tipo `ordenar`) vení
 | Original | MIDUHO 🔶 |
 |---|---|
 | Solo tocar un canvas; sin teclado ni lector | Fichas y tarjeta en HTML (botones, foco visible, teclado) con `alt` de la imagen |
-| 3 corazones, reloj y tabla de clasificación | Sin reloj ni ranking; los errores no «matan» la partida: 2 intentos por tarjeta y calificación 2/1/0 |
+| 3 corazones, reloj y tabla de clasificación | Sin reloj ni ranking; los errores no «matan» la partida: 2 intentos por tarjeta; la nota cuenta la **primera** ficha tocada (1/0 por tarjeta, como `emparejar`; no 2/1/0, para no cambiar el contrato del tipo) |
 | Sin pista | Pista tras el primer fallo («es algo que se hace por la noche…»), y revelado de la solución tras el segundo |
-| 18 fichas todas a la vez (carga alta para 1.°) | 🔶 Menos tarjetas por partida (p. ej. 8 de 18) y menos fichas a la vez; por confirmar con el usuario |
-| Fichas con solo texto | Texto + voz grabada para quien aún no lee con soltura |
+| 18 fichas todas a la vez (carga alta para 1.°) | Se conservan las 18 (decisión del usuario del 2026-11-10); la ficha acertada sale, así que la carga baja sola |
+| Fichas con solo texto | Igual: solo texto y los efectos de la referencia, sin voces (decisión del usuario). El texto es HTML y el lector de pantalla lo lee |
 
 ## Qué se conserva (mecánica) y qué se hace propio
 
@@ -68,4 +68,4 @@ Captura: `content/referencias/cokitos-rutinas-diarias/` (`inventario.json`, `RES
 | Reloj | 3 | `clockgo`, `clocktick1`, `clocktick2` (no se usan: MIDUHO no tiene reloj) |
 | Desconocido | 1 | `test1.mp3` (prueba del motor) |
 
-**Se usará (propuesta, pendiente de visto bueno):** acierto y fallo (variantes turnadas), movimiento de la tarjeta (entrar/salir), inicio y cierre. **Se completa con recursos propios:** la **voz de cada ficha y de cada consigna** (la referencia no la tiene; sale con la síntesis del navegador o con voz grabada en Gemini 🔶). Claude no oye: todo queda en «por escuchar».
+**Se usará (propuesta, pendiente de visto bueno):** acierto y fallo (variantes turnadas), movimiento de la tarjeta (entrar/salir), inicio y cierre. **Se usó (2026-11-10):** `chipminor1–3` → `acierto-1…3`, `chipfail1–3` → `fallo-1…3`, `conveyoritemappear` → `entrar`, `conveyoritemcentered` → `centrar`, `conveyoritemleave` → `salir`, `gameintro` → `inicio`, `gamesuccessful` → `fin`. **No se usó:** reloj, ránking, menú, reinicio. **Sin voces** (decisión del usuario: «los efectos de sonido no más»). Claude no oye: todo queda en «por escuchar».

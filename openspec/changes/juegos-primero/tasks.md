@@ -9,7 +9,7 @@
 - [x] 1.7 Pruebas de la lógica pura de la herramienta (detección de URL de audio en texto, lectura de sprites, heurística de rol, quitar duplicados) con `node:test`
 - [x] 1.8 Plantilla `LICENCIA.md` de referencia (licencia pública o permiso declarado el 2026-11-10 con los datos del soporte por adjuntar 🔶) y ampliar `.gitignore` con `/content/referencias/**/audio/`
 - [ ] 1.9 Guiones por plataforma en `tools/captura-audio/guiones/`: Cokitos (pulsar «Jugar» y seguir el `iframe`), Mundo Primaria (aviso de cookies), Árbol ABC, Digipuzzle, Cristic (Canva/Genially), PhET, Code.org, Toy Theater, Colombia Aprende (`--zip`)
-- [ ] 1.10 Probar la herramienta de punta a punta con `cokitos-rutinas-diarias` y comprobar que `git status` muestre solo `inventario.json`, `LICENCIA.md` y `RESUMEN.md`
+- [x] 1.10 Probar la herramienta de punta a punta con `cokitos-rutinas-diarias` y comprobar que `git status` muestre solo `inventario.json`, `LICENCIA.md` y `RESUMEN.md`
 - [x] 1.11 Prueba `apps/web/src/features/actividades/public-audio.test.ts` (todo audio de `public/audio/**` registrado) y ajustar los `LICENCIAS.md` existentes (`golpea`, `mapa`, `robots`, `ruta-palabras`, `palabras`) hasta que pase
 - [x] 1.12 Crear el tablero `docs/investigacion/juegos-primero.md` con las 26 actividades, sus DBA, sus referentes y los pasos en «pendiente»
 
@@ -28,7 +28,7 @@
 Para **cada** actividad: (a) REA de cada referente e informe `docs/investigacion/referencia-<slug>.md`; (b) captura sonora, inventario y «Inventario sonoro» en el informe; (c) diseño corto y visto bueno del usuario; (d) imágenes Gemini y audio adaptado con `LICENCIAS.md`; (e) JSON en `curriculo/actividades/<asignatura>/1/`; (f) verificación y fila del tablero al día.
 
 - [x] 3.1 `vivo-o-no-vivo` (Ciencias naturales · NAT-1-03 · clasificar): Mundo Primaria natu-svi-1-1, Cokitos seres vivos e inertes, Colombia Aprende
-- [ ] 3.2 `mi-dia-en-orden` (Ciencias sociales · SOC-1-03 · ordenar): Cokitos rutinas diarias
+- [x] 3.2 `rutinas-del-dia` (antes `mi-dia-en-orden`; Ciencias sociales · SOC-1-03 · `emparejar` con presentación `cinta`): Cokitos rutinas diarias. La referencia relaciona imagen con acción, no ordena (visto bueno del usuario, 2026-11-10). 18 tarjetas, solo los efectos de la referencia, sin voces; registro `docs/software-factory/inc-3-juegos-primero-rutinas-del-dia.md`
 - [ ] 3.3 `los-meses-del-anio` (Ciencias sociales · SOC-1-03 · ordenar): Cokitos meses del año
 - [ ] 3.4 `antes-y-ahora` (Ciencias sociales · SOC-1-03 · clasificar): Mundo Primaria soc-hue-1-2, con contexto de un municipio colombiano
 - [ ] 3.5 `como-se-siente` (Ética y valores · CIU-1a3-CP · clasificar): Cokitos clasificar emociones

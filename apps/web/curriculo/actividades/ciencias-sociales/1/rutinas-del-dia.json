@@ -46,17 +46,17 @@
       },
       {
         "id": "banarse",
-        "izquierda": "Un niño en la ducha, con agua y burbujas de jabón",
+        "izquierda": "Un niño con pantaloneta bajo el agua de la ducha, con burbujas de jabón en el cabello",
         "derecha": "Bañarse",
         "imagen": "/images/juegos/rutinas-del-dia/banarse.webp",
         "pista": "Fíjate en el agua que cae sobre él."
       },
       {
         "id": "vestirse",
-        "izquierda": "Un niño poniéndose una camiseta, con pantalón y zapatos a su lado",
+        "izquierda": "Un niño sentado en un banco atándose los zapatos, con una camiseta doblada en la silla",
         "derecha": "Vestirse",
         "imagen": "/images/juegos/rutinas-del-dia/vestirse.webp",
-        "pista": "Mira lo que tiene entre las manos."
+        "pista": "Fíjate en lo que se pone y en la ropa que todavía le falta."
       },
       {
         "id": "desayunar",

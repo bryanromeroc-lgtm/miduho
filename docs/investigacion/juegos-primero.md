@@ -9,7 +9,7 @@ La actividad existente `la-ruta-de-las-palabras` (Comprensión lectora, LEN-1-05
 | Fase | Slug (de trabajo) | Asignatura | DBA | Tipo | Referentes | E | C | D | K | V |
 |---|---|---|---|---|---|---|---|---|---|---|
 | 2 | `vivo-o-no-vivo` | Ciencias naturales | NAT-1-03 | `clasificar` | Mundo Primaria natu-svi-1-1 · Cokitos seres vivos e inertes (Wordwall) · Colombia Aprende S_G01_U03_L02 | hecho | hecho | hecho | hecho | hecho (falta escuchar voces 🔶) |
-| 2 | `mi-dia-en-orden` | Ciencias sociales | SOC-1-03 | `ordenar` | Cokitos rutinas diarias | pendiente | pendiente | pendiente | pendiente | pendiente |
+| 2 | `rutinas-del-dia` (antes `mi-dia-en-orden`) | Ciencias sociales | SOC-1-03 | `emparejar` (presentación `cinta`) | Cokitos rutinas diarias (la referencia relaciona imagen con acción; no ordena) | hecho | hecho | hecho | hecho | hecho (falta escuchar los efectos 🔶) |
 | 2 | `los-meses-del-anio` | Ciencias sociales | SOC-1-03 | `ordenar` | Cokitos ordenar los meses del año | pendiente | pendiente | pendiente | pendiente | pendiente |
 | 2 | `antes-y-ahora` | Ciencias sociales | SOC-1-03 | `clasificar` | Mundo Primaria soc-hue-1-2 | pendiente | pendiente | pendiente | pendiente | pendiente |
 | 2 | `como-se-siente` | Ética y valores | CIU-1a3-CP | `clasificar` | Cokitos clasificar emociones | pendiente | pendiente | pendiente | pendiente | pendiente |
