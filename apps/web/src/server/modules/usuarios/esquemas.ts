@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { COMBINACIONES, ESTADOS } from "@/lib/usuarios";
+import { COMBINACIONES_ALTA, ESTADOS } from "@/lib/usuarios";
 import { esquemaNuevaCuenta } from "@/server/auth/esquemas";
 
 /**
@@ -21,10 +21,16 @@ export const filtroUsuarios = z.object({
 });
 export type FiltroUsuarios = z.output<typeof filtroUsuarios>;
 
-/** Alta individual. ADMIN puro queda pendiente de invitación; el grupo solo aplica a ESTUDIANTE. */
+/**
+ * Alta individual desde la aplicación: solo ESTUDIANTE o DOCENTE. Las cuentas
+ * con rol ADMIN las crea el equipo de desarrollo (scripts/cuentas-admin.ts).
+ * El grupo solo aplica a ESTUDIANTE.
+ */
 export const crearUsuario = esquemaNuevaCuenta
   .extend({
-    combinacion: z.enum(COMBINACIONES, { error: "Elige un rol o combinación válida." }),
+    combinacion: z.enum(COMBINACIONES_ALTA, {
+      error: "Elige estudiante o docente. Las cuentas de administración las crea el equipo de desarrollo.",
+    }),
     grupoId: z.preprocess(vacioIndefinido, id.optional()),
   })
   .refine((d) => !d.grupoId || d.combinacion === "ESTUDIANTE", {
@@ -49,10 +55,6 @@ export const actualizarIdentidad = z
 
 export const cambiarEstado = z.object({
   estado: z.enum(["ACTIVO", "INACTIVO"], { error: "El estado debe ser ACTIVO o INACTIVO." }),
-});
-
-export const cambiarRoles = z.object({
-  combinacion: z.enum(COMBINACIONES, { error: "Elige un rol o combinación válida." }),
 });
 
 /**

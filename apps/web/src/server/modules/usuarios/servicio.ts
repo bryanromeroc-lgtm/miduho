@@ -3,6 +3,10 @@
  * §6 y §11). Solo ADMIN llega aquí: la autorización se verifica antes, en el
  * handler o en la página.
  *
+ * La aplicación solo crea ESTUDIANTE y DOCENTE (el esquema `crearUsuario` lo
+ * fija). Crear ADMIN, otorgar o retirar ese rol lo hace el equipo de
+ * desarrollo con scripts/cuentas-admin.ts, que llama a este mismo servicio.
+ *
  * Reglas que aplica:
  * - combinaciones válidas (ADMIN, DOCENTE, ESTUDIANTE, DOCENTE+ADMIN); una
  *   cuenta estudiantil y una del personal nunca se convierten entre sí;
@@ -226,7 +230,7 @@ export function crearServicioUsuarios(db: PrismaClient, cuentas: ServicioCuentas
      * DOCENTE (y DOCENTE+ADMIN) → temporal con cambio obligatorio;
      * ESTUDIANTE → legible; ADMIN puro → invitación de 24 h, sin contraseña.
      */
-    async crear(d: Entrada<typeof E.crearUsuario>) {
+    async crear(d: Omit<Entrada<typeof E.crearUsuario>, "combinacion"> & { combinacion: Combinacion }) {
       const datos = { nombres: d.nombres, apellidos: d.apellidos, correo: d.correo };
       switch (d.combinacion) {
         case "ADMIN": {

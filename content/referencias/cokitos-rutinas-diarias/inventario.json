@@ -1,0 +1,806 @@
+{
+  "slug": "cokitos-rutinas-diarias",
+  "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+  "autor_dominio": "wordwall.net",
+  "fecha_captura": "2026-11-11T03:13:16.688Z",
+  "herramienta": "tools/captura-audio",
+  "transcripcion_automatica": "no disponible (sin whisper) 🔶",
+  "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+  "notas_captura": [
+    "guion: abierto https://www.cokitos.com/juego-de-rutinas-diarias/play/",
+    "guion: iframe del juego: https://wordwall.net/es/embed/d3e5d390ee7441c393120641cc3de2e4?themeId=43&templateId=46&fontStackId=0",
+    "guion: abierto el juego del autor como página: https://wordwall.net/es/embed/d3e5d390ee7441c393120641cc3de2e4?themeId=43&templateId=46&fontStackId=0",
+    "no descargado (404): https://pm.azerioncircle.com/@bygd/focus/0.13.6/dist/app/iife/!window.OPUS",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgameintro.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgameintro.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgameintro.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkconveyoritemactivate1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkconveyoritemactivate1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkconveyoritemactivate1.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkconveyoritemactivate2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkconveyoritemactivate2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkconveyoritemactivate2.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkconveyoritemactivate3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkconveyoritemactivate3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkconveyoritemactivate3.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkconveyoritemappear.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkconveyoritemappear.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkconveyoritemappear.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkconveyoritemcentered.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkconveyoritemcentered.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkconveyoritemcentered.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkconveyoritemdeactivate.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkconveyoritemdeactivate.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkconveyoritemdeactivate.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkconveyoritemleave.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkconveyoritemleave.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkconveyoritemleave.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipminor1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipminor1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipminor1.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipminor2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipminor2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipminor2.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipminor3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipminor3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipminor3.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipminor4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipminor4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipminor4.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamesuccessful.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgamesuccessful.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgamesuccessful.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgameunsuccessful.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgameunsuccessful.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgameunsuccessful.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipfail1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipfail1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipfail1.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipfail2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipfail2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipfail2.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipfail3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipfail3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipfail3.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkleaderboards.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkleaderboards.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkleaderboards.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkmenu.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkmenu.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkmenu.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkmenusubtle.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkmenusubtle.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkmenusubtle.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamerestart.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgamerestart.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgamerestart.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamereveal.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgamereveal.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgamereveal.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgametimesup.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgametimesup.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgametimesup.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkclocktick1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkclocktick1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkclocktick1.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkclocktick2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkclocktick2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkclocktick2.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkclockgo.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkclockgo.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkclockgo.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkbackgroundmusic1b.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkbackgroundmusic1b.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkbackgroundmusic1b.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipminorfast1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipminorfast2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipminorfast3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipfailfast1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipfailfast2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipfailfast3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipmajor1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgameshuffle.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner5.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner6.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner7.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner8.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner9.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner10.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinnerselection.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileappear.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkdrop1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkdrop2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkdrop3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkdrop4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkdrop5.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileeliminate.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflip1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflip2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflip3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflip4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflip5.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflip6.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflip7.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflipback1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflipback2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflipback3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflipback4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflipback5.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflipback6.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflipback7.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkpickup1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkpickup2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkpickup3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkpickup4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkpickup5.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkwheelresume.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkwheelsegmenteliminate.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkwheeltick1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkwheeltick2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkwheeltick3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkwheeltick4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkwheeltick5.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkwheeltick6.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkopenthebox1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkopenthebox2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkopenthebox3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkopenthebox4.mp3"
+  ],
+  "frames": [
+    "https://wordwall.net/es/embed/d3e5d390ee7441c393120641cc3de2e4?themeId=43&templateId=46&fontStackId=0"
+  ],
+  "pistas": [
+    {
+      "id": "fa352c82",
+      "archivo": "audio/originales/fa352c82-corkgameintro.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkgameintro.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "fa352c824627a0d87274b97ef49d6881700aaa87f8724198dd33caf077e64ee6",
+      "mime": "audio/ogg",
+      "duracion_s": 3.692,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -18.4,
+      "rol": "desconocido",
+      "evento": "inicio",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/cinta/inicio.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "5cd98011",
+      "archivo": "audio/originales/5cd98011-corkconveyoritemactivate2.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkconveyoritemactivate2.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "5cd98011f2450755911b4f4b31fd015843a45d7c79e68abc4bc0921829bb1077",
+      "mime": "audio/ogg",
+      "duracion_s": 1.635,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -22.9,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "5d9c3cb4",
+      "archivo": "audio/originales/5d9c3cb4-corkconveyoritemactivate3.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkconveyoritemactivate3.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "5d9c3cb4d7fb540ee555f48ccd6e278ae85717d97d38536c4176278f9af83128",
+      "mime": "audio/ogg",
+      "duracion_s": 1.615,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -25.2,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "d92efdcc",
+      "archivo": "audio/originales/d92efdcc-corkchipminor1.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkchipminor1.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "d92efdccdd20b8ecfa9d5932a79b48ea1ac0a9d1607db6c442eb23bc3abd8393",
+      "mime": "audio/ogg",
+      "duracion_s": 1.615,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -24.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/cinta/acierto-1.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "393d8ac3",
+      "archivo": "audio/originales/393d8ac3-corkchipminor2.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkchipminor2.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "393d8ac38887f3bbb8e29088cfd3ea765dabd3aa21ecfdbb755f9f2fa8d4b7a3",
+      "mime": "audio/ogg",
+      "duracion_s": 1.615,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -26.4,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/cinta/acierto-2.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "15e077b5",
+      "archivo": "audio/originales/15e077b5-corkchipminor3.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkchipminor3.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "15e077b584d73312bea98c963f40d1fdecfd508bb90aeb8d293caba73f90a725",
+      "mime": "audio/ogg",
+      "duracion_s": 1.615,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -25.4,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/cinta/acierto-3.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "7366321e",
+      "archivo": "audio/originales/7366321e-corkchipminor4.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkchipminor4.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "7366321e744f546a009309ea58cea9173074f0b44f403a89e7cf43b90bc8c735",
+      "mime": "audio/ogg",
+      "duracion_s": 1.615,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -24.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "6a8d3789",
+      "archivo": "audio/originales/6a8d3789-corkchipfail1.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkchipfail1.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "6a8d3789c798b27db2abbe6900970f94d745fbc5834b329d7b6eda95a80d6ca1",
+      "mime": "audio/ogg",
+      "duracion_s": 1.269,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -23,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/cinta/fallo-1.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "5e9693b8",
+      "archivo": "audio/originales/5e9693b8-corkchipfail2.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkchipfail2.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "5e9693b824cf795287e6cadac62a4ee917cda2ade5db2a10c99d7bc5fe09461c",
+      "mime": "audio/ogg",
+      "duracion_s": 1.269,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -22.4,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/cinta/fallo-2.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "42ec6d96",
+      "archivo": "audio/originales/42ec6d96-corkchipfail3.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkchipfail3.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "42ec6d96de75d3568e0a5a458d99c47cad3356c16d84389d9586b04758b9a996",
+      "mime": "audio/ogg",
+      "duracion_s": 1.269,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -21.1,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/cinta/fallo-3.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "b4848ae0",
+      "archivo": "audio/originales/b4848ae0-corkmenu.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkmenu.ogg",
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkmenusubtle.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "b4848ae00615105b5c8af5c6b6e4f2ee89d7837852c6b35c0ab3e655c9953937",
+      "mime": "audio/ogg",
+      "duracion_s": 0.923,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -34.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "1dbe5c92",
+      "archivo": "audio/originales/1dbe5c92-corkgamereveal.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkgamereveal.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "1dbe5c92d23850ef751b28cc480c7660f1d03ebbfeeccfa3d7255b76c657c89f",
+      "mime": "audio/ogg",
+      "duracion_s": 4.154,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -18.1,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "5c8de566",
+      "archivo": "audio/originales/5c8de566-corkconveyoritemactivate1.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkconveyoritemactivate1.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "5c8de5662deb344e646edbf24ac4f4f1486e14e58fceade88176f573921f67cb",
+      "mime": "audio/ogg",
+      "duracion_s": 1.635,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -25.1,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "97391871",
+      "archivo": "audio/originales/97391871-corkconveyoritemappear.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkconveyoritemappear.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "97391871d8eb963cbf85e2b25ce6eb74d12b6ce91f502b745625905b18b3aeba",
+      "mime": "audio/ogg",
+      "duracion_s": 1.885,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -36.2,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/cinta/entrar.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "5d5f565d",
+      "archivo": "audio/originales/5d5f565d-corkconveyoritemcentered.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkconveyoritemcentered.ogg",
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkconveyoritemdeactivate.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "5d5f565d258e1a56148c1b5a2c7523ecc9f3febd70e30a23779a87417c5d664a",
+      "mime": "audio/ogg",
+      "duracion_s": 0.235,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/cinta/centrar.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "2ee5c232",
+      "archivo": "audio/originales/2ee5c232-corkclockgo.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkclockgo.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "2ee5c232ef14fbf1b7e65a99842f9e6da422ece29b69c73ec46441c0abd73a1d",
+      "mime": "audio/ogg",
+      "duracion_s": 1.5,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -23.8,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "cd2fed71",
+      "archivo": "audio/originales/cd2fed71-corkconveyoritemleave.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkconveyoritemleave.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "cd2fed713c70b576730e6e2ea5fd21c93f36ec9bfbe911d0ffe119d695972c34",
+      "mime": "audio/ogg",
+      "duracion_s": 1.5,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -39,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/cinta/salir.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "fd5749a7",
+      "archivo": "audio/originales/fd5749a7-corkclocktick1.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkclocktick1.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "fd5749a785415cf31a9fab789045f105015ad4b5b6d9533baacc6c97a6aae0e6",
+      "mime": "audio/ogg",
+      "duracion_s": 1.269,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -31.7,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "92117446",
+      "archivo": "audio/originales/92117446-corkclocktick2.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkclocktick2.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "921174464650c964663d15a809892767e69af604883f921ffd369883a448c977",
+      "mime": "audio/ogg",
+      "duracion_s": 1.269,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -31.7,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "ba8f4bc5",
+      "archivo": "audio/originales/ba8f4bc5-corkgamesuccessful.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkgamesuccessful.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "ba8f4bc5fc3eea4d510f81abbcce58c783b8fb5aa838d8c94eb9df51c8200f23",
+      "mime": "audio/ogg",
+      "duracion_s": 4.193,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -17.3,
+      "rol": "efecto",
+      "evento": "fin",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/cinta/fin.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "dd72ff50",
+      "archivo": "audio/originales/dd72ff50-corkgameunsuccessful.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkgameunsuccessful.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "dd72ff507ee0497d0b908993a2b689d0bcd8bac93058078ae9e834e13a4e92ea",
+      "mime": "audio/ogg",
+      "duracion_s": 3.562,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.6,
+      "rol": "efecto",
+      "evento": "fin",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "9e48495f",
+      "archivo": "audio/originales/9e48495f-corkleaderboards.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkleaderboards.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "9e48495f1dbc6fe21593344da70f933cf82964938a5d8e2637f53b215476d98b",
+      "mime": "audio/ogg",
+      "duracion_s": 3.873,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -18.6,
+      "rol": "desconocido",
+      "evento": "fin",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "44d9916c",
+      "archivo": "audio/originales/44d9916c-corkgamerestart.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkgamerestart.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "44d9916cfc7006044435a4eea66a4b5bdbfe79101fd3304961c4169bcdfa377a",
+      "mime": "audio/ogg",
+      "duracion_s": 2.308,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -18.7,
+      "rol": "efecto",
+      "evento": "inicio",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "8acb4adc",
+      "archivo": "audio/originales/8acb4adc-corkgametimesup.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkgametimesup.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "8acb4adcb3929079b140d7e1a5bc4c063b2356b4fbc4e1f147fbd986bb0b3dc0",
+      "mime": "audio/ogg",
+      "duracion_s": 8,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -18,
+      "rol": "desconocido",
+      "evento": "fin",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "93eb48d1",
+      "archivo": "audio/originales/93eb48d1-test1.mp3",
+      "urls": [
+        "https://app.cdn.wordwall.net/test/test1.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "93eb48d143f511d68cafe8614abee4a9fed09d1182e78d98c0aa7f03835b370f",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.8,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -20.1,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "script"
+      ]
+    },
+    {
+      "id": "23061693",
+      "archivo": "audio/originales/23061693-data-0.mp3",
+      "urls": [
+        "data:audio/mp3 (en https://app.cdn.wordwall.net/engine/a/scripts/view.fc44b9c413a71cd1.js)"
+      ],
+      "pagina": "https://www.cokitos.com/juego-de-rutinas-diarias/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "23061693af1606d64ce60b03ebaafb7ca834f634d6abb5f872f22bb496f702c3",
+      "mime": "audio/mp3",
+      "duracion_s": 0.168,
+      "canales": 1,
+      "frecuencia_hz": 24000,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    }
+  ]
+}

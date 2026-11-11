@@ -5,8 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   BookOpen,
-  Building2,
-  CalendarClock,
   CalendarDays,
   CircleUserRound,
   FlaskConical,
@@ -18,8 +16,8 @@ import {
   School,
   ShieldCheck,
   Star,
-  Users,
   UsersRound,
+  SlidersHorizontal,
   type LucideIcon,
 } from "lucide-react";
 import { useShell } from "@/components/shell/contexto";
@@ -49,10 +47,7 @@ const ICONOS: Record<IdRuta, LucideIcon> = {
   "mi-curso": UsersRound,
   dashboard: LayoutDashboard,
   contenido: Library,
-  usuarios: Users,
-  estructura: Building2,
-  asignaciones: CalendarClock,
-  estudiantes: UsersRound,
+  administracion: SlidersHorizontal,
   cuenta: CircleUserRound,
 };
 
@@ -71,10 +66,8 @@ const LETRAS = ["M", "I", "D", "U", "H", "O"];
 const PARTIR: Record<string, string> = {
   Biblioteca: "Biblio\u00adteca",
   Laboratorios: "Labora\u00adtorios",
-  Asignaciones: "Asigna\u00adciones",
   Contenido: "Conte\u00adnido",
-  Estudiantes: "Estu\u00addiantes",
-  Estructura: "Estruc\u00adtura",
+  Administración: "Adminis\u00adtración",
 };
 
 export function MarcoJuego({

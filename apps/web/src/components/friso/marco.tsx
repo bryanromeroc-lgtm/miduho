@@ -5,8 +5,6 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   BookOpen,
-  Building2,
-  CalendarClock,
   CalendarDays,
   CircleUserRound,
   FlaskConical,
@@ -16,8 +14,8 @@ import {
   Library,
   School,
   ShieldCheck,
-  Users,
   UsersRound,
+  SlidersHorizontal,
   type LucideIcon,
 } from "lucide-react";
 import { Escudo } from "@/components/friso/escudo";
@@ -48,10 +46,7 @@ const ICONOS: Record<IdRuta, LucideIcon> = {
   "mi-curso": UsersRound,
   dashboard: LayoutDashboard,
   contenido: Library,
-  usuarios: Users,
-  estructura: Building2,
-  asignaciones: CalendarClock,
-  estudiantes: UsersRound,
+  administracion: SlidersHorizontal,
   cuenta: CircleUserRound,
 };
 

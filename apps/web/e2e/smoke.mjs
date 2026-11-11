@@ -189,9 +189,9 @@ const api = (page, url, method = "GET", body) =>
 
 const NAV_EST = ["Mis materias", "Biblioteca", "Laboratorios", "Agenda", "Cuenta"];
 const NAV_DOC = ["Hoy", "Mis clases", "Biblioteca", "Laboratorios", "Agenda", "Mi curso", "Cuenta"];
-const NAV_ADMIN = ["Dashboard", "Usuarios", "Estudiantes", "Estructura", "Asignaciones", "Cuenta"];
+const NAV_ADMIN = ["Dashboard", "Contenido", "Biblioteca", "Laboratorios", "Administración", "Cuenta"];
 const MAQUETA = ["/", "/clases", "/biblioteca", "/laboratorios", "/agenda"];
-const RUTAS_ADMIN = ["/admin", "/admin/usuarios", "/admin/usuarios/nuevo", "/admin/usuarios/importar", "/admin/estudiantes", "/admin/estructura", "/admin/asignaciones"];
+const RUTAS_ADMIN = ["/admin", "/admin/administracion", "/admin/usuarios", "/admin/usuarios/estudiantes", "/admin/usuarios/docentes", "/admin/usuarios/nuevo", "/admin/usuarios/importar", "/admin/usuarios/estudiantes/grupos", "/admin/coordinacion", "/admin/estructura", "/admin/asignaciones"];
 // Patrones que delatarían datos reales de menores o personal del colegio.
 const MARCADORES_REALES = ["cédula", "cédula de ciudadanía", "tarjeta de identidad", "documento de identidad", "número de documento", "cc ", "ti ", "ti. ", "cc. "];
 // Números con forma de documento de identidad colombiano (cédula/NIT):
@@ -245,7 +245,7 @@ for (const [vista, viewport] of [["escritorio", { width: 1366, height: 900 }], [
       const fuera = r === "/" ? "/admin" : "/cuenta";
       ok(`[${vista}] ADMIN puro ${r} → ${fuera}`, ruta(page) === fuera, page.url());
     }
-    for (const r of ["/admin/usuarios", "/admin/estructura", "/admin/asignaciones", "/admin/estudiantes", "/biblioteca", "/cuenta"]) {
+    for (const r of ["/admin/administracion", "/admin/usuarios", "/admin/usuarios/estudiantes", "/admin/usuarios/docentes", "/admin/coordinacion", "/admin/estructura", "/admin/asignaciones", "/biblioteca", "/cuenta"]) {
       await page.goto(`${BASE}${r}`);
       ok(`[${vista}] ADMIN ${r} accesible`, ruta(page) === r, page.url());
       ok(`[${vista}] ADMIN ${r} una <main>`, (await mains(page)) === 1);
@@ -382,10 +382,14 @@ let ID_EST_SMOKE = null;
   const pa = await ctx.newPage();
   await usar(ctx, pa);
   await login(pa, "admin@miduho.test", A);
+  await pa.goto(`${BASE}/admin/administracion`);
+  ok("Administración muestra Usuarios y Coordinación", (await pa.locator(".admin-puerta-enlace").allTextContents()).join("|") === "Usuarios|Coordinación");
   await pa.goto(`${BASE}/admin/usuarios`);
-  ok("listado usuarios carga", (await pa.textContent("h1"))?.includes("Usuarios"));
+  ok("Usuarios muestra Estudiantes y Docentes", (await pa.locator(".admin-puerta-enlace").allTextContents()).join("|") === "Estudiantes|Docentes");
+  await pa.goto(`${BASE}/admin/usuarios/docentes`);
+  ok("listado docentes carga", (await pa.textContent("h1"))?.includes("Docentes"));
   ok("listado una <main>", (await mains(pa)) === 1);
-  ok("listado muestra cuentas sembradas", (await pa.locator(".admin-tabla tbody tr").count()) >= 3);
+  ok("listado muestra cuentas sembradas", (await pa.locator(".admin-tabla tbody tr").count()) >= 1);
   const listadoTexto = (await texto(pa)).toLowerCase();
   ok("listado sin datos reales", !tieneDatoReal(listadoTexto));
 
@@ -431,28 +435,18 @@ let ID_EST_SMOKE = null;
   await pa.waitForSelector(".admin-credencial");
   ok("alta ESTUDIANTE con contraseña legible", /^[a-z]+-[a-z]+-\d{4}$/.test((await pa.textContent(".admin-clave"))?.trim() ?? ""));
 
-  // Alta ADMIN puro: invitación sin contraseña
+  // Las cuentas de administración no se crean desde la aplicación (las crea el equipo de desarrollo).
   await pa.click("text=Crear otra cuenta");
-  await pa.check("input[name=combinacion][value=ADMIN]");
-  await pa.fill("#nombres", "Admin");
-  await pa.fill("#apellidos", "Invitado E2E (ficticio)");
-  await pa.fill("#correo", "admin-inv-e2e@miduho.test");
-  await pa.click(".admin-formulario button[type=submit]");
-  await pa.waitForSelector(".admin-aviso[data-tipo=ok]");
-  ok("ADMIN puro invitación sin contraseña", (await pa.textContent(".admin-aviso[data-tipo=ok]"))?.includes("invitación") && (await pa.locator(".admin-clave").count()) === 0);
+  ok("alta sin opción ADMIN", (await pa.locator("input[name=combinacion][value=ADMIN], input[name=combinacion][value=DOCENTE_ADMIN]").count()) === 0);
+  ok("API rechaza crear ADMIN", (await api(pa, "/api/usuarios", "POST", { nombres: "Admin", apellidos: "E2E (ficticio)", correo: "admin-inv-e2e@miduho.test", combinacion: "ADMIN" })).status === 400);
 
-  // Ficha del docente creado: promover a DOCENTE+ADMIN, editar, desactivar (revocación)
+  // Ficha del docente creado: rol de solo lectura, editar, desactivar (revocación)
   const lista = await api(pa, "/api/usuarios?q=doc-e2e");
   ID_DOC_SMOKE = lista.json?.data?.[0]?.id;
   ok("API listado con búsqueda", lista.status === 200 && !!ID_DOC_SMOKE && lista.json.total === 1);
   await pa.goto(`${BASE}/admin/usuarios/${ID_DOC_SMOKE}`);
-  await pa.check("input[name=combinacion-rol][value=DOCENTE_ADMIN]");
-  await pa.click("text=Cambiar rol");
-  await pa.waitForSelector("dialog[open]");
-  ok("confirmación modal al cambiar rol", (await pa.textContent("dialog[open] h2"))?.includes("rol"));
-  await pa.click("dialog[open] >> text=Sí, cambiar rol");
-  await pa.waitForSelector("section[aria-labelledby=sec-rol] .admin-aviso[data-tipo=ok]");
-  ok("promover DOCENTE→DOCENTE+ADMIN", (await api(pa, `/api/usuarios/${ID_DOC_SMOKE}`)).json?.combinacion === "DOCENTE_ADMIN");
+  ok("ficha sin cambio de rol", (await pa.locator("input[name=combinacion-rol]").count()) === 0);
+  ok("API de roles retirada", (await api(pa, `/api/usuarios/${ID_DOC_SMOKE}/roles`, "PUT", { combinacion: "DOCENTE_ADMIN" })).status === 404);
 
   // Editar identidad
   await pa.fill("#nombres", "Docente Editada");
@@ -477,8 +471,7 @@ let ID_EST_SMOKE = null;
   // Último ADMIN protegido
   const yo = (await api(pa, "/api/usuarios?q=admin%40miduho.test")).json?.data?.[0];
   ok("no auto-desactivación", (await api(pa, `/api/usuarios/${yo.id}/estado`, "PUT", { estado: "INACTIVO" })).json?.error?.code === "AUTODESACTIVACION");
-  ok("no retirar rol ADMIN propio/último", ["AUTODEGRADACION", "ULTIMO_ADMIN"].includes((await api(pa, `/api/usuarios/${yo.id}/roles`, "PUT", { combinacion: "DOCENTE" })).json?.error?.code));
-  ok("combinación inválida rechazada", (await api(pa, `/api/usuarios/${yo.id}/roles`, "PUT", { combinacion: "ESTUDIANTE_ADMIN" })).status === 400);
+  ok("invitar ADMIN por API retirado", (await api(pa, "/api/usuarios/administradores", "POST", { nombres: "A", apellidos: "B", correo: "a-b@miduho.test" })).status === 404);
 
   // Restablecer credencial del estudiante creado (una sola vez)
   ID_EST_SMOKE = (await api(pa, "/api/usuarios?q=est-e2e")).json?.data?.[0]?.id;
@@ -710,7 +703,8 @@ let ID_EST_SMOKE = null;
   await usar(ctx, pa);
   await login(pa, "admin@miduho.test", A);
   await pa.goto(`${BASE}/admin/estudiantes`);
-  ok("estudiantes panel carga", (await pa.textContent("h1"))?.includes("Estudiantes"));
+  ok("ruta anterior redirige a Grupos", ruta(pa) === "/admin/usuarios/estudiantes/grupos", pa.url());
+  ok("estudiantes panel carga", (await pa.textContent("h1"))?.includes("Grupos de estudiantes"));
   ok("estudiantes una <main>", (await mains(pa)) === 1);
 
   // Trasladar un estudiante con confirmación
@@ -728,7 +722,7 @@ let ID_EST_SMOKE = null;
       ok("traslado pide confirmación", (await pa.textContent("dialog[open] h2"))?.includes("traslado"));
       await pa.click("dialog[open] >> text=Sí, trasladar");
       await pa.waitForFunction(() => !document.querySelector("dialog[open]"), null, { timeout: 15000 }).catch(() => {});
-      await pa.goto(`${BASE}/admin/estudiantes`);
+      await pa.goto(`${BASE}/admin/usuarios/estudiantes/grupos`);
       await pa.waitForLoadState("networkidle");
       const historial = await pa.locator("tr", { hasText: "est-e2e@miduho.test" }).first().textContent();
       ok("traslado conserva historial", /actual/.test(historial ?? "") && /–/.test(historial ?? ""), (historial ?? "").slice(0, 120));

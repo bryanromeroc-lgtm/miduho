@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { BookOpen, CalendarRange, ChartPie, ChevronLeft, ChevronRight, GraduationCap, Search, Shapes, UsersRound, type LucideIcon } from "lucide-react";
-import { Cabecera, Marco } from "@/components/friso/marco";
+import { Cabecera, Marco, Migas } from "@/components/friso/marco";
 import { FormularioEstructura, type Listado, type Opcion } from "./formulario";
 import { enlace, enlaceSeccion, hayFiltros, leerConsulta, leerVer, nombreParametro, parametros, rango, RELACIONES, type Clave, type Filtros } from "@/features/estructura-academica/consulta";
 import { pasosEstructura, TEXTO_ESTADO } from "@/features/estructura-academica/pasos";
@@ -119,7 +119,7 @@ export default async function PaginaEstructura({ searchParams }: { searchParams:
   const registros = { anios: anios.data, periodos: periodos.data, areas: areas.data, grados: grados.data, grupos: grupos.data, asignaturas: asignaturas.data }[ver];
   const pasos = pasosEstructura(conteos);
 
-  return <Marco><Cabecera kicker="Administración" titulo="Estructura académica" nota="Configura el colegio paso a paso. Elige una tarjeta para ver y editar sus registros." />
+  return <Marco><Migas pasos={[{ etiqueta: "Administración", href: "/admin/administracion" }, { etiqueta: "Coordinación", href: "/admin/coordinacion" }, { etiqueta: "Estructura" }]} /><Cabecera kicker="Coordinación" titulo="Estructura académica" nota="Configura el colegio paso a paso. Elige una tarjeta para ver y editar sus registros." />
     <nav className="config-ruta" aria-label="Ruta de configuración">
       <ol>{pasos.map((p, i) => {
         const Icono = ICONO_PASO[p.clave]; const actual = p.clave === ver;

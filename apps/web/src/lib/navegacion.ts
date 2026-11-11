@@ -17,10 +17,7 @@ export type IdRuta =
   | "mi-curso"
   | "dashboard"
   | "contenido"
-  | "usuarios"
-  | "estructura"
-  | "asignaciones"
-  | "estudiantes"
+  | "administracion"
   | "cuenta";
 
 export interface RutaNav {
@@ -38,10 +35,7 @@ const R: Record<IdRuta, RutaNav> = {
   "mi-curso": { id: "mi-curso", href: "/mi-curso", etiqueta: "Mi curso" },
   dashboard: { id: "dashboard", href: "/admin", etiqueta: "Dashboard" },
   contenido: { id: "contenido", href: "/admin/contenido", etiqueta: "Contenido" },
-  usuarios: { id: "usuarios", href: "/admin/usuarios", etiqueta: "Usuarios" },
-  estructura: { id: "estructura", href: "/admin/estructura", etiqueta: "Estructura" },
-  asignaciones: { id: "asignaciones", href: "/admin/asignaciones", etiqueta: "Asignaciones" },
-  estudiantes: { id: "estudiantes", href: "/admin/estudiantes", etiqueta: "Estudiantes" },
+  administracion: { id: "administracion", href: "/admin/administracion", etiqueta: "Administración" },
   cuenta: { id: "cuenta", href: "/cuenta", etiqueta: "Cuenta" },
 };
 
@@ -50,7 +44,8 @@ const POR_CONTEXTO: Record<ContextoShell, IdRuta[]> = {
   ESTUDIANTE: ["hoy", "biblioteca", "laboratorios", "agenda", "cuenta"],
   DOCENTE: ["hoy", "clases", "biblioteca", "laboratorios", "agenda", "mi-curso", "cuenta"],
   // La coordinadora ve el contenido pedagógico antes que la administración (vista-admin-contenido, D6).
-  ADMIN: ["dashboard", "contenido", "biblioteca", "laboratorios", "usuarios", "estudiantes", "estructura", "asignaciones", "cuenta"],
+  // Usuarios (estudiantes y docentes) y Coordinación (estructura y asignaciones) viven dentro de Administración.
+  ADMIN: ["dashboard", "contenido", "biblioteca", "laboratorios", "administracion", "cuenta"],
 };
 
 /** El inicio del estudiante es su tablero de materias, no el día de la docente. */
@@ -75,10 +70,26 @@ export function esRutaAdmin(pathname: string) {
   return pathname === "/admin" || pathname.startsWith("/admin/");
 }
 
+/**
+ * Secciones que cuelgan de «Administración» sin compartir su prefijo de URL:
+ * el enlace del encabezado sigue marcado mientras se trabaja en cualquiera.
+ */
+export const SECCIONES_ADMINISTRACION = [
+  "/admin/administracion",
+  "/admin/usuarios",
+  "/admin/coordinacion",
+  "/admin/estructura",
+  "/admin/asignaciones",
+  "/admin/estudiantes",
+] as const;
+
+const porPrefijo = (base: string, pathname: string) => pathname === base || pathname.startsWith(`${base}/`);
+
 /** Marca activa: "/" y "/admin" solo coinciden exactos; el resto por prefijo de segmento. */
 export function rutaActiva(href: string, pathname: string) {
   if (href === "/" || href === "/admin") return pathname === href;
-  return pathname === href || pathname.startsWith(`${href}/`);
+  if (href === "/admin/administracion") return SECCIONES_ADMINISTRACION.some((b) => porPrefijo(b, pathname));
+  return porPrefijo(href, pathname);
 }
 
 /**

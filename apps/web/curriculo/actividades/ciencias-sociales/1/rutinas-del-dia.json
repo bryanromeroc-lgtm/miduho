@@ -1,0 +1,140 @@
+{
+  "slug": "rutinas-del-dia",
+  "titulo": "Las rutinas del día",
+  "tipo": "emparejar",
+  "grado": 1,
+  "instruccion": "Mira la tarjeta que cuelga de la cuerda y toca la ficha que dice lo que hace el niño. Tienes dos intentos por tarjeta.",
+  "tema": "Rutinas diarias: lo que hago por la mañana, por la tarde y por la noche en mi casa y en mi colegio",
+  "imagen": "/images/juegos/rutinas-del-dia/levantarse.webp",
+  "contenido": {
+    "presentacion": "cinta",
+    "pares": [
+      {
+        "id": "levantarse",
+        "izquierda": "Un niño bostezando y estirando los brazos al borde de su cama",
+        "derecha": "Levantarse",
+        "imagen": "/images/juegos/rutinas-del-dia/levantarse.webp",
+        "pista": "Es lo primero que haces cuando empieza la mañana."
+      },
+      {
+        "id": "hacer-la-cama",
+        "izquierda": "Un niño estirando la cobija sobre su cama",
+        "derecha": "Hacer la cama",
+        "imagen": "/images/juegos/rutinas-del-dia/hacer-la-cama.webp",
+        "pista": "Mira lo que hace con la cobija y la almohada."
+      },
+      {
+        "id": "ir-al-bano",
+        "izquierda": "Un niño frente a la puerta abierta de un baño",
+        "derecha": "Ir al baño",
+        "imagen": "/images/juegos/rutinas-del-dia/ir-al-bano.webp",
+        "pista": "Fíjate en el lugar de la casa donde está."
+      },
+      {
+        "id": "lavarse-las-manos",
+        "izquierda": "Un niño con jabón y espuma en las manos frente al lavamanos",
+        "derecha": "Lavarse las manos",
+        "imagen": "/images/juegos/rutinas-del-dia/lavarse-las-manos.webp",
+        "pista": "Mira la espuma y el agua que cae del grifo."
+      },
+      {
+        "id": "cepillarse-los-dientes",
+        "izquierda": "Un niño frente al espejo con un cepillo azul en la boca",
+        "derecha": "Cepillarse los dientes",
+        "imagen": "/images/juegos/rutinas-del-dia/cepillarse-los-dientes.webp",
+        "pista": "Mira lo que tiene en la mano, frente al espejo."
+      },
+      {
+        "id": "banarse",
+        "izquierda": "Un niño en la ducha, con agua y burbujas de jabón",
+        "derecha": "Bañarse",
+        "imagen": "/images/juegos/rutinas-del-dia/banarse.webp",
+        "pista": "Fíjate en el agua que cae sobre él."
+      },
+      {
+        "id": "vestirse",
+        "izquierda": "Un niño poniéndose una camiseta, con pantalón y zapatos a su lado",
+        "derecha": "Vestirse",
+        "imagen": "/images/juegos/rutinas-del-dia/vestirse.webp",
+        "pista": "Mira lo que tiene entre las manos."
+      },
+      {
+        "id": "desayunar",
+        "izquierda": "Un niño sentado a la mesa con arepa, huevo y chocolate caliente",
+        "derecha": "Desayunar",
+        "imagen": "/images/juegos/rutinas-del-dia/desayunar.webp",
+        "pista": "Es la primera comida del día."
+      },
+      {
+        "id": "alistar-el-morral",
+        "izquierda": "Un niño metiendo un cuaderno y un lápiz en un morral abierto",
+        "derecha": "Alistar el morral",
+        "imagen": "/images/juegos/rutinas-del-dia/alistar-el-morral.webp",
+        "pista": "Mira qué guarda en lo que se pone a la espalda."
+      },
+      {
+        "id": "ir-al-colegio",
+        "izquierda": "Un niño con morral caminando hacia un edificio de ladrillo",
+        "derecha": "Ir al colegio",
+        "imagen": "/images/juegos/rutinas-del-dia/ir-al-colegio.webp",
+        "pista": "Mira el edificio que se ve al fondo."
+      },
+      {
+        "id": "hacer-las-tareas",
+        "izquierda": "Un niño escribiendo en un cuaderno sobre un escritorio",
+        "derecha": "Hacer las tareas",
+        "imagen": "/images/juegos/rutinas-del-dia/hacer-las-tareas.webp",
+        "pista": "Fíjate en el cuaderno y el lápiz."
+      },
+      {
+        "id": "jugar-con-los-amigos",
+        "izquierda": "Tres niños pateando un balón en un parque",
+        "derecha": "Jugar con los amigos",
+        "imagen": "/images/juegos/rutinas-del-dia/jugar-con-los-amigos.webp",
+        "pista": "Cuenta cuántos niños hay y mira qué usan para divertirse."
+      },
+      {
+        "id": "ayudar-en-casa",
+        "izquierda": "Un niño regando las matas de la sala con una regadera",
+        "derecha": "Ayudar en casa",
+        "imagen": "/images/juegos/rutinas-del-dia/ayudar-en-casa.webp",
+        "pista": "Mira lo que hace con las plantas de la casa."
+      },
+      {
+        "id": "poner-la-mesa",
+        "izquierda": "Un niño colocando platos, cubiertos y vasos sobre una mesa",
+        "derecha": "Poner la mesa",
+        "imagen": "/images/juegos/rutinas-del-dia/poner-la-mesa.webp",
+        "pista": "Mira lo que coloca antes de que todos coman."
+      },
+      {
+        "id": "cenar",
+        "izquierda": "Un niño tomando sopa en la mesa, con la ventana oscura",
+        "derecha": "Cenar",
+        "imagen": "/images/juegos/rutinas-del-dia/cenar.webp",
+        "pista": "Mira por la ventana: es de noche."
+      },
+      {
+        "id": "organizar-el-cuarto",
+        "izquierda": "Un niño guardando juguetes en una caja, con otros regados en el piso",
+        "derecha": "Organizar el cuarto",
+        "imagen": "/images/juegos/rutinas-del-dia/organizar-el-cuarto.webp",
+        "pista": "Fíjate en dónde guarda los juguetes."
+      },
+      {
+        "id": "leer-un-cuento",
+        "izquierda": "Un niño sentado en un sillón con un libro abierto",
+        "derecha": "Leer un cuento",
+        "imagen": "/images/juegos/rutinas-del-dia/leer-un-cuento.webp",
+        "pista": "Fíjate en lo que sostiene abierto."
+      },
+      {
+        "id": "dormir",
+        "izquierda": "Un niño acostado en su cama con los ojos cerrados y la luna en la ventana",
+        "derecha": "Dormir",
+        "imagen": "/images/juegos/rutinas-del-dia/dormir.webp",
+        "pista": "Mira la luna y cómo está acostado."
+      }
+    ]
+  }
+}

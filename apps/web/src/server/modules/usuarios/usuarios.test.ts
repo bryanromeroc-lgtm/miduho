@@ -35,6 +35,13 @@ describe("esquemas de administración de usuarios", () => {
     expect(ok.success && ok.data.correo).toBe("x@miduho.test");
     expect(crearUsuario.safeParse({ ...base, combinacion: "ESTUDIANTE_ADMIN" }).success).toBe(false);
   });
+  it("desde la aplicación solo se crean estudiantes y docentes: ADMIN lo crea el equipo de desarrollo", () => {
+    const base = { nombres: "Cuenta", apellidos: "Ficticia", correo: "x@miduho.test" };
+    expect(crearUsuario.safeParse({ ...base, combinacion: "ADMIN" }).success).toBe(false);
+    expect(crearUsuario.safeParse({ ...base, combinacion: "DOCENTE_ADMIN" }).success).toBe(false);
+    expect(crearUsuario.safeParse({ ...base, combinacion: "DOCENTE" }).success).toBe(true);
+    expect(crearUsuario.safeParse({ ...base, combinacion: "ESTUDIANTE" }).success).toBe(true);
+  });
   it("la edición exige al menos un cambio y rechaza campos ajenos (rol/estado)", () => {
     expect(actualizarIdentidad.safeParse({}).success).toBe(false);
     expect(actualizarIdentidad.safeParse({ estado: "ACTIVO" }).success).toBe(false);
@@ -125,12 +132,13 @@ describe("alta individual", () => {
     expect(await verificarContrasena(r.contrasena, u.hashContrasena!)).toBe(true);
   });
 
-  it("DOCENTE + ADMIN en una sola escritura", async () => {
+  // ADMIN y DOCENTE + ADMIN solo se crean por scripts/cuentas-admin.ts, que usa este mismo servicio.
+  it("DOCENTE + ADMIN en una sola escritura (script del equipo de desarrollo)", async () => {
     const r = await U.crear({ nombres: "Mixta", apellidos: "Nueva", correo: "mixta@miduho.test", combinacion: "DOCENTE_ADMIN" });
     expect((await U.obtener(r.id)).combinacion).toBe("DOCENTE_ADMIN");
   });
 
-  it("ADMIN puro: invitación, sin contraseña, pendiente de activación", async () => {
+  it("ADMIN puro (script del equipo de desarrollo): invitación, sin contraseña, pendiente de activación", async () => {
     const r = await U.crear({ nombres: "Admin", apellidos: "Invitado", correo: "admin-inv@miduho.test", combinacion: "ADMIN" });
     expect(r).toMatchObject({ invitacionEnviada: true });
     expect("contrasena" in r).toBe(false);

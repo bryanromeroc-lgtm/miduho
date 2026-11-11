@@ -36,10 +36,7 @@ describe("navegación por contexto", () => {
       "Contenido",
       "Biblioteca",
       "Laboratorios",
-      "Usuarios",
-      "Estudiantes",
-      "Estructura",
-      "Asignaciones",
+      "Administración",
       "Cuenta",
     ]);
     expect(rutasPorContexto("ADMIN")[1].href).toBe("/admin/contenido");
@@ -108,6 +105,24 @@ describe("utilidades", () => {
     expect(rutaActiva("/admin", "/admin/usuarios")).toBe(false);
     expect(rutaActiva("/admin/usuarios", "/admin/usuarios/123")).toBe(true);
     expect(rutaActiva("/clases", "/clasesx")).toBe(false);
+  });
+
+  it("«Administración» sigue marcada en Usuarios, Coordinación y sus secciones", () => {
+    for (const ruta of [
+      "/admin/administracion",
+      "/admin/usuarios",
+      "/admin/usuarios/estudiantes",
+      "/admin/usuarios/docentes",
+      "/admin/usuarios/123",
+      "/admin/coordinacion",
+      "/admin/estructura",
+      "/admin/asignaciones",
+    ]) {
+      expect(rutaActiva("/admin/administracion", ruta)).toBe(true);
+    }
+    expect(rutaActiva("/admin/administracion", "/admin")).toBe(false);
+    expect(rutaActiva("/admin/administracion", "/admin/contenido")).toBe(false);
+    expect(rutaActiva("/admin/administracion", "/admin/usuariosx")).toBe(false);
   });
 
   it("nombra el grupo como su grado (un solo grupo por grado)", () => {

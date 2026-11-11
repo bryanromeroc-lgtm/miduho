@@ -4,18 +4,23 @@ import { ArrowDown, ArrowUp } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { barajar } from "../tipos/contrato";
 import { TableroAgrupar } from "../juegos/agrupar/tablero";
+import { TableroCinta } from "../juegos/cinta/tablero";
 import { Escuchar, useLecturaAutomatica } from "../juegos/comun/escuchar";
 import { Avanzar, Aviso, Marca, Progreso, useFocoAlCambiar, type PropsJuego } from "./comun";
 import s from "./reproductor.module.css";
 
-type Par = { id: string; izquierda: string; derecha: string; audio?: string; audioDerecha?: string };
+type Par = { id: string; izquierda: string; derecha: string; audio?: string; audioDerecha?: string; imagen?: string; pista?: string };
 
 /*
   Emparejar: se toca una tarjeta de cada columna, en cualquier orden. Cuenta
   el primer intento de cada par; un error se avisa y se puede seguir
   probando hasta unirlos todos.
 */
-export function Emparejar({ contenido, semilla, alTerminar }: PropsJuego<{ pares: Par[] }>) {
+export function Emparejar(props: PropsJuego<{ presentacion?: "columnas" | "cinta"; pares: Par[] }>) {
+  return props.contenido.presentacion === "cinta" ? <TableroCinta {...props} /> : <EmparejarColumnas {...props} />;
+}
+
+function EmparejarColumnas({ contenido, semilla, alTerminar }: PropsJuego<{ pares: Par[] }>) {
   const izquierda = useMemo(() => barajar(contenido.pares, `${semilla}:i`), [contenido, semilla]);
   const derecha = useMemo(() => barajar(contenido.pares, `${semilla}:d`), [contenido, semilla]);
   const [sel, setSel] = useState<{ lado: "i" | "d"; id: string } | null>(null);

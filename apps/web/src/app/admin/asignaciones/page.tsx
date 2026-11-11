@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { Search } from "lucide-react";
-import { Cabecera, Marco } from "@/components/friso/marco";
+import { Cabecera, Marco, Migas } from "@/components/friso/marco";
 import { db } from "@/server/db";
 import { exigirRolPagina } from "@/server/pagina";
 import { esquemasAcademico, servicioAcademico } from "@/server/modules/academico";
@@ -41,7 +41,7 @@ export default async function PaginaAsignaciones({ searchParams }: { searchParam
     </form>
   </>;
 
-  return <Marco><Cabecera kicker="Administración" titulo="Asignaciones docentes" nota="Administra la carga docente y sus bloques horarios." />
+  return <Marco><Migas pasos={[{ etiqueta: "Administración", href: "/admin/administracion" }, { etiqueta: "Coordinación", href: "/admin/coordinacion" }, { etiqueta: "Asignaciones" }]} /><Cabecera kicker="Coordinación" titulo="Asignaciones docentes" nota="Administra la carga docente y sus bloques horarios." />
     <FormularioAsignaciones asignaciones={plano} total={resultado.total} docentes={docentes} grupos={opcionesGrupo} asignaturas={asignaturas.map((a) => ({ id: a.id, etiqueta: `${a.nombre} · ${a.area.nombre}` }))} anios={opcionesAnio} filtros={barraFiltros} pie={paginas > 1 ? <Paginacion><nav className="admin-paginacion" aria-label="Paginación de asignaciones">{filtros.page > 1 ? <Link key="ant" className="boton-pastilla" data-variante="secundario" href={`${query(filtros.page - 1)}#listado-asignaciones`}>Anterior</Link> : <span key="ant" />}<span key="pag">Página {Math.min(filtros.page, paginas)} de {paginas} · {resultado.total} resultados</span>{filtros.page < paginas ? <Link key="sig" className="boton-pastilla" data-variante="secundario" href={`${query(filtros.page + 1)}#listado-asignaciones`}>Siguiente</Link> : <span key="sig" />}</nav></Paginacion> : null} />
   </Marco>;
 }

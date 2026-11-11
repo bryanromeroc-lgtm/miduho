@@ -30,8 +30,8 @@ function descargarTexto(texto: string, nombre: string) {
   URL.revokeObjectURL(url);
 }
 
-export function FormularioImportacion() {
-  const [tipo, setTipo] = useState<Tipo>("estudiantes");
+export function FormularioImportacion({ inicial = "estudiantes" }: { inicial?: Tipo }) {
+  const [tipo, setTipo] = useState<Tipo>(inicial);
   const [contenido, setContenido] = useState<string | null>(null);
   const [nombreArchivo, setNombreArchivo] = useState("");
   const [revision, setRevision] = useState<Revision | null>(null);

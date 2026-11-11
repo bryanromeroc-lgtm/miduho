@@ -14,20 +14,39 @@ function unicos<T>(lista: T[], llave: (x: T) => string) {
 }
 
 /** `audio`: la tarjeta de la izquierda dicha en voz alta; `audioDerecha`: la de la derecha. */
-const par = z.object({ id, izquierda: texto, derecha: texto, audio: rutaAudio.optional(), audioDerecha: rutaAudio.optional() });
+const par = z.object({
+  id,
+  izquierda: texto,
+  derecha: texto,
+  audio: rutaAudio.optional(),
+  audioDerecha: rutaAudio.optional(),
+  /** Presentación «cinta»: ilustración de la tarjeta (su `alt` es `izquierda`). */
+  imagen: z.string().regex(/^\/images\/[\w\-/]+\.webp$/, "ruta /images/….webp").optional(),
+  /** Presentación «cinta»: pista tras el primer fallo, sin decir la respuesta. */
+  pista: texto.max(140).optional(),
+});
 
-/** Emparejar: la respuesta de cada par es el id del par cuya derecha se eligió primero. */
+/**
+ * Emparejar: la respuesta de cada par es el id del par cuya derecha se eligió primero.
+ * `presentacion: "cinta"` (mecánica de «Rutinas diarias», informe docs/investigacion/
+ * referencia-cokitos-rutinas-diarias.md): una tarjeta con imagen cuelga de una cuerda y
+ * se toca la ficha de texto que coincide; hasta 18 tarjetas.
+ */
 export const emparejar = definirTipo({
   tipo: "emparejar",
   nombre: "Emparejar",
   versionEsquema: 1,
-  esquemaContenido: z.object({
-    pares: z
-      .array(par)
-      .min(3)
-      .max(8)
-      .refine((p) => unicos(p, (x) => x.id) && unicos(p, (x) => x.derecha), { message: "ids o derechas repetidas" }),
-  }),
+  esquemaContenido: z
+    .object({
+      presentacion: z.enum(["columnas", "cinta"]).optional(),
+      pares: z
+        .array(par)
+        .min(3)
+        .max(18)
+        .refine((p) => unicos(p, (x) => x.id) && unicos(p, (x) => x.derecha), { message: "ids o derechas repetidas" }),
+    })
+    .refine((c) => c.presentacion === "cinta" || c.pares.length <= 8, { message: "en columnas, hasta 8 parejas; la cinta admite hasta 18" })
+    .refine((c) => c.presentacion !== "cinta" || c.pares.every((p) => p.imagen), { message: "cada tarjeta de la cinta lleva imagen" }),
   esquemaRespuesta: z.string(),
   items: (c) => c.pares.map((p) => ({ itemId: p.id, puntajeMaximo: 1 })),
   calificar: (_c, itemId, r) => ({ correcta: r === itemId, puntaje: r === itemId ? 1 : 0 }),
