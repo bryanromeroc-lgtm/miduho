@@ -1,6 +1,6 @@
 # Voces de las palabras — «La ruta de las palabras»
 
-143 archivos `<clave>.mp3` (una palabra cada uno, voz grabada), convertidos el 2026-11-05 desde los originales que entregó el usuario en `content/referencias/rodeo-de-palabras-audio/palabras/` (mono, 44,1 kHz, normalizados a −18 LUFS, sin silencio inicial). El archivo `mantequilla.mp3` viene de un original con la errata `matequilla.ogg`.
+143 archivos `<clave>.mp3` —es decir, todos los `*.mp3` de esta carpeta— (una palabra cada uno, voz grabada), convertidos el 2026-11-05 desde los originales que entregó el usuario en `content/referencias/rodeo-de-palabras-audio/palabras/` (mono, 44,1 kHz, normalizados a −18 LUFS, sin silencio inicial). El archivo `mantequilla.mp3` viene de un original con la errata `matequilla.ogg`.
 
 ## Origen y permiso
 

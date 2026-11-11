@@ -21,6 +21,7 @@ import { robotsDivisiones } from "../juegos/robots/tipo";
 import { aventura } from "../juegos/aventura/tipo";
 import { sello } from "../juegos/sello/tipo";
 import { tallerFracciones } from "../juegos/fracciones/tipo";
+import { rutaAudio } from "./audio";
 import type { DefinicionTipoActividad } from "./contrato";
 import { palabraSecreta, sopaLetras } from "./palabras";
 import { completar, concurso, seleccionMultiple } from "./preguntas";
@@ -60,6 +61,8 @@ export const esquemaArchivoActividad = z.object({
   grado: z.number().int().min(1).max(5),
   /** Qué hay que hacer, en una o dos frases, dicho al estudiante. */
   instruccion: z.string().trim().min(5).max(220),
+  /** La instrucción grabada (opcional). Sin ella, en 1.° y 2.° se lee con la voz del navegador. */
+  audioInstruccion: rutaAudio.optional(),
   /** Tema curricular en palabras propias. 🔶 Los códigos DBA llegan con curriculo/referentes (3.2). */
   tema: z.string().trim().min(3).max(120),
   /** Imagen de portada de la tarjeta (ruta bajo /images, .webp). Decorativa: el título ya nombra la actividad. */

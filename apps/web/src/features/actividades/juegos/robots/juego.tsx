@@ -1,5 +1,6 @@
 "use client";
 
+import { useBajarMusicaConVoz } from "../comun/voz";
 import Image from "next/image";
 import { Maximize2, Minimize2, Music2, Pause, Play, Volume2, VolumeX } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
@@ -29,6 +30,7 @@ export function JuegoRobots({ contenido, alTerminar }: PropsJuego<ContenidoRobot
   const [expandido, setExpandido] = useState(false);
   const juegoRef = useRef<HTMLDivElement>(null);
   const musicaRef = useRef<HTMLAudioElement>(null);
+  useBajarMusicaConVoz(musicaRef);
   const { activo: sonidoActivo, alternar: alternarSonido, tocar } = useSonido();
   const titulo = useFocoAlCambiar<HTMLHeadingElement>(indice);
   const reto = retos[indice];

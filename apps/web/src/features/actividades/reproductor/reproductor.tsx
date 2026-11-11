@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import { calificarIntento, type ResultadoIntento } from "../tipos/contrato";
 import { definicionDe, nombreTipo } from "../tipos/registro";
 import type { PropsJuego } from "./comun";
+import { ContextoActividad, Escuchar, LeerEnVozAlta } from "../juegos/comun/escuchar";
 import { AVISO_VISTA_PREVIA, primeraRespuestaCuenta, textoReglas, type ModoReproductor } from "./reglas";
 import s from "./reproductor.module.css";
 
@@ -71,7 +72,17 @@ const JUEGOS: Record<string, ComponentType<PropsJuego<any>>> = {
   "taller-fracciones": JuegoFracciones,
 };
 
-export type ActividadParaJugar = { slug: string; titulo: string; tipo: string; instruccion: string; contenido: unknown };
+export type ActividadParaJugar = {
+  slug: string;
+  titulo: string;
+  tipo: string;
+  instruccion: string;
+  contenido: unknown;
+  /** 1–5: decide si hay síntesis de voz (1.° y 2.°) y lectura automática (1.°). */
+  grado?: number;
+  /** Grabación de la instrucción (`/audio/…`). */
+  audioInstruccion?: string;
+};
 
 /*
   REPRODUCTOR — práctica libre (🔶 hasta fundacion-actividades): se juega,
@@ -97,6 +108,7 @@ export function Reproductor({
   if (!definicion || !Juego) throw new Error(`Tipo de actividad sin reproductor: ${actividad.tipo}`);
 
   return (
+    <ContextoActividad.Provider value={{ grado: actividad.grado ?? 0 }}>
     <main className={s.reproductor} id="juego" tabIndex={-1}>
       <header className={s.barraJuego}>
         <Link href={volverHref} className={s.salir}>
@@ -110,7 +122,13 @@ export function Reproductor({
       </header>
 
       <div className={s.notas}>
-        {!resultado && <p className={s.instruccion}>{actividad.instruccion}</p>}
+        {!resultado && (
+          <div className={s.instruccionFila}>
+            <p className={s.instruccion}>{actividad.instruccion}</p>
+            <Escuchar texto={actividad.instruccion} audio={actividad.audioInstruccion} />
+            <LeerEnVozAlta />
+          </div>
+        )}
         <p className={s.practica}>{textoReglas(actividad.tipo, modo)}</p>
       </div>
 
@@ -138,6 +156,7 @@ export function Reproductor({
       </section>
 
     </main>
+    </ContextoActividad.Provider>
   );
 }
 

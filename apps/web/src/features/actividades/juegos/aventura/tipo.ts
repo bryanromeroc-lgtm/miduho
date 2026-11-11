@@ -10,6 +10,7 @@
  * muestra la respuesta con su explicación y la historia continúa.
  */
 import { z } from "zod";
+import { rutaAudio } from "../../tipos/audio";
 import { definirTipo } from "../../tipos/contrato";
 
 const id = z.string().regex(/^[a-z0-9-]+$/, "id en minúsculas, números y guiones");
@@ -74,6 +75,8 @@ const escena = z
     entrega: z.number().int().min(0).max(99).default(0),
     visual: visual.optional(),
     muestra: muestra.optional(),
+    /** Narración y pregunta grabadas (opcional). */
+    audio: rutaAudio.optional(),
   })
   .refine((e) => e.correcta < e.opciones.length, { message: "«correcta» apunta a una opción que no existe" })
   .refine((e) => new Set(e.opciones).size === e.opciones.length, { message: "opciones repetidas" });

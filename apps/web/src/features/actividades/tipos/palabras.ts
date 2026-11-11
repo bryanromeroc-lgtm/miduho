@@ -3,6 +3,7 @@
  * catálogo D4: se añaden por la investigación de tipos (docs/actividades/tipos.md).
  */
 import { z } from "zod";
+import { rutaAudio } from "./audio";
 import { definirTipo, generador } from "./contrato";
 
 const id = z.string().regex(/^[a-z0-9-]+$/, "id en minúsculas, números y guiones");
@@ -30,6 +31,7 @@ const palabraSopa = z.object({
   id,
   palabra: z.string().regex(/^[A-ZÑ]{3,12}$/, "en mayúsculas, sin tildes ni espacios, de 3 a 12 letras"),
   pista: texto.optional(),
+  audio: rutaAudio.optional(),
 });
 
 const contenidoSopa = z
@@ -149,6 +151,8 @@ const palabraSecretaItem = z.object({
   id,
   palabra: z.string().regex(/^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]{3,14}$/, "una sola palabra de 3 a 14 letras"),
   pista: texto,
+  /** La pista grabada (la palabra no se dice: es lo que se adivina). */
+  audio: rutaAudio.optional(),
 });
 
 export type PalabraSecreta = z.infer<typeof palabraSecretaItem>;

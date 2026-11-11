@@ -1,5 +1,6 @@
 "use client";
 
+import { useBajarMusicaConVoz } from "../comun/voz";
 import Image from "next/image";
 import { Music2, Volume2, VolumeX, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
@@ -70,6 +71,7 @@ export function JuegoMapa({ contenido, alTerminar }: PropsJuego<ContenidoMapa>) 
   const [celebra, setCelebra] = useState(false);
   const [musicaActiva, setMusicaActiva] = useState(true);
   const musicaRef = useRef<HTMLAudioElement>(null);
+  useBajarMusicaConVoz(musicaRef);
   const camaraRef = useRef<HTMLDivElement>(null);
   const tierraRef = useRef<HTMLDivElement>(null);
   const armiRef = useRef<HTMLDivElement>(null);

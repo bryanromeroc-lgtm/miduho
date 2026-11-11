@@ -4,6 +4,7 @@ import { Timer } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { barajar } from "../tipos/contrato";
 import type { Frase, Pregunta } from "../tipos/preguntas";
+import { Escuchar, useLecturaAutomatica } from "../juegos/comun/escuchar";
 import { Avanzar, Aviso, Marca, Progreso, useFocoAlCambiar, type PropsJuego } from "./comun";
 import s from "./reproductor.module.css";
 
@@ -28,6 +29,7 @@ function Preguntas({ contenido, semilla, alTerminar, segundos }: PropsJuego<{ pr
   );
   const ultima = indice === contenido.preguntas.length - 1;
   const titulo = useFocoAlCambiar<HTMLHeadingElement>(indice);
+  useLecturaAutomatica(p.id, p.enunciado, p.audio);
 
   return (
     <div className={s.juego}>
@@ -38,12 +40,13 @@ function Preguntas({ contenido, semilla, alTerminar, segundos }: PropsJuego<{ pr
       <h2 ref={titulo} tabIndex={-1} className={s.enunciado}>
         {p.enunciado}
       </h2>
+      <Escuchar texto={p.enunciado} audio={p.audio} etiqueta="Escuchar la pregunta" />
       <div className={s.opciones} data-dos={p.opciones.length === 2 ? "" : undefined}>
         {orden.map((i) => {
           const estado = respondida ? (i === p.correcta ? "ok" : i === elegida ? "no" : undefined) : undefined;
           return (
+            <div key={i} className={s.opcionFila}>
             <button
-              key={i}
               type="button"
               className={s.opcion}
               data-estado={estado}
@@ -54,6 +57,8 @@ function Preguntas({ contenido, semilla, alTerminar, segundos }: PropsJuego<{ pr
               <span>{p.opciones[i]}</span>
               <Marca estado={estado} />
             </button>
+            {p.audioOpciones?.[i] && <Escuchar texto={p.opciones[i]} audio={p.audioOpciones[i]} soloIcono />}
+            </div>
           );
         })}
       </div>

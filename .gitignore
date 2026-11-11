@@ -17,6 +17,8 @@ node_modules/
 /content/biblioteca/**/fuentes/
 /content/libros/
 /content/referencias/**/*.ogg
+# Captura sonora (tools/captura-audio): el audio queda fuera de git; se versionan inventario.json, LICENCIA.md y RESUMEN.md
+/content/referencias/**/audio/
 
 # Respaldos de PostgreSQL del stack de producción (deploy/, docker-compose.yml)
 /respaldos/

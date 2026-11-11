@@ -24,6 +24,7 @@ Si el pedido trae enlaces, estúdialos; si no, busca 1 o 2 referentes públicos 
 - **Toy Theater y similares:** WebFetch de la página.
 - Anota: qué enseña, qué manipula el estudiante, qué representaciones enlaza, qué rangos tiene, si hay retos y cómo los califica. Marca 🔶 lo que no pudiste ver por dentro.
 - Revisa la tabla «Lo que se estudió» de la skill: si el referente ya está, no lo repitas.
+- **Captura sonora siempre** con `tools/captura-audio` (ver su `README.md`) y **usa el audio del referente** en el simulador: cada acción suena con el efecto que el referente usa para ella (`useEfectosGrabados` de `juegos/comun/efectos-grabados.ts`, filas en `LICENCIAS.md`). Solo lo que el referente no tiene se completa con `comun/sonido.ts` (decisión del usuario del 2026-11-10).
 
 ## Fase 1 — Analizar y diseñar (no se crea código)
 

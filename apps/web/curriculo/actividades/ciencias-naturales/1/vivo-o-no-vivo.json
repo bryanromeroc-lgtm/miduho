@@ -1,0 +1,144 @@
+{
+  "slug": "vivo-o-no-vivo",
+  "titulo": "Seres vivos y seres inertes",
+  "tipo": "clasificar",
+  "grado": 1,
+  "instruccion": "Lleva cada tarjeta a su grupo: ¿es un ser vivo o un ser inerte? Cuando termines, toca «Enviar respuestas».",
+  "tema": "Seres vivos y objetos inertes: los seres vivos nacen, crecen, se alimentan y respiran",
+  "imagen": "/images/juegos/vivo-o-no-vivo/tortuga.webp",
+  "contenido": {
+    "presentacion": "tablero",
+    "categorias": [
+      {
+        "id": "vivo",
+        "nombre": "Seres vivos"
+      },
+      {
+        "id": "inerte",
+        "nombre": "Seres inertes"
+      }
+    ],
+    "elementos": [
+      {
+        "id": "tortuga",
+        "texto": "Tortuga",
+        "categoria": "vivo",
+        "imagen": "/images/juegos/vivo-o-no-vivo/tortuga.webp",
+        "audio": "/audio/actividades/vivo-o-no-vivo/tortuga.mp3",
+        "explicacion": "La tortuga nace de un huevo, crece, come y respira."
+      },
+      {
+        "id": "tomate",
+        "texto": "Tomate",
+        "categoria": "vivo",
+        "imagen": "/images/juegos/vivo-o-no-vivo/tomate.webp",
+        "audio": "/audio/actividades/vivo-o-no-vivo/tomate.mp3",
+        "explicacion": "La mata de tomate nace de una semilla, crece y da frutos."
+      },
+      {
+        "id": "arbol",
+        "texto": "Árbol",
+        "categoria": "vivo",
+        "imagen": "/images/juegos/vivo-o-no-vivo/arbol.webp",
+        "audio": "/audio/actividades/vivo-o-no-vivo/arbol.mp3",
+        "explicacion": "El árbol nace de una semilla, crece y necesita agua."
+      },
+      {
+        "id": "cactus",
+        "texto": "Cactus",
+        "categoria": "vivo",
+        "imagen": "/images/juegos/vivo-o-no-vivo/cactus.webp",
+        "audio": "/audio/actividades/vivo-o-no-vivo/cactus.mp3",
+        "explicacion": "El cactus es una planta: nace, crece y toma agua."
+      },
+      {
+        "id": "rosa",
+        "texto": "Rosa",
+        "categoria": "vivo",
+        "imagen": "/images/juegos/vivo-o-no-vivo/rosa.webp",
+        "audio": "/audio/actividades/vivo-o-no-vivo/rosa.mp3",
+        "explicacion": "La rosa es una planta: nace, crece y necesita agua y sol."
+      },
+      {
+        "id": "ballena",
+        "texto": "Ballena",
+        "categoria": "vivo",
+        "imagen": "/images/juegos/vivo-o-no-vivo/ballena.webp",
+        "audio": "/audio/actividades/vivo-o-no-vivo/ballena.mp3",
+        "explicacion": "La ballena nace, crece, come y respira."
+      },
+      {
+        "id": "persona",
+        "texto": "Persona",
+        "categoria": "vivo",
+        "imagen": "/images/juegos/vivo-o-no-vivo/persona.webp",
+        "audio": "/audio/actividades/vivo-o-no-vivo/persona.mp3",
+        "explicacion": "Las personas nacemos, crecemos, comemos y respiramos."
+      },
+      {
+        "id": "seta",
+        "texto": "Seta",
+        "categoria": "vivo",
+        "imagen": "/images/juegos/vivo-o-no-vivo/seta.webp",
+        "audio": "/audio/actividades/vivo-o-no-vivo/seta.mp3",
+        "explicacion": "La seta nace y crece en la tierra húmeda del bosque."
+      },
+      {
+        "id": "armario",
+        "texto": "Armario",
+        "categoria": "inerte",
+        "imagen": "/images/juegos/vivo-o-no-vivo/armario.webp",
+        "audio": "/audio/actividades/vivo-o-no-vivo/armario.mp3",
+        "explicacion": "El armario lo hacen las personas; no nace ni crece."
+      },
+      {
+        "id": "piedra",
+        "texto": "Piedra",
+        "categoria": "inerte",
+        "imagen": "/images/juegos/vivo-o-no-vivo/piedra.webp",
+        "audio": "/audio/actividades/vivo-o-no-vivo/piedra.mp3",
+        "explicacion": "La piedra no nace, no crece y no se alimenta."
+      },
+      {
+        "id": "silla",
+        "texto": "Silla",
+        "categoria": "inerte",
+        "imagen": "/images/juegos/vivo-o-no-vivo/silla.webp",
+        "audio": "/audio/actividades/vivo-o-no-vivo/silla.mp3",
+        "explicacion": "La silla la hacen las personas; no nace ni crece."
+      },
+      {
+        "id": "montana",
+        "texto": "Montaña",
+        "categoria": "inerte",
+        "imagen": "/images/juegos/vivo-o-no-vivo/montana.webp",
+        "audio": "/audio/actividades/vivo-o-no-vivo/montana.mp3",
+        "explicacion": "La montaña no nace, no come y no respira."
+      },
+      {
+        "id": "cama",
+        "texto": "Cama",
+        "categoria": "inerte",
+        "imagen": "/images/juegos/vivo-o-no-vivo/cama.webp",
+        "audio": "/audio/actividades/vivo-o-no-vivo/cama.mp3",
+        "explicacion": "La cama la hacen las personas; no nace ni crece."
+      },
+      {
+        "id": "botella",
+        "texto": "Botella",
+        "categoria": "inerte",
+        "imagen": "/images/juegos/vivo-o-no-vivo/botella.webp",
+        "audio": "/audio/actividades/vivo-o-no-vivo/botella.mp3",
+        "explicacion": "La botella la hacen las personas; no nace ni respira."
+      },
+      {
+        "id": "gafas",
+        "texto": "Gafas",
+        "categoria": "inerte",
+        "imagen": "/images/juegos/vivo-o-no-vivo/gafas.webp",
+        "audio": "/audio/actividades/vivo-o-no-vivo/gafas.mp3",
+        "explicacion": "Las gafas las hacen las personas; no comen ni crecen."
+      }
+    ]
+  }
+}

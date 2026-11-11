@@ -1,4 +1,7 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
+import { rutasDeAudio } from "@/features/actividades/tipos/audio";
 import { definicionDe } from "@/features/actividades/tipos/registro";
 import { carpetaAsignatura, crearCatalogo, RAIZ_CURRICULO } from "./catalogo";
 
@@ -41,6 +44,26 @@ describe("currículo", () => {
         expect(definicion.repaso(a.contenido, itemId).solucion, `${a.slug}/${itemId}`).toBeTruthy();
       }
     }
+  });
+
+  it("cada imagen de tarjeta de clasificar existe en public/", () => {
+    const faltan = catalogo
+      .todas()
+      .filter((a) => a.tipo === "clasificar")
+      .flatMap((a) =>
+        ((a.contenido as { elementos: { imagen?: string }[] }).elementos ?? [])
+          .map((e) => e.imagen)
+          .filter((r): r is string => Boolean(r) && !existsSync(join(process.cwd(), "public", r!)))
+          .map((r) => `${a.slug}: ${r}`),
+      );
+    expect(faltan).toEqual([]);
+  });
+
+  it("cada ruta de audio citada existe en public/", () => {
+    const rotas = catalogo
+      .todas()
+      .flatMap((a) => rutasDeAudio(a).filter((r) => !existsSync(join(process.cwd(), "public", r))).map((r) => `${a.slug}: ${r}`));
+    expect(rotas).toEqual([]);
   });
 
   it("la carpeta de una asignatura es su nombre normalizado", () => {

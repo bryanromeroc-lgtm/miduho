@@ -3,6 +3,7 @@
  * es el caso de dos opciones), concurso con tiempo y completar la frase.
  */
 import { z } from "zod";
+import { rutaAudio } from "./audio";
 import { definirTipo } from "./contrato";
 
 const id = z.string().regex(/^[a-z0-9-]+$/, "id en minúsculas, números y guiones");
@@ -16,9 +17,14 @@ const pregunta = z
     correcta: z.number().int().min(0),
     /** Se muestra después de responder: por qué esa es la respuesta. */
     explicacion: texto.optional(),
+    /** Enunciado grabado (opcional). */
+    audio: rutaAudio.optional(),
+    /** Una grabación por opción, en el mismo orden; `null` si esa opción no tiene. */
+    audioOpciones: z.array(rutaAudio.nullable()).optional(),
   })
   .refine((p) => p.correcta < p.opciones.length, { message: "«correcta» apunta a una opción que no existe" })
-  .refine((p) => new Set(p.opciones).size === p.opciones.length, { message: "opciones repetidas" });
+  .refine((p) => new Set(p.opciones).size === p.opciones.length, { message: "opciones repetidas" })
+  .refine((p) => !p.audioOpciones || p.audioOpciones.length === p.opciones.length, { message: "audioOpciones debe tener una entrada por opción" });
 
 export type Pregunta = z.infer<typeof pregunta>;
 

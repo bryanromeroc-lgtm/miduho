@@ -6,6 +6,7 @@ import { Avanzar, Aviso, useFocoAlCambiar, type PropsJuego } from "../../reprodu
 import { Chispas, useReaccion } from "../comun/efectos";
 import { Frac } from "../comun/fraccion";
 import { Armi, Controles, Guirnalda, type Pose } from "../comun/piezas";
+import { useVozActividad } from "../comun/escuchar";
 import { useRondas } from "../comun/rondas";
 import { Objeto } from "./objetos";
 import { Pantalla } from "./pantalla";
@@ -81,6 +82,13 @@ export function JuegoAventura({ contenido, alTerminar }: PropsJuego<ContenidoAve
 
   const textoVoz =
     fase === "inicio" ? contenido.inicio : fase === "final" ? contenido.final : `${e.narracion} ${e.pregunta}`;
+  // Con grabación de la escena, o en 1.°–2.°, habla la voz de la tarea (un solo canal); si no, la de siempre.
+  const vozTarea = useVozActividad();
+  const audioEscena = fase === "escena" ? e.audio : undefined;
+  const voz =
+    audioEscena || vozTarea.grado === 1 || vozTarea.grado === 2
+      ? { disponible: vozTarea.puede(audioEscena), hablando: vozTarea.hablando, hablar: (t: string) => vozTarea.decir(t, audioEscena), callar: vozTarea.callar }
+      : r.voz;
 
   return (
     <Pantalla
@@ -89,7 +97,7 @@ export function JuegoAventura({ contenido, alTerminar }: PropsJuego<ContenidoAve
       barra={
         <>
           <Guirnalda estados={r.estados} actual={fase === "final" ? contenido.escenas.length : fase === "inicio" ? 0 : r.indice} />
-          <Controles voz={r.voz} sonido={r.sonido} texto={textoVoz} />
+          <Controles voz={voz} sonido={r.sonido} texto={textoVoz} />
           <Carreta objeto={objeto.plural} cantidad={carga} entrego={entrego ? e.entrega : 0} clave={`${r.indice}-${entrego}`} />
         </>
       }

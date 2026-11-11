@@ -97,6 +97,13 @@
   text-wrap: balance;
 }
 
+.instruccionFila {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+
 .instruccion {
   margin: 0;
   max-width: 110ch;
@@ -910,4 +917,38 @@
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* ---------- Escuchar junto a opciones y tarjetas (juegos-primero) ---------- */
+.opcionFila,
+.columna > li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.opcionFila > .opcion,
+.columna > li > .carta {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Tarjeta de clasificar con ilustración (1.°): la imagen arriba, la palabra abajo; alt="" porque la palabra la nombra. */
+.piezaFila {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.pieza[data-con-imagen] {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 12px 28px 14px;
+}
+.piezaImagen {
+  width: clamp(120px, 28vw, 180px);
+  height: auto;
+  border-radius: 14px;
+  background: #fff;
 }

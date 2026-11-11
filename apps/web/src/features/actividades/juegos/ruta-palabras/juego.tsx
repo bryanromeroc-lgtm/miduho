@@ -1,5 +1,6 @@
 "use client";
 
+import { useBajarMusicaConVoz } from "../comun/voz";
 import Image from "next/image";
 import { Ear, Music2, Pause, Play, Type, Volume2, VolumeX, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
@@ -71,6 +72,7 @@ export function JuegoRutaPalabras({ contenido, alTerminar }: PropsJuego<Contenid
   const [impulso, setImpulso] = useState(false);
   const [rachaMsg, setRachaMsg] = useState(false);
   const musicaRef = useRef<HTMLAudioElement>(null);
+  useBajarMusicaConVoz(musicaRef);
   const raiz = useRef<HTMLDivElement>(null);
   const contador = useRef(0);
   const racha = useRef(0);

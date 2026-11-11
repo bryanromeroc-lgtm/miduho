@@ -3,6 +3,7 @@
  * Ninguno exige arrastrar: todo se resuelve tocando (WCAG 2.5.7).
  */
 import { z } from "zod";
+import { rutaAudio } from "./audio";
 import { definirTipo } from "./contrato";
 
 const id = z.string().regex(/^[a-z0-9-]+$/, "id en minúsculas, números y guiones");
@@ -12,7 +13,8 @@ function unicos<T>(lista: T[], llave: (x: T) => string) {
   return new Set(lista.map(llave)).size === lista.length;
 }
 
-const par = z.object({ id, izquierda: texto, derecha: texto });
+/** `audio`: la tarjeta de la izquierda dicha en voz alta; `audioDerecha`: la de la derecha. */
+const par = z.object({ id, izquierda: texto, derecha: texto, audio: rutaAudio.optional(), audioDerecha: rutaAudio.optional() });
 
 /** Emparejar: la respuesta de cada par es el id del par cuya derecha se eligió primero. */
 export const emparejar = definirTipo({
@@ -47,7 +49,7 @@ export const ordenar = definirTipo({
   esquemaContenido: z.object({
     /** En el orden correcto. */
     elementos: z
-      .array(z.object({ id, texto }))
+      .array(z.object({ id, texto, audio: rutaAudio.optional() }))
       .min(3)
       .max(8)
       .refine((e) => unicos(e, (x) => x.id), { message: "ids repetidos" }),
@@ -68,14 +70,34 @@ export const clasificar = definirTipo({
   versionEsquema: 1,
   esquemaContenido: z
     .object({
+      /**
+       * `una-a-una` (por omisión): una tarjeta a la vez, con retroalimentación inmediata.
+       * `tablero`: todas las tarjetas a la vista, columnas con casillas, «Enviar respuestas»
+       * y revelado de cada una (mecánica de la plantilla «Agrupar» de la referencia).
+       */
+      presentacion: z.enum(["una-a-una", "tablero"]).optional(),
       categorias: z
         .array(z.object({ id, nombre: texto }))
         .min(2)
         .max(3),
       elementos: z
-        .array(z.object({ id, texto, categoria: id }))
+        .array(
+          z.object({
+            id,
+            texto,
+            categoria: id,
+            audio: rutaAudio.optional(),
+            /** Ilustración de la tarjeta (1.°: para quien aún no lee); su `alt` es el `texto`. */
+            imagen: z.string().regex(/^\/images\/[\w\-/]+\.webp$/, "ruta /images/….webp").optional(),
+            /** Por qué va en su cesta, en una frase («La gallina nace, crece y se alimenta»). */
+            explicacion: texto.max(160).optional(),
+          }),
+        )
         .min(4)
-        .max(12),
+        .max(16),
+    })
+    .refine((c) => c.presentacion === "tablero" || c.elementos.length <= 12, {
+      message: "una a una admite hasta 12 elementos; el tablero, hasta 16",
     })
     .refine((c) => unicos(c.categorias, (x) => x.id) && unicos(c.elementos, (x) => x.id), { message: "ids repetidos" })
     .refine((c) => c.elementos.every((e) => c.categorias.some((k) => k.id === e.categoria)), {

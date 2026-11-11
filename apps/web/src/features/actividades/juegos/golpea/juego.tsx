@@ -1,5 +1,6 @@
 "use client";
 
+import { useBajarMusicaConVoz } from "../comun/voz";
 import Image from "next/image";
 import { Music2, Volume2, VolumeX, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
@@ -67,6 +68,7 @@ export function JuegoGolpea({ contenido, alTerminar }: PropsJuego<ContenidoGolpe
   const [bajando, setBajando] = useState(false);
   const [musicaActiva, setMusicaActiva] = useState(true);
   const musicaRef = useRef<HTMLAudioElement>(null);
+  useBajarMusicaConVoz(musicaRef);
   const contador = useRef(0);
   const titulo = useFocoAlCambiar<HTMLHeadingElement>(r.indice);
   const { ronda } = r;

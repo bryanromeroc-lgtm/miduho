@@ -1,0 +1,544 @@
+{
+  "slug": "colombiaaprende-seres-vivos-inertes",
+  "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+  "autor_dominio": "colombiaaprende.edu.co",
+  "fecha_captura": "2026-11-10T07:04:37.227Z",
+  "herramienta": "tools/captura-audio",
+  "transcripcion_automatica": "no disponible (sin whisper) 🔶",
+  "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+  "notas_captura": [
+    "zip: 67 audios en el paquete"
+  ],
+  "frames": [
+    "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html"
+  ],
+  "pistas": [
+    {
+      "id": "ca9690d4",
+      "archivo": "audio/originales/ca9690d4-error.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_01_02/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_03/composiciones/03_02/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_03/composiciones/03_04/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_06/composiciones/03_01/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_06/composiciones/03_03/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_07/composiciones/01_01/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_07/composiciones/01_02/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_04_01/composiciones/03_01/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_04_01/composiciones/03_02/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_04_01/composiciones/03_03/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_04_02/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_05_01/composiciones/01_03/media/error.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "ca9690d4f6168957d62db6f5724f816a8b7243c1cd60a0f062875848b7ab9555",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.313,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "81772d33",
+      "archivo": "audio/originales/81772d33-error.ogg",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_01_02/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_03/composiciones/03_02/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_03/composiciones/03_04/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_06/composiciones/03_01/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_06/composiciones/03_03/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_07/composiciones/01_01/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_07/composiciones/01_02/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_04_01/composiciones/03_01/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_04_01/composiciones/03_02/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_04_01/composiciones/03_03/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_04_02/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_05_01/composiciones/01_03/media/error.ogg"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "81772d337e7bfed3061595cfb909d378e1b96ee00f9070769c5dd3923f34cc57",
+      "mime": "audio/ogg",
+      "duracion_s": 0.285,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "57ffb8ad",
+      "archivo": "audio/originales/57ffb8ad-success.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_01_02/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_03/composiciones/03_02/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_03/composiciones/03_04/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_06/composiciones/03_01/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_06/composiciones/03_03/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_07/composiciones/01_01/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_07/composiciones/01_02/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_04_01/composiciones/03_01/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_04_01/composiciones/03_02/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_04_01/composiciones/03_03/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_04_02/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_05_01/composiciones/01_02/crucigrama/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_05_01/composiciones/01_03/media/success.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "57ffb8ade52a755849c9fe58a431c67272af8b4d485fdfdbf7ea44b04fe800f3",
+      "mime": "audio/mpeg",
+      "duracion_s": 3.344,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.1,
+      "rol": "efecto",
+      "evento": "acierto",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "6ed6dfce",
+      "archivo": "audio/originales/6ed6dfce-success.ogg",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_01_02/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_03/composiciones/03_02/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_03/composiciones/03_04/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_06/composiciones/03_01/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_06/composiciones/03_03/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_07/composiciones/01_01/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_07/composiciones/01_02/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_04_01/composiciones/03_01/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_04_01/composiciones/03_02/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_04_01/composiciones/03_03/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_04_02/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_05_01/composiciones/01_02/crucigrama/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_05_01/composiciones/01_03/media/success.ogg"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "6ed6dfce4d3ea2c9280ed32eb3e48870e00660c2375d5d72ecc59d7f640d57a2",
+      "mime": "audio/ogg",
+      "duracion_s": 3.297,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.1,
+      "rol": "efecto",
+      "evento": "acierto",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "03db138b",
+      "archivo": "audio/originales/03db138b-S_G01_U03_L02_03_03_A01.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_03/composiciones/03_01/media/S_G01_U03_L02_03_03_A01.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "03db138b743c24450f6b125e4cc87ce32a698b811f4c65806a7e2853aab95112",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.573,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -20.4,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "00fe04c4",
+      "archivo": "audio/originales/00fe04c4-S_G01_U03_L02_03_03_A02.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_03/composiciones/03_01/media/S_G01_U03_L02_03_03_A02.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "00fe04c47b9d40881a356478792ea51922717de07884547a28918bbc57e569a5",
+      "mime": "audio/mpeg",
+      "duracion_s": 19.589,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -24.6,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "4999f585",
+      "archivo": "audio/originales/4999f585-S_G01_U03_L02_03_03_A04.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_03/composiciones/03_02/media/S_G01_U03_L02_03_03_A04.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "4999f58514c8655e6cd50d4a7802e22706da7cc46168b6e5c266bcb499dd1beb",
+      "mime": "audio/mpeg",
+      "duracion_s": 26.141,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -20.6,
+      "rol": "musica",
+      "evento": "fondo",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "64024854",
+      "archivo": "audio/originales/64024854-S_G01_U03_L02_03_04_A01.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_04/media/S_G01_U03_L02_03_04_A01.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "640248549c77592faf2307fa30a92422c7f32311699777ac531b3ab5f84eeb19",
+      "mime": "audio/mpeg",
+      "duracion_s": 3.125,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -21.8,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "839fa78b",
+      "archivo": "audio/originales/839fa78b-S_G01_U03_L02_03_04_A02.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_04/media/S_G01_U03_L02_03_04_A02.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "839fa78baa81cd8374034f2044b8da38ffb995ba91c34698b45868a38e191145",
+      "mime": "audio/mpeg",
+      "duracion_s": 12.269,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -21,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "1a1b2209",
+      "archivo": "audio/originales/1a1b2209-S_G01_U03_L02_03_04_A03.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_04/media/S_G01_U03_L02_03_04_A03.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "1a1b22091372506c7da56016939d1fee276c160f2a1d693fdaf0bb1dbe96b0d5",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.453,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -18.7,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "a9fa1d4c",
+      "archivo": "audio/originales/a9fa1d4c-S_G01_U03_L02_03_04_A04.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_04/media/S_G01_U03_L02_03_04_A04.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "a9fa1d4c461cd160012c9e33aa5e1d3b78f8547b9b4389d0e38255fbd8c67f66",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.381,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -21.4,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "e236f73a",
+      "archivo": "audio/originales/e236f73a-S_G01_U03_L02_03_04_A05.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_04/media/S_G01_U03_L02_03_04_A05.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "e236f73af8e61f958eb46670375e7d5754351c5fe5e260e95aad31014baf1ee3",
+      "mime": "audio/mpeg",
+      "duracion_s": 3.317,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -20.7,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "a11839c8",
+      "archivo": "audio/originales/a11839c8-S_G01_U03_L02_03_04_A06.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_04/media/S_G01_U03_L02_03_04_A06.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "a11839c8bd5ff11422a20e9a5c1d9b3dc018b5d0924e38b38ad5a274b25c4d73",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.189,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -20.8,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "4c07f7ad",
+      "archivo": "audio/originales/4c07f7ad-S_G01_U03_L02_03_04_A07.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_04/media/S_G01_U03_L02_03_04_A07.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "4c07f7adf878363d6b9eb6c36efb35d79cebde770bb7383a01a8e351147a62f5",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.64,
+      "canales": 2,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -20.6,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "75c4b59d",
+      "archivo": "audio/originales/75c4b59d-S_G01_U03_L02_03_04_A08.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_04/media/S_G01_U03_L02_03_04_A08.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "75c4b59dfcf8472e40768cf6109529305d4ed8c2d9ea23af2228a575f496f307",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.973,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -20.2,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "bcd560d6",
+      "archivo": "audio/originales/bcd560d6-S_G01_U03_L02_03_04_A09.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_04/media/S_G01_U03_L02_03_04_A09.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "bcd560d69247c90b159bda4d28d4101f529df0353290c5860391fb1d73f9f168",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.573,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -19.1,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "68b4ca2a",
+      "archivo": "audio/originales/68b4ca2a-S_G01_U03_L02_03_04_A10.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_04/media/S_G01_U03_L02_03_04_A10.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "68b4ca2a2524a7c7d73d93e77548e0220910ca64221a48d5ce46eb2d7ca66c0d",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.117,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -19,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "f6326ed7",
+      "archivo": "audio/originales/f6326ed7-S_G01_U03_L02_03_06_A.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_06/composiciones/03_02/media/S_G01_U03_L02_03_06_A.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_06/media/S_G01_U03_L02_03_06_A.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "f6326ed739358093b72378ef86eaa63009986508f9b0eef2b07aad9344b443cc",
+      "mime": "audio/mpeg",
+      "duracion_s": 18.759,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -20.8,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "0b1923d6",
+      "archivo": "audio/originales/0b1923d6-S_G01_U03_L02_03_07.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_03_07/media/S_G01_U03_L02_03_07.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "0b1923d64141e7a03991e5d11a10dfdccc425b9cfa94a44917bbbccac07cc7f1",
+      "mime": "audio/mpeg",
+      "duracion_s": 19.301,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -18.5,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "0aefe780",
+      "archivo": "audio/originales/0aefe780-S_G01_U03_L02_05_01_A.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/S/S_G01_U03_L02.zip#S_G01_U03_L02/S/S_G01_U03_L02/S_G01_U03_L02_05_01/media/S_G01_U03_L02_05_01_A.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/G_1/S/menu_S_G01_U03_L02/index.html",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "0aefe780835d13544674a27e5722a7cb38e1dde1c2aaab6591e4ee55425e54d0",
+      "mime": "audio/mpeg",
+      "duracion_s": 50.737,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -19.7,
+      "rol": "musica",
+      "evento": "fondo",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    }
+  ]
+}

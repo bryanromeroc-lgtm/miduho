@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { rutasDeAudio } from "./audio";
 import { barajar, calificarIntento } from "./contrato";
 import { armarSopa, jugarPalabra, leerLinea, palabraSecreta, sopaLetras } from "./palabras";
 import { completar, seleccionMultiple } from "./preguntas";
@@ -128,5 +129,50 @@ describe("barajar", () => {
   it("es determinista y conserva los elementos", () => {
     expect(barajar([1, 2, 3, 4, 5], "x")).toEqual(barajar([1, 2, 3, 4, 5], "x"));
     expect([...barajar([1, 2, 3, 4, 5], "x")].sort()).toEqual([1, 2, 3, 4, 5]);
+  });
+});
+
+describe("audio en el contenido (juegos-primero)", () => {
+  const archivo = (extra: object, contenido: object) => ({
+    slug: "prueba-audio",
+    titulo: "Prueba de audio",
+    tipo: "clasificar",
+    grado: 1,
+    instruccion: "Ubica cada tarjeta en su grupo.",
+    tema: "Prueba",
+    contenido,
+    ...extra,
+  });
+  const clasif = (audio?: string) => ({
+    categorias: [
+      { id: "a", nombre: "A" },
+      { id: "b", nombre: "B" },
+    ],
+    elementos: ["e1", "e2", "e3", "e4"].map((id, i) => ({ id, texto: id, categoria: i % 2 ? "b" : "a", ...(audio ? { audio } : {}) })),
+  });
+
+  it("acepta audio en la instrucción y en cada elemento", () => {
+    expect(leerActividad(archivo({ audioInstruccion: "/audio/consignas/x.mp3" }, clasif("/audio/x/e.mp3"))).ok).toBe(true);
+  });
+  it("el contenido sin audio sigue siendo válido", () => {
+    expect(leerActividad(archivo({}, clasif())).ok).toBe(true);
+  });
+  it("rechaza rutas fuera de /audio/", () => {
+    expect(leerActividad(archivo({ audioInstruccion: "https://x.com/a.mp3" }, clasif())).ok).toBe(false);
+    expect(leerActividad(archivo({}, clasif("/images/a.mp3"))).ok).toBe(false);
+  });
+  it("audioOpciones debe tener una entrada por opción", () => {
+    const p = (audioOpciones: (string | null)[]) => ({
+      preguntas: ["a", "b", "c"].map((id) => ({ id, enunciado: "¿?", opciones: ["sí", "no"], correcta: 0, audioOpciones })),
+    });
+    expect(seleccionMultiple.esquemaContenido.safeParse(p(["/audio/a.mp3", null])).success).toBe(true);
+    expect(seleccionMultiple.esquemaContenido.safeParse(p(["/audio/a.mp3"])).success).toBe(false);
+  });
+  it("rutasDeAudio junta todas las rutas citadas", () => {
+    expect(rutasDeAudio({ audioInstruccion: "/audio/i.mp3", contenido: { preguntas: [{ audio: "/audio/p.mp3", audioOpciones: ["/audio/o.mp3", null] }] } })).toEqual([
+      "/audio/i.mp3",
+      "/audio/p.mp3",
+      "/audio/o.mp3",
+    ]);
   });
 });

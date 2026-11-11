@@ -3,10 +3,12 @@
 import { ArrowDown, ArrowUp } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { barajar } from "../tipos/contrato";
+import { TableroAgrupar } from "../juegos/agrupar/tablero";
+import { Escuchar, useLecturaAutomatica } from "../juegos/comun/escuchar";
 import { Avanzar, Aviso, Marca, Progreso, useFocoAlCambiar, type PropsJuego } from "./comun";
 import s from "./reproductor.module.css";
 
-type Par = { id: string; izquierda: string; derecha: string };
+type Par = { id: string; izquierda: string; derecha: string; audio?: string; audioDerecha?: string };
 
 /*
   Emparejar: se toca una tarjeta de cada columna, en cualquier orden. Cuenta
@@ -68,6 +70,7 @@ export function Emparejar({ contenido, semilla, alTerminar }: PropsJuego<{ pares
               {unido && <Marca estado="ok" />}
               {unido && <span className={s.solo}>, ya unida</span>}
             </button>
+            <Escuchar texto={texto} audio={lado === "i" ? p.audio : p.audioDerecha} soloIcono />
           </li>
         );
       })}
@@ -91,7 +94,7 @@ export function Emparejar({ contenido, semilla, alTerminar }: PropsJuego<{ pares
   );
 }
 
-type Elemento = { id: string; texto: string };
+type Elemento = { id: string; texto: string; audio?: string };
 
 /** Ordenar con botones de subir y bajar (sin arrastrar); el foco acompaña al elemento que se mueve. */
 export function Ordenar({ contenido, semilla, alTerminar }: PropsJuego<{ elementos: Elemento[] }>) {
@@ -144,6 +147,7 @@ export function Ordenar({ contenido, semilla, alTerminar }: PropsJuego<{ element
                 {estado && <span className={s.solo}>{estado === "ok" ? ", en su lugar" : ", fuera de lugar"}</span>}
               </span>
               <Marca estado={estado} />
+              <Escuchar texto={texto(id)} audio={contenido.elementos.find((e) => e.id === id)!.audio} soloIcono />
               {!revisado && (
                 <span className={s.flechas}>
                   {i > 0 && (
@@ -193,10 +197,15 @@ export function Ordenar({ contenido, semilla, alTerminar }: PropsJuego<{ element
   );
 }
 
-type Clasificacion = { categorias: { id: string; nombre: string }[]; elementos: { id: string; texto: string; categoria: string }[] };
+type Clasificacion = { presentacion?: "una-a-una" | "tablero"; categorias: { id: string; nombre: string }[]; elementos: { id: string; texto: string; categoria: string; audio?: string; imagen?: string; explicacion?: string }[] };
 
-/** Clasificar: un elemento a la vez y una cesta por categoría; lo ubicado se queda a la vista en su cesta correcta. */
-export function Clasificar({ contenido, semilla, alTerminar }: PropsJuego<Clasificacion>) {
+/** Clasificar: «una a una» (por omisión) o el tablero «Agrupar» con todas las tarjetas a la vista. */
+export function Clasificar(props: PropsJuego<Clasificacion>) {
+  return props.contenido.presentacion === "tablero" ? <TableroAgrupar {...props} /> : <ClasificarUnoAUno {...props} />;
+}
+
+/** Una a una: un elemento a la vez y una cesta por categoría; lo ubicado se queda a la vista en su cesta correcta. */
+function ClasificarUnoAUno({ contenido, semilla, alTerminar }: PropsJuego<Clasificacion>) {
   const elementos = useMemo(() => barajar(contenido.elementos, semilla), [contenido, semilla]);
   const [indice, setIndice] = useState(0);
   const [respuestas, setRespuestas] = useState<Record<string, string>>({});
@@ -206,13 +215,21 @@ export function Clasificar({ contenido, semilla, alTerminar }: PropsJuego<Clasif
   const ultima = indice === elementos.length - 1;
   const titulo = useFocoAlCambiar<HTMLParagraphElement>(indice);
   const nombre = (id: string) => contenido.categorias.find((k) => k.id === id)!.nombre;
+  useLecturaAutomatica(e.id, e.texto, e.audio);
 
   return (
     <div className={s.juego}>
       <Progreso actual={indice + 1} total={elementos.length} nombre="Elemento" />
-      <p ref={titulo} tabIndex={-1} className={s.pieza}>
-        {e.texto}
-      </p>
+      <div className={s.piezaFila}>
+        <p ref={titulo} tabIndex={-1} className={s.pieza} data-con-imagen={e.imagen ? "" : undefined}>
+          {e.imagen && (
+            // eslint-disable-next-line @next/next/no-img-element -- ilustración pequeña ya optimizada (webp 320 px)
+            <img src={e.imagen} alt="" width={160} height={160} className={s.piezaImagen} />
+          )}
+          {e.texto}
+        </p>
+        <Escuchar texto={e.texto} audio={e.audio} />
+      </div>
       <div className={s.cestas} data-tres={contenido.categorias.length === 3 ? "" : undefined}>
         {contenido.categorias.map((k) => {
           const estado = respondida ? (k.id === e.categoria ? "ok" : k.id === elegida ? "no" : undefined) : undefined;
@@ -240,7 +257,9 @@ export function Clasificar({ contenido, semilla, alTerminar }: PropsJuego<Clasif
         })}
       </div>
       <Aviso tono={respondida ? (elegida === e.categoria ? "ok" : "no") : null}>
-        {respondida && (elegida === e.categoria ? `¡Correcto! Va en ${nombre(e.categoria)}.` : `Va en ${nombre(e.categoria)}.`)}
+        {respondida &&
+          (elegida === e.categoria ? `¡Correcto! Va en ${nombre(e.categoria)}.` : `Va en ${nombre(e.categoria)}.`) +
+            (e.explicacion ? ` ${e.explicacion}` : "")}
       </Aviso>
       {respondida && (
         <div className={s.acciones}>

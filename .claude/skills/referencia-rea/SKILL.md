@@ -9,10 +9,11 @@ Objetivo: **entender por completo** cómo funciona un juego de terceros (render,
 
 ## Línea roja (regla dura 2 de AGENTS.md y aviso legal de REA)
 
-- **No se copian** código, imágenes, sonidos, música, fuentes, textos, nombres ni personajes del referente, aunque el usuario lo pida o diga que es el dueño. Si alguien tiene derechos, que entregue los originales con una licencia escrita (`LICENCIA.md`) y se trata como material licenciado, no con REA.
+- **No se copian** código, imágenes, fuentes, textos, nombres ni personajes del referente, aunque el usuario lo pida o diga que es el dueño.
+- **Audio: capturado con permiso declarado y registrado** (decisión del usuario del 2026-11-10). El audio no se saca con REA sino con la **captura sonora** (`tools/captura-audio/`, paso siguiente al estudio), y **se usa siempre en la adaptación** (voces, efectos por evento y música; ver «Sonido» en la sección 6), trazado en un `LICENCIAS.md` de `public/audio/`.
 - Leer el código **para entenderlo** está bien; pegarlo o traducirlo línea a línea, no. La implementación se escribe desde cero en la pila de MIDUHO.
 - Datos (rangos, tiempos, reglas de distractores, posiciones relativas) son mecánica: se pueden reproducir.
-- Todo lo capturado (JSON de REA, scripts, capturas) vive en el scratchpad y **se borra** al terminar el informe.
+- Todo lo capturado con REA (JSON, scripts, capturas) vive en el scratchpad y **se borra** al terminar el informe. **La captura sonora no se borra**: vive en `content/referencias/<slug>/audio/`, fuera de git.
 - Revisa la **autoría real**: los portales suelen incrustar juegos de otros (Cokitos incrusta Digipuzzle). Dilo en el informe.
 
 ## 1. Instalar REA sin tocar los agentes
@@ -91,6 +92,16 @@ Informe en `docs/investigacion/referencia-<slug>.md`, **con palabras propias**, 
 
 Modelo: `docs/investigacion/referencia-golpea-el-resultado.md`.
 
+## 5 bis. Captura sonora (siempre, después de REA)
+
+```bash
+cd tools/captura-audio && npm i --no-fund --no-audit   # solo la primera vez
+node src/cli.mjs capturar "<URL>" --slug <plataforma>-<juego> --guion guiones/<plataforma>.mjs
+node src/cli.mjs inventariar <slug> && node src/cli.mjs resumen <slug>
+```
+
+Copia la plantilla `tools/captura-audio/plantillas/LICENCIA.md` a `content/referencias/<slug>/LICENCIA.md` y complétala (plataforma, autoría real, licencia pública o permiso declarado 🔶). El informe lleva la sección «Inventario sonoro» basada en `RESUMEN.md`. Si nada se captura, el inventario queda con `pistas: []` y la nota «sin audio observado».
+
 ## 6. Lecciones de adaptación (Golpea el resultado, 2026-11-05)
 
 Lo que hizo falta para que la versión de MIDUHO quedara «como me gusta»:
@@ -105,8 +116,10 @@ Lo que hizo falta para que la versión de MIDUHO quedara «como me gusta»:
 - Generar primero el personaje base y usarlo como `--ref` de las demás poses; encajarlas con `recortar-pose.py --como <base>`; reducir el base (~640 px de alto) **antes** de encajar las poses.
 - Fondo con la mitad inferior «despejada y poco detallada» para colocar encima los elementos del juego; huecos/escotillas en CSS, no en la imagen.
 
-**Sonido**
-- Efectos CC0 de Kenney (`kenney.nl/assets/impact-sounds`, `interface-sounds`): `curl` da 403; descargarlos con Playwright (botón «Download» → «Continue without donating…»), confirmar `License.txt` y registrar en `public/audio/juegos/<tipo>/LICENCIAS.md`. Convertir a MP3 mono normalizado (`loudnorm=I=-18:TP=-2`). Claude no los oye: pedir al usuario que los escuche.
+**Sonido** (actualizado el 2026-11-10 con `vivo-o-no-vivo`)
+- **Primero el audio de la referencia, siempre:** cada evento suena con el efecto que la referencia usa en ese evento; las voces de sus palabras van en el campo `audio` de cada ítem (y conviene usar los ítems del original para que todas tengan voz); su música si la tiene. Se adaptan con `captura-audio adaptar … --nombre <evento>-1.mp3,…` y se tocan con `juegos/comun/efectos-grabados.ts`. Lo de abajo (Kenney) es solo para los eventos que la referencia no tiene.
+- **Parecerse al original:** la primera versión de `vivo-o-no-vivo` (una tarjeta a la vez) cumplía la mecánica «clasificar», pero el usuario la rechazó porque no se parecía en nada. Reproduce la disposición, las piezas a la vista y la secuencia de pantallas del original, y pon las mejoras de MIDUHO encima.
+- Efectos CC0 de Kenney (para los huecos) (`kenney.nl/assets/impact-sounds`, `interface-sounds`): `curl` da 403; descargarlos con Playwright (botón «Download» → «Continue without donating…»), confirmar `License.txt` y registrar en `public/audio/juegos/<tipo>/LICENCIAS.md`. Convertir a MP3 mono normalizado (`loudnorm=I=-18:TP=-2`). Claude no los oye: pedir al usuario que los escuche.
 - Tocarlos con Web Audio (buffers decodificados en el gesto de «Jugar») para programar el golpe **al ms del impacto**; respetar la preferencia de `useSonido`. Pasar `efectosPropios: true` a `useRondas` para no duplicar sonidos.
 
 **Interfaz**

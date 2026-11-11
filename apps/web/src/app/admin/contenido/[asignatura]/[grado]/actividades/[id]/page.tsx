@@ -52,6 +52,8 @@ export default async function PaginaActividadPrevia({ params }: Parametros) {
           tipo: actividad.tipo,
           instruccion: actividad.instruccion,
           contenido: actividad.contenido,
+          grado: actividad.grado,
+          audioInstruccion: actividad.audioInstruccion,
         }}
         materia={`${materia.nombre} ${grado.nombre}`}
         volverHref={volverHref}

@@ -1,0 +1,1211 @@
+{
+  "slug": "cokitos-seres-vivos-e-inertes",
+  "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+  "autor_dominio": "wordwall.net",
+  "fecha_captura": "2026-11-10T06:48:29.085Z",
+  "herramienta": "tools/captura-audio",
+  "transcripcion_automatica": "no disponible (sin whisper) 🔶",
+  "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+  "notas_captura": [
+    "guion: abierto https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/play/",
+    "guion: iframe del juego: https://wordwall.net/es/embed/bad859d97c7d4c6bae798682a61c0aca?themeId=2&templateId=2&fontStackId=0",
+    "guion: abierto el juego del autor como página: https://wordwall.net/es/embed/bad859d97c7d4c6bae798682a61c0aca?themeId=2&templateId=2&fontStackId=0",
+    "no descargado (404): https://pm.azerioncircle.com/@bygd/focus/0.13.6/dist/app/iife/!window.OPUS",
+    "no descargado (404): https://user.cdn.wordwall.net/tts/es-es-abrilneural/39be78ae8e063a681aaf07b735b0a5f0.mp3",
+    "no descargado (404): https://user.cdn.wordwall.net/tts/es-es-abrilneural/02e409c8bf00d35d7a7d61c56829da7f.mp3",
+    "no descargado (404): https://user.cdn.wordwall.net/tts/es-es-abrilneural/ff3eb1a68dde833cc0ad87902579d31f.mp3",
+    "no descargado (404): https://user.cdn.wordwall.net/tts/es-es-abrilneural/5c69d1141f0aaec0125de8a3b60170db.mp3",
+    "no descargado (404): https://user.cdn.wordwall.net/tts/es-es-abrilneural/84109ae4b4178430b8174b1dfef9162b.mp3",
+    "no descargado (404): https://user.cdn.wordwall.net/tts/es-es-abrilneural/3a5285c3733c215fa018195a60a1c52e.mp3",
+    "no descargado (404): https://user.cdn.wordwall.net/tts/es-es-abrilneural/8e406feab23e1239a50b0d329b0754fb.mp3",
+    "no descargado (404): https://user.cdn.wordwall.net/tts/es-es-abrilneural/145884cf0027519a6f25af81a525eab4.mp3",
+    "no descargado (404): https://user.cdn.wordwall.net/tts/es-es-abrilneural/b077c265ffc2d69de510c65eaf042ee2.mp3",
+    "no descargado (404): https://user.cdn.wordwall.net/tts/es-es-abrilneural/645d267aa931167c17f0e43714093ea2.mp3",
+    "no descargado (404): https://user.cdn.wordwall.net/tts/es-es-abrilneural/86aa0eab194b5fe69e3c1706b4c041d9.mp3",
+    "no descargado (404): https://user.cdn.wordwall.net/tts/es-es-abrilneural/ef445f636e90112ba4151228d6d18d1e.mp3",
+    "no descargado (404): https://user.cdn.wordwall.net/tts/es-es-abrilneural/fc4b5e2c4b748868deb19d350c831f4d.mp3",
+    "no descargado (404): https://user.cdn.wordwall.net/tts/es-es-abrilneural/f17ed833132a190c1907db8bbdf19e39.mp3",
+    "no descargado (404): https://user.cdn.wordwall.net/tts/es-es-abrilneural/03a1a2eec091d7a87f9a40448024d8d4.mp3",
+    "no descargado (404): https://user.cdn.wordwall.net/tts/es-es-abrilneural/418a94f4315d84d6c23d648d295a42e2.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-06-2023/primarychipminorfast1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-06-2023/primarychipminorfast1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-06-2023/primarychipminorfast1.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-06-2023/primarychipminorfast2.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-06-2023/primarychipminorfast2.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-06-2023/primarychipminorfast2.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-06-2023/primarychipminorfast3.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-06-2023/primarychipminorfast3.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-06-2023/primarychipminorfast3.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarygamesuccessful.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarygamesuccessful.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarygamesuccessful.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-06-2023/primarychipfailfast1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-06-2023/primarychipfailfast1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-06-2023/primarychipfailfast1.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-06-2023/primarychipfailfast2.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-06-2023/primarychipfailfast2.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-06-2023/primarychipfailfast2.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-06-2023/primarychipfailfast3.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-06-2023/primarychipfailfast3.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-06-2023/primarychipfailfast3.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarygameintro.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarygameintro.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarygameintro.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryleaderboards.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primaryleaderboards.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primaryleaderboards.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarygamemenu.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarygamemenu.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarygamemenu.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarygamerestart.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarygamerestart.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarygamerestart.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryreveal.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primaryreveal.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primaryreveal.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarytiledrop1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytiledrop1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytiledrop1.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarytiledrop2.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytiledrop2.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytiledrop2.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarytiledrop3.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytiledrop3.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytiledrop3.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarytiledrop4.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytiledrop4.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytiledrop4.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarytiledrop5.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytiledrop5.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytiledrop5.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarytilepickup1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytilepickup1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytilepickup1.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarytilepickup2.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytilepickup2.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytilepickup2.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarytilepickup3.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytilepickup3.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytilepickup3.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarytilepickup4.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytilepickup4.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytilepickup4.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarytilepickup5.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytilepickup5.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytilepickup5.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarytimesup.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytimesup.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarytimesup.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarybackgroundmusic1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarybackgroundmusic1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/720p/themes/sunflower/sounds-07-2024/primarybackgroundmusic1.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryclocktick1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryconveyoritemappear1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryconveyoritemappear2.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryconveyoritemappear3.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryconveyoritemleave1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryconveyoritemleave2.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryconveyoritemleave3.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarychipminor1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarychipminor2.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarychipminor3.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarygameunsuccessful.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryclockgo.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarychipfail1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarychipfail2.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarychipfail3.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryopenthebox1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryopenthebox2.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryopenthebox3.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarychipmajor.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryshuffle.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryspinner1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryspinner2.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryspinner3.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryspinner4.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryspinner5.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryspinner6.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primaryspinnercomplete.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarytileappear.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarytileeliminate.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarytileflip1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarytileflip2.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarytileflip3.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarytileflip4.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarywheelresume.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarywheelsegmenteliminate.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarywheelselection.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarywheeltick1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarywheeltick2.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarywheeltick3.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarywheeltick4.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarywheeltick5.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarywheeltick6.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/sunflower/sounds-07-2024/primarywheeltick7.mp3"
+  ],
+  "frames": [
+    "https://wordwall.net/es/embed/bad859d97c7d4c6bae798682a61c0aca?themeId=2&templateId=2&fontStackId=0"
+  ],
+  "pistas": [
+    {
+      "id": "bd195756",
+      "archivo": "audio/originales/bd195756-39be78ae8e063a681aaf07b735b0a5f0_64.mp3",
+      "urls": [
+        "https://user.cdn.wordwall.net/content-sounds/tts/es-es-abrilneural/39be78ae8e063a681aaf07b735b0a5f0_64.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "bd1957565d69327258d05897a11ed10b5992b46b31cd1e018f097855369ae321",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.764,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -23.2,
+      "rol": "voz",
+      "evento": "nombrar la tarjeta «Tortuga» (grupo del juego: Seres vivos)",
+      "certeza": "metadatos del juego",
+      "transcripcion": "Tortuga",
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/vivo-o-no-vivo/tortuga.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "certeza_transcripcion": "metadatos del juego: texto que sintetiza la voz TTS es-ES (Azure «Abril») según el modelo de contenido de Wordwall; no oído 🔶"
+    },
+    {
+      "id": "b6bb22d1",
+      "archivo": "audio/originales/b6bb22d1-02e409c8bf00d35d7a7d61c56829da7f_64.mp3",
+      "urls": [
+        "https://user.cdn.wordwall.net/content-sounds/tts/es-es-abrilneural/02e409c8bf00d35d7a7d61c56829da7f_64.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "b6bb22d17a4de01200801be18505a3d690882cac6656d24b18212d672ada2e0c",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.692,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -22.3,
+      "rol": "voz",
+      "evento": "nombrar la tarjeta «Tomate» (grupo del juego: Seres vivos)",
+      "certeza": "metadatos del juego",
+      "transcripcion": "Tomate",
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/vivo-o-no-vivo/tomate.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "certeza_transcripcion": "metadatos del juego: texto que sintetiza la voz TTS es-ES (Azure «Abril») según el modelo de contenido de Wordwall; no oído 🔶"
+    },
+    {
+      "id": "f1596318",
+      "archivo": "audio/originales/f1596318-ff3eb1a68dde833cc0ad87902579d31f_64.mp3",
+      "urls": [
+        "https://user.cdn.wordwall.net/content-sounds/tts/es-es-abrilneural/ff3eb1a68dde833cc0ad87902579d31f_64.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "f1596318132af477b1ed6017d7d3bf5994fe3876301fc1348c1d0c7490f61ef3",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.656,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -22.3,
+      "rol": "voz",
+      "evento": "nombrar la tarjeta «Árbol» (grupo del juego: Seres vivos)",
+      "certeza": "metadatos del juego",
+      "transcripcion": "Árbol",
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/vivo-o-no-vivo/arbol.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "certeza_transcripcion": "metadatos del juego: texto que sintetiza la voz TTS es-ES (Azure «Abril») según el modelo de contenido de Wordwall; no oído 🔶"
+    },
+    {
+      "id": "54294f11",
+      "archivo": "audio/originales/54294f11-5c69d1141f0aaec0125de8a3b60170db_64.mp3",
+      "urls": [
+        "https://user.cdn.wordwall.net/content-sounds/tts/es-es-abrilneural/5c69d1141f0aaec0125de8a3b60170db_64.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "54294f1199ceccca5d784a2be95ea04132ceea8acab6a41d72419d30dde079f8",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.8,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -24.9,
+      "rol": "voz",
+      "evento": "nombrar la tarjeta «Cáctus» (grupo del juego: Seres vivos)",
+      "certeza": "metadatos del juego",
+      "transcripcion": "Cáctus",
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/vivo-o-no-vivo/cactus.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "certeza_transcripcion": "metadatos del juego: texto que sintetiza la voz TTS es-ES (Azure «Abril») según el modelo de contenido de Wordwall; no oído 🔶"
+    },
+    {
+      "id": "aa963406",
+      "archivo": "audio/originales/aa963406-84109ae4b4178430b8174b1dfef9162b_64.mp3",
+      "urls": [
+        "https://user.cdn.wordwall.net/content-sounds/tts/es-es-abrilneural/84109ae4b4178430b8174b1dfef9162b_64.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "aa963406f1462f85f7ea1bb15f7b2949d1153e7f6bc8ebd5b32aac1f921979d6",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.728,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -22.3,
+      "rol": "voz",
+      "evento": "nombrar la tarjeta «Rosa» (grupo del juego: Seres vivos)",
+      "certeza": "metadatos del juego",
+      "transcripcion": "Rosa",
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/vivo-o-no-vivo/rosa.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "certeza_transcripcion": "metadatos del juego: texto que sintetiza la voz TTS es-ES (Azure «Abril») según el modelo de contenido de Wordwall; no oído 🔶"
+    },
+    {
+      "id": "2a251cf6",
+      "archivo": "audio/originales/2a251cf6-3a5285c3733c215fa018195a60a1c52e_64.mp3",
+      "urls": [
+        "https://user.cdn.wordwall.net/content-sounds/tts/es-es-abrilneural/3a5285c3733c215fa018195a60a1c52e_64.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "2a251cf68e221cea57492992666c034bc906459f3ca3b2001ef76a7c5fa65e77",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.764,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -21.2,
+      "rol": "voz",
+      "evento": "nombrar la tarjeta «Ballena» (grupo del juego: Seres vivos)",
+      "certeza": "metadatos del juego",
+      "transcripcion": "Ballena",
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/vivo-o-no-vivo/ballena.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "certeza_transcripcion": "metadatos del juego: texto que sintetiza la voz TTS es-ES (Azure «Abril») según el modelo de contenido de Wordwall; no oído 🔶"
+    },
+    {
+      "id": "502cc0fa",
+      "archivo": "audio/originales/502cc0fa-8e406feab23e1239a50b0d329b0754fb_64.mp3",
+      "urls": [
+        "https://user.cdn.wordwall.net/content-sounds/tts/es-es-abrilneural/8e406feab23e1239a50b0d329b0754fb_64.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "502cc0faeba87c061d64bf97dc5cad02bb9a7afd9c45aaff23453eb4a4012322",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.836,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -21.1,
+      "rol": "voz",
+      "evento": "nombrar la tarjeta «Persona» (grupo del juego: Seres vivos)",
+      "certeza": "metadatos del juego",
+      "transcripcion": "Persona",
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/vivo-o-no-vivo/persona.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "certeza_transcripcion": "metadatos del juego: texto que sintetiza la voz TTS es-ES (Azure «Abril») según el modelo de contenido de Wordwall; no oído 🔶"
+    },
+    {
+      "id": "e8279901",
+      "archivo": "audio/originales/e8279901-145884cf0027519a6f25af81a525eab4_64.mp3",
+      "urls": [
+        "https://user.cdn.wordwall.net/content-sounds/tts/es-es-abrilneural/145884cf0027519a6f25af81a525eab4_64.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "e82799015af9334a5df1af32e63768c6a26641e2825564d0d7057c8e63dbbb5e",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.62,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -24.1,
+      "rol": "voz",
+      "evento": "nombrar la tarjeta «Seta» (grupo del juego: Seres vivos)",
+      "certeza": "metadatos del juego",
+      "transcripcion": "Seta",
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/vivo-o-no-vivo/seta.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "certeza_transcripcion": "metadatos del juego: texto que sintetiza la voz TTS es-ES (Azure «Abril») según el modelo de contenido de Wordwall; no oído 🔶"
+    },
+    {
+      "id": "5c44021d",
+      "archivo": "audio/originales/5c44021d-b077c265ffc2d69de510c65eaf042ee2_64.mp3",
+      "urls": [
+        "https://user.cdn.wordwall.net/content-sounds/tts/es-es-abrilneural/b077c265ffc2d69de510c65eaf042ee2_64.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "5c44021d3387089a5954a2060346461b7d9d859f6f4dd8ed57ec03875263d085",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.764,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -21.1,
+      "rol": "voz",
+      "evento": "nombrar la tarjeta «Armario» (grupo del juego: Seres inertes)",
+      "certeza": "metadatos del juego",
+      "transcripcion": "Armario",
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/vivo-o-no-vivo/armario.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "certeza_transcripcion": "metadatos del juego: texto que sintetiza la voz TTS es-ES (Azure «Abril») según el modelo de contenido de Wordwall; no oído 🔶"
+    },
+    {
+      "id": "504abe23",
+      "archivo": "audio/originales/504abe23-645d267aa931167c17f0e43714093ea2_64.mp3",
+      "urls": [
+        "https://user.cdn.wordwall.net/content-sounds/tts/es-es-abrilneural/645d267aa931167c17f0e43714093ea2_64.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "504abe23b9a9bc702071e9b84f3ff242efd98441f259bf4146d59bbc46e7260e",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.62,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -21.4,
+      "rol": "voz",
+      "evento": "nombrar la tarjeta «Piedra» (grupo del juego: Seres inertes)",
+      "certeza": "metadatos del juego",
+      "transcripcion": "Piedra",
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/vivo-o-no-vivo/piedra.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "certeza_transcripcion": "metadatos del juego: texto que sintetiza la voz TTS es-ES (Azure «Abril») según el modelo de contenido de Wordwall; no oído 🔶"
+    },
+    {
+      "id": "c77973c1",
+      "archivo": "audio/originales/c77973c1-86aa0eab194b5fe69e3c1706b4c041d9_64.mp3",
+      "urls": [
+        "https://user.cdn.wordwall.net/content-sounds/tts/es-es-abrilneural/86aa0eab194b5fe69e3c1706b4c041d9_64.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "c77973c19559b06ee3d02409246b1e7f40a97581af0c37450d3efc1ea295f17f",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.62,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -22,
+      "rol": "voz",
+      "evento": "nombrar la tarjeta «Silla» (grupo del juego: Seres inertes)",
+      "certeza": "metadatos del juego",
+      "transcripcion": "Silla",
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/vivo-o-no-vivo/silla.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "certeza_transcripcion": "metadatos del juego: texto que sintetiza la voz TTS es-ES (Azure «Abril») según el modelo de contenido de Wordwall; no oído 🔶"
+    },
+    {
+      "id": "645466da",
+      "archivo": "audio/originales/645466da-ef445f636e90112ba4151228d6d18d1e_64.mp3",
+      "urls": [
+        "https://user.cdn.wordwall.net/content-sounds/tts/es-es-abrilneural/ef445f636e90112ba4151228d6d18d1e_64.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "645466da5b565c93800c6b9a7447d476ee20ceafe5e95ac97741c18fe5a3c913",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.836,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -20.2,
+      "rol": "voz",
+      "evento": "nombrar la tarjeta «Montaña» (grupo del juego: Seres inertes)",
+      "certeza": "metadatos del juego",
+      "transcripcion": "Montaña",
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/vivo-o-no-vivo/montana.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "certeza_transcripcion": "metadatos del juego: texto que sintetiza la voz TTS es-ES (Azure «Abril») según el modelo de contenido de Wordwall; no oído 🔶"
+    },
+    {
+      "id": "2549a7dd",
+      "archivo": "audio/originales/2549a7dd-fc4b5e2c4b748868deb19d350c831f4d_64.mp3",
+      "urls": [
+        "https://user.cdn.wordwall.net/content-sounds/tts/es-es-abrilneural/fc4b5e2c4b748868deb19d350c831f4d_64.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "2549a7ddf4aba171eab3629e229123f00197aacdfa982e64d6a57027f2ace091",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.548,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -22.4,
+      "rol": "voz",
+      "evento": "nombrar la tarjeta «Cama» (grupo del juego: Seres inertes)",
+      "certeza": "metadatos del juego",
+      "transcripcion": "Cama",
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/vivo-o-no-vivo/cama.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "certeza_transcripcion": "metadatos del juego: texto que sintetiza la voz TTS es-ES (Azure «Abril») según el modelo de contenido de Wordwall; no oído 🔶"
+    },
+    {
+      "id": "1daa8b7c",
+      "archivo": "audio/originales/1daa8b7c-f17ed833132a190c1907db8bbdf19e39_64.mp3",
+      "urls": [
+        "https://user.cdn.wordwall.net/content-sounds/tts/es-es-abrilneural/f17ed833132a190c1907db8bbdf19e39_64.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "1daa8b7c11c8f5d55b238c33a7c97a500ee2d47dbf44da30eb0946a776f05aed",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.764,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -23.4,
+      "rol": "voz",
+      "evento": "nombrar la tarjeta «Botella» (grupo del juego: Seres inertes)",
+      "certeza": "metadatos del juego",
+      "transcripcion": "Botella",
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/vivo-o-no-vivo/botella.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "certeza_transcripcion": "metadatos del juego: texto que sintetiza la voz TTS es-ES (Azure «Abril») según el modelo de contenido de Wordwall; no oído 🔶"
+    },
+    {
+      "id": "d7157e8c",
+      "archivo": "audio/originales/d7157e8c-03a1a2eec091d7a87f9a40448024d8d4_64.mp3",
+      "urls": [
+        "https://user.cdn.wordwall.net/content-sounds/tts/es-es-abrilneural/03a1a2eec091d7a87f9a40448024d8d4_64.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "d7157e8cb06cbd7350948e264839981dc230872f2ab170c2cadbf084a690478b",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.656,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -24.8,
+      "rol": "voz",
+      "evento": "nombrar la tarjeta «Cacao» (grupo del juego: Seres inertes)",
+      "certeza": "metadatos del juego",
+      "transcripcion": "Cacao",
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "certeza_transcripcion": "metadatos del juego: texto que sintetiza la voz TTS es-ES (Azure «Abril») según el modelo de contenido de Wordwall; no oído 🔶"
+    },
+    {
+      "id": "3dd04bbc",
+      "archivo": "audio/originales/3dd04bbc-418a94f4315d84d6c23d648d295a42e2_64.mp3",
+      "urls": [
+        "https://user.cdn.wordwall.net/content-sounds/tts/es-es-abrilneural/418a94f4315d84d6c23d648d295a42e2_64.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "3dd04bbc9f5afcdf15611044b6dace7c8f14158029859e3947f4b1578a4b4f1b",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.836,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -23.7,
+      "rol": "voz",
+      "evento": "nombrar la tarjeta «Gafas» (grupo del juego: Seres inertes)",
+      "certeza": "metadatos del juego",
+      "transcripcion": "Gafas",
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/vivo-o-no-vivo/gafas.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "certeza_transcripcion": "metadatos del juego: texto que sintetiza la voz TTS es-ES (Azure «Abril») según el modelo de contenido de Wordwall; no oído 🔶"
+    },
+    {
+      "id": "8e4738f0",
+      "archivo": "audio/originales/8e4738f0-primarychipminorfast1.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-06-2023/primarychipminorfast1.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "8e4738f010fc73f8306e5fd28281e9e9bcbc8ec54b9eaf03cc7856ac2fbe3f91",
+      "mime": "audio/ogg",
+      "duracion_s": 1.606,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -26.9,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar/acierto-1.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "0fd89ff9",
+      "archivo": "audio/originales/0fd89ff9-primarychipminorfast2.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-06-2023/primarychipminorfast2.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "0fd89ff91114f9dbe3d87ca80f814162168651205e73baadaa08fa6720c9716d",
+      "mime": "audio/ogg",
+      "duracion_s": 1.606,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -25.7,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar/acierto-2.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "3d0a4a37",
+      "archivo": "audio/originales/3d0a4a37-primarychipminorfast3.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-06-2023/primarychipminorfast3.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "3d0a4a37764057319d197580676c09bb5f3f6e37aba92fccd0cfca097a721720",
+      "mime": "audio/ogg",
+      "duracion_s": 1.606,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -25,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar/acierto-3.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "b3e97e5b",
+      "archivo": "audio/originales/b3e97e5b-primarychipfailfast1.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-06-2023/primarychipfailfast1.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "b3e97e5b98c15939a8085fe443850666b0aaf43106acc827cda7e437f0b9c989",
+      "mime": "audio/ogg",
+      "duracion_s": 1.606,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -22.3,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar/fallo-1.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "0eea7ba0",
+      "archivo": "audio/originales/0eea7ba0-primarychipfailfast2.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-06-2023/primarychipfailfast2.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "0eea7ba0b56347ed26eef9ad2b14051cb5651795b2ffdd7903334957b8d95123",
+      "mime": "audio/ogg",
+      "duracion_s": 1.606,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -20.5,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar/fallo-2.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "9a74bfe3",
+      "archivo": "audio/originales/9a74bfe3-primarychipfailfast3.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-06-2023/primarychipfailfast3.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "9a74bfe3a004e3fd5fb1ed9b8c0fe4752ac5c764ec1be7f61588c4ed72382511",
+      "mime": "audio/ogg",
+      "duracion_s": 1.339,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -21.1,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar/fallo-3.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "2dd92fb7",
+      "archivo": "audio/originales/2dd92fb7-primarygameintro.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-07-2024/primarygameintro.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "2dd92fb7cf1f3d866384713aa8806a5add2d4091bbb8c1db3102276a280f4878",
+      "mime": "audio/ogg",
+      "duracion_s": 2.456,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.9,
+      "rol": "desconocido",
+      "evento": "inicio",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar/inicio.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "227aa37e",
+      "archivo": "audio/originales/227aa37e-primarygamemenu.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-07-2024/primarygamemenu.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "227aa37e219067fbf9e67ac021c0142c724f594c07ff72dbc5a37bb84af43d82",
+      "mime": "audio/ogg",
+      "duracion_s": 0.888,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -23.5,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "03a4c8c2",
+      "archivo": "audio/originales/03a4c8c2-primaryreveal.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-07-2024/primaryreveal.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "03a4c8c2607991f4dff81aeaa72f05c0649e049d6f0629dd76a7d4c5e2c54f5c",
+      "mime": "audio/ogg",
+      "duracion_s": 2.157,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -23.9,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar/revelar.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "9feaea8b",
+      "archivo": "audio/originales/9feaea8b-primarytiledrop1.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-07-2024/primarytiledrop1.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "9feaea8b3cfc1a44ed0c52f97eacde68ba13b32d62fb993bd0c33bf2abb69742",
+      "mime": "audio/ogg",
+      "duracion_s": 0.366,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar/soltar-1.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "f885071d",
+      "archivo": "audio/originales/f885071d-primarytiledrop2.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-07-2024/primarytiledrop2.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "f885071dc2126617cdc80caf843be1682ae8bccd8d9910cbd022b7c8192cd5fc",
+      "mime": "audio/ogg",
+      "duracion_s": 0.366,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar/soltar-2.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "a320ac8a",
+      "archivo": "audio/originales/a320ac8a-primarytiledrop3.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-07-2024/primarytiledrop3.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "a320ac8a29151f835a61175cf400e5b27f3da4b9dcd02634aa8be359c11379d8",
+      "mime": "audio/ogg",
+      "duracion_s": 0.366,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar/soltar-3.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "293c8226",
+      "archivo": "audio/originales/293c8226-primarytiledrop4.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-07-2024/primarytiledrop4.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "293c8226e26c6d4ca241960667f0d072e2cf77d0d915866141a519c0e5752965",
+      "mime": "audio/ogg",
+      "duracion_s": 0.366,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "d42ea9b6",
+      "archivo": "audio/originales/d42ea9b6-primarytiledrop5.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-07-2024/primarytiledrop5.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "d42ea9b63b65ad7f6cbcbf81584cdae4b8559a5d7bb154248d5de0044d9257af",
+      "mime": "audio/ogg",
+      "duracion_s": 0.366,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "c78483dd",
+      "archivo": "audio/originales/c78483dd-primarytilepickup1.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-07-2024/primarytilepickup1.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "c78483dda25b70805757f68fe6306308c31b849566d63284358d944b9beb7916",
+      "mime": "audio/ogg",
+      "duracion_s": 0.418,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -25.4,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar/levantar-1.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "5b646f60",
+      "archivo": "audio/originales/5b646f60-primarytilepickup2.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-07-2024/primarytilepickup2.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "5b646f6019070442930bb00ab828de3f889964a28c712ef9ad7714c25e7b9a52",
+      "mime": "audio/ogg",
+      "duracion_s": 0.418,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -25.2,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar/levantar-2.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "74fe0fc3",
+      "archivo": "audio/originales/74fe0fc3-primarytilepickup3.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-07-2024/primarytilepickup3.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "74fe0fc376649d4a780dc92e2ea051babdd9e17fd74b240c4bf6b90f0e946856",
+      "mime": "audio/ogg",
+      "duracion_s": 0.418,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -28.2,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar/levantar-3.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "395b79e0",
+      "archivo": "audio/originales/395b79e0-primarytilepickup4.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-07-2024/primarytilepickup4.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "395b79e003eee6880b30c56edf7d1aef4d48af046c151ef5d69e050e0e832ee2",
+      "mime": "audio/ogg",
+      "duracion_s": 0.392,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "21b5b44f",
+      "archivo": "audio/originales/21b5b44f-primarytilepickup5.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-07-2024/primarytilepickup5.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "21b5b44f996ef48963b75751543f1b4500e7b5b18b87f7220f0182dede55a6d4",
+      "mime": "audio/ogg",
+      "duracion_s": 0.392,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "04af557e",
+      "archivo": "audio/originales/04af557e-primarygamesuccessful.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-07-2024/primarygamesuccessful.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "04af557ed8f1ee65f479f6f5d7536aa5e2a125da321970bf0840e2806fd7d0d5",
+      "mime": "audio/ogg",
+      "duracion_s": 4.03,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.9,
+      "rol": "efecto",
+      "evento": "fin",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar/fin.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "15699483",
+      "archivo": "audio/originales/15699483-primaryleaderboards.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-07-2024/primaryleaderboards.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "156994831d31fec2cfe8f95c29255b2ce22b2e5d334e28a4e80a8da161c0e2aa",
+      "mime": "audio/ogg",
+      "duracion_s": 3.495,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.7,
+      "rol": "desconocido",
+      "evento": "fin",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "8a714b3b",
+      "archivo": "audio/originales/8a714b3b-primarygamerestart.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-07-2024/primarygamerestart.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "8a714b3b1b48cbb1591ab8a3cdc5822079d451d41b71270f3d7fc3324983f229",
+      "mime": "audio/ogg",
+      "duracion_s": 1.489,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -22.8,
+      "rol": "efecto",
+      "evento": "inicio",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "4de2e6b0",
+      "archivo": "audio/originales/4de2e6b0-primarytimesup.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/sunflower/sounds-07-2024/primarytimesup.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "4de2e6b0bef8cc22e0d2e2347abac47fde820e3226b19f9f6c16a89e07c17d28",
+      "mime": "audio/ogg",
+      "duracion_s": 7.419,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -18.1,
+      "rol": "desconocido",
+      "evento": "fin",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "93eb48d1",
+      "archivo": "audio/originales/93eb48d1-test1.mp3",
+      "urls": [
+        "https://app.cdn.wordwall.net/test/test1.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "93eb48d143f511d68cafe8614abee4a9fed09d1182e78d98c0aa7f03835b370f",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.8,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -20.1,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "script"
+      ]
+    },
+    {
+      "id": "23061693",
+      "archivo": "audio/originales/23061693-data-0.mp3",
+      "urls": [
+        "data:audio/mp3 (en https://app.cdn.wordwall.net/engine/a/scripts/view.fc44b9c413a71cd1.js)"
+      ],
+      "pagina": "https://www.cokitos.com/clasificacion-de-seres-vivos-e-inertes/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "23061693af1606d64ce60b03ebaafb7ca834f634d6abb5f872f22bb496f702c3",
+      "mime": "audio/mp3",
+      "duracion_s": 0.168,
+      "canales": 1,
+      "frecuencia_hz": 24000,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    }
+  ]
+}
