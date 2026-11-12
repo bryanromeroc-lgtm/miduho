@@ -50,6 +50,10 @@ model Usuario {
   asignaciones      AsignacionDocente[]          @relation("DocenteAsignaciones")
   asignacionesCreadas AsignacionDocente[]        @relation("AsignacionCreador")
   asociacionesGrupo AsociacionEstudianteGrupo[]  @relation("EstudianteAsociaciones")
+  integracionGoogle IntegracionGoogle?
+  solicitudesEntregaCreadas SolicitudEntrega[] @relation("CreadorSolicitudesEntrega")
+  entregasDocente EntregaDocente[] @relation("DestinatariaEntrega")
+  desafiosGoogle DesafioGoogle[]
 
   @@map("usuarios")
 }
@@ -125,6 +129,7 @@ model Periodo {
   creadoEn      DateTime    @default(now())
   actualizadoEn DateTime    @updatedAt
   anioLectivo   AnioLectivo @relation(fields: [anioLectivoId], references: [id])
+  solicitudesEntrega SolicitudEntrega[]
 
   @@unique([anioLectivoId, orden])
   @@map("periodos")
@@ -281,4 +286,105 @@ model BloqueHorario {
   @@unique([asignacionId, dia, horaInicio, horaFin])
   @@index([dia, horaInicio, horaFin])
   @@map("bloques_horario")
+}
+
+// ---------- Entregas a coordinación ----------
+enum EstadoIntegracion {
+  CONECTADA
+  REVOCADA
+}
+
+enum TipoDocumentoEntrega {
+  PLANILLA_NOTAS
+  PLANEACION
+  OBSERVADOR
+  INFORME
+  OTRO
+}
+
+enum EstadoSolicitudEntrega {
+  ABIERTA
+  ARCHIVADA
+}
+
+model IntegracionGoogle {
+  id String @id @default(cuid())
+  usuarioId String @unique
+  correoGoogle String
+  refreshTokenCifrado String?
+  scopes String[]
+  estado EstadoIntegracion @default(CONECTADA)
+  conectadaEn DateTime @default(now())
+  actualizadoEn DateTime @updatedAt
+  usuario Usuario @relation(fields: [usuarioId], references: [id])
+  solicitudes SolicitudEntrega[]
+
+  @@map("integraciones_google")
+}
+
+model DesafioGoogle {
+  stateHash String @id
+  usuarioId String
+  expiraEn DateTime
+  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  @@index([expiraEn])
+  @@map("desafios_google")
+}
+
+model SolicitudEntrega {
+  id String @id @default(cuid())
+  titulo String
+  descripcion String?
+  tipoDocumento TipoDocumentoEntrega
+  formatos String[]
+  cierraEn DateTime @db.Timestamptz(3)
+  periodoId String?
+  carpetaDriveId String
+  carpetaDriveNombre String
+  carpetaRequiereSeleccion Boolean @default(false)
+  integracionId String?
+  estado EstadoSolicitudEntrega @default(ABIERTA)
+  creadaPorId String
+  creadaEn DateTime @default(now())
+  actualizadaEn DateTime @updatedAt
+  periodo Periodo? @relation(fields: [periodoId], references: [id], onDelete: SetNull)
+  integracion IntegracionGoogle? @relation(fields: [integracionId], references: [id], onDelete: SetNull)
+  creadaPor Usuario @relation("CreadorSolicitudesEntrega", fields: [creadaPorId], references: [id])
+  entregas EntregaDocente[]
+
+  @@index([estado, cierraEn])
+  @@map("solicitudes_entrega")
+}
+
+model EntregaDocente {
+  id String @id @default(cuid())
+  solicitudId String
+  docenteId String
+  ultimoFalloEn DateTime?
+  creadoEn DateTime @default(now())
+  solicitud SolicitudEntrega @relation(fields: [solicitudId], references: [id], onDelete: Cascade)
+  docente Usuario @relation("DestinatariaEntrega", fields: [docenteId], references: [id])
+  archivos ArchivoEntrega[]
+
+  @@unique([solicitudId, docenteId])
+  @@index([docenteId])
+  @@map("entregas_docente")
+}
+
+model ArchivoEntrega {
+  id String @id @default(cuid())
+  entregaId String
+  version Int
+  driveFileId String
+  nombreDrive String
+  nombreOriginal String
+  tamanoBytes Int
+  sha256 String
+  mime String
+  subidoEn DateTime @default(now()) @db.Timestamptz(3)
+  entrega EntregaDocente @relation(fields: [entregaId], references: [id], onDelete: Cascade)
+
+  @@unique([entregaId, version])
+  @@map("archivos_entrega")
 }

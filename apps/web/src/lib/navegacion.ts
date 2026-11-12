@@ -80,6 +80,7 @@ export const SECCIONES_ADMINISTRACION = [
   "/admin/coordinacion",
   "/admin/estructura",
   "/admin/asignaciones",
+  "/admin/entregas",
   "/admin/estudiantes",
 ] as const;
 

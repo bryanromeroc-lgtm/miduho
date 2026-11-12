@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
-import { Building2, CalendarClock } from "lucide-react";
+import { Building2, CalendarClock, ClipboardList } from "lucide-react";
 import { Cabecera, Marco, Migas } from "@/components/friso/marco";
 import { plural, TarjetasAdministracion } from "@/features/administracion/tarjetas";
 import { resumenCoordinacion } from "@/server/modules/administracion/resumen";
 import { exigirRolPagina } from "@/server/pagina";
+import { db } from "@/server/db";
+import { formatoCierre } from "@/lib/entregas";
 
 export const metadata: Metadata = { title: "Coordinación · Administración MIDUHO" };
 
 /** Coordinación: estructura académica y asignaciones docentes. */
 export default async function PaginaCoordinacion() {
-  await exigirRolPagina(["ADMIN"], "/admin/coordinacion");
-  const c = await resumenCoordinacion();
+  const usuario = await exigirRolPagina(["ADMIN"], "/admin/coordinacion");
+  const [c, abiertas, proxima, integracion] = await Promise.all([
+    resumenCoordinacion(),
+    db.solicitudEntrega.count({ where: { estado: "ABIERTA" } }),
+    db.solicitudEntrega.findFirst({ where: { estado: "ABIERTA" }, orderBy: { cierraEn: "asc" }, select: { titulo: true, cierraEn: true } }),
+    db.integracionGoogle.findUnique({ where: { usuarioId: usuario.id } }),
+  ]);
 
   return (
     <Marco>
@@ -45,6 +52,15 @@ export default async function PaginaCoordinacion() {
             cifra: { valor: c.asignaciones.toLocaleString("es-CO"), etiqueta: c.asignaciones === 1 ? "asignación activa" : "asignaciones activas" },
             atajos: [{ href: "/admin/asignaciones#listado-asignaciones", etiqueta: "Listado por docente, grupo o asignatura" }],
             accion: "Abrir asignaciones",
+          },
+          {
+            id: "entregas", href: "/admin/entregas", titulo: "Entregas",
+            descripcion: "Solicitudes de documentos y cumplimiento de las docentes.", icono: ClipboardList,
+            cifra: { valor: String(abiertas), etiqueta: abiertas === 1 ? "solicitud abierta" : "solicitudes abiertas" },
+            atajos: [
+              ...(proxima ? [{ href: "/admin/entregas", etiqueta: `Próximo cierre: ${proxima.titulo}`, dato: formatoCierre(proxima.cierraEn) }] : []),
+              ...(!integracion?.refreshTokenCifrado || integracion.estado !== "CONECTADA" ? [{ href: "/cuenta", etiqueta: "Drive desconectado: las docentes no pueden subir", alerta: true }] : []),
+            ], accion: "Abrir entregas",
           },
         ]}
       />

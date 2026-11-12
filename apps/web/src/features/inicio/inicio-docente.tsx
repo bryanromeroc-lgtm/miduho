@@ -1,4 +1,7 @@
 import Image from "next/image";
+import { auth } from "@/auth";
+import { pendientesHoy } from "@/server/modules/entregas/servicio";
+import { formatoCierre } from "@/lib/entregas";
 import Link from "next/link";
 import { ArrowRight, Clock3 } from "lucide-react";
 import { Marco } from "@/components/friso/marco";
@@ -31,6 +34,8 @@ const MUNDOS = [
 /** Inicio de la docente: su día en el friso. 🔶 */
 export async function InicioDocente() {
   const [datos, grupo] = await Promise.all([obtenerDatosShell(), obtenerGrupoMaqueta("/")]);
+  const sesion = await auth();
+  const pendientes = sesion?.user?.id && sesion.user.roles.includes("DOCENTE") ? await pendientesHoy(sesion.user.id) : [];
   const nombre = datos?.nombre.split(/\s+/)[0];
   const ahora = HOY[0];
   const escenaAhora = escenaDe(ahora.asignatura);
@@ -45,6 +50,10 @@ export async function InicioDocente() {
           <p className={s.saludoDato}>{[grupo ? `Grupo ${grupo}` : null, datos?.periodo].filter(Boolean).join(" · ")}</p>
         </div>
 
+        {pendientes.length ? <aside className="cuenta-panel" aria-label="Entregas pendientes de coordinación">
+          <strong>Coordinación: {pendientes[0].solicitud.titulo}</strong> cierra el {formatoCierre(pendientes[0].solicitud.cierraEn)}
+          {pendientes.length > 1 ? ` · y ${pendientes.length - 1} más` : ""}. <Link href={`/cuenta/entregas/${pendientes[0].id}`}>Ver entrega</Link>
+        </aside> : null}
         <section className={s.ahora} data-familia={escenaAhora} aria-labelledby="ahora-titulo">
           <div className={s.ahoraTexto}>
             <p className={s.ahoraHora}>

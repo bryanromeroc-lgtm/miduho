@@ -200,6 +200,22 @@ async function main() {
     update: {},
     create: { asignacionId: asignacion.id, dia: "LUNES", horaInicio: "08:00", horaFin: "09:00" },
   });
+  await db.solicitudEntrega.upsert({
+    where: { id: "solicitud-entrega-demo" },
+    update: {},
+    create: {
+      id: "solicitud-entrega-demo",
+      titulo: "Planilla de notas · Período 1 (demo ficticia)",
+      descripcion: "Solicitud ficticia para mostrar el estado pendiente. No contiene datos de estudiantes.",
+      tipoDocumento: "PLANILLA_NOTAS",
+      formatos: [".xlsx", ".xls"],
+      cierraEn: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+      carpetaDriveId: "demo-sin-carpeta-real",
+      carpetaDriveNombre: "Sin carpeta real (demo)",
+      creadaPorId: admin.id,
+      entregas: { create: [{ docenteId: docente.id }] },
+    },
+  });
   console.info("Escenario demo ficticio de Inc. 1R listo.");
 }
 
