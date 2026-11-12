@@ -12,7 +12,9 @@ describe("cifrado de integraciones", () => {
     expect(a).toMatch(/^v1:/);
     expect(a).not.toBe(b);
     expect(descifrar(a)).toBe("secreto de prueba");
-    expect(() => descifrar(a.replace(/.$/, "A"))).toThrow();
+    const partes = a.split(":");
+    partes[2] = `${partes[2][0] === "A" ? "B" : "A"}${partes[2].slice(1)}`;
+    expect(() => descifrar(partes.join(":"))).toThrow();
   });
   it("deshabilita la integración sin clave", () => {
     delete process.env.CLAVE_CIFRADO_INTEGRACIONES;

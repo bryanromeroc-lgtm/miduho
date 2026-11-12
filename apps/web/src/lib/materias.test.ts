@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { accionDe, fechaCorta, ordenarActividades, paginar, paginarPorPeso, resumenTarjeta, textoCierre, type ActividadResumen } from "./materias";
+import { accionDe, fechaCorta, ordenarActividades, ordenarActividadesDeMateria, paginar, paginarPorPeso, resumenTarjeta, textoCierre, type ActividadResumen } from "./materias";
 
 const act = (titulo: string, estado: ActividadResumen["estado"], fechas: { abre?: string; cierra?: string } = {}) => ({
   titulo,
@@ -9,6 +9,14 @@ const act = (titulo: string, estado: ActividadResumen["estado"], fechas: { abre?
 });
 
 describe("orden de actividades", () => {
+  it("deja lo asignado antes de la práctica libre aunque su estado sea posterior", () => {
+    const base = { tipo: "video-preguntas", estrellas: null, intentosUsados: 0, intentosMax: 3, abre: null, cierra: null };
+    const lista: ActividadResumen[] = [
+      { ...base, id: "libre", titulo: "Libre", estado: "disponible", href: "/materias/a/actividades/libre" },
+      { ...base, id: "asignada", titulo: "Asignada", estado: "hecha", href: "/materias/a/asignadas/asignada" },
+    ];
+    expect(ordenarActividadesDeMateria(lista).map((a) => a.id)).toEqual(["asignada", "libre"]);
+  });
   it("disponibles por cierre más próximo, luego en curso, por abrir, hechas y cerradas", () => {
     const r = ordenarActividades([
       act("Cerrada", "cerrada"),

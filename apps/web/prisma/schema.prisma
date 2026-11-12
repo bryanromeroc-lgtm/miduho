@@ -54,6 +54,10 @@ model Usuario {
   solicitudesEntregaCreadas SolicitudEntrega[] @relation("CreadorSolicitudesEntrega")
   entregasDocente EntregaDocente[] @relation("DestinatariaEntrega")
   desafiosGoogle DesafioGoogle[]
+  actividadesCreadas Actividad[] @relation("AutorActividades")
+  asignacionesActividadCreadas AsignacionActividad[] @relation("CreadorAsignacionesActividad")
+  intentosActividad IntentoActividad[] @relation("EstudianteIntentosActividad")
+  resultadosActividad ResultadoActividad[] @relation("EstudianteResultadosActividad")
 
   @@map("usuarios")
 }
@@ -130,6 +134,7 @@ model Periodo {
   actualizadoEn DateTime    @updatedAt
   anioLectivo   AnioLectivo @relation(fields: [anioLectivoId], references: [id])
   solicitudesEntrega SolicitudEntrega[]
+  asignacionesActividad AsignacionActividad[]
 
   @@unique([anioLectivoId, orden])
   @@map("periodos")
@@ -150,6 +155,7 @@ model Grado {
   actualizadoEn DateTime          @updatedAt
   grupos        Grupo[]
   asignaturas   AsignaturaGrado[]
+  actividades Actividad[]
 
   @@map("grados")
 }
@@ -167,6 +173,7 @@ model Grupo {
   director      Usuario?    @relation("Director", fields: [directorId], references: [id], onDelete: SetNull)
   asignacionesDocente AsignacionDocente[]
   asociacionesEstudiantes AsociacionEstudianteGrupo[]
+  asignacionesActividad AsignacionActividad[]
 
   @@unique([gradoId, anioLectivoId, identificador]) // RN-07
   @@index([anioLectivoId])
@@ -203,6 +210,7 @@ model Asignatura {
   area              Area              @relation(fields: [areaId], references: [id])
   grados            AsignaturaGrado[]
   asignacionesDocente AsignacionDocente[]
+  actividades Actividad[]
 
   @@unique([areaId, nombre])
   @@map("asignaturas")
@@ -240,6 +248,7 @@ model AsignacionDocente {
   anioLectivo   AnioLectivo             @relation(fields: [anioLectivoId], references: [id])
   creadoPor     Usuario?                @relation("AsignacionCreador", fields: [creadoPorId], references: [id], onDelete: SetNull)
   bloques       BloqueHorario[]
+  asignacionesActividad AsignacionActividad[]
   @@index([docenteId, asignaturaId, grupoId, anioLectivoId])
   @@index([docenteId, anioLectivoId])
   @@map("asignaciones_docente")
@@ -387,4 +396,141 @@ model ArchivoEntrega {
 
   @@unique([entregaId, version])
   @@map("archivos_entrega")
+}
+
+// ---------- Núcleo de actividades ----------
+enum OrigenActividad {
+  CURRICULO
+  DOCENTE
+}
+
+enum EstadoActividad {
+  PUBLICADA
+  RETIRADA
+}
+
+enum EstadoAsignacionActividad {
+  PUBLICADA
+  ANULADA
+}
+
+enum EstadoIntento {
+  EN_CURSO
+  ENVIADO
+  ABANDONADO
+}
+
+model Actividad {
+  id String @id @default(cuid())
+  huellaCreacion String? @unique
+  titulo String
+  instruccion String?
+  tipo String
+  asignaturaId String
+  gradoId String
+  origen OrigenActividad @default(DOCENTE)
+  autorId String?
+  estado EstadoActividad @default(PUBLICADA)
+  creadoEn DateTime @default(now()) @db.Timestamptz(3)
+  actualizadoEn DateTime @updatedAt @db.Timestamptz(3)
+  asignatura Asignatura @relation(fields: [asignaturaId], references: [id])
+  grado Grado @relation(fields: [gradoId], references: [id])
+  autor Usuario? @relation("AutorActividades", fields: [autorId], references: [id])
+  versiones VersionActividad[]
+
+  @@index([asignaturaId, gradoId, estado])
+  @@index([autorId, estado])
+  @@map("actividades")
+}
+
+model VersionActividad {
+  id String @id @default(cuid())
+  actividadId String
+  numero Int @default(1)
+  tipo String
+  versionEsquema Int
+  contenido Json
+  puntajeMaximo Decimal @db.Decimal(10, 2)
+  hash String
+  actividad Actividad @relation(fields: [actividadId], references: [id])
+  asignaciones AsignacionActividad[]
+
+  @@unique([actividadId, numero])
+  @@map("versiones_actividad")
+}
+
+model AsignacionActividad {
+  id String @id @default(cuid())
+  versionActividadId String
+  asignacionDocenteId String
+  grupoId String
+  periodoId String
+  abreEn DateTime @db.Timestamptz(3)
+  cierraEn DateTime @db.Timestamptz(3)
+  maxIntentos Int @default(3)
+  cuentaComoNota Boolean @default(true)
+  estado EstadoAsignacionActividad @default(PUBLICADA)
+  creadoPorId String
+  creadoEn DateTime @default(now()) @db.Timestamptz(3)
+  actualizadoEn DateTime @updatedAt @db.Timestamptz(3)
+  versionActividad VersionActividad @relation(fields: [versionActividadId], references: [id])
+  asignacionDocente AsignacionDocente @relation(fields: [asignacionDocenteId], references: [id])
+  grupo Grupo @relation(fields: [grupoId], references: [id])
+  periodo Periodo @relation(fields: [periodoId], references: [id])
+  creadoPor Usuario @relation("CreadorAsignacionesActividad", fields: [creadoPorId], references: [id])
+  intentos IntentoActividad[]
+  resultados ResultadoActividad[]
+
+  @@index([grupoId, estado, abreEn])
+  @@index([asignacionDocenteId, estado])
+  @@index([versionActividadId])
+  @@map("asignaciones_actividad")
+}
+
+model IntentoActividad {
+  id String @id @default(cuid())
+  asignacionId String
+  estudianteId String
+  numero Int
+  estado EstadoIntento @default(EN_CURSO)
+  vioVideoEn DateTime? @db.Timestamptz(3)
+  iniciadoEn DateTime @default(now()) @db.Timestamptz(3)
+  enviadoEn DateTime? @db.Timestamptz(3)
+  puntaje Decimal? @db.Decimal(10, 2)
+  porcentaje Decimal? @db.Decimal(5, 2)
+  asignacion AsignacionActividad @relation(fields: [asignacionId], references: [id])
+  estudiante Usuario @relation("EstudianteIntentosActividad", fields: [estudianteId], references: [id])
+  respuestas RespuestaItem[]
+  resultadosMejores ResultadoActividad[] @relation("MejorIntentoActividad")
+
+  @@unique([asignacionId, estudianteId, numero])
+  @@index([estudianteId, estado])
+  @@map("intentos_actividad")
+}
+
+model RespuestaItem {
+  id String @id @default(cuid())
+  intentoId String
+  itemId String
+  respuesta Json
+  correcta Boolean
+  puntaje Decimal @db.Decimal(10, 2)
+  intento IntentoActividad @relation(fields: [intentoId], references: [id])
+
+  @@unique([intentoId, itemId])
+  @@map("respuestas_item")
+}
+
+model ResultadoActividad {
+  id String @id @default(cuid())
+  asignacionId String
+  estudianteId String
+  mejorIntentoId String
+  porcentaje Decimal @db.Decimal(5, 2)
+  asignacion AsignacionActividad @relation(fields: [asignacionId], references: [id])
+  estudiante Usuario @relation("EstudianteResultadosActividad", fields: [estudianteId], references: [id])
+  mejorIntento IntentoActividad @relation("MejorIntentoActividad", fields: [mejorIntentoId], references: [id])
+
+  @@unique([asignacionId, estudianteId])
+  @@map("resultados_actividad")
 }

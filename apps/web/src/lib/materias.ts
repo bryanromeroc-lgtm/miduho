@@ -121,6 +121,13 @@ export function ordenarActividades<T extends Pick<ActividadResumen, "estado" | "
   );
 }
 
+/** El material asignado conserva prioridad sobre la práctica libre del catálogo. */
+export function ordenarActividadesDeMateria(lista: ActividadResumen[]): ActividadResumen[] {
+  const asignadas = lista.filter((a) => a.href.includes("/asignadas/"));
+  const libres = lista.filter((a) => !a.href.includes("/asignadas/"));
+  return [...ordenarActividades(asignadas), ...ordenarActividades(libres)];
+}
+
 export type Pagina<T> = { elementos: T[]; pagina: number; total: number };
 
 /**

@@ -61,6 +61,13 @@ async function sembrarAcademico() {
     update: {},
     create: { gradoId: primero.id, anioLectivoId: anio.id, identificador: "01" },
   });
+  // Segundo grupo del mismo grado para demostrar la asignación múltiple.
+  // No crea identidades estudiantiles adicionales.
+  const segundoGrupo = await db.grupo.upsert({
+    where: { gradoId_anioLectivoId_identificador: { gradoId: primero.id, anioLectivoId: anio.id, identificador: "02" } },
+    update: {},
+    create: { gradoId: primero.id, anioLectivoId: anio.id, identificador: "02" },
+  });
   let asignaturaDemo: Awaited<ReturnType<typeof db.asignatura.upsert>> | undefined;
   for (const a of AREAS_DEMO) {
     const area = await db.area.upsert({
@@ -84,7 +91,7 @@ async function sembrarAcademico() {
   }
   if (!asignaturaDemo) throw new Error("El seed académico requiere al menos una asignatura demo.");
   console.info(`Estructura académica demo ${ANIO_DEMO} lista (ficticia).`);
-  return { anio, grupo, asignatura: asignaturaDemo };
+  return { anio, grupo, segundoGrupo, asignatura: asignaturaDemo };
 }
 
 async function sembrarUsuario(datos: {
@@ -188,6 +195,20 @@ async function main() {
       creadoPorId: admin.id,
     },
   });
+  if (asignacion.estado !== "ACTIVA") {
+    await db.asignacionDocente.update({ where: { id: asignacion.id }, data: { estado: "ACTIVA" } });
+  }
+  const segundaAsignacion = await db.asignacionDocente.findFirst({
+    where: { docenteId: docente.id, asignaturaId: academico.asignatura.id,
+      grupoId: academico.segundoGrupo.id, anioLectivoId: academico.anio.id },
+    orderBy: { creadoEn: "desc" },
+  }) ?? await db.asignacionDocente.create({ data: {
+    docenteId: docente.id, asignaturaId: academico.asignatura.id,
+    grupoId: academico.segundoGrupo.id, anioLectivoId: academico.anio.id, creadoPorId: admin.id,
+  } });
+  if (segundaAsignacion.estado !== "ACTIVA") {
+    await db.asignacionDocente.update({ where: { id: segundaAsignacion.id }, data: { estado: "ACTIVA" } });
+  }
   await db.bloqueHorario.upsert({
     where: {
       asignacionId_dia_horaInicio_horaFin: {

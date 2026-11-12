@@ -1,10 +1,10 @@
-> Fases entregables (design, Risks): **A** = grupos 1–3 (base, semilla e importación; nada cambia para los usuarios) · **B** = grupos 4–7 (asignar e intentos; se retira la práctica libre) · **C** = grupos 8–9 (editor de quizzes) · grupo 10 = cierre.
+> Fases entregables (design, Risks): **A** = grupos 1–3 (ampliar el núcleo de `material-audiovisual`, semilla e importación) · **B** = grupos 4–7 (juegos y quizzes asignados; se retira la práctica libre) · **C** = grupos 8–9 (editor de quizzes) · grupo 10 = cierre. `video-preguntas`, las seis tablas centrales, el servicio inicial y sus rutas ya existen; no se crean de nuevo.
 
 ## 1. Modelo de datos (fase A)
 
-- [ ] 1.1 Añadir a `schema.prisma` `ReferenteCurricular`, `Malla`, `ElementoMalla`, `ElementoMallaReferente`, `Actividad`, `ActividadReferente`, `VersionActividad`, `AsignacionActividad`, `IntentoActividad`, `RespuestaItem` y `ResultadoActividad`, con enums, relaciones e índices (design D1, D3, D6, D7)
-- [ ] 1.2 Generar la migración y añadir a mano: `CHECK` de origen (`DOCENTE` exige autora y no tiene slug; `CURRICULO` exige slug), `CHECK` de fechas, intentos y porcentaje, índice único parcial de un intento `EN_CURSO`, índice único parcial de asignación `PUBLICADA` por actividad, grupo y período, y trigger que impide `UPDATE`/`DELETE` en `versiones_actividad`
-- [ ] 1.3 Pruebas de integración de cada restricción SQL
+- [ ] 1.1 Ampliar `schema.prisma` desde las seis tablas de `material-audiovisual`: agregar `ReferenteCurricular`, `Malla`, `ElementoMalla`, `ElementoMallaReferente`, `ActividadReferente`, `slug`, borrador y metadatos curriculares a `Actividad`, con relaciones e índices (design D1, D3)
+- [ ] 1.2 Migración aditiva: ampliar el `CHECK` de origen para admitir `CURRICULO` con `slug`, y revisar el índice parcial de asignación por versión, grupo y período; conservar los `CHECK` de fechas, intentos y porcentaje, el índice de un `EN_CURSO` y el trigger ya existentes
+- [ ] 1.3 Pruebas de integración de las restricciones nuevas y de compatibilidad con los materiales audiovisuales existentes
 
 ## 2. Semilla curricular de 5.° (fase A)
 
@@ -25,11 +25,11 @@
 
 ## 4. Servicio de actividades (fase B)
 
-- [ ] 4.1 Crear `src/server/modules/actividades/` (`servicio.ts`, `reglas.ts`, `esquemas.ts`, `index.ts`) con `crearServicioActividades(db)`, según la convención de `academico`
+- [ ] 4.1 Extender `src/server/modules/actividades/` existente con reglas y esquemas de currículo, quizzes y juegos asignados; conservar la inyección de `db`, HTTP y reloj
 - [ ] 4.2 Catálogo de la docente: actividades `PUBLICADA` de la asignatura y el grado de su asignación (colegio, colegas y propias, más sus borradores), agrupadas por período y tema de la malla según los referentes compartidos, con «Otras de tu grado» y filtros de período, tema, referente, tipo y origen
 - [ ] 4.3 Asignar a uno o varios grupos en una transacción: reglas de D6, valores por defecto (3 intentos, cuenta como nota, cierre al fin del período a las 23:59 hora de Colombia) y congelar la versión del quiz de docente en su primera asignación
 - [ ] 4.4 Editar (fechas e intentos sin bajar de los usados; período solo sin intentos → `409`) y anular conservando intentos
-- [ ] 4.5 Intentos: `iniciarORetomar` (único `EN_CURSO`), `enviar` (validar, calificar con `calificarIntento`, `RespuestaItem` por ítem, porcentaje y recálculo del mejor intento, idempotente) y `cerrarVencidos` (perezoso, pasa a `ABANDONADO`)
+- [ ] 4.5 Extender los intentos existentes a los juegos y quizzes: reutilizar inicio/retoma, envío, `RespuestaItem`, mejor intento, idempotencia y `cerrarVencidos` sin duplicar el servicio de `video-preguntas`
 - [ ] 4.6 Consultas del estudiante: «mis actividades» por materia con estado e intentos restantes, y desempeño por materia (estrellas, avance, «Sigue con»)
 - [ ] 4.7 Pruebas del servicio: grupo ajeno (`403`), grado distinto (`422`), cierre fuera del período, asignación repetida (`409`), intentos agotados, asignación cerrada, reenvío idempotente, puntaje del cliente ignorado, mejor intento que no baja, empate, abandono que no consume intento y anulación
 
@@ -41,8 +41,8 @@
 
 ## 6. Lado estudiante (fase B)
 
-- [ ] 6.1 Adaptadores reales de `PuertoActividadesDeMateria` y `PuertoDesempeno` en `src/server/modules/materias/`; la agenda usa la misma consulta
-- [ ] 6.2 La ruta `/materias/[asignatura]/actividades/[id]` pasa a usar el id de la asignación: inicia o retoma el intento en el servidor y responde `404` si no es suya
+- [ ] 6.1 Ampliar el adaptador real `PuertoActividadesDeMateria` de `material-audiovisual` para juegos y quizzes; crear `PuertoDesempeno` real y usar la misma consulta para agenda
+- [ ] 6.2 Adaptar la ruta de juegos `/materias/[asignatura]/actividades/[id]` a asignaciones; conservar `/materias/[asignatura]/asignadas/[asignacionId]` para el video, con `404` anti-enumeración
 - [ ] 6.3 Reproductor con modos `intento` y `vista-previa`: en `intento` envía al servidor, muestra el resultado devuelto, «Intento N de M» y «Jugar otra vez» solo si quedan intentos; respaldo en `sessionStorage` y reintento con espera creciente si falla el envío
 - [ ] 6.4 Retirar la práctica libre: textos de `reglas.ts`, lectura del catálogo por disco en `materias/index.ts` y `actividadDeSesion`; conservar `/muestras`
 - [ ] 6.5 `scripts/demo-quinto.ts` crea asignaciones de ejemplo en las 11 materias para la cuenta demo
@@ -50,7 +50,7 @@
 ## 7. Lado docente: clase y asignación (fase B)
 
 - [ ] 7.1 Usar la skill impeccable para dar forma a la pestaña Actividades y al diálogo «Asignar…» (catálogo por la malla, asignadas, mis quizzes), con el rótulo «Malla de demostración»
-- [ ] 7.2 `/clases` lista las `AsignacionDocente` `ACTIVA` reales; `/clases/[clase]` usa el `asignacionDocenteId` y responde `404` si es ajena; las otras pestañas quedan como están, rotuladas 🔶
+- [ ] 7.2 Ampliar `/clases` y `/clases/[asignacionDocenteId]` ya reales con catálogo, juegos y quizzes; conservar `404` para clases ajenas y el rótulo 🔶 en otras pestañas
 - [ ] 7.3 Pestaña Actividades: «Asignadas» por período con estado, editar y anular; «Catálogo» con filtros, vista previa y «Asignar…»
 - [ ] 7.4 Diálogo «Asignar…»: grupos de la docente del mismo grado y asignatura, período, apertura, cierre, intentos y si cuenta como nota, con valores por defecto y errores junto a cada campo
 - [ ] 7.5 Vista previa de cualquier actividad del catálogo con el reproductor en modo `vista-previa`

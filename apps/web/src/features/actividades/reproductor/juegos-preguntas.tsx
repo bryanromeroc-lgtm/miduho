@@ -13,7 +13,7 @@ import s from "./reproductor.module.css";
   vez si acertó, cuál era la correcta y por qué; la primera respuesta es la
   que cuenta. El concurso añade un reloj que anima pero nunca corta.
 */
-function Preguntas({ contenido, semilla, alTerminar, segundos }: PropsJuego<{ preguntas: Pregunta[] }> & { segundos?: number }) {
+function Preguntas({ contenido, semilla, alTerminar, segundos, focoInicial }: PropsJuego<{ preguntas: Pregunta[] }> & { segundos?: number }) {
   const [indice, setIndice] = useState(0);
   const [respuestas, setRespuestas] = useState<Record<string, number>>({});
   const p = contenido.preguntas[indice];
@@ -29,6 +29,7 @@ function Preguntas({ contenido, semilla, alTerminar, segundos }: PropsJuego<{ pr
   );
   const ultima = indice === contenido.preguntas.length - 1;
   const titulo = useFocoAlCambiar<HTMLHeadingElement>(indice);
+  useEffect(() => { if (focoInicial) titulo.current?.focus(); }, [focoInicial, titulo]);
   useLecturaAutomatica(p.id, p.enunciado, p.audio);
 
   return (

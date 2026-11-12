@@ -8,6 +8,8 @@
  */
 
 import type { ActividadResumen, Estrellas } from "@/lib/materias";
+import type { PrismaClient } from "@/generated/prisma/client";
+import { estrellasDe } from "@/lib/estrellas";
 
 /** Desempeño del estudiante en una asignatura. Lo alimentará `fundacion-actividades`. */
 export type DesempenoMateria = {
@@ -56,6 +58,44 @@ export interface PuertoActividadesDeMateria {
 export const actividadesSinFuente: PuertoActividadesDeMateria = {
   deMateria: async () => null,
 };
+
+/** Lo publicado para el grupo: sin futuras ni anuladas, antes de consultar el catálogo. */
+export function actividadesAsignadas(db: PrismaClient, reloj: () => Date = () => new Date()): PuertoActividadesDeMateria {
+  return {
+    async deMateria(estudianteId, grupoId, asignaturaId) {
+      const ahora = reloj();
+      await db.intentoActividad.updateMany({ where: { estado: "EN_CURSO", asignacion: { cierraEn: { lte: ahora } } },
+        data: { estado: "ABANDONADO" } });
+      const asignaciones = await db.asignacionActividad.findMany({ where: { grupoId, estado: "PUBLICADA", abreEn: { lte: ahora },
+        versionActividad: { actividad: { asignaturaId, estado: "PUBLICADA" } } },
+        include: { versionActividad: { include: { actividad: true } },
+          intentos: { where: { estudianteId } }, resultados: { where: { estudianteId } } },
+        orderBy: { cierraEn: "asc" },
+      });
+      return asignaciones.map((a): ActividadResumen => {
+        const enviados = a.intentos.filter((i) => i.estado === "ENVIADO").length;
+        const enCurso = a.intentos.some((i) => i.estado === "EN_CURSO");
+        const resultado = a.resultados[0];
+        const estado = a.cierraEn <= ahora ? "cerrada" : enCurso ? "enCurso" : resultado ? "hecha" : "disponible";
+        return { id: a.id, titulo: a.versionActividad.actividad.titulo, tipo: a.versionActividad.tipo,
+          estado, estrellas: resultado ? estrellasDe(resultado.porcentaje.toNumber()) : null,
+          intentosUsados: enviados, intentosMax: a.maxIntentos,
+          abre: a.abreEn.toISOString(), cierra: a.cierraEn.toISOString(),
+          href: `/materias/${encodeURIComponent(asignaturaId)}/asignadas/${encodeURIComponent(a.id)}` };
+      });
+    },
+  };
+}
+
+export function combinar(asignadas: PuertoActividadesDeMateria, catalogo: PuertoActividadesDeMateria): PuertoActividadesDeMateria {
+  return { async deMateria(estudianteId, grupoId, asignaturaId) {
+    const [publicadas, libres] = await Promise.all([
+      asignadas.deMateria(estudianteId, grupoId, asignaturaId),
+      catalogo.deMateria(estudianteId, grupoId, asignaturaId),
+    ]);
+    return [...(publicadas ?? []), ...(libres ?? [])];
+  } };
+}
 
 /** Dónde vive el currículo: nombre de la asignatura y orden del grado → actividades del catálogo. */
 export type FuenteCatalogo = {

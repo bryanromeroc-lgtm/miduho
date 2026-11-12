@@ -9,7 +9,7 @@
 import type { PrismaClient } from "@/generated/prisma/client";
 import { diaDe, type DatosAgenda } from "@/lib/agenda";
 import { escenaDe } from "@/lib/escenas";
-import { ordenarActividades, type MisMaterias, type VistaMateria } from "@/lib/materias";
+import { ordenarActividadesDeMateria, type MisMaterias, type VistaMateria } from "@/lib/materias";
 import { etiquetaGrupo } from "@/lib/navegacion";
 import {
   actividadesSinFuente,
@@ -118,7 +118,7 @@ export function crearServicioMaterias(
       const materia = materias.find((m) => m.id === asignaturaId);
       if (!grupo || !materia) return null;
       const lista = await actividades.deMateria(id, grupo.id, materia.id);
-      return { materia, grupo, actividades: lista && ordenarActividades(lista) };
+      return { materia, grupo, actividades: lista && ordenarActividadesDeMateria(lista) };
     },
 
     /**

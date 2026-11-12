@@ -7,6 +7,8 @@ import s from "./reproductor.module.css";
 /** Lo que recibe cada juego: su contenido, una semilla para barajar y a quién entregar las respuestas. */
 export type PropsJuego<C> = {
   contenido: C;
+  /** En el flujo asignado, enfoca la primera pregunta al desbloquearse. */
+  focoInicial?: boolean;
   /** Cambia en cada partida: el orden barajado no se repite al jugar otra vez. */
   semilla: string;
   alTerminar: (respuestas: Record<string, unknown>) => void;

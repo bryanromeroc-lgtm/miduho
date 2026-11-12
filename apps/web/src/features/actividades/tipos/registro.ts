@@ -26,8 +26,9 @@ import type { DefinicionTipoActividad } from "./contrato";
 import { palabraSecreta, sopaLetras } from "./palabras";
 import { completar, concurso, seleccionMultiple } from "./preguntas";
 import { clasificar, emparejar, memoria, ordenar } from "./relaciones";
+import { videoPreguntas } from "./video";
 
-const DEFINICIONES = [seleccionMultiple, concurso, completar, emparejar, ordenar, clasificar, memoria, sopaLetras, palabraSecreta, pancarta, pizarraDecimales, corrector, sello, divisionTipo, robotsDivisiones, bocadillo, jarras, porcentajeTipo, multiplos, operaciones, rectas, angulos, aventura, tallerFracciones, golpea, rutaPalabras, mapaTipo];
+const DEFINICIONES = [seleccionMultiple, concurso, completar, videoPreguntas, emparejar, ordenar, clasificar, memoria, sopaLetras, palabraSecreta, pancarta, pizarraDecimales, corrector, sello, divisionTipo, robotsDivisiones, bocadillo, jarras, porcentajeTipo, multiplos, operaciones, rectas, angulos, aventura, tallerFracciones, golpea, rutaPalabras, mapaTipo];
 
 function registrar(lista: DefinicionTipoActividad<never, never>[]) {
   const mapa = new Map<string, DefinicionTipoActividad>();

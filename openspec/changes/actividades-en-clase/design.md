@@ -1,5 +1,7 @@
 ## Context
 
+**Base ya construida por `material-audiovisual` (2026-11-12):** existen `Actividad`, `VersionActividad`, `AsignacionActividad`, `IntentoActividad`, `RespuestaItem` y `ResultadoActividad`, sus enums, restricciones SQL, servicio de asignación/intentos, Route Handlers, `video-preguntas`, la vista real de «Mis clases» y el adaptador que pone lo asignado antes de la práctica libre. Este cambio extiende esas piezas con currículo, malla, quizzes y juegos asignados; las migraciones deben ser aditivas. El tipo `video-preguntas` permanece registrado.
+
 - **Reemplaza a `fundacion-actividades`** (diseñado, 0/30 tareas, sin código). Se conservan sus decisiones de versiones inmutables, asignación ligada a `AsignacionDocente`, cierre automático perezoso, mejor intento y calificación en el servidor. Cambian el lugar de los referentes (base, no git), el origen de las actividades (también docentes) y el alcance (incluye la interfaz).
 - **Observado en el código:**
   - El catálogo se lee del disco en cada consulta (`src/server/modules/curriculo/catalogo.ts`) y se valida con `leerActividad` (`src/features/actividades/tipos/registro.ts`). Las actividades no tienen referentes ni período, solo `tema` en texto.
@@ -58,7 +60,8 @@ Actividad (id, slug?, titulo, instruccion, tema, tipo, asignaturaId, gradoId,
                        puntajeMaximo, hash)            — inmutable (trigger)
 ```
 - **CURRICULO:** `slug` único y estado `PUBLICADA` o `RETIRADA`. La importación crea una versión nueva solo si cambia el hash (SHA-256 del JSON canónico). Un archivo borrado pasa a `RETIRADA`.
-- **DOCENTE:** sin `slug`, con `autorId`. Mientras es editable, el contenido vive en `contenidoBorrador`. La **primera asignación** congela `VersionActividad` número 1 dentro de la misma transacción. Desde ahí, editar responde `409`. Nunca tiene versión 2 (decisión de producto).
+- **DOCENTE · quiz nuevo:** sin `slug`, con `autorId`. Mientras está en borrador, el contenido vive en `contenidoBorrador`. La **primera asignación** congela `VersionActividad` número 1 dentro de la misma transacción; después, editar el contenido del quiz responde `409`. Nunca tiene versión 2 (decisión de producto para quizzes).
+- **Estado de partida:** `material-audiovisual` crea directamente una versión 1 y deja editar su contenido hasta el primer intento `ENVIADO`, protegida por trigger. El nuevo flujo de borradores de quiz agrega `contenidoBorrador` sin retroceder esa regla para el video; la congelación de quizzes al asignar se implementa por tipo. La actividad ya tiene `huellaCreacion` para rechazar un envío idéntico sin impedir materiales parecidos que comparten video.
 - `CHECK`: `origen = 'DOCENTE'` exige `autorId` y prohíbe `slug`; `origen = 'CURRICULO'` exige `slug`.
 - El índice `(asignaturaId, gradoId, estado)` sirve al catálogo y a la compartición.
 
@@ -80,6 +83,7 @@ El formulario arma el `contenido` y lo valida en el cliente con `definicion.esqu
 
 ### D6. Asignación
 `AsignacionActividad(versionActividadId, asignacionDocenteId, grupoId, periodoId, abreEn, cierraEn, maxIntentos, cuentaComoNota, estado PUBLICADA|ANULADA, creadoPorId)`.
+- **Estado de partida:** esta tabla y el índice parcial único `(versionActividadId, grupoId)` para `PUBLICADA` ya existen. Si se permite reasignar la misma versión al mismo grupo en otro período, este cambio debe migrar explícitamente el índice a una clave que incluya `periodoId` y verificar que no aparecen duplicados en el período. El servicio existente de material audiovisual sigue usando una asignación por grupo.
 - Asignar a varios grupos crea una asignación por grupo, en una sola transacción.
 - La actividad del catálogo `CURRICULO` se asigna con su **última versión**. La de docente congela su versión (D3).
 - **Por defecto:** abre ahora, cierra al fin del período vigente (23:59 en hora de Colombia), 3 intentos y cuenta como nota.
@@ -88,6 +92,7 @@ El formulario arma el `contenido` y lo valida en el cliente con `definicion.esqu
 - No se puede asignar dos veces la misma actividad al mismo grupo en el mismo período mientras la primera esté `PUBLICADA` (índice único parcial). Así se evitan duplicados por doble clic.
 
 ### D7. Intentos: envío al final, calificación en el servidor
+El servicio de `material-audiovisual` ya implementa iniciar/retomar, `EN_CURSO`, «Ya lo vi», `RespuestaItem`, calificación del lado servidor, mejor intento e idempotencia. Extender estas funciones para los juegos y quizzes sin duplicar tablas ni rutas.
 Los juegos ya entregan todas las respuestas al terminar. Cambiar los 24 juegos a guardado por ítem no cabe en este cambio, así que:
 1. `POST /api/actividades/asignaciones/:id/intentos` crea o devuelve el intento `EN_CURSO` (único por índice parcial) y entrega el contenido de **la versión de la asignación**.
 2. El juego corre igual que hoy. Al terminar, el reproductor hace `POST /api/actividades/intentos/:id/envio` con el mapa de respuestas.
