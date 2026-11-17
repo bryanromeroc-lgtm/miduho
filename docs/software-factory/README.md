@@ -11,6 +11,8 @@
 | [Inc. 2 · Don Quijote y los molinos](inc-2-libro-quijote-molinos.md) | Implementado y verificado; titularidad de nuevos recursos por confirmar 🔶 | Adaptación para quinto grado de un episodio de Cervantes, con portada y créditos editoriales, cinco pliegos, cierre y escudo oficial. |
 | [Correcciones de auditoría UI de materias y juegos](auditoria-ui-materias-juegos-correcciones.md) | En ejecución | Alcance, criterios, decisiones y QA de harden, adapt, clarify, onboard, optimize y polish. |
 | [Inc. 2 · Contenido de Laboratorios y Emprendimiento](inc-2-contenido-laboratorios-emprendimiento.md) | Implementado y verificado | Cinco rutas propias de Robótica y cinco ejercicios de Emprendimiento, sin progreso ficticio ni contenido protegido. |
+| [Inc. 2 · Ritmo visual de los cuestionarios](inc-2-quiz-visual.md) | Implementado y verificado en navegador | Comparación de Kahoot con Quiz, Concurso y preguntas audiovisuales; tablero de respuestas, movimiento y accesibilidad. |
+| [Inc. 2 · Guías de materia en actividades](inc-2-guias-actividades.md) | Propuesto; OpenSpec listo para implementar | Cobertura de personajes en tarjetas, juegos y material asignado; corrección de guías ajenas y prevención de regresiones. |
 | [Modelo de entidades](../modelo-de-entidades.md) | Confirmado para Inc. 1 | Entidades, relaciones y reglas del dominio educativo. |
 | [Arquitectura backend](../arquitectura-backend.md) | Propuesta técnica para Inc. 1 | Decisiones de backend, auth, Prisma y contratos. |
 | [Auditoría de producto](../auditoria-producto-2026-09-26.md) | Observado / propuesto | Evaluación de diseño, arquitectura y preparación del producto. |

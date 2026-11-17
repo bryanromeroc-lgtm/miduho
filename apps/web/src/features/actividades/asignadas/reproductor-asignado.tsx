@@ -95,7 +95,7 @@ export function ReproductorAsignado({ asignacion, volverHref }: { asignacion: As
     setResultado(null); setIntentoId(null); setVisto(false); setAviso("Puedes volver a ver el video antes del siguiente intento.");
   }
 
-  return <main id="actividad-asignada" tabIndex={-1} className="relative mx-auto max-w-4xl px-4 pb-16 pt-8 text-[var(--m-tinta)] sm:px-6">
+  return <main id="actividad-asignada" tabIndex={-1} className="relative mx-auto w-full max-w-[1200px] px-4 pb-16 pt-8 text-[var(--m-tinta)] sm:px-6">
     <Link href={volverHref} className="font-semibold underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current">Volver a la materia</Link>
     <h1 className="mt-5 font-heading text-3xl font-extrabold">{asignacion.titulo}</h1>
     {asignacion.instruccion && <p className="mt-3 max-w-[65ch] text-lg leading-relaxed">{asignacion.instruccion}</p>}
@@ -106,7 +106,7 @@ export function ReproductorAsignado({ asignacion, volverHref }: { asignacion: As
       const guardado = sessionStorage.getItem(clave);
       if (guardado) { const datos = JSON.parse(guardado); void enviarGuardado(datos.intentoId, datos.respuestas).catch(() => setError("No pudimos enviar las respuestas. Intenta de nuevo.")); }
     }}>Reintentar envío</button>}
-    {resultado ? <section className="mt-8 rounded-xl bg-white p-5" aria-labelledby="resultado-titulo">
+    {resultado ? <section className="mt-8 max-w-3xl rounded-xl bg-white p-5" aria-labelledby="resultado-titulo">
       <h2 id="resultado-titulo" className="font-heading text-2xl font-bold">Resultado: {resultado.porcentaje} %</h2>
       <p className="mt-1">{resultado.porcentaje >= 90 ? 3 : resultado.porcentaje >= 60 ? 2 : 1} de 3 estrellas · Intento {usados} de {asignacion.maxIntentos}</p>
       {mejor !== null && <p className="mt-1">Mejor nota registrada: {mejor} %</p>}
@@ -117,7 +117,7 @@ export function ReproductorAsignado({ asignacion, volverHref }: { asignacion: As
           <p>{asignacion.contenido.preguntas.find((p) => p.id === item.itemId)?.explicacion}</p>}
       </li>)}</ol>
       {abierta && quedan && <button type="button" className={`${accion} mt-6`} onClick={intentarOtraVez}>Intentar de nuevo</button>}
-    </section> : visto && abierta ? <section className="mt-8" aria-label="Preguntas">
+    </section> : visto && abierta ? <section className="mt-10" aria-label="Preguntas">
       <Quiz contenido={{ preguntas: asignacion.contenido.preguntas }} semilla={`${asignacion.id}:${intentoId}`} focoInicial alTerminar={terminar} />
     </section> : abierta && quedan ? <button type="button" className={`${accion} mt-6`} disabled={ocupado}
       onClick={yaLoVi}>Ya lo vi</button> : <p className="mt-6 font-semibold">La actividad está cerrada o ya no quedan intentos.</p>}

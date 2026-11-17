@@ -51,6 +51,12 @@
   }
 }
 
+/* El material audiovisual puede ocupar varias pantallas: el fondo acompaña todo el recorrido. */
+.pagina.paginaActividad {
+  height: auto;
+  min-height: 100dvh;
+}
+
 /* Decoración: ni se toca, ni se selecciona, ni aparece al buscar con Ctrl+F. */
 .marcas,
 .sueltos,

@@ -21,7 +21,7 @@ export default async function ActividadAsignada({ params }: { params: Promise<{ 
     throw error;
   });
   const volverHref = `/materias/${encodeURIComponent(asignatura)}`;
-  return <div className={s.pagina} data-escena={vista.materia.escena} style={variablesDe(vista.materia.escena) as React.CSSProperties}>
+  return <div className={`${s.pagina} ${s.paginaActividad}`} data-escena={vista.materia.escena} style={variablesDe(vista.materia.escena) as React.CSSProperties}>
     <PatronMarcas kit={kitDe(vista.materia.escena)} color="var(--m-marca)" className={s.marcas} />
     <EncabezadoMateria volverHref={volverHref} volverTexto="Volver" volverDetalle={`a ${vista.materia.nombre}`}
       saltarA={{ href: "#actividad-asignada", texto: "Saltar a la actividad" }} />

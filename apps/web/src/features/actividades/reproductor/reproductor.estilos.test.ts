@@ -20,3 +20,11 @@ describe("colores de retroalimentación", () => {
     expect(razonContraste(color(`${tono}-tinta`), "#ffffff")).toBeGreaterThanOrEqual(4.5);
   });
 });
+
+describe("respuestas del quiz", () => {
+  it("mantiene contraste AA en los cuatro pares de color de opción", () => {
+    const pares = [...css.matchAll(/--quiz-color:\s*(#[0-9a-f]{6});\s*--quiz-tinta:\s*(#[0-9a-f]{6})/g)];
+    expect(pares).toHaveLength(4);
+    for (const [, fondo, tinta] of pares) expect(razonContraste(tinta, fondo)).toBeGreaterThanOrEqual(4.5);
+  });
+});
