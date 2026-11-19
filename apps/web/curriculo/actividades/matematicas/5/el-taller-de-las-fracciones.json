@@ -1,0 +1,39 @@
+{
+  "slug": "el-taller-de-las-fracciones",
+  "titulo": "El taller de las fracciones",
+  "tipo": "taller-fracciones",
+  "grado": 5,
+  "imagen": "/images/juegos/fracciones/portada.webp",
+  "instruccion": "Explora en el laboratorio cortando y pintando círculos, barras y la recta. Luego resuelve los retos: arma, lee y compara fracciones.",
+  "tema": "La fracción como parte de un todo: círculos, barras y recta numérica",
+  "contenido": {
+    "rondas": [
+      { "id": "t1", "reto": "construir", "forma": "circulo", "fraccion": [3, 4] },
+      { "id": "t2", "reto": "leer", "forma": "barra", "fraccion": [2, 5] },
+      { "id": "t3", "reto": "construir", "forma": "barra", "fraccion": [5, 6] },
+      { "id": "t4", "reto": "leer", "forma": "recta", "fraccion": [3, 4] },
+      {
+        "id": "t5",
+        "reto": "comparar",
+        "fraccion": [1, 2],
+        "opciones": [
+          { "forma": "circulo", "fraccion": [1, 3] },
+          { "forma": "barra", "fraccion": [2, 4] },
+          { "forma": "recta", "fraccion": [3, 4] }
+        ]
+      },
+      { "id": "t6", "reto": "construir", "forma": "recta", "fraccion": [5, 4] },
+      { "id": "t7", "reto": "leer", "forma": "circulo", "fraccion": [7, 4] },
+      {
+        "id": "t8",
+        "reto": "comparar",
+        "fraccion": [2, 3],
+        "opciones": [
+          { "forma": "barra", "fraccion": [2, 5] },
+          { "forma": "recta", "fraccion": [3, 2] },
+          { "forma": "circulo", "fraccion": [4, 6] }
+        ]
+      }
+    ]
+  }
+}

@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ChevronLeft } from "lucide-react";
-import { Cabecera, Marco } from "@/components/friso/marco";
+import { Cabecera, Marco, Migas } from "@/components/friso/marco";
 import { ETIQUETA_COMBINACION } from "@/lib/usuarios";
 import { ErrorDominio } from "@/server/errores";
 import { servicioUsuarios } from "@/server/modules/usuarios";
@@ -48,15 +46,28 @@ export default async function PaginaUsuario({ params }: { params: Promise<{ id: 
     anioActivo: u.anioActivo?.anio ?? null,
   };
 
+  // Las cuentas de administración pura no tienen sección: las gestiona el equipo de desarrollo.
+  const seccion =
+    u.combinacion === "ESTUDIANTE"
+      ? { etiqueta: "Estudiantes", href: "/admin/usuarios/estudiantes" }
+      : u.combinacion === "DOCENTE" || u.combinacion === "DOCENTE_ADMIN"
+        ? { etiqueta: "Docentes", href: "/admin/usuarios/docentes" }
+        : null;
+
   return (
     <Marco>
-      <Link href="/admin/usuarios" className="admin-volver">
-        <ChevronLeft size={18} aria-hidden="true" /> Volver a usuarios
-      </Link>
+      <Migas
+        pasos={[
+          { etiqueta: "Administración", href: "/admin/administracion" },
+          { etiqueta: "Usuarios", href: "/admin/usuarios" },
+          ...(seccion ? [seccion] : []),
+          { etiqueta: `${u.nombres} ${u.apellidos}` },
+        ]}
+      />
       <Cabecera
-        kicker={`Administración · ${u.combinacion ? ETIQUETA_COMBINACION[u.combinacion] : "Sin rol válido"}`}
+        kicker={u.combinacion ? ETIQUETA_COMBINACION[u.combinacion] : "Sin rol válido"}
         titulo={`${u.nombres} ${u.apellidos}`}
-        nota="Solo la administración modifica identidad, correo, rol, estado y grupo."
+        nota="La administración modifica identidad, correo, estado, grupo y contraseña. El acceso a la administración lo asigna el equipo de desarrollo."
       />
       <FichaUsuario ficha={ficha} grupos={grupos} esPropia={actor.id === u.id} />
     </Marco>

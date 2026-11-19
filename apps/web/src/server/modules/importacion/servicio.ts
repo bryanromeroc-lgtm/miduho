@@ -38,7 +38,7 @@ export type FilaRevisada = {
   nombres: string;
   apellidos: string;
   correo: string;
-  /** Grupo legible («2°-01 · 2026»), solo estudiantes. */
+  /** Grupo legible («2° · 2026»), solo estudiantes. */
   grupo?: string;
   estado: EstadoFila;
   errores: string[];
@@ -62,7 +62,7 @@ const clave = (v: string) => v.trim().toLowerCase();
 export function crearServicioImportacion(db: PrismaClient, opciones: { costo?: number } = {}) {
   const costo = opciones.costo ?? COSTO_BCRYPT;
 
-  /** Índice «año|grado|grupo» → grupo, con referencias legibles en vez de IDs. */
+  /** Índice «año|grado» → grupo (uno por grado), con referencias legibles en vez de IDs. */
   async function indiceGrupos() {
     const grupos = await db.grupo.findMany({
       select: {
@@ -73,7 +73,7 @@ export function crearServicioImportacion(db: PrismaClient, opciones: { costo?: n
       },
     });
     const mapa = new Map<string, (typeof grupos)[number]>();
-    for (const g of grupos) mapa.set(`${g.anioLectivo.anio}|${clave(g.grado.nombre)}|${clave(g.identificador)}`, g);
+    for (const g of grupos) mapa.set(`${g.anioLectivo.anio}|${clave(g.grado.nombre)}`, g);
     return mapa;
   }
 
@@ -118,7 +118,7 @@ export function crearServicioImportacion(db: PrismaClient, opciones: { costo?: n
     for (let i = 0; i < cuerpo.length; i++) {
       const celdas = cuerpo[i];
       const linea = i + 2;
-      const [nombres = "", apellidos = "", correo = "", anio = "", grado = "", grupo = ""] = celdas.map((c) => c.trim());
+      const [nombres = "", apellidos = "", correo = "", anio = "", grado = ""] = celdas.map((c) => c.trim());
       const f: FilaInterna = { linea, nombres, apellidos, correo: correo.toLowerCase(), estado: "NUEVA", errores: [] };
       if (celdas.length !== esperados.length) {
         f.errores.push(`Se esperaban ${esperados.length} columnas y hay ${celdas.length}.`);
@@ -135,18 +135,18 @@ export function crearServicioImportacion(db: PrismaClient, opciones: { costo?: n
       }
 
       if (grupos) {
-        f.grupo = anio || grado || grupo ? `${grado}-${grupo} · ${anio}` : undefined;
-        if (!anio || !grado || !grupo) {
-          f.errores.push("Escribe año, grado y grupo.");
+        f.grupo = anio || grado ? `${grado} · ${anio}` : undefined;
+        if (!anio || !grado) {
+          f.errores.push("Escribe año y grado.");
         } else if (!/^\d{4}$/.test(anio)) {
           f.errores.push("El año debe tener cuatro dígitos, p. ej. 2026.");
         } else {
-          const g = grupos.get(`${anio}|${clave(grado)}|${clave(grupo)}`);
-          if (!g) f.errores.push(`No existe el grupo ${grado}-${grupo} en el año ${anio}.`);
+          const g = grupos.get(`${anio}|${clave(grado)}`);
+          if (!g) f.errores.push(`No existe el grupo de ${grado} en el año ${anio}.`);
           else if (g.anioLectivo.estado === "CERRADO") f.errores.push(`El año ${anio} está cerrado y es de solo lectura.`);
           else {
             f.asociacion = { grupoId: g.id, anioLectivoId: g.anioLectivo.id };
-            f.grupo = `${g.grado.nombre}-${g.identificador} · ${g.anioLectivo.anio}`;
+            f.grupo = `${g.grado.nombre} · ${g.anioLectivo.anio}`;
           }
         }
       }

@@ -1,0 +1,54 @@
+{
+  "slug": "la-terminal-de-chivas",
+  "titulo": "La terminal de chivas",
+  "tipo": "multiplos",
+  "grado": 5,
+  "instruccion": "Dos chivas salen de la terminal cada tantos minutos. Busca en las filas de múltiplos cuándo vuelven a salir juntas.",
+  "tema": "Mínimo común múltiplo (m.c.m.) con filas de múltiplos",
+  "contenido": {
+    "modo": "mcm",
+    "escena": "terminal",
+    "filas": [
+      "Chiva azul",
+      "Chiva verde"
+    ],
+    "rondas": [
+      {
+        "id": "m1",
+        "a": 4,
+        "b": 6,
+        "contexto": "La chiva azul sale cada 4 minutos y la verde cada 6. A las 6:00 salieron juntas."
+      },
+      {
+        "id": "m2",
+        "a": 6,
+        "b": 8,
+        "contexto": "La chiva azul sale cada 6 minutos y la verde cada 8. A las 6:00 salieron juntas."
+      },
+      {
+        "id": "m3",
+        "a": 5,
+        "b": 10,
+        "contexto": "La chiva azul sale cada 5 minutos y la verde cada 10. A las 6:00 salieron juntas."
+      },
+      {
+        "id": "m4",
+        "a": 9,
+        "b": 12,
+        "contexto": "La chiva azul sale cada 9 minutos y la verde cada 12. A las 6:00 salieron juntas."
+      },
+      {
+        "id": "m5",
+        "a": 10,
+        "b": 15,
+        "contexto": "La chiva azul sale cada 10 minutos y la verde cada 15. A las 6:00 salieron juntas."
+      },
+      {
+        "id": "m6",
+        "a": 8,
+        "b": 12,
+        "contexto": "La chiva azul sale cada 8 minutos y la verde cada 12. A las 6:00 salieron juntas."
+      }
+    ]
+  }
+}

@@ -14,6 +14,7 @@ export const ESCENAS = [
   "etica",
   "artistica",
   "fisica",
+  "ciencias_fisicas",
   "sociales",
   "generica",
 ] as const;
@@ -40,6 +41,7 @@ const CLAVES: [Escena, string[]][] = [
   ["ingles", ["ingles", "english", "lengua extranjera", "idioma extranjero", "idiomas extranjeros"]],
   ["sociales", ["ciencias sociales", "sociales", "historia", "geografia", "constitucion", "democracia"]],
   ["fisica", ["educacion fisica", "recreacion", "deporte", "deportes"]],
+  ["ciencias_fisicas", ["ciencias fisicas", "fisica", "fenomenos fisicos"]],
   ["artistica", ["artistica", "artes", "arte", "musica", "danza", "teatro", "dibujo"]],
   ["etica", ["etica", "valores", "convivencia", "catedra de la paz"]],
   ["matematicas", ["matematicas", "matematica", "pensamiento numerico", "geometria", "estadistica", "aritmetica"]],
@@ -74,6 +76,7 @@ export const DESCRIPCION_ESCENA: Record<Escena, string> = {
   etica: "Cuidarnos, compartir y resolver conflictos juntos.",
   artistica: "Colores, formas, ritmos y canciones.",
   fisica: "Juegos, equilibrio y trabajo en equipo.",
+  ciencias_fisicas: "Fuerzas, movimiento, luz y energía.",
   sociales: "Mi familia, mi barrio, Madrid y Colombia.",
   generica: "Lo que aprendes en esta materia, en un solo lugar.",
 };

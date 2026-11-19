@@ -1,0 +1,302 @@
+/*
+  GOLPEA EL RESULTADO · el taller de los topos.
+  Escala con la pantalla: --topo sale del ancho de la escena (cqw) y del alto
+  de la ventana (dvh). Con diez escotillas el topo no puede medir ⅓ del alto;
+  la cámara se acerca al golpeado en el impacto para darle protagonismo.
+
+  Escena de cada golpe (tiempos iguales a los de juego.tsx):
+  - acierto 1700 ms: el mazo se alza (0–30 %) → cae (30–42 %) → impacto
+    congelado ~130 ms con estrella, anillo, chispas, «¡TOC!» y temblor
+    (42–50 %) → el topo celebra y el mazo se retira (50–100 %).
+  - fallo 900 ms, versión suave: golpecito (45 %), el topo se marea y se
+    hunde un poco; sin temblor ni onomatopeya.
+  Solo transform, opacity y filter (y translate/scale). Con
+  prefers-reduced-motion todo queda quieto: el resultado sigue escrito.
+*/
+
+.juego { width: 100%; color: #2b1a0c; }
+
+.escena {
+  --topo: clamp(64px, min(13cqw, 18dvh), 240px);
+  --alto-topo: calc(var(--topo) * 1.194);
+  position: relative;
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  min-height: max(560px, 80dvh);
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 24px;
+  background: #3a2614;
+}
+
+.fondo { position: absolute; inset: -3%; z-index: -1; background: #6b4a2b url('/images/juegos/golpea/taller.webp') center / cover no-repeat; transform-origin: var(--gx, 50%) 75%; }
+.fondo::after { position: absolute; inset: 0; content: ''; background: linear-gradient(180deg, rgb(28 16 6 / .5), rgb(28 16 6 / .08) 38%, rgb(28 16 6 / .18)); }
+
+/* ---------- Cabecera: marcador, operación y aviso (no se mueve con la cámara) ---------- */
+
+.cabecera { position: relative; z-index: 4; padding: 12px 16px 0; }
+.panel { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 8px 16px; width: 100%; padding: 8px 14px; border-radius: 16px; background: rgb(255 250 240 / .95); box-shadow: 0 6px 18px rgb(0 0 0 / .25); }
+.dato { font-size: clamp(.95rem, .85rem + .3vw, 1.2rem); font-weight: 700; }
+.dato strong { font-size: 1.25em; font-variant-numeric: tabular-nums; }
+.botones { display: flex; align-items: center; justify-content: flex-end; gap: 8px 12px; flex-wrap: wrap; }
+.icono { position: relative; display: grid; place-items: center; width: 44px; height: 44px; border: 2px solid #8a4b16; border-radius: 12px; background: #fff3df; color: #6b3610; cursor: pointer; }
+.icono:hover { background: #ffe4bb; }
+.icono:focus-visible { outline: 3px solid #1d3d8f; outline-offset: 2px; }
+.tachado { position: absolute; width: 28px; height: 3px; background: currentColor; transform: rotate(-42deg); }
+
+.operacion {
+  margin: 0;
+  padding: clamp(6px, 1.2dvh, 14px) clamp(20px, 3cqw, 44px);
+  border: 4px solid #f39a3d;
+  border-radius: 20px;
+  background: #15243f;
+  box-shadow: 0 10px 0 #0a1428, 0 16px 26px rgb(0 0 0 / .35);
+  color: #fff;
+  font: 900 clamp(1.9rem, 1.2rem + 2.6cqw, 3.8rem)/1.1 var(--fuente-display, sans-serif);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+.operacion:focus-visible { outline: 4px solid #ffd053; outline-offset: 4px; }
+.incognita { display: inline-block; min-width: 1.4ch; color: #ffd053; }
+.incognita[data-resuelta] { color: #8ff0b0; animation: marca 420ms cubic-bezier(.16, 1, .3, 1); }
+.solo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.aviso {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.6em;
+  max-width: min(94%, 720px);
+  margin: 0;
+  padding: 6px 18px;
+  border-radius: 14px;
+  background: rgb(255 250 240 / .96);
+  color: #2b1a0c;
+  font-size: clamp(1rem, .9rem + .4vw, 1.3rem);
+  font-weight: 800;
+  text-align: center;
+  box-shadow: 0 6px 16px rgb(0 0 0 / .25);
+}
+.aviso:empty { visibility: hidden; }
+.aviso[data-tono="ok"] { border: 3px solid #177d52; color: #0f5233; }
+.aviso[data-tono="no"] { border: 3px solid #b8571a; color: #7a3208; }
+.aviso[data-tono="solucion"] { border: 3px solid #1d3d8f; color: #15306f; }
+
+/* ---------- Cámara y taller ---------- */
+
+.camara { position: relative; z-index: 1; flex: 1; min-height: clamp(330px, 62dvh, 900px); transform-origin: var(--gx, 50%) var(--gy, 70%); }
+.taller { position: absolute; inset: 0 2% 1%; }
+
+.escotilla { position: absolute; left: var(--x); top: var(--y); width: 0; height: 0; }
+/* Hoyo (atrás) y labio delantero de la escotilla: el topo asoma entre los dos. */
+.hoyo, .labio { position: absolute; left: 0; top: 0; width: calc(var(--topo) * 1.3); height: calc(var(--topo) * .4); border-radius: 50%; transform: translate(-50%, -50%); }
+.hoyo { background: radial-gradient(ellipse at 50% 40%, #0d0906 0 52%, #2c2219 70%); box-shadow: 0 0 0 calc(var(--topo) * .05) #8b96a3, 0 0 0 calc(var(--topo) * .075) #4d5660, 0 8px 14px rgb(0 0 0 / .45); }
+.labio { z-index: 2; clip-path: inset(50% -10% -40% -10%); box-shadow: 0 0 0 calc(var(--topo) * .05) #a9b4c0, 0 0 0 calc(var(--topo) * .075) #4d5660, 0 calc(var(--topo) * .05) 10px rgb(0 0 0 / .4); pointer-events: none; }
+.tecla { position: absolute; z-index: 3; left: 0; top: calc(var(--topo) * .2); min-width: 1.9em; padding: 1px 6px; border: 1px solid #4d5660; border-radius: 6px; background: #fff; color: #222; font: 800 clamp(.75rem, .6rem + .3vw, .95rem)/1.4 var(--fuente-cuerpo, sans-serif); text-align: center; transform: translate(-50%, -50%); }
+
+/* Ventana que corta al topo en la boca de la escotilla. */
+.ventana { position: absolute; z-index: 1; bottom: 0; left: calc(var(--topo) * -.5); width: var(--topo); height: calc(var(--alto-topo) * 1.08); overflow: hidden; }
+
+.topo {
+  position: absolute;
+  bottom: calc(var(--topo) * -.06);
+  left: 0;
+  width: 100%;
+  aspect-ratio: 536 / 640;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  animation: sube 620ms cubic-bezier(.16, 1, .3, 1) var(--retardo, 0ms) both;
+  transition: translate 300ms cubic-bezier(.25, 1, .5, 1);
+}
+.topo:disabled { cursor: default; }
+.taller[data-bajando] .topo { animation: baja 450ms cubic-bezier(.5, 0, .75, 0) both; }
+.topo[data-estado="fallo"] { translate: 0 8%; transition-delay: 380ms; }
+
+.poses { position: absolute; inset: 0; display: block; transform-origin: 50% 100%; }
+.poses img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 6px 4px rgb(20 10 0 / .35)); user-select: none; }
+.poseContento, .poseMareado { opacity: 0; }
+.topo:not(:disabled):hover .poses { transform: translateY(-4%); transition: transform 160ms cubic-bezier(.16, 1, .3, 1); }
+
+/* Número en el cartel: HTML, nunca dentro de la imagen. */
+.cartel {
+  position: absolute;
+  top: 55%;
+  right: 11%;
+  left: 30%;
+  height: 29%;
+  display: grid;
+  place-items: center;
+  color: #1b2333;
+  font: 900 calc(var(--topo) * .25)/1 var(--fuente-display, sans-serif);
+  font-variant-numeric: tabular-nums;
+}
+/* Tachado: una raya gruesa sobre el número, que sigue legible (no solo color). */
+.tache { position: absolute; top: -12%; right: -6%; width: 34%; height: auto; padding: 2px; border-radius: 50%; background: #b3261e; color: #fff; }
+.topo[data-estado="fallo"] .cartel { text-decoration: line-through; text-decoration-color: #b3261e; text-decoration-thickness: .12em; }
+.topo:focus-visible { outline: none; }
+.topo:focus-visible .cartel { border-radius: 6px; outline: 4px solid #1d3d8f; outline-offset: 2px; box-shadow: 0 0 0 7px #fff; }
+
+/* Estados de cada topo; el cambio de pose coincide con el impacto. */
+.topo[data-estado="acierto"] .poseNormal { animation: ocultarAcierto 1700ms both; }
+.topo[data-estado="acierto"] .poseContento { animation: mostrarAcierto 1700ms both; }
+.topo[data-estado="acierto"] .cartel { animation: cartelArriba 1700ms both; }
+.topo[data-estado="acierto"] .poses { animation: aplastaAcierto 1700ms both; }
+.topo[data-estado="fallo"] .poseNormal { animation: ocultarFallo 900ms both; }
+.topo[data-estado="fallo"] .poseMareado { animation: mostrarFallo 900ms both; }
+.topo[data-estado="fallo"] .poses { animation: aplastaFallo 900ms both; }
+.topo[data-estado="fallo"] .cartel { color: #4a3f38; }
+.topo[data-estado="revelado"] .poses { animation: revela 900ms cubic-bezier(.16, 1, .3, 1) both; }
+.topo[data-estado="revelado"] .cartel { border-radius: 8px; box-shadow: 0 0 0 4px #1d3d8f, 0 0 22px 6px #ffd053; color: #15306f; }
+
+/* ---------- Mazo e impacto ---------- */
+
+.golpe { position: absolute; z-index: 5; left: calc(2% + var(--gx) * .96); top: calc(var(--gy) * .99); width: 0; height: 0; pointer-events: none; }
+.mazo {
+  position: absolute;
+  left: calc(var(--topo) * -.42);
+  top: calc(var(--alto-topo) * -1.42);
+  width: calc(var(--topo) * 1.45);
+  max-width: none;
+  height: auto;
+  transform-origin: 92% 58%;
+  filter: drop-shadow(0 10px 8px rgb(20 10 0 / .4));
+  opacity: 0;
+}
+.golpe[data-tipo="acierto"] .mazo { animation: mazoAcierto 1700ms both; }
+.golpe[data-tipo="fallo"] .mazo { animation: mazoFallo 900ms both; }
+
+.impacto { position: absolute; left: 0; top: calc(var(--alto-topo) * -1.02); width: 0; height: 0; }
+.estrella, .anillo, .impacto i, .onomatopeya { position: absolute; top: 0; left: 0; opacity: 0; }
+.estrella {
+  width: calc(var(--topo) * .95);
+  aspect-ratio: 1;
+  margin: calc(var(--topo) * -.475) 0 0 calc(var(--topo) * -.475);
+  background: radial-gradient(circle, #fff 0 22%, #fff3a6 34%, #ffc23d 52%, #ff8a3d 76%);
+  clip-path: polygon(50% 0, 60% 32%, 92% 14%, 70% 44%, 100% 56%, 66% 62%, 80% 96%, 52% 70%, 28% 100%, 34% 64%, 0 70%, 30% 48%, 6% 18%, 40% 34%);
+}
+.anillo { width: calc(var(--topo) * .8); aspect-ratio: 1; margin: calc(var(--topo) * -.4) 0 0 calc(var(--topo) * -.4); border: calc(var(--topo) * .03 + 2px) solid #fff2c4; border-radius: 50%; box-shadow: 0 0 20px #ffb347; }
+.impacto i { width: calc(var(--topo) * .22); height: calc(var(--topo) * .035 + 2px); margin-top: calc(var(--topo) * -.0175 - 1px); border-radius: 99px; background: linear-gradient(90deg, #fff, #ffd053); transform-origin: left center; }
+.onomatopeya {
+  margin: calc(var(--topo) * -.95) 0 0 calc(var(--topo) * .15);
+  color: #ffd053;
+  font: 900 calc(var(--topo) * .36)/1 var(--fuente-display, sans-serif);
+  white-space: nowrap;
+  -webkit-text-stroke: calc(var(--topo) * .03) #2b1a0c;
+  paint-order: stroke fill;
+  text-shadow: 0 5px 0 #2b1a0c;
+}
+.golpe[data-tipo="acierto"] .estrella { animation: estrella 1700ms both; }
+.golpe[data-tipo="acierto"] .anillo { animation: anillo 1700ms both; }
+.golpe[data-tipo="acierto"] .impacto i { animation: chispa 1700ms both; }
+.golpe[data-tipo="acierto"] .onomatopeya { animation: onomatopeya 1700ms both; }
+.golpe[data-tipo="fallo"] .estrella { animation: estrellaSuave 900ms both; }
+
+.escena[data-golpe="acierto"] .camara { animation: camaraAcierto 1700ms both; }
+.escena[data-golpe="acierto"] .fondo { animation: fondoAcierto 1700ms both; }
+
+/* ---------- Inicio ---------- */
+
+.inicio { position: absolute; inset: 0; z-index: 6; display: grid; place-content: center; justify-items: center; gap: 18px; padding: 24px; text-align: center; }
+.inicio > * { max-width: min(92vw, 640px); }
+.inicio h2 { margin: 0; padding: 10px 28px; border: 4px solid #f39a3d; border-radius: 20px; background: #15243f; color: #fff; font: 900 clamp(2rem, 5vw, 3.6rem)/1.1 var(--fuente-display, sans-serif); }
+.inicio p { margin: 0; padding: 14px 20px; border-radius: 16px; background: rgb(255 250 240 / .96); font-size: clamp(1rem, .9rem + .4vw, 1.25rem); font-weight: 600; line-height: 1.5; }
+.primario { min-height: 56px; padding: 10px 44px; border: 3px solid #fff; border-radius: 999px; background: #a7441a; color: #fff; font: 900 1.3rem var(--fuente-cuerpo, sans-serif); cursor: pointer; box-shadow: 0 8px 0 #6b2a0d; }
+.primario:hover { background: #86300f; }
+.primario:focus-visible { outline: 4px solid #ffd053; outline-offset: 4px; }
+
+/* ---------- Teléfono ---------- */
+
+@container (max-width: 720px) {
+  .escena { --topo: clamp(56px, 17cqw, 120px); }
+  .cabecera { padding: 8px 8px 0; }
+  .panel { display: flex; flex-wrap: wrap; justify-content: space-between; padding: 8px 10px; }
+  .operacion { order: 3; flex-basis: 100%; }
+  .aviso { position: static; width: auto; max-width: none; min-height: 4.4em; margin-top: 8px; transform: none; font-size: 1rem; }
+  .tecla { display: none; }
+}
+
+/* ---------- Animaciones ---------- */
+
+@keyframes sube { from { transform: translateY(102%); } to { transform: translateY(0); } }
+@keyframes baja { from { transform: translateY(0); } to { transform: translateY(104%); } }
+@keyframes marca { 0% { transform: scale(.7); } 60% { transform: scale(1.18); } 100% { transform: scale(1); } }
+
+/* Acierto: anticipación (0–30 %), caída (30–42 %), impacto congelado (42–50 %), celebración y retirada. */
+@keyframes mazoAcierto {
+  0% { opacity: 0; transform: rotate(18deg) translateY(-12%); }
+  10% { opacity: 1; transform: rotate(24deg) translateY(-12%); }
+  30% { opacity: 1; transform: rotate(58deg) translateY(-16%); }
+  42%, 50% { opacity: 1; transform: rotate(-4deg) translateY(4%); }
+  62% { opacity: 1; transform: rotate(16deg) translateY(-8%); }
+  78% { opacity: 0; transform: rotate(30deg) translate(18%, -24%); }
+  100% { opacity: 0; transform: rotate(30deg) translate(18%, -24%); }
+}
+@keyframes aplastaAcierto {
+  0%, 41% { transform: none; }
+  43%, 50% { transform: scale(1.12, .84); }
+  58% { transform: scale(.94, 1.1) translateY(-6%); }
+  70% { transform: translateY(-10%); }
+  82% { transform: translateY(0); }
+  90% { transform: translateY(-4%); }
+  100% { transform: none; }
+}
+@keyframes ocultarAcierto { 0%, 44% { opacity: 1; } 44.5%, 100% { opacity: 0; } }
+@keyframes mostrarAcierto { 0%, 44% { opacity: 0; } 44.5%, 100% { opacity: 1; } }
+/* En la pose contenta el cartel sube por encima de la cabeza (medido sobre topo-contento.webp). */
+@keyframes cartelArriba {
+  0%, 44% { top: 55%; right: 11%; left: 30%; height: 29%; font-size: calc(var(--topo) * .25); color: #1b2333; }
+  44.5%, 100% { top: 14%; right: 9%; left: 9%; height: 20%; font-size: calc(var(--topo) * .2); color: #0f5233; border-radius: 6px; background-color: #fff; }
+}
+@keyframes estrella { 0%, 41% { opacity: 0; transform: scale(.2) rotate(-20deg); } 43% { opacity: 1; transform: scale(1.1) rotate(0); } 52% { opacity: 1; transform: scale(1) rotate(8deg); } 64% { opacity: 0; transform: scale(1.3) rotate(18deg); } 100% { opacity: 0; } }
+@keyframes anillo { 0%, 42% { opacity: 0; transform: scale(.3); } 44% { opacity: .95; } 62% { opacity: 0; transform: scale(1.7); } 100% { opacity: 0; } }
+@keyframes chispa { 0%, 42% { opacity: 0; transform: rotate(var(--a)) translateX(0) scaleX(.4); } 45% { opacity: 1; } 64% { opacity: 0; transform: rotate(var(--a)) translateX(calc(var(--topo) * var(--d))) scaleX(1); } 100% { opacity: 0; } }
+@keyframes onomatopeya { 0%, 42% { opacity: 0; transform: scale(.4) rotate(-12deg); } 46% { opacity: 1; transform: scale(1.12) rotate(-6deg); } 70% { opacity: 1; transform: scale(1) rotate(-6deg); } 82%, 100% { opacity: 0; transform: scale(1) translateY(-20%) rotate(-6deg); } }
+/* Temblor que decae en ~170 ms y acercamiento leve al golpeado. */
+@keyframes camaraAcierto {
+  0%, 30% { transform: scale(1); }
+  42% { transform: scale(1.12); }
+  44% { transform: scale(1.12) translate(-1.1%, .7%); }
+  46% { transform: scale(1.12) translate(.9%, -.6%); }
+  48% { transform: scale(1.12) translate(-.5%, .3%); }
+  50% { transform: scale(1.12) translate(.2%, 0); }
+  70% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+@keyframes fondoAcierto { 0%, 30% { transform: scale(1); } 42%, 60% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+/* Fallo suave: el mazo da un golpecito, el topo se marea; nada tiembla. */
+@keyframes mazoFallo {
+  0% { opacity: 0; transform: rotate(26deg) translateY(-12%); }
+  18% { opacity: 1; transform: rotate(34deg) translateY(-12%); }
+  45%, 52% { opacity: 1; transform: rotate(6deg); }
+  70% { opacity: 1; transform: rotate(20deg) translateY(-8%); }
+  100% { opacity: 0; transform: rotate(28deg) translate(14%, -20%); }
+}
+@keyframes aplastaFallo {
+  0%, 44% { transform: none; }
+  48% { transform: scale(1.06, .92); }
+  62% { transform: rotate(-5deg); }
+  78% { transform: rotate(4deg); }
+  100% { transform: none; }
+}
+@keyframes ocultarFallo { 0%, 46% { opacity: 1; } 46.5%, 100% { opacity: 0; } }
+@keyframes mostrarFallo { 0%, 46% { opacity: 0; } 46.5%, 100% { opacity: 1; } }
+@keyframes estrellaSuave { 0%, 44% { opacity: 0; transform: scale(.2); } 48% { opacity: .8; transform: scale(.55); } 66%, 100% { opacity: 0; transform: scale(.7); } }
+@keyframes revela { 0% { transform: none; } 40% { transform: translateY(-12%) scale(1.06); } 100% { transform: translateY(-6%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .topo, .taller[data-bajando] .topo, .poses, .poses img, .cartel, .incognita[data-resuelta],
+  .escena[data-golpe] .camara, .escena[data-golpe] .fondo, .topo[data-estado] .poses { animation: none !important; transition: none !important; }
+  .topo[data-estado="acierto"] .poseNormal, .topo[data-estado="fallo"] .poseNormal { opacity: 0; }
+  .topo[data-estado="acierto"] .poseContento, .topo[data-estado="fallo"] .poseMareado { opacity: 1; }
+  .topo[data-estado="acierto"] .cartel { top: 14%; right: 9%; left: 9%; height: 20%; font-size: calc(var(--topo) * .2); color: #0f5233; border-radius: 6px; background-color: #fff; }
+  .golpe { display: none; }
+}

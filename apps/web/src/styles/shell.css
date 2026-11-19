@@ -519,8 +519,9 @@
 .admin-filtros-acciones { display: flex; flex-wrap: wrap; gap: 8px; }
 .admin-campo { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .admin-campo label { font-size: 13px; font-weight: 800; color: var(--color-tinta); }
-.admin-campo input,
-.admin-campo select {
+.admin-campo input:not([type="checkbox"]),
+.admin-campo select,
+.admin-campo textarea {
   min-height: 44px;
   width: 100%;
   padding: 0 12px;
@@ -530,9 +531,11 @@
   font-size: 15px;
   color: var(--color-tinta);
 }
-.admin-campo input:hover,
+.admin-campo input:not([type="checkbox"]):hover,
+.admin-campo textarea:hover,
 .admin-campo select:hover { border-color: var(--color-tinta); }
 .admin-campo input:focus-visible,
+.admin-campo textarea:focus-visible,
 .admin-campo select:focus-visible { outline: 3px solid var(--school-orange); outline-offset: 2px; border-color: var(--school-orange); background: var(--papel); }
 
 .admin-aviso { border-radius: 14px; border: 2px solid; padding: 10px 14px; font-size: 14px; line-height: 1.5; margin-bottom: 12px; }
@@ -688,3 +691,13 @@
   .micurso-tabla thead .micurso-marca { width: auto; padding: 0; background: transparent; }
   .micurso-todos-texto { position: static; width: auto; height: auto; overflow: visible; clip: auto; font-size: 14px; font-weight: 800; color: var(--color-tinta); white-space: normal; }
 }
+
+.admin-campo textarea { min-height: 120px; padding: 10px 12px; resize: vertical; }
+.admin-campo input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--school-orange); }
+.admin-campo span[role="alert"], .admin-campo + span[role="alert"] { color: var(--color-naranja-800); font-weight: 700; }
+.admin-nota a, .cuenta-panel a:not(.boton-pastilla) { text-decoration: underline; text-underline-offset: 3px; }
+.admin-nota a:focus-visible, .cuenta-panel a:focus-visible { outline: 3px solid var(--school-orange); outline-offset: 3px; }
+
+.entregas-opcion { display: flex; align-items: center; gap: 10px; min-height: 38px; font-weight: 700; color: var(--color-tinta); }
+.entregas-opcion input[type="checkbox"] { flex: 0 0 20px; width: 20px; height: 20px; accent-color: var(--school-orange); }
+.entregas-opcion input:focus-visible { outline: 3px solid var(--school-orange); outline-offset: 3px; }

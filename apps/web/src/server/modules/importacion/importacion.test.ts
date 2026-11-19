@@ -17,7 +17,7 @@ describe("lectura de CSV", () => {
     ]);
   });
   it("las plantillas traen los encabezados exactos", () => {
-    expect(plantillaCsv("estudiantes")).toBe("\uFEFFnombres,apellidos,correo,año,grado,grupo\r\n");
+    expect(plantillaCsv("estudiantes")).toBe("\uFEFFnombres,apellidos,correo,año,grado\r\n");
     expect(plantillaCsv("docentes")).toBe("\uFEFFnombres,apellidos,correo\r\n");
   });
 });
@@ -27,7 +27,7 @@ let base: BasePrueba;
 let db: PrismaClient;
 let S: ServicioImportacion;
 
-const EST = "nombres,apellidos,correo,año,grado,grupo";
+const EST = "nombres,apellidos,correo,año,grado";
 const DOC = "nombres,apellidos,correo";
 
 async function revisionDeError(p: Promise<unknown>) {
@@ -48,7 +48,7 @@ beforeAll(async () => {
   for (const codigo of ["ADMIN", "DOCENTE", "ESTUDIANTE"]) await db.rol.create({ data: { codigo, nombre: codigo } });
   S = crearServicioImportacion(db, { costo: 4 });
 
-  // Escenario ficticio: año activo 2026 con 2°-01 y año cerrado 2025 con 2°-01; una cuenta existente.
+  // Escenario ficticio: año activo 2026 con 2° y año cerrado 2025 con 2°; una cuenta existente.
   const anio = await db.anioLectivo.create({ data: { anio: 2026, fechaInicio: new Date("2026-01-19"), fechaFin: new Date("2026-12-04") } });
   const cerrado = await db.anioLectivo.create({
     data: { anio: 2025, fechaInicio: new Date("2025-01-20"), fechaFin: new Date("2025-12-05"), estado: "CERRADO" },
@@ -91,22 +91,22 @@ describe("validación del archivo", () => {
   it("reporta errores por fila con número de línea y referencias legibles", async () => {
     const csv = [
       EST,
-      "Estudiante,Uno,e1@miduho.test,2026,2°,01", // válida
-      ",Dos,no-es-correo,2026,2°,01", // nombres y correo
-      "Estudiante,Tres,e3@miduho.test,2026,9°,01", // grupo inexistente
-      "Estudiante,Cuatro,e4@miduho.test,2025,2°,01", // año cerrado
-      "Estudiante,Cinco,E1@MIDUHO.TEST,2026,2°,01", // repetido en el archivo
-      "Estudiante,Seis,e6@miduho.test,26,2°,01", // año mal escrito
-      "Estudiante,Siete,existe@miduho.test,2026,2°,01", // ya tiene cuenta
+      "Estudiante,Uno,e1@miduho.test,2026,2°", // válida
+      ",Dos,no-es-correo,2026,2°", // nombres y correo
+      "Estudiante,Tres,e3@miduho.test,2026,9°", // grupo inexistente
+      "Estudiante,Cuatro,e4@miduho.test,2025,2°", // año cerrado
+      "Estudiante,Cinco,E1@MIDUHO.TEST,2026,2°", // repetido en el archivo
+      "Estudiante,Seis,e6@miduho.test,26,2°", // año mal escrito
+      "Estudiante,Siete,existe@miduho.test,2026,2°", // ya tiene cuenta
     ].join("\n");
     const antes = await totalUsuarios();
     const r = await S.vistaPrevia("estudiantes", csv);
     const por = Object.fromEntries(r.filas.map((f) => [f.linea, f]));
-    expect(por[2]).toMatchObject({ estado: "NUEVA", grupo: "2°-01 · 2026", errores: [] });
+    expect(por[2]).toMatchObject({ estado: "NUEVA", grupo: "2° · 2026", errores: [] });
     expect(por[3].estado).toBe("ERROR");
     expect(por[3].errores.join(" ")).toMatch(/nombres/);
     expect(por[3].errores.join(" ")).toMatch(/correo válido/);
-    expect(por[4].errores).toContain("No existe el grupo 9°-01 en el año 2026.");
+    expect(por[4].errores).toContain("No existe el grupo de 9° en el año 2026.");
     expect(por[5].errores.join(" ")).toMatch(/2025 está cerrado/);
     expect(por[6].errores).toContain("El correo se repite en el archivo (línea 2).");
     expect(por[7].errores.join(" ")).toMatch(/cuatro dígitos/);
@@ -123,7 +123,7 @@ describe("validación del archivo", () => {
 
 describe("importación correcta", () => {
   it("estudiantes: ACTIVOS, asociados al grupo, duplicados omitidos y CSV único con contraseñas", async () => {
-    const csv = [EST, "Estudiante,Ana,est-a@miduho.test,2026,2°,01", "Estudiante,Beto,est-b@miduho.test,2026,2°,01", "Cuenta,Existente,existe@miduho.test,2026,2°,01"].join("\r\n");
+    const csv = [EST, "Estudiante,Ana,est-a@miduho.test,2026,2°", "Estudiante,Beto,est-b@miduho.test,2026,2°", "Cuenta,Existente,existe@miduho.test,2026,2°"].join("\r\n");
     const r = await S.importar("estudiantes", csv);
     expect(r.creadas).toBe(2);
     expect(r.duplicadas).toEqual([{ linea: 4, correo: "existe@miduho.test" }]);

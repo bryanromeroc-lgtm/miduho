@@ -164,6 +164,8 @@ export const TITULOS: Titulo[] = [
   { id: "lit-178", titulo: "Tortuguita, vení bailá", autor: "Tradición oral indígena", tipo: "Libro", edad: "0-5", idioma: "Español" },
   { id: "lit-179", titulo: "La liebre y la tortuga", autor: "Fábula tradicional (adaptación Mi Dulce Hogar)", tipo: "Libro", edad: "0-5", idioma: "Español" },
   { id: "lit-180", titulo: "Tula y el mural del bosque", autor: "Bryan Romero", tipo: "Libro", edad: "6-8", idioma: "Español" },
+  { id: "lit-181", titulo: "La orquesta de la lluvia", autor: "MIDUHO", tipo: "Libro", edad: "6-8", idioma: "Español" },
+  { id: "lit-182", titulo: "Don Quijote y los molinos", autor: "Miguel de Cervantes · adaptación MIDUHO", tipo: "Libro", edad: "9-11", idioma: "Español" },
   { id: "lit-001", titulo: "Caperucita Roja", autor: "Charles Perrault", tipo: "Libro", edad: "6-8", idioma: "Español" },
   { id: "lit-002", titulo: "Caperucita Roja — Guía docente", autor: "MIDUHO", tipo: "Guía", edad: "6-8", idioma: "Español", hermanoDe: "lit-001", soloDocente: true },
   { id: "lit-003", titulo: "Hansel y Gretel", autor: "Hermanos Grimm", tipo: "Libro", edad: "6-8", idioma: "Español" },
@@ -465,7 +467,7 @@ export const HOY: Clase[] = [
     id: "c1",
     asignatura: "Comprensión Lectora",
     tema: "El círculo de lectura",
-    grupo: "1°-01",
+    grupo: "1°",
     hora: "07:00",
     area: "literatura",
     ranuras: 5,
@@ -481,7 +483,7 @@ export const HOY: Clase[] = [
     id: "c2",
     asignatura: "Robótica",
     tema: "Circuitos seguros",
-    grupo: "1°-01",
+    grupo: "1°",
     hora: "09:00",
     area: "robotica",
     ranuras: 4,
@@ -495,7 +497,7 @@ export const HOY: Clase[] = [
     id: "c3",
     asignatura: "Emprendimiento",
     tema: "Preguntar antes de crear",
-    grupo: "1°-01",
+    grupo: "1°",
     hora: "10:30",
     area: "emprendimiento",
     ranuras: 4,
@@ -514,7 +516,7 @@ export const HOY: Clase[] = [
   {
     id: "c4",
     asignatura: "Ética y Valores",
-    grupo: "1°-01",
+    grupo: "1°",
     hora: "11:30",
     ranuras: 4,
     contenidos: [],
@@ -523,7 +525,7 @@ export const HOY: Clase[] = [
 
 export const DOCENTE = {
   nombre: "Docente de ejemplo",
-  grupo: "1°-01",
+  grupo: "1°",
   periodo: "Período 3",
   clasesACargo: 14,
 };

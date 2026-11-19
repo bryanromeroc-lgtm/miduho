@@ -87,7 +87,7 @@ export function Panel({
 }) {
   return (
     <section className="sticker-panel p-5">
-      <h2 className="font-heading text-[13px] font-bold uppercase tracking-[0.12em] text-gris">
+      <h2 className="font-heading text-[18px] font-extrabold text-tinta">
         {titulo}
       </h2>
       <div className="mt-3">{children}</div>

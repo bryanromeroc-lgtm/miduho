@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Eye } from "lucide-react";
 import { useShell } from "@/components/shell/contexto";
 import { MenuCuenta } from "@/components/shell/menu-cuenta";
 import { BienvenidaMateria } from "./bienvenida";
@@ -21,6 +21,7 @@ export function EncabezadoMateria({
   rotulo,
   extra,
   bienvenida,
+  franja,
 }: {
   volverHref: string;
   volverTexto?: string;
@@ -31,6 +32,8 @@ export function EncabezadoMateria({
   extra?: React.ReactNode;
   /** Aviso de primera visita; el reproductor no lo lleva. */
   bienvenida?: { materiaId: string; conActividades: boolean };
+  /** Franja visible de la vista previa de la coordinadora, p. ej. «Vista previa · 5°». */
+  franja?: string;
 }) {
   const datos = useShell();
   return (
@@ -56,6 +59,12 @@ export function EncabezadoMateria({
           {volverDetalle && <span className={s.volverDetalle}> {volverDetalle}</span>}
         </span>
       </Link>
+      {franja && (
+        <p className={s.franja}>
+          <Eye size={20} strokeWidth={2.6} aria-hidden="true" />
+          {franja}
+        </p>
+      )}
       {(rotulo || extra) && (
         <div className={s.revision}>
           {rotulo && <span className={s.rotulo}>{rotulo}</span>}

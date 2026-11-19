@@ -7,6 +7,15 @@
 export const COMBINACIONES = ["DOCENTE", "ESTUDIANTE", "DOCENTE_ADMIN", "ADMIN"] as const;
 export type Combinacion = (typeof COMBINACIONES)[number];
 
+/**
+ * Lo que la administración del colegio puede crear desde la aplicación. Las
+ * cuentas con rol ADMIN (puro o junto a DOCENTE) las crea y las asigna solo el
+ * equipo de desarrollo, con `npm run cuentas:admin` (scripts/cuentas-admin.ts).
+ */
+export const COMBINACIONES_ALTA = ["ESTUDIANTE", "DOCENTE"] as const;
+export type CombinacionAlta = (typeof COMBINACIONES_ALTA)[number];
+export const tieneAdmin = (c: Combinacion | null) => c === "ADMIN" || c === "DOCENTE_ADMIN";
+
 export const ESTADOS = ["PENDIENTE_ACTIVACION", "ACTIVO", "INACTIVO"] as const;
 export type EstadoCuenta = (typeof ESTADOS)[number];
 

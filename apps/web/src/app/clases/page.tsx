@@ -1,96 +1,53 @@
+import type { Metadata } from "next";
 import { Marco, Migas, Cabecera } from "@/components/friso/marco";
 import { Friso, TrechoConRegla } from "@/components/friso/friso";
-import { Plancha, Ficha, RanuraLibre } from "@/components/friso/plancha";
+import { Plancha } from "@/components/friso/plancha";
 import { Boton } from "@/components/friso/piezas";
-import { HOY, DOCENTE } from "@/data/demo";
-import { obtenerGrupoMaqueta } from "@/server/shell";
+import { AREAS } from "@/components/friso/areas";
+import { servicioActividades } from "@/server/modules/actividades";
+import { exigirRolPagina } from "@/server/pagina";
 
-/*
-  MIS CLASES — el mismo friso del día, sin la marca de «ahora».
-  Aquí la lectura no es temporal sino de inventario: qué clase tiene
-  material y cuál no.
-*/
+export const metadata: Metadata = { title: "Mis clases · MIDUHO" };
+
+function areaFriso(nombre: string): keyof typeof AREAS | undefined {
+  const normal = nombre.toLocaleLowerCase("es-CO");
+  if (normal.includes("robótica")) return "robotica";
+  if (normal.includes("emprendimiento")) return "emprendimiento";
+  if (normal.includes("literatura") || normal.includes("comprensión lectora")) return "literatura";
+  return undefined;
+}
 
 export default async function MisClases() {
-  // Grupo real de la sesión (INC1R-11); las clases y el período siguen siendo demostrativos.
-  const grupo = await obtenerGrupoMaqueta("/clases");
-  const vacias = HOY.filter((c) => c.contenidos.length === 0).length;
+  const docente = await exigirRolPagina(["DOCENTE"], "/clases");
+  const clases = await servicioActividades.clasesDocente(docente.id);
 
   return (
     <Marco>
       <Migas pasos={[{ etiqueta: "Hoy", href: "/" }, { etiqueta: "Mis clases" }]} />
-
-      <Cabecera
-        kicker={grupo ? `${grupo} · ${DOCENTE.periodo}` : DOCENTE.periodo}
-        titulo="Mis clases"
-        nota={`${DOCENTE.clasesACargo} clases a cargo; ${vacias} está sin material y se ve así en la banda.`}
-      />
-
-      <Friso>
-        {HOY.map((clase) => {
-          const libres = Math.max(0, clase.ranuras - clase.contenidos.length);
-          return (
-            <TrechoConRegla key={clase.id} hora={clase.hora} area={clase.area}>
-              <Plancha
-                transicion={`plancha-${clase.id}`}
-                area={clase.area}
-                hora={clase.hora}
-                rotulo={clase.asignatura}
-                titulo={clase.tema ?? "Sin material todavía"}
-                pie={
-                  <div className="px-[22px] pb-5 pt-1">
-                    <Boton
-                      href={
-                        clase.contenidos.length > 0
-                          ? `/clases/${clase.id}`
-                          : "/biblioteca"
-                      }
-                      tono={clase.area ? "tinta" : "claro"}
-                      className="w-full"
-                    >
-                      {clase.contenidos.length > 0
-                        ? "Entrar a la clase"
-                        : "Buscar en biblioteca"}
-                    </Boton>
-                  </div>
-                }
-              >
-                {clase.contenidos.length > 0 ? (
-                  <>
-                    {clase.contenidos.map((t) => {
-                      const [tipo, ...resto] = t.pie.split(" · ");
-                      const meta = resto.join(" · ").replace(/^(\d+-\d+)$/, "$1 años");
-                      return (
-                        <Ficha
-                          key={t.id}
-                          area={t.area}
-                          tipo={tipo}
-                          titulo={t.titulo}
-                          meta={meta || undefined}
-                        />
-                      );
-                    })}
-                    {libres > 0 && <RanuraLibre />}
-                    <p className="mt-auto border-t border-linea pt-2.5 text-[14px] text-gris">
-                      {clase.contenidos.length} de {clase.ranuras} puestos ocupados
-                    </p>
-                  </>
-                ) : (
-                  <>
-                    <p className="text-[15px] leading-[1.5] text-gris">
-                      Esta banda está vacía. El material no llega solo a la clase: es
-                      exactamente el problema que la plataforma existe para resolver.
-                    </p>
-                    <div className="mt-auto">
-                      <RanuraLibre />
-                    </div>
-                  </>
-                )}
-              </Plancha>
-            </TrechoConRegla>
-          );
-        })}
-      </Friso>
+      <Cabecera kicker="Asignaciones vigentes" titulo="Mis clases"
+        nota={`${clases.length} ${clases.length === 1 ? "clase asignada" : "clases asignadas"} en el año lectivo activo.`} />
+      {clases.length === 0 ? (
+        <section className="sticker-panel max-w-[65ch] p-6" aria-labelledby="clases-vacias">
+          <h2 id="clases-vacias" className="font-heading text-xl font-bold text-tinta">Aún no tienes clases asignadas</h2>
+          <p className="mt-2 text-tinta">Cuando coordinación te asigne una asignatura y un grupo, aparecerán aquí.</p>
+        </section>
+      ) : (
+        <Friso>
+          {clases.map((clase) => {
+            const grupo = `${clase.grupo.grado.nombre}-${clase.grupo.identificador}`;
+            const area = areaFriso(clase.asignatura.area.nombre);
+            return (
+              <TrechoConRegla key={clase.id} hora={`Grupo ${grupo}`} area={area}>
+                <Plancha area={area} hora={`Grupo ${grupo}`} rotulo={clase.asignatura.nombre}
+                  titulo={clase.asignatura.nombre} transicion={`plancha-${clase.id}`}
+                  pie={<div className="px-[22px] pb-5 pt-1"><Boton href={`/clases/${clase.id}`} tono="tinta" className="w-full">Abrir clase</Boton></div>}>
+                  <p className="text-[15px] leading-relaxed text-tinta">Actividades y material de esta asignatura para el grupo {grupo}.</p>
+                </Plancha>
+              </TrechoConRegla>
+            );
+          })}
+        </Friso>
+      )}
     </Marco>
   );
 }

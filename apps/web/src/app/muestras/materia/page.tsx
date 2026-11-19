@@ -20,7 +20,8 @@ const NOMBRES: Record<Escena, string> = {
   emprendimiento: "Emprendimiento",
   etica: "Ética y valores",
   artistica: "Educación artística",
-  fisica: "Física",
+  fisica: "Educación física",
+  ciencias_fisicas: "Física",
   sociales: "Ciencias sociales",
   generica: "Educación religiosa",
 };
@@ -112,6 +113,16 @@ const TITULOS: Record<Escena, string[]> = {
     "Mezclas de colores",
   ],
   fisica: [
+    "Calentamiento antes del juego",
+    "Ordena los movimientos",
+    "Parejas de deportes e implementos",
+    "Habilidades de equilibrio",
+    "Completa la rutina",
+    "Une el deporte con su regla",
+    "Concurso de juego limpio",
+    "Coordinación y saltos",
+  ],
+  ciencias_fisicas: [
     "¿Qué atrae un imán?",
     "Ordena del más liviano al más pesado",
     "Parejas de fuerzas",

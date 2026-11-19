@@ -1,0 +1,97 @@
+{
+  "slug": "la-vitrina-de-la-panaderia",
+  "titulo": "La vitrina de la panadería",
+  "tipo": "sello",
+  "grado": 5,
+  "instruccion": "Armi revisa los letreros de la panadería. Mira las tortas y chocolatinas, lee cada letrero y estampa si es verdadero o falso.",
+  "tema": "Fracciones: partes de la unidad, propias e impropias, equivalencia y comparación",
+  "contenido": {
+    "escena": "panaderia",
+    "afirmaciones": [
+      {
+        "id": "f1",
+        "texto": "La torta de la vitrina tiene pintados 3/8.",
+        "verdadera": true,
+        "explicacion": "Está partida en 8 partes iguales y hay 3 pintadas: 3/8.",
+        "figura": {
+          "tipo": "fraccion",
+          "numerador": 3,
+          "denominador": 8,
+          "forma": "circulo"
+        }
+      },
+      {
+        "id": "f2",
+        "texto": "En la fracción 5/6, el 6 es el numerador.",
+        "verdadera": false,
+        "explicacion": "El 6 es el denominador: dice en cuántas partes iguales se parte la unidad. El numerador es 5: las partes que se toman."
+      },
+      {
+        "id": "f3",
+        "texto": "La chocolatina muestra una fracción equivalente a 1/2.",
+        "verdadera": true,
+        "explicacion": "Hay 2 de 4 partes pintadas: 2/4 = 1/2, la mitad.",
+        "figura": {
+          "tipo": "fraccion",
+          "numerador": 2,
+          "denominador": 4,
+          "forma": "barra"
+        }
+      },
+      {
+        "id": "f4",
+        "texto": "7/4 es una fracción propia.",
+        "verdadera": false,
+        "explicacion": "En 7/4 el numerador es mayor que el denominador: es impropia y vale más que una unidad (una torta entera y 3/4).",
+        "figura": {
+          "tipo": "fraccion",
+          "numerador": 7,
+          "denominador": 4,
+          "forma": "circulo"
+        }
+      },
+      {
+        "id": "f5",
+        "texto": "3/5 es mayor que 3/8.",
+        "verdadera": true,
+        "explicacion": "Las dos toman 3 partes, pero los quintos son más grandes que los octavos: 3/5 > 3/8."
+      },
+      {
+        "id": "f6",
+        "texto": "La chocolatina muestra 4/6.",
+        "verdadera": false,
+        "explicacion": "Está partida en 10 partes iguales y hay 4 pintadas: muestra 4/10.",
+        "figura": {
+          "tipo": "fraccion",
+          "numerador": 4,
+          "denominador": 10,
+          "forma": "barra"
+        }
+      },
+      {
+        "id": "f7",
+        "texto": "2/3 y 4/6 son fracciones equivalentes.",
+        "verdadera": true,
+        "explicacion": "Si multiplicas el numerador y el denominador de 2/3 por 2, obtienes 4/6: representan la misma cantidad."
+      },
+      {
+        "id": "f8",
+        "texto": "La mitad de 20 almojábanas son 12 almojábanas.",
+        "verdadera": false,
+        "explicacion": "1/2 de 20 es 20 ÷ 2 = 10 almojábanas."
+      },
+      {
+        "id": "f9",
+        "texto": "5/5 de una torta es la torta entera.",
+        "verdadera": true,
+        "explicacion": "Cuando el numerador y el denominador son iguales, la fracción vale 1: la unidad completa.",
+        "figura": {
+          "tipo": "fraccion",
+          "numerador": 5,
+          "denominador": 5,
+          "forma": "circulo"
+        }
+      }
+    ]
+  }
+}

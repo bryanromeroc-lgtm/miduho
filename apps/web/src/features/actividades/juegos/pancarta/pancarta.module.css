@@ -1,0 +1,144 @@
+/*
+  LA PANCARTA DE LAS FIESTAS · escena del juego 1 de Matemáticas.
+  La plaza y la tela son ilustraciones raster generadas para el proyecto
+  (🔶 provisionales); el número siempre es texto real encima de la tela.
+  La escena crece con la pancarta: Armi nunca se encima al texto.
+*/
+
+/* La tela es un 9-slice: los postes y los nudos conservan su forma y el centro crece con el texto. */
+.pancarta {
+  --tinta-tela: #1b2440;
+  --k: clamp(0.075px, 0.0168cqi, 0.16px);
+  justify-self: center;
+  width: min(92%, 860px);
+  margin-top: clamp(10px, 3cqi, 28px);
+  border-style: solid;
+  border-width: calc(210 * var(--k)) calc(400 * var(--k));
+  border-image-source: url("/images/juegos/pancarta/tela.webp");
+  border-image-slice: 210 400 fill;
+  border-image-repeat: stretch;
+  padding: clamp(4px, 1.2cqi, 12px) 0;
+  display: grid;
+  place-items: center;
+  min-height: clamp(110px, 21cqi, 190px);
+  color: var(--tinta-tela);
+  transform-origin: 50% 0;
+  animation: cuelga 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes cuelga {
+  0% {
+    transform: translateY(-14px) rotate(-1.4deg);
+    opacity: 0;
+  }
+  55% {
+    transform: translateY(0) rotate(0.6deg);
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+  }
+}
+
+.letras {
+  margin: 0;
+  max-width: 30ch;
+  font-family: var(--fuente-display);
+  font-size: clamp(1.05rem, 0.6rem + 2.4cqi, 2rem);
+  font-weight: 700;
+  line-height: 1.18;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.cifras {
+  margin: 0;
+  font-family: var(--fuente-display);
+  font-size: clamp(2.2rem, 1rem + 7cqi, 4.8rem);
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Modo posición: las cifras son botones ---------- */
+
+.tablero {
+  display: flex;
+  justify-content: center;
+  gap: clamp(3px, 0.8cqi, 8px);
+}
+.casilla {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+.casilla[data-grupo] {
+  margin-inline-end: clamp(8px, 2.2cqi, 20px);
+}
+.casilla[data-grupo]::after {
+  content: "";
+  position: absolute;
+  top: clamp(40px, 7.4cqi, 62px);
+  right: calc(-1 * clamp(6px, 1.6cqi, 14px));
+  width: clamp(4px, 0.8cqi, 7px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--tinta-tela);
+}
+.cifra {
+  width: clamp(30px, 6.2cqi, 60px);
+  height: clamp(52px, 9cqi, 76px);
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: inset 0 0 0 2px #d9c99f;
+  color: var(--tinta-tela);
+  font-family: var(--fuente-display);
+  font-size: clamp(1.5rem, 0.6rem + 4.2cqi, 3rem);
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease-out,
+    transform 160ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cifra:not(:disabled):hover {
+  background: var(--m-banda);
+  transform: translateY(-2px);
+}
+.cifra:focus-visible {
+  outline: 3px solid var(--m-tinta);
+  outline-offset: 2px;
+}
+.cifra:disabled {
+  cursor: default;
+}
+.cifra[data-estado="ok"] {
+  background: #dcf2e3;
+  box-shadow: inset 0 0 0 3px #2f9a57;
+  color: #145c2e;
+}
+.cifra[data-estado="no"] {
+  background: #fbe4e1;
+  box-shadow: inset 0 0 0 3px #d2574b;
+  color: #962a22;
+  text-decoration: line-through 3px;
+}
+.rotulo {
+  color: #4a4430;
+  font-size: clamp(0.62rem, 0.4rem + 0.8cqi, 0.8rem);
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pancarta {
+    animation: none;
+  }
+  .cifra {
+    transition: none;
+  }
+}

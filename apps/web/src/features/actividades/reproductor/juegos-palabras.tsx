@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from "react";
+import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from "react";
 import {
   armarSopa,
   celdasDeLinea,
@@ -24,7 +24,9 @@ export function SopaLetras({ contenido, alTerminar }: PropsJuego<ContenidoSopa>)
   const [inicio, setInicio] = useState<Celda | null>(null);
   const [halladas, setHalladas] = useState<Record<string, { desde: Celda; hasta: Celda }>>({});
   const [activa, setActiva] = useState<Celda>([0, 0]);
+  const [filaGrande, setFilaGrande] = useState(0);
   const [aviso, setAviso] = useState<{ tono: "ok" | "no" | "neutro"; texto: string } | null>(null);
+  const filaId = useId();
   const celdas = useRef(new Map<string, HTMLButtonElement>());
   const total = contenido.palabras.length;
   const cuantas = Object.keys(halladas).length;
@@ -107,6 +109,35 @@ export function SopaLetras({ contenido, alTerminar }: PropsJuego<ContenidoSopa>)
             }),
           )}
         </div>
+        <details className={s.selectorGrande}>
+          <summary>Elegir letras en grande</summary>
+          <div className={s.selectorGrandeCuerpo}>
+            <label htmlFor={filaId}>Fila de la sopa</label>
+            <select id={filaId} value={filaGrande} onChange={(ev) => setFilaGrande(Number(ev.target.value))}>
+              {sopa.letras.map((_, f) => <option key={f} value={f}>Fila {f + 1}</option>)}
+            </select>
+            <div className={s.filaGrande} role="group" aria-label={`Letras grandes de la fila ${filaGrande + 1}`}>
+              {sopa.letras[filaGrande].map((letra, c) => {
+                const seleccionada = inicio?.[0] === filaGrande && inicio[1] === c;
+                return (
+                  <button
+                    key={c}
+                    type="button"
+                    className={s.letraGrande}
+                    data-hallada={marcadas.has(`${filaGrande},${c}`) ? "" : undefined}
+                    aria-pressed={seleccionada}
+                    aria-label={`${letra}, fila ${filaGrande + 1}, columna ${c + 1}`}
+                    onClick={() => tocar([filaGrande, c])}
+                  >
+                    <span>{letra}</span>
+                    <small>{c + 1}</small>
+                  </button>
+                );
+              })}
+            </div>
+            <p>Elige la primera y la última letra de cada palabra.</p>
+          </div>
+        </details>
         <ul className={s.palabras} aria-label="Palabras para buscar">
           {contenido.palabras.map((p) => (
             <li key={p.id} data-hallada={halladas[p.id] ? "" : undefined}>

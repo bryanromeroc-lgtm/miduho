@@ -1,0 +1,173 @@
+/*
+  LA TIENDA DEL BARRIO · etiqueta de precio (ilustración generada 🔶
+  provisional) con texto real, cuadrícula de 100 cuadritos y casillas en
+  pesos.
+*/
+
+.panel {
+  justify-self: center;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "etiqueta cuadritos"
+    "casillas casillas";
+  align-items: center;
+  gap: clamp(10px, 2.4cqi, 22px);
+  width: min(94%, 820px);
+  margin-top: clamp(10px, 2.4cqi, 24px);
+  padding: clamp(12px, 2.6cqi, 24px);
+  border-radius: 18px;
+  background: rgb(255 251 242 / 0.95);
+  box-shadow: 0 10px 24px rgb(60 30 10 / 0.18);
+}
+@container (max-width: 560px) {
+  .panel {
+    grid-template-columns: 1fr;
+    grid-template-areas: "etiqueta" "cuadritos" "casillas";
+  }
+}
+
+.etiqueta {
+  grid-area: etiqueta;
+  justify-self: center;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  --w: clamp(250px, 44cqi, 340px);
+  align-content: center;
+  width: var(--w);
+  aspect-ratio: 900 / 348;
+  padding: 0 calc(var(--w) * 0.06) 0 calc(var(--w) * 0.33);
+  background: url("/images/juegos/porcentaje/etiqueta.webp") center / 100% 100% no-repeat;
+  color: #2b1a0c;
+}
+.etiqueta p {
+  margin: 0;
+}
+.producto {
+  font-weight: 700;
+  font-size: clamp(0.95rem, 0.7rem + 1cqi, 1.2rem);
+}
+.precio {
+  font-family: var(--fuente-display);
+  font-size: clamp(1.7rem, 0.9rem + 3.4cqi, 2.6rem);
+  font-weight: 800;
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
+}
+.sube {
+  padding: 0 10px;
+  border-radius: 999px;
+  background: #b3261e;
+  color: #fff;
+  font-weight: 800;
+  font-size: clamp(0.9rem, 0.7rem + 0.9cqi, 1.1rem);
+}
+
+.cuadritos {
+  grid-area: cuadritos;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.cien,
+.extra {
+  display: grid;
+  grid-template-columns: repeat(10, var(--c));
+  gap: 2px;
+  --c: clamp(8px, 1.9cqi, 15px);
+}
+.cien i,
+.extra i {
+  display: block;
+  width: var(--c);
+  height: var(--c);
+  border-radius: 2px;
+}
+.cien i {
+  background: #7fb4e6;
+}
+.extra i {
+  background: #e0475b;
+}
+.mas {
+  color: #1b2440;
+  font-family: var(--fuente-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.casillas {
+  grid-area: casillas;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 24px;
+}
+.casilla {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+}
+.rotulo {
+  color: #4a4430;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.moneda {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #1b2440;
+  font-family: var(--fuente-display);
+  font-size: clamp(1.4rem, 0.9rem + 2cqi, 2rem);
+  font-weight: 800;
+}
+.entrada {
+  width: clamp(110px, 22cqi, 170px);
+  min-height: 52px;
+  padding: 0 10px;
+  border: 3px dashed #8f9cb3;
+  border-radius: 12px;
+  background: #fff;
+  color: #1b2440;
+  font: inherit;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  caret-color: var(--m-acento);
+}
+.entrada[data-activo] {
+  border-style: solid;
+  border-color: var(--m-acento);
+}
+.entrada:focus-visible {
+  outline: 3px solid var(--m-tinta);
+  outline-offset: 2px;
+}
+.casilla[data-estado="ok"] .entrada {
+  border: 3px solid #2f9a57;
+  background: #dcf2e3;
+  color: #145c2e;
+}
+.casilla[data-estado="ok"] .moneda {
+  color: #145c2e;
+}
+.casilla[data-estado="no"] .entrada {
+  border: 3px solid #d2574b;
+  background: #fbe4e1;
+}
+.casilla[data-estado="no"] .moneda {
+  color: #962a22;
+}
+
+.mando {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: center;
+  gap: 16px 28px;
+}

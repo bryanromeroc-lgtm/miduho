@@ -40,7 +40,7 @@ Tipos comunes en herramientas de actividades interactivas (plantillas de Wordwal
 
 ## Contenido
 
-Las actividades viven en `apps/web/curriculo/actividades/<asignatura>/<grado>/<slug>.json` (D1; la carpeta es el nombre normalizado de la asignatura: «Ética y valores» → `etica-y-valores`). Hoy hay 55, cinco por cada asignatura de 5.°, de redacción propia. `curriculo.test.ts` exige que todos los archivos sean válidos. Los textos no usan nombres de personas (regla dura 1). 🔶 El campo `tema` describe el tema curricular en palabras propias; los códigos DBA llegan con `curriculo/referentes` (`fundacion-actividades` 3.2).
+Las actividades viven en `apps/web/curriculo/actividades/<asignatura>/<grado>/<slug>.json` (D1; la carpeta es el nombre normalizado de la asignatura: «Ética y valores» → `etica-y-valores`). Hoy hay 69 actividades de 5.°: 19 de Matemáticas y cinco en cada una de otras diez asignaturas, de redacción propia. El reproductor admite 21 tipos: los nueve generales de esta tabla y doce especializados para Matemáticas. `curriculo.test.ts` exige que todos los archivos sean válidos. Los textos no usan nombres de personas (regla dura 1). 🔶 El campo `tema` describe el tema curricular en palabras propias; los códigos DBA llegan con `curriculo/referentes` (`fundacion-actividades` 3.2).
 
 Fuentes de la investigación:
 

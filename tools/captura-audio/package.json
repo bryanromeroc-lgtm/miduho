@@ -1,0 +1,15 @@
+{
+  "name": "captura-audio",
+  "version": "1.0.0",
+  "description": "Captura sonora de páginas de referencia para MIDUHO: descarga, inventario, adaptación y resumen del audio (no se despliega)",
+  "type": "module",
+  "private": true,
+  "bin": { "captura-audio": "src/cli.mjs" },
+  "scripts": {
+    "captura": "node src/cli.mjs",
+    "test": "node --test test/"
+  },
+  "dependencies": {
+    "playwright-core": "^1.62.1"
+  }
+}

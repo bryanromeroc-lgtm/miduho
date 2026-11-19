@@ -62,7 +62,7 @@ export function BienvenidaMateria({ materiaId, cuenta, conActividades }: { mater
     <div className={s.bienvenida} role="status">
       <p className={s.bienvenidaTexto}>
         <strong>¡Te damos la bienvenida!</strong>{" "}
-        {conActividades ? "Toca una tarjeta para jugar." : "Esta es tu materia: aquí verás lo que tu docente te asigne."}
+        {conActividades ? "Elige una actividad para practicar. Puedes volver a esta materia cuando quieras." : "Esta es tu materia: aquí verás lo que tu docente te asigne."}
       </p>
       <button type="button" className={s.bienvenidaBoton} onClick={cerrar}>
         ¡Listo!

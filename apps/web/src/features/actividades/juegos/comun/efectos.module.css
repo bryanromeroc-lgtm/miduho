@@ -1,0 +1,89 @@
+/*
+  Celebración de la escena. Solo transform y opacity (se animan en la GPU, sin
+  recalcular el diseño). Una sola pasada, sin parpadeo: el halo crece y se
+  apaga una vez (WCAG 2.3.1). Con prefers-reduced-motion no se muestra.
+  Colores de la materia (--m-*) para que cada una celebre con los suyos.
+*/
+
+.chispas {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+  container-type: size;
+}
+
+/* Halo detrás del confeti: un aro que crece y se desvanece, sin blanco de pantalla completa. */
+.halo {
+  position: absolute;
+  left: 50%;
+  top: 62%;
+  width: 36cqi;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  border: 0.8cqi solid var(--m-acento);
+  opacity: 0;
+  animation: halo 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.chispas[data-tipo="corregida"] .halo {
+  border-color: var(--m-suave);
+  animation-duration: 560ms;
+}
+
+.pieza {
+  position: absolute;
+  left: 50%;
+  top: 62%;
+  width: clamp(6px, 1.3cqi, 12px);
+  height: clamp(10px, 2.1cqi, 18px);
+  border-radius: 2px;
+  background: var(--m-acento);
+  opacity: 0;
+  animation: sube 900ms cubic-bezier(0.2, 0.7, 0.3, 1) var(--retardo) both;
+}
+.pieza:nth-child(3n + 2) {
+  background: var(--m-banda);
+  outline: 1px solid var(--m-acento);
+}
+.pieza:nth-child(3n + 3) {
+  background: var(--m-tinta);
+  border-radius: 50%;
+  width: clamp(5px, 1cqi, 9px);
+  height: clamp(5px, 1cqi, 9px);
+}
+.chispas[data-tipo="corregida"] .pieza {
+  background: var(--m-suave);
+  animation-duration: 700ms;
+}
+
+@keyframes halo {
+  0% {
+    opacity: 0.55;
+    scale: 0.35;
+  }
+  100% {
+    opacity: 0;
+    scale: 1.5;
+  }
+}
+@keyframes sube {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) rotate(var(--giro)) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chispas {
+    display: none;
+  }
+}

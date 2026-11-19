@@ -21,14 +21,36 @@ export type Disposicion =
   | "arriba" /* ilustración apaisada arriba; texto debajo */
   | "fondo" /* ilustración de página completa; texto en su hueco superior */
   | "pasos" /* ilustración de viñetas apiladas; lista de pasos al lado */
+  | "pliego" /* mitad de una ilustración a doble página; texto en su zona
+                superior clara */
   | "creditos"
-  | "contraportada";
+  | "contraportada"
+  | "portada-editorial"
+  | "creditos-editoriales"
+  | "inicio-editorial"
+  | "cierre-editorial";
+
+export interface SeccionEditorial {
+  titulo: string;
+  parrafos: string[];
+  enlaces?: { texto: string; url: string }[];
+}
 
 export interface PaginaCompuesta {
   disposicion: Disposicion;
   ilustracion?: string;
+  /* descripción propia de la ilustración; sin ella el lector usa una
+     genérica («<título>, ilustración de la página N») */
+  alt?: string;
+  /* solo para «pliego»: a qué lado del lomo cae esta mitad */
+  mitad?: "izquierda" | "derecha";
   titulo?: string;
   parrafos?: string[];
+  /* páginas de edición MIDUHO: textos y fuentes siguen siendo HTML */
+  epigrafe?: string;
+  subtitulo?: string;
+  secciones?: SeccionEditorial[];
+  pie?: string;
   /* solo para «fondo»: en qué lado del hueco blanco cae el texto */
   textoAlineado?: "izquierda" | "derecha";
   /* solo para «pasos»: número del primer paso cuando la lista sigue de la
@@ -38,6 +60,14 @@ export interface PaginaCompuesta {
 
 import { PAGINAS_SONRISA } from "@/features/biblioteca/paginas/una-sonrisa-de-mariposa";
 import { PAGINAS_TULA } from "@/features/biblioteca/paginas/tula-y-el-mural-del-bosque";
+import {
+  CARPETA_ORQUESTA,
+  PAGINAS_ORQUESTA,
+} from "@/features/biblioteca/paginas/la-orquesta-de-la-lluvia";
+import {
+  CARPETA_QUIJOTE,
+  PAGINAS_QUIJOTE,
+} from "@/features/biblioteca/paginas/don-quijote-y-los-molinos";
 
 export interface Libro {
   slug: string;
@@ -63,6 +93,11 @@ export interface Libro {
   resumen: string;
   /* presente solo en los libros compuestos; su longitud es `paginas` */
   contenido?: PaginaCompuesta[];
+  /* Carpeta pública de las miniaturas tNN.webp. Por omisión es
+     /libros/<slug>, el volumen de libros; una obra propia compuesta puede
+     llevar sus recursos en /public/images/biblioteca/<slug> para no
+     depender de ese volumen en el despliegue. */
+  carpeta?: string;
 }
 
 export interface PaginaLibro {
@@ -1756,6 +1791,45 @@ export const LIBROS: Libro[] = [
       "Tula ama sus pinturas, pero cuando un viento travieso se lleva el papel de un mural, descubre que los colores brillan más cuando se comparten.",
     contenido: PAGINAS_TULA,
   },
+  {
+    /* Obra original de MIDUHO: texto propio e ilustraciones generadas para
+       el proyecto con asistencia de IA. Compuesta: cinco ilustraciones a
+       doble página partidas en mitades, con el texto en HTML encima. Sus
+       recursos viven en /public/images/biblioteca (ver `carpeta`). */
+    slug: "la-orquesta-de-la-lluvia",
+    tituloId: "lit-181",
+    titulo: "La orquesta de la lluvia",
+    autor: "MIDUHO",
+    editorial: "MIDUHO",
+    paginas: PAGINAS_ORQUESTA.length,
+    /* mitades de 768×1024 */
+    razon: 0.75,
+    pliegos: [[2, 3], [4, 5], [6, 7], [8, 9], [10, 11]],
+    edad: "6-8",
+    resumen:
+      "Una tarde de lluvia, un copetón y una rana descubren los sonidos del patio. Cuando dejan de apresurarse, escuchan y toman turnos, construyen juntos un ritmo para compartir.",
+    contenido: PAGINAS_ORQUESTA,
+    carpeta: CARPETA_ORQUESTA,
+  },
+  {
+    /* Adaptación nueva del capítulo VIII de la primera parte de Don Quijote,
+       obra de dominio público de Miguel de Cervantes. Edición MIDUHO: portada,
+       créditos y cierre con escudo; cinco pliegos continuos con texto HTML,
+       sin páginas escaneadas de ninguna edición moderna. */
+    slug: "don-quijote-y-los-molinos",
+    tituloId: "lit-182",
+    titulo: "Don Quijote y los molinos",
+    autor: "Miguel de Cervantes · adaptación MIDUHO",
+    editorial: "MIDUHO",
+    paginas: PAGINAS_QUIJOTE.length,
+    razon: 0.75,
+    pliegos: [[4, 5], [6, 7], [8, 9], [10, 11], [12, 13]],
+    edad: "9-11",
+    resumen:
+      "Don Quijote cree ver gigantes donde Sancho reconoce molinos de viento. Una aventura para comparar sus miradas y descubrir qué pistas ofrece el relato.",
+    contenido: PAGINAS_QUIJOTE,
+    carpeta: CARPETA_QUIJOTE,
+  },
 ];
 
 export function buscarLibro(slug: string): Libro | undefined {
@@ -1771,7 +1845,7 @@ export function paginasDe(libro: Libro): PaginaLibro[] {
   return Array.from({ length: libro.paginas }, (_, i) => {
     const n = String(i + 1).padStart(2, "0");
     const numero = i + 1;
-    const miniatura = `/libros/${libro.slug}/t${n}.webp`;
+    const miniatura = `${libro.carpeta ?? `/libros/${libro.slug}`}/t${n}.webp`;
     const compuesta = libro.contenido?.[i];
     return compuesta
       ? { numero, miniatura, compuesta }

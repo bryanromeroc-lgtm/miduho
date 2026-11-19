@@ -14,7 +14,11 @@ node_modules/
 # Contenido pesado: PDFs fuente y páginas generadas de los libros.
 # Viven fuera de git; en producción se sirven desde almacenamiento de objetos / CDN.
 /content/biblioteca/**/*.pdf
+/content/biblioteca/**/fuentes/
 /content/libros/
+/content/referencias/**/*.ogg
+# Captura sonora (tools/captura-audio): el audio queda fuera de git; se versionan inventario.json, LICENCIA.md y RESUMEN.md
+/content/referencias/**/audio/
 
 # Respaldos de PostgreSQL del stack de producción (deploy/, docker-compose.yml)
 /respaldos/
@@ -41,3 +45,17 @@ node_modules/
 # Python
 __pycache__/
 *.pyc
+
+# Skills de terceros: instalación local, no se versionan (ver .claude/skills/TERCEROS.md)
+/.claude/skills/a11y-audit/
+/.claude/skills/k12-lesson-*/
+/.claude/skills/adaptive-hint-sequence-designer/
+/.claude/skills/formative-assessment-*/
+/.claude/skills/productive-failure-*/
+/.claude/skills/progressive-hint-ladder/
+/.claude/skills/spaced-practice-scheduler/
+/.claude/skills/game-feel/
+/.claude/skills/design-game/
+
+# Perfil de Chrome para gemini-media vive fuera del repo; salidas temporales
+/tools/gemini-media/salida/

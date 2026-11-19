@@ -78,6 +78,14 @@ export const DECLARACIONES: Record<Escena, DeclaracionKit> = {
   },
   fisica: {
     escena: "fisica",
+    cabecera: ["balon-patio", "cono-patio", "cronometro-patio", "cuerda-salto"],
+    sueltos: ["zapatilla-patio", "aros-patio", "silbato-patio"],
+    marcas: ["balon-marca-patio", "pista-marca-patio", "paso-marca-patio"],
+    utileria: { clip: "clip-balón-patio", cinta: "cinta-cancha-patio", chinche: "chinche-balón-patio" },
+    marco: "marco-cancha-patio",
+  },
+  ciencias_fisicas: {
+    escena: "ciencias_fisicas",
     cabecera: ["pendulo", "iman-herradura", "polea", "prisma-luz"],
     sueltos: ["resorte", "onda-suelta", "rampa"],
     marcas: ["flecha-fuerza", "iman-marca", "rayo-luz", "onda-marca"],

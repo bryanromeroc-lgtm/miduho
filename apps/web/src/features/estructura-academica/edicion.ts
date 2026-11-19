@@ -64,7 +64,7 @@ export function cuerpoFormulario(tipo: TipoApi, fd: FormData, modo: Modo, origin
     case "grados":
       return { nombre: cadena(fd, "nombre"), nivel: cadena(fd, "nivel"), orden: numero(fd, "orden") };
     case "grupos": {
-      const cuerpo: Cuerpo = { identificador: cadena(fd, "identificador"), directorId: idONulo(fd, "directorId") };
+      const cuerpo: Cuerpo = { directorId: idONulo(fd, "directorId") };
       if (modo === "crear") return { anioLectivoId: cadena(fd, "anioLectivoId"), gradoId: cadena(fd, "gradoId"), ...cuerpo };
       // Un director que ya no es docente activo se conserva si no se toca; el servicio solo valida un cambio.
       if (original && cuerpo.directorId === (original.directorId ?? null)) delete cuerpo.directorId;

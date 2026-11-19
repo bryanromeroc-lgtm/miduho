@@ -1,0 +1,459 @@
+/*
+  EL TALLER DE LAS FRACCIONES · cartulina naranja sobre papel crema, con el
+  contorno de tinta de los demás juegos de Matemáticas. Lo pintado se
+  distingue de lo vacío por color (3:1 o más contra el papel) y también
+  por el número escrito al lado: nunca solo por color.
+*/
+
+.modos,
+.taller,
+.mesa {
+  --tinta: #1b2440;
+  --papel: #fffaf1;
+  --relleno: #d4532a;
+  --relleno-toque: #e98a62;
+  --vacio-toque: #fbe0cf;
+  --linea-suave: #e7d3bb;
+}
+
+/* ---------- Laboratorio / Retos ---------- */
+
+.modos {
+  display: inline-flex;
+  justify-self: start;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--m-banda);
+}
+.modo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--m-tinta);
+  font-family: var(--fuente-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color 160ms ease-out, color 160ms ease-out;
+}
+.modo:hover {
+  background: var(--m-fondo);
+}
+.modo[aria-pressed="true"] {
+  background: var(--m-acento);
+  color: var(--m-sobreAcento);
+}
+.modo:focus-visible {
+  outline: 3px solid var(--m-tinta);
+  outline-offset: 2px;
+}
+
+/* ---------- Laboratorio ---------- */
+
+.taller {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px 24px;
+  padding: clamp(16px, 3vw, 28px);
+  border-radius: 20px;
+  background: var(--papel);
+  color: var(--tinta);
+}
+.tallerCabeza {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+.titulo {
+  margin: 0;
+  font-family: var(--fuente-display);
+  font-size: clamp(1.4rem, 1.1rem + 1vw, 1.9rem);
+  font-weight: 850;
+  letter-spacing: -0.02em;
+}
+.ayuda {
+  max-width: 52ch;
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: #4a4f60;
+}
+
+.lectura {
+  grid-row: span 2;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 20px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 6px 16px rgb(60 30 10 / 0.1);
+}
+.fracGrande {
+  font-size: clamp(2.6rem, 2rem + 2.4vw, 3.8rem);
+  color: #a63a17;
+}
+.palabras {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  font-size: 1.05rem;
+}
+.palabras strong {
+  font-family: var(--fuente-display);
+  font-size: 1.35rem;
+  font-weight: 850;
+}
+
+.controles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
+.formas {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.forma {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 14px 16px 18px;
+  border: 2px solid var(--linea-suave);
+  border-radius: 16px;
+  background: #fff;
+}
+.forma[data-forma="recta"] {
+  grid-column: 1 / -1;
+}
+.forma .figura {
+  align-self: center;
+  max-height: 190px;
+}
+.formaNombre {
+  margin: 0;
+  font-family: var(--fuente-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+.taller > :last-child {
+  grid-column: 1 / -1;
+}
+
+/* ---------- Contador ---------- */
+
+.contador {
+  display: grid;
+  gap: 6px;
+}
+.contadorEtiqueta {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #4a4f60;
+}
+.contadorFila {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.paso {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--tinta);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--tinta);
+  cursor: pointer;
+  transition: transform 120ms ease-out, background-color 120ms ease-out;
+}
+.paso:not(:disabled):hover {
+  background: var(--vacio-toque);
+}
+.paso:not(:disabled):active {
+  transform: scale(0.92);
+}
+.paso:disabled {
+  border-color: #b9b3a8;
+  color: #8a8478;
+  cursor: default;
+}
+.paso:focus-visible {
+  outline: 3px solid var(--m-acento);
+  outline-offset: 2px;
+}
+.contadorValor {
+  min-width: 2.4ch;
+  font-family: var(--fuente-display);
+  font-size: 1.8rem;
+  font-weight: 850;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+/* ---------- Figuras ---------- */
+
+.figura {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 260px;
+  overflow: visible;
+}
+.figura[data-tamano="mini"] {
+  max-height: 110px;
+}
+
+.parte {
+  fill: var(--papel);
+  stroke: var(--tinta);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  transition: fill 160ms ease-out;
+}
+.parte[data-llena] {
+  fill: var(--relleno);
+}
+.parte[data-toca] {
+  cursor: pointer;
+}
+.parte[data-toca]:hover {
+  fill: var(--vacio-toque);
+}
+.parte[data-toca][data-llena]:hover {
+  fill: var(--relleno-toque);
+}
+/* Un círculo pintado entero no muestra trazo interno. */
+.parte > circle {
+  stroke: none;
+}
+.borde {
+  fill: none;
+  stroke: var(--tinta);
+  stroke-width: 4;
+  pointer-events: none;
+}
+
+.eje {
+  stroke: var(--tinta);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.recorrido {
+  stroke: var(--relleno);
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+.marca {
+  stroke: var(--tinta);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.marca[data-entero] {
+  stroke-width: 4;
+}
+.numero {
+  fill: var(--tinta);
+  font-family: var(--fuente-display);
+  font-weight: 800;
+  text-anchor: middle;
+}
+.punto {
+  fill: #fff;
+  stroke: var(--relleno);
+  stroke-width: 5;
+  transition: cx 220ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+.zona {
+  fill: transparent;
+  cursor: pointer;
+}
+.zona:hover {
+  fill: rgb(212 83 42 / 0.12);
+}
+
+/* ---------- Retos ---------- */
+
+.mesa {
+  justify-self: center;
+  display: grid;
+  justify-items: center;
+  gap: clamp(12px, 2.4cqi, 22px);
+  width: min(94%, 820px);
+  margin-top: clamp(10px, 2.4cqi, 24px);
+  padding: clamp(14px, 2.8cqi, 26px);
+  border-radius: 18px;
+  background: rgb(255 250 241 / 0.96);
+  box-shadow: 0 10px 24px rgb(60 30 10 / 0.18);
+  color: var(--tinta);
+  animation: llega 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes llega {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+
+.enunciado {
+  margin: 0;
+  font-family: var(--fuente-display);
+  font-size: clamp(1.2rem, 0.9rem + 1.6cqi, 1.75rem);
+  font-weight: 850;
+  line-height: 1.3;
+  text-align: center;
+  text-wrap: balance;
+}
+.enunciado:focus {
+  outline: none;
+}
+.fracMeta {
+  margin: 0 0.15em;
+  color: #a63a17;
+  font-size: 1.3em;
+}
+
+.construir,
+.leer {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  width: 100%;
+}
+.construir .figura,
+.leer .figura {
+  max-width: 560px;
+}
+.construir .controles {
+  justify-content: center;
+}
+.armado {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.leer {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+
+.casillas {
+  display: inline-grid;
+  justify-items: center;
+  gap: 4px;
+  font-family: var(--fuente-display);
+  font-size: clamp(1.4rem, 1rem + 2cqi, 2rem);
+  font-weight: 800;
+}
+.casillas::after {
+  content: "";
+  grid-row: 2;
+  width: 100%;
+  border-top: 4px solid var(--tinta);
+}
+.entrada {
+  width: clamp(58px, 10cqi, 76px);
+  min-height: 50px;
+  padding: 0 6px;
+  border: 3px dashed #8f9cb3;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--tinta);
+  font: inherit;
+  text-align: center;
+  caret-color: var(--m-acento);
+}
+.entrada[data-campo="n"] {
+  grid-row: 1;
+}
+.entrada[data-campo="d"] {
+  grid-row: 3;
+}
+.entrada[data-activo] {
+  border-style: solid;
+  border-color: var(--m-acento);
+}
+.entrada:focus-visible {
+  outline: 3px solid var(--m-tinta);
+  outline-offset: 2px;
+}
+.entrada[data-estado="ok"] {
+  border: 3px solid #2f9a57;
+  background: #dcf2e3;
+  color: #145c2e;
+}
+.entrada[data-estado="no"] {
+  border: 3px solid #d2574b;
+  background: #fbe4e1;
+  color: #962a22;
+}
+
+.opciones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: 12px;
+  width: 100%;
+}
+.opciones .opcion {
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 150px;
+  padding: 14px;
+  background: #fff;
+}
+.opcion .figura {
+  pointer-events: none;
+}
+.opcionValor {
+  font-size: 1.3rem;
+}
+
+.mando {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: center;
+  gap: 16px 28px;
+}
+
+@media (max-width: 720px) {
+  .formas {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .taller {
+    grid-template-columns: 1fr;
+  }
+  .lectura {
+    grid-row: auto;
+  }
+  .leer {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mesa {
+    animation: none;
+  }
+  .parte,
+  .punto,
+  .paso,
+  .modo {
+    transition: none;
+  }
+}

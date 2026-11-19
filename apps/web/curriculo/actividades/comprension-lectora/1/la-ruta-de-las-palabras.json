@@ -1,0 +1,10 @@
+{
+  "slug": "la-ruta-de-las-palabras",
+  "titulo": "La ruta de las palabras",
+  "tipo": "ruta-palabras",
+  "grado": 1,
+  "imagen": "/images/juegos/ruta-palabras/portada.webp",
+  "instruccion": "Armi pedalea por tres carriles. Escucha la palabra y elige el cartel que la tiene escrita: toca el cartel o pulsa 1, 2 o 3.",
+  "tema": "Lectura de palabras: reconocer la palabra escrita que se oye (de 2 a 4 sílabas)",
+  "contenido": { "semilla": 2611, "rondas": 10, "silabas": "mixtas", "ritmo": "tranquilo" }
+}

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { enlace, hayFiltros, leerConsulta, rango } from "./consulta";
+import { enlace, enlaceSeccion, hayFiltros, leerConsulta, leerVer, rango } from "./consulta";
 
 const catalogo = { anios: new Set(["anio-1"]), grados: new Set(["grado-1"]), areas: new Set(["area-1"]) };
 
@@ -38,17 +38,26 @@ describe("consulta de /admin/estructura", () => {
   });
 
   it("los enlaces de paginación conservan filtros propios y de los demás listados", () => {
-    const { filtros } = leerConsulta({ "grupos-q": "1° 01", "grupos-anio": "anio-1", "grupos-page": "2", "areas-q": "arte" }, catalogo);
+    const { filtros } = leerConsulta({ "grupos-q": "1°", "grupos-anio": "anio-1", "grupos-page": "2", "areas-q": "arte" }, catalogo);
     const siguiente = new URL(enlace(filtros, "grupos", 3), "http://x");
     expect(siguiente.pathname).toBe("/admin/estructura");
     expect(siguiente.hash).toBe("#estructura-grupos");
-    expect(Object.fromEntries(siguiente.searchParams)).toEqual({ "areas-q": "arte", "grupos-q": "1° 01", "grupos-anio": "anio-1", "grupos-page": "3" });
+    expect(Object.fromEntries(siguiente.searchParams)).toEqual({ ver: "grupos", "areas-q": "arte", "grupos-q": "1°", "grupos-anio": "anio-1", "grupos-page": "3" });
     const primera = new URL(enlace(filtros, "grupos", 1), "http://x");
     expect(primera.searchParams.has("grupos-page")).toBe(false);
     const limpio = new URL(enlace(filtros, "grupos", 1, true), "http://x");
-    expect(Object.fromEntries(limpio.searchParams)).toEqual({ "areas-q": "arte" });
+    expect(Object.fromEntries(limpio.searchParams)).toEqual({ ver: "grupos", "areas-q": "arte" });
     expect(hayFiltros(filtros, "grupos")).toBe(true);
     expect(hayFiltros(filtros, "grados")).toBe(false);
+  });
+
+  it("abre una sola sección a la vez y conserva los filtros al cambiar de sección", () => {
+    expect(leerVer({})).toBe("anios");
+    expect(leerVer({ ver: "asignaturas" })).toBe("asignaturas");
+    expect(leerVer({ ver: "otra" })).toBe("anios");
+    const { filtros } = leerConsulta({ "grupos-q": "1°", "areas-page": "2" }, catalogo);
+    const url = new URL(enlaceSeccion(filtros, "areas"), "http://x");
+    expect(Object.fromEntries(url.searchParams)).toEqual({ "grupos-q": "1°", "areas-page": "2", ver: "areas" });
   });
 
   it("calcula rango, total de páginas y página fuera de rango", () => {

@@ -1,0 +1,185 @@
+{
+  "slug": "los-planos-del-pueblo",
+  "titulo": "Los planos del pueblo",
+  "tipo": "rectas",
+  "grado": 5,
+  "instruccion": "Armi dibuja los planos del pueblo, donde las calles y las carreras se cruzan. Mira las tarjetas y toca la que responde la pregunta.",
+  "tema": "Posiciones relativas de rectas (paralelas, secantes y perpendiculares); recta, semirrecta y segmento",
+  "contenido": {
+    "rondas": [
+      {
+        "id": "r1",
+        "busca": "paralelas",
+        "opciones": [
+          {
+            "figura": "par",
+            "relacion": "secantes",
+            "giro": 10,
+            "cruceVisible": true
+          },
+          {
+            "figura": "par",
+            "relacion": "paralelas",
+            "giro": 0
+          },
+          {
+            "figura": "par",
+            "relacion": "perpendiculares",
+            "giro": 0
+          }
+        ]
+      },
+      {
+        "id": "r2",
+        "busca": "perpendiculares",
+        "opciones": [
+          {
+            "figura": "par",
+            "relacion": "paralelas",
+            "giro": 30
+          },
+          {
+            "figura": "par",
+            "relacion": "secantes",
+            "giro": 0,
+            "cruceVisible": true
+          },
+          {
+            "figura": "par",
+            "relacion": "perpendiculares",
+            "giro": 0
+          }
+        ]
+      },
+      {
+        "id": "r3",
+        "busca": "secantes",
+        "opciones": [
+          {
+            "figura": "par",
+            "relacion": "paralelas",
+            "giro": 0
+          },
+          {
+            "figura": "par",
+            "relacion": "secantes",
+            "giro": 20,
+            "cruceVisible": true
+          },
+          {
+            "figura": "par",
+            "relacion": "paralelas",
+            "giro": 45
+          }
+        ]
+      },
+      {
+        "id": "r4",
+        "busca": "recta",
+        "opciones": [
+          {
+            "figura": "linea",
+            "tipo": "segmento",
+            "giro": 15
+          },
+          {
+            "figura": "linea",
+            "tipo": "recta",
+            "giro": 15
+          },
+          {
+            "figura": "linea",
+            "tipo": "semirrecta",
+            "giro": 15
+          }
+        ]
+      },
+      {
+        "id": "r5",
+        "busca": "paralelas",
+        "opciones": [
+          {
+            "figura": "par",
+            "relacion": "secantes",
+            "giro": 0,
+            "cruceVisible": false
+          },
+          {
+            "figura": "par",
+            "relacion": "paralelas",
+            "giro": 60
+          },
+          {
+            "figura": "par",
+            "relacion": "perpendiculares",
+            "giro": 20
+          }
+        ]
+      },
+      {
+        "id": "r6",
+        "busca": "semirrecta",
+        "opciones": [
+          {
+            "figura": "linea",
+            "tipo": "recta",
+            "giro": 0
+          },
+          {
+            "figura": "linea",
+            "tipo": "semirrecta",
+            "giro": 30
+          },
+          {
+            "figura": "linea",
+            "tipo": "segmento",
+            "giro": 60
+          }
+        ]
+      },
+      {
+        "id": "r7",
+        "busca": "perpendiculares",
+        "opciones": [
+          {
+            "figura": "par",
+            "relacion": "secantes",
+            "giro": 30,
+            "cruceVisible": false
+          },
+          {
+            "figura": "par",
+            "relacion": "perpendiculares",
+            "giro": 30
+          },
+          {
+            "figura": "par",
+            "relacion": "paralelas",
+            "giro": 120
+          }
+        ]
+      },
+      {
+        "id": "r8",
+        "busca": "segmento",
+        "opciones": [
+          {
+            "figura": "linea",
+            "tipo": "semirrecta",
+            "giro": 150
+          },
+          {
+            "figura": "linea",
+            "tipo": "recta",
+            "giro": 100
+          },
+          {
+            "figura": "linea",
+            "tipo": "segmento",
+            "giro": 20
+          }
+        ]
+      }
+    ]
+  }
+}

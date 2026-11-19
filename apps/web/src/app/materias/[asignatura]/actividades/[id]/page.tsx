@@ -43,6 +43,8 @@ export default async function PaginaActividad({ params }: Parametros) {
           tipo: actividad.tipo,
           instruccion: actividad.instruccion,
           contenido: actividad.contenido,
+          grado: actividad.grado,
+          audioInstruccion: actividad.audioInstruccion,
         }}
         materia={materia.nombre}
         volverHref={volverHref}

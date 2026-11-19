@@ -1,0 +1,20 @@
+{
+  "slug": "la-pancarta-de-las-fiestas",
+  "titulo": "La pancarta de las fiestas",
+  "tipo": "pancarta",
+  "grado": 5,
+  "instruccion": "Armi está en las fiestas del pueblo y cada pancarta trae un número muy grande. Léelo y resuelve lo que te pide.",
+  "tema": "Números de más de siete cifras: lectura, escritura y valor posicional",
+  "contenido": {
+    "rondas": [
+      { "id": "r1", "modo": "letras", "numero": 12405300, "distractores": [1245300, 12450300] },
+      { "id": "r2", "modo": "letras", "numero": 7080025, "distractores": [7800025, 7008025] },
+      { "id": "r3", "modo": "cifras", "numero": 36500412, "distractores": [36050412, 3650412] },
+      { "id": "r4", "modo": "posicion", "numero": 48273916, "posicion": 5 },
+      { "id": "r5", "modo": "letras", "numero": 205016740, "distractores": [25016740, 205160740] },
+      { "id": "r6", "modo": "cifras", "numero": 91000018, "distractores": [91018000, 9100018] },
+      { "id": "r7", "modo": "posicion", "numero": 603154287, "posicion": 7 },
+      { "id": "r8", "modo": "letras", "numero": 1300009, "distractores": [1030009, 1300090] }
+    ]
+  }
+}

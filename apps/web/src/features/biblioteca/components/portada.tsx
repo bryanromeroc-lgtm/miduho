@@ -87,6 +87,31 @@ export function Portada({
 
   if (libro?.contenido) {
     const cubierta = libro.contenido[0];
+    if (cubierta.disposicion === "portada-editorial") {
+      return (
+        <div data-book-cover className={`${styles.portada} ${styles.editorial}`} aria-hidden="true">
+          <div className={styles.editorialTitulo}>
+            <strong>{cubierta.titulo ?? libro.titulo}</strong>
+          </div>
+          <span className={styles.editorialIlustracion}>
+            {cubierta.ilustracion && (
+              <Image
+                src={cubierta.ilustracion}
+                alt=""
+                fill
+                sizes="(max-width: 700px) 40vw, 200px"
+                priority={prioridad}
+                unoptimized
+              />
+            )}
+          </span>
+          <div className={styles.editorialMarca}>
+            <Image src="/images/biblioteca/escudo-editorial.webp" alt="" width={28} height={28} unoptimized />
+            <span>Colegio Mi Dulce Hogar</span>
+          </div>
+        </div>
+      );
+    }
     return (
       <div data-book-cover className={`${styles.portada} ${styles.compuesta}`}>
         <span className={styles.ilustracion}>

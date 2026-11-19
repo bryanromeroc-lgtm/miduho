@@ -16,10 +16,8 @@ export type IdRuta =
   | "agenda"
   | "mi-curso"
   | "dashboard"
-  | "usuarios"
-  | "estructura"
-  | "asignaciones"
-  | "estudiantes"
+  | "contenido"
+  | "administracion"
   | "cuenta";
 
 export interface RutaNav {
@@ -36,10 +34,8 @@ const R: Record<IdRuta, RutaNav> = {
   agenda: { id: "agenda", href: "/agenda", etiqueta: "Agenda" },
   "mi-curso": { id: "mi-curso", href: "/mi-curso", etiqueta: "Mi curso" },
   dashboard: { id: "dashboard", href: "/admin", etiqueta: "Dashboard" },
-  usuarios: { id: "usuarios", href: "/admin/usuarios", etiqueta: "Usuarios" },
-  estructura: { id: "estructura", href: "/admin/estructura", etiqueta: "Estructura" },
-  asignaciones: { id: "asignaciones", href: "/admin/asignaciones", etiqueta: "Asignaciones" },
-  estudiantes: { id: "estudiantes", href: "/admin/estudiantes", etiqueta: "Estudiantes" },
+  contenido: { id: "contenido", href: "/admin/contenido", etiqueta: "Contenido" },
+  administracion: { id: "administracion", href: "/admin/administracion", etiqueta: "Administración" },
   cuenta: { id: "cuenta", href: "/cuenta", etiqueta: "Cuenta" },
 };
 
@@ -47,7 +43,9 @@ const R: Record<IdRuta, RutaNav> = {
 const POR_CONTEXTO: Record<ContextoShell, IdRuta[]> = {
   ESTUDIANTE: ["hoy", "biblioteca", "laboratorios", "agenda", "cuenta"],
   DOCENTE: ["hoy", "clases", "biblioteca", "laboratorios", "agenda", "mi-curso", "cuenta"],
-  ADMIN: ["dashboard", "usuarios", "estudiantes", "estructura", "asignaciones", "cuenta"],
+  // La coordinadora ve el contenido pedagógico antes que la administración (vista-admin-contenido, D6).
+  // Usuarios (estudiantes y docentes) y Coordinación (estructura y asignaciones) viven dentro de Administración.
+  ADMIN: ["dashboard", "contenido", "biblioteca", "laboratorios", "administracion", "cuenta"],
 };
 
 /** El inicio del estudiante es su tablero de materias, no el día de la docente. */
@@ -72,16 +70,37 @@ export function esRutaAdmin(pathname: string) {
   return pathname === "/admin" || pathname.startsWith("/admin/");
 }
 
+/**
+ * Secciones que cuelgan de «Administración» sin compartir su prefijo de URL:
+ * el enlace del encabezado sigue marcado mientras se trabaja en cualquiera.
+ */
+export const SECCIONES_ADMINISTRACION = [
+  "/admin/administracion",
+  "/admin/usuarios",
+  "/admin/coordinacion",
+  "/admin/estructura",
+  "/admin/asignaciones",
+  "/admin/entregas",
+  "/admin/estudiantes",
+] as const;
+
+const porPrefijo = (base: string, pathname: string) => pathname === base || pathname.startsWith(`${base}/`);
+
 /** Marca activa: "/" y "/admin" solo coinciden exactos; el resto por prefijo de segmento. */
 export function rutaActiva(href: string, pathname: string) {
   if (href === "/" || href === "/admin") return pathname === href;
-  return pathname === href || pathname.startsWith(`${href}/`);
+  if (href === "/admin/administracion") return SECCIONES_ADMINISTRACION.some((b) => porPrefijo(b, pathname));
+  return porPrefijo(href, pathname);
 }
 
-/** Rutas de la maqueta general (Hoy, clases, laboratorios, agenda) y Mi curso. */
+/**
+ * Rutas de la maqueta de la docente (Hoy, clases, agenda) y Mi curso.
+ * Laboratorios ya no está aquí: es común a los tres contextos y, como la
+ * Biblioteca, conserva el contexto guardado (vista-admin-contenido, D5).
+ */
 export function esRutaMaqueta(pathname: string) {
   if (pathname === "/") return true;
-  return ["/clases", "/laboratorios", "/agenda", "/emprendimiento", "/mi-curso"].some(
+  return ["/clases", "/agenda", "/mi-curso"].some(
     (base) => pathname === base || pathname.startsWith(`${base}/`),
   );
 }
@@ -90,7 +109,8 @@ export function esRutaMaqueta(pathname: string) {
  * Contexto que pinta el shell. Una cuenta DOCENTE + ADMIN que abre una ruta de
  * administración ve la navegación ADMIN aunque su último contexto sea DOCENTE,
  * y la de DOCENTE dentro de la maqueta o Mi curso: la barra nunca contradice
- * la página. Biblioteca y Cuenta, comunes a todos, conservan el contexto guardado.
+ * la página. Biblioteca, Laboratorios y Cuenta, comunes a todos, conservan el
+ * contexto guardado.
  */
 export function contextoVisible(
   contexto: ContextoShell | null,
@@ -112,9 +132,12 @@ export function nombreRol(rol: string) {
   return NOMBRE_ROL[rol] ?? rol;
 }
 
-/** "1°" + "01" → "1°-01", la forma en que el colegio nombra sus grupos. */
-export function etiquetaGrupo(grado: string, identificador: string) {
-  return `${grado}-${identificador}`;
+/**
+ * El colegio tiene un solo grupo por grado: el grupo se nombra como su grado
+ * ("1°", "2°", …).
+ */
+export function etiquetaGrupo(grado: string) {
+  return grado;
 }
 
 /**

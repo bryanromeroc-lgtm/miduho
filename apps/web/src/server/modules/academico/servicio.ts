@@ -289,14 +289,14 @@ export function crearServicioAcademico(db: PrismaClient) {
 
   const grupos = {
     async listar(f: Entrada<typeof E.filtroGrupos>) {
-      // "1° 01" o "1°-01": cada palabra coincide con el grado o el identificador.
+      // "1°" o "1": cada palabra coincide con el nombre del grado.
       const where: Prisma.GrupoWhereInput = {
         ...(f.anioLectivoId ? { anioLectivoId: f.anioLectivoId } : {}),
         ...(f.gradoId ? { gradoId: f.gradoId } : {}),
         ...(f.q
           ? {
               AND: palabrasBusqueda(f.q, /[\s-]+/).map((p) => ({
-                OR: [{ identificador: { contains: p, mode: "insensitive" } }, { grado: { nombre: { contains: p, mode: "insensitive" } } }],
+                grado: { nombre: { contains: p, mode: "insensitive" } },
               })),
             }
           : {}),
@@ -322,7 +322,10 @@ export function crearServicioAcademico(db: PrismaClient) {
         await anioEditable(tx, d.anioLectivoId);
         if (!(await tx.grado.findUnique({ where: { id: d.gradoId } }))) throw noEncontrado("El grado");
         await validarDirector(tx, d.directorId);
-        return tx.grupo.create({ data: { ...d, directorId: d.directorId ?? null }, include: incluirGrupo });
+        if (await tx.grupo.findFirst({ where: { gradoId: d.gradoId, anioLectivoId: d.anioLectivoId } })) {
+          throw conflicto("GRUPO_DUPLICADO", "Ese grado ya tiene su grupo en ese año lectivo: el colegio tiene un solo grupo por grado.");
+        }
+        return tx.grupo.create({ data: { ...d, identificador: "01", directorId: d.directorId ?? null }, include: incluirGrupo });
       });
     },
     async actualizar(id: string, d: Entrada<typeof E.actualizarGrupo>) {
@@ -438,7 +441,7 @@ export function crearServicioAcademico(db: PrismaClient) {
         ...(f.anioLectivoId ? { anioLectivoId: f.anioLectivoId } : {}), ...(f.estado ? { estado: f.estado } : {}),
         ...(palabras.length ? { AND: palabras.map((p) => ({ OR: [
           { docente: { nombres: { contains: p, mode: "insensitive" } } }, { docente: { apellidos: { contains: p, mode: "insensitive" } } },
-          { asignatura: { nombre: { contains: p, mode: "insensitive" } } }, { grupo: { identificador: { contains: p, mode: "insensitive" } } },
+          { asignatura: { nombre: { contains: p, mode: "insensitive" } } }, { grupo: { grado: { nombre: { contains: p, mode: "insensitive" } } } },
           { grupo: { grado: { nombre: { contains: p, mode: "insensitive" } } } },
         ] })) } : {}),
       };

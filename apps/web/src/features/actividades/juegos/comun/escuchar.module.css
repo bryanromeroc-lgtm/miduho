@@ -1,0 +1,60 @@
+/* «Escuchar» y «Leer en voz alta»: botones de 44 px con los tokens --m-* de la materia. */
+
+.escuchar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.35rem 0.85rem;
+  border: 2px solid var(--m-tinta);
+  border-radius: 999px;
+  background: var(--m-tarjeta);
+  color: var(--m-tinta);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.escuchar[data-hablando] {
+  background: var(--m-banda);
+}
+.escuchar:focus-visible,
+.alternar:focus-visible {
+  outline: 3px solid var(--m-tinta);
+  outline-offset: 3px;
+}
+.icono {
+  flex: none;
+}
+.soloIcono {
+  padding: 0.35rem;
+}
+
+.alternar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  padding: 0.35rem 0.85rem;
+  border: 2px solid var(--m-tinta);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--m-tinta);
+  font: inherit;
+  cursor: pointer;
+}
+.alternar[aria-pressed="true"] {
+  background: var(--m-banda);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .escuchar[data-hablando] .icono {
+    animation: late 900ms ease-in-out infinite;
+  }
+}
+@keyframes late {
+  50% {
+    transform: scale(1.15);
+  }
+}

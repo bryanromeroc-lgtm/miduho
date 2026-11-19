@@ -2,16 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { KeyRound, Mail, Power, Save, ShieldCheck, Users } from "lucide-react";
-import {
-  AYUDA_COMBINACION,
-  COMBINACIONES,
-  ETIQUETA_COMBINACION,
-  ETIQUETA_ESTADO,
-  esCambioDeCombinacionPermitido,
-  type Combinacion,
-  type EstadoCuenta,
-} from "@/lib/usuarios";
+import { KeyRound, Mail, Power, Save, Users } from "lucide-react";
+import { ETIQUETA_COMBINACION, ETIQUETA_ESTADO, tieneAdmin, type Combinacion, type EstadoCuenta } from "@/lib/usuarios";
 import type { GrupoOpcion } from "@/server/modules/usuarios/servicio";
 import { Confirmar, CredencialUnica, llamarApi } from "../comunes";
 
@@ -35,7 +27,6 @@ export type Ficha = {
 type Aviso = { tipo: "ok" | "error"; texto: string } | null;
 type Pendiente =
   | { tipo: "estado"; estado: "ACTIVO" | "INACTIVO" }
-  | { tipo: "roles"; combinacion: Combinacion }
   | { tipo: "grupo"; grupoId: string; etiqueta: string }
   | { tipo: "restablecer" }
   | null;
@@ -58,7 +49,6 @@ export function FichaUsuario({ ficha, grupos, esPropia }: { ficha: Ficha; grupos
   const [avisos, setAvisos] = useState<Record<string, Aviso>>({});
   const [ocupado, setOcupado] = useState<string | null>(null);
   const [confirmar, setConfirmar] = useState<Pendiente>(null);
-  const [combinacion, setCombinacion] = useState<Combinacion | "">(ficha.combinacion ?? "");
   const [grupoId, setGrupoId] = useState("");
   const [credencial, setCredencial] = useState<{ correo: string; contrasena: string } | null>(null);
 
@@ -141,7 +131,6 @@ export function FichaUsuario({ ficha, grupos, esPropia }: { ficha: Ficha; grupos
     void ejecutar("grupo", `/api/usuarios/${ficha.id}/grupo`, "PUT", { grupoId: g.id }, `Asociado al grupo ${g.etiqueta}.`);
   }
 
-  const opcionesCombinacion = COMBINACIONES.filter((c) => esCambioDeCombinacionPermitido(ficha.combinacion, c));
   const desactivar = ficha.estado !== "INACTIVO";
 
   return (
@@ -201,58 +190,19 @@ export function FichaUsuario({ ficha, grupos, esPropia }: { ficha: Ficha; grupos
           </form>
         </section>
 
-        {/* ── Rol ── */}
+        {/* ── Rol: solo lectura. Otorgar o retirar ADMIN lo hace el equipo de desarrollo. ── */}
         <section className="cuenta-panel" aria-labelledby="sec-rol">
           <h2 id="sec-rol">Rol</h2>
-          <AvisoSeccion aviso={avisos.roles ?? null} />
-          {esEstudiante ? (
-            <p className="cuenta-texto">Una cuenta de estudiante no se convierte en cuenta del personal. Si hace falta, crea una cuenta nueva.</p>
-          ) : ficha.estado === "PENDIENTE_ACTIVACION" ? (
-            <p className="cuenta-texto">La cuenta espera que se acepte la invitación. Podrás cambiar su rol cuando esté activa.</p>
-          ) : (
-            <form
-              className="admin-formulario"
-              onSubmit={(e) => {
-                e.preventDefault();
-                if (!combinacion || combinacion === ficha.combinacion) {
-                  avisar("roles", { tipo: "error", texto: "Elige una combinación distinta de la actual." });
-                  return;
-                }
-                setConfirmar({ tipo: "roles", combinacion });
-              }}
-            >
-              <fieldset className="admin-opciones">
-                <legend className="sr-only">Combinación de roles</legend>
-                {opcionesCombinacion.map((c) => (
-                  <label key={c} className="admin-opcion">
-                    <input
-                      type="radio"
-                      name="combinacion-rol"
-                      value={c}
-                      checked={combinacion === c}
-                      onChange={() => setCombinacion(c)}
-                      aria-describedby={`rol-ayuda-${c}`}
-                    />
-                    <span>
-                      <strong>{ETIQUETA_COMBINACION[c]}</strong>
-                      <small id={`rol-ayuda-${c}`}>{AYUDA_COMBINACION[c]}</small>
-                    </span>
-                  </label>
-                ))}
-              </fieldset>
-              {ficha.asignacionesActivas > 0 || ficha.gruposDirigidos > 0 ? (
-                <p className="acceso-ayuda">
-                  Tiene {ficha.asignacionesActivas} asignación(es) activa(s)
-                  {ficha.gruposDirigidos ? ` y dirige ${ficha.gruposDirigidos} grupo(s)` : ""}: no se le puede retirar el rol Docente sin reasignar esa carga.
-                </p>
-              ) : null}
-              <div className="cuenta-acciones">
-                <button type="submit" className="boton-pastilla" data-variante="primario" disabled={ocupado === "roles"}>
-                  <ShieldCheck size={18} aria-hidden="true" /> Cambiar rol
-                </button>
-              </div>
-            </form>
-          )}
+          <p className="cuenta-texto">
+            <strong>{ficha.combinacion ? ETIQUETA_COMBINACION[ficha.combinacion] : "Sin rol válido"}</strong>
+          </p>
+          <p className="acceso-ayuda">
+            {esEstudiante
+              ? "Una cuenta de estudiante no se convierte en cuenta del personal. Si hace falta, crea una cuenta nueva."
+              : tieneAdmin(ficha.combinacion)
+                ? "El acceso a la administración lo otorga y lo retira solo el equipo de desarrollo."
+                : "El rol no se cambia desde aquí: dar acceso a la administración le corresponde al equipo de desarrollo."}
+          </p>
         </section>
 
         {/* ── Grupo (solo estudiante) ── */}
@@ -407,24 +357,6 @@ export function FichaUsuario({ ficha, grupos, esPropia }: { ficha: Ficha; grupos
           {confirmar?.tipo === "estado" && confirmar.estado === "INACTIVO"
             ? `${ficha.nombres} ${ficha.apellidos} no podrá ingresar y sus sesiones abiertas se cerrarán de inmediato. El historial se conserva.`
             : `${ficha.nombres} ${ficha.apellidos} podrá volver a ingresar.`}
-        </p>
-      </Confirmar>
-
-      <Confirmar
-        abierto={confirmar?.tipo === "roles"}
-        titulo="¿Cambiar el rol?"
-        textoConfirmar="Sí, cambiar rol"
-        pendiente={ocupado === "roles"}
-        onCancelar={() => setConfirmar(null)}
-        onConfirmar={() =>
-          confirmar?.tipo === "roles" &&
-          ejecutar("roles", `/api/usuarios/${ficha.id}/roles`, "PUT", { combinacion: confirmar.combinacion }, "Rol actualizado. Sus sesiones abiertas se cerraron.")
-        }
-      >
-        <p>
-          {confirmar?.tipo === "roles"
-            ? `Pasará de «${ficha.combinacion ? ETIQUETA_COMBINACION[ficha.combinacion] : "sin rol"}» a «${ETIQUETA_COMBINACION[confirmar.combinacion]}». Sus sesiones abiertas se cerrarán y deberá ingresar de nuevo.`
-            : ""}
         </p>
       </Confirmar>
 

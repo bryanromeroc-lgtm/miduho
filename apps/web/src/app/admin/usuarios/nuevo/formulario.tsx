@@ -3,18 +3,24 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { AYUDA_COMBINACION, COMBINACIONES, ETIQUETA_COMBINACION, type Combinacion } from "@/lib/usuarios";
+import { AYUDA_COMBINACION, COMBINACIONES_ALTA, ETIQUETA_COMBINACION, type CombinacionAlta } from "@/lib/usuarios";
 import type { GrupoOpcion } from "@/server/modules/usuarios/servicio";
 import { CredencialUnica, llamarApi } from "../comunes";
 
-type Creado =
-  | { id: string; correo: string; combinacion: Combinacion; invitacionEnviada: true }
-  | { id: string; correo: string; combinacion: Combinacion; contrasena: string; temporal: boolean };
+type Creado = { id: string; correo: string; combinacion: CombinacionAlta; contrasena: string; temporal: boolean };
 
-/** Alta individual: el tipo de cuenta decide la credencial inicial y si aplica grupo. */
-export function FormularioNuevoUsuario({ grupos }: { grupos: GrupoOpcion[] }) {
+const LISTADO: Record<CombinacionAlta, { href: string; texto: string }> = {
+  ESTUDIANTE: { href: "/admin/usuarios/estudiantes", texto: "Volver a estudiantes" },
+  DOCENTE: { href: "/admin/usuarios/docentes", texto: "Volver a docentes" },
+};
+
+/**
+ * Alta individual: estudiante o docente. El tipo decide la credencial inicial
+ * y si aplica grupo. Las cuentas con rol ADMIN no se crean desde aquí.
+ */
+export function FormularioNuevoUsuario({ grupos, inicial }: { grupos: GrupoOpcion[]; inicial: CombinacionAlta }) {
   const router = useRouter();
-  const [combinacion, setCombinacion] = useState<Combinacion>("DOCENTE");
+  const [combinacion, setCombinacion] = useState<CombinacionAlta>(inicial);
   const [pendiente, setPendiente] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [creado, setCreado] = useState<Creado | null>(null);
@@ -46,11 +52,9 @@ export function FormularioNuevoUsuario({ grupos }: { grupos: GrupoOpcion[] }) {
     return (
       <div className="admin-columna">
         <p role="status" className="admin-aviso" data-tipo="ok">
-          {"invitacionEnviada" in creado
-            ? `Se creó la cuenta de administración de ${creado.correo} y se envió una invitación válida por 24 horas.`
-            : `Se creó la cuenta de ${creado.correo}.`}
+          Se creó la cuenta de {creado.correo}.
         </p>
-        {"contrasena" in creado && creado.contrasena ? (
+        {creado.contrasena ? (
           <CredencialUnica
             correo={creado.correo}
             contrasena={creado.contrasena}
@@ -65,8 +69,8 @@ export function FormularioNuevoUsuario({ grupos }: { grupos: GrupoOpcion[] }) {
           <button type="button" className="boton-pastilla" data-variante="secundario" onClick={() => setCreado(null)}>
             Crear otra cuenta
           </button>
-          <Link href="/admin/usuarios" className="acceso-enlace">
-            Volver al listado
+          <Link href={LISTADO[creado.combinacion].href} className="acceso-enlace">
+            {LISTADO[creado.combinacion].texto}
           </Link>
         </div>
       </div>
@@ -83,7 +87,7 @@ export function FormularioNuevoUsuario({ grupos }: { grupos: GrupoOpcion[] }) {
 
       <fieldset className="admin-opciones">
         <legend>Tipo de cuenta</legend>
-        {COMBINACIONES.map((c) => (
+        {COMBINACIONES_ALTA.map((c) => (
           <label key={c} className="admin-opcion">
             <input
               type="radio"
@@ -128,7 +132,7 @@ export function FormularioNuevoUsuario({ grupos }: { grupos: GrupoOpcion[] }) {
             <p id="grupo-ayuda" className="acceso-ayuda">
               {grupos.length
                 ? "Puedes asociarlo ahora o después desde su ficha."
-                : "No hay grupos en un año lectivo activo. Créalos en Estructura académica."}
+                : "No hay grupos en un año lectivo activo. Créalos en Coordinación › Estructura."}
             </p>
           </div>
         ) : null}
@@ -136,9 +140,9 @@ export function FormularioNuevoUsuario({ grupos }: { grupos: GrupoOpcion[] }) {
 
       <div className="cuenta-acciones">
         <button type="submit" className="boton-pastilla" data-variante="primario" disabled={pendiente} aria-disabled={pendiente}>
-          {pendiente ? "Creando…" : combinacion === "ADMIN" ? "Crear y enviar invitación" : "Crear cuenta"}
+          {pendiente ? "Creando…" : "Crear cuenta"}
         </button>
-        <Link href="/admin/usuarios" className="boton-pastilla" data-variante="secundario">
+        <Link href={LISTADO[combinacion].href} className="boton-pastilla" data-variante="secundario">
           Cancelar
         </Link>
       </div>

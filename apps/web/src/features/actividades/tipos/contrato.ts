@@ -48,8 +48,9 @@ export function calificarIntento<C, R>(
   definicion: DefinicionTipoActividad<C, R>,
   contenido: C,
   respuestas: Record<string, unknown>,
+  opciones: { soloRespondidos?: boolean } = {},
 ): ResultadoIntento {
-  const items = definicion.items(contenido).map(({ itemId, puntajeMaximo }) => {
+  const items = definicion.items(contenido).filter(({ itemId }) => !opciones.soloRespondidos || Object.hasOwn(respuestas, itemId)).map(({ itemId, puntajeMaximo }) => {
     const leida = definicion.esquemaRespuesta.safeParse(respuestas[itemId]);
     const nota = leida.success ? definicion.calificar(contenido, itemId, leida.data) : { correcta: false, puntaje: 0 };
     const puntaje = Math.min(puntajeMaximo, Math.max(0, nota.puntaje));

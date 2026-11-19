@@ -1,0 +1,207 @@
+/*
+  Mapa de cobertura (vista-admin-contenido, D7) sobre la hoja del contexto
+  ADMIN: papel, borde celeste y tinta azul marino (tokens --dia-*). Los tres
+  estados se distinguen por palabra, forma y color; todos los pares de
+  texto superan 4.5:1 (#ffffff/#0066d6 5.4, #1f4a7a/#ffffff 8.9,
+  #1f4a7a/#eef7fd 8.3).
+*/
+
+.indice {
+  display: grid;
+  gap: 22px;
+}
+
+/* ── Leyenda ─────────────────────────────────────────────────────── */
+.leyenda {
+  display: grid;
+  gap: 12px;
+  padding: 16px 20px;
+  border: 1.5px solid var(--dia-borde, #cfe3f2);
+  border-radius: 20px;
+  background: var(--dia-tinte, #eef7fd);
+}
+.leyendaTitulo {
+  font-family: var(--fuente-display);
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: var(--dia-texto, #092a55);
+}
+.leyendaLista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+}
+.leyendaLista li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  color: var(--dia-suave, #1f4a7a);
+}
+.leyendaLista li > span:last-child {
+  max-width: 34ch;
+}
+
+/* ── Un área ─────────────────────────────────────────────────────── */
+.area {
+  display: grid;
+  gap: 10px;
+}
+.areaNombre {
+  font-family: var(--fuente-display);
+  font-size: clamp(1.25rem, 1.05rem + 0.6vw, 1.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--dia-texto, #092a55);
+  text-wrap: balance;
+}
+.areaVacia {
+  padding: 18px 20px;
+  border: 1.5px dashed var(--dia-borde-panel, #a9d4f0);
+  border-radius: 20px;
+  font-size: 1rem;
+  color: var(--dia-suave, #1f4a7a);
+}
+
+/* La tabla nunca se parte en tarjetas: se desplaza dentro de su región. */
+.desplazable {
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1.5px solid var(--dia-borde, #cfe3f2);
+  border-radius: 20px;
+  background: var(--papel, #fff);
+  box-shadow: var(--dia-sombra, 0 10px 24px -14px #0a3d6b59);
+  scrollbar-color: var(--dia-borde-panel, #a9d4f0) transparent;
+}
+.desplazable:focus-visible {
+  outline: 3px solid var(--dia-azul, #0066d6);
+  outline-offset: 3px;
+}
+
+.tabla {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+.tabla th,
+.tabla td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--dia-borde, #cfe3f2);
+  text-align: left;
+  vertical-align: middle;
+}
+.tabla tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.tabla thead th {
+  background: var(--dia-tinte, #eef7fd);
+  font-size: var(--tipo-rotulo, 0.8125rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--dia-suave, #1f4a7a);
+  white-space: nowrap;
+}
+.grado {
+  min-width: 132px;
+}
+.tabla thead .grado {
+  font-family: var(--fuente-display);
+  font-size: 1.0625rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--dia-texto, #092a55);
+}
+
+/* La columna de la asignatura queda fija al desplazar. */
+.esquina,
+.asignatura {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  min-width: 170px;
+  max-width: 230px;
+  border-right: 1px solid var(--dia-borde, #cfe3f2);
+}
+.esquina {
+  background: var(--dia-tinte, #eef7fd);
+}
+.asignatura {
+  background: var(--papel, #fff);
+  font-family: var(--fuente-display);
+  font-size: 1.0625rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--dia-texto, #092a55);
+}
+
+/* ── Celda: tres estados ─────────────────────────────────────────── */
+.celda {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    background-color 0.18s ease-out,
+    border-color 0.18s ease-out;
+}
+a.celda:focus-visible {
+  outline: 3px solid var(--dia-azul, #0066d6);
+  outline-offset: 3px;
+}
+
+.celda[data-estado="con-contenido"] {
+  background: var(--dia-azul, #0066d6);
+  color: #fff;
+  font-family: var(--fuente-display);
+  font-weight: 800;
+}
+a.celda[data-estado="con-contenido"]:hover {
+  background: var(--dia-azul-hondo, #0055b4);
+}
+
+.celda[data-estado="sin-contenido"] {
+  border: 2px dashed var(--dia-borde-panel, #a9d4f0);
+  background: var(--papel, #fff);
+  color: var(--dia-suave, #1f4a7a);
+}
+a.celda[data-estado="sin-contenido"]:hover {
+  border-color: var(--dia-azul, #0066d6);
+  background: var(--dia-tinte, #eef7fd);
+}
+
+.celda[data-estado="no-se-dicta"] {
+  padding: 0 4px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--dia-suave, #1f4a7a);
+}
+
+.flecha {
+  transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+}
+a.celda:hover .flecha {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .celda,
+  .flecha {
+    transition: none;
+  }
+  a.celda:hover .flecha {
+    transform: none;
+  }
+}

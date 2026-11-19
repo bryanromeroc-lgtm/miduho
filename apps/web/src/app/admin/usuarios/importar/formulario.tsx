@@ -30,8 +30,8 @@ function descargarTexto(texto: string, nombre: string) {
   URL.revokeObjectURL(url);
 }
 
-export function FormularioImportacion() {
-  const [tipo, setTipo] = useState<Tipo>("estudiantes");
+export function FormularioImportacion({ inicial = "estudiantes" }: { inicial?: Tipo }) {
+  const [tipo, setTipo] = useState<Tipo>(inicial);
   const [contenido, setContenido] = useState<string | null>(null);
   const [nombreArchivo, setNombreArchivo] = useState("");
   const [revision, setRevision] = useState<Revision | null>(null);
@@ -119,7 +119,7 @@ export function FormularioImportacion() {
                 <strong>{t === "estudiantes" ? "Estudiantes" : "Docentes"}</strong>
                 <small>
                   {t === "estudiantes"
-                    ? "Columnas: nombres, apellidos, correo, año, grado, grupo. Ej.: año 2026, grado 2°, grupo 01."
+                    ? "Columnas: nombres, apellidos, correo, año, grado. Ej.: año 2026, grado 2°."
                     : "Columnas: nombres, apellidos, correo. Deberán cambiar la contraseña temporal al ingresar."}
                 </small>
               </span>

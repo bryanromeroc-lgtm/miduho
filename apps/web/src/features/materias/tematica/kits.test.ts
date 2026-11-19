@@ -40,7 +40,7 @@ describe("catálogo de kits temáticos (D4)", () => {
         ).toBe(false);
   });
 
-  it("las 11 escenas tienen kit propio con su arte", () => {
+  it("todas las escenas tienen kit propio con su arte", () => {
     for (const e of ESCENAS) expect(kitDe(e).escena).toBe(e);
   });
 

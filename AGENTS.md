@@ -5,10 +5,9 @@ Plataforma educativa **dedicada** al Colegio Mi Dulce Hogar (Madrid, Cundinamarc
 ## Reglas duras (no negociables — si las violas, el cambio se rechaza)
 
 1. **No inventar datos personales de menores.** No hay datos reales de estudiantes, docentes ni acudientes. Todo dato en la maqueta es ficticio y debe leerse como tal. Nunca generes nombres, cédulas ni datos personales de menores, ni siquiera "de ejemplo".
-2. **No copiar contenido protegido.** La plataforma Trendi es referencia funcional únicamente. No se copia código, texto, imágenes ni identidad visual. Solo esquema estructural y redacción propia. Material de Robótica/Emprendimiento: solo el esquema (bloque → unidad → ruta de 7 secciones).
-3. **WCAG 2.1 AA obligatorio.** Ningún texto pedagógico como imagen: todo seleccionable, buscable, responsive. Contraste ≥ 4.5:1. Alt text en imágenes informativas, `alt=""` en decorativas. Navegación por teclado, foco visible.
-4. **Distinguir observado / inferido / propuesto / por confirmar.** Nunca presentes algo con más certeza de la que tiene. Marca lo no confirmado con 🔶.
-5. **Español de Colombia.** Sin lenguaje de marca comercial: "Circuito"→Unidad, "Curious/Kids/Labs"→terminología curricular. Terminología: Área · Nivel · Bloque · Unidad · Sesión · Ruta didáctica · Grupo · Período · Asignatura · Acudiente · Estándares · DBA · SIEE.
+2. **WCAG 2.1 AA obligatorio.** Ningún texto pedagógico como imagen: todo seleccionable, buscable, responsive. Contraste ≥ 4.5:1. Alt text en imágenes informativas, `alt=""` en decorativas. Navegación por teclado, foco visible.
+3. **Distinguir observado / inferido / propuesto / por confirmar.** Nunca presentes algo con más certeza de la que tiene. Marca lo no confirmado con 🔶.
+4. **Español de Colombia.** Sin lenguaje de marca comercial: "Circuito"→Unidad, "Curious/Kids/Labs"→terminología curricular. Terminología: Área · Nivel · Bloque · Unidad · Sesión · Ruta didáctica · Grupo · Período · Asignatura · Acudiente · Estándares · DBA · SIEE.
 
 ## Next.js 16: no es el Next.js que conoces
 

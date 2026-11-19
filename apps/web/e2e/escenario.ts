@@ -1,7 +1,8 @@
 // Escenario ficticio adicional para el E2E INC1R-13 (fuera del repo). Datos 100 % ficticios.
 // - Una cuenta mixta DOCENTE+ADMIN para el selector de contexto.
-// - Cinco estudiantes ficticios más en 1°-01 (uno INACTIVO) para «Mi curso».
-// - Un segundo docente con 1°-02 y un estudiante: el docente sembrado NO debe verlos.
+// - Cinco estudiantes ficticios más en 1° (uno INACTIVO) para «Mi curso».
+// - Un segundo docente con el grupo de 2° y un estudiante: el docente sembrado NO debe verlos.
+//   (El colegio tiene un solo grupo por grado: 1°, 2°, 3°, 4° y 5°.)
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../src/generated/prisma/client";
 import { urlBaseDatos } from "../src/lib/entorno";
@@ -12,7 +13,7 @@ async function main() {
   const docente = await db.usuario.findUniqueOrThrow({ where: { correo: "docente@miduho.test" } });
   const est = await db.usuario.findUniqueOrThrow({ where: { correo: "estudiante@miduho.test" } });
   const anio = await db.anioLectivo.findFirstOrThrow({ where: { estado: "ACTIVO" } });
-  const g1 = await db.grupo.findFirstOrThrow({ where: { anioLectivoId: anio.id, identificador: "01" }, include: { grado: true } });
+  const g1 = await db.grupo.findFirstOrThrow({ where: { anioLectivoId: anio.id, grado: { nombre: "1°" } }, include: { grado: true } });
   const rolEst = await db.rol.findUniqueOrThrow({ where: { codigo: "ESTUDIANTE" } });
   const rolDoc = await db.rol.findUniqueOrThrow({ where: { codigo: "DOCENTE" } });
   const rolAdmin = await db.rol.findUniqueOrThrow({ where: { codigo: "ADMIN" } });
@@ -57,8 +58,16 @@ async function main() {
       roles: { create: { rolId: rolDoc.id } },
     },
   });
-  const g2 = await db.grupo.create({ data: { gradoId: g1.gradoId, anioLectivoId: anio.id, identificador: "02" } });
+  const segundo = await db.grado.findUniqueOrThrow({ where: { nombre: "2°" } });
+  const g2 =
+    (await db.grupo.findFirst({ where: { gradoId: segundo.id, anioLectivoId: anio.id } })) ??
+    (await db.grupo.create({ data: { gradoId: segundo.id, anioLectivoId: anio.id, identificador: "01" } }));
   const asig = await db.asignaturaGrado.findFirstOrThrow({ where: { gradoId: g1.gradoId } });
+  await db.asignaturaGrado.upsert({
+    where: { asignaturaId_gradoId: { asignaturaId: asig.asignaturaId, gradoId: segundo.id } },
+    update: {},
+    create: { asignaturaId: asig.asignaturaId, gradoId: segundo.id },
+  });
   await db.asignacionDocente.create({
     data: {
       docenteId: docB.id,

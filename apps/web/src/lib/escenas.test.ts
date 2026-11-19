@@ -18,6 +18,8 @@ describe("escenas por asignatura", () => {
     ["Ética y valores", "etica"],
     ["Educación artística", "artistica"],
     ["Educación física", "fisica"],
+    ["Física", "ciencias_fisicas"],
+    ["Ciencias físicas", "ciencias_fisicas"],
     ["Ciencias sociales", "sociales"],
     ["Ciencias naturales", "naturales"],
   ])("«%s» → %s", (asignatura, escena) => {

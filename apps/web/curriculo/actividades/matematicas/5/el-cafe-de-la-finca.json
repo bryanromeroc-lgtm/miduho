@@ -1,0 +1,48 @@
+{
+  "slug": "el-cafe-de-la-finca",
+  "titulo": "El café de la finca",
+  "tipo": "division",
+  "grado": 5,
+  "instruccion": "Armi empaca el café de la finca. Divide para saber cuántas bolsas se llenan (cociente) y cuánto café sobra (residuo).",
+  "tema": "División con divisor de tres cifras: cociente y residuo",
+  "contenido": {
+    "divisiones": [
+      {
+        "id": "d1",
+        "dividendo": 864,
+        "divisor": 216,
+        "contexto": "Armi tiene 864 gramos de café molido y cada bolsa lleva 216 gramos."
+      },
+      {
+        "id": "d2",
+        "dividendo": 975,
+        "divisor": 125,
+        "contexto": "En la finca recogieron 975 granos de muestra y cada frasco guarda 125."
+      },
+      {
+        "id": "d3",
+        "dividendo": 2548,
+        "divisor": 312,
+        "contexto": "Hay 2.548 gramos de café tostado y cada paquete se llena con 312 gramos."
+      },
+      {
+        "id": "d4",
+        "dividendo": 5000,
+        "divisor": 250,
+        "contexto": "Se van a empacar 5.000 gramos de café en bolsas de 250 gramos."
+      },
+      {
+        "id": "d5",
+        "dividendo": 7391,
+        "divisor": 145,
+        "contexto": "La cooperativa recibe 7.391 gramos de café y cada lata lleva 145 gramos."
+      },
+      {
+        "id": "d6",
+        "dividendo": 9876,
+        "divisor": 432,
+        "contexto": "Para la feria hay 9.876 gramos de café y cada caja lleva 432 gramos."
+      }
+    ]
+  }
+}

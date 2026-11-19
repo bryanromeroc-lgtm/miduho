@@ -9,7 +9,7 @@ export type TipoImportacion = (typeof TIPOS_IMPORTACION)[number];
 
 /** Encabezados exactos de cada plantilla (§9.1 y §9.2). */
 export const ENCABEZADOS: Record<TipoImportacion, readonly string[]> = {
-  estudiantes: ["nombres", "apellidos", "correo", "año", "grado", "grupo"],
+  estudiantes: ["nombres", "apellidos", "correo", "año", "grado"],
   docentes: ["nombres", "apellidos", "correo"],
 };
 

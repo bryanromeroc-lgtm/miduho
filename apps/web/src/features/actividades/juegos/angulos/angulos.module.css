@@ -1,0 +1,124 @@
+/*
+  EL MES DE LAS COMETAS · transportador de dos escalas (SVG propio) y
+  rayos candidatos a bisectriz con su letra como botón.
+*/
+
+.panel {
+  justify-self: center;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  width: min(94%, 640px);
+  margin-top: clamp(10px, 2.4cqi, 24px);
+  padding: clamp(10px, 2.4cqi, 20px);
+  border-radius: 18px;
+  background: rgb(255 251 242 / 0.95);
+  box-shadow: 0 10px 24px rgb(30 40 60 / 0.18);
+}
+
+.figura {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  aspect-ratio: 400 / 240;
+}
+
+.escala,
+.escalaDentro {
+  font-family: var(--fuente-display);
+  font-weight: 700;
+  fill: #1b2440;
+}
+.escala {
+  font-size: 13px;
+}
+.escalaDentro {
+  font-size: 10.5px;
+  fill: #4b5a78;
+}
+.escala[data-resaltar],
+.escalaDentro[data-resaltar] {
+  fill: #b3261e;
+  font-weight: 800;
+}
+
+.rayo {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 3px solid #1f5fbf;
+  border-radius: 50%;
+  background: #fff;
+  color: #1f5fbf;
+  font-family: var(--fuente-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+.rayo:not(:disabled):hover {
+  background: #e3edfb;
+}
+.rayo:focus-visible {
+  outline: 3px solid var(--m-tinta);
+  outline-offset: 1px;
+}
+.rayo:disabled {
+  cursor: default;
+}
+.rayo[data-estado="ok"] {
+  border-color: #2f9a57;
+  background: #dcf2e3;
+  color: #145c2e;
+}
+.rayo[data-estado="no"] {
+  border-color: #d2574b;
+  background: #fbe4e1;
+  color: #962a22;
+}
+
+.lectura {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  color: #1b2440;
+  font-family: var(--fuente-display);
+  font-size: clamp(1.15rem, 0.8rem + 1.6cqi, 1.6rem);
+  font-weight: 800;
+}
+.entrada {
+  width: 96px;
+  min-height: 50px;
+  padding: 0 10px;
+  border: 3px solid var(--m-acento);
+  border-radius: 12px;
+  background: #fff;
+  color: #1b2440;
+  font: inherit;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.entrada:focus-visible {
+  outline: 3px solid var(--m-tinta);
+  outline-offset: 2px;
+}
+.entrada[data-estado="ok"] {
+  border-color: #2f9a57;
+  background: #dcf2e3;
+  color: #145c2e;
+}
+.entrada[data-estado="no"] {
+  border-color: #d2574b;
+  background: #fbe4e1;
+  color: #962a22;
+}
+
+.mando {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: center;
+  gap: 16px 28px;
+}

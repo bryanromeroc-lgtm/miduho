@@ -1,0 +1,54 @@
+{
+  "slug": "el-cultivo-de-flores",
+  "titulo": "El cultivo de flores",
+  "tipo": "multiplos",
+  "grado": 5,
+  "instruccion": "En un cultivo de flores de Madrid, Cundinamarca, se arman ramos iguales. Busca en las filas de divisores cuántos ramos se pueden hacer como máximo.",
+  "tema": "Máximo común divisor (m.c.d.) con filas de divisores",
+  "contenido": {
+    "modo": "mcd",
+    "escena": "flores",
+    "filas": [
+      "Rosas",
+      "Claveles"
+    ],
+    "rondas": [
+      {
+        "id": "d1",
+        "a": 12,
+        "b": 18,
+        "contexto": "Hay 12 rosas y 18 claveles. Se arman ramos iguales, cada uno con las mismas rosas y los mismos claveles, sin que sobre ninguna flor."
+      },
+      {
+        "id": "d2",
+        "a": 24,
+        "b": 36,
+        "contexto": "Hay 24 rosas y 36 claveles. Se arman ramos iguales, cada uno con las mismas rosas y los mismos claveles, sin que sobre ninguna flor."
+      },
+      {
+        "id": "d3",
+        "a": 15,
+        "b": 25,
+        "contexto": "Hay 15 rosas y 25 claveles. Se arman ramos iguales, cada uno con las mismas rosas y los mismos claveles, sin que sobre ninguna flor."
+      },
+      {
+        "id": "d4",
+        "a": 16,
+        "b": 40,
+        "contexto": "Hay 16 rosas y 40 claveles. Se arman ramos iguales, cada uno con las mismas rosas y los mismos claveles, sin que sobre ninguna flor."
+      },
+      {
+        "id": "d5",
+        "a": 30,
+        "b": 45,
+        "contexto": "Hay 30 rosas y 45 claveles. Se arman ramos iguales, cada uno con las mismas rosas y los mismos claveles, sin que sobre ninguna flor."
+      },
+      {
+        "id": "d6",
+        "a": 14,
+        "b": 21,
+        "contexto": "Hay 14 rosas y 21 claveles. Se arman ramos iguales, cada uno con las mismas rosas y los mismos claveles, sin que sobre ninguna flor."
+      }
+    ]
+  }
+}

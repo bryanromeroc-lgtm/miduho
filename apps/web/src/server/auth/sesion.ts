@@ -23,12 +23,14 @@ export function puedeUsarContexto(rolesEntrada: string[], contexto: string): con
   return (contexto === "ADMIN" || contexto === "DOCENTE") && roles.includes(contexto);
 }
 
-export type FamiliaRuta = "ADMIN" | "GENERAL" | "BIBLIOTECA" | "MI_CURSO" | "CUENTA";
+export type FamiliaRuta = "ADMIN" | "GENERAL" | "BIBLIOTECA" | "LABORATORIOS" | "MI_CURSO" | "CUENTA";
 
 export function puedeAccederRuta(rolesEntrada: string[], familia: FamiliaRuta) {
   const roles = normalizarRoles(rolesEntrada);
   if (familia === "CUENTA" || familia === "BIBLIOTECA") return roles.length > 0;
   if (familia === "ADMIN") return roles.includes("ADMIN");
   if (familia === "MI_CURSO") return roles.includes("DOCENTE");
+  // La coordinadora (ADMIN) también recorre Laboratorios (vista-admin-contenido, D5).
+  if (familia === "LABORATORIOS") return roles.length > 0;
   return roles.includes("DOCENTE") || roles.includes("ESTUDIANTE");
 }

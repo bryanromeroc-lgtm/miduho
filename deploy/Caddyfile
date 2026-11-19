@@ -25,6 +25,11 @@
 		file_server
 	}
 
+	# El multipart incluye cabeceras además de los 20 MB del archivo.
+	request_body {
+		max_size 21MB
+	}
+
 	# Todo lo demás va a Next.js; reverse_proxy envía X-Forwarded-For/Proto/Host.
 	handle {
 		reverse_proxy app:3000

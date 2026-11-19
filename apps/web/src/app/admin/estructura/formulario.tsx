@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
-import { Confirmar, llamarApi } from "@/app/admin/usuarios/comunes";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Lock, Pencil, Trash2 } from "lucide-react";
+import { AltaPlegable, Confirmar, llamarApi } from "@/app/admin/usuarios/comunes";
 import { accionesAnio, anioCerrado, campoIntensidad, CUERPO_CIERRE, cuerpoFormulario, errorCuerpo, type Modo, type TipoApi } from "@/features/estructura-academica/edicion";
 
 export type Clave = "anios" | "periodos" | "areas" | "grados" | "grupos" | "asignaturas";
@@ -11,45 +12,69 @@ export type Listado = { filtros: ReactNode; resumen: ReactNode; vacio: ReactNode
 type Registro = Record<string, unknown> & { id: string };
 type Catalogo = { anios: Opcion[]; aniosEditables: Opcion[]; grados: Opcion[]; areas: Opcion[]; docentes: Opcion[] };
 type Props = {
-  anios: Registro[]; periodos: Registro[]; areas: Registro[]; grados: Registro[]; grupos: Registro[]; asignaturas: Registro[];
+  /** Sección visible: el panel muestra una sola a la vez. */
+  ver: Clave;
+  registros: Registro[];
   /** Catálogos completos para los formularios de alta y edición (no dependen de la página ni de los filtros). */
   catalogo: Catalogo;
-  listados: Record<Clave, Listado>;
+  listado: Listado;
 };
 type Edicion = { tipo: TipoApi; registro: Registro; titulo: string };
+type Dato = { etiqueta: string; valor: ReactNode };
+/** Lo que pinta una tarjeta de registro: título, estado opcional, datos y acciones. */
+type Ficha = { id: string; titulo: string; insignia?: ReactNode; datos: Dato[]; etiqueta: string; acciones: { editar?: () => void; cerrar?: () => void; ruta?: string } };
 
 const fecha = (v: unknown) => (v ? (typeof v === "string" ? v.slice(0, 10) : new Date(v as Date).toISOString().slice(0, 10)) : "");
+const MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+/** Rango legible ("1 feb 2026 – 30 nov 2026"); la fecha se guarda como día civil. */
+const vigencia = (inicio: unknown, fin: unknown) => {
+  const f = (v: unknown) => { const [a, m, d] = fecha(v).split("-").map(Number); return a ? `${d} ${MESES[m - 1]} ${a}` : "Sin fecha"; };
+  return `${f(inicio)} – ${f(fin)}`;
+};
 const texto = (v: unknown) => String(v ?? "");
 const objeto = (v: unknown) => (v ?? undefined) as Record<string, unknown> | undefined;
 const TIPOS_AREA: Record<string, string> = { AREA: "Área", DIMENSION: "Dimensión", ENFOQUE: "Enfoque" };
 const NIVELES: Record<string, string> = { PREESCOLAR: "Preescolar", PRIMARIA: "Primaria", BACHILLERATO: "Bachillerato" };
 const ESTADOS_ANIO: Record<string, string> = { ACTIVO: "Activo", CERRADO: "Cerrado" };
-const nombreGrupo = (g: Registro) => `${texto(objeto(g.grado)?.nombre)}-${texto(g.identificador)}`;
+const nombreGrupo = (g: Registro) => texto(objeto(g.grado)?.nombre);
 
-export function FormularioEstructura({ anios, periodos, areas, grados, grupos, asignaturas, catalogo, listados }: Props) {
-  const [aviso, setAviso] = useState<{ tipo: TipoApi; mensaje: string } | null>(null);
+/** Textos de cada sección: título, regla de negocio y botón de alta. */
+const SECCIONES: Record<Clave, { titulo: string; nota: string; nuevo: string; formulario: string }> = {
+  anios: { titulo: "Años lectivos", nuevo: "Nuevo año lectivo", formulario: "Crear año lectivo", nota: "Solo puede haber un año activo. Todo año se crea activo; ciérralo desde su tarjeta cuando sus períodos sumen exactamente 100 %. Un año cerrado es de solo lectura." },
+  periodos: { titulo: "Períodos", nuevo: "Nuevo período", formulario: "Crear período", nota: "Los períodos deben estar dentro del año, no pueden cruzarse y su ponderación anual no puede superar 100 %." },
+  areas: { titulo: "Áreas", nuevo: "Nueva área", formulario: "Crear área", nota: "Las áreas agrupan asignaturas; no se eliminan si ya tienen relaciones." },
+  grados: { titulo: "Grados", nuevo: "Nuevo grado", formulario: "Crear grado", nota: "Cada grado tiene un nivel educativo y orden curricular." },
+  grupos: { titulo: "Grupos", nuevo: "Nuevo grupo", formulario: "Crear grupo", nota: "El director debe ser un docente activo. El año y el grado de un grupo no cambian después de crearlo. Los grupos de años cerrados son inmutables." },
+  asignaturas: { titulo: "Asignaturas", nuevo: "Nueva asignatura", formulario: "Crear asignatura", nota: "Habilita la asignatura para los grados donde se dicta, con su intensidad semanal opcional. No se elimina si ya tiene relaciones." },
+};
+/** Segmento de API de cada sección. */
+const TIPO_DE: Record<Clave, TipoApi> = { anios: "anios-lectivos", periodos: "periodos", areas: "areas", grados: "grados", grupos: "grupos", asignaturas: "asignaturas" };
+
+export function FormularioEstructura({ ver, registros, catalogo, listado }: Props) {
+  const [aviso, setAviso] = useState<string | null>(null);
   const [ocupado, setOcupado] = useState(false);
   const [edicion, setEdicion] = useState<Edicion | null>(null);
   const [errorEdicion, setErrorEdicion] = useState<string | null>(null);
   const [borrar, setBorrar] = useState<{ ruta: string; etiqueta: string } | null>(null);
   const [cerrar, setCerrar] = useState<Registro | null>(null);
   const [errorDialogo, setErrorDialogo] = useState<string | null>(null);
+  const tipo = TIPO_DE[ver];
+  const seccion = SECCIONES[ver];
 
   /** Envía un formulario de alta o edición; los errores de esquema o dominio se muestran sin perder lo escrito. */
-  async function guardar(tipo: TipoApi, modo: Modo, f: HTMLFormElement, registro?: Registro) {
-    const mostrar = (mensaje: string | null) => (modo === "crear" ? setAviso(mensaje ? { tipo, mensaje } : null) : setErrorEdicion(mensaje));
-    const cuerpo = cuerpoFormulario(tipo, new FormData(f), modo, registro);
-    const invalido = errorCuerpo(tipo, modo, cuerpo);
+  async function guardar(modo: Modo, f: HTMLFormElement, registro?: Registro, tipoApi: TipoApi = tipo) {
+    const mostrar = (mensaje: string | null) => (modo === "crear" ? setAviso(mensaje) : setErrorEdicion(mensaje));
+    const cuerpo = cuerpoFormulario(tipoApi, new FormData(f), modo, registro);
+    const invalido = errorCuerpo(tipoApi, modo, cuerpo);
     if (invalido) { mostrar(invalido); return; }
     setOcupado(true); mostrar(null);
-    const r = await llamarApi(registro ? `/api/${tipo}/${registro.id}` : `/api/${tipo}`, registro ? "PATCH" : "POST", cuerpo);
+    const r = await llamarApi(registro ? `/api/${tipoApi}/${registro.id}` : `/api/${tipoApi}`, registro ? "PATCH" : "POST", cuerpo);
     setOcupado(false);
     if (!r.ok) { mostrar(r.mensaje); return; }
     window.location.reload();
   }
 
-  const crear = (tipo: TipoApi) => (e: FormEvent<HTMLFormElement>) => { e.preventDefault(); void guardar(tipo, "crear", e.currentTarget); };
-  const abrirEdicion = (tipo: TipoApi, registro: Registro, titulo: string) => { setErrorEdicion(null); setEdicion({ tipo, registro, titulo }); };
+  const abrirEdicion = (registro: Registro, titulo: string) => { setErrorEdicion(null); setEdicion({ tipo, registro, titulo }); };
 
   async function confirmar(ruta: string, metodo: "DELETE" | "PATCH", cuerpo?: unknown) {
     setOcupado(true); setErrorDialogo(null);
@@ -60,72 +85,37 @@ export function FormularioEstructura({ anios, periodos, areas, grados, grupos, a
   }
   const cancelarDialogo = () => { setBorrar(null); setCerrar(null); setErrorDialogo(null); };
 
-  /** Acciones de fila; sin `editar` la fila es de solo lectura (año cerrado). */
-  function acciones(etiqueta: string, a: { editar?: () => void; cerrar?: () => void; ruta?: string }) {
-    if (!a.editar && !a.cerrar && !a.ruta) return <span className="admin-nota">Solo lectura (año cerrado)</span>;
-    return <span className="admin-acciones-fila">
-      {a.editar ? <button type="button" className="admin-enlace-fila" onClick={a.editar}>Editar<span className="sr-only"> {etiqueta}</span></button> : null}
-      {a.cerrar ? <button type="button" className="admin-enlace-fila" onClick={() => { setErrorDialogo(null); a.cerrar!(); }}>Cerrar año<span className="sr-only"> {etiqueta}</span></button> : null}
-      {a.ruta ? <button type="button" className="admin-enlace-fila" onClick={() => { setErrorDialogo(null); setBorrar({ ruta: a.ruta!, etiqueta }); }}>Eliminar<span className="sr-only"> {etiqueta}</span></button> : null}
-    </span>;
-  }
+  const fichas: Ficha[] = registros.map((r) => fichaDe(ver, r, abrirEdicion, setCerrar));
 
-  return <div className="admin-columna">
-    <Seccion error={aviso} clave="anios" titulo="Años lectivos" nota="Solo puede haber un año activo. Todo año se crea activo; ciérralo desde la tabla cuando sus períodos sumen exactamente 100 %. Un año cerrado es de solo lectura." listado={listados.anios} filas={anios.length}
-      formulario={<form onSubmit={crear("anios-lectivos")} className="admin-formulario admin-rejilla" aria-label="Crear año lectivo">
-        <CamposAnio /><Guardar ocupado={ocupado} texto="Crear año" />
-      </form>}>
-      <Tabla titulo="Años lectivos" encabezados={["Año", "Vigencia", "Estado", "Acciones"]}>{anios.map((a) => {
-        const etiqueta = `el año ${texto(a.anio)}`; const permitido = accionesAnio(a.estado);
-        return <tr key={a.id}><th scope="row">{texto(a.anio)}</th><td data-etiqueta="Vigencia">{fecha(a.fechaInicio)} a {fecha(a.fechaFin)}</td><td data-etiqueta="Estado"><span className="admin-estado" data-estado={texto(a.estado)}>{ESTADOS_ANIO[texto(a.estado)] ?? texto(a.estado)}</span></td>
-          <td>{acciones(etiqueta, { editar: permitido.editar ? () => abrirEdicion("anios-lectivos", a, `Editar año lectivo ${texto(a.anio)}`) : undefined, cerrar: permitido.cerrar ? () => setCerrar(a) : undefined, ruta: permitido.eliminar ? `/api/anios-lectivos/${a.id}` : undefined })}</td></tr>;
-      })}</Tabla>
-    </Seccion>
+  return <section id={`estructura-${ver}`} className="config-seccion" aria-labelledby={`estructura-${ver}-titulo`}>
+    <div className="config-seccion-cabeza">
+      <div>
+        <h2 id={`estructura-${ver}-titulo`}>{seccion.titulo}</h2>
+        <p className="config-seccion-resumen">{listado.resumen}</p>
+      </div>
+    </div>
+    <p className="config-seccion-nota">{seccion.nota}</p>
 
-    <Seccion error={aviso} clave="periodos" titulo="Períodos" nota="Los períodos deben estar dentro del año, no pueden cruzarse y su ponderación anual no puede superar 100 %." listado={listados.periodos} filas={periodos.length}
-      formulario={<form onSubmit={crear("periodos")} className="admin-formulario admin-rejilla" aria-label="Crear período">
-        <CamposPeriodo catalogo={catalogo} /><Guardar ocupado={ocupado} texto="Crear período" />
-      </form>}>
-      <Tabla titulo="Períodos" encabezados={["Período", "Año", "Orden", "Fechas", "Ponderación", "Acciones"]}>{periodos.map((p) => {
-        const anio = objeto(p.anioLectivo); const etiqueta = `el período ${texto(p.nombre)} de ${texto(anio?.anio)}`; const cerrado = anioCerrado(anio);
-        return <tr key={p.id}><th scope="row">{texto(p.nombre)}</th><td data-etiqueta="Año">{texto(anio?.anio ?? p.anioLectivoId)}</td><td data-etiqueta="Orden">{texto(p.orden)}</td><td data-etiqueta="Fechas">{fecha(p.fechaInicio)} a {fecha(p.fechaFin)}</td><td data-etiqueta="Ponderación">{texto(p.ponderacion)} %</td>
-          <td>{acciones(etiqueta, cerrado ? {} : { editar: () => abrirEdicion("periodos", p, `Editar período ${texto(p.nombre)} (${texto(anio?.anio)})`), ruta: `/api/periodos/${p.id}` })}</td></tr>;
-      })}</Tabla>
-    </Seccion>
+    <AltaPlegable key={ver} texto={seccion.nuevo} abiertoInicial={registros.length === 0}>
+      <form onSubmit={(e) => { e.preventDefault(); void guardar("crear", e.currentTarget); }} className="admin-formulario admin-rejilla" aria-label={seccion.formulario}>
+        <CamposAlta ver={ver} catalogo={catalogo} />
+        {aviso ? <p role="alert" className="admin-aviso admin-campo-ancho" data-tipo="error">{aviso}</p> : null}
+        <Guardar ocupado={ocupado} texto={seccion.formulario} />
+      </form>
+    </AltaPlegable>
 
-    <Seccion error={aviso} clave="areas" titulo="Áreas" nota="Las áreas agrupan asignaturas; no se eliminan si ya tienen relaciones." listado={listados.areas} filas={areas.length}
-      formulario={<form onSubmit={crear("areas")} className="admin-formulario admin-rejilla" aria-label="Crear área"><CamposArea /><Guardar ocupado={ocupado} texto="Crear área" /></form>}>
-      <Tabla titulo="Áreas" encabezados={["Área", "Tipo", "Idioma", "Orden", "Acciones"]}>{areas.map((a) => <tr key={a.id}><th scope="row">{texto(a.nombre)}</th><td data-etiqueta="Tipo">{TIPOS_AREA[texto(a.tipo)] ?? texto(a.tipo)}</td><td data-etiqueta="Idioma">{texto(a.idioma)}</td><td data-etiqueta="Orden">{a.orden === null || a.orden === undefined ? "Sin orden" : texto(a.orden)}</td>
-        <td>{acciones(`el área ${texto(a.nombre)}`, { editar: () => abrirEdicion("areas", a, `Editar área ${texto(a.nombre)}`), ruta: `/api/areas/${a.id}` })}</td></tr>)}</Tabla>
-    </Seccion>
-
-    <Seccion error={aviso} clave="grados" titulo="Grados" nota="Cada grado tiene un nivel educativo y orden curricular." listado={listados.grados} filas={grados.length}
-      formulario={<form onSubmit={crear("grados")} className="admin-formulario admin-rejilla" aria-label="Crear grado"><CamposGrado /><Guardar ocupado={ocupado} texto="Crear grado" /></form>}>
-      <Tabla titulo="Grados" encabezados={["Grado", "Nivel", "Orden", "Acciones"]}>{grados.map((g) => <tr key={g.id}><th scope="row">{texto(g.nombre)}</th><td data-etiqueta="Nivel">{NIVELES[texto(g.nivel)] ?? texto(g.nivel)}</td><td data-etiqueta="Orden">{texto(g.orden)}</td>
-        <td>{acciones(`el grado ${texto(g.nombre)}`, { editar: () => abrirEdicion("grados", g, `Editar grado ${texto(g.nombre)}`), ruta: `/api/grados/${g.id}` })}</td></tr>)}</Tabla>
-    </Seccion>
-
-    <Seccion error={aviso} clave="grupos" titulo="Grupos" nota="El director debe ser un docente activo. El año y el grado de un grupo no cambian después de crearlo. Los grupos de años cerrados son inmutables." listado={listados.grupos} filas={grupos.length}
-      formulario={<form onSubmit={crear("grupos")} className="admin-formulario admin-rejilla" aria-label="Crear grupo"><CamposGrupo catalogo={catalogo} /><Guardar ocupado={ocupado} texto="Crear grupo" /></form>}>
-      <Tabla titulo="Grupos" encabezados={["Grupo", "Año", "Director", "Acciones"]}>{grupos.map((g) => {
-        const director = objeto(g.director); const anio = objeto(g.anioLectivo); const etiqueta = `el grupo ${nombreGrupo(g)} de ${texto(anio?.anio)}`;
-        return <tr key={g.id}><th scope="row">{nombreGrupo(g)}</th><td data-etiqueta="Año">{texto(anio?.anio)}</td><td data-etiqueta="Director">{director ? `${texto(director.nombres)} ${texto(director.apellidos)}` : "Sin asignar"}</td>
-          <td>{acciones(etiqueta, anioCerrado(anio) ? {} : { editar: () => abrirEdicion("grupos", g, `Editar grupo ${nombreGrupo(g)} (${texto(anio?.anio)})`), ruta: `/api/grupos/${g.id}` })}</td></tr>;
-      })}</Tabla>
-    </Seccion>
-
-    <Seccion error={aviso} clave="asignaturas" titulo="Asignaturas" nota="Habilita la asignatura para los grados donde se dicta, con su intensidad semanal opcional. No se elimina si ya tiene relaciones." listado={listados.asignaturas} filas={asignaturas.length}
-      formulario={<form onSubmit={crear("asignaturas")} className="admin-formulario admin-rejilla" aria-label="Crear asignatura"><CamposAsignatura catalogo={catalogo} /><Guardar ocupado={ocupado} texto="Crear asignatura" /></form>}>
-      <Tabla titulo="Asignaturas" encabezados={["Asignatura", "Área", "Intensidad", "Grados", "Acciones"]}>{asignaturas.map((a) => {
-        const habilitados = (a.grados as Array<Record<string, unknown>> | undefined) ?? [];
-        return <tr key={a.id}><th scope="row">{texto(a.nombre)}</th><td data-etiqueta="Área">{texto(objeto(a.area)?.nombre)}</td><td data-etiqueta="Intensidad">{a.intensidadHoraria ? `${texto(a.intensidadHoraria)} h/semana` : "Sin definir"}</td>
-          <td data-etiqueta="Grados">{habilitados.map((h) => `${texto(objeto(h.grado)?.nombre)}${h.intensidad ? ` (${texto(h.intensidad)} h)` : ""}`).join(", ") || "Sin habilitar"}</td>
-          <td>{acciones(`la asignatura ${texto(a.nombre)}`, { editar: () => abrirEdicion("asignaturas", a, `Editar asignatura ${texto(a.nombre)}`), ruta: `/api/asignaturas/${a.id}` })}</td></tr>;
-      })}</Tabla>
-    </Seccion>
+    {listado.filtros}
+    {fichas.length > 0 ? <ul className="config-fichas" aria-label={seccion.titulo}>
+      {fichas.map((f) => <li key={f.id} className="config-ficha">
+        <div className="config-ficha-cabeza"><h3>{f.titulo}</h3>{f.insignia}</div>
+        {f.datos.length ? <dl className="config-ficha-datos">{f.datos.map((d) => <div key={d.etiqueta}><dt>{d.etiqueta}</dt><dd>{d.valor}</dd></div>)}</dl> : null}
+        <Acciones etiqueta={f.etiqueta} a={f.acciones} onBorrar={(ruta) => { setErrorDialogo(null); setBorrar({ ruta, etiqueta: f.etiqueta }); }} onCerrar={() => setErrorDialogo(null)} />
+      </li>)}
+    </ul> : listado.vacio}
+    {listado.pie}
 
     {edicion ? <Editor key={`${edicion.tipo}-${edicion.registro.id}`} edicion={edicion} error={errorEdicion} ocupado={ocupado}
-      onGuardar={(f) => guardar(edicion.tipo, "editar", f, edicion.registro)} onCancelar={() => { setEdicion(null); setErrorEdicion(null); }}>
+      onGuardar={(f) => guardar("editar", f, edicion.registro, edicion.tipo)} onCancelar={() => { setEdicion(null); setErrorEdicion(null); }}>
       <CamposEdicion edicion={edicion} catalogo={catalogo} />
     </Editor> : null}
 
@@ -140,13 +130,83 @@ export function FormularioEstructura({ anios, periodos, areas, grados, grupos, a
       <p>¿Confirmas el borrado físico de {borrar?.etiqueta}? Solo se permite si nunca tuvo relaciones ni historial.</p>
       {errorDialogo && borrar ? <p role="alert" className="admin-aviso" data-tipo="error">{errorDialogo}</p> : null}
     </Confirmar>
+  </section>;
+}
+
+/** Datos y acciones de la tarjeta de cada registro, según la sección. */
+function fichaDe(ver: Clave, r: Registro, editar: (r: Registro, titulo: string) => void, cerrar: (r: Registro) => void): Ficha {
+  switch (ver) {
+    case "anios": {
+      const permitido = accionesAnio(r.estado); const estado = texto(r.estado);
+      return { id: r.id, titulo: texto(r.anio), etiqueta: `el año ${texto(r.anio)}`,
+        insignia: <span className="admin-estado" data-estado={estado}>{ESTADOS_ANIO[estado] ?? estado}</span>,
+        datos: [{ etiqueta: "Vigencia", valor: vigencia(r.fechaInicio, r.fechaFin) }],
+        acciones: { editar: permitido.editar ? () => editar(r, `Editar año lectivo ${texto(r.anio)}`) : undefined, cerrar: permitido.cerrar ? () => cerrar(r) : undefined, ruta: permitido.eliminar ? `/api/anios-lectivos/${r.id}` : undefined } };
+    }
+    case "periodos": {
+      const anio = objeto(r.anioLectivo);
+      return { id: r.id, titulo: texto(r.nombre), etiqueta: `el período ${texto(r.nombre)} de ${texto(anio?.anio)}`,
+        insignia: <span className="config-insignia">{texto(r.ponderacion)} %</span>,
+        datos: [{ etiqueta: "Año", valor: texto(anio?.anio ?? r.anioLectivoId) }, { etiqueta: "Orden", valor: texto(r.orden) }, { etiqueta: "Fechas", valor: vigencia(r.fechaInicio, r.fechaFin) }],
+        acciones: anioCerrado(anio) ? {} : { editar: () => editar(r, `Editar período ${texto(r.nombre)} (${texto(anio?.anio)})`), ruta: `/api/periodos/${r.id}` } };
+    }
+    case "areas":
+      return { id: r.id, titulo: texto(r.nombre), etiqueta: `el área ${texto(r.nombre)}`,
+        insignia: <span className="config-insignia">{TIPOS_AREA[texto(r.tipo)] ?? texto(r.tipo)}</span>,
+        datos: [{ etiqueta: "Idioma", valor: texto(r.idioma) }, { etiqueta: "Orden", valor: r.orden === null || r.orden === undefined ? "Sin orden" : texto(r.orden) }],
+        acciones: { editar: () => editar(r, `Editar área ${texto(r.nombre)}`), ruta: `/api/areas/${r.id}` } };
+    case "grados":
+      return { id: r.id, titulo: texto(r.nombre), etiqueta: `el grado ${texto(r.nombre)}`,
+        insignia: <span className="config-insignia">{NIVELES[texto(r.nivel)] ?? texto(r.nivel)}</span>,
+        datos: [{ etiqueta: "Orden", valor: texto(r.orden) }],
+        acciones: { editar: () => editar(r, `Editar grado ${texto(r.nombre)}`), ruta: `/api/grados/${r.id}` } };
+    case "grupos": {
+      const director = objeto(r.director); const anio = objeto(r.anioLectivo);
+      return { id: r.id, titulo: nombreGrupo(r), etiqueta: `el grupo ${nombreGrupo(r)} de ${texto(anio?.anio)}`,
+        insignia: <span className="config-insignia">{texto(anio?.anio)}</span>,
+        datos: [{ etiqueta: "Director", valor: director ? `${texto(director.nombres)} ${texto(director.apellidos)}` : <span className="config-falta">Sin asignar</span> }],
+        acciones: anioCerrado(anio) ? {} : { editar: () => editar(r, `Editar grupo ${nombreGrupo(r)} (${texto(anio?.anio)})`), ruta: `/api/grupos/${r.id}` } };
+    }
+    case "asignaturas": {
+      const habilitados = (r.grados as Array<Record<string, unknown>> | undefined) ?? [];
+      return { id: r.id, titulo: texto(r.nombre), etiqueta: `la asignatura ${texto(r.nombre)}`,
+        insignia: <span className="config-insignia">{texto(objeto(r.area)?.nombre)}</span>,
+        datos: [
+          { etiqueta: "Intensidad", valor: r.intensidadHoraria ? `${texto(r.intensidadHoraria)} h/semana` : "Sin definir" },
+          { etiqueta: "Grados", valor: habilitados.length
+            ? <span className="config-chips">{habilitados.map((h, i) => <span key={`${texto(h.gradoId)}-${i}`} className="config-chip">{texto(objeto(h.grado)?.nombre)}{h.intensidad ? ` · ${texto(h.intensidad)} h` : ""}</span>)}</span>
+            : <span className="config-falta">Sin habilitar</span> },
+        ],
+        acciones: { editar: () => editar(r, `Editar asignatura ${texto(r.nombre)}`), ruta: `/api/asignaturas/${r.id}` } };
+    }
+  }
+}
+
+/** Acciones al pie de la tarjeta; sin ninguna, la tarjeta es de solo lectura (año cerrado). */
+function Acciones({ etiqueta, a, onBorrar, onCerrar }: { etiqueta: string; a: Ficha["acciones"]; onBorrar: (ruta: string) => void; onCerrar: () => void }) {
+  if (!a.editar && !a.cerrar && !a.ruta) return <p className="config-ficha-acciones config-solo-lectura"><Lock size={16} aria-hidden="true" /> Solo lectura (año cerrado)</p>;
+  return <div className="config-ficha-acciones">
+    {a.editar ? <button type="button" className="config-accion" onClick={a.editar}><Pencil size={16} aria-hidden="true" /> Editar<span className="sr-only"> {etiqueta}</span></button> : null}
+    {a.cerrar ? <button type="button" className="config-accion" onClick={() => { onCerrar(); a.cerrar!(); }}><Lock size={16} aria-hidden="true" /> Cerrar año<span className="sr-only"> {etiqueta}</span></button> : null}
+    {a.ruta ? <button type="button" className="config-accion" data-tono="peligro" onClick={() => onBorrar(a.ruta!)}><Trash2 size={16} aria-hidden="true" /> Eliminar<span className="sr-only"> {etiqueta}</span></button> : null}
   </div>;
+}
+
+function CamposAlta({ ver, catalogo }: { ver: Clave; catalogo: Catalogo }) {
+  switch (ver) {
+    case "anios": return <CamposAnio />;
+    case "periodos": return <CamposPeriodo catalogo={catalogo} />;
+    case "areas": return <CamposArea />;
+    case "grados": return <CamposGrado />;
+    case "grupos": return <CamposGrupo catalogo={catalogo} />;
+    case "asignaturas": return <CamposAsignatura catalogo={catalogo} />;
+  }
 }
 
 /**
  * Edición completa en un <dialog> modal nativo: atrapa el foco; Escape o
  * Cancelar cierran el diálogo (evento `close`) y el navegador devuelve el
- * foco al botón Editar de la fila. Los errores
+ * foco al botón Editar de la tarjeta. Los errores
  * de validación o de reglas de dominio se anuncian dentro del diálogo sin
  * perder lo escrito.
  */
@@ -188,7 +248,7 @@ function CamposAnio({ registro: r }: { registro?: Registro }) {
   return <>
     {r ? <Fijo etiqueta="Año" valor={texto(r.anio)} ayuda="El número del año no cambia. El estado cambia con «Cerrar año»." />
       : <Campo etiqueta="Año"><input name="anio" type="number" min="2000" max="2100" inputMode="numeric" required /></Campo>}
-    {r ? null : <Fijo etiqueta="Estado inicial" valor="Activo" ayuda="Se cierra después, desde la tabla, cuando sus períodos sumen 100 %." />}
+    {r ? null : <Fijo etiqueta="Estado inicial" valor="Activo" ayuda="Se cierra después, desde su tarjeta, cuando sus períodos sumen 100 %." />}
     <Campo etiqueta="Fecha de inicio"><input name="fechaInicio" type="date" required defaultValue={fecha(r?.fechaInicio)} /></Campo>
     <Campo etiqueta="Fecha de fin"><input name="fechaFin" type="date" required defaultValue={fecha(r?.fechaFin)} /></Campo>
   </>;
@@ -231,7 +291,6 @@ function CamposGrupo({ registro: r, catalogo }: { registro?: Registro; catalogo:
     {r ? <><Fijo etiqueta="Año lectivo" valor={texto(objeto(r.anioLectivo)?.anio)} ayuda="El año de un grupo no cambia." /><Fijo etiqueta="Grado" valor={texto(objeto(r.grado)?.nombre)} ayuda="El grado de un grupo no cambia." /></>
       : <><Campo etiqueta="Año lectivo"><select name="anioLectivoId" required defaultValue=""><option value="">Selecciona</option>{opciones(catalogo.aniosEditables)}</select></Campo>
         <Campo etiqueta="Grado"><select name="gradoId" required defaultValue=""><option value="">Selecciona</option>{opciones(catalogo.grados)}</select></Campo></>}
-    <Campo etiqueta="Identificador"><input name="identificador" placeholder="01" maxLength={4} required defaultValue={texto(r?.identificador)} /></Campo>
     <Campo etiqueta="Director de grupo"><select name="directorId" defaultValue={texto(r?.directorId)}>
       <option value="">Sin asignar</option>{opciones(catalogo.docentes)}
       {ausente ? <option value={texto(r?.directorId)}>{`${texto(director.nombres)} ${texto(director.apellidos)} (ya no es docente activo)`}</option> : null}
@@ -257,20 +316,5 @@ function CamposAsignatura({ registro: r, catalogo }: { registro?: Registro; cata
   </>;
 }
 
-/** Segmento de API de cada listado: el error de un alta se muestra en su propia sección. */
-const TIPO_DE: Record<Clave, TipoApi> = { anios: "anios-lectivos", periodos: "periodos", areas: "areas", grados: "grados", grupos: "grupos", asignaturas: "asignaturas" };
-
-function Seccion({ clave, titulo, nota, formulario, error, listado, filas, children }: { clave: Clave; titulo: string; nota: string; formulario: ReactNode; error: { tipo: TipoApi; mensaje: string } | null; listado: Listado; filas: number; children: ReactNode }) {
-  return <section id={`estructura-${clave}`} className="admin-estructura" aria-labelledby={`estructura-${clave}-titulo`}>
-    <div className="section-heading"><h2 id={`estructura-${clave}-titulo`}>{titulo}</h2>{listado.resumen}</div>
-    <p className="admin-nota">{nota}</p>
-    {formulario}
-    {error?.tipo === TIPO_DE[clave] ? <p role="alert" className="admin-aviso" data-tipo="error">{error.mensaje}</p> : null}
-    {listado.filtros}
-    {filas > 0 ? children : listado.vacio}
-    {listado.pie}
-  </section>;
-}
 function Campo({ etiqueta, children }: { etiqueta: string; children: ReactNode }) { return <label className="admin-campo">{etiqueta}{children}</label>; }
 function Guardar({ ocupado, texto }: { ocupado: boolean; texto: string }) { return <div className="admin-filtros-acciones"><button className="boton-pastilla" data-variante="primario" disabled={ocupado}>{ocupado ? "Guardando…" : texto}</button></div>; }
-function Tabla({ titulo, encabezados, children }: { titulo: string; encabezados: string[]; children: ReactNode }) { return <div className="admin-tabla-marco"><table className="admin-tabla"><caption className="sr-only">{titulo}</caption><thead><tr>{encabezados.map((h) => <th key={h} scope="col">{h}</th>)}</tr></thead><tbody>{children}</tbody></table></div>; }

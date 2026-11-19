@@ -1,6 +1,6 @@
 /*
-  Kit de Física (decisión del operador del 2026-10-31: «fisica» es la
-  ciencia, cercana a la física matemática). Péndulo, imán, polea, prisma con
+  Kit de Física (escena «ciencias_fisicas» según la decisión del usuario del
+  2026-11-01). Péndulo, imán, polea, prisma con
   luz, resorte y ondas; las marcas de agua son fuerzas, imanes, luz y ondas
   (nada de fórmulas: es primaria).
 */

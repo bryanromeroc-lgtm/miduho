@@ -3,12 +3,32 @@
  * actividad de `curriculo/actividades/<asignatura>/<grado>/<slug>.json` (D1).
  */
 import { z } from "zod";
+import { angulos } from "../juegos/angulos/tipo";
+import { bocadillo } from "../juegos/bocadillo/tipo";
+import { corrector } from "../juegos/corrector/tipo";
+import { divisionTipo } from "../juegos/division/tipo";
+import { golpea } from "../juegos/golpea/tipo";
+import { jarras } from "../juegos/jarras/tipo";
+import { mapa as mapaTipo } from "../juegos/mapa/tipo";
+import { multiplos } from "../juegos/multiplos/tipo";
+import { operaciones } from "../juegos/operaciones/tipo";
+import { pancarta } from "../juegos/pancarta/tipo";
+import { pizarraDecimales } from "../juegos/pizarra/tipo";
+import { porcentajeTipo } from "../juegos/porcentaje/tipo";
+import { rectas } from "../juegos/rectas/tipo";
+import { rutaPalabras } from "../juegos/ruta-palabras/tipo";
+import { robotsDivisiones } from "../juegos/robots/tipo";
+import { aventura } from "../juegos/aventura/tipo";
+import { sello } from "../juegos/sello/tipo";
+import { tallerFracciones } from "../juegos/fracciones/tipo";
+import { rutaAudio } from "./audio";
 import type { DefinicionTipoActividad } from "./contrato";
 import { palabraSecreta, sopaLetras } from "./palabras";
 import { completar, concurso, seleccionMultiple } from "./preguntas";
 import { clasificar, emparejar, memoria, ordenar } from "./relaciones";
+import { videoPreguntas } from "./video";
 
-const DEFINICIONES = [seleccionMultiple, concurso, completar, emparejar, ordenar, clasificar, memoria, sopaLetras, palabraSecreta];
+const DEFINICIONES = [seleccionMultiple, concurso, completar, videoPreguntas, emparejar, ordenar, clasificar, memoria, sopaLetras, palabraSecreta, pancarta, pizarraDecimales, corrector, sello, divisionTipo, robotsDivisiones, bocadillo, jarras, porcentajeTipo, multiplos, operaciones, rectas, angulos, aventura, tallerFracciones, golpea, rutaPalabras, mapaTipo];
 
 function registrar(lista: DefinicionTipoActividad<never, never>[]) {
   const mapa = new Map<string, DefinicionTipoActividad>();
@@ -42,8 +62,12 @@ export const esquemaArchivoActividad = z.object({
   grado: z.number().int().min(1).max(5),
   /** Qué hay que hacer, en una o dos frases, dicho al estudiante. */
   instruccion: z.string().trim().min(5).max(220),
+  /** La instrucción grabada (opcional). Sin ella, en 1.° y 2.° se lee con la voz del navegador. */
+  audioInstruccion: rutaAudio.optional(),
   /** Tema curricular en palabras propias. 🔶 Los códigos DBA llegan con curriculo/referentes (3.2). */
   tema: z.string().trim().min(3).max(120),
+  /** Imagen de portada de la tarjeta (ruta bajo /images, .webp). Decorativa: el título ya nombra la actividad. */
+  imagen: z.string().regex(/^\/images\/[\w\-/]+\.webp$/, "ruta /images/….webp").optional(),
   contenido: z.unknown(),
 });
 

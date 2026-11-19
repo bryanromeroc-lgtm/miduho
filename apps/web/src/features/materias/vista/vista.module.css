@@ -51,6 +51,12 @@
   }
 }
 
+/* El material audiovisual puede ocupar varias pantallas: el fondo acompaña todo el recorrido. */
+.pagina.paginaActividad {
+  height: auto;
+  min-height: 100dvh;
+}
+
 /* Decoración: ni se toca, ni se selecciona, ni aparece al buscar con Ctrl+F. */
 .marcas,
 .sueltos,
@@ -334,6 +340,11 @@
   animation-delay: calc(var(--i, 0) * 60ms);
 }
 
+/* La tarjeta destacada (sticker) ocupa dos columnas de la cuadrícula. */
+.celdaDestacada {
+  grid-column: span 2;
+}
+
 .tarjeta {
   position: relative;
   display: flex;
@@ -391,6 +402,19 @@
   height: min(76%, 112px);
   max-width: 70%;
   margin-top: 8px;
+}
+
+/* Portada propia de la actividad: llena la banda; el marco de la tarjeta va encima. */
+.portada {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 320ms var(--suave-salida);
+}
+.tarjeta[href]:hover .portada {
+  transform: scale(1.04);
 }
 
 .cuerpo {
@@ -730,6 +754,7 @@
   }
   .tarjeta,
   .clip,
+  .portada,
   .flecha,
   .volver svg {
     transition: none;
@@ -737,6 +762,7 @@
   .tarjeta[href]:hover,
   .tarjeta[href]:hover .clip,
   .tarjeta[href]:hover .ilustracion,
+  .tarjeta[href]:hover .portada,
   .tarjeta[href]:hover .flecha,
   .volver:hover svg {
     transform: none;
@@ -840,8 +866,19 @@
 }
 
 @media (max-width: 600px) {
+  .revision {
+    position: static;
+    order: 8;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-radius: 18px;
+  }
   .cuadricula {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .celdaDestacada {
+    grid-column: auto;
   }
   .encabezado {
     flex-wrap: wrap;
@@ -867,4 +904,25 @@
   .paginaBoton {
     padding-inline: 14px;
   }
+}
+
+/* ---------- Vista previa de la coordinadora (vista-admin-contenido, D3) ---------- */
+
+/* Franja visible «Vista previa · 5°»: texto real sobre `banda` con tinta (par permitido ≥ 4.5:1). */
+.franja {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin: 0;
+  padding: 8px 18px 8px 14px;
+  border-radius: 999px;
+  background: var(--m-banda);
+  color: var(--m-tinta);
+  font-family: var(--fuente-display);
+  font-size: var(--t-boton);
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
 }

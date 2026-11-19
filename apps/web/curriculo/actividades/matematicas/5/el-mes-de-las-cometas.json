@@ -1,0 +1,57 @@
+{
+  "slug": "el-mes-de-las-cometas",
+  "titulo": "El mes de las cometas",
+  "tipo": "angulos",
+  "grado": 5,
+  "instruccion": "En agosto Armi arma cometas y necesita medir sus ángulos. Lee el transportador con cuidado y encuentra las bisectrices.",
+  "tema": "Medida de ángulos con transportador y bisectriz de un ángulo",
+  "contenido": {
+    "rondas": [
+      {
+        "id": "a1",
+        "modo": "medir",
+        "angulo": 50,
+        "desde": "derecha"
+      },
+      {
+        "id": "a2",
+        "modo": "medir",
+        "angulo": 120,
+        "desde": "derecha"
+      },
+      {
+        "id": "a3",
+        "modo": "bisectriz",
+        "angulo": 80
+      },
+      {
+        "id": "a4",
+        "modo": "medir",
+        "angulo": 35,
+        "desde": "izquierda"
+      },
+      {
+        "id": "a5",
+        "modo": "medir",
+        "angulo": 145,
+        "desde": "izquierda"
+      },
+      {
+        "id": "a6",
+        "modo": "bisectriz",
+        "angulo": 120
+      },
+      {
+        "id": "a7",
+        "modo": "medir",
+        "angulo": 90,
+        "desde": "derecha"
+      },
+      {
+        "id": "a8",
+        "modo": "bisectriz",
+        "angulo": 60
+      }
+    ]
+  }
+}

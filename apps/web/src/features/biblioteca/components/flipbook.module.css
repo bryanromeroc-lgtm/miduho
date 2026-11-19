@@ -514,6 +514,30 @@
     flex: none;
   }
 
+  /* En entrada directa móvil, `height: auto` de la vista inmersiva creaba
+     un ciclo: la escena medía el marcador de carga y la hoja nacía a media
+     anchura. La altura disponible debe existir antes de construir PageFlip. */
+  .dedicado .escena,
+  .pleno .escena {
+    height: var(--alto-escena);
+  }
+
+  /* La página de fuentes tiene texto de arriba abajo; sus flechas descansan
+     bajo el papel en vez de tapar enlaces o párrafos al centro. */
+  .escena[data-pagina-estilo="creditos-editoriales"] .paso {
+    top: auto;
+    bottom: 10px;
+    transform: none;
+  }
+
+  .escena[data-pagina-estilo="creditos-editoriales"] .pasoAnterior:hover:not(:disabled) {
+    transform: translateX(-3px);
+  }
+
+  .escena[data-pagina-estilo="creditos-editoriales"] .pasoSiguiente:hover:not(:disabled) {
+    transform: translateX(3px);
+  }
+
   .paso {
     width: 46px;
     height: 46px;
@@ -805,6 +829,245 @@
   color: var(--color-lit-tinta);
 }
 
+/* Edición MIDUHO: marca y procedencia en HTML, con arte sin letras.
+   Las cuatro disposiciones son reutilizables por futuros libros propios. */
+.portadaEditorial,
+.creditosEditoriales,
+.inicioEditorial,
+.cierreEditorial {
+  background: #fffdf8;
+  color: #20343e;
+}
+
+.portadaEditorial {
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 0;
+  padding: 0;
+  font-size: max(calc(var(--u) * 2.55), 10px);
+  text-align: center;
+}
+
+.cabeceraEditorial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  min-width: 0;
+  text-align: center;
+}
+
+.portadaEditorial .cabeceraEditorial {
+  padding: calc(var(--u) * 6) calc(var(--u) * 5) calc(var(--u) * 4);
+}
+
+.cabeceraEditorial h2,
+.creditosEditoriales h2 {
+  margin: 0;
+  font-family: var(--font-heading), Georgia, serif;
+  color: #086783;
+  font-weight: 800;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.portadaEditorial h2 {
+  font-size: 3.05em;
+}
+
+.epigrafeEditorial {
+  margin: 0;
+  color: #086783;
+  font-size: 0.86em;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.subtituloEditorial {
+  margin: 0;
+  font-size: 1.05em;
+}
+
+.compuesta .ilustracionEditorial {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.creditoPortadaEditorial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  padding: calc(var(--u) * 4) calc(var(--u) * 5);
+  text-align: center;
+}
+
+.creditoPortadaEditorial p {
+  margin: 0;
+  font-size: 0.9em;
+  line-height: 1.3;
+}
+
+.marcaEditorial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25em;
+  color: #086783;
+  font-size: 1.16em;
+  line-height: 1.15;
+}
+
+.marcaEditorial img {
+  width: calc(var(--u) * 13);
+  height: calc(var(--u) * 13);
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.creditosEditoriales {
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  gap: calc(var(--u) * 2.2);
+  padding: calc(var(--u) * 6);
+  font-size: max(calc(var(--u) * 2.4), 10.5px);
+}
+
+.creditosEditoriales h2 {
+  font-size: 2.25em;
+}
+
+.identidadEditorial {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.identidadEditorial .marcaEditorial {
+  flex-direction: row;
+  gap: 0.7em;
+  font-size: 1em;
+}
+
+.identidadEditorial .marcaEditorial img {
+  width: calc(var(--u) * 10);
+  height: calc(var(--u) * 10);
+}
+
+.identidadEditorial > p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.seccionesEditoriales {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+  align-self: start;
+}
+
+.seccionesEditoriales section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.seccionesEditoriales h3 {
+  margin: 0;
+  color: #086783;
+  font-size: 1.13em;
+}
+
+.seccionesEditoriales p {
+  margin: 0;
+  line-height: 1.3;
+}
+
+.seccionesEditoriales a {
+  width: fit-content;
+  color: #086783;
+  font-size: 0.93em;
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.seccionesEditoriales a:focus-visible {
+  outline: 2px solid #9c492c;
+  outline-offset: 2px;
+}
+
+.pieEditorial {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  align-self: end;
+  color: #276342;
+  font-size: 0.86em;
+  line-height: 1.2;
+}
+
+.inicioEditorial {
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  gap: calc(var(--u) * 2.5);
+  padding: calc(var(--u) * 6);
+  font-size: max(calc(var(--u) * 2.75), 11px);
+}
+
+.inicioEditorial .cabeceraEditorial {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.inicioEditorial h2 {
+  font-size: 2.35em;
+}
+
+.inicioEditorial .ilustracionEditorial,
+.cierreEditorial .ilustracionEditorial {
+  border-radius: calc(var(--u) * 2);
+  object-position: center 72%;
+}
+
+.prosaEditorial p {
+  margin: 0;
+  font-size: 1.14em;
+  line-height: 1.35;
+}
+
+.cierreEditorial {
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: calc(var(--u) * 3);
+  padding: calc(var(--u) * 6);
+  text-align: center;
+  font-size: max(calc(var(--u) * 2.55), 10px);
+}
+
+.cierreEditorial h2 {
+  font-size: 2.5em;
+}
+
+.cierreEditorial .cabeceraEditorial p {
+  margin: 0;
+  font-size: 1.07em;
+}
+
+.cierreEditorial .creditoPortadaEditorial {
+  padding: 0;
+}
+
+.finEditorial {
+  margin-top: 0.5em;
+  color: #9c492c;
+  font-size: 0.9em;
+  letter-spacing: 0.1em;
+}
+
 /* Hoja suelta (móvil): la hoja es vertical y estrecha, así que la letra
    sube y las disposiciones laterales se apilan —ilustración arriba, texto
    debajo— en vez de repartirse una columna de 150 px. */
@@ -833,4 +1096,82 @@
 /* sin texto no hay hueco que reservar: la ilustración se centra */
 [data-hoja="suelta"] .fondo:not(:has(.texto)) .ilustracion {
   object-position: center;
+}
+
+/* ── Pliego: mitad de una ilustración a doble página ───────────────────────
+   La ilustración llega al borde de la hoja (cover, como las escaneadas) para
+   que las dos mitades se junten en el lomo sin marco blanco. El texto va en
+   la zona superior clara que dejan las ilustraciones, sobre una lámina de
+   papel casi opaca: el contraste no depende de qué asome debajo (tinta
+   #20334b sobre crema ≈ 11:1, por encima de AA aunque cruce una hoja verde).
+   Lleva su propio tamaño de letra: son pocas líneas para lectores de 6–8
+   años, y caben con holgura en el cielo de cada escena. */
+.pliego {
+  display: block;
+  padding: 0;
+  font-size: max(calc(var(--u) * 3.7), 13px);
+  line-height: 1.45;
+}
+
+.pliego .ilustracion {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+}
+
+.pliego .texto {
+  position: absolute;
+  top: calc(var(--u) * 5);
+  left: calc(var(--u) * 5);
+  right: calc(var(--u) * 5);
+  align-self: auto;
+  gap: 0.5em;
+  padding: 0.75em 0.95em;
+  border-radius: calc(var(--u) * 2.4);
+  background: rgb(255 251 242 / 0.92);
+  box-shadow: 0 1px 0 rgb(121 55 15 / 0.08);
+  color: #20334b;
+}
+
+/* el margen junto al lomo crece: ahí la curvatura del papel se come letra */
+.pliego[data-mitad="izquierda"] .texto {
+  right: calc(var(--u) * 8);
+}
+
+.pliego[data-mitad="derecha"] .texto {
+  left: calc(var(--u) * 8);
+}
+
+/* La ilustración tapa el fondo de la hoja y con él el sombreado del lomo
+   (.derecha/.izquierda). Se repone encima, sin capturar eventos. */
+.pliego::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.pliego[data-mitad="izquierda"]::after {
+  background: linear-gradient(to left, rgb(0 0 0 / 0.12) 0%, rgb(0 0 0 / 0) 5%);
+}
+
+.pliego[data-mitad="derecha"]::after {
+  background: linear-gradient(to right, rgb(0 0 0 / 0.12) 0%, rgb(0 0 0 / 0) 5%);
+}
+
+/* A hoja suelta (móvil) no hay lomo al lado: márgenes iguales y letra algo
+   mayor. La hoja conserva la razón 3:4 de la ilustración, así que el texto
+   sigue cayendo en el cielo de la escena y nunca se corta. */
+[data-hoja="suelta"] .pliego {
+  font-size: max(calc(var(--u) * 4.4), 15px);
+}
+
+[data-hoja="suelta"] .pliego .texto {
+  top: calc(var(--u) * 4);
+  left: calc(var(--u) * 4);
+  right: calc(var(--u) * 4);
+}
+
+[data-hoja="suelta"] .pliego::after {
+  content: none;
 }

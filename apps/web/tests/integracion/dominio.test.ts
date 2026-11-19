@@ -85,13 +85,14 @@ beforeAll(async () => {
   const gradoOtro = await S.grados.crear({ nombre: "3°", nivel: "PRIMARIA", orden: 3 });
   ids.gradoOtro = gradoOtro.id;
 
-  ids.g1 = (await S.grupos.crear({ gradoId: grado.id, anioLectivoId: anio.id, identificador: "01" })).id;
-  ids.g2 = (await S.grupos.crear({ gradoId: grado.id, anioLectivoId: anio.id, identificador: "02" })).id;
+  // Un solo grupo por grado: g1 es el de 2° y g2 el de 3°.
+  ids.g1 = (await S.grupos.crear({ gradoId: grado.id, anioLectivoId: anio.id })).id;
+  ids.g2 = (await S.grupos.crear({ gradoId: gradoOtro.id, anioLectivoId: anio.id })).id;
   // El grupo del año cerrado se siembra directo: el servicio rechaza crear en un año CERRADO.
   ids.gCerrado = (await db.grupo.create({ data: { gradoId: grado.id, anioLectivoId: cerrado.id, identificador: "01" } })).id;
 
   const area = await S.areas.crear({ nombre: "Área QA (ficticia)", tipo: "AREA", idioma: "es" });
-  const asignatura = await S.asignaturas.crear({ nombre: "Asignatura QA", areaId: area.id, grados: [{ gradoId: grado.id }] });
+  const asignatura = await S.asignaturas.crear({ nombre: "Asignatura QA", areaId: area.id, grados: [{ gradoId: grado.id }, { gradoId: gradoOtro.id }] });
   ids.asignatura = asignatura.id;
   const noHabilitada = await S.asignaturas.crear({ nombre: "Sin habilitar", areaId: area.id, grados: [] });
   ids.noHabilitada = noHabilitada.id;

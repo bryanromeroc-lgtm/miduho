@@ -5,18 +5,17 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   BookOpen,
-  Building2,
-  CalendarClock,
   CalendarDays,
   CircleUserRound,
   FlaskConical,
   GraduationCap,
   Home,
   LayoutDashboard,
+  Library,
   School,
   ShieldCheck,
-  Users,
   UsersRound,
+  SlidersHorizontal,
   type LucideIcon,
 } from "lucide-react";
 import { Escudo } from "@/components/friso/escudo";
@@ -46,10 +45,8 @@ const ICONOS: Record<IdRuta, LucideIcon> = {
   agenda: CalendarDays,
   "mi-curso": UsersRound,
   dashboard: LayoutDashboard,
-  usuarios: Users,
-  estructura: Building2,
-  asignaciones: CalendarClock,
-  estudiantes: UsersRound,
+  contenido: Library,
+  administracion: SlidersHorizontal,
   cuenta: CircleUserRound,
 };
 
@@ -58,10 +55,11 @@ function esLaboratorios(pathname: string) {
   return ["/laboratorios", "/emprendimiento"].some((b) => pathname === b || pathname.startsWith(`${b}/`));
 }
 
-export function Marco({ children }: { children: React.ReactNode }) {
+/** `dia`: la página pone su propio ancho sobre el día; si no, va en la hoja centrada. */
+export function Marco({ dia = false, children }: { dia?: boolean; children: React.ReactNode }) {
   const pathname = usePathname();
   if (esLaboratorios(pathname)) return <MarcoLaboratorios>{children}</MarcoLaboratorios>;
-  return <MarcoJuego>{children}</MarcoJuego>;
+  return <MarcoJuego variante={dia ? "dia" : "hoja"}>{children}</MarcoJuego>;
 }
 
 /* Shell anterior, intacto: solo lo usa Laboratorios. */

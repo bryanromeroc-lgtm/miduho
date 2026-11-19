@@ -107,7 +107,7 @@ afterAll(async () => {
 describe("asignaturas del grupo del estudiante", () => {
   it("lista solo las asignaturas activas de su grupo, sin duplicar y en orden de área", async () => {
     const r = await S.deEstudiante(ids.est);
-    expect(r.grupo?.etiqueta).toBe("1°-01");
+    expect(r.grupo?.etiqueta).toBe("1°");
     expect(r.materias.map((m) => m.nombre)).toEqual(["Comprensión Lectora", "Matemáticas"]);
   });
 
@@ -175,7 +175,7 @@ describe("vista de una materia", () => {
     const v = await S.vistaMateria(estudiante(), ids.matematicas);
     expect(v).toMatchObject({
       materia: { id: ids.matematicas, nombre: "Matemáticas", escena: "matematicas", claseHref: `/materias/${ids.matematicas}` },
-      grupo: { id: ids.g1, etiqueta: "1°-01" },
+      grupo: { id: ids.g1, etiqueta: "1°" },
       actividades: null,
     });
   });
@@ -237,6 +237,35 @@ describe("vista de una materia", () => {
         href: `/materias/${ids.matematicas}/actividades/parejas`,
       },
     ]);
+  });
+});
+
+describe("agenda del estudiante", () => {
+  const estudiante = () => ({ user: { id: ids.est, contexto: "ESTUDIANTE" } });
+  const base = { tipo: "quiz", estrellas: null, intentosUsados: 0, intentosMax: 3, cierra: null, href: "#" };
+
+  it("reúne las actividades de sus materias, sin las por abrir, y fija hoy en Bogotá", async () => {
+    const pedidos: string[] = [];
+    const actividades: PuertoActividadesDeMateria = {
+      deMateria: async (_e, _g, asignaturaId) => {
+        pedidos.push(asignaturaId);
+        return [
+          { ...base, id: `${asignaturaId}-1`, titulo: "Abierta", estado: "disponible" as const, abre: null },
+          { ...base, id: `${asignaturaId}-2`, titulo: "Futura", estado: "porAbrir" as const, abre: "2099-01-01T12:00:00Z" },
+        ];
+      },
+    };
+    const a = await crearServicioMaterias(db, { actividades }).agenda(estudiante(), new Date("2026-09-12T03:00:00Z"));
+    expect(a?.hoy).toBe("2026-09-11");
+    expect(pedidos.sort()).toEqual([ids.lectura, ids.matematicas].sort());
+    expect(a?.actividades.map((x) => x.titulo)).toEqual(["Abierta", "Abierta"]);
+    expect(a?.actividades.every((x) => x.id.startsWith(`${x.materia.id}-`))).toBe(true);
+    expect(pedidos).not.toContain(ids.ingles);
+  });
+
+  it("solo para la sesión ESTUDIANTE", async () => {
+    expect(await S.agenda({ user: { id: ids.docA, contexto: "DOCENTE" } })).toBeNull();
+    expect(await S.agenda(null)).toBeNull();
   });
 });
 

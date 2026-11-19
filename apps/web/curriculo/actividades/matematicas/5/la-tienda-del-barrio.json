@@ -1,0 +1,48 @@
+{
+  "slug": "la-tienda-del-barrio",
+  "titulo": "La tienda del barrio",
+  "tipo": "porcentaje",
+  "grado": 5,
+  "instruccion": "En la tienda del barrio algunos precios suben. Calcula cuánto sube cada producto y cuánto cuesta ahora. Los precios son inventados.",
+  "tema": "Porcentajes: aumento porcentual de un precio",
+  "contenido": {
+    "productos": [
+      {
+        "id": "p1",
+        "nombre": "Bolsa de pan",
+        "precio": 2000,
+        "porcentaje": 10
+      },
+      {
+        "id": "p2",
+        "nombre": "Caja de leche",
+        "precio": 4500,
+        "porcentaje": 20
+      },
+      {
+        "id": "p3",
+        "nombre": "Cubeta de huevos",
+        "precio": 15000,
+        "porcentaje": 5
+      },
+      {
+        "id": "p4",
+        "nombre": "Paquete de arepas",
+        "precio": 3000,
+        "porcentaje": 25
+      },
+      {
+        "id": "p5",
+        "nombre": "Cuaderno",
+        "precio": 6000,
+        "porcentaje": 15
+      },
+      {
+        "id": "p6",
+        "nombre": "Panela",
+        "precio": 3600,
+        "porcentaje": 30
+      }
+    ]
+  }
+}

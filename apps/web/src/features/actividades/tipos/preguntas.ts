@@ -3,12 +3,13 @@
  * es el caso de dos opciones), concurso con tiempo y completar la frase.
  */
 import { z } from "zod";
+import { rutaAudio } from "./audio";
 import { definirTipo } from "./contrato";
 
 const id = z.string().regex(/^[a-z0-9-]+$/, "id en minúsculas, números y guiones");
 const texto = z.string().trim().min(1);
 
-const pregunta = z
+export const esquemaPregunta = z
   .object({
     id,
     enunciado: texto,
@@ -16,13 +17,18 @@ const pregunta = z
     correcta: z.number().int().min(0),
     /** Se muestra después de responder: por qué esa es la respuesta. */
     explicacion: texto.optional(),
+    /** Enunciado grabado (opcional). */
+    audio: rutaAudio.optional(),
+    /** Una grabación por opción, en el mismo orden; `null` si esa opción no tiene. */
+    audioOpciones: z.array(rutaAudio.nullable()).optional(),
   })
   .refine((p) => p.correcta < p.opciones.length, { message: "«correcta» apunta a una opción que no existe" })
-  .refine((p) => new Set(p.opciones).size === p.opciones.length, { message: "opciones repetidas" });
+  .refine((p) => new Set(p.opciones).size === p.opciones.length, { message: "opciones repetidas" })
+  .refine((p) => !p.audioOpciones || p.audioOpciones.length === p.opciones.length, { message: "audioOpciones debe tener una entrada por opción" });
 
-export type Pregunta = z.infer<typeof pregunta>;
+export type Pregunta = z.infer<typeof esquemaPregunta>;
 
-const preguntas = z.array(pregunta).min(3).max(12);
+const preguntas = z.array(esquemaPregunta).min(3).max(12);
 
 function porPregunta<C extends { preguntas: Pregunta[] }>(c: C, itemId: string) {
   const p = c.preguntas.find((x) => x.id === itemId);
@@ -30,7 +36,7 @@ function porPregunta<C extends { preguntas: Pregunta[] }>(c: C, itemId: string) 
   return p;
 }
 
-const tipoPreguntas = {
+export const reglasPreguntas = {
   versionEsquema: 1,
   esquemaRespuesta: z.number().int().min(0),
   items: (c: { preguntas: Pregunta[] }) => c.preguntas.map((p) => ({ itemId: p.id, puntajeMaximo: 1 })),
@@ -48,7 +54,7 @@ export const seleccionMultiple = definirTipo({
   tipo: "seleccion-multiple",
   nombre: "Quiz",
   esquemaContenido: z.object({ preguntas }),
-  ...tipoPreguntas,
+  ...reglasPreguntas,
 });
 
 /*
@@ -60,7 +66,7 @@ export const concurso = definirTipo({
   tipo: "concurso",
   nombre: "Concurso",
   esquemaContenido: z.object({ segundos: z.number().int().min(10).max(60), preguntas }),
-  ...tipoPreguntas,
+  ...reglasPreguntas,
 });
 
 const frase = z

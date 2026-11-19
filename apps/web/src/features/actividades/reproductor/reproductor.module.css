@@ -16,25 +16,67 @@
   --radio: 24px;
   --suave-salida: cubic-bezier(0.16, 1, 0.3, 1);
 
-  display: grid;
-  align-content: start;
-  justify-items: center;
-  gap: clamp(12px, 2dvh, 20px);
-  width: min(920px, 100% - 32px);
-  margin: 0 auto;
-  padding: clamp(14px, 3dvh, 32px) 0 32px;
+  /* Pantalla completa: el juego cubre toda la ventana, con su barra y el botón de salida. */
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: var(--m-fondo);
+  color: var(--m-tinta);
 }
 .reproductor:focus {
   outline: none;
 }
 
+/* ---------- Barra: salir, tipo y título ---------- */
+
+.barraJuego {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  padding: 10px clamp(12px, 2.4vw, 28px);
+  background: var(--m-tarjeta);
+}
+
+.salir {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 18px 8px 12px;
+  border-radius: 999px;
+  background: var(--m-banda);
+  color: var(--m-tinta);
+  font-family: var(--fuente-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: background-color 160ms ease-out;
+}
+.salir:hover {
+  background: var(--m-acento);
+  color: var(--m-sobreAcento);
+}
+.salir:focus-visible {
+  outline: 3px solid var(--m-tinta);
+  outline-offset: 2px;
+}
+
 /* ---------- Cabeza: tipo, título, instrucción ---------- */
 
 .cabeza {
-  display: grid;
-  justify-items: center;
-  gap: 6px;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 12px;
+  min-width: 0;
+  flex: 1 1 280px;
 }
 
 .tipo {
@@ -49,33 +91,57 @@
 .titulo {
   margin: 0;
   font-family: var(--fuente-display);
-  font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.5rem);
+  font-size: clamp(1.2rem, 1rem + 0.8vw, 1.6rem);
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 1.15;
   text-wrap: balance;
+}
+
+.instruccionFila {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
 }
 
 .instruccion {
   margin: 0;
-  max-width: 60ch;
+  max-width: 110ch;
   color: var(--m-suave);
   line-height: 1.45;
   text-wrap: pretty;
 }
 
+/* Instrucción y aviso de práctica, bajo la barra. */
+.notas {
+  display: grid;
+  gap: 4px;
+  width: min(1400px, 100% - 2 * clamp(12px, 2.4vw, 28px));
+  margin: 12px auto 0;
+}
+
 /* ---------- Mesa: el plano blanco donde se juega ---------- */
 
 .mesa {
-  width: 100%;
-  padding: clamp(16px, 3vw, 32px);
+  flex: 1 0 auto;
+  width: min(1400px, 100% - 2 * clamp(12px, 2.4vw, 28px));
+  margin: 12px auto clamp(12px, 2.4vw, 28px);
+  padding: clamp(16px, 2.4vw, 32px);
   border-radius: var(--radio);
   background: var(--m-tarjeta);
 }
 
 .practica {
   margin: 0;
+  max-width: 110ch;
   color: var(--m-suave);
-  text-align: center;
+  font-size: 0.95rem;
+}
+.notaResultado {
+  max-width: 54ch;
+  margin: 0;
+  color: var(--m-suave);
+  line-height: 1.45;
 }
 
 .juego {
@@ -109,10 +175,12 @@
 }
 .progresoBarra span {
   display: block;
+  width: 100%;
   height: 100%;
   border-radius: inherit;
   background: var(--m-acento);
-  transition: width 320ms var(--suave-salida);
+  transform-origin: left center;
+  transition: transform 320ms var(--suave-salida);
 }
 
 .enunciado {
@@ -256,6 +324,253 @@
   gap: 10px;
 }
 
+/* Quiz y Concurso: respuestas con presencia de juego, sin depender del color para reconocerlas. */
+.quiz {
+  --suave-salida: cubic-bezier(0.16, 1, 0.3, 1);
+  --ok-fondo: #dcf2e3;
+  --ok-tinta: #145c2e;
+  --ok-borde: #2f9a57;
+  --no-fondo: #fbe4e1;
+  --no-tinta: #962a22;
+  --no-borde: #d2574b;
+  position: relative;
+  gap: clamp(16px, 2.3vw, 24px);
+  padding: clamp(20px, 3vw, 40px);
+  border-radius: 30px;
+  background: #4b317c;
+  color: #fff;
+}
+.quizCabecera {
+  gap: 16px;
+}
+.quiz .progreso {
+  flex: 1 1 280px;
+  width: 100%;
+}
+.quiz .progresoTexto,
+.quiz .reloj {
+  color: #fff;
+  font-family: var(--fuente-display);
+  font-size: 1.125rem;
+  font-weight: 800;
+}
+.quiz .progresoBarra,
+.quiz .relojBarra {
+  height: 12px;
+  background: rgb(255 255 255 / 25%);
+}
+.quiz .progresoBarra span,
+.quiz .relojBarra span {
+  background: #f5bf3b;
+}
+.quizPreguntaPanel {
+  display: grid;
+  place-content: center;
+  gap: 12px;
+  min-height: clamp(160px, 24dvh, 220px);
+  padding: clamp(20px, 3vw, 36px);
+  border-radius: 24px;
+  background: #fff;
+  color: #2c174e;
+  animation: quizPreguntaAbrir 420ms var(--suave-salida) both;
+}
+.quizEnunciado {
+  max-width: 38ch;
+  margin-inline: auto;
+  font-size: clamp(1.75rem, 1.25rem + 1.8vw, 2.75rem);
+  text-align: center;
+}
+.quizEscuchar {
+  display: flex;
+  justify-content: center;
+}
+.quizEscuchar:empty {
+  display: none;
+}
+.quizOpciones {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 1.6vw, 20px);
+}
+.quizFila {
+  min-width: 0;
+  animation: quizFichaEntrar 480ms var(--suave-salida) both;
+}
+.quizFila:nth-child(2) { animation-delay: 75ms; }
+.quizFila:nth-child(3) { animation-delay: 150ms; }
+.quizFila:nth-child(4) { animation-delay: 225ms; }
+.quiz .quizOpcion {
+  width: 100%;
+  min-height: clamp(112px, 16dvh, 156px);
+  justify-content: flex-start;
+  gap: clamp(12px, 1.6vw, 20px);
+  padding: clamp(14px, 1.7vw, 22px);
+  border: 2px solid transparent;
+  border-radius: 18px;
+  background: var(--quiz-color);
+  color: var(--quiz-tinta);
+  font-family: var(--fuente-display);
+  font-size: clamp(1.25rem, 1.08rem + 0.7vw, 1.6rem);
+  font-weight: 800;
+  line-height: 1.25;
+  transition: transform 180ms var(--suave-salida), background-color 180ms ease-out, color 180ms ease-out;
+}
+.quizOpcion[data-posicion="0"] { --quiz-color: #c83349; --quiz-tinta: #ffffff; }
+.quizOpcion[data-posicion="1"] { --quiz-color: #155fa3; --quiz-tinta: #ffffff; }
+.quizOpcion[data-posicion="2"] { --quiz-color: #f5bf3b; --quiz-tinta: #2c174e; }
+.quizOpcion[data-posicion="3"] { --quiz-color: #24734b; --quiz-tinta: #ffffff; }
+.quiz .quizOpcion:not(:disabled):hover {
+  background: var(--quiz-color);
+  border-color: #fff;
+  transform: translateY(-5px) scale(1.015);
+}
+.quiz .quizOpcion:not(:disabled):active {
+  transform: scale(0.98);
+}
+.quiz .quizOpcion:focus-visible {
+  outline: 4px solid #fff;
+  outline-offset: 4px;
+}
+.quizLetra {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: clamp(48px, 5vw, 68px);
+  height: clamp(48px, 5vw, 68px);
+  color: inherit;
+}
+.quizTexto {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.quiz .quizOpcion[data-estado="ok"] {
+  border-color: var(--ok-borde);
+  background: var(--ok-fondo);
+  color: var(--ok-tinta);
+  animation: quizAcierto 600ms var(--suave-salida);
+}
+.quiz .quizOpcion[data-estado="no"] {
+  border-color: var(--no-borde);
+  background: var(--no-fondo);
+  color: var(--no-tinta);
+  animation: quizError 430ms ease-out;
+}
+.quiz[data-respondida] .quizOpcion:disabled:not([data-estado]) {
+  border-color: rgb(255 255 255 / 50%);
+  background: #e8e2f0;
+  color: #2c174e;
+}
+.quizRespuesta .aviso[data-tono] {
+  min-height: 64px;
+  padding: 14px 20px;
+  border-radius: 16px;
+  font-size: 1.125rem;
+  animation: quizAviso 360ms var(--suave-salida);
+}
+.quiz .acciones .principal {
+  min-height: 56px;
+  padding-inline: 30px;
+  background: #f5bf3b;
+  color: #2c174e;
+}
+.quizDestello {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  background: rgb(28 18 55 / 55%);
+  animation: quizVelo 1050ms ease-out forwards;
+}
+.quizDestelloCentro {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  width: min(290px, 72vw);
+  padding: 28px 20px;
+  border: 2px solid #fff;
+  border-radius: 28px;
+  background: #24734b;
+  color: #fff;
+  font-family: var(--fuente-display);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  text-align: center;
+  animation: quizSello 880ms var(--suave-salida) both;
+}
+.quizDestello[data-tono="no"] .quizDestelloCentro {
+  background: #a72d3f;
+}
+.quizParticula {
+  position: absolute;
+  left: calc(50% - 7px);
+  top: calc(50% - 7px);
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  background: #f5bf3b;
+  animation: quizParticulaSalir 850ms ease-out both;
+}
+.quizParticula:nth-of-type(even) { background: #75d5ee; }
+.quizDestello[data-tono="no"] .quizParticula { display: none; }
+@keyframes quizPreguntaAbrir {
+  from { clip-path: inset(0 48% 0 48% round 24px); }
+  to { clip-path: inset(0 0 0 0 round 24px); }
+}
+@keyframes quizFichaEntrar {
+  from { opacity: 0.25; transform: scale(0.82) rotate(-2deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+@keyframes quizAcierto {
+  45% { transform: scale(1.065); }
+}
+@keyframes quizError {
+  25%, 75% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+}
+@keyframes quizAviso {
+  from { opacity: 0.3; transform: scale(0.96); }
+}
+@keyframes quizVelo {
+  0% { opacity: 0; }
+  18%, 72% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+@keyframes quizSello {
+  0% { opacity: 0; transform: scale(0.62) rotate(-10deg); }
+  45% { opacity: 1; transform: scale(1.08) rotate(2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+@keyframes quizParticulaSalir {
+  0%, 18% { opacity: 0; transform: rotate(var(--angulo)) translateY(0) scale(0.4); }
+  35% { opacity: 1; }
+  100% { opacity: 0; transform: rotate(var(--angulo)) translateY(-230px) scale(1); }
+}
+@media (max-width: 680px) {
+  .quizOpciones { grid-template-columns: minmax(0, 1fr); }
+  .quiz { padding: 20px 16px 28px; border-radius: 24px; }
+  .quizPreguntaPanel { min-height: 150px; padding: 20px 16px; }
+  .quiz .quizOpcion { min-height: 86px; }
+  .quizLetra { width: 44px; height: 44px; }
+  .quizLetra svg { width: 30px; height: 30px; }
+  .quiz .acciones > * { flex: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .quizPreguntaPanel,
+  .quizFila,
+  .quiz .quizOpcion,
+  .quiz .quizOpcion[data-estado],
+  .quizRespuesta .aviso[data-tono] {
+    animation: none;
+    transition: none;
+  }
+  .quizDestello { display: none; }
+  .quiz .quizOpcion:not(:disabled):hover { transform: none; }
+}
+
 .reloj {
   display: inline-flex;
   align-items: center;
@@ -272,9 +587,11 @@
 }
 .relojBarra span {
   display: block;
+  width: 100%;
   height: 100%;
   background: var(--m-apoyo);
-  transition: width 1s linear;
+  transform-origin: left center;
+  transition: transform 1s linear;
 }
 .reloj[data-fin] .relojBarra {
   display: none;
@@ -517,6 +834,81 @@
 .letra[data-hallada] {
   background: var(--ok-fondo);
   color: var(--ok-tinta);
+}
+.selectorGrande {
+  min-width: 0;
+  border: 2px solid var(--m-banda);
+  border-radius: 14px;
+  background: var(--m-fondo);
+}
+.selectorGrande summary {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 8px 14px;
+  color: var(--m-tinta);
+  font-weight: 800;
+  cursor: pointer;
+}
+.selectorGrande summary:focus-visible,
+.selectorGrande select:focus-visible,
+.letraGrande:focus-visible {
+  outline: 3px solid var(--m-acento);
+  outline-offset: 2px;
+}
+.selectorGrandeCuerpo {
+  display: grid;
+  gap: 10px;
+  padding: 0 14px 14px;
+}
+.selectorGrandeCuerpo label {
+  font-weight: 700;
+}
+.selectorGrandeCuerpo select {
+  min-height: 48px;
+  padding: 8px;
+  border: 2px solid var(--m-acento);
+  border-radius: 10px;
+  background: var(--m-tarjeta);
+  color: var(--m-tinta);
+  font: inherit;
+}
+.selectorGrandeCuerpo p {
+  margin: 0;
+  color: var(--m-suave);
+}
+.filaGrande {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(44px, 1fr));
+  gap: 6px;
+}
+.letraGrande {
+  display: grid;
+  place-items: center;
+  min-height: 48px;
+  padding: 4px;
+  border: 2px solid var(--m-acento);
+  border-radius: 10px;
+  background: var(--m-tarjeta);
+  color: var(--m-tinta);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+.letraGrande small {
+  font-size: 0.7rem;
+  line-height: 1;
+}
+.letraGrande[aria-pressed="true"] {
+  background: var(--m-acento);
+  color: var(--m-sobreAcento);
+}
+.letraGrande[data-hallada] {
+  border-color: var(--ok-tinta);
+}
+@media (max-width: 360px) {
+  .selectorGrandeCuerpo { padding-inline: 8px; }
+  .filaGrande { gap: 4px; }
 }
 .palabras {
   display: grid;
@@ -772,4 +1164,38 @@
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* ---------- Escuchar junto a opciones y tarjetas (juegos-primero) ---------- */
+.opcionFila,
+.columna > li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.opcionFila > .opcion,
+.columna > li > .carta {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Tarjeta de clasificar con ilustración (1.°): la imagen arriba, la palabra abajo; alt="" porque la palabra la nombra. */
+.piezaFila {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.pieza[data-con-imagen] {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 12px 28px 14px;
+}
+.piezaImagen {
+  width: clamp(120px, 28vw, 180px);
+  height: auto;
+  border-radius: 14px;
+  background: #fff;
 }
