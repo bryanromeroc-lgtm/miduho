@@ -13,7 +13,7 @@ import s from "./reproductor.module.css";
 
 const SIMBOLOS = [Triangle, Diamond, Circle, Square] as const;
 type EfectosQuiz = Partial<Record<"acierto" | "fallo" | "finRonda" | "fin", string>>;
-type ContenidoQuiz = { preguntas: Pregunta[]; escena?: EscenaJuego; efectos?: EfectosQuiz };
+type ContenidoQuiz = { preguntas: Pregunta[]; escena?: EscenaJuego; efectos?: EfectosQuiz; barajarOpciones?: boolean };
 
 function LecturaInicio({ pregunta }: { pregunta: Pregunta }) {
   const { instruccion, audioInstruccion } = useContext(ContextoActividad);
@@ -71,7 +71,7 @@ function Preguntas({ contenido, semilla, alTerminar, segundos, focoInicial }: Pr
   const p = contenido.preguntas[indice];
   const elegida = respuestas[p.id];
   const respondida = elegida !== undefined;
-  const ordenes = useMemo(() => ordenesPreguntas(contenido.preguntas, semilla), [contenido.preguntas, semilla]);
+  const ordenes = useMemo(() => ordenesPreguntas(contenido.preguntas, semilla, contenido.barajarOpciones), [contenido.preguntas, contenido.barajarOpciones, semilla]);
   const orden = ordenes[indice];
   const ultima = indice === contenido.preguntas.length - 1;
   const titulo = useFocoAlCambiar<HTMLHeadingElement>(indice);
@@ -133,7 +133,7 @@ function Preguntas({ contenido, semilla, alTerminar, segundos, focoInicial }: Pr
         </h2>
         <div className={s.quizEscuchar}><Escuchar texto={p.enunciado} audio={p.audio} etiqueta="Escuchar la pregunta" /></div>
       </div>
-      <div className={`${s.opciones} ${s.quizOpciones}`} data-dos={p.opciones.length === 2 ? "" : undefined}>
+      <div className={`${s.opciones} ${s.quizOpciones}`} data-dos={p.opciones.length === 2 ? "" : undefined} data-cuatro={p.opciones.length === 4 ? "" : undefined}>
         {orden.map((i, posicion) => {
           const estado = respondida ? (i === p.correcta ? "ok" : i === elegida ? "no" : undefined) : undefined;
           const Simbolo = SIMBOLOS[posicion];

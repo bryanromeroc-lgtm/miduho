@@ -1,0 +1,149 @@
+{
+  "slug": "cuenta-las-silabas",
+  "titulo": "Cuenta las sílabas",
+  "tipo": "seleccion-multiple",
+  "grado": 1,
+  "instruccion": "Mira el dibujo y escucha la palabra. Toca cuántas sílabas tiene.",
+  "audioInstruccion": "/audio/actividades/cuenta-las-silabas/instruccion.mp3",
+  "tema": "Conciencia silábica (LEN-1-05)",
+  "imagen": "/images/juegos/cuenta-las-silabas/portada.webp",
+  "contenido": {
+    "barajarOpciones": false,
+    "preguntas": [
+      {
+        "id": "sol",
+        "enunciado": "¿Cuántas sílabas tiene «sol»?",
+        "opciones": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correcta": 0,
+        "explicacion": "sol: 1 sílaba.",
+        "imagen": "/images/juegos/cuenta-las-silabas/sol.webp",
+        "alt": "Dibujo de un sol.",
+        "audio": "/audio/actividades/cuenta-las-silabas/sol.mp3"
+      },
+      {
+        "id": "flor",
+        "enunciado": "¿Cuántas sílabas tiene «flor»?",
+        "opciones": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correcta": 0,
+        "explicacion": "flor: 1 sílaba.",
+        "imagen": "/images/juegos/cuenta-las-silabas/flor.webp",
+        "alt": "Dibujo de una flor.",
+        "audio": "/audio/actividades/cuenta-las-silabas/flor.mp3"
+      },
+      {
+        "id": "casa",
+        "enunciado": "¿Cuántas sílabas tiene «casa»?",
+        "opciones": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correcta": 1,
+        "explicacion": "ca-sa: 2 sílabas.",
+        "imagen": "/images/juegos/cuenta-las-silabas/casa.webp",
+        "alt": "Dibujo de una casa.",
+        "audio": "/audio/actividades/cuenta-las-silabas/casa.mp3"
+      },
+      {
+        "id": "perro",
+        "enunciado": "¿Cuántas sílabas tiene «perro»?",
+        "opciones": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correcta": 1,
+        "explicacion": "pe-rro: 2 sílabas.",
+        "imagen": "/images/juegos/cuenta-las-silabas/perro.webp",
+        "alt": "Dibujo de un perro.",
+        "audio": "/audio/actividades/cuenta-las-silabas/perro.mp3"
+      },
+      {
+        "id": "pelota",
+        "enunciado": "¿Cuántas sílabas tiene «pelota»?",
+        "opciones": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correcta": 2,
+        "explicacion": "pe-lo-ta: 3 sílabas.",
+        "imagen": "/images/juegos/cuenta-las-silabas/pelota.webp",
+        "alt": "Dibujo de una pelota.",
+        "audio": "/audio/actividades/cuenta-las-silabas/pelota.mp3"
+      },
+      {
+        "id": "zapato",
+        "enunciado": "¿Cuántas sílabas tiene «zapato»?",
+        "opciones": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correcta": 2,
+        "explicacion": "za-pa-to: 3 sílabas.",
+        "imagen": "/images/juegos/cuenta-las-silabas/zapato.webp",
+        "alt": "Dibujo de un zapato.",
+        "audio": "/audio/actividades/cuenta-las-silabas/zapato.mp3"
+      },
+      {
+        "id": "mariposa",
+        "enunciado": "¿Cuántas sílabas tiene «mariposa»?",
+        "opciones": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correcta": 3,
+        "explicacion": "ma-ri-po-sa: 4 sílabas.",
+        "imagen": "/images/juegos/cuenta-las-silabas/mariposa.webp",
+        "alt": "Dibujo de una mariposa.",
+        "audio": "/audio/actividades/cuenta-las-silabas/mariposa.mp3"
+      },
+      {
+        "id": "computador",
+        "enunciado": "¿Cuántas sílabas tiene «computador»?",
+        "opciones": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correcta": 3,
+        "explicacion": "com-pu-ta-dor: 4 sílabas.",
+        "imagen": "/images/juegos/cuenta-las-silabas/computador.webp",
+        "alt": "Dibujo de un computador.",
+        "audio": "/audio/actividades/cuenta-las-silabas/computador.mp3"
+      }
+    ],
+    "escena": {
+      "personaje": {
+        "nombre": "Bruno",
+        "reposo": "/images/juegos/cuenta-las-silabas/bruno-reposo.webp",
+        "senala": "/images/juegos/cuenta-las-silabas/bruno-senala.webp",
+        "duda": "/images/juegos/cuenta-las-silabas/bruno-duda.webp"
+      }
+    },
+    "efectos": {
+      "acierto": "/audio/juegos/parejas/acierto.mp3",
+      "fallo": "/audio/juegos/parejas/fallo.mp3",
+      "finRonda": "/audio/juegos/parejas/fin-ronda.mp3",
+      "fin": "/audio/juegos/parejas/fin.mp3"
+    }
+  }
+}

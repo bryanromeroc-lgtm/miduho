@@ -66,7 +66,7 @@ export const reglasPreguntas = {
 export const seleccionMultiple = definirTipo({
   tipo: "seleccion-multiple",
   nombre: "Quiz",
-  esquemaContenido: z.object({ preguntas, escena: esquemaEscenaJuego.optional(), efectos: efectos.optional() }),
+  esquemaContenido: z.object({ preguntas, escena: esquemaEscenaJuego.optional(), efectos: efectos.optional(), barajarOpciones: z.boolean().optional() }),
   ...reglasPreguntas,
 });
 
@@ -78,7 +78,7 @@ export const seleccionMultiple = definirTipo({
 export const concurso = definirTipo({
   tipo: "concurso",
   nombre: "Concurso",
-  esquemaContenido: z.object({ segundos: z.number().int().min(10).max(60), preguntas, escena: esquemaEscenaJuego.optional(), efectos: efectos.optional() }),
+  esquemaContenido: z.object({ segundos: z.number().int().min(10).max(60), preguntas, escena: esquemaEscenaJuego.optional(), efectos: efectos.optional(), barajarOpciones: z.boolean().optional() }),
   ...reglasPreguntas,
 });
 

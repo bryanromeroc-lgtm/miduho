@@ -228,6 +228,12 @@ describe("audio en el contenido (juegos-primero)", () => {
     expect(esquema.safeParse({ ...nuevo, preguntas: [{ ...p, alt: undefined }, ...preguntas.preguntas.slice(1)] }).success).toBe(false);
     expect(esquema.safeParse({ ...nuevo, preguntas: [{ ...p, imagenesOpciones: [null] }, ...preguntas.preguntas.slice(1)] }).success).toBe(false);
   });
+  it("acepta orden fijo opcional en quiz y concurso, y rechaza valores no booleanos", () => {
+    expect(seleccionMultiple.esquemaContenido.safeParse(preguntas).success).toBe(true);
+    expect(seleccionMultiple.esquemaContenido.safeParse({ ...preguntas, barajarOpciones: false }).success).toBe(true);
+    expect(concurso.esquemaContenido.safeParse({ ...preguntas, segundos: 20, barajarOpciones: false }).success).toBe(true);
+    expect(seleccionMultiple.esquemaContenido.safeParse({ ...preguntas, barajarOpciones: "false" }).success).toBe(false);
+  });
   it("rutasDeAudio junta todas las rutas citadas", () => {
     expect(rutasDeAudio({ audioInstruccion: "/audio/i.mp3", contenido: { preguntas: [{ audio: "/audio/p.mp3", audioOpciones: ["/audio/o.mp3", null] }] } })).toEqual([
       "/audio/i.mp3",

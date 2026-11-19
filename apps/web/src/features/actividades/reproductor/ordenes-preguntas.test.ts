@@ -13,4 +13,8 @@ describe("ordenesPreguntas", () => {
     expect(a).not.toEqual(ordenesPreguntas(preguntas, "partida-2"));
     expect(a.every((orden) => [...orden].sort().join() === "0,1,2")).toBe(true);
   });
+  it("conserva el orden explícito sin alterar el barajado predeterminado", () => {
+    expect(ordenesPreguntas(preguntas, "partida-1", false)).toEqual(preguntas.map(() => [0, 1, 2]));
+    expect(ordenesPreguntas(preguntas, "partida-1", true)).toEqual(ordenesPreguntas(preguntas, "partida-1"));
+  });
 });

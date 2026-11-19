@@ -1,0 +1,56 @@
+{
+  "instruccion": {
+    "archivo": "instruccion.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Mira el dibujo y escucha la palabra. Toca cuántas sílabas tiene."
+  },
+  "sol": {
+    "archivo": "sol.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "¿Cuántas sílabas tiene sol?"
+  },
+  "flor": {
+    "archivo": "flor.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "¿Cuántas sílabas tiene flor?"
+  },
+  "casa": {
+    "archivo": "casa.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "¿Cuántas sílabas tiene casa?"
+  },
+  "perro": {
+    "archivo": "perro.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "¿Cuántas sílabas tiene perro?"
+  },
+  "pelota": {
+    "archivo": "pelota.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "¿Cuántas sílabas tiene pelota?"
+  },
+  "zapato": {
+    "archivo": "zapato.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "¿Cuántas sílabas tiene zapato?"
+  },
+  "mariposa": {
+    "archivo": "mariposa.mp3",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "¿Cuántas sílabas tiene mariposa?"
+  },
+  "computador": {
+    "archivo": "computador.mp3",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "¿Cuántas sílabas tiene computador?"
+  }
+}

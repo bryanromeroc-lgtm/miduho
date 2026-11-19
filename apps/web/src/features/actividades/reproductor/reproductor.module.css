@@ -581,6 +581,8 @@
 }
 .quizIlustrado .quizOpciones { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .quizConEscena .quizOpciones { grid-column: 2; grid-row: 3; grid-template-columns: 1fr; gap: 8px; }
+.quizConEscena .quizOpciones[data-cuatro] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.quizConEscena .quizOpciones[data-cuatro] .quizOpcion { min-height: clamp(88px, 12dvh, 110px); }
 .quizIlustrado .quizOpcion { min-height: 76px; padding: 5px 12px; font-size: clamp(1.2rem, 1rem + .7vw, 1.5rem); }
 .quizCara { flex: none; width: 64px; height: 64px; border-radius: 14px; overflow: hidden; background: #fff; }
 .quizCara img { width: 100%; height: 100%; object-fit: contain; }
@@ -589,10 +591,15 @@
   .quizConEscena .quizCabecera, .quizEscena, .quizConEscena .quizPreguntaPanel,
   .quizConEscena .quizOpciones, .quizConEscena .quizRespuesta, .quizConEscena .acciones { grid-column: 1; grid-row: auto; }
   .quizIlustrado .quizOpciones { grid-template-columns: 1fr; }
+  .quizConEscena .quizOpciones[data-cuatro] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quizConEscena .quizOpciones[data-cuatro] .quizOpcion { min-height: 72px; gap: 6px; padding: 5px; }
+  .quizConEscena .quizOpciones[data-cuatro] .quizLetra { width: 38px; height: 38px; }
+  .quizConEscena .quizOpciones[data-cuatro] .quizLetra svg { width: 30px; height: 30px; }
   .quizIlustrado .quizOpcion { min-height: 82px; }
   .quizIlustrado .quizPreguntaPanel { padding: 12px; }
   .quizIlustrado .quizEnunciado { font-size: 1.25rem; }
   .quizEscena { height: 220px; }
+  .quizConEscena:has(.quizOpciones[data-cuatro]) .quizEscena { height: 140px; }
   .quizSituacion, .quizImagenPendiente { width: 100%; }
   .quizPersonaje { display: none; }
   .quizCara { width: 70px; height: 70px; }

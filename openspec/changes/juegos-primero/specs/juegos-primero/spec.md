@@ -11,7 +11,7 @@ El programa SHALL construir las 26 actividades de la tabla y SHALL mantener la a
 | 2 | `antes-y-ahora` | Ciencias sociales | SOC-1-03 | `clasificar` (presentación `parejas`) | Mundo Primaria soc-hue-1-2 (pasado y presente) |
 | 2 | `como-se-siente` | Ética y valores | CIU-1a3-CP | `clasificar` | Cokitos clasificar emociones; adaptación con categorías «Emociones agradables» y «Emociones desagradables» 🔶 validación docente |
 | 2 | `emociones-del-recreo` | Ética y valores | CIU-1a3-CP | `seleccion-multiple` | Mundo Primaria natu-seh-1-4; adaptación aprobada: seis escenas ilustradas, tres emociones y Ciro |
-| 2 | `cuenta-las-silabas` | Comprensión lectora | LEN-1-05 | `seleccion-multiple` | Digipuzzle cuenta las sílabas |
+| 2 | `cuenta-las-silabas` | Comprensión lectora | LEN-1-05 | `seleccion-multiple` (opciones 1–4 en orden fijo) | Digipuzzle cuenta las sílabas; adaptación aprobada: ocho palabras ilustradas, Bruno y voces propias |
 | 2 | `separa-las-silabas` | Comprensión lectora | LEN-1-05 | `ordenar` | Cokitos separar sílabas en las palabras |
 | 2 | `sonidos-y-letras` | Comprensión lectora | LEN-1-05 | `clasificar` | Colombia Aprende sonidos no lingüísticos y de las letras |
 | 2 | `zoo-de-silabas` | Comprensión lectora | LEN-1-06 | `emparejar` | Cristic zoo sílabas |
