@@ -1,0 +1,753 @@
+{
+  "slug": "cokitos-meses-del-anio",
+  "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+  "autor_dominio": "wordwall.net",
+  "fecha_captura": "2026-11-17T21:05:42.683Z",
+  "herramienta": "tools/captura-audio",
+  "transcripcion_automatica": "no disponible (sin whisper) 🔶",
+  "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+  "notas_captura": [
+    "guion: abierto https://www.cokitos.com/ordenar-los-meses-del-ano/play/",
+    "guion: iframe del juego: https://wordwall.net/es/embed/5695a5e7f5954f169c38f6c5b0acbc84?themeId=44&templateId=50",
+    "guion: abierto el juego del autor como página: https://wordwall.net/es/embed/5695a5e7f5954f169c38f6c5b0acbc84?themeId=44&templateId=50",
+    "no descargado (404): https://pm.azerioncircle.com/@bygd/focus/0.13.6/dist/app/iife/!window.OPUS",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/chalk/sounds-06-2023/chalkchipminorfast1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-06-2023/chalkchipminorfast1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-06-2023/chalkchipminorfast1.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/chalk/sounds-06-2023/chalkchipminorfast2.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-06-2023/chalkchipminorfast2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-06-2023/chalkchipminorfast2.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/chalk/sounds-06-2023/chalkchipminorfast3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-06-2023/chalkchipminorfast3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-06-2023/chalkchipminorfast3.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-06-2023/chalkchipminorfast4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-06-2023/chalkchipminorfast4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-06-2023/chalkchipminorfast4.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkgamesuccessful.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalkgamesuccessful.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalkgamesuccessful.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-06-2023/chalkchipfailfast1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-06-2023/chalkchipfailfast1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-06-2023/chalkchipfailfast1.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-06-2023/chalkchipfailfast2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-06-2023/chalkchipfailfast2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-06-2023/chalkchipfailfast2.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-06-2023/chalkchipfailfast3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-06-2023/chalkchipfailfast3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-06-2023/chalkchipfailfast3.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkgameintro.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalkgameintro.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalkgameintro.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkleaderboards.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalkleaderboards.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalkleaderboards.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkgamemenu.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalkgamemenu.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalkgamemenu.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkgamemenusubtle.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalkgamemenusubtle.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalkgamemenusubtle.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkgamerestart.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalkgamerestart.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalkgamerestart.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkreveal.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalkreveal.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalkreveal.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalktiledrop1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalktiledrop1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalktiledrop1.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalktiledrop2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalktiledrop2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalktiledrop2.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalktiledrop3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalktiledrop3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalktiledrop3.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalktiledrop4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalktiledrop4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalktiledrop4.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalktiledrop5.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalktiledrop5.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalktiledrop5.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalktilepickup1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalktilepickup1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalktilepickup1.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalktilepickup2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalktilepickup2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalktilepickup2.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalktilepickup3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalktilepickup3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalktilepickup3.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalktimeout.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalktimeout.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalktimeout.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkclassroomambience.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalkclassroomambience.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/720p/themes/chalk/sounds-12-2024/chalkclassroomambience.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkconveyoritemactivate1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkconveyoritemactivate2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkconveyoritemactivate3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkconveyoritemactivate4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkconveyoritemappear.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkconveyoritemcentered1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkconveyoritemcentered2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkconveyoritemcentered3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkconveyoritemcentered4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkconveyoritemdeactivate.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkconveyoritemleave1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkconveyoritemleave2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkconveyoritemleave3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkconveyoritemleave4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkchipminor1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkchipminor2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkchipminor3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkchipminor4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkdrawinggallows1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkdrawinggallows2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkdrawinggallows3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkdrawinggallows4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkdrawinggallows5.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkdrawinggallows6.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkdrawinggallows7.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkdrawinggallows8.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkdrawinggallows9.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkgameunsuccessful.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkchipfail1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkchipfail2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkchipfail3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkchipfail4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkpagecomplete.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkchipmajor.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkgameshuffle.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkgamespinner1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkgamespinner2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkgamespinner3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkgamespinner4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkgamespinner5.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkgamespinner6.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkgamespinner7.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkgamespinner8.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkgamespinnerselection.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalktileappear.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalktileeliminate.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkfliptile1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkfliptile2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkfliptile3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkfliptileback1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkfliptileback2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/chalk/sounds-12-2024/chalkfliptileback3.mp3"
+  ],
+  "frames": [
+    "https://wordwall.net/es/embed/5695a5e7f5954f169c38f6c5b0acbc84?themeId=44&templateId=50"
+  ],
+  "pistas": [
+    {
+      "id": "ede6a968",
+      "archivo": "audio/originales/ede6a968-chalkchipminorfast1.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-06-2023/chalkchipminorfast1.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "ede6a96812a500cc6c59d0a8388beb25d847ae32f44a78358de4b419d172b358",
+      "mime": "audio/ogg",
+      "duracion_s": 1.438,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -26.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/casillas/acierto-1.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "11663b1e",
+      "archivo": "audio/originales/11663b1e-chalkchipminorfast2.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-06-2023/chalkchipminorfast2.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "11663b1eb2d29b19014f6f8b7691fa2a5945bf340f41b3357ea41ca3d844f376",
+      "mime": "audio/ogg",
+      "duracion_s": 1.438,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -21.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/casillas/acierto-2.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "0210c348",
+      "archivo": "audio/originales/0210c348-chalkchipminorfast3.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-06-2023/chalkchipminorfast3.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "0210c3485e27777997096c920deac032cf2db6568485f74a15c9e3031dd224a9",
+      "mime": "audio/ogg",
+      "duracion_s": 1.438,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -19.3,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/casillas/acierto-3.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "e326f475",
+      "archivo": "audio/originales/e326f475-chalkchipminorfast4.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-06-2023/chalkchipminorfast4.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "e326f47536577ea6ca6195ac2785b1abd1b56e80ae42840a048bd6313dd48b67",
+      "mime": "audio/ogg",
+      "duracion_s": 1.438,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -21.7,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "46dad7c1",
+      "archivo": "audio/originales/46dad7c1-chalkchipfailfast1.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-06-2023/chalkchipfailfast1.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "46dad7c1f1163c81aedd5e17b748eebb8627a662c278c409b23290005a843b0b",
+      "mime": "audio/ogg",
+      "duracion_s": 0.862,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -19.5,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/casillas/fallo-1.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "145c1027",
+      "archivo": "audio/originales/145c1027-chalkchipfailfast2.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-06-2023/chalkchipfailfast2.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "145c1027679c5e308458ec3c21abdf638297391538d85eb656eaba9c3973451d",
+      "mime": "audio/ogg",
+      "duracion_s": 0.862,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -23.7,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/casillas/fallo-2.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "efcc0ad8",
+      "archivo": "audio/originales/efcc0ad8-chalkgameintro.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-12-2024/chalkgameintro.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "efcc0ad8cafe607f68dba282b6265bb8fea5b84975d37463a40d1bb7c7e86990",
+      "mime": "audio/ogg",
+      "duracion_s": 3.967,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -11.3,
+      "rol": "desconocido",
+      "evento": "inicio",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/casillas/inicio.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "e1cab9b2",
+      "archivo": "audio/originales/e1cab9b2-chalkgamemenu.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-12-2024/chalkgamemenu.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "e1cab9b20b150624cec5ede81bf200e59322ea9f4f42e6768809247121c4482f",
+      "mime": "audio/ogg",
+      "duracion_s": 2.015,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.1,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "c6e8bc2a",
+      "archivo": "audio/originales/c6e8bc2a-chalkchipfailfast3.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-06-2023/chalkchipfailfast3.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "c6e8bc2a172944f0365c20b62aa4b518f9ffac9e44647d4a59ec4680ace17f37",
+      "mime": "audio/ogg",
+      "duracion_s": 0.862,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -19.1,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/casillas/fallo-3.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "ab6bd8cb",
+      "archivo": "audio/originales/ab6bd8cb-chalkgamemenusubtle.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-12-2024/chalkgamemenusubtle.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "ab6bd8cbcab77d626992fa392de4f5737de709ef483581bde1b4a3952953cae9",
+      "mime": "audio/ogg",
+      "duracion_s": 1.005,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -24,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "e3b0031b",
+      "archivo": "audio/originales/e3b0031b-chalkreveal.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-12-2024/chalkreveal.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "e3b0031b474434b0e5a0ff4fbf79d0a0dc206c22c1525b10443fc34ffa205fcd",
+      "mime": "audio/ogg",
+      "duracion_s": 2.5,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -9.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/casillas/revelar.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "f99169d5",
+      "archivo": "audio/originales/f99169d5-chalktiledrop1.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-12-2024/chalktiledrop1.ogg",
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-12-2024/chalktiledrop5.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "f99169d5dc2af98b3800398fd3bf1e2c1ad5521504a524de95933a5ebb30bdf2",
+      "mime": "audio/ogg",
+      "duracion_s": 0.614,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -29,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/casillas/soltar-1.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "7fe012f8",
+      "archivo": "audio/originales/7fe012f8-chalktiledrop2.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-12-2024/chalktiledrop2.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "7fe012f869358f6bfdae063b866216432e89bb233f4613870b9a1ad108e0268b",
+      "mime": "audio/ogg",
+      "duracion_s": 0.614,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -28.6,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/casillas/soltar-2.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "181765b5",
+      "archivo": "audio/originales/181765b5-chalktiledrop3.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-12-2024/chalktiledrop3.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "181765b5f89349e115f013765970b4ff47dbbe5c561db4eafbc4eb55c2427a84",
+      "mime": "audio/ogg",
+      "duracion_s": 0.614,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -30,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/casillas/soltar-3.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "1ac6a846",
+      "archivo": "audio/originales/1ac6a846-chalktiledrop4.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-12-2024/chalktiledrop4.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "1ac6a84690dfbdfd6bc5a0c8fa4a257456a56d0962fdf000bdce2610ead01122",
+      "mime": "audio/ogg",
+      "duracion_s": 0.614,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -27.7,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "6e9a6c3c",
+      "archivo": "audio/originales/6e9a6c3c-chalktilepickup1.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-12-2024/chalktilepickup1.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "6e9a6c3c6e9313e080089312e95a952e3537d8cb673aa83f9846b611fbb8872d",
+      "mime": "audio/ogg",
+      "duracion_s": 1.196,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -23.1,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/casillas/levantar-1.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "3ac6be07",
+      "archivo": "audio/originales/3ac6be07-chalktilepickup2.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-12-2024/chalktilepickup2.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "3ac6be0707e6ee08e077cff9ab7121c5224ba67db85c7bae4f5a1e979b30a93a",
+      "mime": "audio/ogg",
+      "duracion_s": 1.196,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -19.7,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/casillas/levantar-2.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "191ca6ac",
+      "archivo": "audio/originales/191ca6ac-chalktilepickup3.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-12-2024/chalktilepickup3.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "191ca6ac13e79e1bfa0f19a59b3e8088a1c7ed07afaa64fe0527e60f27b2d35b",
+      "mime": "audio/ogg",
+      "duracion_s": 1.196,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -19.1,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/casillas/levantar-3.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "60f9be88",
+      "archivo": "audio/originales/60f9be88-chalkgamesuccessful.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-12-2024/chalkgamesuccessful.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "60f9be887df8f0de7b892a9776ae5eff0706970f37a218d7dd8cfee04c27aaf3",
+      "mime": "audio/ogg",
+      "duracion_s": 5.729,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -9.8,
+      "rol": "efecto",
+      "evento": "fin",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/casillas/fin.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "7cf458d4",
+      "archivo": "audio/originales/7cf458d4-chalkleaderboards.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-12-2024/chalkleaderboards.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "7cf458d43e3a76a324a93fc930eaf4911c2b788836aa160cd03b31a002399a50",
+      "mime": "audio/ogg",
+      "duracion_s": 3.875,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -10.4,
+      "rol": "desconocido",
+      "evento": "fin",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "633f16b2",
+      "archivo": "audio/originales/633f16b2-chalkgamerestart.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-12-2024/chalkgamerestart.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "633f16b23696d63d1a98fc8287d6d0bf54fff2aee8f99ebe84a9af3874f7006e",
+      "mime": "audio/ogg",
+      "duracion_s": 2.015,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -11.7,
+      "rol": "efecto",
+      "evento": "inicio",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/casillas/reiniciar.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "908a11eb",
+      "archivo": "audio/originales/908a11eb-chalktimeout.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/chalk/sounds-12-2024/chalktimeout.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "908a11eb4bf32fc63db5ff7f30badb0ab21762d7b63767f7e7ab46dc1d5b9aeb",
+      "mime": "audio/ogg",
+      "duracion_s": 7.978,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -12.4,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "93eb48d1",
+      "archivo": "audio/originales/93eb48d1-test1.mp3",
+      "urls": [
+        "https://app.cdn.wordwall.net/test/test1.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "93eb48d143f511d68cafe8614abee4a9fed09d1182e78d98c0aa7f03835b370f",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.8,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -20.1,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "script"
+      ]
+    },
+    {
+      "id": "23061693",
+      "archivo": "audio/originales/23061693-data-0.mp3",
+      "urls": [
+        "data:audio/mp3 (en https://app.cdn.wordwall.net/engine/a/scripts/view.fc44b9c413a71cd1.js)"
+      ],
+      "pagina": "https://www.cokitos.com/ordenar-los-meses-del-ano/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "23061693af1606d64ce60b03ebaafb7ca834f634d6abb5f872f22bb496f702c3",
+      "mime": "audio/mp3",
+      "duracion_s": 0.168,
+      "canales": 1,
+      "frecuencia_hz": 24000,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    }
+  ]
+}

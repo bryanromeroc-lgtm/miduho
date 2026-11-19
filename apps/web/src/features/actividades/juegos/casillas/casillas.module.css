@@ -1,0 +1,50 @@
+.tablero { color: #173126; background: #f6f0df; border: 3px solid #d5bd83; border-radius: 24px; padding: clamp(16px,2vw,28px); min-height: min(760px,78dvh); width: 100%; box-shadow: 0 12px 30px #203a2219; }
+.tablero button { cursor: pointer; font: inherit; }
+.tablero button:focus-visible { outline: 3px solid #1c5da7; outline-offset: 3px; }
+.tablero button:disabled { cursor: default; }
+.barra { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-weight: 700; }
+.sonido,.devolver { display: inline-flex; align-items: center; gap: 8px; border: 2px solid #27634a; color: #174c37; background: #fffdf5; border-radius: 12px; min-height: 44px; padding: 6px 12px; white-space: nowrap; flex-shrink: 0; }
+.portada { min-height: 60dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 16px; }
+.personajePortada { height: clamp(190px,34dvh,360px); width: min(40vw,320px); }
+.personajePortada img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.escena { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.3fr); gap: clamp(12px,2vw,24px); margin-top: 16px; background-color: #244b3c; background-position: center; background-size: cover; border-radius: 18px; padding: clamp(12px,2vw,24px); min-height: 475px; }
+.escena[data-con-guia] { grid-template-columns: minmax(180px,.72fr) minmax(0,1.2fr) minmax(0,1.55fr); }
+.guia { align-self: end; justify-self: center; position: relative; width: min(100%,310px); height: clamp(240px,34dvh,370px); display: grid; place-items: end center; transform-origin: 50% 100%; }
+.guia img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: bottom; transform-origin: 50% 100%; }
+.guia[data-pose='senala'] img { transform: scale(1.13); }
+.guia[data-tiempo='anticipacion'] { animation: anticipar 160ms ease-out both; }
+.guia[data-tiempo='accion'] { animation: senalar 180ms cubic-bezier(.25,1,.5,1) both; }
+.guia[data-tiempo='recuperacion'] { animation: recuperar 90ms ease-out both; }
+.guia[data-pose='duda'][data-tiempo='accion'] { animation: duda 180ms ease-out both; }
+.guiaRespaldo { display: grid; place-items: center; width: 100%; height: 100%; color: white; font-size: 1.5rem; font-weight: 800; }
+.pila,.destinos { min-width: 0; padding: 8px; }
+.pila h2,.destinos h2 { color: #fff; background: #173d30; display: table; padding: 3px 8px; border-radius: 6px; text-shadow: 0 1px 2px #10291f; font-size: clamp(1.1rem,1.7vw,1.45rem); margin: 2px 0 12px; font-weight: 800; }
+.fichas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; align-content: start; }
+.fichaLugar { min-width: 0; }
+.ficha { display: flex; align-items: center; gap: 2px; background: #f7e6a8; border: 2px solid #8f6523; border-radius: 10px; min-height: 52px; }
+.ficha[data-tinte='1'],.ficha[data-tinte='4'] { background: #d8ebc6; }
+.ficha[data-tinte='2'],.ficha[data-tinte='5'] { background: #d9e9f2; }
+.ficha[data-elegida] { outline: 4px solid #8ec7ff; }
+.ficha button:first-child { flex: 1; min-width: 0; min-height: 48px; border: 0; background: transparent; font-weight: 800; color: #173126; touch-action: none; }
+.devolver { margin-top: 12px; }
+.arrastre { position: absolute; left: -9999px; }
+.casillas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-rows: repeat(6,minmax(58px,auto)); grid-auto-flow: column; grid-auto-columns: minmax(0,1fr); gap: 8px; }
+.casillas li { display: flex; align-items: center; gap: 5px; min-width: 0; }
+.numero { color: #fff; text-shadow: 0 1px 2px #10291f; font-weight: 900; min-width: 2.3em; }
+.casilla { flex: 1; min-width: 70px; height: 58px; border: 2px dashed #52745b; background: #fff; color: #173126; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; gap: 3px; padding: 4px 8px; font-weight: 800; text-align: left; }
+.casillas li[data-estado='ok'] .casilla { border-style: solid; background: #d5efdd; }
+.casillas li[data-estado='no'] .casilla { border-style: solid; background: #fff0dd; }
+.contenidoCasilla { display: flex; flex-direction: column; justify-content: center; min-width: 0; line-height: 1.1; }
+.marca { display: inline-flex; flex-shrink: 0; }
+.quitar { display: grid; place-items: center; width: 44px; height: 44px; flex-shrink: 0; border: 1px solid #52745b; border-radius: 8px; background: #fff; color: #173126; }
+.solucion { font-size: .75rem; font-weight: 800; color: #4d3020; margin-top: 2px; }
+.aviso { min-height: 2.6em; font-size: 1.05rem; font-weight: 700; margin: 16px 0 10px; }
+.accion { display: inline-flex; align-items: center; gap: 8px; background: #215b40; color: white; border: 2px solid #17452f; border-radius: 12px; padding: 10px 20px; min-height: 50px; font-weight: 800 !important; }
+.accion:disabled { opacity: .5; }
+@keyframes anticipar { from { transform: translateY(0) scale(1); } to { transform: translateY(5px) scale(.98); } }
+@keyframes senalar { from { transform: translateY(5px) scale(.98); } to { transform: translateY(-8px) scale(1.04); } }
+@keyframes recuperar { from { transform: translateY(-8px) scale(1.04); } to { transform: translateY(0) scale(1); } }
+@keyframes duda { from { transform: rotate(0); } to { transform: rotate(4deg); } }
+@media(max-width:900px) { .escena[data-con-guia] { grid-template-columns: minmax(0,1fr) minmax(0,1.2fr); } .guia { grid-column: 1 / -1; justify-self: start; height: 130px; width: 120px; align-self: start; pointer-events: none; } .pila { grid-column: 1; } .destinos { grid-column: 2; } }
+@media(max-width:650px) { .tablero { padding: 12px; } .barra { font-size: .85rem; gap: 6px; } .sonido { padding: 5px 8px; gap: 5px; } .escena,.escena[data-con-guia] { grid-template-columns: 1fr; padding: 10px; } .guia { grid-column: 1; height: 100px; width: 90px; } .pila,.destinos { grid-column: 1; } .casillas { grid-auto-flow: row; grid-template-rows: none; grid-template-columns: repeat(2,minmax(0,1fr)); } .casilla { min-width: 55px; } .numero { min-width: 2em; } .personajePortada { width: 220px; } }
+@media(prefers-reduced-motion:reduce) { .guia[data-tiempo] { animation: none; transform: none; } }

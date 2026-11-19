@@ -20,6 +20,8 @@ export interface DefinicionTipoActividad<C = unknown, R = unknown> {
   nombre: string;
   esquemaContenido: z.ZodType<C>;
   esquemaRespuesta: z.ZodType<R>;
+  /** Restricciones que dependen del contenido (por ejemplo IDs y longitud). */
+  validarRespuesta?(contenido: C, respuesta: R): boolean;
   items(contenido: C): ItemActividad[];
   calificar(contenido: C, itemId: string, respuesta: R): Calificacion;
   repaso(contenido: C, itemId: string): Repaso;
@@ -52,7 +54,8 @@ export function calificarIntento<C, R>(
 ): ResultadoIntento {
   const items = definicion.items(contenido).filter(({ itemId }) => !opciones.soloRespondidos || Object.hasOwn(respuestas, itemId)).map(({ itemId, puntajeMaximo }) => {
     const leida = definicion.esquemaRespuesta.safeParse(respuestas[itemId]);
-    const nota = leida.success ? definicion.calificar(contenido, itemId, leida.data) : { correcta: false, puntaje: 0 };
+    const nota = leida.success && (!definicion.validarRespuesta || definicion.validarRespuesta(contenido, leida.data))
+      ? definicion.calificar(contenido, itemId, leida.data) : { correcta: false, puntaje: 0 };
     const puntaje = Math.min(puntajeMaximo, Math.max(0, nota.puntaje));
     return { itemId, puntajeMaximo, correcta: nota.correcta, puntaje, ...definicion.repaso(contenido, itemId) };
   });

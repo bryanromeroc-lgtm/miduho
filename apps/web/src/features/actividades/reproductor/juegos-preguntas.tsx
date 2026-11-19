@@ -1,48 +1,133 @@
 "use client";
 
 import { Check, Circle, Diamond, Square, Timer, Triangle, X } from "lucide-react";
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useContext, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { barajar } from "../tipos/contrato";
 import type { Frase, Pregunta } from "../tipos/preguntas";
-import { Escuchar, useLecturaAutomatica } from "../juegos/comun/escuchar";
+import type { EscenaJuego } from "../juegos/comun/escena";
+import { ContextoActividad, Escuchar, useLecturaAutomatica, useLeerEnVozAlta, useVozActividad } from "../juegos/comun/escuchar";
+import { useEfectosGrabados } from "../juegos/comun/efectos-grabados";
+import { ordenesPreguntas } from "./ordenes-preguntas";
 import { Avanzar, Aviso, Marca, Progreso, useFocoAlCambiar, type PropsJuego } from "./comun";
 import s from "./reproductor.module.css";
 
 const SIMBOLOS = [Triangle, Diamond, Circle, Square] as const;
+type EfectosQuiz = Partial<Record<"acierto" | "fallo" | "finRonda" | "fin", string>>;
+type ContenidoQuiz = { preguntas: Pregunta[]; escena?: EscenaJuego; efectos?: EfectosQuiz };
+
+function LecturaInicio({ pregunta }: { pregunta: Pregunta }) {
+  const { instruccion, audioInstruccion } = useContext(ContextoActividad);
+  const { grado, decir, puede } = useVozActividad();
+  const { activo } = useLeerEnVozAlta();
+  const iniciada = useRef(false);
+  const vigente = useRef(true);
+  useEffect(() => () => { vigente.current = false; }, []);
+  useEffect(() => {
+    vigente.current = true;
+    if (grado !== 1 || !activo || iniciada.current || !puede(pregunta.audio)) return;
+    iniciada.current = true;
+    const leerPregunta = () => { if (vigente.current) decir(pregunta.enunciado, pregunta.audio); };
+    if (instruccion && puede(audioInstruccion)) decir(instruccion, audioInstruccion, leerPregunta);
+    else leerPregunta();
+  }, [grado, activo, decir, puede, instruccion, audioInstruccion, pregunta]);
+  return null;
+}
+function LecturaPregunta({ pregunta }: { pregunta: Pregunta }) {
+  useLecturaAutomatica(pregunta.id, pregunta.enunciado, pregunta.audio);
+  return null;
+}
+
+function Situacion({ pregunta, personaje, reaccion }: { pregunta: Pregunta; personaje?: EscenaJuego["personaje"]; reaccion: "acierto" | "fallo" | null }) {
+  const [fallida, setFallida] = useState(false);
+  const imagen = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    const actual = imagen.current;
+    if (actual?.complete) setFallida(actual.naturalWidth === 0);
+  }, [pregunta.imagen]);
+  const poseVisible = reaccion === "acierto" ? "senala" : reaccion === "fallo" ? "duda" : "reposo";
+  return <div className={s.quizEscena}>
+    {/* eslint-disable-next-line @next/next/no-img-element -- ilustración curricular WebP con alt informativo */}
+    <img ref={imagen} className={s.quizSituacion} src={pregunta.imagen} alt={pregunta.alt ?? ""} hidden={fallida} onLoad={() => setFallida(false)} onError={() => setFallida(true)} />
+    {fallida && <p className={s.quizImagenPendiente} aria-hidden="true">{pregunta.alt}</p>}
+    {personaje && <div className={s.quizPersonaje} aria-hidden="true">
+      {/* eslint-disable-next-line @next/next/no-img-element -- pose optimizada del currículo */}
+      <img src={personaje.reposo} alt="" data-pose="reposo" data-visible={poseVisible === "reposo" ? "" : undefined} />
+      {/* eslint-disable-next-line @next/next/no-img-element -- pose optimizada del currículo */}
+      <img src={personaje.senala} alt="" data-pose="senala" data-visible={poseVisible === "senala" ? "" : undefined} />
+      {/* eslint-disable-next-line @next/next/no-img-element -- pose optimizada del currículo */}
+      <img src={personaje.duda} alt="" data-pose="duda" data-visible={poseVisible === "duda" ? "" : undefined} />
+    </div>}
+  </div>;
+}
 
 /*
   Quiz y concurso: una pregunta a la vez. Al tocar una opción se ve de una
   vez si acertó, cuál era la correcta y por qué; la primera respuesta es la
   que cuenta. El concurso añade un reloj que anima pero nunca corta.
 */
-function Preguntas({ contenido, semilla, alTerminar, segundos, focoInicial }: PropsJuego<{ preguntas: Pregunta[] }> & { segundos?: number }) {
+function Preguntas({ contenido, semilla, alTerminar, segundos, focoInicial }: PropsJuego<ContenidoQuiz> & { segundos?: number }) {
   const [indice, setIndice] = useState(0);
   const [respuestas, setRespuestas] = useState<Record<string, number>>({});
   const p = contenido.preguntas[indice];
   const elegida = respuestas[p.id];
   const respondida = elegida !== undefined;
-  const orden = useMemo(
-    () =>
-      barajar(
-        p.opciones.map((_, i) => i),
-        `${semilla}:${p.id}`,
-      ),
-    [p, semilla],
-  );
+  const ordenes = useMemo(() => ordenesPreguntas(contenido.preguntas, semilla), [contenido.preguntas, semilla]);
+  const orden = ordenes[indice];
   const ultima = indice === contenido.preguntas.length - 1;
   const titulo = useFocoAlCambiar<HTMLHeadingElement>(indice);
   useEffect(() => { if (focoInicial) titulo.current?.focus(); }, [focoInicial, titulo]);
-  useLecturaAutomatica(p.id, p.enunciado, p.audio);
 
   const acierto = respondida && elegida === p.correcta;
+  const ilustrado = !!(p.imagen || p.imagenesOpciones || contenido.escena);
+  const personaje = contenido.escena?.personaje;
+  const sonidos = useMemo(() => ({
+    acierto: contenido.efectos?.acierto ? [contenido.efectos.acierto] : [],
+    fallo: contenido.efectos?.fallo ? [contenido.efectos.fallo] : [],
+    finRonda: contenido.efectos?.finRonda ? [contenido.efectos.finRonda] : [],
+    fin: contenido.efectos?.fin ? [contenido.efectos.fin] : [],
+  }), [contenido.efectos]);
+  const efectos = useEfectosGrabados(sonidos);
+  const temporizadores = useRef<ReturnType<typeof setTimeout>[]>([]);
+  useEffect(() => () => temporizadores.current.forEach(clearTimeout), []);
+  const [momento, setMomento] = useState<"reposo" | "anticipacion" | "accion" | "impacto" | "recuperacion">("reposo");
+  const [reaccion, setReaccion] = useState<"acierto" | "fallo" | null>(null);
+  function responder(i: number) {
+    if (respondida) return;
+    if (contenido.efectos) efectos.preparar();
+    setRespuestas((r) => ({ ...r, [p.id]: i }));
+    if (contenido.escena) {
+      setReaccion(i === p.correcta ? "acierto" : "fallo");
+      setMomento("anticipacion");
+      temporizadores.current.push(setTimeout(() => setMomento("accion"), 110));
+      temporizadores.current.push(setTimeout(() => {
+        setMomento("impacto");
+        if (contenido.efectos) efectos.tocar(i === p.correcta ? "acierto" : "fallo");
+      }, 270));
+      temporizadores.current.push(setTimeout(() => setMomento("recuperacion"), 530));
+      temporizadores.current.push(setTimeout(() => setMomento("reposo"), 850));
+    } else if (contenido.efectos) efectos.tocar(i === p.correcta ? "acierto" : "fallo");
+  }
+  function avanzar() {
+    temporizadores.current.forEach(clearTimeout);
+    temporizadores.current = [];
+    if (contenido.efectos) {
+      efectos.preparar();
+      efectos.tocar(ultima ? "fin" : "finRonda");
+    }
+    if (ultima) alTerminar(respuestas);
+    else { setIndice(indice + 1); setReaccion(null); setMomento("reposo"); }
+  }
 
   return (
-    <div className={`${s.juego} ${s.quiz}`} data-respondida={respondida ? "" : undefined}>
+    <div className={`${s.juego} ${s.quiz} ${ilustrado ? s.quizIlustrado : ""} ${p.imagen ? s.quizConEscena : ""}`} data-respondida={respondida ? "" : undefined} data-momento={momento} data-reaccion={reaccion ?? undefined}>
+      {contenido.escena && indice === 0 && <LecturaInicio pregunta={p} />}
+      {(!contenido.escena || indice > 0) && <LecturaPregunta pregunta={p} />}
       <div className={`${s.juegoCabeza} ${s.quizCabecera}`}>
         <Progreso actual={indice + 1} total={contenido.preguntas.length} />
         {segundos && <Reloj key={p.id} segundos={segundos} detenido={respondida} />}
       </div>
-      <div key={p.id} className={s.quizPreguntaPanel}>
+      {p.imagen && <Situacion key={`escena-${p.id}`} pregunta={p} personaje={personaje} reaccion={reaccion} />}
+      <div key={`panel-${p.id}`} className={s.quizPreguntaPanel}>
         <h2 ref={titulo} tabIndex={-1} className={`${s.enunciado} ${s.quizEnunciado}`}>
           {p.enunciado}
         </h2>
@@ -61,9 +146,12 @@ function Preguntas({ contenido, semilla, alTerminar, segundos, focoInicial }: Pr
               data-estado={estado}
               aria-pressed={respondida ? i === elegida : undefined}
               disabled={respondida}
-              onClick={() => setRespuestas((r) => ({ ...r, [p.id]: i }))}
+              onClick={() => responder(i)}
             >
-              <span className={s.quizLetra} aria-hidden="true"><Simbolo size={34} strokeWidth={2.8} fill="currentColor" /></span>
+              {p.imagenesOpciones?.[i] ? <span className={s.quizCara} aria-hidden="true">
+                {/* eslint-disable-next-line @next/next/no-img-element -- cara decorativa, texto contiguo */}
+                <img src={p.imagenesOpciones[i]!} alt="" />
+              </span> : <span className={s.quizLetra} aria-hidden="true"><Simbolo size={34} strokeWidth={2.8} fill="currentColor" /></span>}
               <span className={s.quizTexto}>{p.opciones[i]}</span>
               <Marca estado={estado} />
             </button>
@@ -80,7 +168,11 @@ function Preguntas({ contenido, semilla, alTerminar, segundos, focoInicial }: Pr
         {Array.from({ length: 8 }, (_, n) => <span key={n} className={s.quizParticula}
           style={{ "--angulo": `${n * 45}deg` } as CSSProperties} />)}
       </div>}
-      <div className={s.quizRespuesta}>
+      <div className={s.quizRespuesta} ref={(elemento) => {
+        if (!elemento || !respondida || !ilustrado) return;
+        const destino = elemento.nextElementSibling ?? elemento;
+        if (destino.getBoundingClientRect().bottom > window.innerHeight) destino.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "end" });
+      }}>
         <Aviso tono={respondida ? (elegida === p.correcta ? "ok" : "no") : null}>
           {respondida &&
             (elegida === p.correcta ? "¡Correcto!" : `La respuesta es «${p.opciones[p.correcta]}».`) +
@@ -89,7 +181,7 @@ function Preguntas({ contenido, semilla, alTerminar, segundos, focoInicial }: Pr
       </div>
       {respondida && (
         <div className={s.acciones}>
-          <Avanzar onClick={() => (ultima ? alTerminar(respuestas) : setIndice(indice + 1))}>
+          <Avanzar onClick={avanzar}>
             {ultima ? "Ver resultado" : "Siguiente"}
           </Avanzar>
         </div>

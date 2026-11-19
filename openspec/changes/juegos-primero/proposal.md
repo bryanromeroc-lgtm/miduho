@@ -30,6 +30,10 @@ MIDUHO tiene 75 actividades, casi todas de 5.°, y solo una de 1.° (`la-ruta-de
 - `actividad-respuesta-numerica`: tipo de problemas con escritura del resultado.
 - `actividad-cuadricula-instrucciones`: tipo de secuencias de pasos en una cuadrícula, en modo directo e inverso.
 - `actividad-dilemas`: tipo de escenas con elección y consecuencia para Ética y valores.
+- `actividad-ordenar-casillas`: presentación de pila y casillas numeradas con un envío, revelado secuencial y calificación por posición; `ordenar` anterior compatible.
+- `actividad-clasificar-parejas`: presentación por rondas de dos imágenes y dos categorías fijas, con retorno del error, avance automático y primera ubicación como respuesta; `clasificar` anterior compatible.
+- `actividad-clasificar-tablero-temas`: tema visual opcional (`girasol` por omisión, `corcho`), escena opcional y lectura oral opcional para las tarjetas del tablero. `como-se-siente` usa el tema corcho con Ciro; `vivo-o-no-vivo` conserva la presentación girasol. 🔶 Validación docente pendiente para las categorías de emociones.
+- `actividad-quiz-ilustrado`: imágenes informativas por pregunta, caras decorativas por opción, escena opcional compartida y efectos grabados opcionales para `seleccion-multiple` y `concurso`. «Emociones del recreo» usa seis situaciones de recreo y Ciro; los quizzes anteriores conservan su presentación cuando omiten estos campos.
 
 ### Modified Capabilities
 - `actividad-golpea`: se añade el modo «preguntas», con rondas del contenido, opciones de palabra o imagen y audio.

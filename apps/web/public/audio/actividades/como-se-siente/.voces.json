@@ -1,0 +1,80 @@
+{
+  "instruccion": {
+    "archivo": "instruccion.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Mira a Ciro. Lleva cada emoción al grupo agradable o desagradable y toca Enviar respuestas."
+  },
+  "feliz": {
+    "archivo": "feliz.mp3",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Feliz."
+  },
+  "tranquilo": {
+    "archivo": "tranquilo.mp3",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Tranquilo o tranquila."
+  },
+  "orgulloso": {
+    "archivo": "orgulloso.mp3",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Orgulloso o orgullosa."
+  },
+  "agradecido": {
+    "archivo": "agradecido.mp3",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Agradecido o agradecida."
+  },
+  "seguro": {
+    "archivo": "seguro.mp3",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Seguro o segura."
+  },
+  "entusiasmado": {
+    "archivo": "entusiasmado.mp3",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Entusiasmado o entusiasmada."
+  },
+  "triste": {
+    "archivo": "triste.mp3",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Triste."
+  },
+  "enojado": {
+    "archivo": "enojado.mp3",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Enojado o enojada."
+  },
+  "asustado": {
+    "archivo": "asustado.mp3",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Asustado o asustada."
+  },
+  "preocupado": {
+    "archivo": "preocupado.mp3",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Preocupado o preocupada."
+  },
+  "avergonzado": {
+    "archivo": "avergonzado.mp3",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Avergonzado o avergonzada."
+  },
+  "celoso": {
+    "archivo": "celoso.mp3",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Celoso o celosa."
+  }
+}

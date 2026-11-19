@@ -1,0 +1,172 @@
+{
+  "slug": "emociones-del-recreo",
+  "titulo": "Emociones del recreo",
+  "tipo": "seleccion-multiple",
+  "grado": 1,
+  "instruccion": "Mira lo que pasa en el recreo. Toca la emoción que siente cada niño.",
+  "audioInstruccion": "/audio/actividades/emociones-del-recreo/instruccion.mp3",
+  "tema": "Reconocimiento de emociones y convivencia (CIU-1a3-CP)",
+  "imagen": "/images/juegos/emociones-del-recreo/portada.webp",
+  "contenido": {
+    "preguntas": [
+      {
+        "id": "lonchera",
+        "enunciado": "Una niña comparte su lonchera con un compañero que no trajo. ¿Cómo se siente él?",
+        "opciones": [
+          "Agradecido/a",
+          "Enojado/a",
+          "Asustado/a"
+        ],
+        "correcta": 0,
+        "explicacion": "Cuando alguien nos comparte, sentimos agradecimiento.",
+        "imagen": "/images/juegos/emociones-del-recreo/lonchera.webp",
+        "alt": "Una niña comparte su lonchera con un compañero durante el recreo.",
+        "imagenesOpciones": [
+          "/images/juegos/como-se-siente/agradecido.webp",
+          "/images/juegos/como-se-siente/enojado.webp",
+          "/images/juegos/como-se-siente/asustado.webp"
+        ],
+        "audioOpciones": [
+          "/audio/actividades/como-se-siente/agradecido.mp3",
+          "/audio/actividades/como-se-siente/enojado.mp3",
+          "/audio/actividades/como-se-siente/asustado.mp3"
+        ],
+        "audio": "/audio/actividades/emociones-del-recreo/lonchera.mp3"
+      },
+      {
+        "id": "cometa",
+        "enunciado": "A un niño se le rompe la cometa que trajo para el recreo. ¿Cómo se siente?",
+        "opciones": [
+          "Triste",
+          "Feliz",
+          "Orgulloso/a"
+        ],
+        "correcta": 0,
+        "explicacion": "Perder algo que queremos nos pone tristes.",
+        "imagen": "/images/juegos/emociones-del-recreo/cometa.webp",
+        "alt": "Un niño sostiene una cometa rota en el recreo.",
+        "imagenesOpciones": [
+          "/images/juegos/como-se-siente/triste.webp",
+          "/images/juegos/como-se-siente/feliz.webp",
+          "/images/juegos/como-se-siente/orgulloso.webp"
+        ],
+        "audioOpciones": [
+          "/audio/actividades/como-se-siente/triste.mp3",
+          "/audio/actividades/como-se-siente/feliz.mp3",
+          "/audio/actividades/como-se-siente/orgulloso.mp3"
+        ],
+        "audio": "/audio/actividades/emociones-del-recreo/cometa.mp3"
+      },
+      {
+        "id": "balon",
+        "enunciado": "Un compañero le quita el balón a una niña y no se lo devuelve. ¿Cómo se siente ella?",
+        "opciones": [
+          "Enojado/a",
+          "Agradecido/a",
+          "Tranquilo/a"
+        ],
+        "correcta": 0,
+        "explicacion": "Cuando no nos respetan, sentimos enojo. Podemos decirlo con palabras.",
+        "imagen": "/images/juegos/emociones-del-recreo/balon.webp",
+        "alt": "Un compañero tiene el balón que le quitó a una niña en el patio.",
+        "imagenesOpciones": [
+          "/images/juegos/como-se-siente/enojado.webp",
+          "/images/juegos/como-se-siente/agradecido.webp",
+          "/images/juegos/como-se-siente/tranquilo.webp"
+        ],
+        "audioOpciones": [
+          "/audio/actividades/como-se-siente/enojado.mp3",
+          "/audio/actividades/como-se-siente/agradecido.mp3",
+          "/audio/actividades/como-se-siente/tranquilo.mp3"
+        ],
+        "audio": "/audio/actividades/emociones-del-recreo/balon.mp3"
+      },
+      {
+        "id": "perro",
+        "enunciado": "Un perro grande y desconocido entra al patio y ladra muy fuerte. ¿Cómo se siente el niño?",
+        "opciones": [
+          "Asustado/a",
+          "Feliz",
+          "Orgulloso/a"
+        ],
+        "correcta": 0,
+        "explicacion": "Ante un peligro sentimos miedo y buscamos a un adulto.",
+        "imagen": "/images/juegos/emociones-del-recreo/perro.webp",
+        "alt": "Un perro grande ladra en el patio mientras un niño lo mira.",
+        "imagenesOpciones": [
+          "/images/juegos/como-se-siente/asustado.webp",
+          "/images/juegos/como-se-siente/feliz.webp",
+          "/images/juegos/como-se-siente/orgulloso.webp"
+        ],
+        "audioOpciones": [
+          "/audio/actividades/como-se-siente/asustado.mp3",
+          "/audio/actividades/como-se-siente/feliz.mp3",
+          "/audio/actividades/como-se-siente/orgulloso.mp3"
+        ],
+        "audio": "/audio/actividades/emociones-del-recreo/perro.mp3"
+      },
+      {
+        "id": "pasamanos",
+        "enunciado": "Después de practicar mucho, una niña cruza el pasamanos sin ayuda. ¿Cómo se siente?",
+        "opciones": [
+          "Orgulloso/a",
+          "Triste",
+          "Celoso/a"
+        ],
+        "correcta": 0,
+        "explicacion": "Cuando logramos algo con esfuerzo, nos sentimos orgullosos.",
+        "imagen": "/images/juegos/emociones-del-recreo/pasamanos.webp",
+        "alt": "Una niña termina de cruzar el pasamanos sin ayuda.",
+        "imagenesOpciones": [
+          "/images/juegos/como-se-siente/orgulloso.webp",
+          "/images/juegos/como-se-siente/triste.webp",
+          "/images/juegos/como-se-siente/celoso.webp"
+        ],
+        "audioOpciones": [
+          "/audio/actividades/como-se-siente/orgulloso.mp3",
+          "/audio/actividades/como-se-siente/triste.mp3",
+          "/audio/actividades/como-se-siente/celoso.mp3"
+        ],
+        "audio": "/audio/actividades/emociones-del-recreo/pasamanos.mp3"
+      },
+      {
+        "id": "lleva",
+        "enunciado": "Unos amigos juegan a la lleva y todos se ríen. ¿Cómo se sienten?",
+        "opciones": [
+          "Feliz",
+          "Triste",
+          "Asustado/a"
+        ],
+        "correcta": 0,
+        "explicacion": "Jugar juntos nos hace sentir felices.",
+        "imagen": "/images/juegos/emociones-del-recreo/lleva.webp",
+        "alt": "Un grupo de amigos juega a la lleva y se ríe en el patio.",
+        "imagenesOpciones": [
+          "/images/juegos/como-se-siente/feliz.webp",
+          "/images/juegos/como-se-siente/triste.webp",
+          "/images/juegos/como-se-siente/asustado.webp"
+        ],
+        "audioOpciones": [
+          "/audio/actividades/como-se-siente/feliz.mp3",
+          "/audio/actividades/como-se-siente/triste.mp3",
+          "/audio/actividades/como-se-siente/asustado.mp3"
+        ],
+        "audio": "/audio/actividades/emociones-del-recreo/lleva.mp3"
+      }
+    ],
+    "escena": {
+      "personaje": {
+        "nombre": "Ciro",
+        "reposo": "/images/juegos/como-se-siente/ciro-reposo.webp",
+        "senala": "/images/juegos/como-se-siente/ciro-senala.webp",
+        "duda": "/images/juegos/como-se-siente/ciro-duda.webp"
+      }
+    },
+    "efectos": {
+      "acierto": "/audio/juegos/parejas/acierto.mp3",
+      "fallo": "/audio/juegos/parejas/fallo.mp3",
+      "finRonda": "/audio/juegos/parejas/fin-ronda.mp3",
+      "fin": "/audio/juegos/parejas/fin.mp3"
+    }
+  }
+}

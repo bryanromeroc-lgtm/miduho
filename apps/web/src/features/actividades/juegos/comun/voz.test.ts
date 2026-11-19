@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
-import { elegirFuente } from "./voz";
+import { describe, expect, it, vi } from "vitest";
+import { elegirFuente, usarCanalVoz } from "./voz";
 
 describe("elegirFuente (voz de la tarea)", () => {
   it("la grabación va antes que la síntesis", () => {
@@ -19,5 +19,34 @@ describe("elegirFuente (voz de la tarea)", () => {
   });
   it("sin voz del navegador ni grabación no hay fuente", () => {
     expect(elegirFuente({ grado: 1, sintesis: false })).toBeNull();
+  });
+});
+
+describe("usarCanalVoz (cuándo se calla la voz)", () => {
+  it("desmontar y volver a montar (modo estricto) no corta la voz", () => {
+    vi.useFakeTimers();
+    const callar = vi.fn();
+    const soltar = usarCanalVoz(callar);
+    soltar();
+    const soltarOtra = usarCanalVoz(callar);
+    vi.runAllTimers();
+    expect(callar).not.toHaveBeenCalled();
+    soltarOtra();
+    vi.runAllTimers();
+    expect(callar).toHaveBeenCalledTimes(1);
+    vi.useRealTimers();
+  });
+  it("si se va uno pero queda otro, la voz sigue", () => {
+    vi.useFakeTimers();
+    const callar = vi.fn();
+    const portada = usarCanalVoz(callar);
+    const juego = usarCanalVoz(callar);
+    portada();
+    vi.runAllTimers();
+    expect(callar).not.toHaveBeenCalled();
+    juego();
+    vi.runAllTimers();
+    expect(callar).toHaveBeenCalledTimes(1);
+    vi.useRealTimers();
   });
 });

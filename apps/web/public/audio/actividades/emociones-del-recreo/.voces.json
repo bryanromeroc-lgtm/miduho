@@ -1,0 +1,44 @@
+{
+  "instruccion": {
+    "archivo": "instruccion.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Mira lo que pasa en el recreo. Toca la emoción que siente cada niño."
+  },
+  "lonchera": {
+    "archivo": "lonchera.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Una niña comparte su lonchera con un compañero que no trajo. ¿Cómo se siente él?"
+  },
+  "cometa": {
+    "archivo": "cometa.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "A un niño se le rompe la cometa que trajo para el recreo. ¿Cómo se siente?"
+  },
+  "balon": {
+    "archivo": "balon.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Un compañero le quita el balón a una niña y no se lo devuelve. ¿Cómo se siente ella?"
+  },
+  "perro": {
+    "archivo": "perro.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Un perro grande y desconocido entra al patio y ladra muy fuerte. ¿Cómo se siente el niño?"
+  },
+  "pasamanos": {
+    "archivo": "pasamanos.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Después de practicar mucho, una niña cruza el pasamanos sin ayuda. ¿Cómo se siente?"
+  },
+  "lleva": {
+    "archivo": "lleva.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Unos amigos juegan a la lleva y todos se ríen. ¿Cómo se sienten?"
+  }
+}

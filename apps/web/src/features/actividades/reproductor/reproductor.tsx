@@ -105,10 +105,11 @@ export function Reproductor({
   const [resultado, setResultado] = useState<ResultadoIntento | null>(null);
   const definicion = definicionDe(actividad.tipo);
   const Juego = JUEGOS[actividad.tipo];
+  const presentacion = (actividad.contenido as { presentacion?: string }).presentacion;
   if (!definicion || !Juego) throw new Error(`Tipo de actividad sin reproductor: ${actividad.tipo}`);
 
   return (
-    <ContextoActividad.Provider value={{ grado: actividad.grado ?? 0 }}>
+    <ContextoActividad.Provider value={{ grado: actividad.grado ?? 0, instruccion: actividad.instruccion, audioInstruccion: actividad.audioInstruccion }}>
     <main className={s.reproductor} id="juego" tabIndex={-1}>
       <header className={s.barraJuego}>
         <Link href={volverHref} className={s.salir}>
@@ -129,7 +130,7 @@ export function Reproductor({
             <LeerEnVozAlta />
           </div>
         )}
-        <p className={s.practica}>{textoReglas(actividad.tipo, modo)}</p>
+        <p className={s.practica}>{textoReglas(actividad.tipo, modo, presentacion)}</p>
       </div>
 
       <section className={s.mesa} aria-label={resultado ? "Resultado" : "Juego"}>
@@ -138,7 +139,7 @@ export function Reproductor({
             resultado={resultado}
             materia={materia}
             volverHref={volverHref}
-            primeraCuenta={primeraRespuestaCuenta(actividad.tipo)}
+            primeraCuenta={primeraRespuestaCuenta(actividad.tipo, presentacion)}
             aviso={modo === "vista-previa" ? AVISO_VISTA_PREVIA : null}
             otraVez={() => {
               setResultado(null);

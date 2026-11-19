@@ -61,21 +61,42 @@ export const emparejar = definirTipo({
   exacta (🔶 regla de puntaje parcial abierta en D4: se eligió la posición
   exacta por ser la más fácil de explicar a un niño).
 */
+const elementoOrden = z.object({ id, texto, audio: rutaAudio.optional() });
+const elementosOrden = (maximo: number) => z.array(elementoOrden).min(3).max(maximo)
+  .refine((e) => unicos(e, (x) => x.id), { message: "ids repetidos" });
+
+/** La ausencia de `presentacion` mantiene el contrato anterior. */
+const rutaImagen = z.string().regex(/^\/images\/[\w\-/]+\.webp$/, "ruta /images/….webp");
+const escenaCasillas = z.object({
+  fondo: rutaImagen.optional(),
+  personaje: z.object({ nombre: texto, reposo: rutaImagen, senala: rutaImagen, duda: rutaImagen }).optional(),
+}).optional();
+
+const contenidoOrdenar = z.union([
+  z.object({ presentacion: z.literal("casillas"), semilla: z.union([z.string(), z.number().int()]), escena: escenaCasillas, elementos: elementosOrden(12) }),
+  z.object({ presentacion: z.never().optional(), elementos: elementosOrden(8) }),
+]);
+
+type ContenidoOrdenar = z.infer<typeof contenidoOrdenar>;
+function validarRespuestaOrden(c: ContenidoOrdenar, r: (string | null)[]): boolean {
+  if (c.presentacion === "casillas") {
+    const ids = c.elementos.map((e) => e.id);
+    const puestos = r.filter((x): x is string => x !== null);
+    return r.length === ids.length && new Set(puestos).size === puestos.length && puestos.every((x) => ids.includes(x));
+  }
+  return r.every((x) => typeof x === "string");
+}
+
 export const ordenar = definirTipo({
   tipo: "ordenar",
   nombre: "Ordenar",
   versionEsquema: 1,
-  esquemaContenido: z.object({
-    /** En el orden correcto. */
-    elementos: z
-      .array(z.object({ id, texto, audio: rutaAudio.optional() }))
-      .min(3)
-      .max(8)
-      .refine((e) => unicos(e, (x) => x.id), { message: "ids repetidos" }),
-  }),
-  esquemaRespuesta: z.array(z.string()),
+  esquemaContenido: contenidoOrdenar,
+  esquemaRespuesta: z.array(z.string().nullable()),
   items: (c) => [{ itemId: "orden", puntajeMaximo: c.elementos.length }],
+  validarRespuesta: validarRespuestaOrden,
   calificar(c, _itemId, r) {
+    if (!validarRespuestaOrden(c, r)) return { correcta: false, puntaje: 0 };
     const puntaje = c.elementos.filter((e, i) => r[i] === e.id).length;
     return { correcta: puntaje === c.elementos.length && r.length === c.elementos.length, puntaje };
   },
@@ -94,7 +115,10 @@ export const clasificar = definirTipo({
        * `tablero`: todas las tarjetas a la vista, columnas con casillas, «Enviar respuestas»
        * y revelado de cada una (mecánica de la plantilla «Agrupar» de la referencia).
        */
-      presentacion: z.enum(["una-a-una", "tablero"]).optional(),
+      presentacion: z.enum(["una-a-una", "tablero", "parejas"]).optional(),
+      escena: escenaCasillas,
+      /** Apariencia y efectos del tablero; la omisión conserva girasol. */
+      tema: z.enum(["girasol", "corcho"]).optional(),
       categorias: z
         .array(z.object({ id, nombre: texto }))
         .min(2)
@@ -105,6 +129,9 @@ export const clasificar = definirTipo({
             id,
             texto,
             categoria: id,
+            pareja: id.optional(),
+            /** Lectura oral alternativa a la palabra visible. */
+            lectura: texto.max(100).optional(),
             audio: rutaAudio.optional(),
             /** Ilustración de la tarjeta (1.°: para quien aún no lee); su `alt` es el `texto`. */
             imagen: z.string().regex(/^\/images\/[\w\-/]+\.webp$/, "ruta /images/….webp").optional(),
@@ -121,7 +148,15 @@ export const clasificar = definirTipo({
     .refine((c) => unicos(c.categorias, (x) => x.id) && unicos(c.elementos, (x) => x.id), { message: "ids repetidos" })
     .refine((c) => c.elementos.every((e) => c.categorias.some((k) => k.id === e.categoria)), {
       message: "un elemento apunta a una categoría que no existe",
-    }),
+    })
+    .refine((c) => {
+      if (c.presentacion !== "parejas") return true;
+      if (c.categorias.length !== 2 || c.elementos.length % 2 !== 0 || c.elementos.length > 12) return false;
+      if (c.elementos.some((e) => !e.imagen || !e.pareja)) return false;
+      const grupos = new Map<string, string[]>();
+      for (const e of c.elementos) grupos.set(e.pareja!, [...(grupos.get(e.pareja!) ?? []), e.categoria]);
+      return [...grupos.values()].every((categorias) => categorias.length === 2 && c.categorias.every((k) => categorias.includes(k.id)));
+    }, { message: "parejas requiere dos categorías y una imagen de cada categoría por ronda" }),
   esquemaRespuesta: z.string(),
   items: (c) => c.elementos.map((e) => ({ itemId: e.id, puntajeMaximo: 1 })),
   calificar(c, itemId, r) {

@@ -43,3 +43,30 @@ export function ordenRevelado(grupos: Grupo[], lugares: Lugares): { id: string; 
 export function aciertos(tarjetas: Tarjeta[], lugares: Lugares): number {
   return tarjetas.filter((t) => lugares[t.id] === t.categoria).length;
 }
+
+export type ReaccionGuia = "acierto" | "fallo" | null;
+export type MomentoGuia = "reposo" | "anticipacion" | "accion" | "impacto" | "recuperacion";
+export type PoseGuia = "reposo" | "senala" | "duda";
+
+/** La pose responde a la escena y a la fase; el tema visual no interviene. */
+export function poseGuia(reaccion: ReaccionGuia, momento: MomentoGuia, fase: "inicio" | "jugando" | "revelando" | "revelado", poseFinal: "reposo" | "senala"): PoseGuia {
+  if (momento === "accion" || momento === "impacto") {
+    if (reaccion === "acierto") return "senala";
+    if (reaccion === "fallo") return "duda";
+  }
+  return fase === "revelado" ? poseFinal : "reposo";
+}
+
+export function sonidosAgrupar(tema: "girasol" | "corcho") {
+  const carpeta = tema === "corcho" ? "agrupar-corcho" : "agrupar";
+  const base = `/audio/juegos/${carpeta}/`;
+  return {
+    inicio: [`${base}inicio.mp3`],
+    levantar: [1, 2, 3].map((n) => `${base}levantar-${n}.mp3`),
+    soltar: [1, 2, 3].map((n) => `${base}soltar-${n}.mp3`),
+    acierto: [1, 2, 3].map((n) => `${base}acierto-${n}.mp3`),
+    fallo: [1, 2, 3].map((n) => `${base}fallo-${n}.mp3`),
+    revelar: [`${base}revelar.mp3`],
+    fin: [`${base}fin.mp3`],
+  };
+}

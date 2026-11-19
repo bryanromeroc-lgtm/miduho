@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { rutasDeAudio } from "./audio";
 import { barajar, calificarIntento } from "./contrato";
 import { armarSopa, jugarPalabra, leerLinea, palabraSecreta, sopaLetras } from "./palabras";
-import { completar, seleccionMultiple } from "./preguntas";
+import { completar, concurso, seleccionMultiple } from "./preguntas";
 import { leerActividad } from "./registro";
 import { clasificar, emparejar, memoria, ordenar } from "./relaciones";
 
@@ -53,10 +53,50 @@ describe("relaciones", () => {
     expect(ordenar.calificar(c, "orden", ["x", "z", "y"])).toEqual({ correcta: false, puntaje: 1 });
     expect(ordenar.calificar(c, "orden", ["x", "y", "z"])).toEqual({ correcta: true, puntaje: 3 });
   });
+  it("casillas acepta doce elementos y recalifica vacías, pero rechaza ids ajenos o repetidos", () => {
+    const elementos = Array.from({ length: 12 }, (_, i) => ({ id: `m${i}`, texto: `Mes ${i + 1}` }));
+    const escena = { fondo: "/images/juegos/tema/pizarra.webp", personaje: { nombre: "Guía", reposo: "/images/juegos/tema/reposo.webp", senala: "/images/juegos/tema/senala.webp", duda: "/images/juegos/tema/duda.webp" } };
+    const c = ordenar.esquemaContenido.parse({ presentacion: "casillas", semilla: 42, escena, elementos });
+    expect(c).toMatchObject({ escena });
+    expect(ordenar.esquemaContenido.safeParse({ presentacion: "casillas", semilla: 42, escena: { fondo: "https://otro/sitio.webp" }, elementos }).success).toBe(false);
+    expect(ordenar.esquemaContenido.safeParse({ presentacion: "casillas", semilla: 42, elementos }).success).toBe(true);
+    expect(ordenar.items(c)).toEqual([{ itemId: "orden", puntajeMaximo: 12 }]);
+    const respuesta = elementos.map((e, i) => i % 2 ? null : e.id);
+    expect(calificarIntento(ordenar, c, { orden: respuesta })).toMatchObject({ puntaje: 6, puntajeMaximo: 12 });
+    expect(ordenar.calificar(c, "orden", [...respuesta.slice(0, 11), "ajeno"]).puntaje).toBe(0);
+    expect(ordenar.calificar(c, "orden", [...respuesta.slice(0, 11), "m0"]).puntaje).toBe(0);
+    expect(ordenar.calificar(c, "orden", respuesta.slice(0, 11)).puntaje).toBe(0);
+    expect(calificarIntento(ordenar, c, { orden: [...respuesta.slice(0, 11), "m0"] }).puntaje).toBe(0);
+    expect(ordenar.esquemaContenido.safeParse({ elementos }).success).toBe(false);
+    expect(ordenar.esquemaContenido.safeParse({ elementos: elementos.slice(0, 8) }).success).toBe(true);
+    expect(ordenar.esquemaContenido.safeParse({ presentacion: "casillas", semilla: 1, elementos: [...elementos.slice(0, 11), elementos[0]] }).success).toBe(false);
+  });
   it("clasificar compara la categoría", () => {
     const c = { categorias: [{ id: "a", nombre: "A" }], elementos: [{ id: "e", texto: "E", categoria: "a" }] };
     expect(clasificar.calificar(c, "e", "a").correcta).toBe(true);
     expect(clasificar.calificar(c, "e", "b").correcta).toBe(false);
+  });
+  it("clasificar admite tema, escena y lectura sin cambiar girasol por omisión", () => {
+    const categorias = [{ id: "a", nombre: "A" }, { id: "b", nombre: "B" }];
+    const elementos = [0, 1, 2, 3].map((n) => ({ id: `e${n}`, texto: "Tranquilo/a", categoria: n % 2 ? "a" : "b" }));
+    const base = { presentacion: "tablero" as const, categorias, elementos };
+    expect(clasificar.esquemaContenido.safeParse(base).success).toBe(true);
+    const nuevo = { ...base, tema: "corcho" as const, escena: { personaje: { nombre: "Guía", reposo: "/images/juegos/x/r.webp", senala: "/images/juegos/x/s.webp", duda: "/images/juegos/x/d.webp" } }, elementos: elementos.map((e) => ({ ...e, lectura: "tranquilo o tranquila" })) };
+    expect(clasificar.esquemaContenido.safeParse(nuevo).success).toBe(true);
+    expect(clasificar.esquemaContenido.safeParse({ ...nuevo, tema: "desconocido" }).success).toBe(false);
+    expect(clasificar.calificar(base, "e0", "b").correcta).toBe(true);
+    expect(clasificar.calificar(nuevo, "e0", "b").correcta).toBe(true);
+  });
+  it("parejas exige dos categorías y una imagen de cada categoría por pareja", () => {
+    const categorias = [{ id: "a", nombre: "A" }, { id: "b", nombre: "B" }];
+    const elementos = ["uno", "dos"].flatMap((pareja) => categorias.map((c) => ({ id: `${pareja}-${c.id}`, texto: c.nombre, categoria: c.id, pareja, imagen: "/images/juegos/x/ficha.webp" })));
+    const esquema = clasificar.esquemaContenido;
+    expect(esquema.safeParse({ presentacion: "parejas", categorias, elementos }).success).toBe(true);
+    expect(esquema.safeParse({ presentacion: "parejas", categorias: [...categorias, { id: "c", nombre: "C" }], elementos }).success).toBe(false);
+    expect(esquema.safeParse({ presentacion: "parejas", categorias, elementos: elementos.slice(0, 3) }).success).toBe(false);
+    expect(esquema.safeParse({ presentacion: "parejas", categorias, elementos: elementos.map((e, i) => i ? e : { ...e, categoria: "b" }) }).success).toBe(false);
+    expect(esquema.safeParse({ presentacion: "parejas", categorias, elementos: elementos.map((e, i) => i ? e : { ...e, imagen: undefined }) }).success).toBe(false);
+    expect(esquema.safeParse({ categorias, elementos: elementos.map((e) => ({ id: e.id, texto: e.texto, categoria: e.categoria, imagen: e.imagen })) }).success).toBe(true);
   });
   it("memoria vale el máximo al completar el tablero, sin importar los volteos", () => {
     const c = { parejas: [1, 2, 3].map((n) => ({ id: `m${n}`, a: `a${n}`, b: `b${n}` })) };
@@ -177,6 +217,16 @@ describe("audio en el contenido (juegos-primero)", () => {
     });
     expect(seleccionMultiple.esquemaContenido.safeParse(p(["/audio/a.mp3", null])).success).toBe(true);
     expect(seleccionMultiple.esquemaContenido.safeParse(p(["/audio/a.mp3"])).success).toBe(false);
+  });
+  it("acepta el quiz ilustrado y conserva válidos los quizzes anteriores", () => {
+    const esquema = seleccionMultiple.esquemaContenido;
+    expect(esquema.safeParse(preguntas).success).toBe(true);
+    const p = { ...preguntas.preguntas[0], imagen: "/images/juegos/x/escena.webp", alt: "Una escena en el patio.", imagenesOpciones: ["/images/juegos/x/a.webp", null] };
+    const nuevo = { preguntas: [p, ...preguntas.preguntas.slice(1)], escena: { personaje: { nombre: "Guía", reposo: "/images/juegos/x/r.webp", senala: "/images/juegos/x/s.webp", duda: "/images/juegos/x/d.webp" } }, efectos: { acierto: "/audio/juegos/a.mp3" } };
+    expect(esquema.safeParse(nuevo).success).toBe(true);
+    expect(concurso.esquemaContenido.safeParse({ ...nuevo, segundos: 20 }).success).toBe(true);
+    expect(esquema.safeParse({ ...nuevo, preguntas: [{ ...p, alt: undefined }, ...preguntas.preguntas.slice(1)] }).success).toBe(false);
+    expect(esquema.safeParse({ ...nuevo, preguntas: [{ ...p, imagenesOpciones: [null] }, ...preguntas.preguntas.slice(1)] }).success).toBe(false);
   });
   it("rutasDeAudio junta todas las rutas citadas", () => {
     expect(rutasDeAudio({ audioInstruccion: "/audio/i.mp3", contenido: { preguntas: [{ audio: "/audio/p.mp3", audioOpciones: ["/audio/o.mp3", null] }] } })).toEqual([

@@ -111,6 +111,27 @@ export function callarVozTarea() {
   avisar(false);
 }
 
+/*
+  Usuarios del canal. La voz se calla cuando ya no queda ninguno (se salió del
+  juego), no cuando se desmonta uno cualquiera: el botón «Escuchar» de la
+  portada desaparece al tocar «Empezar», y React en modo estricto desmonta y
+  vuelve a montar cada componente al nacer. Callar en ese momento cortaba la
+  consigna que se lee sola. Se mira en la siguiente vuelta del bucle, cuando
+  ya volvió a montarse lo que iba a montarse.
+*/
+let usuarios = 0;
+
+/** Registra un usuario del canal; devuelve cómo soltarlo. */
+export function usarCanalVoz(callar: () => void = callarVozTarea): () => void {
+  usuarios++;
+  return () => {
+    usuarios--;
+    setTimeout(() => {
+      if (usuarios === 0) callar();
+    }, 0);
+  };
+}
+
 export function useVozTarea(grado: number) {
   const [voz, setVoz] = useState<SpeechSynthesisVoice>();
   const [hablando, setHablando] = useState(false);
@@ -124,16 +145,23 @@ export function useVozTarea(grado: number) {
     return () => s.removeEventListener("voiceschanged", cargar);
   }, []);
 
-  useEffect(() => () => callarVozTarea(), []);
+  useEffect(() => usarCanalVoz(), []);
 
   const sintetizar = useCallback(
-    (texto: string, turno: number) => {
+    (texto: string, turno: number, alTerminar?: () => void) => {
       if (!voz || turno !== canal.turno) return;
       const u = new SpeechSynthesisUtterance(texto);
       u.voice = voz;
       u.lang = voz.lang;
       u.rate = 0.9;
-      u.onend = u.onerror = () => {
+      u.onend = () => {
+        if (canal.frase !== u) return;
+        canal.frase = null;
+        setHablando(false);
+        avisar(false);
+        alTerminar?.();
+      };
+      u.onerror = () => {
         if (canal.frase !== u) return;
         canal.frase = null;
         setHablando(false);
@@ -146,7 +174,7 @@ export function useVozTarea(grado: number) {
   );
 
   const decir = useCallback(
-    (texto: string, audio?: string | null) => {
+    (texto: string, audio?: string | null, alTerminar?: () => void) => {
       if (typeof window === "undefined") return;
       callarVozTarea();
       const turno = canal.turno;
@@ -156,13 +184,13 @@ export function useVozTarea(grado: number) {
       avisar(true);
       const plan = (fallo: boolean) => {
         if (turno !== canal.turno) return;
-        if (elegirFuente({ audio, grado, sintesis: Boolean(voz), grabacionFallo: fallo }) === "sintesis") sintetizar(texto, turno);
+        if (elegirFuente({ audio, grado, sintesis: Boolean(voz), grabacionFallo: fallo }) === "sintesis") sintetizar(texto, turno, alTerminar);
         else {
           setHablando(false);
           avisar(false);
         }
       };
-      if (fuente === "sintesis") return sintetizar(texto, turno);
+      if (fuente === "sintesis") return sintetizar(texto, turno, alTerminar);
       const a = new Audio(audio!);
       canal.audio = a;
       a.onended = () => {
@@ -170,6 +198,7 @@ export function useVozTarea(grado: number) {
         canal.audio = null;
         setHablando(false);
         avisar(false);
+        alTerminar?.();
       };
       a.onerror = () => plan(true);
       void a.play().catch(() => plan(true));

@@ -1,0 +1,128 @@
+{
+  "slug": "antes-y-ahora",
+  "titulo": "Antes y ahora",
+  "tipo": "clasificar",
+  "grado": 1,
+  "instruccion": "Lleva cada objeto a su lugar: ¿es del pasado o del presente?",
+  "tema": "Objetos del pasado y del presente",
+  "imagen": "/images/juegos/antes-y-ahora/portada.webp",
+  "contenido": {
+    "presentacion": "parejas",
+    "categorias": [
+      {
+        "id": "pasado",
+        "nombre": "Pasado"
+      },
+      {
+        "id": "presente",
+        "nombre": "Presente"
+      }
+    ],
+    "elementos": [
+      {
+        "id": "locomotora-vapor",
+        "texto": "Locomotora de vapor",
+        "categoria": "pasado",
+        "pareja": "locomotora",
+        "imagen": "/images/juegos/antes-y-ahora/locomotora-vapor.webp",
+        "explicacion": "La locomotora de vapor viajaba con carbón; hoy hay trenes modernos."
+      },
+      {
+        "id": "tren-moderno",
+        "texto": "Tren moderno",
+        "categoria": "presente",
+        "pareja": "locomotora",
+        "imagen": "/images/juegos/antes-y-ahora/tren-moderno.webp",
+        "explicacion": "La locomotora de vapor viajaba con carbón; hoy hay trenes modernos."
+      },
+      {
+        "id": "computador-antiguo",
+        "texto": "Computador antiguo",
+        "categoria": "pasado",
+        "pareja": "computador",
+        "imagen": "/images/juegos/antes-y-ahora/computador-antiguo.webp",
+        "explicacion": "Los computadores antiguos eran grandes; los portátiles se pueden llevar."
+      },
+      {
+        "id": "portatil",
+        "texto": "Computador portátil",
+        "categoria": "presente",
+        "pareja": "computador",
+        "imagen": "/images/juegos/antes-y-ahora/portatil.webp",
+        "explicacion": "Los computadores antiguos eran grandes; los portátiles se pueden llevar."
+      },
+      {
+        "id": "plancha-carbon",
+        "texto": "Plancha de carbón",
+        "categoria": "pasado",
+        "pareja": "plancha",
+        "imagen": "/images/juegos/antes-y-ahora/plancha-carbon.webp",
+        "explicacion": "La plancha de carbón se calentaba con brasas; la eléctrica usa electricidad."
+      },
+      {
+        "id": "plancha-electrica",
+        "texto": "Plancha eléctrica",
+        "categoria": "presente",
+        "pareja": "plancha",
+        "imagen": "/images/juegos/antes-y-ahora/plancha-electrica.webp",
+        "explicacion": "La plancha de carbón se calentaba con brasas; la eléctrica usa electricidad."
+      },
+      {
+        "id": "televisor-tubo",
+        "texto": "Televisor antiguo",
+        "categoria": "pasado",
+        "pareja": "televisor",
+        "imagen": "/images/juegos/antes-y-ahora/televisor-tubo.webp",
+        "explicacion": "El televisor antiguo tenía un tubo grande; el de pantalla plana es del presente."
+      },
+      {
+        "id": "televisor-plano",
+        "texto": "Televisor de pantalla plana",
+        "categoria": "presente",
+        "pareja": "televisor",
+        "imagen": "/images/juegos/antes-y-ahora/televisor-plano.webp",
+        "explicacion": "El televisor antiguo tenía un tubo grande; el de pantalla plana es del presente."
+      },
+      {
+        "id": "telefono-disco",
+        "texto": "Teléfono de disco",
+        "categoria": "pasado",
+        "pareja": "telefono",
+        "imagen": "/images/juegos/antes-y-ahora/telefono-disco.webp",
+        "explicacion": "En el teléfono de disco se giraban los números; en el de teclas se pulsan botones."
+      },
+      {
+        "id": "telefono-teclas",
+        "texto": "Teléfono de teclas",
+        "categoria": "presente",
+        "pareja": "telefono",
+        "imagen": "/images/juegos/antes-y-ahora/telefono-teclas.webp",
+        "explicacion": "En el teléfono de disco se giraban los números; en el de teclas se pulsan botones."
+      },
+      {
+        "id": "automovil-antiguo",
+        "texto": "Carro antiguo",
+        "categoria": "pasado",
+        "pareja": "automovil",
+        "imagen": "/images/juegos/antes-y-ahora/automovil-antiguo.webp",
+        "explicacion": "El carro antiguo muestra cómo eran muchos vehículos antes; la camioneta es actual."
+      },
+      {
+        "id": "camioneta",
+        "texto": "Camioneta",
+        "categoria": "presente",
+        "pareja": "automovil",
+        "imagen": "/images/juegos/antes-y-ahora/camioneta.webp",
+        "explicacion": "El carro antiguo muestra cómo eran muchos vehículos antes; la camioneta es actual."
+      }
+    ],
+    "escena": {
+      "personaje": {
+        "nombre": "Andi",
+        "reposo": "/images/juegos/antes-y-ahora/andi-reposo.webp",
+        "senala": "/images/juegos/antes-y-ahora/andi-senala.webp",
+        "duda": "/images/juegos/antes-y-ahora/andi-duda.webp"
+      }
+    }
+  }
+}
