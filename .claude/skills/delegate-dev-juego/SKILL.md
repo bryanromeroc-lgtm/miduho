@@ -10,7 +10,7 @@ Reparto aprobado por el usuario el 2026-11-17 y probado en `los-meses-del-anio`,
 | Quién | Hace |
 |---|---|
 | **Claude** | Leer la tarea, capturar el audio, decidir con el usuario, adaptar el audio, generar imágenes con Gemini, escribir los encargos, revisar el diff y las capturas, verificar (pruebas con PostgreSQL y una partida en el navegador) y cerrar |
-| **Codex** (CLI) | Estudio con REA, informe, construcción (esquema, lógica + pruebas, interfaz, JSON, delta OpenSpec) y correcciones. Su papel está en `.agents/skills/juego-referencia-codex/SKILL.md` |
+| **Codex** (CLI) | Estudio con REA, informe, construcción (esquema, lógica + pruebas, interfaz, JSON, delta OpenSpec), **voces con Gemini TTS** (skill `voces-gemini`, desde 2026-11-18) y correcciones. Su papel está en `.agents/skills/juego-referencia-codex/SKILL.md` |
 | **Gemini** | Imágenes. Las pide Claude (`.claude/skills/gemini-media/`) |
 | **Usuario** | Elige el diseño y el contenido, escucha el audio, valida y decide los commits |
 
@@ -111,6 +111,12 @@ Reparto aprobado por el usuario el 2026-11-17 y probado en `los-meses-del-anio`,
   - puerto 3124 en `localhost`;
   - apagar el servidor por PID;
   - no hacer commit.
+
+### 5b. Voces (Codex, dentro del encargo de construcción)
+- Codex lee `/home/bryan/Documentos/DEVS/miduho/.claude/skills/voces-gemini/SKILL.md` y corre la herramienta del repo principal con el JSON del worktree: `bash -ic "node /home/bryan/Documentos/DEVS/miduho/tools/voz-gemini/voz.mjs actividad <json> [--simular] --solo instruccion,<ids>"`. Su sandbox filtra variables con `KEY`: la clave solo llega con `bash -ic`. Nunca la imprime.
+- Lanza Codex con `--add-dir /home/bryan/.cache/miduho-voz` (estado del cupo).
+- Si las opciones reutilizan voces existentes, `--solo` y `audioOpciones` a mano; si no, la herramienta genera todo.
+- En la entrega: frases, modelo y voz de cada una. Claude no oye el audio: el usuario escucha.
 
 ### 6. Supervisión (Claude) → plantilla `plantillas/encargo-3-correcciones.md`
 Revisa el diff (`git diff`, `git status`) y las capturas de Codex, y busca:
