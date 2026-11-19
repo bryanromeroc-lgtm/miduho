@@ -9,7 +9,7 @@ Reparto aprobado por el usuario el 2026-11-17:
 
 | Quién | Hace |
 |---|---|
-| **Codex (tú)** | Estudio con REA, informe `docs/investigacion/referencia-<slug>.md`, propuesta de diseño, lógica pura + pruebas, JSON de la actividad, interfaz, registro en los 4 lugares |
+| **Codex (tú)** | Estudio con REA, informe `docs/investigacion/referencia-<slug>.md`, propuesta de diseño, lógica pura + pruebas, JSON de la actividad, interfaz, registro en los 4 lugares; **voces con Gemini TTS** cuando el encargo lo pida (desde 2026-11-18) |
 | **Claude** | Captura sonora (`tools/captura-audio/`), inventario, licencias, tabla audio→evento, adaptación a `public/audio/`; supervisa tu trabajo y te devuelve correcciones |
 | **Gemini** | Imágenes (las pide Claude con la lista que tú entregas) |
 | **Usuario** | Visto bueno del diseño, escuchar el audio, commits |
@@ -27,6 +27,7 @@ Reparto aprobado por el usuario el 2026-11-17:
 
 - **El personaje del juego es la guía de su asignatura** (`apps/web/src/lib/guias.ts`: Sociales → Andi el cóndor, Matemáticas → Armi, Inglés → Maca, Ética → Ciro, Robótica → Tito, Lectura → Bruno, Naturales → Dora). Nunca otro.
 - **Audio:** no captures ni adaptes audio. Usa solo las rutas `/audio/...` que Claude te entrega en la tabla audio→evento. Si falta un evento, dilo en tu entrega.
+- **Voces:** si el encargo lo pide, genéralas con `/home/bryan/Documentos/DEVS/miduho/tools/voz-gemini/voz.mjs` siguiendo `/home/bryan/Documentos/DEVS/miduho/.claude/skills/voces-gemini/SKILL.md`, siempre con `bash -ic` (tu entorno no hereda `GEMINI_API_KEY_VOZ`) y con `--solo` cuando haya voces que reutilizar. Nunca imprimas la clave. Solo texto pedagógico.
 - **Imágenes:** no las generes. Entrega una lista: archivo destino, qué muestra, pose del personaje, relación de aspecto, `alt`.
 - **Nunca** hagas commit ni push. **Nunca** toques archivos fuera del alcance del encargo.
 - Trabaja por encargo: cada encargo pide **un** paso. Al terminar, escribe tu entrega en el archivo que diga el encargo y detente.
