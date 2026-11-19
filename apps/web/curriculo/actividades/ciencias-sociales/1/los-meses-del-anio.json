@@ -1,0 +1,72 @@
+{
+  "slug": "los-meses-del-anio",
+  "titulo": "Los meses en su lugar",
+  "tipo": "ordenar",
+  "grado": 1,
+  "instruccion": "Pon los meses en orden, de enero a diciembre. Luego toca «Enviar respuestas».",
+  "tema": "Secuencia de los doce meses del año",
+  "imagen": "/images/juegos/los-meses-del-anio/portada.webp",
+  "contenido": {
+    "presentacion": "casillas",
+    "semilla": 20261117,
+    "elementos": [
+      {
+        "id": "enero",
+        "texto": "Enero"
+      },
+      {
+        "id": "febrero",
+        "texto": "Febrero"
+      },
+      {
+        "id": "marzo",
+        "texto": "Marzo"
+      },
+      {
+        "id": "abril",
+        "texto": "Abril"
+      },
+      {
+        "id": "mayo",
+        "texto": "Mayo"
+      },
+      {
+        "id": "junio",
+        "texto": "Junio"
+      },
+      {
+        "id": "julio",
+        "texto": "Julio"
+      },
+      {
+        "id": "agosto",
+        "texto": "Agosto"
+      },
+      {
+        "id": "septiembre",
+        "texto": "Septiembre"
+      },
+      {
+        "id": "octubre",
+        "texto": "Octubre"
+      },
+      {
+        "id": "noviembre",
+        "texto": "Noviembre"
+      },
+      {
+        "id": "diciembre",
+        "texto": "Diciembre"
+      }
+    ],
+    "escena": {
+      "fondo": "/images/juegos/los-meses-del-anio/fondo-pizarra.webp",
+      "personaje": {
+        "nombre": "Andi",
+        "reposo": "/images/juegos/los-meses-del-anio/andi-reposo.webp",
+        "senala": "/images/juegos/los-meses-del-anio/andi-senala.webp",
+        "duda": "/images/juegos/los-meses-del-anio/andi-duda.webp"
+      }
+    }
+  }
+}

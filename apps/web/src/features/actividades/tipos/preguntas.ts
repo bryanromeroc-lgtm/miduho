@@ -5,9 +5,17 @@
 import { z } from "zod";
 import { rutaAudio } from "./audio";
 import { definirTipo } from "./contrato";
+import { esquemaEscenaJuego } from "../juegos/comun/escena";
 
 const id = z.string().regex(/^[a-z0-9-]+$/, "id en minúsculas, números y guiones");
 const texto = z.string().trim().min(1);
+const rutaImagen = z.string().regex(/^\/images\/[\w\-/]+\.webp$/, "ruta /images/….webp");
+const efectos = z.object({
+  acierto: rutaAudio.optional(),
+  fallo: rutaAudio.optional(),
+  finRonda: rutaAudio.optional(),
+  fin: rutaAudio.optional(),
+});
 
 export const esquemaPregunta = z
   .object({
@@ -21,10 +29,15 @@ export const esquemaPregunta = z
     audio: rutaAudio.optional(),
     /** Una grabación por opción, en el mismo orden; `null` si esa opción no tiene. */
     audioOpciones: z.array(rutaAudio.nullable()).optional(),
+    imagen: rutaImagen.optional(),
+    alt: texto.optional(),
+    imagenesOpciones: z.array(rutaImagen.nullable()).optional(),
   })
   .refine((p) => p.correcta < p.opciones.length, { message: "«correcta» apunta a una opción que no existe" })
   .refine((p) => new Set(p.opciones).size === p.opciones.length, { message: "opciones repetidas" })
-  .refine((p) => !p.audioOpciones || p.audioOpciones.length === p.opciones.length, { message: "audioOpciones debe tener una entrada por opción" });
+  .refine((p) => !p.audioOpciones || p.audioOpciones.length === p.opciones.length, { message: "audioOpciones debe tener una entrada por opción" })
+  .refine((p) => !p.imagen || !!p.alt, { message: "alt es obligatorio si hay imagen" })
+  .refine((p) => !p.imagenesOpciones || p.imagenesOpciones.length === p.opciones.length, { message: "imagenesOpciones debe tener una entrada por opción" });
 
 export type Pregunta = z.infer<typeof esquemaPregunta>;
 
@@ -53,7 +66,7 @@ export const reglasPreguntas = {
 export const seleccionMultiple = definirTipo({
   tipo: "seleccion-multiple",
   nombre: "Quiz",
-  esquemaContenido: z.object({ preguntas }),
+  esquemaContenido: z.object({ preguntas, escena: esquemaEscenaJuego.optional(), efectos: efectos.optional() }),
   ...reglasPreguntas,
 });
 
@@ -65,7 +78,7 @@ export const seleccionMultiple = definirTipo({
 export const concurso = definirTipo({
   tipo: "concurso",
   nombre: "Concurso",
-  esquemaContenido: z.object({ segundos: z.number().int().min(10).max(60), preguntas }),
+  esquemaContenido: z.object({ segundos: z.number().int().min(10).max(60), preguntas, escena: esquemaEscenaJuego.optional(), efectos: efectos.optional() }),
   ...reglasPreguntas,
 });
 

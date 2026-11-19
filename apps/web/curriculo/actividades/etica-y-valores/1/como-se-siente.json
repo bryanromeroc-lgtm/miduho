@@ -1,0 +1,140 @@
+{
+  "slug": "como-se-siente",
+  "titulo": "¿Cómo se siente?",
+  "tipo": "clasificar",
+  "grado": 1,
+  "instruccion": "Mira a Ciro. Lleva cada emoción al grupo agradable o desagradable y toca «Enviar respuestas».",
+  "audioInstruccion": "/audio/actividades/como-se-siente/instruccion.mp3",
+  "tema": "Reconocimiento de emociones y convivencia (CIU-1a3-CP)",
+  "imagen": "/images/juegos/como-se-siente/portada.webp",
+  "contenido": {
+    "presentacion": "tablero",
+    "tema": "corcho",
+    "categorias": [
+      {
+        "id": "agradable",
+        "nombre": "Emociones agradables"
+      },
+      {
+        "id": "desagradable",
+        "nombre": "Emociones desagradables"
+      }
+    ],
+    "elementos": [
+      {
+        "id": "feliz",
+        "texto": "Feliz",
+        "categoria": "agradable",
+        "imagen": "/images/juegos/como-se-siente/feliz.webp",
+        "explicacion": "Me siento feliz cuando comparto un juego.",
+        "audio": "/audio/actividades/como-se-siente/feliz.mp3"
+      },
+      {
+        "id": "tranquilo",
+        "texto": "Tranquilo/a",
+        "categoria": "agradable",
+        "imagen": "/images/juegos/como-se-siente/tranquilo.webp",
+        "explicacion": "Me siento tranquilo cuando respiro despacio.",
+        "lectura": "tranquilo o tranquila",
+        "audio": "/audio/actividades/como-se-siente/tranquilo.mp3"
+      },
+      {
+        "id": "orgulloso",
+        "texto": "Orgulloso/a",
+        "categoria": "agradable",
+        "imagen": "/images/juegos/como-se-siente/orgulloso.webp",
+        "explicacion": "Me siento orgulloso cuando termino algo difícil.",
+        "lectura": "orgulloso o orgullosa",
+        "audio": "/audio/actividades/como-se-siente/orgulloso.mp3"
+      },
+      {
+        "id": "agradecido",
+        "texto": "Agradecido/a",
+        "categoria": "agradable",
+        "imagen": "/images/juegos/como-se-siente/agradecido.webp",
+        "explicacion": "Me siento agradecido cuando alguien me ayuda.",
+        "lectura": "agradecido o agradecida",
+        "audio": "/audio/actividades/como-se-siente/agradecido.mp3"
+      },
+      {
+        "id": "seguro",
+        "texto": "Seguro/a",
+        "categoria": "agradable",
+        "imagen": "/images/juegos/como-se-siente/seguro.webp",
+        "explicacion": "Me siento seguro cuando estoy en un lugar que conozco.",
+        "lectura": "seguro o segura",
+        "audio": "/audio/actividades/como-se-siente/seguro.mp3"
+      },
+      {
+        "id": "entusiasmado",
+        "texto": "Entusiasmado/a",
+        "categoria": "agradable",
+        "imagen": "/images/juegos/como-se-siente/entusiasmado.webp",
+        "explicacion": "Me siento entusiasmado cuando voy a aprender algo nuevo.",
+        "lectura": "entusiasmado o entusiasmada",
+        "audio": "/audio/actividades/como-se-siente/entusiasmado.mp3"
+      },
+      {
+        "id": "triste",
+        "texto": "Triste",
+        "categoria": "desagradable",
+        "imagen": "/images/juegos/como-se-siente/triste.webp",
+        "explicacion": "Me siento triste cuando extraño algo que quiero.",
+        "audio": "/audio/actividades/como-se-siente/triste.mp3"
+      },
+      {
+        "id": "enojado",
+        "texto": "Enojado/a",
+        "categoria": "desagradable",
+        "imagen": "/images/juegos/como-se-siente/enojado.webp",
+        "explicacion": "Me siento enojado cuando algo me parece injusto.",
+        "lectura": "enojado o enojada",
+        "audio": "/audio/actividades/como-se-siente/enojado.mp3"
+      },
+      {
+        "id": "asustado",
+        "texto": "Asustado/a",
+        "categoria": "desagradable",
+        "imagen": "/images/juegos/como-se-siente/asustado.webp",
+        "explicacion": "Me siento asustado cuando oigo un ruido fuerte.",
+        "lectura": "asustado o asustada",
+        "audio": "/audio/actividades/como-se-siente/asustado.mp3"
+      },
+      {
+        "id": "preocupado",
+        "texto": "Preocupado/a",
+        "categoria": "desagradable",
+        "imagen": "/images/juegos/como-se-siente/preocupado.webp",
+        "explicacion": "Me siento preocupado cuando no sé qué va a pasar.",
+        "lectura": "preocupado o preocupada",
+        "audio": "/audio/actividades/como-se-siente/preocupado.mp3"
+      },
+      {
+        "id": "avergonzado",
+        "texto": "Avergonzado/a",
+        "categoria": "desagradable",
+        "imagen": "/images/juegos/como-se-siente/avergonzado.webp",
+        "explicacion": "Me siento avergonzado cuando me equivoco frente a otros.",
+        "lectura": "avergonzado o avergonzada",
+        "audio": "/audio/actividades/como-se-siente/avergonzado.mp3"
+      },
+      {
+        "id": "celoso",
+        "texto": "Celoso/a",
+        "categoria": "desagradable",
+        "imagen": "/images/juegos/como-se-siente/celoso.webp",
+        "explicacion": "Me siento celoso cuando quiero la atención que recibe otro.",
+        "lectura": "celoso o celosa",
+        "audio": "/audio/actividades/como-se-siente/celoso.mp3"
+      }
+    ],
+    "escena": {
+      "personaje": {
+        "nombre": "Ciro",
+        "reposo": "/images/juegos/como-se-siente/ciro-reposo.webp",
+        "senala": "/images/juegos/como-se-siente/ciro-senala.webp",
+        "duda": "/images/juegos/como-se-siente/ciro-duda.webp"
+      }
+    }
+  }
+}

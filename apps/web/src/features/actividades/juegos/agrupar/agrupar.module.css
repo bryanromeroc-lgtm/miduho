@@ -510,3 +510,79 @@
     transform: none;
   }
 }
+
+/* Variante de corcho: el tema solo cambia presentación y efectos, no mecánica. */
+.tablero[data-tema="corcho"] {
+  --a-mesa: #b87943;
+  --a-mesa-hondo: #935a32;
+  --a-tinta: #263829;
+  --a-foco: #153f79;
+  user-select: text;
+  -webkit-user-select: text;
+  background:
+    radial-gradient(circle at 19% 26%, #e2ae70a6 0 1px, transparent 2px) 0 0 / 12px 13px,
+    radial-gradient(circle at 71% 64%, #693b2266 0 1px, transparent 2px) 0 0 / 9px 11px,
+    linear-gradient(145deg, var(--a-mesa), var(--a-mesa-hondo));
+  box-shadow: inset 0 0 0 10px #6e4329, 0 18px 40px -22px #3b241a;
+}
+.tablero[data-con-guia] { padding-right: clamp(170px, 23%, 330px); }
+.tablero[data-tema="corcho"] .mesa,
+.tablero[data-tema="corcho"] .mesa[data-pila-vacia] { grid-template-columns: minmax(0, 1fr); justify-items: stretch; }
+.tablero[data-tema="corcho"] .mesa[data-pila-vacia] .grupos { width: 100%; }
+.tablero[data-tema="corcho"] .pila { border: 3px dashed #fff9e8; padding: .8rem; min-height: 8rem; }
+.tablero[data-tema="corcho"] .pilaLista { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.tablero[data-tema="corcho"] .grupos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.tablero[data-tema="corcho"] .grupo { background: #fff7e9a8; box-shadow: inset 0 0 0 3px #fff9e8; }
+.tablero[data-tema="corcho"] .casillas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.tablero[data-tema="corcho"] .casillaVacia { height: 54px; border-color: #3b4c43a8; }
+.tablero[data-tema="corcho"] :is(.tarjeta,.ficha) { border-radius: 4px; box-shadow: 2px 4px 1px #4b35265e, 0 8px 12px -8px #2e1a0d; }
+.tablero[data-tema="corcho"] .tarjetaBoton { border-radius: 2px; min-height: 110px; }
+.tablero[data-tema="corcho"] .ficha .tarjetaBoton { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: .4rem; min-height: 100px; }
+.tablero[data-tema="corcho"] .ficha .imagen { width: min(100%, 120px); }
+.tablero[data-tema="corcho"] .imagen { max-width: 120px; }
+.tablero[data-tema="corcho"] .palabra { font-size: clamp(.98rem, .75rem + .5vw, 1.25rem); }
+.tablero[data-tema="corcho"] .ficha .palabra { font-size: clamp(.9rem, .7rem + .45vw, 1.1rem); }
+.tablero[data-tema="corcho"] .aviso { background: #fff9e8; padding: .4rem .7rem; border-radius: 10px; }
+.tablero[data-tema="corcho"] .pilaVacia { background: #fff9e8; }
+.tablero .guia { position: absolute; right: 1%; top: 130px; width: clamp(155px, 22%, 320px); height: clamp(220px, 33dvh, 370px); pointer-events: none; display: flex; align-items: end; justify-content: center; transform-origin: center bottom; z-index: 2; transition: transform 150ms ease-out; }
+.tablero .guia::after { content: ""; position: absolute; bottom: 1%; width: 60%; height: 5%; background: #40271c88; border-radius: 50%; filter: blur(8px); z-index: -1; }
+.tablero .guia img { position: absolute; bottom: 0; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; opacity: 0; }
+.tablero .guia img[data-visible] { opacity: 1; }
+.tablero .guia span { background: #fff9e8; padding: .6rem; border-radius: 12px; font-weight: 800; }
+.tablero .guia[data-momento="anticipacion"] { transform: scale(.95) rotate(-3deg); }
+.tablero .guia[data-momento="accion"],
+.tablero .guia[data-momento="impacto"] { transform: scale(1.08) rotate(3deg); }
+.tablero .guia[data-reaccion="fallo"][data-momento="accion"],
+.tablero .guia[data-reaccion="fallo"][data-momento="impacto"] { transform: rotate(-4deg); }
+.tablero .guia[data-momento="recuperacion"] { transform: scale(1); }
+.tablero[data-tema="corcho"] .palabra { overflow-wrap: normal; word-break: keep-all; hyphens: manual; }
+@media (max-width: 900px) {
+  .tablero[data-con-guia] { padding-right: clamp(105px, 20%, 170px); }
+  .tablero .guia { width: clamp(95px, 18%, 160px); height: min(24dvh, 220px); }
+  .tablero[data-tema="corcho"] .pilaLista { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tablero[data-tema="corcho"] .casillas { grid-template-columns: 1fr; }
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+  .tablero[data-tema="corcho"] .casillas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .tablero[data-con-guia] { padding-right: .75rem; }
+  .tablero .guia { display: none; }
+  .tablero[data-tema="corcho"] .pilaLista { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tablero[data-tema="corcho"] .pila { padding: .4rem; }
+  .tablero[data-tema="corcho"] .tarjetaBoton { min-height: 100px; padding: .3rem; }
+  .tablero[data-tema="corcho"] .imagen { max-width: min(120px, 85%); }
+  .tablero[data-tema="corcho"] .palabra { font-size: .95rem; }
+  .tablero[data-tema="corcho"] .grupo { padding: .35rem; }
+  .tablero[data-tema="corcho"] .grupoNombre { padding: .3rem; font-size: .85rem; min-height: 64px; }
+  .tablero[data-tema="corcho"] .ficha .tarjetaBoton { min-height: 95px; }
+  .tablero[data-tema="corcho"] .ficha .imagen { width: min(100%, 115px); }
+  .tablero[data-tema="corcho"] .ficha .palabra { font-size: .85rem; }
+  .tablero[data-tema="corcho"] .sello { width: 27px; height: 27px; right: 2px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tablero .guia { transition: none; transform: none !important; }
+  .tablero .guia img { opacity: 0 !important; }
+  .tablero .guia img[data-pose="reposo"] { opacity: 1 !important; }
+}
+.tablero[data-tema="corcho"] :is(.tarjetaBoton, .grupoNombre, .enviar) { scroll-margin-top: 140px; }

@@ -28,6 +28,7 @@ const ASIGNATURAS = [
   { nombre: "Comprensión Lectora", area: "Humanidades: Lengua Castellana", orden: 1, docente: "claudia.rincon@miduho.test" },
   { nombre: "Ciencias Naturales", area: "Ciencias Naturales y Educación Ambiental", orden: 2, docente: "andres.moreno@miduho.test" },
   { nombre: "Ciencias Sociales", area: "Ciencias Sociales, Historia, Geografía, Constitución Política y Democracia", orden: 6, docente: "andres.moreno@miduho.test" },
+  { nombre: "Ética y Valores", area: "Educación Ética y en Valores Humanos", orden: 10, docente: "claudia.rincon@miduho.test" },
 ] as const;
 
 const ALFABETO = "abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ";

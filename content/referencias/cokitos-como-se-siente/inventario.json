@@ -1,0 +1,785 @@
+{
+  "slug": "cokitos-como-se-siente",
+  "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+  "autor_dominio": "wordwall.net",
+  "fecha_captura": "2026-11-18T02:55:44.079Z",
+  "herramienta": "tools/captura-audio",
+  "transcripcion_automatica": "no disponible (sin whisper) 🔶",
+  "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+  "notas_captura": [
+    "guion: abierto https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/play/",
+    "guion: iframe del juego: https://wordwall.net/es/embed/f69faaef3401479ea08bda9b1f7f5ad2?themeId=43&templateId=2&fontStackId=0",
+    "guion: abierto el juego del autor como página: https://wordwall.net/es/embed/f69faaef3401479ea08bda9b1f7f5ad2?themeId=43&templateId=2&fontStackId=0",
+    "no descargado (404): https://pm.azerioncircle.com/@bygd/focus/0.13.6/dist/app/iife/!window.OPUS",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgameintro.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgameintro.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgameintro.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipminorfast1.mp3",
+    "no descargado (404): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipminorfast1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipminorfast1.ogg",
+    "no descargado (404): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipminorfast2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipminorfast2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipminorfast2.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipminorfast3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipminorfast3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipminorfast3.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamesuccessful.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgamesuccessful.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgamesuccessful.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipfailfast1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipfailfast1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipfailfast1.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipfailfast2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipfailfast2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipfailfast2.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipfailfast3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipfailfast3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkchipfailfast3.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkleaderboards.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkleaderboards.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkleaderboards.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkmenu.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkmenu.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkmenu.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkmenusubtle.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkmenusubtle.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkmenusubtle.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamerestart.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgamerestart.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgamerestart.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamereveal.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgamereveal.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgamereveal.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkdrop1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkdrop1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkdrop1.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkdrop2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkdrop2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkdrop2.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkdrop3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkdrop3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkdrop3.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkdrop4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkdrop4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkdrop4.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkdrop5.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkdrop5.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkdrop5.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkpickup1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkpickup1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkpickup1.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkpickup2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkpickup2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkpickup2.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkpickup3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkpickup3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkpickup3.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkpickup4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkpickup4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkpickup4.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkpickup5.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkpickup5.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkpickup5.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgametimesup.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgametimesup.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkgametimesup.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkbackgroundmusic1b.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkbackgroundmusic1b.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/engine/1.0.8/themes/cork/720p/themes/cork2/sounds-04-2024/corkbackgroundmusic1b.ogg",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkconveyoritemactivate1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkconveyoritemactivate2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkconveyoritemactivate3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkconveyoritemappear.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkconveyoritemcentered.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkconveyoritemdeactivate.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkconveyoritemleave.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipminor1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipminor2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipminor3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipminor4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgameunsuccessful.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipfail1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipfail2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipfail3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkchipmajor1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgameshuffle.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner5.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner6.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner7.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner8.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner9.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinner10.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkgamespinnerselection.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileappear.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileeliminate.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflip1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflip2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflip3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflip4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflip5.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflip6.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflip7.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflipback1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflipback2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflipback3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflipback4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflipback5.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflipback6.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corktileflipback7.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkwheelresume.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkwheelsegmenteliminate.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkwheeltick1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkwheeltick2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkwheeltick3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkwheeltick4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkwheeltick5.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkwheeltick6.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkopenthebox1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkopenthebox2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkopenthebox3.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkopenthebox4.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkclocktick1.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkclocktick2.mp3",
+    "omitido (carpeta con 404 repetidos): https://app.cdn.wordwall.net/themes/cork2/sounds-04-2024/corkclockgo.mp3"
+  ],
+  "frames": [
+    "https://wordwall.net/es/embed/f69faaef3401479ea08bda9b1f7f5ad2?themeId=43&templateId=2&fontStackId=0"
+  ],
+  "pistas": [
+    {
+      "id": "fa352c82",
+      "archivo": "audio/originales/fa352c82-corkgameintro.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkgameintro.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "fa352c824627a0d87274b97ef49d6881700aaa87f8724198dd33caf077e64ee6",
+      "mime": "audio/ogg",
+      "duracion_s": 3.692,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -18.4,
+      "rol": "desconocido",
+      "evento": "inicio",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar-corcho/inicio.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "d14f092c",
+      "archivo": "audio/originales/d14f092c-corkchipminorfast1.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkchipminorfast1.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "d14f092c93339cbf90797851e2db24cddef3d6c5cf34832edc296a34aba83b59",
+      "mime": "audio/ogg",
+      "duracion_s": 1.475,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -28.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar-corcho/acierto-1.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "fffe01a1",
+      "archivo": "audio/originales/fffe01a1-corkchipminorfast2.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkchipminorfast2.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "fffe01a19a8323002bc72e738919a09871e15ae9f88d7fa39201bae6921b5a16",
+      "mime": "audio/ogg",
+      "duracion_s": 1.475,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -27.6,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar-corcho/acierto-2.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "000946de",
+      "archivo": "audio/originales/000946de-corkchipminorfast3.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkchipminorfast3.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "000946de7d47c4c27339a731498f6c6a7445e2f8f47ec03b9f81ab18b8a47a9f",
+      "mime": "audio/ogg",
+      "duracion_s": 1.475,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -28.1,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar-corcho/acierto-3.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "2434c4ac",
+      "archivo": "audio/originales/2434c4ac-corkchipfailfast1.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkchipfailfast1.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "2434c4ac4cf5812251fef0c0240831b3266add17f4e1e34835cf823a85d15dec",
+      "mime": "audio/ogg",
+      "duracion_s": 0.942,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -27.7,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar-corcho/fallo-1.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "f56d3370",
+      "archivo": "audio/originales/f56d3370-corkchipfailfast2.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkchipfailfast2.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "f56d337094c9b0e432c3f957138e5d93b01359792123f91012967c2d8109647a",
+      "mime": "audio/ogg",
+      "duracion_s": 0.942,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -25,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar-corcho/fallo-2.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "42d08b5e",
+      "archivo": "audio/originales/42d08b5e-corkchipfailfast3.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkchipfailfast3.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "42d08b5e665392c1071d0b308b8001f67cfc104e3dbe3341b9024b1bb7527850",
+      "mime": "audio/ogg",
+      "duracion_s": 0.942,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -24,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar-corcho/fallo-3.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "b4848ae0",
+      "archivo": "audio/originales/b4848ae0-corkmenu.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkmenu.ogg",
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkmenusubtle.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "b4848ae00615105b5c8af5c6b6e4f2ee89d7837852c6b35c0ab3e655c9953937",
+      "mime": "audio/ogg",
+      "duracion_s": 0.923,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -34.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "1dbe5c92",
+      "archivo": "audio/originales/1dbe5c92-corkgamereveal.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkgamereveal.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "1dbe5c92d23850ef751b28cc480c7660f1d03ebbfeeccfa3d7255b76c657c89f",
+      "mime": "audio/ogg",
+      "duracion_s": 4.154,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -18.1,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar-corcho/revelar.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "55d21e8c",
+      "archivo": "audio/originales/55d21e8c-corkdrop1.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkdrop1.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "55d21e8cb0b5de6e1bef1bfa4964fb814fb52710426bfaadf3d41f4d62c8b550",
+      "mime": "audio/ogg",
+      "duracion_s": 0.626,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -30.6,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar-corcho/soltar-1.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "c16801e3",
+      "archivo": "audio/originales/c16801e3-corkdrop2.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkdrop2.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "c16801e39f83987b94239e3af7ef51fb7698752fcd0a3e0f3382baa84d497432",
+      "mime": "audio/ogg",
+      "duracion_s": 0.626,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -29.7,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar-corcho/soltar-2.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "9265a10d",
+      "archivo": "audio/originales/9265a10d-corkdrop3.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkdrop3.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "9265a10da50805d1d524b81e12f83d7640f29602fc587d8e2fca506dbc470846",
+      "mime": "audio/ogg",
+      "duracion_s": 0.626,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -32.8,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar-corcho/soltar-3.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "0e25c4c0",
+      "archivo": "audio/originales/0e25c4c0-corkdrop4.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkdrop4.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "0e25c4c0937ffaab57677be131f8356e506978bdc50472f591e9ad437d2015c1",
+      "mime": "audio/ogg",
+      "duracion_s": 0.626,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -30.7,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "19f7f8fe",
+      "archivo": "audio/originales/19f7f8fe-corkdrop5.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkdrop5.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "19f7f8fe7a3da263124e1347a42f58e706df528c79415cfc31384d4dcda9ba4b",
+      "mime": "audio/ogg",
+      "duracion_s": 0.626,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -34.6,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "875ad9c5",
+      "archivo": "audio/originales/875ad9c5-corkpickup1.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkpickup1.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "875ad9c5fce18431c17f7a97dcd22e3a063e76576631c8c039e730c85ea9e81f",
+      "mime": "audio/ogg",
+      "duracion_s": 0.626,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -28.3,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar-corcho/levantar-1.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "8405db5d",
+      "archivo": "audio/originales/8405db5d-corkpickup2.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkpickup2.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "8405db5d4d37dfd6689b474bab6bd85d26fc24925a08805e8190f50b7516c06c",
+      "mime": "audio/ogg",
+      "duracion_s": 0.626,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -26.8,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar-corcho/levantar-2.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "38e93a5a",
+      "archivo": "audio/originales/38e93a5a-corkpickup3.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkpickup3.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "38e93a5a6284b79408419205fb38d2af313886523c2591bc36d62af6a0c9bad4",
+      "mime": "audio/ogg",
+      "duracion_s": 0.626,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -26.2,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar-corcho/levantar-3.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "3263faf0",
+      "archivo": "audio/originales/3263faf0-corkpickup4.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkpickup4.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "3263faf07be09fa56c9829eab7dbff8fe15460c934e063a2301988ad9eb0bb43",
+      "mime": "audio/ogg",
+      "duracion_s": 0.626,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -28.5,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "4c38df8e",
+      "archivo": "audio/originales/4c38df8e-corkpickup5.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkpickup5.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "4c38df8eb3a6ad2b479fcee3a6d0e8cd71d844983ac3e3a7c209eba1c45fdfba",
+      "mime": "audio/ogg",
+      "duracion_s": 0.626,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -29.1,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "ba8f4bc5",
+      "archivo": "audio/originales/ba8f4bc5-corkgamesuccessful.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkgamesuccessful.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "ba8f4bc5fc3eea4d510f81abbcce58c783b8fb5aa838d8c94eb9df51c8200f23",
+      "mime": "audio/ogg",
+      "duracion_s": 4.193,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -17.3,
+      "rol": "efecto",
+      "evento": "fin",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/agrupar-corcho/fin.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "9e48495f",
+      "archivo": "audio/originales/9e48495f-corkleaderboards.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkleaderboards.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "9e48495f1dbc6fe21593344da70f933cf82964938a5d8e2637f53b215476d98b",
+      "mime": "audio/ogg",
+      "duracion_s": 3.873,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -18.6,
+      "rol": "desconocido",
+      "evento": "fin",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "44d9916c",
+      "archivo": "audio/originales/44d9916c-corkgamerestart.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkgamerestart.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "44d9916cfc7006044435a4eea66a4b5bdbfe79101fd3304961c4169bcdfa377a",
+      "mime": "audio/ogg",
+      "duracion_s": 2.308,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -18.7,
+      "rol": "efecto",
+      "evento": "inicio",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "8acb4adc",
+      "archivo": "audio/originales/8acb4adc-corkgametimesup.ogg",
+      "urls": [
+        "https://app.cdn.wordwall.net/engine/1.0.8/themes/cork2/sounds-04-2024/corkgametimesup.ogg"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "8acb4adcb3929079b140d7e1a5bc4c063b2356b4fbc4e1f147fbd986bb0b3dc0",
+      "mime": "audio/ogg",
+      "duracion_s": 8,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -18,
+      "rol": "desconocido",
+      "evento": "fin",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "93eb48d1",
+      "archivo": "audio/originales/93eb48d1-test1.mp3",
+      "urls": [
+        "https://app.cdn.wordwall.net/test/test1.mp3"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "93eb48d143f511d68cafe8614abee4a9fed09d1182e78d98c0aa7f03835b370f",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.8,
+      "canales": 1,
+      "frecuencia_hz": 16000,
+      "sonoridad_lufs": -20.1,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "script"
+      ]
+    },
+    {
+      "id": "23061693",
+      "archivo": "audio/originales/23061693-data-0.mp3",
+      "urls": [
+        "data:audio/mp3 (en https://app.cdn.wordwall.net/engine/a/scripts/view.fc44b9c413a71cd1.js)"
+      ],
+      "pagina": "https://www.cokitos.com/clasificar-emociones-positivas-y-negativas/",
+      "autor_dominio": "wordwall.net",
+      "sha256": "23061693af1606d64ce60b03ebaafb7ca834f634d6abb5f872f22bb496f702c3",
+      "mime": "audio/mp3",
+      "duracion_s": 0.168,
+      "canales": 1,
+      "frecuencia_hz": 24000,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    }
+  ]
+}

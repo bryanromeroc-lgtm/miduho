@@ -2,6 +2,13 @@ import { describe, expect, it } from "vitest";
 import { AVISO_VISTA_PREVIA, primeraRespuestaCuenta, textoReglas } from "./reglas";
 
 describe("reglas visibles antes de jugar", () => {
+  it("explica la primera ubicación solo en la presentación de parejas", () => {
+    expect(primeraRespuestaCuenta("clasificar", "parejas")).toBe(true);
+    expect(textoReglas("clasificar", "practica", "parejas")).toContain("la primera ubicación de cada objeto cuenta");
+    expect(textoReglas("clasificar", "practica", "parejas")).toContain("Puedes corregir");
+    expect(primeraRespuestaCuenta("clasificar")).toBe(false);
+    expect(textoReglas("clasificar")).not.toContain("primera ubicación");
+  });
   it.each(["angulos", "rectas", "bocadillo", "sello", "operaciones"])("%s explica el primer intento", (tipo) => {
     expect(primeraRespuestaCuenta(tipo)).toBe(true);
     expect(textoReglas(tipo)).toContain("primera respuesta");
@@ -16,6 +23,11 @@ describe("reglas visibles antes de jugar", () => {
 });
 
 describe("modo vista previa", () => {
+  it("explica la primera ubicación de parejas sin indicar práctica libre", () => {
+    expect(textoReglas("clasificar", "vista-previa", "parejas")).toBe(
+      `${AVISO_VISTA_PREVIA} La primera ubicación de cada objeto cuenta para las estrellas.`,
+    );
+  });
   it.each(["angulos", "memoria"])("%s dice que el resultado de la vista previa no se guarda", (tipo) => {
     expect(textoReglas(tipo, "vista-previa")).toContain("Vista previa: este resultado no se guarda");
     expect(textoReglas(tipo, "vista-previa")).not.toContain("Práctica libre");

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { aciertos, cabe, cupos, enGrupo, faltan, ordenRevelado, poner } from "./logica";
+import { aciertos, cabe, cupos, enGrupo, faltan, ordenRevelado, poner, poseGuia, sonidosAgrupar } from "./logica";
 
 const grupos = [
   { id: "vivo", nombre: "Seres vivos" },
@@ -40,5 +40,23 @@ describe("tablero agrupar", () => {
       { id: "rosa", grupo: "inerte" },
     ]);
     expect(aciertos(tarjetas, l)).toBe(1);
+  });
+
+  it("elige la pose según reacción, momento y fase", () => {
+    expect(poseGuia("acierto", "anticipacion", "revelando", "reposo")).toBe("reposo");
+    expect(poseGuia("acierto", "accion", "revelando", "reposo")).toBe("senala");
+    expect(poseGuia("fallo", "impacto", "revelando", "reposo")).toBe("duda");
+    expect(poseGuia("fallo", "recuperacion", "revelando", "reposo")).toBe("reposo");
+    expect(poseGuia(null, "reposo", "revelado", "senala")).toBe("senala");
+    expect(poseGuia(null, "reposo", "jugando", "senala")).toBe("reposo");
+  });
+
+  it("el tema elige solo la carpeta de sonidos", () => {
+    const girasol = sonidosAgrupar("girasol");
+    const corcho = sonidosAgrupar("corcho");
+    expect(Object.keys(corcho)).toEqual(Object.keys(girasol));
+    expect(girasol.levantar).toEqual([1, 2, 3].map((n) => `/audio/juegos/agrupar/levantar-${n}.mp3`));
+    expect(corcho.levantar).toEqual([1, 2, 3].map((n) => `/audio/juegos/agrupar-corcho/levantar-${n}.mp3`));
+    expect(corcho.fin).toEqual(["/audio/juegos/agrupar-corcho/fin.mp3"]);
   });
 });

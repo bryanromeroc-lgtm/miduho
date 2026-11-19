@@ -1,12 +1,15 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element -- las ilustraciones y poses son webp optimizados del currículo */
+
 import { ArrowRight, Check, Play, Send, Undo2, Volume2, VolumeX, X } from "lucide-react";
-import { useEffect, useMemo, useRef, useState, type PointerEvent as EventoPuntero } from "react";
+import { useContext, useEffect, useMemo, useRef, useState, type PointerEvent as EventoPuntero } from "react";
 import { barajar } from "../../tipos/contrato";
 import { callarVozTarea } from "../comun/voz";
-import { Escuchar } from "../comun/escuchar";
+import { ContextoActividad, Escuchar, useLecturaAutomatica } from "../comun/escuchar";
+import type { EscenaJuego } from "../comun/escena";
 import { useEfectosGrabados } from "../comun/efectos-grabados";
-import { aciertos, cabe, cupos, enGrupo, faltan, ordenRevelado, poner, type Lugares } from "./logica";
+import { aciertos, cabe, cupos, enGrupo, faltan, ordenRevelado, poner, poseGuia, sonidosAgrupar, type Lugares, type MomentoGuia, type ReaccionGuia } from "./logica";
 import s from "./agrupar.module.css";
 
 /*
@@ -22,21 +25,11 @@ import s from "./agrupar.module.css";
   tabla de récords. La nota es la ubicación de cada tarjeta al enviar.
 */
 
-type Elemento = { id: string; texto: string; categoria: string; audio?: string; imagen?: string; explicacion?: string };
-type Contenido = { categorias: { id: string; nombre: string }[]; elementos: Elemento[] };
+type Elemento = { id: string; texto: string; categoria: string; audio?: string; imagen?: string; explicacion?: string; lectura?: string };
+type Contenido = { tema?: "girasol" | "corcho"; escena?: EscenaJuego; categorias: { id: string; nombre: string }[]; elementos: Elemento[] };
 type Props = { contenido: Contenido; semilla: string; alTerminar: (respuestas: Record<string, unknown>) => void };
 type Fase = "inicio" | "jugando" | "revelando" | "revelado";
 
-const A = "/audio/juegos/agrupar/";
-const SONIDOS = {
-  inicio: [`${A}inicio.mp3`],
-  levantar: [1, 2, 3].map((n) => `${A}levantar-${n}.mp3`),
-  soltar: [1, 2, 3].map((n) => `${A}soltar-${n}.mp3`),
-  acierto: [1, 2, 3].map((n) => `${A}acierto-${n}.mp3`),
-  fallo: [1, 2, 3].map((n) => `${A}fallo-${n}.mp3`),
-  revelar: [`${A}revelar.mp3`],
-  fin: [`${A}fin.mp3`],
-};
 /** Pausa entre tarjeta y tarjeta al revelar (la referencia usa ~0,3 s; un poco más para 1.°). */
 const PASO_REVELADO = 420;
 /** Píxeles que debe moverse el dedo para que un toque se vuelva arrastre. */
@@ -58,13 +51,24 @@ export function TableroAgrupar({ contenido, semilla, alTerminar }: Props) {
   const [arrastre, setArrastre] = useState<Arrastre | null>(null);
   const [revelados, setRevelados] = useState(0);
   const [aviso, setAviso] = useState("");
-  const efectos = useEfectosGrabados(SONIDOS);
+  const tema = contenido.tema ?? "girasol";
+  const efectos = useEfectosGrabados(useMemo(() => sonidosAgrupar(tema), [tema]));
+  const personaje = contenido.escena?.personaje;
+  const [reaccion, setReaccion] = useState<ReaccionGuia>(null);
+  const [momento, setMomento] = useState<MomentoGuia>("reposo");
+  const [poseFinal, setPoseFinal] = useState<"reposo" | "senala">("reposo");
+  const [guiaDisponible, setGuiaDisponible] = useState(true);
+  const [imagenesFallidas, setImagenesFallidas] = useState<string[]>([]);
 
   const zonas = useRef(new Map<string, HTMLElement>());
   const tarjetasRef = useRef(new Map<string, HTMLButtonElement>());
+  const resultadoRef = useRef<HTMLButtonElement>(null);
   const tragarClic = useRef(false);
   const relojes = useRef<ReturnType<typeof setTimeout>[]>([]);
   useEffect(() => () => relojes.current.forEach(clearTimeout), []);
+  useEffect(() => {
+    if (fase === "revelado") resultadoRef.current?.focus({ preventScroll: true });
+  }, [fase]);
 
   const pendientes = faltan(lugares, contenido.elementos);
   const orden = useMemo(() => ordenRevelado(contenido.categorias, lugares), [contenido, lugares]);
@@ -165,12 +169,23 @@ export function TableroAgrupar({ contenido, semilla, alTerminar }: Props) {
     setFase("revelando");
     setAviso("Revisando tus respuestas…");
     efectos.tocar("revelar", 0.6);
+    const paso = personaje ? 720 : PASO_REVELADO;
     orden.forEach((o, i) => {
       relojes.current.push(
         setTimeout(() => {
+          const elemento = porId.get(o.id)!;
+          const acierto = elemento.categoria === o.grupo;
           setRevelados(i + 1);
-          efectos.tocar(porId.get(o.id)?.categoria === o.grupo ? "acierto" : "fallo");
-        }, 500 + i * PASO_REVELADO),
+          if (personaje) {
+            setReaccion(acierto ? "acierto" : "fallo");
+            setMomento("anticipacion");
+            setAviso(`${elemento.texto}: ${acierto ? "bien" : `va en ${nombre(elemento.categoria)}`}.${elemento.explicacion ? ` ${elemento.explicacion}` : ""}`);
+            relojes.current.push(setTimeout(() => setMomento("accion"), 130));
+            relojes.current.push(setTimeout(() => { setMomento("impacto"); efectos.tocar(acierto ? "acierto" : "fallo"); }, 280));
+            relojes.current.push(setTimeout(() => setMomento("recuperacion"), 400));
+            relojes.current.push(setTimeout(() => { setMomento("reposo"); setReaccion(null); }, 640));
+          } else efectos.tocar(acierto ? "acierto" : "fallo");
+        }, 500 + i * paso),
       );
     });
     relojes.current.push(
@@ -178,6 +193,7 @@ export function TableroAgrupar({ contenido, semilla, alTerminar }: Props) {
         () => {
           const total = aciertos(contenido.elementos, lugares);
           setFase("revelado");
+          if (personaje) { setReaccion(null); setMomento("reposo"); setPoseFinal(total > contenido.elementos.length - total ? "senala" : "reposo"); }
           efectos.tocar("fin", 0.8);
           setAviso(
             total === contenido.elementos.length
@@ -185,7 +201,7 @@ export function TableroAgrupar({ contenido, semilla, alTerminar }: Props) {
               : `Acertaste ${total} de ${contenido.elementos.length}. Las tarjetas en gris van en el otro grupo.`,
           );
         },
-        500 + orden.length * PASO_REVELADO + 300,
+        500 + orden.length * paso + 300,
       ),
     );
   }
@@ -229,15 +245,14 @@ export function TableroAgrupar({ contenido, semilla, alTerminar }: Props) {
           onPointerUp={subir}
           onPointerCancel={() => setArrastre(null)}
         >
-          {t.imagen && (
-            // eslint-disable-next-line @next/next/no-img-element -- ilustración pequeña ya optimizada (webp 320 px)
-            <img src={t.imagen} alt="" width={160} height={160} className={s.imagen} draggable={false} />
+          {t.imagen && !imagenesFallidas.includes(id) && (
+            <img src={t.imagen} alt="" width={160} height={160} className={s.imagen} draggable={false} onError={() => setImagenesFallidas((actual) => actual.includes(id) ? actual : [...actual, id])} />
           )}
           <span className={s.palabra}>{t.texto}</span>
         </button>
         {!compacta && (
           <span className={s.altavoz}>
-            <Escuchar texto={t.texto} audio={t.audio} soloIcono />
+            <Escuchar texto={t.lectura ?? t.texto} audio={t.audio} soloIcono />
           </span>
         )}
         {estado && (
@@ -253,7 +268,14 @@ export function TableroAgrupar({ contenido, semilla, alTerminar }: Props) {
   const elegidaPuesta = elegida !== null && lugares[elegida] !== undefined;
 
   return (
-    <div className={s.tablero} data-fase={fase} data-arrastrando={arrastre?.activo ? "" : undefined}>
+    <div className={s.tablero} data-tema={tema} data-con-guia={personaje ? "" : undefined} data-fase={fase} data-arrastrando={arrastre?.activo ? "" : undefined}>
+      {personaje && fase !== "inicio" && <LecturaInicial />}
+      {personaje && <div className={s.guia} data-reaccion={reaccion ?? undefined} data-momento={momento} aria-hidden="true">
+        {guiaDisponible ? (["reposo", "senala", "duda"] as const).map((pose) => {
+          const visible = poseGuia(reaccion, momento, fase, poseFinal);
+          return <img key={pose} src={personaje[pose]} alt="" data-pose={pose} data-visible={visible === pose ? "" : undefined} onError={() => setGuiaDisponible(false)} />;
+        }) : <span>{personaje.nombre}</span>}
+      </div>}
       <div className={s.barra}>
         <button type="button" className={s.sonido} aria-pressed={efectos.activo} onClick={efectos.alternar}>
           {efectos.activo ? <Volume2 size={20} strokeWidth={2.6} aria-hidden="true" /> : <VolumeX size={20} strokeWidth={2.6} aria-hidden="true" />}
@@ -377,7 +399,7 @@ export function TableroAgrupar({ contenido, semilla, alTerminar }: Props) {
       )}
       {fase === "revelado" && (
         <div className={s.acciones}>
-          <button type="button" className={s.enviar} onClick={() => alTerminar(lugares)} autoFocus>
+          <button ref={resultadoRef} type="button" className={s.enviar} onClick={() => alTerminar(lugares)}>
             Ver resultado
             <ArrowRight size={22} strokeWidth={2.8} aria-hidden="true" />
           </button>
@@ -385,4 +407,10 @@ export function TableroAgrupar({ contenido, semilla, alTerminar }: Props) {
       )}
     </div>
   );
+}
+
+function LecturaInicial() {
+  const { instruccion, audioInstruccion } = useContext(ContextoActividad);
+  useLecturaAutomatica("tablero-consigna", instruccion ?? "", audioInstruccion);
+  return null;
 }
