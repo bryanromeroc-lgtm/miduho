@@ -6,10 +6,10 @@ import { ArrowRight, Check, Play, Send, Undo2, Volume2, VolumeX, X } from "lucid
 import { useContext, useEffect, useMemo, useRef, useState, type PointerEvent as EventoPuntero } from "react";
 import { barajar } from "../../tipos/contrato";
 import { callarVozTarea } from "../comun/voz";
-import { ContextoActividad, Escuchar, useLecturaAutomatica } from "../comun/escuchar";
+import { ContextoActividad, Escuchar, useLecturaAutomatica, useVozActividad } from "../comun/escuchar";
 import type { EscenaJuego } from "../comun/escena";
 import { useEfectosGrabados } from "../comun/efectos-grabados";
-import { aciertos, cabe, cupos, enGrupo, faltan, ordenRevelado, poner, poseGuia, sonidosAgrupar, type Lugares, type MomentoGuia, type ReaccionGuia } from "./logica";
+import { aciertos, cabe, cupos, enGrupo, faltan, ordenRevelado, poner, poseGuia, sonidosAgrupar, type EfectosAgrupar, type Lugares, type MomentoGuia, type ReaccionGuia } from "./logica";
 import s from "./agrupar.module.css";
 
 /*
@@ -25,8 +25,8 @@ import s from "./agrupar.module.css";
   tabla de récords. La nota es la ubicación de cada tarjeta al enviar.
 */
 
-type Elemento = { id: string; texto: string; categoria: string; audio?: string; imagen?: string; explicacion?: string; lectura?: string };
-type Contenido = { tema?: "girasol" | "corcho"; escena?: EscenaJuego; categorias: { id: string; nombre: string }[]; elementos: Elemento[] };
+type Elemento = { id: string; texto: string; categoria: string; audio?: string; imagen?: string; simbolo?: string; explicacion?: string; lectura?: string };
+type Contenido = { tema?: "girasol" | "corcho"; tarjetas?: "texto" | "sonido"; efectos?: EfectosAgrupar; escena?: EscenaJuego; categorias: { id: string; nombre: string }[]; elementos: Elemento[] };
 type Props = { contenido: Contenido; semilla: string; alTerminar: (respuestas: Record<string, unknown>) => void };
 type Fase = "inicio" | "jugando" | "revelando" | "revelado";
 
@@ -40,6 +40,9 @@ type Arrastre = { id: string; x0: number; y0: number; dx: number; dy: number; ac
 
 export function TableroAgrupar({ contenido, semilla, alTerminar }: Props) {
   const tarjetas = useMemo(() => barajar(contenido.elementos, semilla), [contenido, semilla]);
+  const numero = useMemo(() => Object.fromEntries(tarjetas.map((t, i) => [t.id, i + 1])), [tarjetas]);
+  const soloSonido = contenido.tarjetas === "sonido";
+  const { decir } = useVozActividad();
   const tinte = useMemo(() => Object.fromEntries(tarjetas.map((t, i) => [t.id, i % TINTES])), [tarjetas]);
   const porId = useMemo(() => new Map(contenido.elementos.map((e) => [e.id, e])), [contenido]);
   const cupo = useMemo(() => cupos(contenido.categorias, contenido.elementos), [contenido]);
@@ -52,13 +55,14 @@ export function TableroAgrupar({ contenido, semilla, alTerminar }: Props) {
   const [revelados, setRevelados] = useState(0);
   const [aviso, setAviso] = useState("");
   const tema = contenido.tema ?? "girasol";
-  const efectos = useEfectosGrabados(useMemo(() => sonidosAgrupar(tema), [tema]));
+  const efectos = useEfectosGrabados(useMemo(() => sonidosAgrupar(tema, contenido.efectos), [tema, contenido.efectos]));
   const personaje = contenido.escena?.personaje;
   const [reaccion, setReaccion] = useState<ReaccionGuia>(null);
   const [momento, setMomento] = useState<MomentoGuia>("reposo");
   const [poseFinal, setPoseFinal] = useState<"reposo" | "senala">("reposo");
   const [guiaDisponible, setGuiaDisponible] = useState(true);
   const [imagenesFallidas, setImagenesFallidas] = useState<string[]>([]);
+  const [pistas, setPistas] = useState<string[]>([]);
 
   const zonas = useRef(new Map<string, HTMLElement>());
   const tarjetasRef = useRef(new Map<string, HTMLButtonElement>());
@@ -98,7 +102,7 @@ export function TableroAgrupar({ contenido, semilla, alTerminar }: Props) {
     setElegida(null);
     efectos.tocar("soltar");
     const resto = faltan(nuevos, contenido.elementos);
-    const texto = porId.get(id)!.texto;
+    const texto = soloSonido && !pistas.includes(id) ? `Sonido ${numero[id]}` : porId.get(id)!.texto;
     setAviso(
       (grupo === null ? `${texto} volvió a las tarjetas.` : `${texto} quedó en ${nombre(grupo)}.`) +
         (resto === 0 ? " ¡Ya no quedan tarjetas! Toca «Enviar respuestas»." : resto === 1 ? " Falta 1 tarjeta." : ` Faltan ${resto} tarjetas.`),
@@ -111,14 +115,20 @@ export function TableroAgrupar({ contenido, semilla, alTerminar }: Props) {
 
   function elegir(id: string) {
     if (fase !== "jugando") return;
+    // Respaldo neutro: si el audio falla, la síntesis no debe delatar la respuesta.
+    if (soloSonido) decir(`Sonido ${numero[id]}`, porId.get(id)!.audio);
     if (elegida === id) {
+      if (soloSonido) {
+        setAviso(`Escuchaste de nuevo ${pistas.includes(id) ? porId.get(id)!.texto : `Sonido ${numero[id]}`}. Ahora toca su grupo.`);
+        return;
+      }
       setElegida(null);
       setAviso("Soltaste la tarjeta.");
       return;
     }
     setElegida(id);
     efectos.tocar("levantar");
-    setAviso(`Tienes ${porId.get(id)!.texto}. Ahora toca su grupo.`);
+    setAviso(`Tienes ${soloSonido && !pistas.includes(id) ? `Sonido ${numero[id]}` : porId.get(id)!.texto}. Ahora toca su grupo.`);
   }
 
   // Arrastre con puntero (ratón, dedo o lápiz). Un toque sin moverse es «elegir».
@@ -213,10 +223,13 @@ export function TableroAgrupar({ contenido, semilla, alTerminar }: Props) {
   function tarjeta(id: string, compacta = false) {
     const t = porId.get(id)!;
     const estado = estadoDe(id);
+    const visible = !soloSonido || pistas.includes(id) || !!estado;
+    const etiqueta = visible ? t.texto : `Sonido ${numero[id]}`;
     return (
       <div
         key={id}
         className={compacta ? s.ficha : s.tarjeta}
+        data-solo-sonido={soloSonido ? "" : undefined}
         data-tinte={tinte[id]}
         data-elegida={elegida === id ? "" : undefined}
         data-arrastrando={arrastre?.activo && arrastre.id === id ? "" : undefined}
@@ -235,8 +248,8 @@ export function TableroAgrupar({ contenido, semilla, alTerminar }: Props) {
             estado
               ? `${t.texto}, en ${nombre(lugares[id])}: ${estado === "ok" ? "bien" : `va en ${nombre(t.categoria)}`}`
               : lugares[id]
-                ? `${t.texto}, en ${nombre(lugares[id])}. Toca para moverla.`
-                : t.texto
+                ? `${etiqueta}, en ${nombre(lugares[id])}. Toca para escuchar y moverla.`
+                : soloSonido ? `Escuchar y seleccionar ${etiqueta}` : t.texto
           }
           disabled={fase !== "jugando"}
           onClick={() => clic(id)}
@@ -245,12 +258,25 @@ export function TableroAgrupar({ contenido, semilla, alTerminar }: Props) {
           onPointerUp={subir}
           onPointerCancel={() => setArrastre(null)}
         >
-          {t.imagen && !imagenesFallidas.includes(id) && (
+          {soloSonido && !visible && <Volume2 size={compacta ? 24 : 40} strokeWidth={2.4} aria-hidden="true" />}
+          {visible && t.imagen && !imagenesFallidas.includes(id) && (
             <img src={t.imagen} alt="" width={160} height={160} className={s.imagen} draggable={false} onError={() => setImagenesFallidas((actual) => actual.includes(id) ? actual : [...actual, id])} />
           )}
-          <span className={s.palabra}>{t.texto}</span>
+          {visible && !t.imagen && t.simbolo && <span className={s.simbolo} aria-hidden="true">{t.simbolo}</span>}
+          <span className={s.palabra}>{etiqueta}</span>
         </button>
-        {!compacta && (
+        {soloSonido && fase === "jugando" && (
+          <button
+            type="button"
+            className={s.pista}
+            aria-label={`${pistas.includes(id) ? "Ocultar" : "Ver"} pista del sonido ${numero[id]}`}
+            aria-expanded={pistas.includes(id)}
+            onClick={() => setPistas((actual) => actual.includes(id) ? actual.filter((x) => x !== id) : [...actual, id])}
+          >
+            {pistas.includes(id) ? "Ocultar pista" : "Ver pista"}
+          </button>
+        )}
+        {!soloSonido && !compacta && (
           <span className={s.altavoz}>
             <Escuchar texto={t.lectura ?? t.texto} audio={t.audio} soloIcono />
           </span>
@@ -268,7 +294,7 @@ export function TableroAgrupar({ contenido, semilla, alTerminar }: Props) {
   const elegidaPuesta = elegida !== null && lugares[elegida] !== undefined;
 
   return (
-    <div className={s.tablero} data-tema={tema} data-con-guia={personaje ? "" : undefined} data-fase={fase} data-arrastrando={arrastre?.activo ? "" : undefined}>
+    <div className={s.tablero} data-tema={tema} data-tarjetas={contenido.tarjetas} data-con-guia={personaje ? "" : undefined} data-fase={fase} data-arrastrando={arrastre?.activo ? "" : undefined}>
       {personaje && fase !== "inicio" && <LecturaInicial />}
       {personaje && <div className={s.guia} data-reaccion={reaccion ?? undefined} data-momento={momento} aria-hidden="true">
         {guiaDisponible ? (["reposo", "senala", "duda"] as const).map((pose) => {
@@ -326,7 +352,7 @@ export function TableroAgrupar({ contenido, semilla, alTerminar }: Props) {
             {elegidaPuesta && (
               <button type="button" className={s.devolver} onClick={() => llevar(elegida!, null)}>
                 <Undo2 size={20} strokeWidth={2.6} aria-hidden="true" />
-                Devolver {porId.get(elegida)!.texto} a las tarjetas
+                Devolver {soloSonido && !pistas.includes(elegida) ? `Sonido ${numero[elegida]}` : porId.get(elegida)!.texto} a las tarjetas
               </button>
             )}
           </section>
@@ -352,7 +378,7 @@ export function TableroAgrupar({ contenido, semilla, alTerminar }: Props) {
                     className={s.grupoNombre}
                     disabled={!destino}
                     onClick={() => elegida && llevar(elegida, g.id)}
-                    aria-label={destino ? `Poner ${porId.get(elegida!)!.texto} en ${g.nombre}` : g.nombre}
+                    aria-label={destino ? `Poner ${soloSonido && !pistas.includes(elegida!) ? `Sonido ${numero[elegida!]}` : porId.get(elegida!)!.texto} en ${g.nombre}` : g.nombre}
                   >
                     {g.nombre}
                     <span className={s.grupoCupo} aria-hidden="true">

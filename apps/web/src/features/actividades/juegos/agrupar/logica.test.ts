@@ -59,4 +59,10 @@ describe("tablero agrupar", () => {
     expect(corcho.levantar).toEqual([1, 2, 3].map((n) => `/audio/juegos/agrupar-corcho/levantar-${n}.mp3`));
     expect(corcho.fin).toEqual(["/audio/juegos/agrupar-corcho/fin.mp3"]);
   });
+  it("sobrescribe solo los eventos indicados y conserva los demás", () => {
+    const base = sonidosAgrupar("girasol");
+    expect(sonidosAgrupar("girasol", { fallo: "/audio/juegos/error.mp3", fin: ["/audio/juegos/exito.mp3"] })).toEqual({
+      ...base, fallo: ["/audio/juegos/error.mp3"], fin: ["/audio/juegos/exito.mp3"],
+    });
+  });
 });

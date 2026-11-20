@@ -586,3 +586,27 @@
   .tablero .guia img[data-pose="reposo"] { opacity: 1 !important; }
 }
 .tablero[data-tema="corcho"] :is(.tarjetaBoton, .grupoNombre, .enviar) { scroll-margin-top: 140px; }
+
+/* La modalidad de escucha conserva la estructura y los colores del tablero. */
+.tablero[data-tarjetas="sonido"] { user-select: text; -webkit-user-select: text; }
+.tablero[data-tarjetas="sonido"] .tarjetaBoton { min-height: 104px; align-content: center; }
+.tablero[data-tarjetas="sonido"] .pilaLista { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.tablero[data-tarjetas="sonido"] .ficha .tarjetaBoton { min-height: 76px; grid-template-columns: 88px minmax(0, 1fr); padding-right: 2.3rem; }
+.tablero[data-tarjetas="sonido"] .simbolo { font-family: var(--fuente-display); font-size: clamp(2rem, 2.5vw, 3.5rem); font-weight: 900; line-height: 1; }
+.tablero[data-tarjetas="sonido"] .ficha .simbolo { font-size: 1.35rem; white-space: nowrap; }
+.tablero[data-tarjetas="sonido"] .imagen { max-width: 96px; aspect-ratio: 4 / 3; object-fit: contain; }
+.tablero[data-tarjetas="sonido"] .ficha .imagen { width: 88px; }
+.pista { display: block; width: 100%; min-height: 44px; border: 0; border-top: 2px solid var(--t-borde); border-radius: 0 0 12px 12px; background: #fff; color: var(--a-tinta); font: inherit; font-weight: 800; cursor: pointer; }
+.pista:focus-visible { outline: 4px solid var(--a-foco); outline-offset: 3px; }
+.tablero[data-tarjetas="sonido"][data-con-guia] .guia { right: 0; top: 50px; width: min(22%, 300px); height: min(33dvh, 350px); }
+.tablero[data-tarjetas="sonido"][data-con-guia] .mesa { padding-right: min(15%, 200px); }
+@media (max-width: 900px) {
+  .tablero[data-tarjetas="sonido"][data-con-guia] .mesa { padding-right: 0; }
+  .tablero[data-tarjetas="sonido"][data-con-guia] .guia { display: none; }
+}
+@media (max-width: 600px) {
+  .tablero[data-tarjetas="sonido"] .mesa { grid-template-columns: minmax(0, 1fr); }
+  .tablero[data-tarjetas="sonido"] .pilaLista { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tablero[data-tarjetas="sonido"] .grupos { grid-template-columns: minmax(0, 1fr); }
+  .tablero[data-tarjetas="sonido"] .ficha .tarjetaBoton { grid-template-columns: 88px minmax(0, 1fr); }
+}

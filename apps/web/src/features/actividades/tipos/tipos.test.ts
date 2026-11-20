@@ -200,6 +200,15 @@ describe("audio en el contenido (juegos-primero)", () => {
     ],
     elementos: ["e1", "e2", "e3", "e4"].map((id, i) => ({ id, texto: id, categoria: i % 2 ? "b" : "a", ...(audio ? { audio } : {}) })),
   });
+  it("exige audio en todas las tarjetas de sonido y valida símbolo y efectos", () => {
+    const base = { ...clasif("/audio/juegos/x.mp3"), presentacion: "tablero", tarjetas: "sonido", efectos: { fallo: "/audio/juegos/error.mp3", fin: ["/audio/juegos/fin.mp3"] } };
+    expect(clasificar.esquemaContenido.safeParse(base).success).toBe(true);
+    expect(clasificar.esquemaContenido.safeParse({ ...base, elementos: [{ ...base.elementos[0], simbolo: "A a" }, ...base.elementos.slice(1)] }).success).toBe(true);
+    expect(clasificar.esquemaContenido.safeParse({ ...base, elementos: [{ ...base.elementos[0], audio: undefined }, ...base.elementos.slice(1)] }).success).toBe(false);
+    expect(clasificar.esquemaContenido.safeParse({ ...base, elementos: [{ ...base.elementos[0], simbolo: "ABCD" }, ...base.elementos.slice(1)] }).success).toBe(false);
+    expect(clasificar.esquemaContenido.safeParse({ ...base, efectos: { fin: "/images/fin.mp3" } }).success).toBe(false);
+    expect(clasificar.esquemaContenido.safeParse(clasif()).success).toBe(true);
+  });
 
   it("acepta audio en la instrucción y en cada elemento", () => {
     expect(leerActividad(archivo({ audioInstruccion: "/audio/consignas/x.mp3" }, clasif("/audio/x/e.mp3"))).ok).toBe(true);

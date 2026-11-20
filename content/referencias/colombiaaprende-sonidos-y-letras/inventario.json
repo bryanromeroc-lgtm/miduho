@@ -1,0 +1,3684 @@
+{
+  "slug": "colombiaaprende-sonidos-y-letras",
+  "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+  "autor_dominio": "colombiaaprende.edu.co",
+  "fecha_captura": "2026-11-19T23:35:42.064Z",
+  "herramienta": "tools/captura-audio",
+  "transcripcion_automatica": "no disponible (sin whisper) 🔶",
+  "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+  "notas_captura": [
+    "guion: paquete sin conexión: https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip",
+    "zip: 192 audios en el paquete"
+  ],
+  "frames": [
+    "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras"
+  ],
+  "pistas": [
+    {
+      "id": "e7c0d860",
+      "archivo": "audio/originales/e7c0d860-121797__boss-music__bells.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_01/composiciones/01_01/media/121797__boss-music__bells.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "e7c0d8608ea7eda0027bd1375d401dd33d7f7a681b89f1a38f511dec9ef232c9",
+      "mime": "audio/mpeg",
+      "duracion_s": 8.213,
+      "canales": 2,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -26.6,
+      "rol": "musica",
+      "evento": "fondo",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [
+        "/audio/juegos/sonidos-y-letras/campanas.mp3"
+      ],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "8119983a",
+      "archivo": "audio/originales/8119983a-152912__fmaudio__female-short-laugh-02.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_01/composiciones/01_01/media/152912__fmaudio__female-short-laugh-02.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "8119983a746c40a87152c9179b635f5f8d4c6b30a026d7fe29a2a1fe4c5478ed",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.562,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.5,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "96a78dd7",
+      "archivo": "audio/originales/96a78dd7-161662__connersaw8__coach-whistle.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_01/composiciones/01_01/media/161662__connersaw8__coach-whistle.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "96a78dd70d8ea00ea9a11b204066882d8b508d0c7ef008d8ee7c8de67e67297b",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.944,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": 2.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [
+        "/audio/juegos/sonidos-y-letras/silbato.mp3"
+      ],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "26662efe",
+      "archivo": "audio/originales/26662efe-34538__erdie__sheep.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_01/composiciones/01_01/media/34538__erdie__sheep.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "26662efec2092ec45d87d8d91e585a6015c5bb3c7976d70daf87c249b1104202",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.979,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.3,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [
+        "/audio/juegos/sonidos-y-letras/oveja.mp3"
+      ],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "44a0599f",
+      "archivo": "audio/originales/44a0599f-58277__benboncan__cow.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_01/composiciones/01_01/media/58277__benboncan__cow.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "44a0599fcd74986fd56303d3af8db42f0a523a8dfb5a17dccf802198bc49f390",
+      "mime": "audio/mpeg",
+      "duracion_s": 3.579,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -13.5,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [
+        "/audio/juegos/sonidos-y-letras/vaca.mp3"
+      ],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "5bf7b3dc",
+      "archivo": "audio/originales/5bf7b3dc-A.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_01/composiciones/01_01/media/A.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_01/media/A.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_02/media/A.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_05_01/composiciones/01_01/media/A.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "5bf7b3dcd2bd3d87978afe1fb409af9c8f204860abc990812f9f5ca2b88d08b1",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.553,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -17.6,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [
+        "/audio/juegos/sonidos-y-letras/a.mp3"
+      ],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "50a0e06d",
+      "archivo": "audio/originales/50a0e06d-E.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_01/composiciones/01_01/media/E.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_02/media/E.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_05_01/composiciones/01_01/media/E.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "50a0e06d0753fc9813d2ad0f0286aabeb974b8723ce3cba3ac95ff1c14a1a6be",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.605,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [
+        "/audio/juegos/sonidos-y-letras/e.mp3"
+      ],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "1aa7fa22",
+      "archivo": "audio/originales/1aa7fa22-I.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_01/composiciones/01_01/media/I.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_02/media/I.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_05_01/composiciones/01_01/media/I.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "1aa7fa221c03e350b7bff6b933dfe6b6354eaeb341778b15dd9c9f3df53541d8",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.657,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.9,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [
+        "/audio/juegos/sonidos-y-letras/i.mp3"
+      ],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "43f5e9b9",
+      "archivo": "audio/originales/43f5e9b9-O.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_01/composiciones/01_01/media/O.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_02/media/O.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_05_01/composiciones/01_01/media/O.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "43f5e9b9f958f6e45b54251b79c8befa853d0e8dc69b210067be1e2d714ab2fa",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.657,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.5,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [
+        "/audio/juegos/sonidos-y-letras/o.mp3"
+      ],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "24da962e",
+      "archivo": "audio/originales/24da962e-U.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_01/composiciones/01_01/media/U.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_02/media/U.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_05_01/composiciones/01_01/media/U.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "24da962e32a167a727c3ee3efe4c7731730a96069ad35363375507e4d728c44a",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.501,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -13.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [
+        "/audio/juegos/sonidos-y-letras/u.mp3"
+      ],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "ca9690d4",
+      "archivo": "audio/originales/ca9690d4-error.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_01/composiciones/01_01/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_03/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_04/composiciones/01_01/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_04/composiciones/01_02/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_04_01/composiciones/01_01/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_05_01/composiciones/01_01/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_05_01/composiciones/01_02/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_05_01/composiciones/01_03/media/error.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "ca9690d4f6168957d62db6f5724f816a8b7243c1cd60a0f062875848b7ab9555",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.313,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [
+        "/audio/juegos/sonidos-y-letras/error.mp3"
+      ],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "81772d33",
+      "archivo": "audio/originales/81772d33-error.ogg",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_01/composiciones/01_01/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_03/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_04/composiciones/01_01/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_04/composiciones/01_02/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_04_01/composiciones/01_01/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_05_01/composiciones/01_01/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_05_01/composiciones/01_02/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_05_01/composiciones/01_03/media/error.ogg"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "81772d337e7bfed3061595cfb909d378e1b96ee00f9070769c5dd3923f34cc57",
+      "mime": "audio/ogg",
+      "duracion_s": 0.285,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "57ffb8ad",
+      "archivo": "audio/originales/57ffb8ad-success.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_01/composiciones/01_01/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_03/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_04/composiciones/01_01/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_04/composiciones/01_02/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_04_01/composiciones/01_01/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_05_01/composiciones/01_01/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_05_01/composiciones/01_02/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_05_01/composiciones/01_03/media/success.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "57ffb8ade52a755849c9fe58a431c67272af8b4d485fdfdbf7ea44b04fe800f3",
+      "mime": "audio/mpeg",
+      "duracion_s": 3.344,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.1,
+      "rol": "efecto",
+      "evento": "acierto",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [
+        "/audio/juegos/sonidos-y-letras/exito.mp3"
+      ],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "6ed6dfce",
+      "archivo": "audio/originales/6ed6dfce-success.ogg",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_01/composiciones/01_01/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_03/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_04/composiciones/01_01/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_04/composiciones/01_02/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_04_01/composiciones/01_01/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_05_01/composiciones/01_01/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_05_01/composiciones/01_02/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_05_01/composiciones/01_03/media/success.ogg"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "6ed6dfce4d3ea2c9280ed32eb3e48870e00660c2375d5d72ecc59d7f640d57a2",
+      "mime": "audio/ogg",
+      "duracion_s": 3.297,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.1,
+      "rol": "efecto",
+      "evento": "acierto",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "6c19c35b",
+      "archivo": "audio/originales/6c19c35b-110011__tuberatanka__cat-meow.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_01/media/110011__tuberatanka__cat-meow.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "6c19c35b13cad10ce0b3ecb3f8ed31fdd9526143f261e47501864663aba2260a",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.596,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -5.4,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [
+        "/audio/juegos/sonidos-y-letras/gato.mp3"
+      ],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "397d5f4f",
+      "archivo": "audio/originales/397d5f4f-L_G01_U01_L01_03_02_A01.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_02/media/L_G01_U01_L01_03_02_A01.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "397d5f4f485d45d08268751e59c1663e5fb4655e1323c06d34a1a15a8f948388",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.684,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "82842b50",
+      "archivo": "audio/originales/82842b50-L_G01_U01_L01_03_02_A02.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_02/media/L_G01_U01_L01_03_02_A02.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "82842b50ce8d8ece73c627e63a83c4b7e1712e25e049ddd900da46ff31be2994",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.84,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.4,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "404a343f",
+      "archivo": "audio/originales/404a343f-L_G01_U01_L01_03_02_A03.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_02/media/L_G01_U01_L01_03_02_A03.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "404a343fe2f0988390096c37cac662a6bc2a298b3ff064b7e23411315f8202a3",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.631,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -12.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "4dbb3bdb",
+      "archivo": "audio/originales/4dbb3bdb-L_G01_U01_L01_03_02_A04.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_02/media/L_G01_U01_L01_03_02_A04.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "4dbb3bdb7a322dac562e07b76f6defd04ea8cb9685abd93302e278579090430c",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.762,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.7,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "1da764ed",
+      "archivo": "audio/originales/1da764ed-L_G01_U01_L01_03_02_A05.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_02/media/L_G01_U01_L01_03_02_A05.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "1da764ed660778d49b0d87cd1ba29d48e4e67d7146cae78a8f31cb055ef95ee4",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.605,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.6,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "0b946874",
+      "archivo": "audio/originales/0b946874-L_G01_U01_L01_03_04_A01.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_04/composiciones/01_01/media/L_G01_U01_L01_03_04_A01.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "0b9468744698b12788de33c3a377fc78cb4984cf53a92f2bff4184fc796c30fa",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.684,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "27f09500",
+      "archivo": "audio/originales/27f09500-L_G01_U01_L01_03_04_A02.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_04/composiciones/01_01/media/L_G01_U01_L01_03_04_A02.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "27f09500ddd8fecad26c14545c8b906a938a9765b776802c3d25b00f62a0473d",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.605,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.4,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "0a34d2e6",
+      "archivo": "audio/originales/0a34d2e6-L_G01_U01_L01_03_04_A03.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_04/composiciones/01_01/media/L_G01_U01_L01_03_04_A03.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "0a34d2e6e9548864c82cc71b5d65bd2264b7ca2ad047eb7a42459c10c3e49dd8",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.71,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.9,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "c166298e",
+      "archivo": "audio/originales/c166298e-L_G01_U01_L01_03_04_A04.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_04/composiciones/01_02/media/L_G01_U01_L01_03_04_A04.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "c166298e0397fb395e727c5a30d55cf431bef24b6396c599abb649b8c42515be",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.762,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.7,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "8f429bf1",
+      "archivo": "audio/originales/8f429bf1-L_G01_U01_L01_03_04_A05.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_04/composiciones/01_02/media/L_G01_U01_L01_03_04_A05.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "8f429bf149ef29b2b059ffd1f11f6b48e437fdb9513f761726583d95a47510f3",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.684,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.4,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "3b4b150f",
+      "archivo": "audio/originales/3b4b150f-L_G01_U01_L01_03_04_A06.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_04/composiciones/01_02/media/L_G01_U01_L01_03_04_A06.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "3b4b150f8f63591090561e3d42fb5142f717fac99f74f45f5621809db0a41365",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.788,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "d7adaf52",
+      "archivo": "audio/originales/d7adaf52-BA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/BA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "d7adaf52daea51e0e30696877594034c777d30820445a767fcb8d41c010ba3e9",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.684,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.1,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "72432585",
+      "archivo": "audio/originales/72432585-BE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/BE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "72432585f68a4cc556fc4d90291c87c3da052b2511c2cc97ab71c422717ee5ba",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.501,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.7,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "b91b29f2",
+      "archivo": "audio/originales/b91b29f2-BI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/BI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "b91b29f23ce842d8ef168ba98a128299015dd7cc4841332242e43d7a1ae20d55",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.684,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -13.6,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "252402a6",
+      "archivo": "audio/originales/252402a6-BO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/BO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "252402a6ad08d29c6fba9de1ff9810759b643a03fba54414ad54f2ffbd1fd462",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.605,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -13.6,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "41cc1305",
+      "archivo": "audio/originales/41cc1305-BU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/BU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "41cc1305fc5b9236f97aa64deb08c027ea3c1db7458f595d849c10cae1d0d4bc",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.605,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.6,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "4eaf4577",
+      "archivo": "audio/originales/4eaf4577-CA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/CA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "4eaf4577a723a1068bcf6b2ff8a5e197eedf70db83ca8dc4c03445e0ea45fa51",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.527,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -18.6,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "e90d4043",
+      "archivo": "audio/originales/e90d4043-CE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/CE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "e90d404399be5af6c05c1fb5e9f7b4603be617d75518b806c717523a42deff82",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.684,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "c5bae061",
+      "archivo": "audio/originales/c5bae061-CI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/CI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "c5bae06158cedba7e826b86fceb26b47e39d581721d7e8d40f6aefecb493a055",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.631,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -12.5,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "52df5b9f",
+      "archivo": "audio/originales/52df5b9f-CO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/CO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "52df5b9f5e5d8829ac794aeb4bdc4be08512e351acedd7e439976a4d16147870",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.527,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.5,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "8d512b96",
+      "archivo": "audio/originales/8d512b96-CU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/CU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "8d512b96f962bf5b0c24a7c83ad3193b81c8af9f9093831166f01623b85b9aca",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.501,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -13.9,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "23a7b309",
+      "archivo": "audio/originales/23a7b309-DA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/DA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "23a7b309f02ebae0eb699d07a86c7ec8f1a670e0c4b088f42676a0332ade52ec",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.527,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -17.5,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "bb357ae1",
+      "archivo": "audio/originales/bb357ae1-DE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/DE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "bb357ae1d949f1600854df8cd71f8f9031ecacc8de21520a9d5423233af01605",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.501,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "ecbfa4b4",
+      "archivo": "audio/originales/ecbfa4b4-DI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/DI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "ecbfa4b49bb44572cf266b6db3762ae6e6b168af7176b71e181097a45b6460d0",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.527,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.5,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "054aeed9",
+      "archivo": "audio/originales/054aeed9-DO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/DO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "054aeed97454ad86ef69df5939537e941dd76a85cfa77c78ffbcce82c8ab3775",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.527,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "fa287bdc",
+      "archivo": "audio/originales/fa287bdc-DU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/DU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "fa287bdce060318326236abff14ede368fc0fd796f1096b4ed6244eb1fb777f2",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.475,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -12.9,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "5aa430b2",
+      "archivo": "audio/originales/5aa430b2-FA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/FA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "5aa430b27396aac6825a686a9f851a86b0a540a84bbe9d98734709d86742aa62",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.657,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -17.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "25ce5c6e",
+      "archivo": "audio/originales/25ce5c6e-FE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/FE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "25ce5c6eda6a62173cbdc0791d19719dbc388ab97b2531af9d527c4e3f2ed268",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.657,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "c4de1044",
+      "archivo": "audio/originales/c4de1044-FI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/FI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "c4de10448a650c11225816b0881cc11d1da3a8964036af1067db2289b31d9d4a",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.736,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "955cdbf5",
+      "archivo": "audio/originales/955cdbf5-FO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/FO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "955cdbf517f7eaf9fd59124eb2a3528335f1f446a655962b22bf8d3bcb22fb87",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.736,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "d572c094",
+      "archivo": "audio/originales/d572c094-FU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/FU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "d572c094aeea69a43271646fc02a2855953d4923e189a03c685773d3295e80d8",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.736,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -13.5,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "95ffa50b",
+      "archivo": "audio/originales/95ffa50b-GA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/GA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "95ffa50b64f6df44b2c95720150955537c4bd5e419fbc13146596f1e0dba704b",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.605,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -17,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "7ca7aa44",
+      "archivo": "audio/originales/7ca7aa44-GE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/GE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "7ca7aa44fbe9378eec66f94d42d09445afaa5a433e19e231a34dbacec3ce34bf",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.71,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "7e62ea35",
+      "archivo": "audio/originales/7e62ea35-GI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/GI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "7e62ea35bf60e754a27c6d61503ae5a7d53c3ab7cfebda3dddb3ec9658fbce84",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.144,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -21.1,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "64e7baee",
+      "archivo": "audio/originales/64e7baee-GO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/GO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "64e7baeef741f756e39d31ee20f551f73d8d9a42163fd11f1f70abab36022e22",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.579,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "4bb5b343",
+      "archivo": "audio/originales/4bb5b343-GU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/GU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "4bb5b34378e6a182b2bf4d1c0a2ad58a7f22660291913923747e5f303c6e7c56",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.449,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -12.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "9de6af52",
+      "archivo": "audio/originales/9de6af52-HA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/HA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "9de6af52180ea4d6d45ffd76011b6d2d0e2401d68bbff547cca23d35eb24f53a",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.475,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.4,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "e4b986d6",
+      "archivo": "audio/originales/e4b986d6-HE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/HE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "e4b986d612403ab182c5be1e767e35eb9bfa1279eb2d1a58e50e8702976f71ff",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.449,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.6,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "a8cab8fd",
+      "archivo": "audio/originales/a8cab8fd-HI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/HI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "a8cab8fd2619e6c565dffb223ee91828a05c436549cb2d049de0c14e502ba850",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.553,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "41d68e64",
+      "archivo": "audio/originales/41d68e64-HO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/HO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "41d68e64620e36355388548a16213f39b3a332eb51b5478f3ede68440e5bd9e8",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.527,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "0b4f8ab4",
+      "archivo": "audio/originales/0b4f8ab4-HU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/HU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "0b4f8ab4f3818773581f08ded8d62db74899423493e2abeac598e6fa5b0a8a70",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.475,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -11.9,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "15f1bc06",
+      "archivo": "audio/originales/15f1bc06-JA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/JA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "15f1bc06a1a3f52bb1665552052fc84f5e3881e41f8cfbb401d169e1d339acaf",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.71,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.6,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "6b2e1ac7",
+      "archivo": "audio/originales/6b2e1ac7-JE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/JE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "6b2e1ac72c8d5811fab6fac30bdd7463edec6a5461b9879f3297545da7f7bc2a",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.631,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.7,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "3df870a0",
+      "archivo": "audio/originales/3df870a0-JI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/JI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "3df870a0968162c9c4173d8b16494d530cad09e95e9c72dde373ce44cb1c96cd",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.736,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "4f5b23a2",
+      "archivo": "audio/originales/4f5b23a2-JO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/JO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "4f5b23a2c6db81dd9632b28160d8aae5cca3986f347125ebd7bfb43e4159f75f",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.579,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.4,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "faef0252",
+      "archivo": "audio/originales/faef0252-JU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/JU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "faef02520663b349c0173b8358eb60a52133df24b54b34102ea50208cf663292",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.605,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "4b120b15",
+      "archivo": "audio/originales/4b120b15-KA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/KA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "4b120b1566bacc3b596aba887736649ed13db4ce3215c5dc442f6d0429987b1d",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.475,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -17.1,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "d9bd992d",
+      "archivo": "audio/originales/d9bd992d-KE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/KE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "d9bd992d6a45ff4443a6e4dcfeb6c7a645acb6620b5708f0f6dff93aa527ed44",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.553,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "1555ad34",
+      "archivo": "audio/originales/1555ad34-KI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/KI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "1555ad34adb9990579bccb5bc4a6969c81221a2babb29bfbaa10283e12fb9c3a",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.579,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -12.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "b6513a8a",
+      "archivo": "audio/originales/b6513a8a-KO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/KO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "b6513a8a31cafc35fe1be8c9bea13570dd4909facebbbab3c58ed91c05a3e7b1",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.501,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "cf7ba143",
+      "archivo": "audio/originales/cf7ba143-KU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/KU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "cf7ba143f0a849cd84fa19a63f9ebb9073209b6ec114d12e10883761b823a76d",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.527,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.1,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "25996377",
+      "archivo": "audio/originales/25996377-LA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/LA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "2599637797569355e95fe68b003161e051aae06488f324ae592221f00f23d19e",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.553,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.7,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "0b59b09a",
+      "archivo": "audio/originales/0b59b09a-LE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/LE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "0b59b09a5687506d93a44dce966f4bf610b0e6b76196d57809dbd36f6e65d0cf",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.631,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.1,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "824d7acc",
+      "archivo": "audio/originales/824d7acc-LI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/LI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "824d7acc1cd980855ac4c70cc3b96efef36bc112b0c9210865d3898b027388e2",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.553,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -12.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "130140e4",
+      "archivo": "audio/originales/130140e4-LO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/LO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "130140e472ede70927d53132f39dfe3d47815c37834cd29d76b9fa9426958f9b",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.605,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.7,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "ce851e35",
+      "archivo": "audio/originales/ce851e35-LU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/LU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "ce851e35b09a0502355c3e3c54c1ea076ef5a0d27e949ae273f08ecb08e158d8",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.527,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -11.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "2002b1d5",
+      "archivo": "audio/originales/2002b1d5-MA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/MA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "2002b1d5d5241d143606d22484a49db9ec02abc696d60a7060f341d9e6c01419",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.553,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -13.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "1730318f",
+      "archivo": "audio/originales/1730318f-ME.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/ME.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "1730318f529a6ab430be60815d29a30d81824d8f11b466599cd99f3ff5b06653",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.501,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -12.1,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "4af11b11",
+      "archivo": "audio/originales/4af11b11-MI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/MI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "4af11b111bd39f6fcd61b38be258ec6ebb7be60696ca4dcb958839af4510d2fc",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.605,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -10.6,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "ba3a16b3",
+      "archivo": "audio/originales/ba3a16b3-MO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/MO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "ba3a16b304a4f544e4755ab0109ff0690c01239cdf4cc5bc4433f73b29b49958",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.527,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -12,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "a8ca562c",
+      "archivo": "audio/originales/a8ca562c-MU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/MU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "a8ca562c6d4a96d8fc69a6d0ed2381b581989f38f64f099c3e97630f6f97d48b",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.501,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -11.5,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "3c5d80aa",
+      "archivo": "audio/originales/3c5d80aa-NA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/NA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "3c5d80aa4a4bc208a65f0cc297b66ac2d7a73e0bd5c84b796e20036b79dcdaba",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.553,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "b8811662",
+      "archivo": "audio/originales/b8811662-NE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/NE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "b88116620144787fde7430239dfdc9c6033d01ffe4801d9b1a091e1a2a7f2ce1",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.527,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -11.9,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "90bb2aff",
+      "archivo": "audio/originales/90bb2aff-NI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/NI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "90bb2aff53b074ad67e48d05da4707ac5286c908103910dbc163bd8e1ac541dc",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.657,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -10.5,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "c9393340",
+      "archivo": "audio/originales/c9393340-NO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/NO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "c9393340f77d003cdbf924bb94e553793b64c34a6aa2d945b316b93aa6c7867e",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.605,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -11.7,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "ae7341e4",
+      "archivo": "audio/originales/ae7341e4-NU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/NU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "ae7341e455e72a4687cd5cbcc2d146ac0c0daf6a659094d9f2f95171035d95c1",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.527,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -11.5,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "7248b46d",
+      "archivo": "audio/originales/7248b46d-PA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/PA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "7248b46d1a880f5e0f3c16e0b6d754c70da27e725cdebbc6ac3b0e594f3c5912",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.423,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -17,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "5d3db122",
+      "archivo": "audio/originales/5d3db122-PE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/PE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "5d3db12283122cddda03f6e5ef12a5e7033f99c4f55352bda2f05f4b2eaad457",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.449,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "7ea2b3de",
+      "archivo": "audio/originales/7ea2b3de-PI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/PI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "7ea2b3de8aff2810a979798a68c884f030d04973b088850bf91401f0fe9d6033",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.501,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "cd3f4c3c",
+      "archivo": "audio/originales/cd3f4c3c-PO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/PO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "cd3f4c3c2b3c3082e81cdf0aec66bec5ff53ac5cc15099835d30de92654e63cd",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.475,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -13,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "4846aad4",
+      "archivo": "audio/originales/4846aad4-PU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/PU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "4846aad4b8bb200c40c1a4e5644777b56bfbb2fc27b630e3175e1fefed6374cf",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.423,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -12.3,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "eab40de5",
+      "archivo": "audio/originales/eab40de5-QUE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/QUE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "eab40de5eec67436b000676098c5ab3133532b189ce9ab0eac4351191a5bd529",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.501,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -13.9,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "03bf821c",
+      "archivo": "audio/originales/03bf821c-QUI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/QUI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "03bf821cc7c9878835873694e246cf2ae4857928573d9f1a0e4dee82f7248645",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.553,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -13.9,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "ac4cf90c",
+      "archivo": "audio/originales/ac4cf90c-RA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/RA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "ac4cf90c9057c4cbd42b5bd07187e602e5e9db67cbbba37b6bc9d5fa8e633a6d",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.527,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -17.7,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "57b9fa57",
+      "archivo": "audio/originales/57b9fa57-RE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/RE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "57b9fa574726c0d32b95b394e77c562ca4ed4088b4337afbf3883a28ccd289fb",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.553,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.5,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "03aa62ab",
+      "archivo": "audio/originales/03aa62ab-RI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/RI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "03aa62ab0db13587faafe7778ad93a650175694693623b1a40565d76dcd3a752",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.501,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.6,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "43e38760",
+      "archivo": "audio/originales/43e38760-RO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/RO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "43e3876078ce00fd22d2c4dee700f0b59afe5495a51c5e59b640dab7741adb93",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.475,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "036a0943",
+      "archivo": "audio/originales/036a0943-RU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/RU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "036a0943e4f289ece4d9f99513367cf6ced9aa4460795cfdc1ea9aa870904f06",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.501,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.3,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "f5c6ac9a",
+      "archivo": "audio/originales/f5c6ac9a-SA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/SA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "f5c6ac9a8b5b608f5237e843f93fa18623fc8eccaa9347b678131588069ee1b0",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.605,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.9,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "dde22c3b",
+      "archivo": "audio/originales/dde22c3b-SE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/SE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "dde22c3b61d596bfa63e36391be03222b566045eef8b5adab6b029ff0ebc72eb",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.553,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.4,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "8147d631",
+      "archivo": "audio/originales/8147d631-SI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/SI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "8147d631a323703674fe2be21dfc885c180f2ddcf608b7f11342a8bcba5f067f",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.71,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -13.3,
+      "rol": "efecto",
+      "evento": "acierto",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "fb955893",
+      "archivo": "audio/originales/fb955893-SO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/SO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "fb955893e45711a9996606b99dea4745ab7e00eab243e7dfe9fd22132a936716",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.631,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "cec99f2b",
+      "archivo": "audio/originales/cec99f2b-SU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/SU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "cec99f2b4bd10b4315c22d0d6beafa48d3ffbad164556dcdc1680a619d20f1a7",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.684,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.1,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "63fbf66a",
+      "archivo": "audio/originales/63fbf66a-TA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/TA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "63fbf66aadb2b9182424fa6cf92b2803ebcad70dd235ce5c32fb0d18272b8234",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.475,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -19.1,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "db98db79",
+      "archivo": "audio/originales/db98db79-TE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/TE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "db98db791b6f789f5f5bd199af77bc15e536c39307f75467f2eb00357a4d9eb1",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.475,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.9,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "e9926c85",
+      "archivo": "audio/originales/e9926c85-TI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/TI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "e9926c85de98665b77ab82b7dbf0547112dd65025d34f239d906deb5ef4f647e",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.553,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -12.7,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "a8db46a6",
+      "archivo": "audio/originales/a8db46a6-TO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/TO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "a8db46a62234a1590e53ea62889eb132e14c034489aaf879abdbea857cf1f500",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.553,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "f2ebd975",
+      "archivo": "audio/originales/f2ebd975-TU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/TU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "f2ebd97588818da9955f1c3c32bd8f1262848d70e961e8c2c84ccbd82b8cdf05",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.449,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "0f7e3f5e",
+      "archivo": "audio/originales/0f7e3f5e-VA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/VA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "0f7e3f5e2cb8f0b06273bfb725ff56989c4e4fa37482e217dec474e6c9abc27a",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.605,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -19,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "5c21866a",
+      "archivo": "audio/originales/5c21866a-VE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/VE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "5c21866a12c96a6f9158b5194bedb002f90a87c80f7f92b18b7aa458fb1a7dbe",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.605,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.6,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "76ceefbd",
+      "archivo": "audio/originales/76ceefbd-VI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/VI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "76ceefbdf5673583af76b92a1b66a17e2246adeac738c69851a512eec53e38d7",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.631,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -13.9,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "ad2f1165",
+      "archivo": "audio/originales/ad2f1165-VO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/VO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "ad2f116502928eb51601ef1281e069f12e1a977d13dd37fcb6fda500371d57cf",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.631,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -13.9,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "27f420b5",
+      "archivo": "audio/originales/27f420b5-VU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/VU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "27f420b5e35ff08548c79d9c5eb354688a3bc570b2e3ba09705aca942698d4c2",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.475,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -12.1,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "2bcd9cd4",
+      "archivo": "audio/originales/2bcd9cd4-WA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/WA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "2bcd9cd4b7d718ad6c748257ace31ff4cfb0ddc0e2b78ea328877dd1395df4b0",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.579,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.5,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "00ada39c",
+      "archivo": "audio/originales/00ada39c-WE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/WE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "00ada39c1c90ccf03548691d742b0121b6a8ec98ea4b09cd52993084703cdc75",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.579,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -13,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "30fe0131",
+      "archivo": "audio/originales/30fe0131-WI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/WI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "30fe0131eeade4da1c5b9997ceb2eed3cb3421142fc1c38d3a724d69b6f806b3",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.631,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -12.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "40d31385",
+      "archivo": "audio/originales/40d31385-WO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/WO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "40d313856b385a9addb7bc07ef743f996487cdea024b1b600c83aea6861232bb",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.579,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -12.6,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "3090dd02",
+      "archivo": "audio/originales/3090dd02-WU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/WU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "3090dd02d839a7ee01233b04d4cff529d68abcc92fd0e5d5585b0dec1a010b0e",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.423,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -11.6,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "9aeff4de",
+      "archivo": "audio/originales/9aeff4de-XA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/XA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "9aeff4de26f22e3c3350b08d65ddacac4409a75583e952ad0b0ba1d65a5452bc",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.631,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "fb912d45",
+      "archivo": "audio/originales/fb912d45-XE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/XE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "fb912d452db827c8bf35daac755a007016f68f1cbfd0f24219ac52aa2010c292",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.631,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "1d489342",
+      "archivo": "audio/originales/1d489342-XI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/XI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "1d489342b960a9b9534bd47c8f5db831168d9df2f05f0484f5d84fb1cd4db095",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.631,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.6,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "8019299a",
+      "archivo": "audio/originales/8019299a-XO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/XO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "8019299a15489fb632c8e7d510c871bea3f1da747cef7d29fc3cc28e08710e9c",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.605,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "6a2812b1",
+      "archivo": "audio/originales/6a2812b1-XU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/XU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "6a2812b13c233c0eb519bf1e5d91f9701349baa3ae6ad1d32c69dd770e5c4ee6",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.579,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.6,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "359b628b",
+      "archivo": "audio/originales/359b628b-YA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/YA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "359b628ba98b176cb496547dbdf785476e0a8482d5c5eb54066a70c23c7c221a",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.579,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -17,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "7d4a79cd",
+      "archivo": "audio/originales/7d4a79cd-YE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/YE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "7d4a79cd5ae1dd3c000b3d59b6e5a62669f516e696599698e476a15e838a97f9",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.553,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.6,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "91a3d2c9",
+      "archivo": "audio/originales/91a3d2c9-YI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/YI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "91a3d2c99ef9af1882c9fe52cb07df684a28449da509d310f358f19d8ca43ae3",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.684,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -12.3,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "f5b4fffe",
+      "archivo": "audio/originales/f5b4fffe-YO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/YO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "f5b4fffe2446e5e8b4721fb18a6d65f751a05b2676d6cb0501a554d281cfd48a",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.553,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "6688115b",
+      "archivo": "audio/originales/6688115b-YU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/YU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "6688115bd599d6c5f656e22dbba880a6235273d37cf12735ffd655c827f75b5e",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.501,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -13,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "cc2aa705",
+      "archivo": "audio/originales/cc2aa705-ZA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/ZA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "cc2aa705bf03ca77ea7ead8b96a80141b994b50d78c5e29b7bea84e6b37073a5",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.71,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -18.3,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "61fc8918",
+      "archivo": "audio/originales/61fc8918-ZE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/ZE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "61fc8918f52582d2d25f5a0d1a259562306f2e715f0c0fe8d115fd72b4c9e08c",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.762,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.4,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "f634e1f9",
+      "archivo": "audio/originales/f634e1f9-ZI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/ZI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "f634e1f9811934771c1b0b74193690b6561f2374fb1302b9a8e51374ff0af1cc",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.84,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -13.3,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "c506c80c",
+      "archivo": "audio/originales/c506c80c-ZO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/ZO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "c506c80cce1ff78ffd38c66dd4a0e4718fe9fdc85594b043973a02f093be5c1a",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.84,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "ffaeea4c",
+      "archivo": "audio/originales/ffaeea4c-ZU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/ZU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "ffaeea4c012c42faa789aa82ab355991f095b07414ef21779728469fb255039b",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.736,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -13.4,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "b35bc999",
+      "archivo": "audio/originales/b35bc999-ÑA.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/ÑA.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "b35bc9993d5c9fb1ae1488235ab35237103a1a97c59574006cc84138ca90339d",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.579,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -12.5,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "0682c5d9",
+      "archivo": "audio/originales/0682c5d9-ÑE.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/ÑE.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "0682c5d9e3119ce24c61eaca8c640998f1ff2a34129fa40aa4ea1941f7acfc26",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.553,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -12.3,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "eb48051a",
+      "archivo": "audio/originales/eb48051a-ÑI.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/ÑI.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "eb48051a23f2d99c0c1bc5186bef4ce1158894a857a26c3239c3d198463af12a",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.553,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -11.6,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "8825cb31",
+      "archivo": "audio/originales/8825cb31-ÑO.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/ÑO.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "8825cb3129745cec4c4741fd71a1f0233caac0b1cf5580f4e9108fe9bc789d6c",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.553,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -11.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "12117b30",
+      "archivo": "audio/originales/12117b30-ÑU.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_06/media/ÑU.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "12117b30224977930c3d643e51bc751372c5d860fb9ce02baeb5562e68102f2c",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.501,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -11.5,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "7f95bce1",
+      "archivo": "audio/originales/7f95bce1-L_G01_U01_L01_03_07_A01.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_07/media/L_G01_U01_L01_03_07_A01.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "7f95bce1aa4274402581fd4901fc662fa446c33bc6fa6b06e33cd0f631f83ef4",
+      "mime": "audio/mpeg",
+      "duracion_s": 6.813,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -17.6,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "46398348",
+      "archivo": "audio/originales/46398348-L_G01_U01_L01_03_08_A01.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_08/media/L_G01_U01_L01_03_08_A01.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "4639834816002330902d66481a3a0a72e28de3e78710d5d283222daf748caf96",
+      "mime": "audio/mpeg",
+      "duracion_s": 6.813,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -17.6,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "1f98db3b",
+      "archivo": "audio/originales/1f98db3b-L_G01_U01_L01_03_08_A02.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_08/media/L_G01_U01_L01_03_08_A02.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "1f98db3b021fe19646bc957cd85b8775752c75dc722d2c26166878950af09617",
+      "mime": "audio/mpeg",
+      "duracion_s": 5.013,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -17.5,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "7f55f0a9",
+      "archivo": "audio/originales/7f55f0a9-L_G01_U01_L01_03_08_A03.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_08/media/L_G01_U01_L01_03_08_A03.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "7f55f0a93bdf18f483f575f9f0cf1047cdbc127f14ed599c3c61fc23207cd806",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.744,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.7,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "872ad138",
+      "archivo": "audio/originales/872ad138-L_G01_U01_L01_03_08_A04.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_08/media/L_G01_U01_L01_03_08_A04.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "872ad138c55ba28960e021a3853b8c32de2440303ba1dfbe7c2025d5b940c679",
+      "mime": "audio/mpeg",
+      "duracion_s": 3.683,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -17.3,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "998e1577",
+      "archivo": "audio/originales/998e1577-L_G01_U01_L01_03_08_A05.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_08/media/L_G01_U01_L01_03_08_A05.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "998e157763cfb0b9882828ee8223a7b2b2abd7bec15a93710ad798961b5966c6",
+      "mime": "audio/mpeg",
+      "duracion_s": 3.161,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.6,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "b0326c06",
+      "archivo": "audio/originales/b0326c06-L_G01_U01_L01_03_08_A06.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_08/media/L_G01_U01_L01_03_08_A06.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "b0326c066bf88d78135ce5cfe5adbcae6093917fd2dca9afed82b3c821eab5a0",
+      "mime": "audio/mpeg",
+      "duracion_s": 5.222,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.6,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "442b3bb7",
+      "archivo": "audio/originales/442b3bb7-L_G01_U01_L01_03_08_A07.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_03_08/media/L_G01_U01_L01_03_08_A07.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "442b3bb72d6d515e86acd09e9457d294dde05b1d73bf3f83e10a9a47d0fb16a2",
+      "mime": "audio/mpeg",
+      "duracion_s": 6.865,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.9,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "aa1c6345",
+      "archivo": "audio/originales/aa1c6345-L_G01_U01_L01_04_01_A01.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_04_01/composiciones/01_01/media/L_G01_U01_L01_04_01_A01.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_04_01/media/L_G01_U01_L01_04_01_A01.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "aa1c63452a4260f7e007764131f789c3075a7b037861d151ff16d83c1a992ffb",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.762,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -18.3,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "57e40f21",
+      "archivo": "audio/originales/57e40f21-L_G01_U01_L01_04_01_A03.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_04_01/composiciones/01_01/media/L_G01_U01_L01_04_01_A03.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_04_01/media/L_G01_U01_L01_04_01_A03.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "57e40f21b2d68daa6a8649a3d20b6a037e945880309fe2bdfe42589a1105e8b4",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.71,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "05ffe25f",
+      "archivo": "audio/originales/05ffe25f-gato2.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_04_01/composiciones/01_01/media/gato2.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_04_01/media/gato2.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "05ffe25fd928852b154fb99a0acdb2c4cd5a389c41c12e761d357acfbf748741",
+      "mime": "audio/mpeg",
+      "duracion_s": 5.12,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -11.8,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "0e72bfc8",
+      "archivo": "audio/originales/0e72bfc8-L_G01_U01_L01_04_01_A02.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_04_01/media/L_G01_U01_L01_04_01_A02.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "0e72bfc802324305645e94b80ffcb153660a221c3a4da5642c94857b184aeb1d",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.684,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -18.3,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "6543d383",
+      "archivo": "audio/originales/6543d383-L_G01_U01_L01_04_01_A04.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_04_01/media/L_G01_U01_L01_04_01_A04.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "6543d38357792a3178dc10cddeb8b00a7e8de3a69fd0250451f68e73d10bb8ae",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.475,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -17.3,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "8d5c633c",
+      "archivo": "audio/originales/8d5c633c-perros.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_04_01/media/perros.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "8d5c633c8805a1768dbb58787b808ab3eeaacd21109126cb9f4bcc3937a921fe",
+      "mime": "audio/mpeg",
+      "duracion_s": 7.549,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -12.7,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "31dcde55",
+      "archivo": "audio/originales/31dcde55-pollitos.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_04_01/media/pollitos.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "31dcde5592fe64f34330698b919329207d020ba72b44b97e6b1672dee28bac41",
+      "mime": "audio/mpeg",
+      "duracion_s": 6.631,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -21.8,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "687a7f1d",
+      "archivo": "audio/originales/687a7f1d-vaca2.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_04_01/media/vaca2.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "687a7f1dd24c998d61a83464c5e96e74f0e99cea044e594e54bd8374ab36616d",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.064,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -9.5,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "484e28e2",
+      "archivo": "audio/originales/484e28e2-L_G01_U01_L01_05_01_A01.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U01_L01.zip#L_G01_U01_L01/L/L_G01_U01_L01/L_G01_U01_L01_05_01/composiciones/01_03/media/L_G01_U01_L01_05_01_A01.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/distincion-entre-sonidos-no-linguisticos-de-los-sonidos-de-las-letras",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "484e28e29c79b70b3e9cc50ef9e2eb94146e1741aeef6b7f2a8ade5c9dea21b1",
+      "mime": "audio/mpeg",
+      "duracion_s": 9.421,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; licencia MEN para uso educativo por confirmar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    }
+  ]
+}

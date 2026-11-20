@@ -1,0 +1,118 @@
+{
+  "slug": "sonidos-y-letras",
+  "titulo": "Sonidos y letras",
+  "tipo": "clasificar",
+  "grado": 1,
+  "instruccion": "Escucha cada sonido. ¿Es un sonido de letra o es otro sonido? Llévalo a su grupo.",
+  "tema": "Sonidos de las letras y otros sonidos (LEN-1-05)",
+  "imagen": "/images/juegos/sonidos-y-letras/portada.webp",
+  "contenido": {
+    "presentacion": "tablero",
+    "tarjetas": "sonido",
+    "tema": "girasol",
+    "categorias": [
+      {
+        "id": "letras",
+        "nombre": "Sonidos de letras"
+      },
+      {
+        "id": "otros",
+        "nombre": "Otros sonidos"
+      }
+    ],
+    "elementos": [
+      {
+        "id": "vocal-a",
+        "texto": "la vocal A",
+        "categoria": "letras",
+        "simbolo": "A a",
+        "audio": "/audio/juegos/sonidos-y-letras/a.mp3",
+        "explicacion": "La A es un sonido de letra: lo decimos al hablar."
+      },
+      {
+        "id": "vocal-e",
+        "texto": "la vocal E",
+        "categoria": "letras",
+        "simbolo": "E e",
+        "audio": "/audio/juegos/sonidos-y-letras/e.mp3",
+        "explicacion": "La E es un sonido de letra: lo decimos al hablar."
+      },
+      {
+        "id": "vocal-i",
+        "texto": "la vocal I",
+        "categoria": "letras",
+        "simbolo": "I i",
+        "audio": "/audio/juegos/sonidos-y-letras/i.mp3",
+        "explicacion": "La I es un sonido de letra: lo decimos al hablar."
+      },
+      {
+        "id": "vocal-o",
+        "texto": "la vocal O",
+        "categoria": "letras",
+        "simbolo": "O o",
+        "audio": "/audio/juegos/sonidos-y-letras/o.mp3",
+        "explicacion": "La O es un sonido de letra: lo decimos al hablar."
+      },
+      {
+        "id": "vocal-u",
+        "texto": "la vocal U",
+        "categoria": "letras",
+        "simbolo": "U u",
+        "audio": "/audio/juegos/sonidos-y-letras/u.mp3",
+        "explicacion": "La U es un sonido de letra: lo decimos al hablar."
+      },
+      {
+        "id": "campanas",
+        "texto": "unas campanas sonando",
+        "categoria": "otros",
+        "audio": "/audio/juegos/sonidos-y-letras/campanas.mp3",
+        "imagen": "/images/juegos/sonidos-y-letras/campanas.webp",
+        "explicacion": "Las campanas hacen este sonido; no es una letra."
+      },
+      {
+        "id": "oveja",
+        "texto": "una oveja balando",
+        "categoria": "otros",
+        "audio": "/audio/juegos/sonidos-y-letras/oveja.mp3",
+        "imagen": "/images/juegos/sonidos-y-letras/oveja.webp",
+        "explicacion": "El balido lo hace la oveja; no es una letra."
+      },
+      {
+        "id": "silbato",
+        "texto": "un silbato sonando",
+        "categoria": "otros",
+        "audio": "/audio/juegos/sonidos-y-letras/silbato.mp3",
+        "imagen": "/images/juegos/sonidos-y-letras/silbato.webp",
+        "explicacion": "El silbato hace este sonido; no es una letra."
+      },
+      {
+        "id": "vaca",
+        "texto": "una vaca mugiendo",
+        "categoria": "otros",
+        "audio": "/audio/juegos/sonidos-y-letras/vaca.mp3",
+        "imagen": "/images/juegos/sonidos-y-letras/vaca.webp",
+        "explicacion": "El mugido lo hace la vaca; no es una letra."
+      },
+      {
+        "id": "gato",
+        "texto": "un gato maullando",
+        "categoria": "otros",
+        "audio": "/audio/juegos/sonidos-y-letras/gato.mp3",
+        "imagen": "/images/juegos/sonidos-y-letras/gato.webp",
+        "explicacion": "El maullido lo hace el gato; no es una letra."
+      }
+    ],
+    "efectos": {
+      "fallo": "/audio/juegos/sonidos-y-letras/error.mp3",
+      "fin": "/audio/juegos/sonidos-y-letras/exito.mp3"
+    },
+    "escena": {
+      "personaje": {
+        "nombre": "Bruno",
+        "reposo": "/images/juegos/cuenta-las-silabas/bruno-reposo.webp",
+        "senala": "/images/juegos/cuenta-las-silabas/bruno-senala.webp",
+        "duda": "/images/juegos/cuenta-las-silabas/bruno-duda.webp"
+      }
+    }
+  }
+}

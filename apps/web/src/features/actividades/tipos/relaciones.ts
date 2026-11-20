@@ -116,9 +116,20 @@ export const clasificar = definirTipo({
        * y revelado de cada una (mecánica de la plantilla «Agrupar» de la referencia).
        */
       presentacion: z.enum(["una-a-una", "tablero", "parejas"]).optional(),
+      /** En el tablero, oculta el contenido hasta abrir la pista o revelar. */
+      tarjetas: z.enum(["texto", "sonido"]).optional(),
       escena: escenaCasillas,
       /** Apariencia y efectos del tablero; la omisión conserva girasol. */
       tema: z.enum(["girasol", "corcho"]).optional(),
+      efectos: z.object({
+        inicio: z.union([rutaAudio, z.array(rutaAudio).min(1)]).optional(),
+        levantar: z.union([rutaAudio, z.array(rutaAudio).min(1)]).optional(),
+        soltar: z.union([rutaAudio, z.array(rutaAudio).min(1)]).optional(),
+        acierto: z.union([rutaAudio, z.array(rutaAudio).min(1)]).optional(),
+        fallo: z.union([rutaAudio, z.array(rutaAudio).min(1)]).optional(),
+        revelar: z.union([rutaAudio, z.array(rutaAudio).min(1)]).optional(),
+        fin: z.union([rutaAudio, z.array(rutaAudio).min(1)]).optional(),
+      }).optional(),
       categorias: z
         .array(z.object({ id, nombre: texto }))
         .min(2)
@@ -133,6 +144,7 @@ export const clasificar = definirTipo({
             /** Lectura oral alternativa a la palabra visible. */
             lectura: texto.max(100).optional(),
             audio: rutaAudio.optional(),
+            simbolo: z.string().trim().min(1).max(3).optional(),
             /** Ilustración de la tarjeta (1.°: para quien aún no lee); su `alt` es el `texto`. */
             imagen: z.string().regex(/^\/images\/[\w\-/]+\.webp$/, "ruta /images/….webp").optional(),
             /** Por qué va en su cesta, en una frase («La gallina nace, crece y se alimenta»). */
@@ -148,6 +160,9 @@ export const clasificar = definirTipo({
     .refine((c) => unicos(c.categorias, (x) => x.id) && unicos(c.elementos, (x) => x.id), { message: "ids repetidos" })
     .refine((c) => c.elementos.every((e) => c.categorias.some((k) => k.id === e.categoria)), {
       message: "un elemento apunta a una categoría que no existe",
+    })
+    .refine((c) => c.tarjetas !== "sonido" || (c.presentacion === "tablero" && c.elementos.every((e) => !!e.audio)), {
+      message: "las tarjetas de sonido requieren tablero y audio en cada elemento",
     })
     .refine((c) => {
       if (c.presentacion !== "parejas") return true;

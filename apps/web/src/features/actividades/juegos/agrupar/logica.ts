@@ -57,10 +57,13 @@ export function poseGuia(reaccion: ReaccionGuia, momento: MomentoGuia, fase: "in
   return fase === "revelado" ? poseFinal : "reposo";
 }
 
-export function sonidosAgrupar(tema: "girasol" | "corcho") {
+export type EventoAgrupar = "inicio" | "levantar" | "soltar" | "acierto" | "fallo" | "revelar" | "fin";
+export type EfectosAgrupar = Partial<Record<EventoAgrupar, string | string[]>>;
+
+export function sonidosAgrupar(tema: "girasol" | "corcho", sobrescrituras?: EfectosAgrupar): Record<EventoAgrupar, string[]> {
   const carpeta = tema === "corcho" ? "agrupar-corcho" : "agrupar";
   const base = `/audio/juegos/${carpeta}/`;
-  return {
+  const sonidos = {
     inicio: [`${base}inicio.mp3`],
     levantar: [1, 2, 3].map((n) => `${base}levantar-${n}.mp3`),
     soltar: [1, 2, 3].map((n) => `${base}soltar-${n}.mp3`),
@@ -69,4 +72,9 @@ export function sonidosAgrupar(tema: "girasol" | "corcho") {
     revelar: [`${base}revelar.mp3`],
     fin: [`${base}fin.mp3`],
   };
+  if (!sobrescrituras) return sonidos;
+  return Object.fromEntries(Object.entries(sonidos).map(([evento, rutas]) => {
+    const nuevo = sobrescrituras[evento as EventoAgrupar];
+    return [evento, nuevo === undefined ? rutas : typeof nuevo === "string" ? [nuevo] : nuevo];
+  })) as Record<EventoAgrupar, string[]>;
 }
