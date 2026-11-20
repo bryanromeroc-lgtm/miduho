@@ -1,0 +1,150 @@
+{
+  "slug": "cuento-de-la-quebrada",
+  "titulo": "La piedra que cantaba",
+  "tipo": "aventura",
+  "grado": 1,
+  "instruccion": "Escucha el cuento y responde. Al final, ordena sus tres momentos.",
+  "tema": "LEN-1-04 · Comprensión de un cuento narrado y orden de la trama",
+  "imagen": "/images/juegos/cuento-de-la-quebrada/portada.webp",
+  "contenido": {
+    "inicio": "Escucha el cuento de la quebrada. Después de cada parte, responde la pregunta.",
+    "final": "La quebrada canta de nuevo y todos la escuchan con alegría.",
+    "escena": {
+      "personaje": {
+        "nombre": "Bruno",
+        "reposo": "/images/juegos/cuenta-las-silabas/bruno-reposo.webp",
+        "senala": "/images/juegos/cuenta-las-silabas/bruno-senala.webp",
+        "duda": "/images/juegos/cuenta-las-silabas/bruno-duda.webp"
+      }
+    },
+    "efectos": {
+      "acierto": "/audio/juegos/cuento-de-la-quebrada/acierto.mp3",
+      "error": "/audio/juegos/cuento-de-la-quebrada/error.mp3",
+      "avanzar": "/audio/juegos/cuento-de-la-quebrada/avanzar.mp3",
+      "secuencia": "/audio/juegos/cuento-de-la-quebrada/secuencia.mp3",
+      "fin": "/audio/juegos/cuento-de-la-quebrada/fin.mp3"
+    },
+    "escenas": [
+      {
+        "id": "llega-la-mirla",
+        "imagen": "/images/juegos/cuento-de-la-quebrada/escena-1.webp",
+        "alt": "Una mirla junto al agua al amanecer.",
+        "narracion": "Al amanecer, una mirla llega a la quebrada. El agua canta entre las piedras: ¡glu, glu, glu!",
+        "pregunta": "¿A dónde llega la mirla?",
+        "opciones": [
+          "Al mercado",
+          "A la quebrada",
+          "A la escuela"
+        ],
+        "correcta": 1,
+        "pista": "Escucha el lugar al que llega al amanecer.",
+        "explicacion": "La mirla llega a la quebrada."
+      },
+      {
+        "id": "agua-bajito",
+        "imagen": "/images/juegos/cuento-de-la-quebrada/escena-2.webp",
+        "alt": "Bruno escucha el agua junto a la quebrada.",
+        "narracion": "Bruno, el oso de anteojos, escucha la quebrada. Hoy el agua suena muy bajito.",
+        "pregunta": "¿Cómo suena hoy el agua?",
+        "opciones": [
+          "Muy bajito",
+          "Como un tambor",
+          "Muy fuerte"
+        ],
+        "correcta": 0,
+        "pista": "Piensa en el volumen del agua hoy.",
+        "explicacion": "Hoy el agua suena muy bajito."
+      },
+      {
+        "id": "piedra-grande",
+        "imagen": "/images/juegos/cuento-de-la-quebrada/escena-3.webp",
+        "alt": "Bruno y la mirla observan el agua detenida.",
+        "narracion": "Bruno y la mirla miran el agua. ¡Una piedra grande tapa el paso!",
+        "pregunta": "¿Qué tapa el paso del agua?",
+        "opciones": [
+          "Una hoja",
+          "Un tronco",
+          "Una piedra grande"
+        ],
+        "correcta": 2,
+        "pista": "Mira qué encontraron Bruno y la mirla en el agua.",
+        "explicacion": "Una piedra grande tapa el paso del agua."
+      },
+      {
+        "id": "madremonte",
+        "imagen": "/images/juegos/cuento-de-la-quebrada/escena-4.webp",
+        "alt": "Madremonte observa la orilla con los animales.",
+        "narracion": "Llega la Madremonte, que cuida el monte. «Antes de mover algo, miremos con cuidado», dice. Junto a la piedra hay una ranita.",
+        "pregunta": "¿Por qué hay que mirar con cuidado?",
+        "opciones": [
+          "Para jugar a esconderse",
+          "Para no lastimar a la ranita",
+          "Para que el agua se vaya"
+        ],
+        "correcta": 1,
+        "pista": "Recuerda quién está junto a la piedra.",
+        "explicacion": "Miran con cuidado para no lastimar a la ranita."
+      },
+      {
+        "id": "ranita-salta",
+        "imagen": "/images/juegos/cuento-de-la-quebrada/escena-5.webp",
+        "alt": "Una ranita sobre una hoja y Bruno cerca de la piedra.",
+        "narracion": "La ranita salta a una hoja segura. Después, Bruno empuja la piedra despacio y el agua vuelve a pasar.",
+        "pregunta": "¿Qué pasó primero?",
+        "opciones": [
+          "Bruno empujó la piedra",
+          "La ranita saltó a una hoja",
+          "La mirla se durmió"
+        ],
+        "correcta": 1,
+        "pista": "Escucha qué ocurrió antes de que Bruno moviera la piedra.",
+        "explicacion": "Primero, la ranita saltó a una hoja segura."
+      },
+      {
+        "id": "canta-otra-vez",
+        "imagen": "/images/juegos/cuento-de-la-quebrada/escena-6.webp",
+        "alt": "La mirla en una rama junto al agua que fluye.",
+        "narracion": "La quebrada canta otra vez: ¡glu, glu, glu! La mirla canta feliz desde una rama.",
+        "pregunta": "¿Cómo termina el cuento?",
+        "opciones": [
+          "El agua vuelve a cantar",
+          "La ranita se pierde",
+          "La piedra tapa el agua"
+        ],
+        "correcta": 0,
+        "pista": "Recuerda el sonido de la quebrada al final.",
+        "explicacion": "Al final, el agua vuelve a cantar."
+      }
+    ],
+    "secuencia": {
+      "consigna": "Ordena los tres momentos del cuento: inicio, nudo y desenlace.",
+      "casillas": [
+        "Inicio",
+        "Nudo",
+        "Desenlace"
+      ],
+      "items": [
+        {
+          "id": "llega-la-mirla",
+          "imagen": "/images/juegos/cuento-de-la-quebrada/escena-1.webp",
+          "alt": "La mirla llega a la quebrada.",
+          "posicion": 0
+        },
+        {
+          "id": "piedra-grande",
+          "imagen": "/images/juegos/cuento-de-la-quebrada/escena-3.webp",
+          "alt": "Una piedra tapa el agua.",
+          "posicion": 1
+        },
+        {
+          "id": "canta-otra-vez",
+          "imagen": "/images/juegos/cuento-de-la-quebrada/escena-6.webp",
+          "alt": "La quebrada vuelve a cantar.",
+          "posicion": 2
+        }
+      ],
+      "pista": "Piensa qué pasó al llegar la mirla y qué cambió antes del final.",
+      "explicacion": "Primero llegó la mirla, luego hallaron la piedra y al final el agua volvió a cantar."
+    }
+  }
+}

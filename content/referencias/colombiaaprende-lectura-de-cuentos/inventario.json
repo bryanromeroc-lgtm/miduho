@@ -1,0 +1,220 @@
+{
+  "slug": "colombiaaprende-lectura-de-cuentos",
+  "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/lectura-de-cuentos",
+  "autor_dominio": "colombiaaprende.edu.co",
+  "fecha_captura": "2026-11-20T05:27:02.255Z",
+  "herramienta": "tools/captura-audio",
+  "transcripcion_automatica": "no disponible (sin whisper) 🔶",
+  "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+  "notas_captura": [
+    "guion: paquete sin conexión: https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip",
+    "zip: 39 audios en el paquete"
+  ],
+  "frames": [
+    "https://www.colombiaaprende.edu.co/contenidos-para-aprender/lectura-de-cuentos"
+  ],
+  "pistas": [
+    {
+      "id": "c87e897a",
+      "archivo": "audio/originales/c87e897a-L_G01_U01_L04_04_01_A01.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_01_01/composiciones/03_01/media/L_G01_U01_L04_04_01_A01.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_01_01/composiciones/03_02/media/L_G01_U01_L04_04_01_A01.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_07/composiciones/03_01/media/L_G01_U01_L04_04_01_A01.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_07/composiciones/03_02/media/L_G01_U01_L04_04_01_A01.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_07/composiciones/03_03/media/L_G01_U01_L04_04_01_A01.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/lectura-de-cuentos",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "c87e897a7d1858e1ba3c26c80dd2f80107a80afc1384b3adb6fe1dbe944845b1",
+      "mime": "audio/mpeg",
+      "duracion_s": 18.252,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -18.1,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "0a0d13b6",
+      "archivo": "audio/originales/0a0d13b6-L_G01_U04_L05_03_02_A01.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_02/media/L_G01_U04_L05_03_02_A01.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/lectura-de-cuentos",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "0a0d13b637adf4d0afafbbf49d201b9c519bbb5e76be6e2d426f97a7a4bfa76f",
+      "mime": "audio/mpeg",
+      "duracion_s": 15.238,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -18.9,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "7948b63a",
+      "archivo": "audio/originales/7948b63a-L_G01_U04_L05_03_02_A02.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_02/media/L_G01_U04_L05_03_02_A02.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/lectura-de-cuentos",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "7948b63aeda86cedf031bcf5461a3eba673fb567364a5b3a44acff5b93292a98",
+      "mime": "audio/mpeg",
+      "duracion_s": 10.1,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -18.5,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "ca9690d4",
+      "archivo": "audio/originales/ca9690d4-error.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_04/composiciones/03_01/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_04/composiciones/03_02/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_06/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_07/composiciones/03_02/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_07/composiciones/03_03/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_05_01/composiciones/03_01/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_05_01/composiciones/03_02/media/error.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_05_01/composiciones/03_03/media/error.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/lectura-de-cuentos",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "ca9690d4f6168957d62db6f5724f816a8b7243c1cd60a0f062875848b7ab9555",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.313,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "81772d33",
+      "archivo": "audio/originales/81772d33-error.ogg",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_04/composiciones/03_01/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_04/composiciones/03_02/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_06/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_07/composiciones/03_02/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_07/composiciones/03_03/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_05_01/composiciones/03_01/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_05_01/composiciones/03_02/media/error.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_05_01/composiciones/03_03/media/error.ogg"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/lectura-de-cuentos",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "81772d337e7bfed3061595cfb909d378e1b96ee00f9070769c5dd3923f34cc57",
+      "mime": "audio/ogg",
+      "duracion_s": 0.285,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "57ffb8ad",
+      "archivo": "audio/originales/57ffb8ad-success.mp3",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_04/composiciones/03_01/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_04/composiciones/03_02/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_06/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_07/composiciones/03_02/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_07/composiciones/03_03/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_05_01/composiciones/03_01/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_05_01/composiciones/03_02/media/success.mp3",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_05_01/composiciones/03_03/media/success.mp3"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/lectura-de-cuentos",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "57ffb8ade52a755849c9fe58a431c67272af8b4d485fdfdbf7ea44b04fe800f3",
+      "mime": "audio/mpeg",
+      "duracion_s": 3.344,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.1,
+      "rol": "efecto",
+      "evento": "acierto",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [
+        "/audio/juegos/cuento-de-la-quebrada/secuencia.mp3"
+      ],
+      "origen_deteccion": [
+        "zip"
+      ]
+    },
+    {
+      "id": "6ed6dfce",
+      "archivo": "audio/originales/6ed6dfce-success.ogg",
+      "urls": [
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_04/composiciones/03_01/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_04/composiciones/03_02/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_06/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_07/composiciones/03_02/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_03_07/composiciones/03_03/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_05_01/composiciones/03_01/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_05_01/composiciones/03_02/media/success.ogg",
+        "https://www.colombiaaprende.edu.co/sites/default/files/files_public/contenidosaprender/CPA_descargables/G_1/L/L_G01_U04_L05.zip#L_G01_U04_L05/L/L_G01_U04_L05/L_G01_U04_L05_05_01/composiciones/03_03/media/success.ogg"
+      ],
+      "pagina": "https://www.colombiaaprende.edu.co/contenidos-para-aprender/lectura-de-cuentos",
+      "autor_dominio": "colombiaaprende.edu.co",
+      "sha256": "6ed6dfce4d3ea2c9280ed32eb3e48870e00660c2375d5d72ecc59d7f640d57a2",
+      "mime": "audio/ogg",
+      "duracion_s": 3.297,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.1,
+      "rol": "efecto",
+      "evento": "acierto",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "zip"
+      ]
+    }
+  ]
+}

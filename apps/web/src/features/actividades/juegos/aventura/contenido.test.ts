@@ -2,7 +2,8 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { leerActividad } from "../../tipos/registro";
-import { cargaRestante, type ContenidoAventura } from "./tipo";
+import { calificarIntento } from "../../tipos/contrato";
+import { aventura, cargaRestante, type ContenidoAventura } from "./tipo";
 
 const RUTA = "curriculo/actividades/matematicas/5/la-entrega-de-armi.json";
 
@@ -33,5 +34,27 @@ describe("la-entrega-de-armi.json", () => {
   it("la carga se entrega completa a lo largo de la historia", () => {
     const c = (lectura.ok ? lectura.actividad.contenido : null) as ContenidoAventura;
     expect(cargaRestante(c, c.escenas.length)).toBe(0);
+  });
+
+  it("conserva los siete puntos de la actividad existente", () => {
+    const c = (lectura.ok ? lectura.actividad.contenido : null) as ContenidoAventura;
+    const respuestas = Object.fromEntries(c.escenas.map((e) => [e.id, e.correcta]));
+    expect(calificarIntento(aventura, c, respuestas).puntaje).toBe(7);
+    expect(aventura.items(c)).toHaveLength(7);
+  });
+});
+
+describe("cuento-de-la-quebrada.json", () => {
+  const ruta = "curriculo/actividades/comprension-lectora/1/cuento-de-la-quebrada.json";
+  const datos = JSON.parse(readFileSync(join(process.cwd(), ruta), "utf8"));
+
+  it("registra seis escenas y la secuencia con contenido válido", () => {
+    const lectura = leerActividad(datos);
+    expect(lectura.ok ? [] : lectura.errores).toEqual([]);
+    if (!lectura.ok) return;
+    const c = lectura.actividad.contenido as ContenidoAventura;
+    expect(c.carga).toBeUndefined();
+    expect(aventura.items(c)).toHaveLength(7);
+    expect(calificarIntento(aventura, c, { secuencia: ["llega-la-mirla", "piedra-grande", "canta-otra-vez"] }).puntaje).toBe(1);
   });
 });

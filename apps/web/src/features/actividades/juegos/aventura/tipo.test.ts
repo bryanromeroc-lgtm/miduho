@@ -55,3 +55,35 @@ describe("aventura", () => {
     expect(leerActividad({ ...archivo, contenido: { ...c, escenas: [{ ...escena("a", 0, 0), visual }, ...c.escenas.slice(1)] } }).ok).toBe(false);
   });
 });
+
+describe("aventura narrada", () => {
+  const sinCarga = {
+    inicio: "Escucha el cuento completo.",
+    final: "El cuento ha terminado.",
+    escenas: ["a", "b", "c", "d"].map((id) => ({
+      id, imagen: "/images/juegos/cuento/escena.webp", alt: "Paisaje junto al agua.",
+      narracion: "La mirla llegó al agua.", pregunta: "¿Qué ocurrió aquí?",
+      opciones: ["Llegó la mirla", "Salió el sol", "Cayó una hoja"], correcta: 0,
+      pista: "Recuerda quién llegó.", explicacion: "La mirla llegó al agua.",
+    })),
+    secuencia: {
+      consigna: "Ordena los tres momentos.", casillas: ["Inicio", "Nudo", "Desenlace"],
+      items: [
+        { id: "i", imagen: "/images/a.webp", alt: "Llegada al agua.", posicion: 0 },
+        { id: "n", imagen: "/images/b.webp", alt: "Piedra sobre el agua.", posicion: 1 },
+        { id: "f", imagen: "/images/c.webp", alt: "Agua que fluye.", posicion: 2 },
+      ], pista: "Piensa qué pasó primero.", explicacion: "Primero llegaron, luego encontraron y al final resolvieron.",
+    },
+  };
+  it("acepta cuento sin carga y exige alt cuando hay imagen", () => {
+    expect(leerActividad({ ...archivo, contenido: sinCarga }).ok).toBe(true);
+    const sinAlt = { ...sinCarga, escenas: [{ ...sinCarga.escenas[0], alt: undefined }, ...sinCarga.escenas.slice(1)] };
+    expect(leerActividad({ ...archivo, contenido: sinAlt }).ok).toBe(false);
+  });
+  it("califica tres escenas y la secuencia como ítem adicional", () => {
+    const contenido = aventura.esquemaContenido.parse(sinCarga);
+    expect(aventura.items(contenido).map((i) => i.itemId)).toEqual(["a", "b", "c", "d", "secuencia"]);
+    expect(calificarIntento(aventura, contenido, { a: 0, b: 1, c: 0, d: 0, secuencia: ["i", "n", "f"] }).puntaje).toBe(4);
+    expect(calificarIntento(aventura, contenido, { secuencia: ["n", "i", "f"] }).puntaje).toBe(0);
+  });
+});
