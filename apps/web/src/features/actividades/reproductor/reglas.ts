@@ -1,7 +1,7 @@
 /** Juegos que permiten corregir, pero calculan las estrellas con la primera respuesta. */
 const PRIMERA_RESPUESTA = new Set([
   "pancarta", "pizarra-decimales", "corrector", "sello", "division", "bocadillo",
-  "jarras", "porcentaje", "multiplos", "operaciones", "rectas", "angulos", "aventura", "taller-fracciones", "golpea", "ruta-palabras", "mapa",
+  "jarras", "porcentaje", "multiplos", "operaciones", "rectas", "angulos", "aventura", "taller-fracciones", "golpea", "ruta-palabras", "mapa", "formar",
 ]);
 
 export function primeraRespuestaCuenta(tipo: string, presentacion?: string): boolean {
@@ -17,13 +17,19 @@ export type ModoReproductor = "practica" | "vista-previa";
 
 export const AVISO_VISTA_PREVIA = "Vista previa: este resultado no se guarda.";
 
-export function textoReglas(tipo: string, modo: ModoReproductor = "practica", presentacion?: string): string {
+export function textoReglas(tipo: string, modo: ModoReproductor = "practica", presentacion?: string, tarjetas?: string): string {
   const parejas = tipo === "clasificar" && presentacion === "parejas";
+  const sonidos = tipo === "clasificar" && presentacion === "tablero" && tarjetas === "sonido";
   if (modo === "vista-previa") {
+    if (sonidos) return `${AVISO_VISTA_PREVIA} Puedes escuchar cada tarjeta de nuevo o abrir su pista antes de enviarla.`;
     return primeraRespuestaCuenta(tipo, presentacion)
       ? `${AVISO_VISTA_PREVIA} ${parejas ? "La primera ubicación de cada objeto" : "La primera respuesta de cada reto"} cuenta para las estrellas.`
       : AVISO_VISTA_PREVIA;
   }
+  if (tipo === "separar")
+    return "Práctica libre: cada palabra tiene un intento. Al comprobar, verás la separación correcta. El resultado no se guarda.";
+  if (sonidos)
+    return "Práctica libre: puedes escuchar cada tarjeta de nuevo y abrir su pista sin perder puntos. Al enviar, verás las respuestas. El resultado no se guarda.";
   if (parejas)
     return "Práctica libre: la primera ubicación de cada objeto cuenta para las estrellas. Puedes corregir para aprender. El resultado no se guarda.";
   if (primeraRespuestaCuenta(tipo, presentacion))

@@ -2,6 +2,11 @@ import { describe, expect, it } from "vitest";
 import { AVISO_VISTA_PREVIA, primeraRespuestaCuenta, textoReglas } from "./reglas";
 
 describe("reglas visibles antes de jugar", () => {
+  it("explica las pistas solo en tarjetas de sonido", () => {
+    expect(textoReglas("clasificar", "practica", "tablero", "sonido")).toContain("abrir su pista sin perder puntos");
+    expect(textoReglas("clasificar", "vista-previa", "tablero", "sonido")).toContain("escuchar cada tarjeta de nuevo");
+    expect(textoReglas("clasificar", "practica", "tablero")).not.toContain("pista");
+  });
   it("explica la primera ubicación solo en la presentación de parejas", () => {
     expect(primeraRespuestaCuenta("clasificar", "parejas")).toBe(true);
     expect(textoReglas("clasificar", "practica", "parejas")).toContain("la primera ubicación de cada objeto cuenta");
@@ -22,6 +27,13 @@ describe("reglas visibles antes de jugar", () => {
   });
 });
 
+describe("separar", () => {
+  it("explica un intento y revelado", () => {
+    expect(textoReglas("separar")).toContain("cada palabra tiene un intento");
+    expect(textoReglas("separar")).toContain("separación correcta");
+  });
+});
+
 describe("modo vista previa", () => {
   it("explica la primera ubicación de parejas sin indicar práctica libre", () => {
     expect(textoReglas("clasificar", "vista-previa", "parejas")).toBe(
@@ -37,5 +49,13 @@ describe("modo vista previa", () => {
     expect(textoReglas("angulos", "vista-previa")).toContain("primera respuesta");
     expect(textoReglas("memoria")).toContain("Práctica libre");
     expect(AVISO_VISTA_PREVIA).toBe("Vista previa: este resultado no se guarda.");
+  });
+});
+
+describe("formar", () => {
+  it("explica reintentos y punto del primer intento", () => {
+    expect(primeraRespuestaCuenta("formar")).toBe(true);
+    expect(textoReglas("formar")).toContain("primera respuesta");
+    expect(textoReglas("formar")).toContain("puedes corregir");
   });
 });

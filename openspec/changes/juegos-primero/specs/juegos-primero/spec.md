@@ -13,9 +13,9 @@ El programa SHALL construir las 26 actividades de la tabla y SHALL mantener la a
 | 2 | `emociones-del-recreo` | Ética y valores | CIU-1a3-CP | `seleccion-multiple` | Mundo Primaria natu-seh-1-4; adaptación aprobada: seis escenas ilustradas, tres emociones y Ciro |
 | 2 | `cuenta-las-silabas` | Comprensión lectora | LEN-1-05 | `seleccion-multiple` (opciones 1–4 en orden fijo) | Digipuzzle cuenta las sílabas; adaptación aprobada: ocho palabras ilustradas, Bruno y voces propias |
 | 2 | `separa-las-silabas` | Comprensión lectora | LEN-1-05 | `ordenar` | Cokitos separar sílabas en las palabras |
-| 2 | `sonidos-y-letras` | Comprensión lectora | LEN-1-05 | `clasificar` | Colombia Aprende sonidos no lingüísticos y de las letras |
-| 2 | `zoo-de-silabas` | Comprensión lectora | LEN-1-06 | `emparejar` | Cristic zoo sílabas |
-| 2 | `cuento-de-la-quebrada` | Comprensión lectora | LEN-1-04 | `aventura` | Mundo Primaria cuentos tradicionales · Árbol ABC Zoológico · Colombia Aprende lectura de cuentos |
+| 2 | `zoo-de-silabas` | Comprensión lectora | LEN-1-06 | `formar` | Árbol ABC Zoo sílabas |
+| 2 | `sonidos-y-letras` | Comprensión lectora | LEN-1-05 | `clasificar` (`tablero`, tarjetas `sonido`) | Colombia Aprende sonidos no lingüísticos y de las letras |
+| 2 | `cuento-de-la-quebrada` | Comprensión lectora | LEN-1-04 | `aventura` (cuento narrado y secuencia final; ver `actividad-aventura-cuento`) | Mundo Primaria cuentos tradicionales · Árbol ABC Zoológico · Colombia Aprende lectura de cuentos |
 | 2 | `comparar-numeros` | Matemáticas | MAT-1-03 | `seleccion-multiple` | PhET Comparar Números |
 | 2 | `hello-friends` | Inglés | ING-1-04 | `seleccion-multiple` | Cristic greetings |
 | 2 | `my-family` | Inglés | ING-1-04 | `emparejar` | Árbol ABC la familia en inglés |
@@ -92,3 +92,10 @@ Si el usuario no ha escuchado el audio, SHALL quedar marcado «por escuchar» en
 #### Scenario: Recorrido con la demo de 1.°
 - **WHEN** se entra con el estudiante demo de 1.° a Ciencias naturales
 - **THEN** aparece `vivo-o-no-vivo` y se puede completar solo con el teclado hasta ver el resultado
+
+### Requirement: Separa las sílabas en Comprensión lectora de 1.°
+La actividad `separa-las-silabas` SHALL usar el tipo `separar`, diez palabras en orden, voz por palabra y escena con Bruno.
+
+#### Scenario: Partida completa
+- **WHEN** se resuelven las diez palabras
+- **THEN** el reproductor muestra su resumen y permite «Jugar otra vez»

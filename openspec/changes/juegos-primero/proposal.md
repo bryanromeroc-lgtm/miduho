@@ -22,6 +22,7 @@ MIDUHO tiene 75 actividades, casi todas de 5.°, y solo una de 1.° (`la-ruta-de
 ## Capabilities
 
 ### New Capabilities
+- `actividad-separar`: cortes silábicos por toque y teclado, un intento y revelado; contenido curricular en JSON.
 - `captura-audio-referencia`: herramienta e inventario de la captura sonora de una página de referencia, adaptación del audio a `public/audio/` y registro de licencias.
 - `audio-en-actividades`: audio grabado o sintetizado en la consigna, las opciones, las tarjetas y las escenas; lectura automática en 1.°; validación de las rutas de audio.
 - `juegos-primero`: programa de las 26 actividades de 1.°, con su referente, DBA, tipo y criterios de aceptación de cada una (estudio, captura, informe, contenido y verificación).
@@ -32,6 +33,7 @@ MIDUHO tiene 75 actividades, casi todas de 5.°, y solo una de 1.° (`la-ruta-de
 - `actividad-dilemas`: tipo de escenas con elección y consecuencia para Ética y valores.
 - `actividad-ordenar-casillas`: presentación de pila y casillas numeradas con un envío, revelado secuencial y calificación por posición; `ordenar` anterior compatible.
 - `actividad-clasificar-parejas`: presentación por rondas de dos imágenes y dos categorías fijas, con retorno del error, avance automático y primera ubicación como respuesta; `clasificar` anterior compatible.
+- `actividad-clasificar-sonido`: tarjetas de solo sonido, pista accesible y efectos opcionales por evento en el tablero; `sonidos-y-letras` reutiliza la calificación de `clasificar`.
 - `actividad-clasificar-tablero-temas`: tema visual opcional (`girasol` por omisión, `corcho`), escena opcional y lectura oral opcional para las tarjetas del tablero. `como-se-siente` usa el tema corcho con Ciro; `vivo-o-no-vivo` conserva la presentación girasol. 🔶 Validación docente pendiente para las categorías de emociones.
 - `actividad-quiz-ilustrado`: imágenes informativas por pregunta, caras decorativas por opción, escena opcional compartida y efectos grabados opcionales para `seleccion-multiple` y `concurso`. «Emociones del recreo» usa seis situaciones de recreo y Ciro; los quizzes anteriores conservan su presentación cuando omiten estos campos.
 
@@ -53,3 +55,7 @@ MIDUHO tiene 75 actividades, casi todas de 5.°, y solo una de 1.° (`la-ruta-de
 - `docs/investigacion/`: un informe `referencia-<slug>.md` por referente estudiado y `juegos-primero.md` como tablero del programa. También se actualizan la bóveda (`10-Referentes-actividades/`) y el catálogo JSON (estado de cada referente).
 - `.claude/commands/crear-juego-referencia.md` y `.claude/skills/{referencia-rea,juegos-2d-miduho}/SKILL.md`.
 - Sin cambios de base de datos. Depende del cambio `actividades-en-clase` solo para enlazar los DBA como referentes en la base. Mientras tanto, el DBA queda en el tablero del programa y en el informe.
+
+- `actividad-formar`: formar una palabra por ronda con sílabas barajadas, reintento y recorrido opcional.
+
+- `actividad-aventura-cuento`: `aventura` admite cuento narrado sin carga, guía e imagen opcionales y secuencia final calificable; la ruta clásica de La entrega de Armi conserva su comportamiento.

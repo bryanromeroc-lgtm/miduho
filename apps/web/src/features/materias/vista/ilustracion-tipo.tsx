@@ -25,6 +25,19 @@ const DIBUJOS: Record<string, Dibujo> = {
       ))}
     </g>
   ),
+  formar: (pieza) => (
+    <g>
+      {[20, 70, 120].map((x, i) => <g key={x}><rect x={x - 8} y="55" width="38" height="27" rx="6" fill="none" stroke={A} strokeWidth="3" />{pieza(i, x, 14, 30)}</g>)}
+    </g>
+  ),
+  separar: (pieza) => (
+    <g>
+      {[18, 64, 112].map((x, i) => <g key={x}>{pieza(i, x, 31, 30)}</g>)}
+      <path d="M55 18 V75 M103 18 V75" stroke={A} strokeWidth="4" strokeDasharray="6 5" />
+      <circle cx="55" cy="27" r="4" fill={P} />
+      <circle cx="103" cy="27" r="4" fill={P} />
+    </g>
+  ),
   ordenar: (pieza) => (
     <g>
       <rect x="14" y="76" width="132" height="5" rx="2.5" fill={P} />

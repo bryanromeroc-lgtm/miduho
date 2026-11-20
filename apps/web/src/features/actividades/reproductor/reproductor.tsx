@@ -38,6 +38,8 @@ const JuegoAngulos = dynamic(() => import("../juegos/angulos/juego").then((m) =>
 const JuegoFracciones = dynamic(() => import("../juegos/fracciones/juego").then((m) => m.JuegoFracciones), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoRutaPalabras = dynamic(() => import("../juegos/ruta-palabras/juego").then((m) => m.JuegoRutaPalabras), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoGolpea = dynamic(() => import("../juegos/golpea/juego").then((m) => m.JuegoGolpea), { loading: () => <p role="status">Cargando juego…</p> });
+const JuegoFormar = dynamic(() => import("../juegos/formar/juego").then((m) => m.JuegoFormar), { loading: () => <p role="status">Cargando juego…</p> });
+const JuegoSeparar = dynamic(() => import("../juegos/separar/juego").then((m) => m.JuegoSeparar), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoMapa = dynamic(() => import("../juegos/mapa/juego").then((m) => m.JuegoMapa), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoAventura = dynamic(() => import("../juegos/aventura/juego").then((m) => m.JuegoAventura), { loading: () => <p role="status">Cargando juego…</p> });
 
@@ -60,6 +62,8 @@ const JUEGOS: Record<string, ComponentType<PropsJuego<any>>> = {
   "robots-divisiones": JuegoRobots,
   golpea: JuegoGolpea,
   mapa: JuegoMapa,
+  separar: JuegoSeparar,
+  formar: JuegoFormar,
   "ruta-palabras": JuegoRutaPalabras,
   bocadillo: JuegoBocadillo,
   jarras: JuegoJarras,
@@ -106,6 +110,7 @@ export function Reproductor({
   const definicion = definicionDe(actividad.tipo);
   const Juego = JUEGOS[actividad.tipo];
   const presentacion = (actividad.contenido as { presentacion?: string }).presentacion;
+  const tarjetas = (actividad.contenido as { tarjetas?: string }).tarjetas;
   if (!definicion || !Juego) throw new Error(`Tipo de actividad sin reproductor: ${actividad.tipo}`);
 
   return (
@@ -130,7 +135,7 @@ export function Reproductor({
             <LeerEnVozAlta />
           </div>
         )}
-        <p className={s.practica}>{textoReglas(actividad.tipo, modo, presentacion)}</p>
+        <p className={s.practica}>{textoReglas(actividad.tipo, modo, presentacion, tarjetas)}</p>
       </div>
 
       <section className={s.mesa} aria-label={resultado ? "Resultado" : "Juego"}>

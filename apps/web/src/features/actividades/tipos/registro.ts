@@ -16,6 +16,8 @@ import { pancarta } from "../juegos/pancarta/tipo";
 import { pizarraDecimales } from "../juegos/pizarra/tipo";
 import { porcentajeTipo } from "../juegos/porcentaje/tipo";
 import { rectas } from "../juegos/rectas/tipo";
+import { formar } from "../juegos/formar/tipo";
+import { separar } from "../juegos/separar/tipo";
 import { rutaPalabras } from "../juegos/ruta-palabras/tipo";
 import { robotsDivisiones } from "../juegos/robots/tipo";
 import { aventura } from "../juegos/aventura/tipo";
@@ -28,7 +30,7 @@ import { completar, concurso, seleccionMultiple } from "./preguntas";
 import { clasificar, emparejar, memoria, ordenar } from "./relaciones";
 import { videoPreguntas } from "./video";
 
-const DEFINICIONES = [seleccionMultiple, concurso, completar, videoPreguntas, emparejar, ordenar, clasificar, memoria, sopaLetras, palabraSecreta, pancarta, pizarraDecimales, corrector, sello, divisionTipo, robotsDivisiones, bocadillo, jarras, porcentajeTipo, multiplos, operaciones, rectas, angulos, aventura, tallerFracciones, golpea, rutaPalabras, mapaTipo];
+const DEFINICIONES = [seleccionMultiple, concurso, completar, videoPreguntas, emparejar, ordenar, clasificar, memoria, sopaLetras, palabraSecreta, pancarta, pizarraDecimales, corrector, sello, divisionTipo, robotsDivisiones, bocadillo, jarras, porcentajeTipo, multiplos, operaciones, rectas, angulos, aventura, tallerFracciones, golpea, rutaPalabras, mapaTipo, separar, formar];
 
 function registrar(lista: DefinicionTipoActividad<never, never>[]) {
   const mapa = new Map<string, DefinicionTipoActividad>();
