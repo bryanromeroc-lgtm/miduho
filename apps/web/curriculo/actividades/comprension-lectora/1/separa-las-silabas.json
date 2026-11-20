@@ -1,0 +1,166 @@
+{
+  "slug": "separa-las-silabas",
+  "titulo": "Separa las sílabas",
+  "tipo": "separar",
+  "grado": 1,
+  "instruccion": "Escucha la palabra. Toca entre las letras para separar las sílabas.",
+  "audioInstruccion": "/audio/actividades/separa-las-silabas/instruccion.mp3",
+  "tema": "Conciencia silábica (LEN-1-05)",
+  "imagen": "/images/juegos/separa-las-silabas/portada.webp",
+  "contenido": {
+    "elementos": [
+      {
+        "id": "gato",
+        "texto": "gato",
+        "silabas": [
+          "ga",
+          "to"
+        ],
+        "imagen": "/images/juegos/separa-las-silabas/gato.webp",
+        "alt": "Dibujo de un gato.",
+        "explicacion": "gato: ga - to, 2 sílabas.",
+        "audio": "/audio/actividades/separa-las-silabas/gato.mp3",
+        "audioSilabas": "/audio/actividades/separa-las-silabas/gato-silabas.mp3"
+      },
+      {
+        "id": "vaca",
+        "texto": "vaca",
+        "silabas": [
+          "va",
+          "ca"
+        ],
+        "imagen": "/images/juegos/separa-las-silabas/vaca.webp",
+        "alt": "Dibujo de una vaca.",
+        "explicacion": "vaca: va - ca, 2 sílabas.",
+        "audio": "/audio/actividades/separa-las-silabas/vaca.mp3",
+        "audioSilabas": "/audio/actividades/separa-las-silabas/vaca-silabas.mp3"
+      },
+      {
+        "id": "mesa",
+        "texto": "mesa",
+        "silabas": [
+          "me",
+          "sa"
+        ],
+        "imagen": "/images/juegos/separa-las-silabas/mesa.webp",
+        "alt": "Dibujo de una mesa.",
+        "explicacion": "mesa: me - sa, 2 sílabas.",
+        "audio": "/audio/actividades/separa-las-silabas/mesa.mp3",
+        "audioSilabas": "/audio/actividades/separa-las-silabas/mesa-silabas.mp3"
+      },
+      {
+        "id": "mano",
+        "texto": "mano",
+        "silabas": [
+          "ma",
+          "no"
+        ],
+        "imagen": "/images/juegos/separa-las-silabas/mano.webp",
+        "alt": "Dibujo de una mano.",
+        "explicacion": "mano: ma - no, 2 sílabas.",
+        "audio": "/audio/actividades/separa-las-silabas/mano.mp3",
+        "audioSilabas": "/audio/actividades/separa-las-silabas/mano-silabas.mp3"
+      },
+      {
+        "id": "gallina",
+        "texto": "gallina",
+        "silabas": [
+          "ga",
+          "lli",
+          "na"
+        ],
+        "imagen": "/images/juegos/separa-las-silabas/gallina.webp",
+        "alt": "Dibujo de una gallina.",
+        "explicacion": "gallina: ga - lli - na, 3 sílabas.",
+        "audio": "/audio/actividades/separa-las-silabas/gallina.mp3",
+        "audioSilabas": "/audio/actividades/separa-las-silabas/gallina-silabas.mp3"
+      },
+      {
+        "id": "jirafa",
+        "texto": "jirafa",
+        "silabas": [
+          "ji",
+          "ra",
+          "fa"
+        ],
+        "imagen": "/images/juegos/separa-las-silabas/jirafa.webp",
+        "alt": "Dibujo de una jirafa.",
+        "explicacion": "jirafa: ji - ra - fa, 3 sílabas.",
+        "audio": "/audio/actividades/separa-las-silabas/jirafa.mp3",
+        "audioSilabas": "/audio/actividades/separa-las-silabas/jirafa-silabas.mp3"
+      },
+      {
+        "id": "naranja",
+        "texto": "naranja",
+        "silabas": [
+          "na",
+          "ran",
+          "ja"
+        ],
+        "imagen": "/images/juegos/separa-las-silabas/naranja.webp",
+        "alt": "Dibujo de una naranja.",
+        "explicacion": "naranja: na - ran - ja, 3 sílabas.",
+        "audio": "/audio/actividades/separa-las-silabas/naranja.mp3",
+        "audioSilabas": "/audio/actividades/separa-las-silabas/naranja-silabas.mp3"
+      },
+      {
+        "id": "elefante",
+        "texto": "elefante",
+        "silabas": [
+          "e",
+          "le",
+          "fan",
+          "te"
+        ],
+        "imagen": "/images/juegos/separa-las-silabas/elefante.webp",
+        "alt": "Dibujo de un elefante.",
+        "explicacion": "elefante: e - le - fan - te, 4 sílabas.",
+        "audio": "/audio/actividades/separa-las-silabas/elefante.mp3",
+        "audioSilabas": "/audio/actividades/separa-las-silabas/elefante-silabas.mp3"
+      },
+      {
+        "id": "cocodrilo",
+        "texto": "cocodrilo",
+        "silabas": [
+          "co",
+          "co",
+          "dri",
+          "lo"
+        ],
+        "imagen": "/images/juegos/separa-las-silabas/cocodrilo.webp",
+        "alt": "Dibujo de un cocodrilo.",
+        "explicacion": "cocodrilo: co - co - dri - lo, 4 sílabas.",
+        "audio": "/audio/actividades/separa-las-silabas/cocodrilo.mp3",
+        "audioSilabas": "/audio/actividades/separa-las-silabas/cocodrilo-silabas.mp3"
+      },
+      {
+        "id": "camiseta",
+        "texto": "camiseta",
+        "silabas": [
+          "ca",
+          "mi",
+          "se",
+          "ta"
+        ],
+        "imagen": "/images/juegos/separa-las-silabas/camiseta.webp",
+        "alt": "Dibujo de una camiseta.",
+        "explicacion": "camiseta: ca - mi - se - ta, 4 sílabas.",
+        "audio": "/audio/actividades/separa-las-silabas/camiseta.mp3"
+      }
+    ],
+    "escena": {
+      "personaje": {
+        "nombre": "Bruno",
+        "reposo": "/images/juegos/cuenta-las-silabas/bruno-reposo.webp",
+        "senala": "/images/juegos/cuenta-las-silabas/bruno-senala.webp",
+        "duda": "/images/juegos/cuenta-las-silabas/bruno-duda.webp"
+      }
+    },
+    "efectos": {
+      "acierto": "/audio/juegos/parejas/acierto.mp3",
+      "fallo": "/audio/juegos/parejas/fallo.mp3",
+      "finRonda": "/audio/juegos/parejas/fin-ronda.mp3",
+      "fin": "/audio/juegos/parejas/fin.mp3"
+    }
+  }
+}

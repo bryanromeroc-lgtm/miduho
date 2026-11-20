@@ -1,0 +1,43 @@
+{
+  "slug": "cokitos-separar-silabas",
+  "pagina": "https://www.cokitos.com/separar-silabas-en-las-palabras/play/",
+  "autor_dominio": "genmagic.net",
+  "fecha_captura": "2026-11-19T22:45:27.476Z",
+  "herramienta": "tools/captura-audio",
+  "transcripcion_automatica": "no disponible (sin whisper) 🔶",
+  "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+  "notas_captura": [
+    "guion: iframe del juego: https://genmagic.net/lengua/separasilabas/#!/NewPage1",
+    "guion: abierto el juego del autor como página: https://genmagic.net/lengua/separasilabas/#!/NewPage1",
+    "no descargado (404): https://pm.azerioncircle.com/@bygd/focus/0.13.6/dist/app/iife/!window.OPUS"
+  ],
+  "frames": [
+    "https://genmagic.net/lengua/separasilabas/#!/NewPage1"
+  ],
+  "pistas": [
+    {
+      "id": "2f96d334",
+      "archivo": "audio/originales/2f96d334-data-0.wav",
+      "urls": [
+        "data:audio/wav (en https://genmagic.net/lengua/separasilabas/js/main.js)"
+      ],
+      "pagina": "https://www.cokitos.com/separar-silabas-en-las-palabras/play/",
+      "autor_dominio": "genmagic.net",
+      "sha256": "2f96d334fb19af2b442f96e40e7b1ba04ba377ad066e7cf7be01bcfddd5439f1",
+      "mime": "audio/wav",
+      "duracion_s": 0.19,
+      "canales": 2,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "instruccion": {
+    "archivo": "instruccion.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Escucha la palabra. Toca entre las letras para separar las sílabas."
+  },
+  "gato": {
+    "archivo": "gato.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Gato."
+  },
+  "vaca": {
+    "archivo": "vaca.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Vaca."
+  },
+  "mesa": {
+    "archivo": "mesa.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Mesa."
+  },
+  "mano": {
+    "archivo": "mano.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Mano."
+  },
+  "gallina": {
+    "archivo": "gallina.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Gallina."
+  },
+  "jirafa": {
+    "archivo": "jirafa.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Jirafa."
+  },
+  "naranja": {
+    "archivo": "naranja.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Naranja."
+  },
+  "elefante": {
+    "archivo": "elefante.mp3",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Elefante."
+  },
+  "cocodrilo": {
+    "archivo": "cocodrilo.mp3",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Cocodrilo."
+  },
+  "camiseta": {
+    "archivo": "camiseta.mp3",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Camiseta."
+  }
+}

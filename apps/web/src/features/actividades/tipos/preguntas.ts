@@ -10,7 +10,7 @@ import { esquemaEscenaJuego } from "../juegos/comun/escena";
 const id = z.string().regex(/^[a-z0-9-]+$/, "id en minúsculas, números y guiones");
 const texto = z.string().trim().min(1);
 const rutaImagen = z.string().regex(/^\/images\/[\w\-/]+\.webp$/, "ruta /images/….webp");
-const efectos = z.object({
+export const esquemaEfectosQuiz = z.object({
   acierto: rutaAudio.optional(),
   fallo: rutaAudio.optional(),
   finRonda: rutaAudio.optional(),
@@ -66,7 +66,7 @@ export const reglasPreguntas = {
 export const seleccionMultiple = definirTipo({
   tipo: "seleccion-multiple",
   nombre: "Quiz",
-  esquemaContenido: z.object({ preguntas, escena: esquemaEscenaJuego.optional(), efectos: efectos.optional(), barajarOpciones: z.boolean().optional() }),
+  esquemaContenido: z.object({ preguntas, escena: esquemaEscenaJuego.optional(), efectos: esquemaEfectosQuiz.optional(), barajarOpciones: z.boolean().optional() }),
   ...reglasPreguntas,
 });
 
@@ -78,7 +78,7 @@ export const seleccionMultiple = definirTipo({
 export const concurso = definirTipo({
   tipo: "concurso",
   nombre: "Concurso",
-  esquemaContenido: z.object({ segundos: z.number().int().min(10).max(60), preguntas, escena: esquemaEscenaJuego.optional(), efectos: efectos.optional(), barajarOpciones: z.boolean().optional() }),
+  esquemaContenido: z.object({ segundos: z.number().int().min(10).max(60), preguntas, escena: esquemaEscenaJuego.optional(), efectos: esquemaEfectosQuiz.optional(), barajarOpciones: z.boolean().optional() }),
   ...reglasPreguntas,
 });
 

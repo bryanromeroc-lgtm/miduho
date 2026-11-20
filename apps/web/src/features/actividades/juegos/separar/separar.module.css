@@ -1,0 +1,50 @@
+.juego { width: 100%; min-height: min(760px, 80dvh); display: flex; flex-direction: column; gap: clamp(12px, 1.5dvh, 22px); align-items: center; padding: clamp(14px, 2vw, 28px); color: #24362d; }
+.juego > :first-child { align-self: stretch; }
+.escena { position: relative; width: 100%; height: clamp(230px, 38dvh, 410px); background: #fff3db; border: 3px solid #d8b984; border-radius: 28px; overflow: hidden; container-type: inline-size; }
+.ilustracion { display: block; width: min(66%, 650px); height: 100%; object-fit: contain; margin-left: 5%; mask-image: radial-gradient(ellipse closest-side, #000 55%, transparent 100%); }
+.pendiente { display: grid; place-items: center; width: 65%; height: 100%; font-weight: 700; }
+.personaje { position: absolute; right: 3%; bottom: 1%; width: clamp(150px, 26cqw, 370px); height: min(34dvh, 96%); }
+.personaje::after { content: ""; position: absolute; inset: auto 10% 0; height: 10px; background: #856b4b55; filter: blur(8px); border-radius: 100%; }
+.pose { position: absolute; inset: 0; opacity: 0; }
+.pose[data-visible] { opacity: 1; }
+.pose img { width: 100%; height: 100%; object-fit: contain; object-position: bottom; }
+.palabraCabeza { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; }
+.palabraCabeza h2 { font-size: clamp(1.35rem, 2.6vw, 2rem); margin: 0; }
+.ayuda { max-width: 65ch; margin: 0; text-align: center; font-size: 1rem; }
+.palabra { display: flex; white-space: nowrap; max-width: 100%; padding: 8px; background: #fffdf6; border: 2px solid #81643c; border-radius: 20px; }
+.par { display: inline-flex; align-items: center; flex: none; }
+.letra { font-size: clamp(2rem, 5vw, 4.4rem); font-weight: 800; line-height: 1.2; }
+.corte { flex: none; width: clamp(36px, 3.2vw, 44px); min-height: 52px; margin: 0; padding: 0; border: 2px solid transparent; border-radius: 12px; background: #f3e7cf; color: #193e31; font-size: 2rem; font-weight: 800; cursor: pointer; touch-action: manipulation; }
+.corte:focus-visible { outline: none; box-shadow: inset 0 0 0 3px #135c9b; }
+.comprobar:focus-visible { outline: 4px solid #135c9b; outline-offset: 3px; }
+.corte[aria-pressed="true"] { background: #c4e4d1; border-color: #185c42; }
+.corte[aria-pressed="true"] span { display: block; font-size: 2.3rem; line-height: 1; transform: scaleX(1.3); }
+.corte[data-estado="faltaba"] { background: #fff1b7; border: 3px dashed #705318; }
+.corte[data-estado="faltaba"] span::after { content: "+"; font-size: .8rem; vertical-align: super; }
+.corte[data-estado="sobraba"] { background: #ffe1d6; border: 3px dotted #8c3e2f; }
+.corte:disabled { cursor: default; opacity: 1; }
+.leyenda { margin: 0; font-size: .9rem; font-weight: 700; text-align: center; }
+.acciones { margin-top: auto; display: flex; justify-content: center; }
+.comprobar { min-height: 52px; border: 2px solid #174d36; border-radius: 14px; background: #226d4a; color: white; padding: 10px 30px; font-size: 1.2rem; font-weight: 800; cursor: pointer; }
+.juego[data-fase="anticipacion"] .personaje { transform: scale(.96); }
+.juego[data-fase="accion"] .personaje { transform: translateY(-8px) scale(1.04); }
+.juego[data-fase="impacto"] .personaje { transform: translateY(-8px) scale(1.04); }
+.juego[data-fase="recuperacion"] .personaje { transform: translateY(0) scale(1); }
+.personaje { transition: transform 180ms ease-out; }
+@media (max-width: 650px) {
+  .juego { min-height: 0; gap: 8px; padding: 8px; }
+  .escena { height: clamp(125px, 20dvh, 170px); }
+  .ilustracion { width: 75%; margin: 0 auto; }
+  .personaje { display: none; }
+  .palabraCabeza h2 { font-size: 1.35rem; }
+  .ayudaTeclado { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  .palabra { padding: 5px; }
+  .corte { width: 26px; min-height: 48px; font-size: 1.5rem; border-radius: 7px; }
+  .corte[aria-pressed="true"] span { font-size: 1.8rem; }
+  .letra { font-size: clamp(1.5rem, 7vw, 2rem); }
+  .palabra[data-larga] .letra { font-size: 1.5rem; }
+  .palabra[data-larga] .corte { width: 24px; }
+  .leyenda { font-size: .8rem; }
+  .comprobar { min-height: 48px; padding: 7px 24px; }
+}
+@media (prefers-reduced-motion: reduce) { .personaje { transition: none; transform: none !important; } }
