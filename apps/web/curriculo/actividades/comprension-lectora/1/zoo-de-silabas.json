@@ -1,0 +1,160 @@
+{
+  "slug": "zoo-de-silabas",
+  "titulo": "Zoo de sílabas",
+  "tipo": "formar",
+  "grado": 1,
+  "instruccion": "Ayuda a Bruno a recorrer el zoo: ordena las sílabas y forma el nombre de cada animal.",
+  "audioInstruccion": "/audio/actividades/zoo-de-silabas/instruccion.mp3",
+  "tema": "Conciencia silábica (LEN-1-06)",
+  "imagen": "/images/juegos/zoo-de-silabas/portada.webp",
+  "contenido": {
+    "nombreItem": "Animal",
+    "consigna": "Forma el nombre del animal",
+    "elementos": [
+      {
+        "id": "gato",
+        "texto": "gato",
+        "silabas": [
+          "ga",
+          "to"
+        ],
+        "imagen": "/images/juegos/zoo-de-silabas/gato.webp",
+        "alt": "Un gato.",
+        "explicacion": "gato: 2 sílabas.",
+        "audio": "/audio/actividades/separa-las-silabas/gato.mp3"
+      },
+      {
+        "id": "vaca",
+        "texto": "vaca",
+        "silabas": [
+          "va",
+          "ca"
+        ],
+        "imagen": "/images/juegos/zoo-de-silabas/vaca.webp",
+        "alt": "Una vaca.",
+        "explicacion": "vaca: 2 sílabas.",
+        "audio": "/audio/actividades/separa-las-silabas/vaca.mp3"
+      },
+      {
+        "id": "pato",
+        "texto": "pato",
+        "silabas": [
+          "pa",
+          "to"
+        ],
+        "imagen": "/images/juegos/zoo-de-silabas/pato.webp",
+        "alt": "Un pato.",
+        "explicacion": "pato: 2 sílabas.",
+        "audio": "/audio/actividades/zoo-de-silabas/pato.mp3"
+      },
+      {
+        "id": "perro",
+        "texto": "perro",
+        "silabas": [
+          "pe",
+          "rro"
+        ],
+        "imagen": "/images/juegos/zoo-de-silabas/perro.webp",
+        "alt": "Un perro.",
+        "explicacion": "perro: 2 sílabas.",
+        "audio": "/audio/actividades/zoo-de-silabas/perro.mp3"
+      },
+      {
+        "id": "oso",
+        "texto": "oso",
+        "silabas": [
+          "o",
+          "so"
+        ],
+        "imagen": "/images/juegos/zoo-de-silabas/oso.webp",
+        "alt": "Un oso.",
+        "explicacion": "oso: 2 sílabas.",
+        "audio": "/audio/actividades/zoo-de-silabas/oso.mp3"
+      },
+      {
+        "id": "conejo",
+        "texto": "conejo",
+        "silabas": [
+          "co",
+          "ne",
+          "jo"
+        ],
+        "imagen": "/images/juegos/zoo-de-silabas/conejo.webp",
+        "alt": "Un conejo.",
+        "explicacion": "conejo: 3 sílabas.",
+        "audio": "/audio/actividades/zoo-de-silabas/conejo.mp3"
+      },
+      {
+        "id": "jirafa",
+        "texto": "jirafa",
+        "silabas": [
+          "ji",
+          "ra",
+          "fa"
+        ],
+        "imagen": "/images/juegos/zoo-de-silabas/jirafa.webp",
+        "alt": "Una jirafa.",
+        "explicacion": "jirafa: 3 sílabas.",
+        "audio": "/audio/actividades/separa-las-silabas/jirafa.mp3"
+      },
+      {
+        "id": "tortuga",
+        "texto": "tortuga",
+        "silabas": [
+          "tor",
+          "tu",
+          "ga"
+        ],
+        "imagen": "/images/juegos/zoo-de-silabas/tortuga.webp",
+        "alt": "Una tortuga.",
+        "explicacion": "tortuga: 3 sílabas.",
+        "audio": "/audio/actividades/zoo-de-silabas/tortuga.mp3"
+      },
+      {
+        "id": "caballo",
+        "texto": "caballo",
+        "silabas": [
+          "ca",
+          "ba",
+          "llo"
+        ],
+        "imagen": "/images/juegos/zoo-de-silabas/caballo.webp",
+        "alt": "Un caballo.",
+        "explicacion": "caballo: 3 sílabas.",
+        "audio": "/audio/actividades/zoo-de-silabas/caballo.mp3"
+      },
+      {
+        "id": "oveja",
+        "texto": "oveja",
+        "silabas": [
+          "o",
+          "ve",
+          "ja"
+        ],
+        "imagen": "/images/juegos/zoo-de-silabas/oveja.webp",
+        "alt": "Una oveja.",
+        "explicacion": "oveja: 3 sílabas.",
+        "audio": "/audio/actividades/zoo-de-silabas/oveja.mp3"
+      }
+    ],
+    "escena": {
+      "fondo": "/images/juegos/zoo-de-silabas/fondo.webp",
+      "personaje": {
+        "nombre": "Bruno",
+        "reposo": "/images/juegos/cuenta-las-silabas/bruno-reposo.webp",
+        "senala": "/images/juegos/cuenta-las-silabas/bruno-senala.webp",
+        "duda": "/images/juegos/cuenta-las-silabas/bruno-duda.webp"
+      }
+    },
+    "efectos": {
+      "inicio": "/audio/juegos/zoo-de-silabas/inicio.mp3",
+      "soltar": "/audio/juegos/zoo-de-silabas/soltar.mp3",
+      "acierto": "/audio/juegos/zoo-de-silabas/acierto.mp3",
+      "error": "/audio/juegos/zoo-de-silabas/error.mp3",
+      "avanzar": "/audio/juegos/zoo-de-silabas/avanzar.mp3",
+      "fin": "/audio/juegos/zoo-de-silabas/fin.mp3",
+      "felicitacion": "/audio/juegos/zoo-de-silabas/felicitacion.mp3",
+      "musica": "/audio/juegos/zoo-de-silabas/musica.mp3"
+    }
+  }
+}

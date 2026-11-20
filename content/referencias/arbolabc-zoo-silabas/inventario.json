@@ -1,0 +1,729 @@
+{
+  "slug": "arbolabc-zoo-silabas",
+  "pagina": "https://arbolabcgames.top/F37A/",
+  "autor_dominio": "arbolabcgames.top",
+  "fecha_captura": "2026-11-20T04:19:39.057Z",
+  "herramienta": "tools/captura-audio",
+  "transcripcion_automatica": "no disponible (sin whisper) 🔶",
+  "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+  "notas_captura": [
+    "no descargado (404): https://arbolabcgames.top/F37A/js/src/states/assets/sounds/voiceAudio.mp3",
+    "no descargado (404): https://arbolabcgames.top/F37A/js/src/states/assets/sounds/voiceAudio.ogg",
+    "no descargado (404): https://arbolabcgames.top/F37A/js/src/states/assets/sounds/fxAudio.mp3",
+    "omitido (carpeta con 404 repetidos): https://arbolabcgames.top/F37A/js/src/states/assets/sounds/fxAudio.ogg",
+    "no descargado (404): https://arbolabcgames.top/F37A/js/lib/===a&&this.mp3?!0:",
+    "no descargado (404): https://arbolabcgames.top/F37A/js/lib/this.ogg||this.opus",
+    "no descargado (404): https://arbolabcgames.top/F37A/js/lib/===a&&this.m4a?!0:",
+    "omitido (carpeta con 404 repetidos): https://arbolabcgames.top/F37A/js/lib/===a&&this.opus?!0:",
+    "omitido (carpeta con 404 repetidos): https://arbolabcgames.top/F37A/js/lib/===a&&this.wav?!0:",
+    "omitido (carpeta con 404 repetidos): https://arbolabcgames.top/F37A/js/lib/===a&&this.webm?!0:",
+    "Marcas de sprite (Phaser) copiadas a mano por Claude desde js/src/utils/AudioManager.js"
+  ],
+  "frames": [
+    "https://arbolabcgames.top/F37A/"
+  ],
+  "pistas": [
+    {
+      "id": "3ad942b4",
+      "archivo": "audio/originales/3ad942b4-fxAudio.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "3ad942b4a7be866a120a5162ec7dfdfc3feeba2c879de1bfcf736e8d7edb0142",
+      "mime": "audio/mpeg",
+      "duracion_s": 47.321,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -17,
+      "rol": "musica",
+      "evento": "fondo",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "3ad942b4-titleFx",
+      "archivo": "audio/cortes/3ad942b4-titleFx.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "3ad942b4a7be866a120a5162ec7dfdfc3feeba2c879de1bfcf736e8d7edb0142",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.038,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.4,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/3ad942b4-fxAudio.mp3",
+        "inicio_ms": 0,
+        "duracion_ms": 2000
+      }
+    },
+    {
+      "id": "3ad942b4-backgroundMusic",
+      "archivo": "audio/cortes/3ad942b4-backgroundMusic.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "3ad942b4a7be866a120a5162ec7dfdfc3feeba2c879de1bfcf736e8d7edb0142",
+      "mime": "audio/mpeg",
+      "duracion_s": 27.69,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -17.7,
+      "rol": "musica",
+      "evento": "fondo",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [
+        "/audio/juegos/zoo-de-silabas/musica.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/3ad942b4-fxAudio.mp3",
+        "inicio_ms": 2000,
+        "duracion_ms": 27638
+      }
+    },
+    {
+      "id": "3ad942b4-btnNavigation",
+      "archivo": "audio/cortes/3ad942b4-btnNavigation.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "3ad942b4a7be866a120a5162ec7dfdfc3feeba2c879de1bfcf736e8d7edb0142",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.183,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [
+        "/audio/juegos/zoo-de-silabas/inicio.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/3ad942b4-fxAudio.mp3",
+        "inicio_ms": 29638,
+        "duracion_ms": 136
+      }
+    },
+    {
+      "id": "3ad942b4-btnSelection",
+      "archivo": "audio/cortes/3ad942b4-btnSelection.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "3ad942b4a7be866a120a5162ec7dfdfc3feeba2c879de1bfcf736e8d7edb0142",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.209,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [
+        "/audio/juegos/zoo-de-silabas/soltar.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/3ad942b4-fxAudio.mp3",
+        "inicio_ms": 29774,
+        "duracion_ms": 170
+      }
+    },
+    {
+      "id": "3ad942b4-btnStart",
+      "archivo": "audio/cortes/3ad942b4-btnStart.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "3ad942b4a7be866a120a5162ec7dfdfc3feeba2c879de1bfcf736e8d7edb0142",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.228,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.2,
+      "rol": "efecto",
+      "evento": "inicio",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/3ad942b4-fxAudio.mp3",
+        "inicio_ms": 29944,
+        "duracion_ms": 1200
+      }
+    },
+    {
+      "id": "3ad942b4-btnPlayAgain",
+      "archivo": "audio/cortes/3ad942b4-btnPlayAgain.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "3ad942b4a7be866a120a5162ec7dfdfc3feeba2c879de1bfcf736e8d7edb0142",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.444,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -10.3,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/3ad942b4-fxAudio.mp3",
+        "inicio_ms": 31144,
+        "duracion_ms": 400
+      }
+    },
+    {
+      "id": "3ad942b4-effectError",
+      "archivo": "audio/cortes/3ad942b4-effectError.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "3ad942b4a7be866a120a5162ec7dfdfc3feeba2c879de1bfcf736e8d7edb0142",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.94,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -23.3,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [
+        "/audio/juegos/zoo-de-silabas/error.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/3ad942b4-fxAudio.mp3",
+        "inicio_ms": 31544,
+        "duracion_ms": 891
+      }
+    },
+    {
+      "id": "3ad942b4-effectTokens",
+      "archivo": "audio/cortes/3ad942b4-effectTokens.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "3ad942b4a7be866a120a5162ec7dfdfc3feeba2c879de1bfcf736e8d7edb0142",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.534,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -24.6,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/3ad942b4-fxAudio.mp3",
+        "inicio_ms": 32435,
+        "duracion_ms": 2500
+      }
+    },
+    {
+      "id": "3ad942b4-ovation",
+      "archivo": "audio/cortes/3ad942b4-ovation.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "3ad942b4a7be866a120a5162ec7dfdfc3feeba2c879de1bfcf736e8d7edb0142",
+      "mime": "audio/mpeg",
+      "duracion_s": 4.101,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -17.7,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [
+        "/audio/juegos/zoo-de-silabas/acierto.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/3ad942b4-fxAudio.mp3",
+        "inicio_ms": 34935,
+        "duracion_ms": 4058
+      }
+    },
+    {
+      "id": "3ad942b4-popUpAgain",
+      "archivo": "audio/cortes/3ad942b4-popUpAgain.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "3ad942b4a7be866a120a5162ec7dfdfc3feeba2c879de1bfcf736e8d7edb0142",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.679,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.5,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/3ad942b4-fxAudio.mp3",
+        "inicio_ms": 38993,
+        "duracion_ms": 640
+      }
+    },
+    {
+      "id": "3ad942b4-stickers",
+      "archivo": "audio/cortes/3ad942b4-stickers.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "3ad942b4a7be866a120a5162ec7dfdfc3feeba2c879de1bfcf736e8d7edb0142",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.064,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.3,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [
+        "/audio/juegos/zoo-de-silabas/fin.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/3ad942b4-fxAudio.mp3",
+        "inicio_ms": 39633,
+        "duracion_ms": 2033
+      }
+    },
+    {
+      "id": "3ad942b4-turronCorrect",
+      "archivo": "audio/cortes/3ad942b4-turronCorrect.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "3ad942b4a7be866a120a5162ec7dfdfc3feeba2c879de1bfcf736e8d7edb0142",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.549,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.2,
+      "rol": "efecto",
+      "evento": "acierto",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/3ad942b4-fxAudio.mp3",
+        "inicio_ms": 41666,
+        "duracion_ms": 506
+      }
+    },
+    {
+      "id": "3ad942b4-turronJump",
+      "archivo": "audio/cortes/3ad942b4-turronJump.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "3ad942b4a7be866a120a5162ec7dfdfc3feeba2c879de1bfcf736e8d7edb0142",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.444,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -70,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/3ad942b4-fxAudio.mp3",
+        "inicio_ms": 42171,
+        "duracion_ms": 397
+      }
+    },
+    {
+      "id": "3ad942b4-turronLose",
+      "archivo": "audio/cortes/3ad942b4-turronLose.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "3ad942b4a7be866a120a5162ec7dfdfc3feeba2c879de1bfcf736e8d7edb0142",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.612,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -14.3,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/3ad942b4-fxAudio.mp3",
+        "inicio_ms": 42568,
+        "duracion_ms": 2570
+      }
+    },
+    {
+      "id": "3ad942b4-turronRunning",
+      "archivo": "audio/cortes/3ad942b4-turronRunning.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "3ad942b4a7be866a120a5162ec7dfdfc3feeba2c879de1bfcf736e8d7edb0142",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.724,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -26.8,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [
+        "/audio/juegos/zoo-de-silabas/avanzar.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/3ad942b4-fxAudio.mp3",
+        "inicio_ms": 45138,
+        "duracion_ms": 1694
+      }
+    },
+    {
+      "id": "3ad942b4-effectHeart",
+      "archivo": "audio/cortes/3ad942b4-effectHeart.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "3ad942b4a7be866a120a5162ec7dfdfc3feeba2c879de1bfcf736e8d7edb0142",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.157,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/3ad942b4-fxAudio.mp3",
+        "inicio_ms": 46832,
+        "duracion_ms": 130
+      }
+    },
+    {
+      "id": "3ad942b4-effectCookies",
+      "archivo": "audio/cortes/3ad942b4-effectCookies.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "3ad942b4a7be866a120a5162ec7dfdfc3feeba2c879de1bfcf736e8d7edb0142",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.392,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/3ad942b4-fxAudio.mp3",
+        "inicio_ms": 46962,
+        "duracion_ms": 349
+      }
+    },
+    {
+      "id": "0c267e3a",
+      "archivo": "audio/originales/0c267e3a-voiceAudio.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/voiceAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "0c267e3a2395ce72ad49314f4a0966edf9b7301ded96da46b58007cdd3e8ddb8",
+      "mime": "audio/mpeg",
+      "duracion_s": 16.307,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.7,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "0c267e3a-title",
+      "archivo": "audio/cortes/0c267e3a-title.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/voiceAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "0c267e3a2395ce72ad49314f4a0966edf9b7301ded96da46b58007cdd3e8ddb8",
+      "mime": "audio/mpeg",
+      "duracion_s": 4.754,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.4,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/0c267e3a-voiceAudio.mp3",
+        "inicio_ms": 0,
+        "duracion_ms": 4716
+      }
+    },
+    {
+      "id": "0c267e3a-prompt1",
+      "archivo": "audio/cortes/0c267e3a-prompt1.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/voiceAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "0c267e3a2395ce72ad49314f4a0966edf9b7301ded96da46b58007cdd3e8ddb8",
+      "mime": "audio/mpeg",
+      "duracion_s": 6.87,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.9,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/0c267e3a-voiceAudio.mp3",
+        "inicio_ms": 4716,
+        "duracion_ms": 6844
+      }
+    },
+    {
+      "id": "0c267e3a-prompt2",
+      "archivo": "audio/cortes/0c267e3a-prompt2.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/voiceAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "0c267e3a2395ce72ad49314f4a0966edf9b7301ded96da46b58007cdd3e8ddb8",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.429,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.8,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/0c267e3a-voiceAudio.mp3",
+        "inicio_ms": 11560,
+        "duracion_ms": 2400
+      }
+    },
+    {
+      "id": "0c267e3a-prompt3",
+      "archivo": "audio/cortes/0c267e3a-prompt3.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/voiceAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "0c267e3a2395ce72ad49314f4a0966edf9b7301ded96da46b58007cdd3e8ddb8",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.019,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -15.7,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/0c267e3a-voiceAudio.mp3",
+        "inicio_ms": 13960,
+        "duracion_ms": 976
+      }
+    },
+    {
+      "id": "0c267e3a-congratulate1",
+      "archivo": "audio/cortes/0c267e3a-congratulate1.mp3",
+      "urls": [
+        "https://arbolabcgames.top/F37A/assets/sounds/voiceAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/F37A/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "0c267e3a2395ce72ad49314f4a0966edf9b7301ded96da46b58007cdd3e8ddb8",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.384,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.1,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [
+        "/audio/juegos/zoo-de-silabas/felicitacion.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/0c267e3a-voiceAudio.mp3",
+        "inicio_ms": 14936,
+        "duracion_ms": 1337
+      }
+    }
+  ]
+}
