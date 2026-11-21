@@ -99,3 +99,10 @@ La actividad `separa-las-silabas` SHALL usar el tipo `separar`, diez palabras en
 #### Scenario: Partida completa
 - **WHEN** se resuelven las diez palabras
 - **THEN** el reproductor muestra su resumen y permite «Jugar otra vez»
+
+### Requirement: Taller de comparar números de 1.°
+La primera actividad de Matemáticas de 1.° SHALL usar `taller-comparar` con laboratorio y retos de comparación hasta 20, según `actividad-taller-comparar`.
+
+#### Scenario: Primera actividad de Matemáticas
+- **WHEN** se carga `matematicas/1/comparar-numeros.json`
+- **THEN** el registro valida el contenido y el reproductor abre el laboratorio antes de los retos

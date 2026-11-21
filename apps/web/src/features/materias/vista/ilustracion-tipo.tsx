@@ -184,6 +184,7 @@ const DIBUJOS: Record<string, Dibujo> = {
       {pieza(0, 128, 2, 26)}
     </g>
   ),
+  "taller-comparar": (pieza) => <g><rect x="12" y="20" width="55" height="50" rx="5" fill={P} /><rect x="94" y="20" width="55" height="50" rx="5" fill={P} />{pieza(0, 22, 30, 25)}{pieza(1, 105, 30, 25)}<path d="M79 37 L91 45 L79 53" fill="none" stroke={A} strokeWidth="5" /></g>,
   // Un círculo partido en cuartos con tres pintados y una barra: la fracción en dos formas.
   "taller-fracciones": (pieza) => (
     <g>

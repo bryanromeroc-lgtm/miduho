@@ -1,0 +1,8 @@
+{
+  "instruccion": {
+    "archivo": "instruccion.mp3",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Explora con Armi y luego compara cantidades: ¿es mayor, menor o igual?"
+  }
+}

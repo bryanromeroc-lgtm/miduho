@@ -1,0 +1,555 @@
+{
+  "slug": "phet-comparar-numeros",
+  "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+  "autor_dominio": "phet.colorado.edu",
+  "fecha_captura": "2026-11-21T01:41:23.450Z",
+  "herramienta": "tools/captura-audio",
+  "transcripcion_automatica": "no disponible (sin whisper) 🔶",
+  "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+  "notas_captura": [],
+  "frames": [
+    "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es"
+  ],
+  "pistas": [
+    {
+      "id": "1f631ab2",
+      "archivo": "audio/originales/1f631ab2-data-0.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "1f631ab2c7dcc4d5a96c53bdba1eaa77116ef404501786973c6812889b2217ef",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.228,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -23.2,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "74ad4e7b",
+      "archivo": "audio/originales/74ad4e7b-data-1.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "74ad4e7b7d94ad4cfaa6dd8b52cd3772644cf11f182e1b653e08f5f4e3d4b874",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.131,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [
+        "/audio/juegos/comparar-numeros/elegir.mp3"
+      ],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "4179cc32",
+      "archivo": "audio/originales/4179cc32-data-2.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "4179cc32295d1cff4d182ab8c65f6886fff70509bf105726ee4a505d23555b5b",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.444,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -70,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "808c199d",
+      "archivo": "audio/originales/808c199d-data-3.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "808c199d642954ad79ee3e759a9e78ff2a08a7173a8c0dd541fe75d0703404a3",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.235,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "0f4ae1fd",
+      "archivo": "audio/originales/0f4ae1fd-data-4.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "0f4ae1fd553baae9264356c45e6d622702f82d41fe9e812cd8ec5bdc0b88d7db",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.157,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [
+        "/audio/juegos/comparar-numeros/boton.mp3"
+      ],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "2d839a53",
+      "archivo": "audio/originales/2d839a53-data-5.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "2d839a53ec7c39f94d96d43dd03288eae724cee95901a8a0a9d3e8112bbe6296",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.131,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "a7a9c2aa",
+      "archivo": "audio/originales/a7a9c2aa-data-6.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "a7a9c2aa7712dae1068b5f7f206bf54ee308bde0154389a6c52e6b230147cd55",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.131,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "44c48b49",
+      "archivo": "audio/originales/44c48b49-data-7.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "44c48b498f2af3e42f99e0e3a5a0e49248396a138eb56ed2d14952ab95aa57e4",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.418,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -17.9,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "6bae950b",
+      "archivo": "audio/originales/6bae950b-data-8.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "6bae950ba76c7fc3ad9c01bed9d992b9cbcf7d3a6468989e06d226c7bfc6a074",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.235,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "7738c0a0",
+      "archivo": "audio/originales/7738c0a0-data-9.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "7738c0a05d897903a2fc864cd1b2d8c27c7dd98806283a499ebce0b4382a004c",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.131,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "9df7b84d",
+      "archivo": "audio/originales/9df7b84d-data-10.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "9df7b84d28f3c67cbf041bd354f00088884c18fb76da60c8063eccbf403c933d",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.131,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "e9ab9a1d",
+      "archivo": "audio/originales/e9ab9a1d-data-11.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "e9ab9a1d4c1ea06a41164b19a590c8bfca5185f9c090168e14ed359d91873785",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.209,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "b34c6776",
+      "archivo": "audio/originales/b34c6776-data-12.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "b34c6776e73ae7fea8cc47f800bd3c741be51a286131a702084e7fda7a76955d",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.261,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "76aa18b5",
+      "archivo": "audio/originales/76aa18b5-data-13.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "76aa18b575041ed66f625a9b640d7e34337464c6d8ed4fec2f43778647fd4c91",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.235,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [
+        "/audio/juegos/comparar-numeros/limite.mp3"
+      ],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "5d0df87e",
+      "archivo": "audio/originales/5d0df87e-data-14.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "5d0df87e141ea8128d8f6b971b79a309fd54f300eb078d650f5ae5493108139c",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.104,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [
+        "/audio/juegos/comparar-numeros/cambiar.mp3"
+      ],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "ccb75474",
+      "archivo": "audio/originales/ccb75474-data-15.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "ccb75474faae44463db75c4aa809550b4236a81686088ed6e51c169b7410933a",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.216,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "5af990e3",
+      "archivo": "audio/originales/5af990e3-data-16.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "5af990e377a50d2d3e473ace141227fa22c2c94e54faee2af3b6259856d4b18e",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.575,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -22.3,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [
+        "/audio/juegos/comparar-numeros/retos.mp3"
+      ],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "cbe8d374",
+      "archivo": "audio/originales/cbe8d374-data-17.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "cbe8d374ecc6cdb367f16fb2166422df8cad332c286b36cbdac9cc5d664d6c24",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.287,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "2c22bf1e",
+      "archivo": "audio/originales/2c22bf1e-data-18.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "2c22bf1e95b8441350b5b121da9df01648fd4480aa04ea9e07ddca8c8e75bbd7",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.366,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "6ef289d7",
+      "archivo": "audio/originales/6ef289d7-data-19.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "6ef289d7c3b98b1690dae7f298b11769ef3fc3ffec41f617498838d6249f681d",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.731,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": -16.4,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [
+        "/audio/juegos/comparar-numeros/reiniciar.mp3"
+      ],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "61ad22c5",
+      "archivo": "audio/originales/61ad22c5-data-20.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "61ad22c5d4a816bd6308a867164b323290c2a9d6ca79b95fde9099289a613a0c",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.131,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    },
+    {
+      "id": "12d0db87",
+      "archivo": "audio/originales/12d0db87-data-21.mp3",
+      "urls": [
+        "data:audio/mpeg (en https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es)"
+      ],
+      "pagina": "https://phet.colorado.edu/sims/html/number-compare/latest/number-compare_all.html?locale=es",
+      "autor_dominio": "phet.colorado.edu",
+      "sha256": "12d0db871f9b488d28e10925299ee3a8b242e6030ee04e3068468d138619db39",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.131,
+      "canales": 1,
+      "frecuencia_hz": 44100,
+      "sonoridad_lufs": null,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "<una de las dos líneas de abajo, copiada tal cual>",
+      "uso": [],
+      "origen_deteccion": [
+        "data"
+      ]
+    }
+  ]
+}

@@ -59,3 +59,6 @@ MIDUHO tiene 75 actividades, casi todas de 5.°, y solo una de 1.° (`la-ruta-de
 - `actividad-formar`: formar una palabra por ronda con sílabas barajadas, reintento y recorrido opcional.
 
 - `actividad-aventura-cuento`: `aventura` admite cuento narrado sin carga, guía e imagen opcionales y secuencia final calificable; la ruta clásica de La entrega de Armi conserva su comportamiento.
+
+### Adaptación aprobada: Comparar números (2026-11-20)
+Se incorpora `taller-comparar` en Matemáticas de 1.°: laboratorio sin nota y diez retos de leer o construir, con marcos de diez y rango 0–20. La primera respuesta cuenta para la nota; se muestran pista y solución al corregir. El audio capturado se atribuye en `LICENCIAS.md`.

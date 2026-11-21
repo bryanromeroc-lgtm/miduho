@@ -1,7 +1,7 @@
 /** Juegos que permiten corregir, pero calculan las estrellas con la primera respuesta. */
 const PRIMERA_RESPUESTA = new Set([
   "pancarta", "pizarra-decimales", "corrector", "sello", "division", "bocadillo",
-  "jarras", "porcentaje", "multiplos", "operaciones", "rectas", "angulos", "aventura", "taller-fracciones", "golpea", "ruta-palabras", "mapa", "formar",
+  "jarras", "porcentaje", "multiplos", "operaciones", "rectas", "angulos", "aventura", "taller-fracciones", "taller-comparar", "golpea", "ruta-palabras", "mapa", "formar",
 ]);
 
 export function primeraRespuestaCuenta(tipo: string, presentacion?: string): boolean {

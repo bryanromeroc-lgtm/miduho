@@ -71,7 +71,11 @@ describe("currículo", () => {
     expect(carpetaAsignatura("Comprensión Lectora")).toBe("comprension-lectora");
   });
 
+  it("carga la primera actividad de Matemáticas de 1.°", () => {
+    expect(catalogo.de("Matemáticas", 1).map((a) => a.slug)).toEqual(["comparar-numeros"]);
+  });
+
   it("un grado sin carpeta no tiene actividades", () => {
-    expect(catalogo.de("Matemáticas", 1)).toEqual([]);
+    expect(catalogo.de("Matemáticas", 2)).toEqual([]);
   });
 });

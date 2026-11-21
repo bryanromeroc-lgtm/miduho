@@ -35,6 +35,7 @@ const JuegoMultiplos = dynamic(() => import("../juegos/multiplos/juego").then((m
 const JuegoOperaciones = dynamic(() => import("../juegos/operaciones/juego").then((m) => m.JuegoOperaciones), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoRectas = dynamic(() => import("../juegos/rectas/juego").then((m) => m.JuegoRectas), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoAngulos = dynamic(() => import("../juegos/angulos/juego").then((m) => m.JuegoAngulos), { loading: () => <p role="status">Cargando juego…</p> });
+const JuegoComparar = dynamic(() => import("../juegos/comparar/juego").then((m) => m.JuegoComparar), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoFracciones = dynamic(() => import("../juegos/fracciones/juego").then((m) => m.JuegoFracciones), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoRutaPalabras = dynamic(() => import("../juegos/ruta-palabras/juego").then((m) => m.JuegoRutaPalabras), { loading: () => <p role="status">Cargando juego…</p> });
 const JuegoGolpea = dynamic(() => import("../juegos/golpea/juego").then((m) => m.JuegoGolpea), { loading: () => <p role="status">Cargando juego…</p> });
@@ -74,6 +75,7 @@ const JUEGOS: Record<string, ComponentType<PropsJuego<any>>> = {
   angulos: JuegoAngulos,
   aventura: JuegoAventura,
   "taller-fracciones": JuegoFracciones,
+  "taller-comparar": JuegoComparar,
 };
 
 export type ActividadParaJugar = {

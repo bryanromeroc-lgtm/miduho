@@ -1,0 +1,228 @@
+{
+  "slug": "comparar-numeros",
+  "titulo": "Comparar números",
+  "tipo": "taller-comparar",
+  "grado": 1,
+  "imagen": "/images/juegos/comparar-numeros/portada.webp",
+  "instruccion": "Explora con Armi y luego compara cantidades: ¿es mayor, menor o igual?",
+  "audioInstruccion": "/audio/actividades/comparar-numeros/instruccion.mp3",
+  "tema": "MAT-1-03 · Comparar cantidades hasta 20 con decenas y unidades",
+  "contenido": {
+    "objetos": [
+      {
+        "id": "mango",
+        "singular": "mango",
+        "plural": "mangos",
+        "imagen": "/images/juegos/comparar-numeros/mango.webp"
+      },
+      {
+        "id": "mariposa",
+        "singular": "mariposa",
+        "plural": "mariposas",
+        "imagen": "/images/juegos/comparar-numeros/mariposa.webp"
+      },
+      {
+        "id": "rana",
+        "singular": "rana",
+        "plural": "ranas",
+        "imagen": "/images/juegos/comparar-numeros/rana.webp"
+      },
+      {
+        "id": "arepa",
+        "singular": "arepa",
+        "plural": "arepas",
+        "imagen": "/images/juegos/comparar-numeros/arepa.webp"
+      }
+    ],
+    "inicial": {
+      "izquierda": {
+        "cantidad": 3,
+        "objeto": "mango"
+      },
+      "derecha": {
+        "cantidad": 5,
+        "objeto": "mango"
+      }
+    },
+    "enunciadoLeer": "¿Cómo es el número de la izquierda comparado con el de la derecha?",
+    "escena": {
+      "personaje": {
+        "nombre": "Armi",
+        "reposo": "/images/juegos/comparar-numeros/armi-reposo.webp",
+        "senala": "/images/juegos/comparar-numeros/armi-senala.webp",
+        "duda": "/images/juegos/comparar-numeros/armi-duda.webp"
+      }
+    },
+    "efectos": {
+      "cambiar": "/audio/juegos/comparar-numeros/cambiar.mp3",
+      "limite": "/audio/juegos/comparar-numeros/limite.mp3",
+      "elegir": "/audio/juegos/comparar-numeros/elegir.mp3",
+      "boton": "/audio/juegos/comparar-numeros/boton.mp3",
+      "reiniciar": "/audio/juegos/comparar-numeros/reiniciar.mp3",
+      "retos": "/audio/juegos/comparar-numeros/retos.mp3",
+      "acierto": "/audio/juegos/comparar-numeros/acierto.mp3",
+      "error": "/audio/juegos/comparar-numeros/error.mp3",
+      "avanzar": "/audio/juegos/comparar-numeros/avanzar.mp3",
+      "fin": "/audio/juegos/comparar-numeros/fin.mp3"
+    },
+    "rondas": [
+      {
+        "id": "tres-cinco",
+        "clase": "leer",
+        "izquierda": {
+          "cantidad": 3,
+          "objeto": "mango"
+        },
+        "derecha": {
+          "cantidad": 5,
+          "objeto": "mango"
+        },
+        "correcta": "menor",
+        "pista": "Pon un objeto de cada lado al lado del otro. ¿A qué lado le sobran?",
+        "explicacion": "3 es menor que 5: a la derecha hay 2 mangos más."
+      },
+      {
+        "id": "ocho-cuatro",
+        "clase": "leer",
+        "izquierda": {
+          "cantidad": 8,
+          "objeto": "mariposa"
+        },
+        "derecha": {
+          "cantidad": 4,
+          "objeto": "mariposa"
+        },
+        "correcta": "mayor",
+        "pista": "Pon un objeto de cada lado al lado del otro. ¿A qué lado le sobran?",
+        "explicacion": "8 es mayor que 4: a la izquierda hay 4 mariposas más."
+      },
+      {
+        "id": "seis-seis",
+        "clase": "leer",
+        "izquierda": {
+          "cantidad": 6,
+          "objeto": "rana"
+        },
+        "derecha": {
+          "cantidad": 6,
+          "objeto": "rana"
+        },
+        "correcta": "igual",
+        "pista": "Pon un objeto de cada lado al lado del otro. ¿A qué lado le sobran?",
+        "explicacion": "6 es igual a 6: ambos lados tienen la misma cantidad."
+      },
+      {
+        "id": "igual-siete",
+        "clase": "construir",
+        "izquierda": {
+          "cantidad": 7,
+          "objeto": "mango"
+        },
+        "derecha": {
+          "cantidad": 0,
+          "objeto": "arepa"
+        },
+        "correcta": "igual",
+        "enunciado": "Pon tantas arepas como mangos hay.",
+        "pista": "Mira los marcos: ¿cuántas casillas están ocupadas a la izquierda?",
+        "explicacion": "7 es igual a 7: hay tantas arepas como mangos.",
+        "audio": "/audio/actividades/comparar-numeros/igual-siete.mp3"
+      },
+      {
+        "id": "diez-nueve",
+        "clase": "leer",
+        "izquierda": {
+          "cantidad": 10,
+          "objeto": "mango"
+        },
+        "derecha": {
+          "cantidad": 9,
+          "objeto": "mango"
+        },
+        "correcta": "mayor",
+        "pista": "Pon un objeto de cada lado al lado del otro. ¿A qué lado le sobran?",
+        "explicacion": "10 es mayor que 9: a la izquierda hay un marco lleno."
+      },
+      {
+        "id": "doce-quince",
+        "clase": "leer",
+        "izquierda": {
+          "cantidad": 12,
+          "objeto": "rana"
+        },
+        "derecha": {
+          "cantidad": 15,
+          "objeto": "rana"
+        },
+        "correcta": "menor",
+        "pista": "Cuenta primero los marcos llenos: cada uno tiene 10.",
+        "explicacion": "12 es menor que 15: los dos tienen un marco lleno, y 2 es menos que 5."
+      },
+      {
+        "id": "mas-que-once",
+        "clase": "construir",
+        "izquierda": {
+          "cantidad": 11,
+          "objeto": "mango"
+        },
+        "derecha": {
+          "cantidad": 0,
+          "objeto": "mariposa"
+        },
+        "correcta": "mayor",
+        "enunciado": "Haz que haya más mariposas que mangos.",
+        "pista": "Los mangos llenan un marco y una casilla más. Haz que sobren mariposas.",
+        "explicacion": "12 o más es mayor que 11: las mariposas superan a los mangos.",
+        "audio": "/audio/actividades/comparar-numeros/mas-que-once.mp3"
+      },
+      {
+        "id": "veinte-catorce",
+        "clase": "leer",
+        "izquierda": {
+          "cantidad": 20,
+          "objeto": "arepa"
+        },
+        "derecha": {
+          "cantidad": 14,
+          "objeto": "arepa"
+        },
+        "correcta": "mayor",
+        "pista": "Cuenta primero los marcos llenos: cada uno tiene 10.",
+        "explicacion": "20 es mayor que 14: dos marcos llenos son más que uno lleno y 4."
+      },
+      {
+        "id": "nueve-diecinueve",
+        "clase": "leer",
+        "izquierda": {
+          "cantidad": 9,
+          "objeto": "mariposa"
+        },
+        "derecha": {
+          "cantidad": 19,
+          "objeto": "mariposa"
+        },
+        "correcta": "menor",
+        "pista": "Cuenta primero los marcos llenos: cada uno tiene 10.",
+        "explicacion": "9 es menor que 19: a la derecha hay un marco lleno y 9 más."
+      },
+      {
+        "id": "menos-que-dieciseis",
+        "clase": "construir",
+        "izquierda": {
+          "cantidad": 16,
+          "objeto": "arepa"
+        },
+        "derecha": {
+          "cantidad": 20,
+          "objeto": "rana"
+        },
+        "correcta": "menor",
+        "enunciado": "Haz que haya menos ranas que arepas.",
+        "pista": "Las arepas llenan un marco y 6 casillas más. Deja menos ranas.",
+        "explicacion": "15 o menos es menor que 16: hay menos ranas que arepas.",
+        "audio": "/audio/actividades/comparar-numeros/menos-que-dieciseis.mp3"
+      }
+    ],
+    "audioLeer": "/audio/actividades/comparar-numeros/leer.mp3"
+  }
+}

@@ -59,3 +59,8 @@ describe("formar", () => {
     expect(textoReglas("formar")).toContain("puedes corregir");
   });
 });
+
+it("taller-comparar anuncia que cuenta la primera respuesta", () => {
+  expect(primeraRespuestaCuenta("taller-comparar")).toBe(true);
+  expect(textoReglas("taller-comparar")).toContain("primera respuesta");
+});

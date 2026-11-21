@@ -1,0 +1,408 @@
+.juego {
+  --m-acento: #9e391d;
+  --m-sobreAcento: #fff;
+  --m-tarjeta: #fff;
+  --m-fondo: #fff9ed;
+  --m-tinta: #20263b;
+  --m-banda: #e8dfce;
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  color: #20263b;
+}
+.modos {
+  display: flex;
+  gap: 4px;
+  width: fit-content;
+  padding: 4px;
+  border-radius: 999px;
+  background: #e8dfce;
+}
+.modos button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #20263b;
+  font-weight: 800;
+  cursor: pointer;
+}
+.modos button[aria-pressed="true"] {
+  background: #9e391d;
+  color: white;
+}
+.panel,
+.retos {
+  padding: clamp(14px, 2vw, 28px);
+  border-radius: 22px;
+  background: #fff9ed;
+}
+.panel[hidden],
+.retos[hidden] {
+  display: none;
+}
+.panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(220px, 23vw, 320px);
+  column-gap: 24px;
+  align-items: start;
+}
+.panel > :not(.labArmi) {
+  grid-column: 1;
+}
+.labArmi {
+  grid-column: 2;
+  grid-row: 1 / span 4;
+  align-self: center;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+.panel h2 {
+  margin: 0 0 12px;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+}
+.lectura {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 24px;
+  margin-bottom: 18px;
+  padding: 14px;
+  border: 2px solid #ad6a31;
+  border-radius: 16px;
+  background: white;
+  text-align: center;
+}
+.lectura strong {
+  font-size: clamp(1.4rem, 2.5vw, 2.5rem);
+}
+.lectura > span {
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 900;
+  white-space: nowrap;
+}
+.columnas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(10px, 2vw, 24px);
+  width: 100%;
+}
+.coleccion {
+  display: grid;
+  align-content: start;
+  justify-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 16px;
+  border: 2px solid #ad6a31;
+  border-radius: 18px;
+  background: white;
+}
+.coleccion h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+.contador {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.contador button {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 2px solid #20263b;
+  border-radius: 12px;
+  background: #fff3dc;
+  color: #20263b;
+  cursor: pointer;
+}
+.contador button[aria-disabled="true"] {
+  background: #dedbd5;
+  color: #555966;
+}
+.contador output {
+  min-width: 2ch;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 900;
+  text-align: center;
+}
+.figura {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  width: min(100%, 320px);
+}
+.marco {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-rows: repeat(2, auto);
+  gap: 3px;
+  padding: 6px;
+  border: 3px solid #744620;
+  border-radius: 10px;
+  background: #fdf4e4;
+}
+.casilla {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  min-width: 0;
+  border: 1px solid #9d8263;
+  border-radius: 4px;
+  background: #fff;
+}
+.casilla img {
+  width: 92%;
+  height: 92%;
+  object-fit: contain;
+}
+.objetos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+.objetos button {
+  display: grid;
+  justify-items: center;
+  min-width: 68px;
+  min-height: 60px;
+  padding: 5px;
+  border: 2px solid #776856;
+  border-radius: 10px;
+  background: white;
+  color: #20263b;
+  font-weight: 700;
+  cursor: pointer;
+}
+.objetos button[aria-pressed="true"] {
+  border-color: #9e391d;
+  background: #ffe5c5;
+}
+.objetos img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+.progreso {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.progreso > button {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 2px solid #20263b;
+  border-radius: 10px;
+  background: white;
+  color: #20263b;
+  cursor: pointer;
+}
+.escena {
+  position: relative;
+  min-height: min(58dvh, 580px);
+  container-type: inline-size;
+  overflow: hidden;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #d5eee1, #f9e5bf);
+}
+.mesa {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  width: min(76%, 1050px);
+  margin: 12px 0 12px 2%;
+  padding: clamp(12px, 2cqw, 24px);
+  border-radius: 18px;
+  background: rgb(255 250 241 / 0.97);
+  box-shadow: 0 8px 28px rgb(35 32 24 / 0.17);
+}
+.enunciadoFila {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  text-align: center;
+}
+.enunciadoFila h2 {
+  margin: 0;
+  font-size: clamp(1.2rem, 2.1cqw, 1.8rem);
+}
+.enunciadoFila h2:focus {
+  outline: 3px solid #9e391d;
+  outline-offset: 4px;
+}
+.mesa .coleccion {
+  padding: 8px;
+  gap: 6px;
+}
+.mesa .figura {
+  gap: 5px;
+}
+.mesa .marco {
+  gap: 2px;
+  padding: 3px;
+  border-width: 2px;
+}
+.mesa .acciones {
+  margin-top: 0;
+}
+.mesa [role="status"] {
+  margin: 0;
+}
+.relaciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.relacion {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.relacion > button:first-child {
+  min-height: 54px;
+  min-width: 155px;
+  border: 2px solid #9e391d;
+  background: white;
+  color: #20263b;
+  white-space: nowrap;
+}
+.relacion > button:first-child[data-estado="ok"] {
+  border-color: #2f9a57;
+  background: #dcf2e3;
+  color: #145c2e;
+}
+.relacion > button:first-child[data-estado="no"] {
+  border-color: #d2574b;
+  background: #fbe4e1;
+  color: #962a22;
+}
+.relacion b {
+  margin-left: 5px;
+  font-size: 1.4em;
+}
+.personaje {
+  position: absolute;
+  right: 1%;
+  bottom: -2%;
+  width: min(22cqw, 35dvh);
+  aspect-ratio: 1440 / 1623;
+  pointer-events: none;
+}
+.personaje::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: 4%;
+  left: 20%;
+  width: 60%;
+  height: 5%;
+  border-radius: 50%;
+  background: rgb(48 41 32 / 0.25);
+  filter: blur(7px);
+}
+.personaje img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.escena[data-estado="acierto"] .personaje {
+  animation: reaccion 850ms ease-out;
+}
+.escena[data-estado="fallo"] .personaje {
+  animation: duda 850ms ease-out;
+}
+@keyframes reaccion {
+  0%,
+  20% {
+    transform: translateY(0) scale(1);
+  }
+  36% {
+    transform: translateY(8px) scale(0.96, 1.03);
+  }
+  52%,
+  60% {
+    transform: translateY(-18px) scale(1.04, 0.97);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes duda {
+  0%,
+  20% {
+    transform: rotate(0);
+  }
+  36% {
+    transform: rotate(4deg);
+  }
+  52%,
+  60% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+button:focus-visible {
+  outline: 3px solid #9e391d;
+  outline-offset: 3px;
+}
+@media (max-width: 720px) {
+  .panel {
+    display: block;
+  }
+  .labArmi {
+    display: none;
+  }
+  .columnas {
+    grid-template-columns: 1fr;
+  }
+  .figura {
+    max-width: 420px;
+  }
+  .mesa {
+    width: 100%;
+    margin: 0;
+  }
+  .personaje {
+    display: none;
+  }
+  .escena {
+    min-height: 0;
+  }
+  .relaciones {
+    display: grid;
+    width: 100%;
+  }
+  .relacion > button {
+    flex: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .escena .personaje {
+    animation: none !important;
+  }
+}
