@@ -4,15 +4,13 @@ Voz sintética generada con la API de Gemini de Google AI Studio (`tools/voz-gem
 
 | Archivo | Modelo | Voz | Texto dicho |
 |---|---|---|---|
-| `instruccion.mp3` | `gemini-2.5-flash-preview-tts` | `Sulafat` 🔶 | Ayuda a Bruno a recorrer el zoo: ordena las sílabas y forma el nombre de cada animal. |
-| `pato.mp3` | `gemini-2.5-flash-preview-tts` | `Sulafat` 🔶 | Pato. |
-| `perro.mp3` | `gemini-2.5-flash-preview-tts` | `Sulafat` 🔶 | Perro. |
-| `oso.mp3` | `gemini-2.5-flash-preview-tts` | `Sulafat` 🔶 | Oso. |
-| `conejo.mp3` | `gemini-2.5-flash-preview-tts` | `Sulafat` 🔶 | Conejo. |
-| `tortuga.mp3` | `gemini-2.5-flash-preview-tts` | `Sulafat` 🔶 | Tortuga. |
-| `caballo.mp3` | `gemini-2.5-flash-preview-tts` | `Sulafat` 🔶 | Caballo. |
-| `oveja.mp3` | `gemini-2.5-flash-preview-tts` | `Sulafat` 🔶 | Oveja. |
-
-🔶 Voz de respaldo (modelo sin voces latinas): acento no garantizado; regenerar con `--rehacer-respaldo` cuando haya cupo.
+| `instruccion.mp3` | `gemini-3.8-flash-lite-tts` | `es-419-tutor-3` | Ayuda a Bruno a recorrer el zoo: ordena las sílabas y forma el nombre de cada animal. |
+| `pato.mp3` | `gemini-3.8-flash-lite-tts` | `es-419-tutor-3` | Pato. |
+| `perro.mp3` | `gemini-3.8-flash-lite-tts` | `es-419-tutor-3` | Perro. |
+| `oso.mp3` | `gemini-3.8-flash-lite-tts` | `es-419-tutor-3` | Oso. |
+| `conejo.mp3` | `gemini-3.8-flash-lite-tts` | `es-419-tutor-3` | Conejo. |
+| `tortuga.mp3` | `gemini-3.8-flash-lite-tts` | `es-419-tutor-3` | Tortuga. |
+| `caballo.mp3` | `gemini-3.8-flash-lite-tts` | `es-419-tutor-3` | Caballo. |
+| `oveja.mp3` | `gemini-3.8-flash-lite-tts` | `es-419-tutor-3` | Oveja. |
 
 Términos de uso del audio generado: los de la API de Gemini de Google 🔶 (por confirmar antes de desplegar; nivel gratuito).

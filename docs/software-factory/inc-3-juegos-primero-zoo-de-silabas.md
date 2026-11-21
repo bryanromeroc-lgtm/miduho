@@ -43,7 +43,7 @@ ga·to, va·ca, pa·to, pe·rro, o·so · co·ne·jo, ji·ra·fa, tor·tu·ga, c
 | `public/images/juegos/zoo-de-silabas/fondo.webp` | Gemini — https://gemini.google.com/app/62d5200aaa715d00 |
 | `gato`, `vaca`, `oveja` / `jirafa` / `perro` `.webp` | Copias de `sonidos-y-letras` / `separa-las-silabas` / `cuenta-las-silabas` |
 | `public/audio/juegos/zoo-de-silabas/*.mp3` (8) | Audio original con `captura-audio adaptar`: inicio=btnNavigation, soltar=btnSelection, error=effectError, acierto=ovation, avanzar=turronRunning, fin=stickers, felicitacion=congratulate1 (voz), musica=backgroundMusic; `LICENCIAS.md` (permiso declarado) |
-| `public/audio/actividades/zoo-de-silabas/*.mp3` (8) | Gemini TTS, modelo de respaldo `gemini-2.5-flash-preview-tts`, voz `Sulafat` 🔶; gato, vaca y jirafa reutilizan `separa-las-silabas` (`es-419-tutor-3`) |
+| `public/audio/actividades/zoo-de-silabas/*.mp3` (8) | Gemini TTS `gemini-3.8-flash-lite-tts`, voz `es-419-tutor-3` (regeneradas el 2026-11-20 por Claude; las primeras salieron con el respaldo `Sulafat`); gato, vaca y jirafa reutilizan `separa-las-silabas` (`es-419-tutor-3`) |
 
 ## Verificación (2026-11-20)
 
@@ -62,9 +62,6 @@ ga·to, va·ca, pa·to, pe·rro, o·so · co·ne·jo, ji·ra·fa, tor·tu·ga, c
 ## Pendiente 🔶
 
 - **Escuchar** los efectos, la música y `felicitacion.mp3`, que no está transcrita y cuyo acento no se conoce.
-- **Regenerar las 8 voces** con `es-419-tutor-3` cuando haya cupo:
-  ```
-  bash -ic "node tools/voz-gemini/voz.mjs actividad apps/web/curriculo/actividades/comprension-lectora/1/zoo-de-silabas.json --solo instruccion,perro,pato,oso,conejo,tortuga,caballo,oveja --rehacer-respaldo --sin-respaldo"
-  ```
+- **Escuchar las 8 voces** con `es-419-tutor-3`. Se regeneraron el 2026-11-20 con `--rehacer-respaldo --sin-respaldo`. En el navegador, la consigna y «Escuchar» suenan desde sus MP3, sin síntesis, y las 19 rutas de audio del JSON existen.
 - **Recorrido** con `demo-primero`; validación docente.
 - **Permiso escrito** de Árbol ABC (titular del juego).

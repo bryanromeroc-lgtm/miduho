@@ -1,50 +1,50 @@
 {
   "instruccion": {
     "archivo": "instruccion.mp3",
-    "modelo": "gemini-2.5-flash-preview-tts",
-    "voz": "Sulafat",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
     "texto": "Ayuda a Bruno a recorrer el zoo: ordena las sílabas y forma el nombre de cada animal."
   },
   "pato": {
     "archivo": "pato.mp3",
-    "modelo": "gemini-2.5-flash-preview-tts",
-    "voz": "Sulafat",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
     "texto": "Pato."
   },
   "perro": {
     "archivo": "perro.mp3",
-    "modelo": "gemini-2.5-flash-preview-tts",
-    "voz": "Sulafat",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
     "texto": "Perro."
   },
   "oso": {
     "archivo": "oso.mp3",
-    "modelo": "gemini-2.5-flash-preview-tts",
-    "voz": "Sulafat",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
     "texto": "Oso."
   },
   "conejo": {
     "archivo": "conejo.mp3",
-    "modelo": "gemini-2.5-flash-preview-tts",
-    "voz": "Sulafat",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
     "texto": "Conejo."
   },
   "tortuga": {
     "archivo": "tortuga.mp3",
-    "modelo": "gemini-2.5-flash-preview-tts",
-    "voz": "Sulafat",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
     "texto": "Tortuga."
   },
   "caballo": {
     "archivo": "caballo.mp3",
-    "modelo": "gemini-2.5-flash-preview-tts",
-    "voz": "Sulafat",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
     "texto": "Caballo."
   },
   "oveja": {
     "archivo": "oveja.mp3",
-    "modelo": "gemini-2.5-flash-preview-tts",
-    "voz": "Sulafat",
+    "modelo": "gemini-3.8-flash-lite-tts",
+    "voz": "es-419-tutor-3",
     "texto": "Oveja."
   }
 }
