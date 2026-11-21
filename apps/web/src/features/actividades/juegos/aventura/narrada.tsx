@@ -115,7 +115,7 @@ export function JuegoAventuraNarrada({ contenido, semilla, alTerminar }: PropsJu
         {fase === "inicio" && <section className={s.tarjeta}>
           <h2 ref={preguntaRef} tabIndex={-1}>Comienza la historia</h2>
           <p>{contenido.inicio}</p>
-          <Lectura clave="inicio" texto={contenido.inicio} />
+          <Lectura clave="inicio" texto={contenido.inicio} audio={contenido.audioInicio} />
           <Avanzar onClick={() => { efectos.preparar(); setFase("escena"); }}>
             Empezar <ArrowRight aria-hidden="true" />
           </Avanzar>

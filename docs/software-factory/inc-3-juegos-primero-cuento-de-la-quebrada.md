@@ -15,7 +15,7 @@
 | Quién | Qué hizo |
 |---|---|
 | Claude | Lectura de las 3 referencias; captura de audio y licencias; servidor del paquete en 8765 y Chrome en 9333 para REA; decisiones con el usuario y redacción del cuento; adaptación de 5 efectos; 7 imágenes con Gemini (escenas 1–5 en dos tandas); encargos; revisión; 3 arreglos menores; verificación y cierre |
-| Codex (CLI) | Estudio REA de las 3 referencias, con 2 argumentos propuestos; construcción (esquema, `clasica.tsx`/`narrada.tsx`, JSON, delta, capturas y partida con teclado). Se quedó sin cupo de uso antes de las corridas finales: las hizo Claude. Voces no generadas (cupo de Gemini TTS) |
+| Codex (CLI) | Estudio REA de las 3 referencias, con 2 argumentos propuestos; construcción (esquema, `clasica.tsx`/`narrada.tsx`, JSON, delta, capturas y partida con teclado). Se quedó sin cupo de uso antes de las corridas finales: las hizo Claude. Voces no generadas por falta de cupo de Gemini TTS: las generó y conectó Claude el 2026-11-20 |
 | Usuario | Aventura + ordenar la trama al final; cuento «La piedra que cantaba» (aprobó el texto); efectos de Mundo Primaria + `success` del MEN |
 
 Lecciones:
@@ -38,7 +38,7 @@ Lecciones:
 - `escena.personaje` (guía con poses);
 - `efectos` por evento (acierto, error, avanzar, secuencia, fin);
 - `secuencia` final: 3 dibujos en 3 casillas rotuladas, un ítem más calificado en el servidor (1 punto al primer envío; pista, segundo intento y revelado);
-- `audioFinal`.
+- `audioInicio` y `audioFinal`, la lectura grabada del encargo y la del cierre.
 
 `juego.tsx` elige según los datos: `clasica.tsx`, que es el juego de antes y conserva «La entrega de Armi» igual, o `narrada.tsx`.
 
@@ -73,15 +73,19 @@ El texto fue aprobado por el usuario el 2026-11-20 y está en el JSON. Son 6 esc
 
 ## Pendiente 🔶
 
-- **Voces** (`es-419-tutor-3`, `--sin-respaldo`), cuando haya cupo de Gemini TTS. Las 9 frases exactas están en la tabla «Voces por generar», al final; van en `public/audio/actividades/cuento-de-la-quebrada/`. Luego hay que conectar `audioInstruccion`, `audio` de cada escena, `secuencia.audio` y `audioFinal` en el JSON. Ejemplo:
-  ```
-  bash -ic "node tools/voz-gemini/voz.mjs frase --texto 'Al amanecer, una mirla llega a la quebrada. El agua canta entre las piedras: ¡glu, glu, glu! ¿A dónde llega la mirla?' --salida apps/web/public/audio/actividades/cuento-de-la-quebrada/llega-la-mirla.mp3 --sin-respaldo"
-  ```
-- **Escuchar** los 5 efectos.
+- **Escuchar** las 9 voces y los 5 efectos.
 - **Recorrido** con `demo-primero`; validación docente y cultural.
 - **Licencia MEN** de «Contenidos para aprender» y permiso escrito de Mundo Primaria.
 
-### Voces por generar
+### Voces (generadas el 2026-11-20)
+
+Las generó Claude con `voz.mjs frase --sin-respaldo`, modelo `gemini-3.8-flash-tts` y voz `es-419-tutor-3`. Van conectadas así:
+- `instruccion.mp3` → `contenido.audioInicio`, un campo opcional nuevo del esquema que lee `narrada.tsx` en la tarjeta de inicio;
+- cada escena → su `audio`;
+- `secuencia.mp3` → `secuencia.audio`;
+- `final.mp3` → `audioFinal`.
+
+**Verificación:** en una partida a 1440×900, cada fase pidió su MP3 y ninguna usó la síntesis del navegador. Resultado: 7 de 7, 0 errores. `npm test`: 954 pruebas en verde; lint y build bien. Detalle en `public/audio/actividades/cuento-de-la-quebrada/LICENCIAS.md`.
 
 | Archivo | Frase |
 |---|---|

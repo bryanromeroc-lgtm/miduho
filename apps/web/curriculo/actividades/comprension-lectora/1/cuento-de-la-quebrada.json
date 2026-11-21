@@ -8,7 +8,9 @@
   "imagen": "/images/juegos/cuento-de-la-quebrada/portada.webp",
   "contenido": {
     "inicio": "Escucha el cuento de la quebrada. Después de cada parte, responde la pregunta.",
+    "audioInicio": "/audio/actividades/cuento-de-la-quebrada/instruccion.mp3",
     "final": "La quebrada canta de nuevo y todos la escuchan con alegría.",
+    "audioFinal": "/audio/actividades/cuento-de-la-quebrada/final.mp3",
     "escena": {
       "personaje": {
         "nombre": "Bruno",
@@ -38,7 +40,8 @@
         ],
         "correcta": 1,
         "pista": "Escucha el lugar al que llega al amanecer.",
-        "explicacion": "La mirla llega a la quebrada."
+        "explicacion": "La mirla llega a la quebrada.",
+        "audio": "/audio/actividades/cuento-de-la-quebrada/llega-la-mirla.mp3"
       },
       {
         "id": "agua-bajito",
@@ -53,7 +56,8 @@
         ],
         "correcta": 0,
         "pista": "Piensa en el volumen del agua hoy.",
-        "explicacion": "Hoy el agua suena muy bajito."
+        "explicacion": "Hoy el agua suena muy bajito.",
+        "audio": "/audio/actividades/cuento-de-la-quebrada/agua-bajito.mp3"
       },
       {
         "id": "piedra-grande",
@@ -68,7 +72,8 @@
         ],
         "correcta": 2,
         "pista": "Mira qué encontraron Bruno y la mirla en el agua.",
-        "explicacion": "Una piedra grande tapa el paso del agua."
+        "explicacion": "Una piedra grande tapa el paso del agua.",
+        "audio": "/audio/actividades/cuento-de-la-quebrada/piedra-grande.mp3"
       },
       {
         "id": "madremonte",
@@ -83,7 +88,8 @@
         ],
         "correcta": 1,
         "pista": "Recuerda quién está junto a la piedra.",
-        "explicacion": "Miran con cuidado para no lastimar a la ranita."
+        "explicacion": "Miran con cuidado para no lastimar a la ranita.",
+        "audio": "/audio/actividades/cuento-de-la-quebrada/madremonte.mp3"
       },
       {
         "id": "ranita-salta",
@@ -98,7 +104,8 @@
         ],
         "correcta": 1,
         "pista": "Escucha qué ocurrió antes de que Bruno moviera la piedra.",
-        "explicacion": "Primero, la ranita saltó a una hoja segura."
+        "explicacion": "Primero, la ranita saltó a una hoja segura.",
+        "audio": "/audio/actividades/cuento-de-la-quebrada/ranita-salta.mp3"
       },
       {
         "id": "canta-otra-vez",
@@ -113,7 +120,8 @@
         ],
         "correcta": 0,
         "pista": "Recuerda el sonido de la quebrada al final.",
-        "explicacion": "Al final, el agua vuelve a cantar."
+        "explicacion": "Al final, el agua vuelve a cantar.",
+        "audio": "/audio/actividades/cuento-de-la-quebrada/canta-otra-vez.mp3"
       }
     ],
     "secuencia": {
@@ -144,7 +152,8 @@
         }
       ],
       "pista": "Piensa qué pasó al llegar la mirla y qué cambió antes del final.",
-      "explicacion": "Primero llegó la mirla, luego hallaron la piedra y al final el agua volvió a cantar."
+      "explicacion": "Primero llegó la mirla, luego hallaron la piedra y al final el agua volvió a cantar.",
+      "audio": "/audio/actividades/cuento-de-la-quebrada/secuencia.mp3"
     }
   }
 }

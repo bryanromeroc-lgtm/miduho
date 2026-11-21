@@ -101,6 +101,8 @@ const contenido = z
     }).refine((v) => new Set(v.items.map((i) => i.id)).size === 3 && new Set(v.items.map((i) => i.posicion)).size === 3, { message: "ids y posiciones de secuencia deben ser únicos" }).optional(),
     /** El encargo: lo que se lee antes de empezar. */
     inicio: texto(400),
+    /** Lectura grabada del encargo, si existe. */
+    audioInicio: rutaAudio.optional(),
     /** El cierre de la historia, sea cual sea el resultado. */
     final: texto(400),
     /** Lectura grabada del cierre, si existe. */
