@@ -62,3 +62,4 @@ MIDUHO tiene 75 actividades, casi todas de 5.°, y solo una de 1.° (`la-ruta-de
 
 ### Adaptación aprobada: Comparar números (2026-11-20)
 Se incorpora `taller-comparar` en Matemáticas de 1.°: laboratorio sin nota y diez retos de leer o construir, con marcos de diez y rango 0–20. La primera respuesta cuenta para la nota; se muestran pista y solución al corregir. El audio capturado se atribuye en `LICENCIAS.md`.
+- `actividad-quiz-dialogo`: presentación opcional sobre `seleccion-multiple`, aprobada el 2026-11-21 para «Hello friends». Dos hablantes, globos HTML, voces originales por frase, respuesta correcta que enlaza el siguiente turno y efecto opcional del acompañante. Sin el bloque `dialogo`, la presentación existente conserva su flujo.

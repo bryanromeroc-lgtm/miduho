@@ -29,6 +29,8 @@ export const esquemaPregunta = z
     audio: rutaAudio.optional(),
     /** Una grabación por opción, en el mismo orden; `null` si esa opción no tiene. */
     audioOpciones: z.array(rutaAudio.nullable()).optional(),
+    hablante: id.optional(),
+    alResponder: z.object({ efecto: rutaAudio, veces: z.number().int().min(1).max(4).optional(), animar: z.literal("acompanante").optional() }).optional(),
     imagen: rutaImagen.optional(),
     alt: texto.optional(),
     imagenesOpciones: z.array(rutaImagen.nullable()).optional(),
@@ -63,10 +65,21 @@ export const reglasPreguntas = {
   },
 };
 
+const esquemaDialogo = z.object({ hablantes: z.array(z.object({ id, nombre: texto, imagen: rutaImagen, alt: texto, lado: z.enum(["izquierda", "derecha"]), acompanante: z.object({ imagen: rutaImagen, alt: texto }).optional() })).length(2).refine((h) => h[0].id !== h[1].id && h[0].lado !== h[1].lado, { message: "Los hablantes deben tener ids y lados distintos" }) });
+export type Dialogo = z.infer<typeof esquemaDialogo>;
+
 export const seleccionMultiple = definirTipo({
   tipo: "seleccion-multiple",
   nombre: "Quiz",
-  esquemaContenido: z.object({ preguntas, escena: esquemaEscenaJuego.optional(), efectos: esquemaEfectosQuiz.optional(), barajarOpciones: z.boolean().optional() }),
+  esquemaContenido: z.object({ preguntas, escena: esquemaEscenaJuego.optional(), efectos: esquemaEfectosQuiz.optional(), barajarOpciones: z.boolean().optional(), presentacion: z.literal("dialogo").optional(), dialogo: esquemaDialogo.optional(), musica: rutaAudio.optional(), audioTitulo: rutaAudio.optional(), tituloAudioTexto: texto.optional(), efectoToque: rutaAudio.optional(), efectoJugar: rutaAudio.optional() }).superRefine((c, ctx) => {
+    if (!c.presentacion && !c.dialogo) return;
+    if (c.presentacion !== "dialogo" || !c.dialogo) { ctx.addIssue({ code: "custom", message: "La presentación y el bloque dialogo deben aparecer juntos" }); return; }
+    const ids = new Set(c.dialogo.hablantes.map((h) => h.id));
+    c.preguntas.forEach((p, i) => {
+      if (!p.hablante || !ids.has(p.hablante)) ctx.addIssue({ code: "custom", path: ["preguntas", i, "hablante"], message: "El hablante debe existir en dialogo.hablantes" });
+      if (!p.audio || !p.audioOpciones?.every(Boolean)) ctx.addIssue({ code: "custom", path: ["preguntas", i], message: "El diálogo exige audio y audioOpciones para cada frase" });
+    });
+  }),
   ...reglasPreguntas,
 });
 

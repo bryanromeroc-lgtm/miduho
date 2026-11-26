@@ -251,3 +251,26 @@ describe("audio en el contenido (juegos-primero)", () => {
     ]);
   });
 });
+
+
+describe("seleccion-multiple con presentación diálogo", () => {
+  const hablantes = [
+    { id: "a", nombre: "A", imagen: "/images/juegos/x/a.webp", alt: "Personaje A", lado: "izquierda" },
+    { id: "b", nombre: "B", imagen: "/images/juegos/x/b.webp", alt: "Personaje B", lado: "derecha" },
+  ];
+  const preguntasDialogo = [1, 2, 3].map((n) => ({ id: `d${n}`, hablante: "a", enunciado: "Hola", opciones: ["Sí", "No"], correcta: 0, audio: "/audio/a.mp3", audioOpciones: ["/audio/b.mp3", "/audio/c.mp3"] }));
+  const base = { presentacion: "dialogo", dialogo: { hablantes }, preguntas: preguntasDialogo };
+  it("admite diálogo completo y conserva la calificación del quiz", () => {
+    expect(seleccionMultiple.esquemaContenido.safeParse(base).success).toBe(true);
+    expect(seleccionMultiple.calificar(base, "d1", 0).puntaje).toBe(1);
+    expect(seleccionMultiple.calificar(base, "d1", 1).puntaje).toBe(0);
+  });
+  it("rechaza hablante ajeno, falta de audio y bloque incompleto", () => {
+    expect(seleccionMultiple.esquemaContenido.safeParse({ ...base, preguntas: [{ ...preguntasDialogo[0], hablante: "otro" }, ...preguntasDialogo.slice(1)] }).success).toBe(false);
+    expect(seleccionMultiple.esquemaContenido.safeParse({ ...base, preguntas: [{ ...preguntasDialogo[0], audioOpciones: undefined }, ...preguntasDialogo.slice(1)] }).success).toBe(false);
+    expect(seleccionMultiple.esquemaContenido.safeParse({ ...base, dialogo: undefined }).success).toBe(false);
+  });
+  it("admite los quizzes anteriores sin diálogo", () => {
+    expect(seleccionMultiple.esquemaContenido.safeParse(preguntas).success).toBe(true);
+  });
+});

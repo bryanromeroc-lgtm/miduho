@@ -1,0 +1,97 @@
+.juego { min-height: 100%; width: 100%; display: flex; flex-direction: column; gap: clamp(10px, 1.5vh, 18px); color: #173044; }
+.inicio { display: grid; gap: 0; overflow: hidden; background: #e3f3eb; border-radius: 24px; }
+.inicio .escena { border-radius: 0; min-height: 340px; height: 340px; }
+.inicioTexto { display: grid; justify-items: center; gap: 16px; text-align: center; padding: clamp(20px, 3vw, 32px); }
+.portada { display: block; width: 100%; height: min(42dvh, 420px); }
+.portada img { width: 100%; height: 100%; object-fit: cover; }
+.inicio h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
+.inicio p { font-size: clamp(1.2rem, 2vw, 1.6rem); }
+.jugar { border: 0; border-radius: 16px; padding: 16px 48px; min-height: 64px; background: #176b52; color: white; font-weight: 800; font-size: 1.4rem; cursor: pointer; }
+.cabecera { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.avanzar { align-self: flex-end; border: 0; border-radius: 14px; background: #176b52; color: white; min-height: 48px; padding: 10px 22px; font-weight: 800; cursor: pointer; }
+.musica { border: 2px solid #176b52; border-radius: 12px; background: white; color: #15543f; min-height: 44px; padding: 8px 14px; font-weight: 700; cursor: pointer; }
+.escenario { position: relative; }
+.escena { position: relative; width: 100%; min-height: clamp(420px, 48dvh, 480px); overflow: hidden; border-radius: 22px; background: linear-gradient(#b8e1ee 0 55%, #c6e8b0 55% 100%); container-type: inline-size; }
+.fondo { position: absolute; inset: 0; }
+.fondo img { width: 100%; height: 100%; object-fit: cover; }
+.camara { position: absolute; inset: 0; }
+.hablante { position: absolute; bottom: 1%; width: clamp(120px, 24cqw, 300px); height: 50%; z-index: 1; }
+.hablante[data-lado="izquierda"] { left: 7%; }
+.hablante[data-lado="derecha"] { right: 8%; }
+.figura { display: block; width: 100%; height: 100%; }
+.figura img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: bottom; }
+.hablante::after { content: ""; position: absolute; bottom: 0; left: 15%; width: 70%; height: 5%; border-radius: 50%; background: #275d4b55; filter: blur(8px); z-index: -1; }
+.hablante[data-activo] .figura { filter: drop-shadow(0 0 12px #fff8cb) drop-shadow(0 0 4px #176b52); animation: hablar 2s ease-in-out infinite; transform-origin: center bottom; }
+.acompanante { position: absolute; bottom: 0; left: -35%; width: 50%; height: 34%; }
+.acompanante img { width: 100%; height: 100%; object-fit: contain; object-position: bottom; }
+.guia { position: absolute; bottom: 1%; left: 44%; width: min(13cqw, 170px); height: 55%; }
+.guiaImagen, .guiaImagen img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: bottom; }
+.globos { position: absolute; inset: 12px 2% auto; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 2vw, 24px); pointer-events: none; }
+.globo { background: #fff; border: 3px solid #20677b; border-radius: 22px; padding: clamp(12px, 1.5vw, 20px); box-shadow: 0 5px 0 #17536a22; position: relative; pointer-events: auto; width: min(100%, 440px); }
+.globo[data-lado="izquierda"] { grid-column: 1; grid-row: 1; justify-self: start; }
+.globo[data-lado="derecha"] { grid-column: 2; grid-row: 1; justify-self: end; }
+.globo::before, .globo::after { content: ""; position: absolute; width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; }
+.globo::before { bottom: -24px; border-top: 24px solid #20677b; }
+.globo::after { bottom: -18px; border-top: 20px solid #fff; }
+.globo[data-revelado]::before { border-top-color: #176b52; }
+.globo[data-lado="izquierda"]::before { left: 45%; }
+.globo[data-lado="izquierda"]::after { left: 45%; }
+.globo[data-lado="derecha"]::before { right: 45%; }
+.globo[data-lado="derecha"]::after { right: 45%; }
+.globo[data-revelado] { border-color: #176b52; animation: aparecer .4s ease-out both; }
+.globo h2 { font-size: 1rem; margin: 0 0 6px; color: #15543f; }
+.globo p { margin: 0 0 10px; font-size: clamp(20px, 1.6vw, 26px); font-weight: 750; line-height: 1.25; }
+.pregunta h3 { font-size: clamp(1.25rem, 1.8vw, 1.7rem); margin: 0 0 10px; }
+.opciones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.opcionFila { display: flex; align-items: stretch; gap: 8px; min-width: 0; }
+.opcion { flex: 1; min-width: 0; min-height: 76px; padding: 12px 16px; border: 3px solid #24667e; border-radius: 16px; background: #fff; color: #173044; text-align: left; font-size: clamp(1.05rem, 1.35vw, 1.35rem); font-weight: 700; line-height: 1.25; cursor: pointer; }
+.opcion:hover:not(:disabled) { background: #e8f4f8; }
+.opcion[data-estado="ok"] { border-color: #176b52; background: #d6f4e6; }
+.opcion[data-estado="no"] { border-color: #a84e45; background: #fcebe8; }
+.opcion:disabled { opacity: 1; cursor: default; }
+.juego button:focus-visible { outline: 4px solid #f3a417; outline-offset: 3px; }
+.juego[data-momento="anticipacion"] .camara { transform: scale(.99); }
+.juego[data-momento="accion"] .camara { transform: scale(1.02); }
+.juego[data-momento="impacto"] .camara { transform: scale(1.025); }
+.juego[data-momento="recuperacion"] .camara { transform: scale(1); }
+.camara { transition: transform .16s ease-out; }
+.juego[data-resultado="ok"] .guia { animation: senala .85s ease-out; }
+.juego[data-resultado="no"] .guia { animation: duda .85s ease-out; }
+.ladra { animation: ladrar .6s ease-in-out 2; }
+@keyframes hablar { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(1.5deg); } }
+@keyframes aparecer { from { opacity: 0; transform: translateY(8px) scale(.98); } to { opacity: 1; transform: none; } }
+@keyframes senala { 25% { transform: translateY(-8px) rotate(-4deg); } 55% { transform: translateY(0) rotate(3deg); } }
+@keyframes duda { 35% { transform: rotate(-5deg); } 70% { transform: rotate(4deg); } }
+@keyframes ladrar { 25% { transform: translateY(-12px) scale(1.05); } 60% { transform: translateY(0); } }
+@media (min-width: 768px) and (max-width: 1100px) {
+  .escena { min-height: 490px; }
+  .hablante { height: 44%; }
+  .globo p { font-size: 20px; }
+}
+@media (max-width: 767px) {
+  .escena { min-height: 195px; height: 25dvh; }
+  .inicio .escena { min-height: 160px; height: 160px; }
+  .inicioTexto { gap: 10px; padding: 14px; }
+  .inicio h2 { font-size: 1.8rem; }
+  .inicio p { font-size: 1.1rem; }
+  .hablante { width: 31cqw; height: 85%; }
+  .guia { left: 37%; width: 14cqw; height: 62%; pointer-events: none; }
+  .globos, .opciones { grid-template-columns: minmax(0, 1fr); }
+  .globos { position: static; padding: 22px 3% 0; gap: 22px; }
+  .globo { width: min(90%, 500px); }
+  .globo[data-lado="izquierda"], .globo[data-lado="derecha"] { grid-column: 1; grid-row: auto; }
+  .globo[data-lado="izquierda"]::before, .globo[data-lado="izquierda"]::after { left: 28%; }
+  .globo[data-lado="derecha"]::before, .globo[data-lado="derecha"]::after { right: 28%; }
+  .globo::before { top: -24px; bottom: auto; border-top: 0; border-bottom: 24px solid #20677b; }
+  .globo::after { top: -18px; bottom: auto; border-top: 0; border-bottom: 20px solid #fff; }
+  .globo[data-revelado]::before { border-bottom-color: #176b52; }
+  .globo p { font-size: 20px; }
+  .opcionFila { flex-direction: column; }
+  .opcionFila > button:last-child { align-self: flex-start; }
+  .opcion { min-height: 62px; width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .camara { transition: none; }
+  .globo[data-revelado], .juego[data-resultado="ok"] .guia, .juego[data-resultado="no"] .guia, .ladra, .hablante[data-activo] .figura { animation: none; }
+  .juego[data-momento] .camara { transform: none; }
+}

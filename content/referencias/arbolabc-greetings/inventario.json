@@ -1,0 +1,415 @@
+{
+  "slug": "arbolabc-greetings",
+  "pagina": "https://arbolabcgames.top/E37ABC/",
+  "autor_dominio": "arbolabcgames.top",
+  "fecha_captura": "2026-11-21T03:38:30.880Z",
+  "herramienta": "tools/captura-audio",
+  "transcripcion_automatica": "no disponible (sin whisper) 🔶",
+  "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+  "notas_captura": [
+    "no descargado (404): https://arbolabcgames.top/E37ABC/js/src/states/assets/sounds/voiceAudio.mp3",
+    "no descargado (404): https://arbolabcgames.top/E37ABC/js/src/states/assets/sounds/voiceAudio.ogg",
+    "no descargado (404): https://arbolabcgames.top/E37ABC/js/src/states/assets/sounds/fxAudio.mp3",
+    "omitido (carpeta con 404 repetidos): https://arbolabcgames.top/E37ABC/js/src/states/assets/sounds/fxAudio.ogg",
+    "no descargado (404): https://arbolabcgames.top/E37ABC/js/lib/===a&&this.mp3?!0:",
+    "no descargado (404): https://arbolabcgames.top/E37ABC/js/lib/this.ogg||this.opus",
+    "no descargado (404): https://arbolabcgames.top/E37ABC/js/lib/===a&&this.m4a?!0:",
+    "omitido (carpeta con 404 repetidos): https://arbolabcgames.top/E37ABC/js/lib/===a&&this.opus?!0:",
+    "omitido (carpeta con 404 repetidos): https://arbolabcgames.top/E37ABC/js/lib/===a&&this.wav?!0:",
+    "Marcas de sprite (Phaser) copiadas a mano por Claude desde js/src/utils/AudioManager.js"
+  ],
+  "frames": [
+    "https://arbolabcgames.top/E37ABC/"
+  ],
+  "pistas": [
+    {
+      "id": "7fdc7204",
+      "archivo": "audio/originales/7fdc7204-voiceAudio.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E37ABC/assets/sounds/voiceAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/E37ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "7fdc7204cb9ea7596ca5eaf60756ada3b516af52aba5cbe986c0166f7dc9a881",
+      "mime": "audio/mpeg",
+      "duracion_s": 16.074,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -17,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "7fdc7204-sentence1",
+      "archivo": "audio/cortes/7fdc7204-sentence1.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E37ABC/assets/sounds/voiceAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/E37ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "7fdc7204cb9ea7596ca5eaf60756ada3b516af52aba5cbe986c0166f7dc9a881",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.544,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -16.4,
+      "rol": "voz",
+      "evento": "turno 3",
+      "certeza": "observado (llamadas del juego; texto del globo)",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/hello-friends/hello-christian-dog.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/7fdc7204-voiceAudio.mp3",
+        "inicio_ms": 0,
+        "duracion_ms": 2513
+      }
+    },
+    {
+      "id": "7fdc7204-sentence2",
+      "archivo": "audio/cortes/7fdc7204-sentence2.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E37ABC/assets/sounds/voiceAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/E37ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "7fdc7204cb9ea7596ca5eaf60756ada3b516af52aba5cbe986c0166f7dc9a881",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.328,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -17.5,
+      "rol": "voz",
+      "evento": "turno 1",
+      "certeza": "observado (llamadas del juego; texto del globo)",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/hello-friends/good-morning-teresa.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/7fdc7204-voiceAudio.mp3",
+        "inicio_ms": 2513,
+        "duracion_ms": 2301
+      }
+    },
+    {
+      "id": "7fdc7204-sentence3",
+      "archivo": "audio/cortes/7fdc7204-sentence3.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E37ABC/assets/sounds/voiceAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/E37ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "7fdc7204cb9ea7596ca5eaf60756ada3b516af52aba5cbe986c0166f7dc9a881",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.92,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -16.7,
+      "rol": "voz",
+      "evento": "turno 5",
+      "certeza": "observado (llamadas del juego; texto del globo)",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/hello-friends/goodbye-christian-perry.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/7fdc7204-voiceAudio.mp3",
+        "inicio_ms": 4814,
+        "duracion_ms": 1877
+      }
+    },
+    {
+      "id": "7fdc7204-sentence4",
+      "archivo": "audio/cortes/7fdc7204-sentence4.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E37ABC/assets/sounds/voiceAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/E37ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "7fdc7204cb9ea7596ca5eaf60756ada3b516af52aba5cbe986c0166f7dc9a881",
+      "mime": "audio/mpeg",
+      "duracion_s": 3.528,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -16.4,
+      "rol": "voz",
+      "evento": "turno 2",
+      "certeza": "observado (llamadas del juego; texto del globo)",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/hello-friends/hi-christian.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/7fdc7204-voiceAudio.mp3",
+        "inicio_ms": 6691,
+        "duracion_ms": 3500
+      }
+    },
+    {
+      "id": "7fdc7204-sentence5",
+      "archivo": "audio/cortes/7fdc7204-sentence5.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E37ABC/assets/sounds/voiceAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/E37ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "7fdc7204cb9ea7596ca5eaf60756ada3b516af52aba5cbe986c0166f7dc9a881",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.04,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -16.2,
+      "rol": "voz",
+      "evento": "turno 4",
+      "certeza": "observado (llamadas del juego; texto del globo)",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/hello-friends/dog-name-perry.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/7fdc7204-voiceAudio.mp3",
+        "inicio_ms": 10191,
+        "duracion_ms": 2000
+      }
+    },
+    {
+      "id": "7fdc7204-sentence6",
+      "archivo": "audio/cortes/7fdc7204-sentence6.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E37ABC/assets/sounds/voiceAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/E37ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "7fdc7204cb9ea7596ca5eaf60756ada3b516af52aba5cbe986c0166f7dc9a881",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.56,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -16.4,
+      "rol": "voz",
+      "evento": "turno 6",
+      "certeza": "observado (llamadas del juego; texto del globo)",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/hello-friends/goodbye-teresa.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/7fdc7204-voiceAudio.mp3",
+        "inicio_ms": 12191,
+        "duracion_ms": 1526
+      }
+    },
+    {
+      "id": "7fdc7204-title",
+      "archivo": "audio/cortes/7fdc7204-title.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E37ABC/assets/sounds/voiceAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/E37ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "7fdc7204cb9ea7596ca5eaf60756ada3b516af52aba5cbe986c0166f7dc9a881",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.328,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -18.8,
+      "rol": "voz",
+      "evento": "título",
+      "certeza": "observado (llamadas del juego; texto del globo)",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/hello-friends/titulo.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/7fdc7204-voiceAudio.mp3",
+        "inicio_ms": 13718,
+        "duracion_ms": 2283
+      }
+    },
+    {
+      "id": "1856467a",
+      "archivo": "audio/originales/1856467a-fxAudio.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E37ABC/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/E37ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "1856467acc08a159df3a8ba74042ab2114c7fbb3e9043495bf18bd7942757e6a",
+      "mime": "audio/mpeg",
+      "duracion_s": 16.986,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -19.1,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "1856467a-backgroundMusic",
+      "archivo": "audio/cortes/1856467a-backgroundMusic.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E37ABC/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/E37ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "1856467acc08a159df3a8ba74042ab2114c7fbb3e9043495bf18bd7942757e6a",
+      "mime": "audio/mpeg",
+      "duracion_s": 16.032,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -19.2,
+      "rol": "musica",
+      "evento": "fondo",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/hello-friends/musica.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/1856467a-fxAudio.mp3",
+        "inicio_ms": 0,
+        "duracion_ms": 15994
+      }
+    },
+    {
+      "id": "1856467a-btnClick",
+      "archivo": "audio/cortes/1856467a-btnClick.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E37ABC/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/E37ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "1856467acc08a159df3a8ba74042ab2114c7fbb3e9043495bf18bd7942757e6a",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.168,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/hello-friends/toque.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/1856467a-fxAudio.mp3",
+        "inicio_ms": 15994,
+        "duracion_ms": 136
+      }
+    },
+    {
+      "id": "1856467a-btnNavigation",
+      "archivo": "audio/cortes/1856467a-btnNavigation.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E37ABC/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/E37ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "1856467acc08a159df3a8ba74042ab2114c7fbb3e9043495bf18bd7942757e6a",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.216,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/hello-friends/jugar.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/1856467a-fxAudio.mp3",
+        "inicio_ms": 16130,
+        "duracion_ms": 170
+      }
+    },
+    {
+      "id": "1856467a-pet",
+      "archivo": "audio/cortes/1856467a-pet.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E37ABC/assets/sounds/fxAudio.mp3"
+      ],
+      "pagina": "https://arbolabcgames.top/E37ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "1856467acc08a159df3a8ba74042ab2114c7fbb3e9043495bf18bd7942757e6a",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.648,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -16.8,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/hello-friends/perro.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/1856467a-fxAudio.mp3",
+        "inicio_ms": 16300,
+        "duracion_ms": 620
+      }
+    }
+  ]
+}

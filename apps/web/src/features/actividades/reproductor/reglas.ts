@@ -5,7 +5,7 @@ const PRIMERA_RESPUESTA = new Set([
 ]);
 
 export function primeraRespuestaCuenta(tipo: string, presentacion?: string): boolean {
-  return PRIMERA_RESPUESTA.has(tipo) || (tipo === "clasificar" && presentacion === "parejas");
+  return PRIMERA_RESPUESTA.has(tipo) || (tipo === "clasificar" && presentacion === "parejas") || (tipo === "seleccion-multiple" && presentacion === "dialogo");
 }
 
 /**
@@ -26,6 +26,8 @@ export function textoReglas(tipo: string, modo: ModoReproductor = "practica", pr
       ? `${AVISO_VISTA_PREVIA} ${parejas ? "La primera ubicación de cada objeto" : "La primera respuesta de cada reto"} cuenta para las estrellas.`
       : AVISO_VISTA_PREVIA;
   }
+  if (tipo === "seleccion-multiple" && presentacion === "dialogo")
+    return "Práctica libre: tu primera respuesta en cada turno cuenta para las estrellas. Escucha la respuesta correcta y sigue la conversación. El resultado no se guarda.";
   if (tipo === "separar")
     return "Práctica libre: cada palabra tiene un intento. Al comprobar, verás la separación correcta. El resultado no se guarda.";
   if (sonidos)

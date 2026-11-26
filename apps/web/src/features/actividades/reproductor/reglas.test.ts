@@ -64,3 +64,12 @@ it("taller-comparar anuncia que cuenta la primera respuesta", () => {
   expect(primeraRespuestaCuenta("taller-comparar")).toBe(true);
   expect(textoReglas("taller-comparar")).toContain("primera respuesta");
 });
+
+
+describe("diálogo de selección múltiple", () => {
+  it("explica la primera respuesta solo en la presentación nueva", () => {
+    expect(primeraRespuestaCuenta("seleccion-multiple", "dialogo")).toBe(true);
+    expect(textoReglas("seleccion-multiple", "practica", "dialogo")).toContain("primera respuesta en cada turno");
+    expect(primeraRespuestaCuenta("seleccion-multiple")).toBe(false);
+  });
+});

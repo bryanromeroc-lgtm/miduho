@@ -1,0 +1,142 @@
+{
+  "slug": "hello-friends",
+  "titulo": "Hello friends",
+  "tipo": "seleccion-multiple",
+  "grado": 1,
+  "tema": "Saludos, presentaciones y despedidas (ING-1-04)",
+  "instruccion": "Escucha la conversación. Toca lo que responde el otro amigo.",
+  "imagen": "/images/juegos/hello-friends/portada.webp",
+  "contenido": {
+    "presentacion": "dialogo",
+    "dialogo": {
+      "hablantes": [
+        {
+          "id": "teresa",
+          "nombre": "Teresa",
+          "imagen": "/images/juegos/hello-friends/teresa.webp",
+          "alt": "Teresa, personaje de la conversación, a la izquierda.",
+          "lado": "izquierda"
+        },
+        {
+          "id": "christian",
+          "nombre": "Christian",
+          "imagen": "/images/juegos/hello-friends/christian.webp",
+          "alt": "Christian, personaje de la conversación, a la derecha.",
+          "lado": "derecha",
+          "acompanante": {
+            "imagen": "/images/juegos/hello-friends/perry.webp",
+            "alt": "Perry, el perro de Christian."
+          }
+        }
+      ]
+    },
+    "preguntas": [
+      {
+        "id": "good-morning",
+        "hablante": "teresa",
+        "enunciado": "Good morning, my name is Teresa.",
+        "audio": "/audio/actividades/hello-friends/good-morning-teresa.mp3",
+        "opciones": [
+          "Hi, my name is Christian. Nice to meet you.",
+          "Goodbye Teresa."
+        ],
+        "audioOpciones": [
+          "/audio/actividades/hello-friends/hi-christian.mp3",
+          "/audio/actividades/hello-friends/goodbye-teresa.mp3"
+        ],
+        "correcta": 0,
+        "explicacion": "Cuando alguien se presenta, respondemos con nuestro nombre y nice to meet you."
+      },
+      {
+        "id": "nice-to-meet-you",
+        "hablante": "christian",
+        "enunciado": "Hi, my name is Christian. Nice to meet you.",
+        "audio": "/audio/actividades/hello-friends/hi-christian.mp3",
+        "opciones": [
+          "Hello Christian, what is your dog's name?",
+          "Goodbye Christian and Perry."
+        ],
+        "audioOpciones": [
+          "/audio/actividades/hello-friends/hello-christian-dog.mp3",
+          "/audio/actividades/hello-friends/goodbye-christian-perry.mp3"
+        ],
+        "correcta": 0,
+        "explicacion": "Christian ya se presentó; Teresa pregunta por el perro."
+      },
+      {
+        "id": "dog-name",
+        "hablante": "teresa",
+        "enunciado": "Hello Christian, what is your dog's name?",
+        "audio": "/audio/actividades/hello-friends/hello-christian-dog.mp3",
+        "opciones": [
+          "My dog's name is Perry.",
+          "Hi, my name is Christian. Nice to meet you."
+        ],
+        "audioOpciones": [
+          "/audio/actividades/hello-friends/dog-name-perry.mp3",
+          "/audio/actividades/hello-friends/hi-christian.mp3"
+        ],
+        "correcta": 0,
+        "explicacion": "Teresa preguntó el nombre del perro.",
+        "alResponder": {
+          "efecto": "/audio/juegos/hello-friends/perro.mp3",
+          "veces": 2,
+          "animar": "acompanante"
+        }
+      },
+      {
+        "id": "goodbye",
+        "hablante": "christian",
+        "enunciado": "My dog's name is Perry.",
+        "audio": "/audio/actividades/hello-friends/dog-name-perry.mp3",
+        "opciones": [
+          "Goodbye Christian and Perry.",
+          "Hello Christian, what is your dog's name?"
+        ],
+        "audioOpciones": [
+          "/audio/actividades/hello-friends/goodbye-christian-perry.mp3",
+          "/audio/actividades/hello-friends/hello-christian-dog.mp3"
+        ],
+        "correcta": 0,
+        "explicacion": "Después de conversar, nos despedimos."
+      },
+      {
+        "id": "goodbye-teresa",
+        "hablante": "teresa",
+        "enunciado": "Goodbye Christian and Perry.",
+        "audio": "/audio/actividades/hello-friends/goodbye-christian-perry.mp3",
+        "opciones": [
+          "Goodbye Teresa.",
+          "My dog's name is Perry."
+        ],
+        "audioOpciones": [
+          "/audio/actividades/hello-friends/goodbye-teresa.mp3",
+          "/audio/actividades/hello-friends/dog-name-perry.mp3"
+        ],
+        "correcta": 0,
+        "explicacion": "Teresa se despidió; Christian también dice goodbye."
+      }
+    ],
+    "barajarOpciones": true,
+    "escena": {
+      "fondo": "/images/juegos/hello-friends/parque.webp",
+      "personaje": {
+        "nombre": "Maca",
+        "reposo": "/images/juegos/hello-friends/maca-reposo.webp",
+        "senala": "/images/juegos/hello-friends/maca-senala.webp",
+        "duda": "/images/juegos/hello-friends/maca-duda.webp"
+      }
+    },
+    "efectos": {
+      "acierto": "/audio/juegos/parejas/acierto.mp3",
+      "fallo": "/audio/juegos/parejas/fallo.mp3",
+      "finRonda": "/audio/juegos/parejas/fin-ronda.mp3",
+      "fin": "/audio/juegos/parejas/fin.mp3"
+    },
+    "musica": "/audio/juegos/hello-friends/musica.mp3",
+    "audioTitulo": "/audio/actividades/hello-friends/titulo.mp3",
+    "tituloAudioTexto": "Greetings",
+    "efectoToque": "/audio/juegos/hello-friends/toque.mp3",
+    "efectoJugar": "/audio/juegos/hello-friends/jugar.mp3"
+  }
+}

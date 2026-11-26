@@ -29,6 +29,7 @@ const ASIGNATURAS = [
   { nombre: "Ciencias Naturales", area: "Ciencias Naturales y Educación Ambiental", orden: 2, docente: "andres.moreno@miduho.test" },
   { nombre: "Matemáticas", area: "Matemáticas", orden: 5, docente: "andres.moreno@miduho.test" },
   { nombre: "Ciencias Sociales", area: "Ciencias Sociales, Historia, Geografía, Constitución Política y Democracia", orden: 6, docente: "andres.moreno@miduho.test" },
+  { nombre: "Inglés", area: "Humanidades: Idioma Extranjero (Inglés)", orden: 7, docente: "claudia.rincon@miduho.test" },
   { nombre: "Ética y Valores", area: "Educación Ética y en Valores Humanos", orden: 10, docente: "claudia.rincon@miduho.test" },
 ] as const;
 

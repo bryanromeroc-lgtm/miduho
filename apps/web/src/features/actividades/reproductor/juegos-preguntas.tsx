@@ -8,6 +8,8 @@ import type { EscenaJuego } from "../juegos/comun/escena";
 import { ContextoActividad, Escuchar, useLecturaAutomatica, useLeerEnVozAlta, useVozActividad } from "../juegos/comun/escuchar";
 import { useEfectosGrabados } from "../juegos/comun/efectos-grabados";
 import { ordenesPreguntas } from "./ordenes-preguntas";
+import { DialogoQuiz } from "./dialogo";
+import type { Dialogo } from "../tipos/preguntas";
 import { Avanzar, Aviso, Marca, Progreso, useFocoAlCambiar, type PropsJuego } from "./comun";
 import s from "./reproductor.module.css";
 
@@ -210,7 +212,8 @@ function Reloj({ segundos, detenido }: { segundos: number; detenido: boolean }) 
   );
 }
 
-export function Quiz(props: PropsJuego<{ preguntas: Pregunta[] }>) {
+export function Quiz(props: PropsJuego<ContenidoQuiz & { presentacion?: "dialogo"; dialogo?: Dialogo }>) {
+  if (props.contenido.presentacion === "dialogo" && props.contenido.dialogo) return <DialogoQuiz {...props} contenido={{ ...props.contenido, dialogo: props.contenido.dialogo }} />;
   return <Preguntas {...props} />;
 }
 
