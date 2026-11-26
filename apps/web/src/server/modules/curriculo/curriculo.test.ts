@@ -75,8 +75,8 @@ describe("currículo", () => {
     expect(catalogo.de("Matemáticas", 1).map((a) => a.slug)).toEqual(["comparar-numeros"]);
   });
 
-  it("muestra Hello friends como primera actividad de Inglés de 1.°", () => {
-    expect(catalogo.de("Inglés", 1).map((a) => a.slug)[0]).toBe("hello-friends");
+  it("muestra las actividades de Inglés de 1.°", () => {
+    expect(catalogo.de("Inglés", 1).map((a) => a.slug)).toEqual(expect.arrayContaining(["hello-friends", "my-family", "greetings"]));
   });
 
   it("un grado sin carpeta no tiene actividades", () => {

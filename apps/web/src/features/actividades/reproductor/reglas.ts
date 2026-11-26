@@ -17,6 +17,13 @@ export type ModoReproductor = "practica" | "vista-previa";
 
 export const AVISO_VISTA_PREVIA = "Vista previa: este resultado no se guarda.";
 
+/** Dos respuestas visuales completas pueden ocupar tarjetas grandes, incluso con situación. */
+export function opcionesVisualesGrandes(pregunta: { opciones: string[]; imagenesOpciones?: (string | null)[] }): boolean {
+  return pregunta.opciones.length <= 2
+    && pregunta.imagenesOpciones?.length === pregunta.opciones.length
+    && pregunta.imagenesOpciones.every(Boolean) === true;
+}
+
 export function textoReglas(tipo: string, modo: ModoReproductor = "practica", presentacion?: string, tarjetas?: string): string {
   const parejas = tipo === "clasificar" && presentacion === "parejas";
   const sonidos = tipo === "clasificar" && presentacion === "tablero" && tarjetas === "sonido";

@@ -1,0 +1,8 @@
+{
+  "instruccion": {
+    "archivo": "instruccion.mp3",
+    "modelo": "gemini-3.8-flash-tts",
+    "voz": "es-419-tutor-3",
+    "texto": "Escucha el saludo en inglés. ¿Maca llega o se va?"
+  }
+}

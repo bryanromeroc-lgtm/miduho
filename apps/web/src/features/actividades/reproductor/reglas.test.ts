@@ -1,5 +1,16 @@
 import { describe, expect, it } from "vitest";
-import { AVISO_VISTA_PREVIA, primeraRespuestaCuenta, textoReglas } from "./reglas";
+import { AVISO_VISTA_PREVIA, opcionesVisualesGrandes, primeraRespuestaCuenta, textoReglas } from "./reglas";
+
+describe("tarjetas grandes de respuestas visuales", () => {
+  it("admite dos opciones con imágenes completas", () => {
+    expect(opcionesVisualesGrandes({ opciones: ["Llega", "Se va"], imagenesOpciones: ["/llega.webp", "/se-va.webp"] })).toBe(true);
+  });
+  it("conserva filas para tres opciones o una imagen ausente", () => {
+    expect(opcionesVisualesGrandes({ opciones: ["a", "b", "c"], imagenesOpciones: ["a", "b", "c"] })).toBe(false);
+    expect(opcionesVisualesGrandes({ opciones: ["a", "b"], imagenesOpciones: ["a", null] })).toBe(false);
+    expect(opcionesVisualesGrandes({ opciones: ["a", "b"] })).toBe(false);
+  });
+});
 
 describe("reglas visibles antes de jugar", () => {
   it("explica las pistas solo en tarjetas de sonido", () => {

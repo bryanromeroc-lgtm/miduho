@@ -1,0 +1,201 @@
+{
+  "slug": "greetings",
+  "titulo": "Hello and goodbye",
+  "tipo": "seleccion-multiple",
+  "grado": 1,
+  "tema": "Saludar y despedirse en inglés (ING-1-01)",
+  "instruccion": "Escucha el saludo en inglés. ¿Maca llega o se va?",
+  "audioInstruccion": "/audio/actividades/greetings/instruccion.mp3",
+  "imagen": "/images/juegos/greetings/portada.webp",
+  "contenido": {
+    "barajarPreguntas": true,
+    "barajarOpciones": true,
+    "preguntas": [
+      {
+        "id": "hello-gorilla",
+        "enunciado": "Hello gorilla.",
+        "audio": "/audio/actividades/greetings/hello-gorilla.mp3",
+        "imagen": "/images/juegos/greetings/gorila.webp",
+        "alt": "Un gorila en la sabana.",
+        "opciones": [
+          "Llega",
+          "Se va"
+        ],
+        "imagenesOpciones": [
+          "/images/juegos/greetings/llega.webp",
+          "/images/juegos/greetings/se-va.webp"
+        ],
+        "correcta": 0,
+        "explicacion": "Hello se dice al llegar."
+      },
+      {
+        "id": "hello-cheetah",
+        "enunciado": "Hello cheetah.",
+        "audio": "/audio/actividades/greetings/hello-cheetah.mp3",
+        "imagen": "/images/juegos/greetings/guepardo.webp",
+        "alt": "Un guepardo en la sabana.",
+        "opciones": [
+          "Llega",
+          "Se va"
+        ],
+        "imagenesOpciones": [
+          "/images/juegos/greetings/llega.webp",
+          "/images/juegos/greetings/se-va.webp"
+        ],
+        "correcta": 0,
+        "explicacion": "Hello se dice al llegar."
+      },
+      {
+        "id": "hello-elephant",
+        "enunciado": "Hello elephant.",
+        "audio": "/audio/actividades/greetings/hello-elephant.mp3",
+        "imagen": "/images/juegos/greetings/elefante.webp",
+        "alt": "Un elefante en la sabana.",
+        "opciones": [
+          "Llega",
+          "Se va"
+        ],
+        "imagenesOpciones": [
+          "/images/juegos/greetings/llega.webp",
+          "/images/juegos/greetings/se-va.webp"
+        ],
+        "correcta": 0,
+        "explicacion": "Hello se dice al llegar."
+      },
+      {
+        "id": "hello-giraffe",
+        "enunciado": "Hello giraffe.",
+        "audio": "/audio/actividades/greetings/hello-giraffe.mp3",
+        "imagen": "/images/juegos/greetings/jirafa.webp",
+        "alt": "Una jirafa en la sabana.",
+        "opciones": [
+          "Llega",
+          "Se va"
+        ],
+        "imagenesOpciones": [
+          "/images/juegos/greetings/llega.webp",
+          "/images/juegos/greetings/se-va.webp"
+        ],
+        "correcta": 0,
+        "explicacion": "Hello se dice al llegar."
+      },
+      {
+        "id": "hello-zebra",
+        "enunciado": "Hello zebra.",
+        "audio": "/audio/actividades/greetings/hello-zebra.mp3",
+        "imagen": "/images/juegos/greetings/cebra.webp",
+        "alt": "Una cebra en la sabana.",
+        "opciones": [
+          "Llega",
+          "Se va"
+        ],
+        "imagenesOpciones": [
+          "/images/juegos/greetings/llega.webp",
+          "/images/juegos/greetings/se-va.webp"
+        ],
+        "correcta": 0,
+        "explicacion": "Hello se dice al llegar."
+      },
+      {
+        "id": "goodbye-gorilla",
+        "enunciado": "Goodbye gorilla.",
+        "audio": "/audio/actividades/greetings/goodbye-gorilla.mp3",
+        "imagen": "/images/juegos/greetings/gorila.webp",
+        "alt": "Un gorila en la sabana.",
+        "opciones": [
+          "Llega",
+          "Se va"
+        ],
+        "imagenesOpciones": [
+          "/images/juegos/greetings/llega.webp",
+          "/images/juegos/greetings/se-va.webp"
+        ],
+        "correcta": 1,
+        "explicacion": "Goodbye se dice al irse."
+      },
+      {
+        "id": "goodbye-cheetah",
+        "enunciado": "Goodbye cheetah.",
+        "audio": "/audio/actividades/greetings/goodbye-cheetah.mp3",
+        "imagen": "/images/juegos/greetings/guepardo.webp",
+        "alt": "Un guepardo en la sabana.",
+        "opciones": [
+          "Llega",
+          "Se va"
+        ],
+        "imagenesOpciones": [
+          "/images/juegos/greetings/llega.webp",
+          "/images/juegos/greetings/se-va.webp"
+        ],
+        "correcta": 1,
+        "explicacion": "Goodbye se dice al irse."
+      },
+      {
+        "id": "goodbye-elephant",
+        "enunciado": "Goodbye elephant.",
+        "audio": "/audio/actividades/greetings/goodbye-elephant.mp3",
+        "imagen": "/images/juegos/greetings/elefante.webp",
+        "alt": "Un elefante en la sabana.",
+        "opciones": [
+          "Llega",
+          "Se va"
+        ],
+        "imagenesOpciones": [
+          "/images/juegos/greetings/llega.webp",
+          "/images/juegos/greetings/se-va.webp"
+        ],
+        "correcta": 1,
+        "explicacion": "Goodbye se dice al irse."
+      },
+      {
+        "id": "goodbye-giraffe",
+        "enunciado": "Goodbye giraffe.",
+        "audio": "/audio/actividades/greetings/goodbye-giraffe.mp3",
+        "imagen": "/images/juegos/greetings/jirafa.webp",
+        "alt": "Una jirafa en la sabana.",
+        "opciones": [
+          "Llega",
+          "Se va"
+        ],
+        "imagenesOpciones": [
+          "/images/juegos/greetings/llega.webp",
+          "/images/juegos/greetings/se-va.webp"
+        ],
+        "correcta": 1,
+        "explicacion": "Goodbye se dice al irse."
+      },
+      {
+        "id": "goodbye-zebra",
+        "enunciado": "Goodbye zebra.",
+        "audio": "/audio/actividades/greetings/goodbye-zebra.mp3",
+        "imagen": "/images/juegos/greetings/cebra.webp",
+        "alt": "Una cebra en la sabana.",
+        "opciones": [
+          "Llega",
+          "Se va"
+        ],
+        "imagenesOpciones": [
+          "/images/juegos/greetings/llega.webp",
+          "/images/juegos/greetings/se-va.webp"
+        ],
+        "correcta": 1,
+        "explicacion": "Goodbye se dice al irse."
+      }
+    ],
+    "escena": {
+      "personaje": {
+        "nombre": "Maca",
+        "reposo": "/images/juegos/hello-friends/maca-reposo.webp",
+        "senala": "/images/juegos/hello-friends/maca-senala.webp",
+        "duda": "/images/juegos/hello-friends/maca-duda.webp"
+      }
+    },
+    "efectos": {
+      "acierto": "/audio/juegos/parejas/acierto.mp3",
+      "fallo": "/audio/juegos/parejas/fallo.mp3",
+      "finRonda": "/audio/juegos/greetings/fin-ronda.mp3",
+      "fin": "/audio/juegos/parejas/fin.mp3"
+    },
+    "musica": "/audio/juegos/greetings/musica.mp3"
+  }
+}

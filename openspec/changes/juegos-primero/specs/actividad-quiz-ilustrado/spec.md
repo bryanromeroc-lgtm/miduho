@@ -66,3 +66,14 @@ La presentación ilustrada SHALL mostrar `escena.personaje` aunque una pregunta 
 #### Scenario: Orden anterior
 - **WHEN** el campo falta
 - **THEN** el orden de preguntas y el flujo previo de barajado de opciones permanecen iguales.
+
+### Requirement: Opciones ilustradas grandes junto a una situación
+Cuando una pregunta de `seleccion-multiple` tiene dos opciones o menos y todas tienen imagen, el reproductor SHALL presentar las opciones como dos tarjetas grandes en columnas, también si la pregunta tiene imagen de situación. La imagen de la situación conserva su `alt` informativo; las imágenes de las opciones son decorativas porque sus botones tienen etiquetas HTML.
+
+#### Scenario: Dos escenas de respuesta y una situación
+- **WHEN** la pregunta muestra una situación y las dos opciones tienen imagen
+- **THEN** las dos escenas se ven como tarjetas grandes en columnas, con imágenes de al menos aproximadamente 220 px a 1440×900, y se adaptan al teléfono sin desborde horizontal.
+
+#### Scenario: Presentación anterior
+- **WHEN** hay tres o más opciones, o falta la imagen de alguna opción
+- **THEN** se conserva la distribución anterior de situación, opciones y guía.

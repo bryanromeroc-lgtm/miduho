@@ -1,0 +1,764 @@
+{
+  "slug": "arbolabc-hello-goodbye",
+  "pagina": "https://arbolabcgames.top/E35ABC/",
+  "autor_dominio": "arbolabcgames.top",
+  "fecha_captura": "2026-11-26T01:14:04.890Z",
+  "herramienta": "tools/captura-audio",
+  "transcripcion_automatica": "no disponible (sin whisper) 🔶",
+  "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+  "notas_captura": [
+    "no descargado (404): https://arbolabcgames.top/E35ABC/js/src/states/assets/audios/fxAudio.ogg",
+    "no descargado (404): https://arbolabcgames.top/E35ABC/js/src/states/assets/audios/fxAudio.mp3",
+    "no descargado (404): https://arbolabcgames.top/E35ABC/js/src/states/assets/audios/voiceAudio.ogg",
+    "omitido (carpeta con 404 repetidos): https://arbolabcgames.top/E35ABC/js/src/states/assets/audios/voiceAudio.mp3",
+    "no descargado (404): https://arbolabcgames.top/E35ABC/js/lib/===a&&this.mp3?!0:",
+    "no descargado (404): https://arbolabcgames.top/E35ABC/js/lib/this.ogg||this.opus",
+    "no descargado (404): https://arbolabcgames.top/E35ABC/js/lib/===a&&this.m4a?!0:",
+    "omitido (carpeta con 404 repetidos): https://arbolabcgames.top/E35ABC/js/lib/===a&&this.opus?!0:",
+    "omitido (carpeta con 404 repetidos): https://arbolabcgames.top/E35ABC/js/lib/===a&&this.wav?!0:"
+  ],
+  "frames": [
+    "https://arbolabcgames.top/E35ABC/"
+  ],
+  "pistas": [
+    {
+      "id": "4ef323f1",
+      "archivo": "audio/originales/4ef323f1-voiceAudio.ogg",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/voiceAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "4ef323f1568b7bd2e0cb0fa06d679c422738b008d5feb5effe26b63964341e73",
+      "mime": "audio/ogg",
+      "duracion_s": 15.14,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -17.1,
+      "rol": "voz",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "4ef323f1-gCheeta",
+      "archivo": "audio/cortes/4ef323f1-gCheeta.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/voiceAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "4ef323f1568b7bd2e0cb0fa06d679c422738b008d5feb5effe26b63964341e73",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.224,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -18.2,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/greetings/goodbye-cheetah.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/4ef323f1-voiceAudio.ogg",
+        "inicio_ms": 0,
+        "duracion_ms": 1200
+      }
+    },
+    {
+      "id": "4ef323f1-gElephant",
+      "archivo": "audio/cortes/4ef323f1-gElephant.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/voiceAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "4ef323f1568b7bd2e0cb0fa06d679c422738b008d5feb5effe26b63964341e73",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.512,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -18.2,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/greetings/goodbye-elephant.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/4ef323f1-voiceAudio.ogg",
+        "inicio_ms": 1200,
+        "duracion_ms": 1479
+      }
+    },
+    {
+      "id": "4ef323f1-gGiraffe",
+      "archivo": "audio/cortes/4ef323f1-gGiraffe.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/voiceAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "4ef323f1568b7bd2e0cb0fa06d679c422738b008d5feb5effe26b63964341e73",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.224,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -18.6,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/greetings/goodbye-giraffe.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/4ef323f1-voiceAudio.ogg",
+        "inicio_ms": 2679,
+        "duracion_ms": 1190
+      }
+    },
+    {
+      "id": "4ef323f1-gGrilla",
+      "archivo": "audio/cortes/4ef323f1-gGrilla.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/voiceAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "4ef323f1568b7bd2e0cb0fa06d679c422738b008d5feb5effe26b63964341e73",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.344,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -16.9,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/greetings/goodbye-gorilla.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/4ef323f1-voiceAudio.ogg",
+        "inicio_ms": 3869,
+        "duracion_ms": 1300
+      }
+    },
+    {
+      "id": "4ef323f1-gZebra",
+      "archivo": "audio/cortes/4ef323f1-gZebra.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/voiceAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "4ef323f1568b7bd2e0cb0fa06d679c422738b008d5feb5effe26b63964341e73",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.224,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -18.7,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/greetings/goodbye-zebra.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/4ef323f1-voiceAudio.ogg",
+        "inicio_ms": 5169,
+        "duracion_ms": 1199
+      }
+    },
+    {
+      "id": "4ef323f1-hCheeta",
+      "archivo": "audio/cortes/4ef323f1-hCheeta.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/voiceAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "4ef323f1568b7bd2e0cb0fa06d679c422738b008d5feb5effe26b63964341e73",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.248,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -16.4,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/greetings/hello-cheetah.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/4ef323f1-voiceAudio.ogg",
+        "inicio_ms": 6368,
+        "duracion_ms": 1192
+      }
+    },
+    {
+      "id": "4ef323f1-hElephant",
+      "archivo": "audio/cortes/4ef323f1-hElephant.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/voiceAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "4ef323f1568b7bd2e0cb0fa06d679c422738b008d5feb5effe26b63964341e73",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.44,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -16.4,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/greetings/hello-elephant.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/4ef323f1-voiceAudio.ogg",
+        "inicio_ms": 7561,
+        "duracion_ms": 1397
+      }
+    },
+    {
+      "id": "4ef323f1-hGiraffe",
+      "archivo": "audio/cortes/4ef323f1-hGiraffe.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/voiceAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "4ef323f1568b7bd2e0cb0fa06d679c422738b008d5feb5effe26b63964341e73",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.152,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -15.7,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/greetings/hello-giraffe.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/4ef323f1-voiceAudio.ogg",
+        "inicio_ms": 8958,
+        "duracion_ms": 1127
+      }
+    },
+    {
+      "id": "4ef323f1-hGrilla",
+      "archivo": "audio/cortes/4ef323f1-hGrilla.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/voiceAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "4ef323f1568b7bd2e0cb0fa06d679c422738b008d5feb5effe26b63964341e73",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.368,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -15.3,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/greetings/hello-gorilla.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/4ef323f1-voiceAudio.ogg",
+        "inicio_ms": 10086,
+        "duracion_ms": 1331
+      }
+    },
+    {
+      "id": "4ef323f1-hZebra",
+      "archivo": "audio/cortes/4ef323f1-hZebra.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/voiceAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "4ef323f1568b7bd2e0cb0fa06d679c422738b008d5feb5effe26b63964341e73",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.224,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -16.1,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/actividades/greetings/hello-zebra.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/4ef323f1-voiceAudio.ogg",
+        "inicio_ms": 11417,
+        "duracion_ms": 1200
+      }
+    },
+    {
+      "id": "4ef323f1-theEnd",
+      "archivo": "audio/cortes/4ef323f1-theEnd.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/voiceAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "4ef323f1568b7bd2e0cb0fa06d679c422738b008d5feb5effe26b63964341e73",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.104,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -16.3,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/4ef323f1-voiceAudio.ogg",
+        "inicio_ms": 12618,
+        "duracion_ms": 1071
+      }
+    },
+    {
+      "id": "4ef323f1-title",
+      "archivo": "audio/cortes/4ef323f1-title.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/voiceAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "4ef323f1568b7bd2e0cb0fa06d679c422738b008d5feb5effe26b63964341e73",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.488,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -14.8,
+      "rol": "desconocido",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/4ef323f1-voiceAudio.ogg",
+        "inicio_ms": 13690,
+        "duracion_ms": 1450
+      }
+    },
+    {
+      "id": "f2fcf41d",
+      "archivo": "audio/originales/f2fcf41d-fxAudio.ogg",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/fxAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "f2fcf41d49bfad42ec201c45fdd5c420b4619928a4f7c718ef424824d14628b7",
+      "mime": "audio/ogg",
+      "duracion_s": 61.38,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -18.4,
+      "rol": "musica",
+      "evento": "fondo",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ]
+    },
+    {
+      "id": "f2fcf41d-animal1",
+      "archivo": "audio/cortes/f2fcf41d-animal1.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/fxAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "f2fcf41d49bfad42ec201c45fdd5c420b4619928a4f7c718ef424824d14628b7",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.896,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -14.5,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/f2fcf41d-fxAudio.ogg",
+        "inicio_ms": 0,
+        "duracion_ms": 1853
+      }
+    },
+    {
+      "id": "f2fcf41d-animal2",
+      "archivo": "audio/cortes/f2fcf41d-animal2.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/fxAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "f2fcf41d49bfad42ec201c45fdd5c420b4619928a4f7c718ef424824d14628b7",
+      "mime": "audio/mpeg",
+      "duracion_s": 3.84,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -18.8,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/f2fcf41d-fxAudio.ogg",
+        "inicio_ms": 1853,
+        "duracion_ms": 3818
+      }
+    },
+    {
+      "id": "f2fcf41d-animal3",
+      "archivo": "audio/cortes/f2fcf41d-animal3.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/fxAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "f2fcf41d49bfad42ec201c45fdd5c420b4619928a4f7c718ef424824d14628b7",
+      "mime": "audio/mpeg",
+      "duracion_s": 1.68,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -16,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/f2fcf41d-fxAudio.ogg",
+        "inicio_ms": 5672,
+        "duracion_ms": 1639
+      }
+    },
+    {
+      "id": "f2fcf41d-animal4",
+      "archivo": "audio/cortes/f2fcf41d-animal4.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/fxAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "f2fcf41d49bfad42ec201c45fdd5c420b4619928a4f7c718ef424824d14628b7",
+      "mime": "audio/mpeg",
+      "duracion_s": 3.528,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -16.3,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/f2fcf41d-fxAudio.ogg",
+        "inicio_ms": 7311,
+        "duracion_ms": 3500
+      }
+    },
+    {
+      "id": "f2fcf41d-animal5",
+      "archivo": "audio/cortes/f2fcf41d-animal5.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/fxAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "f2fcf41d49bfad42ec201c45fdd5c420b4619928a4f7c718ef424824d14628b7",
+      "mime": "audio/mpeg",
+      "duracion_s": 2.64,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -18,
+      "rol": "efecto",
+      "evento": "error",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/f2fcf41d-fxAudio.ogg",
+        "inicio_ms": 10811,
+        "duracion_ms": 2607
+      }
+    },
+    {
+      "id": "f2fcf41d-backgroundMusic",
+      "archivo": "audio/cortes/f2fcf41d-backgroundMusic.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/fxAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "f2fcf41d49bfad42ec201c45fdd5c420b4619928a4f7c718ef424824d14628b7",
+      "mime": "audio/mpeg",
+      "duracion_s": 41.76,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -19.4,
+      "rol": "musica",
+      "evento": "fondo",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/greetings/musica.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/f2fcf41d-fxAudio.ogg",
+        "inicio_ms": 13418,
+        "duracion_ms": 41716
+      }
+    },
+    {
+      "id": "f2fcf41d-btnClick",
+      "archivo": "audio/cortes/f2fcf41d-btnClick.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/fxAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "f2fcf41d49bfad42ec201c45fdd5c420b4619928a4f7c718ef424824d14628b7",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.168,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": "toque",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/f2fcf41d-fxAudio.ogg",
+        "inicio_ms": 55135,
+        "duracion_ms": 136
+      }
+    },
+    {
+      "id": "f2fcf41d-btnNavigation",
+      "archivo": "audio/cortes/f2fcf41d-btnNavigation.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/fxAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "f2fcf41d49bfad42ec201c45fdd5c420b4619928a4f7c718ef424824d14628b7",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.216,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": null,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [
+        "/audio/juegos/greetings/fin-ronda.mp3"
+      ],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/f2fcf41d-fxAudio.ogg",
+        "inicio_ms": 55271,
+        "duracion_ms": 170
+      }
+    },
+    {
+      "id": "f2fcf41d-carBrake",
+      "archivo": "audio/cortes/f2fcf41d-carBrake.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/fxAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "f2fcf41d49bfad42ec201c45fdd5c420b4619928a4f7c718ef424824d14628b7",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.552,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -14.2,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/f2fcf41d-fxAudio.ogg",
+        "inicio_ms": 55441,
+        "duracion_ms": 519
+      }
+    },
+    {
+      "id": "f2fcf41d-carHorn",
+      "archivo": "audio/cortes/f2fcf41d-carHorn.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/fxAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "f2fcf41d49bfad42ec201c45fdd5c420b4619928a4f7c718ef424824d14628b7",
+      "mime": "audio/mpeg",
+      "duracion_s": 0.456,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -11.5,
+      "rol": "efecto",
+      "evento": null,
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/f2fcf41d-fxAudio.ogg",
+        "inicio_ms": 55960,
+        "duracion_ms": 420
+      }
+    },
+    {
+      "id": "f2fcf41d-carMove",
+      "archivo": "audio/cortes/f2fcf41d-carMove.mp3",
+      "urls": [
+        "https://arbolabcgames.top/E35ABC/assets/audios/fxAudio.ogg"
+      ],
+      "pagina": "https://arbolabcgames.top/E35ABC/",
+      "autor_dominio": "arbolabcgames.top",
+      "sha256": "f2fcf41d49bfad42ec201c45fdd5c420b4619928a4f7c718ef424824d14628b7",
+      "mime": "audio/mpeg",
+      "duracion_s": 5.04,
+      "canales": 1,
+      "frecuencia_hz": 48000,
+      "sonoridad_lufs": -17,
+      "rol": "ambiente",
+      "evento": "fondo",
+      "certeza": "inferido",
+      "transcripcion": null,
+      "licencia": "permiso declarado por el usuario el 2026-11-10; soporte escrito por adjuntar 🔶",
+      "uso": [],
+      "origen_deteccion": [
+        "red"
+      ],
+      "sprite": {
+        "atlas": "audio/originales/f2fcf41d-fxAudio.ogg",
+        "inicio_ms": 56380,
+        "duracion_ms": 5000
+      }
+    }
+  ]
+}

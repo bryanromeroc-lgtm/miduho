@@ -673,6 +673,51 @@
     height: min(28vw, 110px);
   }
 }
+
+/* Con dos respuestas completamente ilustradas, la escena de cada opción es la decisión. */
+.quizOpcionesGrandes {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  column-gap: clamp(12px, 1.5vw, 22px);
+}
+.quizOpcionesGrandes .quizCabecera,
+.quizOpcionesGrandes .quizRespuesta,
+.quizOpcionesGrandes .acciones { grid-column: 1 / -1; }
+.quizOpcionesGrandes .quizEscena { grid-column: 1; grid-row: 2 / 4; height: clamp(380px, 49dvh, 490px); }
+.quizOpcionesGrandes .quizPreguntaPanel { grid-column: 2; grid-row: 2; min-height: 0; padding: 10px 16px; }
+.quizOpcionesGrandes .quizOpciones[data-dos] {
+  grid-column: 2;
+  grid-row: 3;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.quizOpcionesGrandes .quizOpcion {
+  flex-direction: column;
+  justify-content: center;
+  min-height: 290px;
+  padding: 12px;
+  text-align: center;
+}
+.quizOpcionesGrandes .quizCara {
+  width: min(100%, 240px);
+  height: clamp(220px, 18vw, 250px);
+}
+@media (max-width: 680px) {
+  .quizOpcionesGrandes { grid-template-columns: minmax(0, 1fr); }
+  .quizOpcionesGrandes .quizCabecera,
+  .quizOpcionesGrandes .quizEscena,
+  .quizOpcionesGrandes .quizPreguntaPanel,
+  .quizOpcionesGrandes .quizOpciones[data-dos],
+  .quizOpcionesGrandes .quizRespuesta,
+  .quizOpcionesGrandes .acciones { grid-column: 1; grid-row: auto; }
+  .quizOpcionesGrandes .quizEscena { height: 190px; }
+  .quizOpcionesGrandes .quizSituacion,
+  .quizOpcionesGrandes .quizImagenPendiente { width: 70%; }
+  .quizOpcionesGrandes .quizPersonaje { display: block; }
+  .quizOpcionesGrandes .quizPreguntaPanel { min-height: 96px; }
+  .quizOpcionesGrandes .quizOpciones[data-dos] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quizOpcionesGrandes .quizOpcion { min-height: 178px; padding: 8px; }
+  .quizOpcionesGrandes .quizCara { width: min(100%, 130px); height: min(33vw, 130px); }
+}
 @keyframes quizPreguntaAbrir {
   from { clip-path: inset(0 48% 0 48% round 24px); }
   to { clip-path: inset(0 0 0 0 round 24px); }

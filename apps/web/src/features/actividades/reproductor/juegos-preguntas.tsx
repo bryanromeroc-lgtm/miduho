@@ -10,6 +10,7 @@ import { useEfectosGrabados } from "../juegos/comun/efectos-grabados";
 import { useMusicaJuego } from "../juegos/comun/musica";
 import { ordenPartida } from "./ordenes-preguntas";
 import { DialogoQuiz } from "./dialogo";
+import { opcionesVisualesGrandes } from "./reglas";
 import type { Dialogo } from "../tipos/preguntas";
 import { Avanzar, Aviso, Marca, Progreso, useFocoAlCambiar, type PropsJuego } from "./comun";
 import s from "./reproductor.module.css";
@@ -84,6 +85,7 @@ function Preguntas({ contenido, semilla, alTerminar, segundos, focoInicial }: Pr
 
   const acierto = respondida && elegida === p.correcta;
   const ilustrado = !!(p.imagen || p.imagenesOpciones || contenido.escena);
+  const opcionesGrandes = !!p.imagen && opcionesVisualesGrandes(p);
   const personaje = contenido.escena?.personaje;
   const { musica, musicaActiva, setMusicaActiva } = useMusicaJuego(contenido.musica, true);
   const [audioListo, setAudioListo] = useState(!contenido.musica);
@@ -131,7 +133,7 @@ function Preguntas({ contenido, semilla, alTerminar, segundos, focoInicial }: Pr
   }
 
   return (
-    <div className={`${s.juego} ${s.quiz} ${ilustrado ? s.quizIlustrado : ""} ${p.imagen ? s.quizConEscena : ""} ${!p.imagen && personaje ? s.quizSoloGuia : ""}`} data-respondida={respondida ? "" : undefined} data-momento={momento} data-reaccion={reaccion ?? undefined}>
+    <div className={`${s.juego} ${s.quiz} ${ilustrado ? s.quizIlustrado : ""} ${p.imagen ? s.quizConEscena : ""} ${!p.imagen && personaje ? s.quizSoloGuia : ""} ${opcionesGrandes ? s.quizOpcionesGrandes : ""}`} data-respondida={respondida ? "" : undefined} data-momento={momento} data-reaccion={reaccion ?? undefined}>
       {contenido.musica && <audio ref={musica} src={contenido.musica} loop preload="none" />}
       {audioListo && contenido.escena && indice === 0 && <LecturaInicio pregunta={p} />}
       {audioListo && (!contenido.escena || indice > 0) && <LecturaPregunta pregunta={p} />}
