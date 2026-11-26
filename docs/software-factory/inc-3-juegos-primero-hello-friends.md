@@ -48,6 +48,8 @@ Cinco turnos con las seis frases del referente (Teresa, Christian y el perro Per
 | 4 | Christian | My dog's name is Perry. | Goodbye Christian and Perry. | Hello Christian, what is your dog's name? |
 | 5 | Teresa | Goodbye Christian and Perry. | Goodbye Teresa. | My dog's name is Perry. |
 
+La página de Árbol ABC indica que la autora tiene dos hijos llamados Teresa y Christian. El usuario decidió el 2026-11-25 conservar los nombres: son personajes publicados del juego y no datos de estudiantes de MIDUHO.
+
 🔶 Validación docente: si ING-1-04 en 1.° abarca presentarse y preguntar por una mascota, y si las frases 2 y 3 son largas para lectores iniciales.
 
 ## Archivos

@@ -7,15 +7,17 @@ import type { Frase, Pregunta } from "../tipos/preguntas";
 import type { EscenaJuego } from "../juegos/comun/escena";
 import { ContextoActividad, Escuchar, useLecturaAutomatica, useLeerEnVozAlta, useVozActividad } from "../juegos/comun/escuchar";
 import { useEfectosGrabados } from "../juegos/comun/efectos-grabados";
-import { ordenesPreguntas } from "./ordenes-preguntas";
+import { useMusicaJuego } from "../juegos/comun/musica";
+import { ordenPartida } from "./ordenes-preguntas";
 import { DialogoQuiz } from "./dialogo";
 import type { Dialogo } from "../tipos/preguntas";
 import { Avanzar, Aviso, Marca, Progreso, useFocoAlCambiar, type PropsJuego } from "./comun";
 import s from "./reproductor.module.css";
+import inicio from "./inicio.module.css";
 
 const SIMBOLOS = [Triangle, Diamond, Circle, Square] as const;
 type EfectosQuiz = Partial<Record<"acierto" | "fallo" | "finRonda" | "fin", string>>;
-type ContenidoQuiz = { preguntas: Pregunta[]; escena?: EscenaJuego; efectos?: EfectosQuiz; barajarOpciones?: boolean };
+type ContenidoQuiz = { preguntas: Pregunta[]; escena?: EscenaJuego; efectos?: EfectosQuiz; barajarOpciones?: boolean; barajarPreguntas?: boolean; musica?: string };
 
 function LecturaInicio({ pregunta }: { pregunta: Pregunta }) {
   const { instruccion, audioInstruccion } = useContext(ContextoActividad);
@@ -39,17 +41,18 @@ function LecturaPregunta({ pregunta }: { pregunta: Pregunta }) {
   return null;
 }
 
-function Situacion({ pregunta, personaje, reaccion }: { pregunta: Pregunta; personaje?: EscenaJuego["personaje"]; reaccion: "acierto" | "fallo" | null }) {
+function Situacion({ pregunta, personaje, reaccion, momento }: { pregunta: Pregunta; personaje?: EscenaJuego["personaje"]; reaccion: "acierto" | "fallo" | null; momento: "reposo" | "anticipacion" | "accion" | "impacto" | "recuperacion" }) {
   const [fallida, setFallida] = useState(false);
   const imagen = useRef<HTMLImageElement>(null);
   useEffect(() => {
     const actual = imagen.current;
     if (actual?.complete) setFallida(actual.naturalWidth === 0);
   }, [pregunta.imagen]);
-  const poseVisible = reaccion === "acierto" ? "senala" : reaccion === "fallo" ? "duda" : "reposo";
+  const mostrarReaccion = momento === "impacto" || momento === "recuperacion" || (momento === "reposo" && !!reaccion);
+  const poseVisible = mostrarReaccion && reaccion === "acierto" ? "senala" : mostrarReaccion && reaccion === "fallo" ? "duda" : "reposo";
   return <div className={s.quizEscena}>
     {/* eslint-disable-next-line @next/next/no-img-element -- ilustración curricular WebP con alt informativo */}
-    <img ref={imagen} className={s.quizSituacion} src={pregunta.imagen} alt={pregunta.alt ?? ""} hidden={fallida} onLoad={() => setFallida(false)} onError={() => setFallida(true)} />
+    {pregunta.imagen && <img ref={imagen} className={s.quizSituacion} src={pregunta.imagen} alt={pregunta.alt ?? ""} hidden={fallida} onLoad={() => setFallida(false)} onError={() => setFallida(true)} />}
     {fallida && <p className={s.quizImagenPendiente} aria-hidden="true">{pregunta.alt}</p>}
     {personaje && <div className={s.quizPersonaje} aria-hidden="true">
       {/* eslint-disable-next-line @next/next/no-img-element -- pose optimizada del currículo */}
@@ -70,11 +73,11 @@ function Situacion({ pregunta, personaje, reaccion }: { pregunta: Pregunta; pers
 function Preguntas({ contenido, semilla, alTerminar, segundos, focoInicial }: PropsJuego<ContenidoQuiz> & { segundos?: number }) {
   const [indice, setIndice] = useState(0);
   const [respuestas, setRespuestas] = useState<Record<string, number>>({});
-  const p = contenido.preguntas[indice];
+  const partida = useMemo(() => ordenPartida(contenido.preguntas, semilla, contenido.barajarOpciones, contenido.barajarPreguntas), [contenido.preguntas, contenido.barajarOpciones, contenido.barajarPreguntas, semilla]);
+  const p = contenido.preguntas[partida.indices[indice]];
   const elegida = respuestas[p.id];
   const respondida = elegida !== undefined;
-  const ordenes = useMemo(() => ordenesPreguntas(contenido.preguntas, semilla, contenido.barajarOpciones), [contenido.preguntas, contenido.barajarOpciones, semilla]);
-  const orden = ordenes[indice];
+  const orden = partida.opciones[partida.indices[indice]];
   const ultima = indice === contenido.preguntas.length - 1;
   const titulo = useFocoAlCambiar<HTMLHeadingElement>(indice);
   useEffect(() => { if (focoInicial) titulo.current?.focus(); }, [focoInicial, titulo]);
@@ -82,6 +85,13 @@ function Preguntas({ contenido, semilla, alTerminar, segundos, focoInicial }: Pr
   const acierto = respondida && elegida === p.correcta;
   const ilustrado = !!(p.imagen || p.imagenesOpciones || contenido.escena);
   const personaje = contenido.escena?.personaje;
+  const { musica, musicaActiva, setMusicaActiva } = useMusicaJuego(contenido.musica, true);
+  const [audioListo, setAudioListo] = useState(!contenido.musica);
+  useEffect(() => {
+    if (!contenido.musica) return;
+    const cuadro = requestAnimationFrame(() => setAudioListo(true));
+    return () => cancelAnimationFrame(cuadro);
+  }, [contenido.musica]);
   const sonidos = useMemo(() => ({
     acierto: contenido.efectos?.acierto ? [contenido.efectos.acierto] : [],
     fallo: contenido.efectos?.fallo ? [contenido.efectos.fallo] : [],
@@ -116,19 +126,21 @@ function Preguntas({ contenido, semilla, alTerminar, segundos, focoInicial }: Pr
       efectos.preparar();
       efectos.tocar(ultima ? "fin" : "finRonda");
     }
-    if (ultima) alTerminar(respuestas);
+    if (ultima) { musica.current?.pause(); alTerminar(respuestas); }
     else { setIndice(indice + 1); setReaccion(null); setMomento("reposo"); }
   }
 
   return (
-    <div className={`${s.juego} ${s.quiz} ${ilustrado ? s.quizIlustrado : ""} ${p.imagen ? s.quizConEscena : ""}`} data-respondida={respondida ? "" : undefined} data-momento={momento} data-reaccion={reaccion ?? undefined}>
-      {contenido.escena && indice === 0 && <LecturaInicio pregunta={p} />}
-      {(!contenido.escena || indice > 0) && <LecturaPregunta pregunta={p} />}
+    <div className={`${s.juego} ${s.quiz} ${ilustrado ? s.quizIlustrado : ""} ${p.imagen ? s.quizConEscena : ""} ${!p.imagen && personaje ? s.quizSoloGuia : ""}`} data-respondida={respondida ? "" : undefined} data-momento={momento} data-reaccion={reaccion ?? undefined}>
+      {contenido.musica && <audio ref={musica} src={contenido.musica} loop preload="none" />}
+      {audioListo && contenido.escena && indice === 0 && <LecturaInicio pregunta={p} />}
+      {audioListo && (!contenido.escena || indice > 0) && <LecturaPregunta pregunta={p} />}
       <div className={`${s.juegoCabeza} ${s.quizCabecera}`}>
         <Progreso actual={indice + 1} total={contenido.preguntas.length} />
+        {contenido.musica && <button type="button" className={s.quizMusica} aria-pressed={musicaActiva} onClick={() => setMusicaActiva((v) => !v)}>Música: {musicaActiva ? "sí" : "no"}</button>}
         {segundos && <Reloj key={p.id} segundos={segundos} detenido={respondida} />}
       </div>
-      {p.imagen && <Situacion key={`escena-${p.id}`} pregunta={p} personaje={personaje} reaccion={reaccion} />}
+      {(p.imagen || personaje) && <Situacion key={`escena-${p.id}`} pregunta={p} personaje={personaje} reaccion={reaccion} momento={momento} />}
       <div key={`panel-${p.id}`} className={s.quizPreguntaPanel}>
         <h2 ref={titulo} tabIndex={-1} className={`${s.enunciado} ${s.quizEnunciado}`}>
           {p.enunciado}
@@ -212,8 +224,26 @@ function Reloj({ segundos, detenido }: { segundos: number; detenido: boolean }) 
   );
 }
 
+function QuizConInicio(props: PropsJuego<ContenidoQuiz>) {
+  const [empezado, setEmpezado] = useState(false);
+  const { titulo, imagen, instruccion } = useContext(ContextoActividad);
+  if (empezado) return <Preguntas {...props} focoInicial />;
+  return <div className={inicio.inicio}>
+    {imagen && <div className={inicio.portada}>
+      {/* eslint-disable-next-line @next/next/no-img-element -- portada curricular WebP decorativa */}
+      <img src={imagen} alt="" />
+    </div>}
+    <div className={inicio.inicioTexto}>
+      {titulo && <h2>{titulo}</h2>}
+      {instruccion && <p>{instruccion}</p>}
+      <button type="button" className={inicio.jugar} onClick={() => setEmpezado(true)}>Jugar</button>
+    </div>
+  </div>;
+}
+
 export function Quiz(props: PropsJuego<ContenidoQuiz & { presentacion?: "dialogo"; dialogo?: Dialogo }>) {
   if (props.contenido.presentacion === "dialogo" && props.contenido.dialogo) return <DialogoQuiz {...props} contenido={{ ...props.contenido, dialogo: props.contenido.dialogo }} />;
+  if (props.contenido.musica) return <QuizConInicio {...props} />;
   return <Preguntas {...props} />;
 }
 

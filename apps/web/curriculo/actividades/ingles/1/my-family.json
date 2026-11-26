@@ -1,0 +1,136 @@
+{
+  "slug": "my-family",
+  "titulo": "My family",
+  "tipo": "seleccion-multiple",
+  "grado": 1,
+  "tema": "La familia en inglés (ING-1-04)",
+  "instruccion": "Escucha la oración en inglés y toca la imagen que corresponde.",
+  "audioInstruccion": "/audio/actividades/my-family/instruccion.mp3",
+  "imagen": "/images/juegos/my-family/portada.webp",
+  "contenido": {
+    "barajarPreguntas": true,
+    "barajarOpciones": true,
+    "preguntas": [
+      {
+        "id": "mom",
+        "enunciado": "She is my mom.",
+        "audio": "/audio/actividades/my-family/mom.mp3",
+        "opciones": [
+          "mamá",
+          "abuela"
+        ],
+        "imagenesOpciones": [
+          "/images/juegos/my-family/mama.webp",
+          "/images/juegos/my-family/abuela.webp"
+        ],
+        "correcta": 0,
+        "explicacion": "Mom quiere decir mamá."
+      },
+      {
+        "id": "dad",
+        "enunciado": "He is my dad.",
+        "audio": "/audio/actividades/my-family/dad.mp3",
+        "opciones": [
+          "papá",
+          "abuelo"
+        ],
+        "imagenesOpciones": [
+          "/images/juegos/my-family/papa.webp",
+          "/images/juegos/my-family/abuelo.webp"
+        ],
+        "correcta": 0,
+        "explicacion": "Dad quiere decir papá."
+      },
+      {
+        "id": "baby-sister",
+        "enunciado": "She is my baby sister.",
+        "audio": "/audio/actividades/my-family/baby-sister.mp3",
+        "opciones": [
+          "hermana bebé",
+          "mamá"
+        ],
+        "imagenesOpciones": [
+          "/images/juegos/my-family/hermana-bebe.webp",
+          "/images/juegos/my-family/mama.webp"
+        ],
+        "correcta": 0,
+        "explicacion": "Baby sister quiere decir hermana bebé."
+      },
+      {
+        "id": "grandmother",
+        "enunciado": "She is my grandmother.",
+        "audio": "/audio/actividades/my-family/grandmother.mp3",
+        "opciones": [
+          "abuela",
+          "hermana bebé"
+        ],
+        "imagenesOpciones": [
+          "/images/juegos/my-family/abuela.webp",
+          "/images/juegos/my-family/hermana-bebe.webp"
+        ],
+        "correcta": 0,
+        "explicacion": "Grandmother quiere decir abuela."
+      },
+      {
+        "id": "grandfather",
+        "enunciado": "He is my grandfather.",
+        "audio": "/audio/actividades/my-family/grandfather.mp3",
+        "opciones": [
+          "abuelo",
+          "papá"
+        ],
+        "imagenesOpciones": [
+          "/images/juegos/my-family/abuelo.webp",
+          "/images/juegos/my-family/papa.webp"
+        ],
+        "correcta": 0,
+        "explicacion": "Grandfather quiere decir abuelo."
+      },
+      {
+        "id": "dog",
+        "enunciado": "This is my dog.",
+        "audio": "/audio/actividades/my-family/dog.mp3",
+        "opciones": [
+          "perro",
+          "hermana bebé"
+        ],
+        "imagenesOpciones": [
+          "/images/juegos/my-family/perro.webp",
+          "/images/juegos/my-family/hermana-bebe.webp"
+        ],
+        "correcta": 0,
+        "explicacion": "Dog quiere decir perro."
+      },
+      {
+        "id": "family",
+        "enunciado": "This is my family.",
+        "audio": "/audio/actividades/my-family/family.mp3",
+        "opciones": [
+          "familia",
+          "papá"
+        ],
+        "imagenesOpciones": [
+          "/images/juegos/my-family/familia.webp",
+          "/images/juegos/my-family/papa.webp"
+        ],
+        "correcta": 0,
+        "explicacion": "Family quiere decir familia: todos juntos."
+      }
+    ],
+    "escena": {
+      "personaje": {
+        "nombre": "Maca",
+        "reposo": "/images/juegos/hello-friends/maca-reposo.webp",
+        "senala": "/images/juegos/hello-friends/maca-senala.webp",
+        "duda": "/images/juegos/hello-friends/maca-duda.webp"
+      }
+    },
+    "efectos": {
+      "acierto": "/audio/juegos/my-family/acierto.mp3",
+      "fallo": "/audio/juegos/my-family/fallo.mp3",
+      "finRonda": "/audio/juegos/my-family/fin-ronda.mp3",
+      "fin": "/audio/juegos/my-family/fin.mp3"
+    },
+    "musica": "/audio/juegos/my-family/musica.mp3"
+  }
+}

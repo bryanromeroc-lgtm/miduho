@@ -18,7 +18,7 @@ El programa SHALL construir las 26 actividades de la tabla y SHALL mantener la a
 | 2 | `cuento-de-la-quebrada` | Comprensión lectora | LEN-1-04 | `aventura` (cuento narrado y secuencia final; ver `actividad-aventura-cuento`) | Mundo Primaria cuentos tradicionales · Árbol ABC Zoológico · Colombia Aprende lectura de cuentos |
 | 2 | `comparar-numeros` | Matemáticas | MAT-1-03 | `seleccion-multiple` | PhET Comparar Números |
 | 2 | `hello-friends` | Inglés | ING-1-04 | `seleccion-multiple`, presentación `dialogo` | Árbol ABC Greetings vía Cristic; adaptación aprobada de respuesta entre dos hablantes |
-| 2 | `my-family` | Inglés | ING-1-04 | `emparejar` | Árbol ABC la familia en inglés |
+| 2 | `my-family` | Inglés | ING-1-04 | `seleccion-multiple` ilustrado | Árbol ABC E38ABC; adaptación aprobada de dos retratos por oración |
 | 2 | `greetings` | Inglés | ING-1-01 | `emparejar` | Árbol ABC saludos en inglés |
 | 3 | `izquierda-o-derecha` | Ciencias sociales | SOC-1-01 | `golpea` (preguntas) | Cokitos atención izquierda y derecha con el mono |
 | 3 | `armi-says` | Inglés | ING-1-01 | `golpea` (preguntas) | Mundo Primaria Simón dice |

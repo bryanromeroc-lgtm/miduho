@@ -40,6 +40,7 @@ export default async function PaginaActividad({ params }: Parametros) {
         actividad={{
           slug: actividad.slug,
           titulo: actividad.titulo,
+          imagen: actividad.imagen,
           tipo: actividad.tipo,
           instruccion: actividad.instruccion,
           contenido: actividad.contenido,

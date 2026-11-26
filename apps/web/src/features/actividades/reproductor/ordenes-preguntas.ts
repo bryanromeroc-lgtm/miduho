@@ -14,3 +14,23 @@ export function ordenesPreguntas(preguntas: Pregunta[], semilla: string, barajar
     return orden;
   });
 }
+
+/** Orden de la partida y de sus opciones con un solo flujo de azar. */
+export function ordenPartida(preguntas: Pregunta[], semilla: string, opciones = true, preguntasAlAzar = false) {
+  if (!preguntasAlAzar) return { indices: preguntas.map((_, i) => i), opciones: ordenesPreguntas(preguntas, semilla, opciones) };
+  const azar = generador(semilla);
+  const indices = preguntas.map((_, i) => i);
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = Math.floor(azar() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  const ordenes = preguntas.map((p) => {
+    const orden = p.opciones.map((_, i) => i);
+    if (opciones) for (let i = orden.length - 1; i > 0; i--) {
+      const j = Math.floor(azar() * (i + 1));
+      [orden[i], orden[j]] = [orden[j], orden[i]];
+    }
+    return orden;
+  });
+  return { indices, opciones: ordenes };
+}

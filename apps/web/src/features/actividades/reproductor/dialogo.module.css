@@ -1,12 +1,6 @@
 .juego { min-height: 100%; width: 100%; display: flex; flex-direction: column; gap: clamp(10px, 1.5vh, 18px); color: #173044; }
-.inicio { display: grid; gap: 0; overflow: hidden; background: #e3f3eb; border-radius: 24px; }
+.inicio { display: grid; }
 .inicio .escena { border-radius: 0; min-height: 340px; height: 340px; }
-.inicioTexto { display: grid; justify-items: center; gap: 16px; text-align: center; padding: clamp(20px, 3vw, 32px); }
-.portada { display: block; width: 100%; height: min(42dvh, 420px); }
-.portada img { width: 100%; height: 100%; object-fit: cover; }
-.inicio h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
-.inicio p { font-size: clamp(1.2rem, 2vw, 1.6rem); }
-.jugar { border: 0; border-radius: 16px; padding: 16px 48px; min-height: 64px; background: #176b52; color: white; font-weight: 800; font-size: 1.4rem; cursor: pointer; }
 .cabecera { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .avanzar { align-self: flex-end; border: 0; border-radius: 14px; background: #176b52; color: white; min-height: 48px; padding: 10px 22px; font-weight: 800; cursor: pointer; }
 .musica { border: 2px solid #176b52; border-radius: 12px; background: white; color: #15543f; min-height: 44px; padding: 8px 14px; font-weight: 700; cursor: pointer; }
@@ -71,9 +65,6 @@
 @media (max-width: 767px) {
   .escena { min-height: 195px; height: 25dvh; }
   .inicio .escena { min-height: 160px; height: 160px; }
-  .inicioTexto { gap: 10px; padding: 14px; }
-  .inicio h2 { font-size: 1.8rem; }
-  .inicio p { font-size: 1.1rem; }
   .hablante { width: 31cqw; height: 85%; }
   .guia { left: 37%; width: 14cqw; height: 62%; pointer-events: none; }
   .globos, .opciones { grid-template-columns: minmax(0, 1fr); }

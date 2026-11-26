@@ -1,0 +1,52 @@
+.inicio {
+  display: grid;
+  gap: 0;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #e3f3eb;
+  color: #173044;
+}
+
+.inicioTexto {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  padding: clamp(20px, 3vw, 32px);
+  text-align: center;
+}
+
+.portada {
+  display: block;
+  width: 100%;
+  height: min(42dvh, 420px);
+}
+
+.portada img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.inicio h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
+.inicio p { font-size: clamp(1.2rem, 2vw, 1.6rem); }
+
+.jugar {
+  min-height: 64px;
+  padding: 16px 48px;
+  border: 0;
+  border-radius: 16px;
+  background: #176b52;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.jugar:focus-visible { outline: 4px solid #2c174e; outline-offset: 4px; }
+
+@media (max-width: 767px) {
+  .inicioTexto { gap: 10px; padding: 14px; }
+  .inicio h2 { font-size: 1.8rem; }
+  .inicio p { font-size: 1.1rem; }
+}

@@ -71,7 +71,7 @@ export type Dialogo = z.infer<typeof esquemaDialogo>;
 export const seleccionMultiple = definirTipo({
   tipo: "seleccion-multiple",
   nombre: "Quiz",
-  esquemaContenido: z.object({ preguntas, escena: esquemaEscenaJuego.optional(), efectos: esquemaEfectosQuiz.optional(), barajarOpciones: z.boolean().optional(), presentacion: z.literal("dialogo").optional(), dialogo: esquemaDialogo.optional(), musica: rutaAudio.optional(), audioTitulo: rutaAudio.optional(), tituloAudioTexto: texto.optional(), efectoToque: rutaAudio.optional(), efectoJugar: rutaAudio.optional() }).superRefine((c, ctx) => {
+  esquemaContenido: z.object({ preguntas, escena: esquemaEscenaJuego.optional(), efectos: esquemaEfectosQuiz.optional(), barajarOpciones: z.boolean().optional(), barajarPreguntas: z.boolean().optional(), presentacion: z.literal("dialogo").optional(), dialogo: esquemaDialogo.optional(), musica: rutaAudio.optional(), audioTitulo: rutaAudio.optional(), tituloAudioTexto: texto.optional(), efectoToque: rutaAudio.optional(), efectoJugar: rutaAudio.optional() }).superRefine((c, ctx) => {
     if (!c.presentacion && !c.dialogo) return;
     if (c.presentacion !== "dialogo" || !c.dialogo) { ctx.addIssue({ code: "custom", message: "La presentación y el bloque dialogo deben aparecer juntos" }); return; }
     const ids = new Set(c.dialogo.hablantes.map((h) => h.id));

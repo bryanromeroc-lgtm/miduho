@@ -29,3 +29,40 @@ El contenido de `seleccion-multiple` y `concurso` SHALL admitir una escena compa
 #### Scenario: Accesibilidad y calificación
 - **WHEN** se juega con teclado y se selecciona una opción
 - **THEN** se registra la primera elección, se anuncia la explicación como texto y se puede avanzar sin usar puntero.
+
+### Requirement: Música opcional en el quiz ilustrado
+La presentación ilustrada de `seleccion-multiple` SHALL admitir `musica`, con un control independiente de los efectos y la voz.
+
+#### Scenario: Música durante la partida
+- **WHEN** el contenido trae `musica` y se pulsa «Jugar»
+- **THEN** la pista se reproduce en bucle a volumen bajo, baja mientras habla la voz y el botón «Música: sí/no» expresa el estado con `aria-pressed`.
+
+#### Scenario: Pausa y cierre
+- **WHEN** la pestaña se oculta o la partida termina
+- **THEN** la música se pausa y solo se reanuda al volver a la pestaña si sigue activada y la partida continúa.
+
+#### Scenario: Sin música
+- **WHEN** el contenido omite `musica`
+- **THEN** el quiz comienza y suena exactamente como antes, sin pantalla «Jugar» ni control de música.
+
+### Requirement: Guía sin imagen de situación
+La presentación ilustrada SHALL mostrar `escena.personaje` aunque una pregunta no tenga `imagen`, con pose de reposo durante la elección, de señalar al acertar y de duda al fallar.
+
+#### Scenario: Dos retratos y guía
+- **WHEN** una pregunta tiene dos `imagenesOpciones`, no tiene `imagen` y el contenido incluye `escena.personaje`
+- **THEN** la guía sigue visible en escritorio y teléfono sin tapar los botones, y las opciones conservan texto HTML y nombre accesible.
+
+#### Scenario: Situación existente
+- **WHEN** una pregunta sí tiene `imagen`
+- **THEN** conserva la distribución y el tamaño de guía anteriores.
+
+### Requirement: Orden opcional de preguntas por semilla
+`seleccion-multiple` SHALL admitir `barajarPreguntas: true` para mezclar los turnos de forma reproducible con el mismo generador que mezcla las opciones.
+
+#### Scenario: Orden barajado
+- **WHEN** `barajarPreguntas` es verdadero
+- **THEN** todas las preguntas aparecen una vez y se califican con su `id` e índice original de respuesta.
+
+#### Scenario: Orden anterior
+- **WHEN** el campo falta
+- **THEN** el orden de preguntas y el flujo previo de barajado de opciones permanecen iguales.

@@ -13,7 +13,7 @@ import s from "./escuchar.module.css";
   almacenamiento dura la visita).
 */
 
-export const ContextoActividad = createContext<{ grado: number; instruccion?: string; audioInstruccion?: string | null }>({ grado: 0 });
+export const ContextoActividad = createContext<{ grado: number; titulo?: string; imagen?: string; instruccion?: string; audioInstruccion?: string | null }>({ grado: 0 });
 
 const LLAVE = "miduho:juegos:leer-en-voz-alta";
 const oyentes = new Set<() => void>();

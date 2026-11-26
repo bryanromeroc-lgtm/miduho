@@ -2,13 +2,14 @@
 
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { ContextoActividad, Escuchar, useLecturaAutomatica, useVozActividad } from "../juegos/comun/escuchar";
-import { useBajarMusicaConVoz } from "../juegos/comun/voz";
+import { useMusicaJuego } from "../juegos/comun/musica";
 import { useEfectosGrabados } from "../juegos/comun/efectos-grabados";
 import type { Dialogo, Pregunta } from "../tipos/preguntas";
 import type { EscenaJuego } from "../juegos/comun/escena";
 import { ordenesPreguntas } from "./ordenes-preguntas";
 import { Aviso, Progreso, type PropsJuego } from "./comun";
 import s from "./dialogo.module.css";
+import inicioEstilos from "./inicio.module.css";
 
 type Contenido = { preguntas: Pregunta[]; dialogo: Dialogo; escena?: EscenaJuego; efectos?: Partial<Record<"acierto" | "fallo" | "finRonda" | "fin", string>>; barajarOpciones?: boolean; musica?: string; audioTitulo?: string; tituloAudioTexto?: string; efectoToque?: string; efectoJugar?: string };
 
@@ -62,9 +63,8 @@ export function DialogoQuiz({ contenido, semilla, alTerminar, focoInicial }: Pro
   const [respuestas, setRespuestas] = useState<Record<string, number>>({});
   const [revelada, setRevelada] = useState(false);
   const [momento, setMomento] = useState<"reposo" | "anticipacion" | "accion" | "impacto" | "recuperacion">("reposo");
-  const [musicaActiva, setMusicaActiva] = useState(true);
+  const { musica, musicaActiva, setMusicaActiva } = useMusicaJuego(contenido.musica, !inicio);
   const [perroActivo, setPerroActivo] = useState(false);
-  const musica = useRef<HTMLAudioElement>(null);
   const temporizadores = useRef<ReturnType<typeof setTimeout>[]>([]);
   const primeraOpcion = useRef<HTMLButtonElement>(null);
   const botonAvanzar = useRef<HTMLButtonElement>(null);
@@ -73,7 +73,6 @@ export function DialogoQuiz({ contenido, semilla, alTerminar, focoInicial }: Pro
   const avanzado = useRef(-1);
   const { instruccion, audioInstruccion } = useContext(ContextoActividad);
   const { decir } = useVozActividad();
-  useBajarMusicaConVoz(musica);
   useEffect(() => {
     if (!contenido.audioTitulo || tituloIntentado.current) return;
     tituloIntentado.current = true;
@@ -103,25 +102,10 @@ export function DialogoQuiz({ contenido, semilla, alTerminar, focoInicial }: Pro
   }), [contenido.efectos, contenido.efectoToque, contenido.efectoJugar, p.alResponder]);
   const efectos = useEfectosGrabados(rutas);
   const programar = useCallback((fn: () => void, ms: number) => { temporizadores.current.push(setTimeout(fn, ms)); }, []);
-  useEffect(() => () => { temporizadores.current.forEach(clearTimeout); musica.current?.pause(); }, []);
+  useEffect(() => () => { temporizadores.current.forEach(clearTimeout); }, []);
   useEffect(() => { if (!inicio) primeraOpcion.current?.focus(); else if (focoInicial) titulo.current?.focus(); }, [indice, inicio, focoInicial]);
   // Al responder, las opciones se desactivan: el foco pasa a «Siguiente», como en el quiz común (`Avanzar`).
   useEffect(() => { if (revelada) botonAvanzar.current?.focus(); }, [revelada]);
-  useEffect(() => {
-    const visibilidad = () => {
-      if (!musica.current) return;
-      if (document.hidden) musica.current.pause();
-      else if (!inicio && musicaActiva) void musica.current.play().catch(() => setMusicaActiva(false));
-    };
-    document.addEventListener("visibilitychange", visibilidad);
-    return () => document.removeEventListener("visibilitychange", visibilidad);
-  }, [inicio, musicaActiva]);
-  useEffect(() => {
-    if (!musica.current) return;
-    musica.current.volume = 0.2;
-    if (!inicio && musicaActiva) void musica.current.play().catch(() => setMusicaActiva(false));
-    else musica.current.pause();
-  }, [inicio, musicaActiva]);
 
   function empezar() {
     efectos.preparar(); efectos.tocar("jugar");
@@ -167,16 +151,16 @@ export function DialogoQuiz({ contenido, semilla, alTerminar, focoInicial }: Pro
   const pose = impacto ? (acierto ? "senala" : "duda") : "reposo";
   return <div className={s.juego} data-momento={momento} data-resultado={impacto ? (acierto ? "ok" : "no") : undefined}>
     {contenido.musica && <audio ref={musica} src={contenido.musica} loop preload="none" />}
-    {inicio ? <div className={s.inicio}>
+    {inicio ? <div className={`${s.inicio} ${inicioEstilos.inicio}`}>
       {contenido.escena?.fondo
         ? <EscenaDialogo contenido={contenido} pose="reposo" perroActivo={false} />
-        : contenido.preguntas[0].imagen && <Imagen src={contenido.preguntas[0].imagen} alt="" className={s.portada} />}
-      <div className={s.inicioTexto}>
+        : contenido.preguntas[0].imagen && <Imagen src={contenido.preguntas[0].imagen} alt="" className={inicioEstilos.portada} />}
+      <div className={inicioEstilos.inicioTexto}>
       {tituloAbierto && instruccion && <LecturaConsigna texto={instruccion} audio={audioInstruccion} />}
       <h2 ref={titulo} tabIndex={-1}>Escuchemos la conversación</h2>
       <p>{instruccion}</p>
       {contenido.audioTitulo && <Escuchar texto={contenido.tituloAudioTexto ?? "Título"} audio={contenido.audioTitulo} etiqueta="Escuchar el título" />}
-      <button type="button" className={s.jugar} onClick={empezar}>Jugar</button>
+      <button type="button" className={inicioEstilos.jugar} onClick={empezar}>Jugar</button>
       </div>
     </div> : <>
       <div className={s.cabecera}><Progreso actual={indice + 1} total={contenido.preguntas.length} nombre="Turno" />

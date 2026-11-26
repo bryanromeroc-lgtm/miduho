@@ -81,6 +81,7 @@ const JUEGOS: Record<string, ComponentType<PropsJuego<any>>> = {
 export type ActividadParaJugar = {
   slug: string;
   titulo: string;
+  imagen?: string;
   tipo: string;
   instruccion: string;
   contenido: unknown;
@@ -116,7 +117,7 @@ export function Reproductor({
   if (!definicion || !Juego) throw new Error(`Tipo de actividad sin reproductor: ${actividad.tipo}`);
 
   return (
-    <ContextoActividad.Provider value={{ grado: actividad.grado ?? 0, instruccion: actividad.instruccion, audioInstruccion: actividad.audioInstruccion }}>
+    <ContextoActividad.Provider value={{ grado: actividad.grado ?? 0, titulo: actividad.titulo, imagen: actividad.imagen, instruccion: actividad.instruccion, audioInstruccion: actividad.audioInstruccion }}>
     <main className={s.reproductor} id="juego" tabIndex={-1}>
       <header className={s.barraJuego}>
         <Link href={volverHref} className={s.salir}>
